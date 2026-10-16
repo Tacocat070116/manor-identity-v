@@ -6,7 +6,7 @@ const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
 search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',
 grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
-swords:'<path d="m4 3 14 14M3 3l1 5 4-4-5-1Zm14 14 4 4m-7-2 5-5M20 3 6 17m15-14-1 5-4-4 5-1ZM6 17l-3 4m0-7 7 7"/>',
+swords:'<path d="M13.5 7.5 17 4l4-1-1 4-3.5 3.5"/><path d="m3 3 4 1 10 10-3 3L4 7 3 3Z"/><path d="m12.5 18.5 6-6m-13 0 6 6M16 16l4.5 4.5M8 16l-4.5 4.5M19 22l3-3M2 19l3 3"/>',
 compare:'<path d="M9 4H4v16h5m6-16h5v16h-5M12 3v18"/>',
 shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/>',
 book:'<path d="M12 5v16M3 3c4 0 7 1 9 3 2-2 5-3 9-3v15c-4 0-7 1-9 3-2-2-5-3-9-3V3Z"/>',
