@@ -1,0 +1,224 @@
+import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js';
+const $=(s,r=document)=>r.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=n=>new Intl.NumberFormat('ko-KR').format(n);
+const pct=n=>`${(n*100).toFixed(1)}%`;
+const paths={
+search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+swords:'<path d="m4 3 14 14M3 3l1 5 4-4-5-1Zm14 14 4 4m-7-2 5-5M20 3 6 17m15-14-1 5-4-4 5-1ZM6 17l-3 4m0-7 7 7"/>',
+compare:'<path d="M9 4H4v16h5m6-16h5v16h-5M12 3v18"/>',
+shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/>',
+book:'<path d="M12 5v16M3 3c4 0 7 1 9 3 2-2 5-3 9-3v15c-4 0-7 1-9 3-2-2-5-3-9-3V3Z"/>',
+star:'<path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1 6.2-5.6-3-5.6 3 1-6.2L3 9.6l6.2-.9L12 3Z"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/>',
+moon:'<path d="M20 14.1A8.5 8.5 0 0 1 9.9 4 8.5 8.5 0 1 0 20 14.1Z"/>',
+arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
+back:'<path d="M20 12H4m6-6-6 6 6 6"/>',
+down:'<path d="m6 9 6 6 6-6"/>',
+close:'<path d="m6 6 12 12M6 18 18 6"/>',
+plus:'<path d="M12 4v16M4 12h16"/>',
+info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/>',
+link:'<path d="m10 13 4-2M9 15l-2 2a4 4 0 0 1-6-6l3-3a4 4 0 0 1 6 0m4 1 2-2a4 4 0 0 1 6 6l-3 3a4 4 0 0 1-6 0" transform="translate(1 -1)"/>',
+clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+spark:'<path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/>',
+chart:'<path d="M4 3v17h17M8 15v-4m5 4V7m5 8v-6"/>',
+globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/>',
+external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
+hunter:'<path d="M6 3v6l6 12 6-12V3M6 7h12M9 12h6"/>',
+survivor:'<circle cx="12" cy="7" r="3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/>'
+};
+const icon=n=>`<svg class="icon" aria-hidden="true" viewBox="0 0 24 24">${paths[n]||paths.info}</svg>`;
+const link=(url,label,cls='text-link')=>safeUrl(url)?`<a class="${cls}" href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)}${cls.includes('btn')?icon('external'):''}</a>`:'';
+const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',sort:'name',favoriteOnly:false,region:'전체',sourceQuery:'',stats:{days:365,map:'',tournament:''},banFilters:{days:365,map:'',tournament:'',excluded:[]},bans:['','',''],situation:'',favorites:new Set(),theme:'light'};
+try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
+document.documentElement.dataset.theme=state.theme;
+let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
+const loadMatches=()=>matchesPromise||=fetch('matches.json').then(r=>{if(!r.ok)throw Error('경기 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{matchesPromise=null;throw e;});
+const loadBans=()=>bansPromise||=fetch('bans.json').then(r=>{if(!r.ok)throw Error('밴 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{bansPromise=null;throw e;});
+const portrait=(c,priority=false)=>`<img src="${esc(c.portrait)}" alt="${esc(c.name)}" width="200" height="200" ${priority?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const difficulty=n=>`<span class="difficulty" role="img" aria-label="난이도 ${Number(n)}/5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
+const chip=(t,tone='')=>`<span class="tag ${tone}">${esc(t)}</span>`;
+const char=(id,fallback='블러디 퀸')=>byId[id]||byName[fallback]||db.characters[0];
+const options=(values,selected,all='전체')=>`<option value="">${all}</option>${values.map(v=>`<option value="${esc(v)}" ${v===selected?'selected':''}>${esc(v)}</option>`).join('')}`;
+const route=p=>'#'+new URLSearchParams(p).toString();
+function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
+function readRoute(){
+ const p=new URLSearchParams(location.hash.slice(1));
+ state.view=['explore','character','matchup','compare','bans','sources'].includes(p.get('v'))?p.get('v'):'explore';
+ for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
+ if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
+ state.tab=['overview','matchups','stats','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
+ const f=state.view==='bans'?state.banFilters:state.stats;
+ if(p.has('days')&&[0,30,90,365].includes(Number(p.get('days'))))f.days=Number(p.get('days'));
+ if(p.has('map'))f.map=db.maps.includes(p.get('map'))?p.get('map'):'';
+ if(p.has('tour'))f.tournament=['COA','IVL','IJL','IVC','IVT','IVS'].includes(p.get('tour'))?p.get('tour'):'';
+ if(state.view==='bans'&&p.has('ex'))state.banFilters.excluded=p.get('ex').split(',').filter(id=>byId[id]?.side==='감시자').slice(0,2);
+ if(state.view==='matchup'&&p.has('situation'))state.situation=p.get('situation');
+ if(p.has('bans')){const used=new Set();state.bans=p.get('bans').split(',').slice(0,3).map(id=>{if(byId[id]?.side!=='생존자'||used.has(id))return '';used.add(id);return id;}).concat(['','','']).slice(0,3);}
+ if(byId[state.own]?.side===byId[state.opponent]?.side)state.opponent='';
+ if(byId[state.a]?.side!==byId[state.b]?.side||state.a===state.b)state.b=db.characters.find(c=>c.side===byId[state.a]?.side&&c.id!==state.a)?.id||'';
+}
+function header(){
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['sources','근거','book']];
+ const links=nav.map(([v,label,i])=>`<a class="nav-item ${(state.view===v||(state.view==='character'&&v==='explore'))?'active':''}" ${state.view===v?'aria-current="page"':''} href="${route({v})}">${icon(i)}<span>${label}</span></a>`).join('');
+ $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small>IDENTITY V COMPANION</small></div></a><nav class="desktop-nav" aria-label="주 메뉴">${links}</nav><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><nav class="mobile-nav" aria-label="모바일 주 메뉴">${links}</nav>`;
+}
+function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · v${db.meta.version}<br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 경기 자료 ${db.meta.recordLatest}<br>자료 이관 ${db.meta.importedAt} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=sources">자료와 평가 기준</a>${link(db.meta.sourceSheet,'원본 시트')}</div></div>`;}
+function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
+function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
+function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div></div></button>`;}
+function explore(){
+ const featured=['블러디 퀸','선지자','나이아스'].map(n=>byName[n]);
+ return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>다음 한 수를,<br><span>더 선명하게.</span></h1><p>캐릭터의 가능성부터 상대의 빈틈까지.<br>흩어진 장원의 기록을, 당신의 플레이로 연결합니다.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div><div class="hero-art" aria-label="주요 캐릭터"><div class="art-orbit"></div>${featured.map(c=>`<button class="art-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략">${portrait(c,true)}<span>${esc(c.name)}</span></button>`).join('')}<div class="art-float"><span class="art-dot"></span><div><strong>이해에서, 다음 선택으로.</strong>상성과 근거를 함께 확인하세요.</div></div></div></section>
+ <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>447</strong>상황별 근거</span><span><strong>KR · JP · CN</strong>자료 검토</span><span class="subtle">공략 검토 ${db.meta.reviewedAt} · <a class="text-link" href="#v=sources">데이터 기준</a></span></div>
+ <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>장원의 모든 얼굴</h2><p>당신의 캐릭터를 찾고, 한 단계 더 깊이 이해하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" placeholder="캐릭터 이름 검색" aria-label="캐릭터 이름 검색" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${[['name','이름순'],['easy','난이도 낮은순'],['hard','난이도 높은순']].map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><div id="explorer-results"></div></section>
+ <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대가 정해졌다면</strong><p>상황별 대응과 30초 브리핑</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴에서 읽는 다음 수</strong><p>생존자 밴 3개로 감시자 후보 탐색</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>두 선택 사이에서</strong><p>장단점과 대회 기록을 나란히 비교</p></div></a></div>`;
+}
+function updateExplorer(){
+ const list=db.characters.filter(c=>(state.side==='전체'||c.side===state.side)&&(!state.favoriteOnly||state.favorites.has(c.id))&&c.name.replace(/\s/g,'').includes(state.search.replace(/\s/g,''))).sort((a,b)=>state.sort==='easy'?a.difficulty-b.difficulty||a.name.localeCompare(b.name,'ko'):state.sort==='hard'?b.difficulty-a.difficulty||a.name.localeCompare(b.name,'ko'):a.name.localeCompare(b.name,'ko'));
+ const root=$('#explorer-results');if(!root)return;
+ root.innerHTML=`<p class="result-count" role="status">${list.length}명의 캐릭터${state.favoriteOnly?' · 이 기기에 저장한 즐겨찾기':''}</p>${favoriteInsight(list)}${list.length?`<div class="character-grid">${list.map(card).join('')}</div>`:`<div class="empty">${icon(state.favoriteOnly?'star':'search')}<h3>${state.favoriteOnly?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${state.favoriteOnly?'캐릭터 상세에서 별을 눌러 자주 찾는 캐릭터를 모아 보세요.':'이름이나 필터를 바꿔 다시 찾아보세요.'}</p><button class="btn small" data-action="reset-explore">전체 캐릭터 보기</button></div>`}`;
+}
+function favoriteInsight(list){
+ if(!state.favoriteOnly)return '';
+ const groups=['감시자','생존자'].map(side=>{
+  const mine=list.filter(c=>c.side===side);if(mine.length<2)return '';
+  const counts={};
+  mine.forEach(c=>c.hard.forEach(m=>{if(byName[m.name]){counts[m.name]??=[];counts[m.name].push(c.name);}}));
+  const overlap=Object.entries(counts).filter(([,names])=>names.length>=2).sort((a,b)=>b[1].length-a[1].length).slice(0,5);
+  return `<div class="panel section-gap"><h2 class="panel-title">${icon('shield')}내 ${side} 풀의 공통 주의 상대</h2><p class="muted">저장한 ${mine.length}명의 표시된 어려운 상대를 함께 살펴봤습니다. 실제 승률이나 캐릭터 풀 전체의 안전성을 평가한 값은 아닙니다.</p>${overlap.length?`<div class="matchup-list section-gap">${overlap.map(([name,names])=>`<article class="matchup-card"><button data-action="character" data-id="${byName[name].id}">${portrait(byName[name])}</button><div><h3>${esc(name)} · ${names.length}명에 공통</h3><p>${names.map(esc).join(' · ')}<br>각 캐릭터의 상성 카드에서 적용 상황을 확인하세요.</p></div></article>`).join('')}</div>`:'<div class="note section-gap">현재 표시된 상성에서 공통 주의 상대는 찾지 못했습니다. 근거가 없는 대진까지 유리하다는 뜻은 아닙니다.</div>'}</div>`;
+ }).join('');
+ return groups;
+}
+function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul>${items.map((t,i)=>`<li><span class="number">0${i+1}</span><span>${esc(t)}</span></li>`).join('')}</ul></div>`;}
+function characterPage(){
+ const c=char(state.character);state.character=c.id;
+ return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="large-portrait">${portrait(c,true)}</div><div><div class="tag-row">${chip(c.side,'green')}${chip('난이도 '+c.difficulty+'/5')}${chip('편집 평가')}</div><h1>${esc(c.name)}</h1><p class="hero-detail">${esc(c.difficultyReason)}</p><div class="pill-line"><span class="date-pill">${icon('clock')}검토 ${esc(c.reviewedAt)}</span><span class="date-pill">${esc(c.confidence)}</span></div></div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')} ${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</button><button class="btn quiet" data-action="share">${icon('link')} 링크 복사</button><button class="btn primary" data-action="own-matchup" data-id="${c.id}">상대 대응 ${icon('arrow')}</button></div></section>
+ <div class="tab-row" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['stats','대회 기록'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
+ <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회 기록을 계산하고 있습니다.</div>'}</div>`;
+}
+function characterOverview(c){
+ const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
+ return `<div class="two-col">${listPanel('장점',c.strengths,'green','plus')}${listPanel('주의할 점',c.weaknesses,'warm','info')}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2><p class="large-value">${esc(c.persona)}</p><p class="muted section-gap">${esc(c.personaReason)}</p><div class="divider"></div><div class="small-heading">이런 상황에서는 다른 선택</div><p>${esc(c.alternative)}</p></div><div class="panel"><h2 class="panel-title">${icon('clock')}스킬을 쓰는 순간</h2><div class="small-heading">먼저 사용할 때</div><p>${esc(c.use)}</p><div class="divider"></div><div class="small-heading">아껴야 할 때</div><p>${esc(c.hold)}</p></div></div><div class="note warm section-gap">${icon('info')}${esc(c.caution)}</div><section class="section-gap"><div class="heading-inline"><h2>${c.side==='생존자'?'함께 움직이면 좋은 동료':'보조 특성 선택'}</h2><span>역할과 상황에 따른 편집 추천</span></div><div class="three-col">${links.slice(0,3).map(l=>`<div class="panel">${byName[l.target]?`<div class="thumb-row"><button class="mini-character" data-action="character" data-id="${byName[l.target].id}">${portrait(byName[l.target])}</button></div>`:''}<h3 class="panel-title">${esc(l.target)}</h3><p>${esc(l.reason)}</p><div class="divider"></div><div class="small-heading">활용 조건</div><p class="muted">${esc(l.when)}</p><p class="muted section-gap">${esc(l.caution)}</p></div>`).join('')}</div></section>`;
+}
+function matchupItem(i){const c=byName[i.name];if(!c)return '';return `<article class="matchup-card"><button data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략">${portrait(c)}</button><div><h3>${esc(c.name)}</h3><p>${esc(i.reason)}</p></div>${i.evidence?`<button class="icon-btn" data-action="evidence" data-id="${esc(i.evidence)}" aria-label="${esc(c.name)} 상성의 근거 보기">${icon('book')}</button>`:''}</article>`;}
+function characterMatchups(c){return `<div class="note">${icon('info')}같은 상대도 추격·구출 등 상황에 따라 달라집니다. 표시는 강함 순위가 아니며 검증한 근거가 있는 대진만 최대 5명씩 제공합니다.</div><div class="two-col section-gap">${[['어려운 상대',c.hard],['기회를 만들 상대',c.easy]].map(([label,items])=>`<section><div class="heading-inline"><h2>${label}</h2><span>${items.length} / 최대 5</span></div><div class="matchup-list">${items.map(matchupItem).join('')}${items.length<5?'<div class="note">추가 대진은 근거를 더 확인하고 있습니다.</div>':''}</div></section>`).join('')}</div>`;}
+function sourceCard(s){return `<article class="source-card"><div class="tag-row">${chip(s.region,s.region==='기존 범위 외'?'':'green')}${chip(s.type)}</div><h3>${esc(s.site)}</h3><p class="scope">${esc(s.scope)}</p><p>${esc(s.note)}</p><div class="source-line"><span>${esc(s.id)} · 검토 ${esc(s.date)}</span></div><div class="source-line">${link(s.url,'원문 열기 ↗')}</div></article>`;}
+function characterSources(c){
+ const related=db.sources.filter(s=>s.scope?.includes(c.name)||c.sources.includes(s.url));
+ return `<div class="panel"><h2 class="panel-title">${icon('book')}난이도 평가의 근거</h2><p>${esc(c.difficultyReason)}</p><div class="pill-line">${chip('편집 난이도 '+c.difficulty+'/5','green')}${chip('공식 연기 난이도 '+(c.officialDifficulty===null?'미확인':c.officialDifficulty+'/3'))}${chip(c.confidence)}</div><p class="muted">조작·타이밍·자원 관리·운영 부담을 종합한 편집 평가입니다. 난이도는 성능이나 티어를 뜻하지 않습니다.</p></div><div class="source-grid section-gap">${related.map(sourceCard).join('')}</div><div class="note section-gap">프로필 이미지: ${link(c.portraitSource,'이미지 출처')} · 게임 이미지 © NetEase. 나무위키는 미러를 열람했으며, 원문과 별개의 독립 출처로 계산하지 않습니다.</div>`;
+}
+function commonFilters(scope){
+ const f=scope==='bans'?state.banFilters:state.stats;
+ return `<div class="toolbar"><label class="filter-label">기간<select class="filter-select" data-filter="days" data-scope="${scope}">${[[365,'최근 1년'],[90,'최근 90일'],[30,'최근 30일'],[0,'전체 보유 기록']].map(([v,t])=>`<option value="${v}" ${Number(f.days)===v?'selected':''}>${t}</option>`).join('')}</select></label><label class="filter-label">맵<select class="filter-select" data-filter="map" data-scope="${scope}">${options(db.maps,f.map,'전체 맵')}</select></label><label class="filter-label">대회<select class="filter-select" data-filter="tournament" data-scope="${scope}">${options(['COA','IVL','IJL','IVC','IVT','IVS'],f.tournament,'전체 대회')}</select></label><span class="date-pill push-right">${icon('clock')}기록 최신 ${db.meta.recordLatest}</span></div>`;
+}
+function resultChart(s){
+ if(s.results<50)return `<div class="note">결과 확인 ${num(s.results)}경기 · 50경기 미만에서는 비율을 표시하지 않습니다.</div>`;
+ return `<div class="stack-bar" role="img" aria-label="승 ${pct(s.win/s.results)}, 무승부 ${pct(s.draw/s.results)}, 패 ${pct(s.loss/s.results)}"><span class="stack-win" style="width:${s.win/s.results*100}%"></span><span class="stack-draw" style="width:${s.draw/s.results*100}%"></span><span class="stack-loss" style="width:${s.loss/s.results*100}%"></span></div><div class="bar-legend"><span><i class="stack-win"></i>승 ${pct(s.win/s.results)}</span><span><i class="stack-draw"></i>무 ${pct(s.draw/s.results)}</span><span><i class="stack-loss"></i>패 ${pct(s.loss/s.results)}</span></div>`;
+}
+function statsPanel(c,rows){
+ const s=statsFor(rows,c,state.stats),maps=db.maps.map(m=>({name:m,n:statsFor(rows,c,{...state.stats,map:m}).appearances})).sort((a,b)=>b.n-a.n),max=Math.max(...maps.map(m=>m.n),1);
+ return `${commonFilters('stats')}<div class="note">대회에서 ${c.side==='감시자'?'감시자':'생존자 팀'}가 거둔 결과입니다. 개인 탈출률·1:1 추격 승률·현재 티어와 다릅니다. ‘최근’은 ${REFERENCE_DATE} 기준이며 자동 갱신하지 않습니다.</div><div class="stats-grid"><div class="stat-box"><label>출전 경기</label><strong>${num(s.appearances)}</strong><small>경기</small></div><div class="stat-box"><label>승률 · 무승부 포함 분모</label><strong>${s.winRate===null?'—':pct(s.winRate)}</strong></div><div class="stat-box"><label>결과 확인</label><strong>${num(s.results)}</strong><small>경기</small></div></div><div class="two-col"><div class="panel"><div class="chart-heading"><h3>승 · 무 · 패</h3><small>${esc(c.name)} 관점</small></div>${resultChart(s)}<p class="muted small section-gap">승률 = 승리 ÷ (승리 + 무승부 + 패배)<br>결과 미확인 ${s.unknown}경기는 비율에서 제외합니다.</p></div><div class="panel"><div class="chart-heading"><h3>맵별 출전</h3><small>같은 기간·대회, 전체 맵</small></div>${maps.map(m=>`<div class="map-row"><span>${esc(m.name)}</span><div class="horizontal-bar"><i style="width:${m.n/max*100}%"></i></div><strong>${num(m.n)}</strong></div>`).join('')}</div></div>`;
+}
+function selectionCard(c,mode,kicker,placeholder='캐릭터 선택'){return `<button class="selection-card" data-action="picker" data-mode="${mode}" aria-label="${esc(kicker)} ${c?esc(c.name):placeholder} 변경">${c?portrait(c):`<span class="placeholder">${icon('plus')}</span>`}<div><p class="kicker">${esc(kicker)}</p><h2>${c?esc(c.name):placeholder}</h2>${c?`<div class="tag-row">${chip(c.side)}</div>`:''}</div><span class="chevron">${icon('down')}</span></button>`;}
+function cleanCondition(t){return String(t||'').replace(/추가 공개 자료 \d+문서: 오른쪽 P:S 및 \[커뮤니티 근거\] 참조\.?/g,'').trim();}
+function matchupPage(){
+ const own=char(state.own);state.own=own.id;const opp=byId[state.opponent];
+ const evidence=opp?pairEvidence(db.matchups,own,opp,state.situation):[],situations=[...new Set((opp?pairEvidence(db.matchups,own,opp):[]).map(e=>e.situation))];
+ return `${title('MATCHUP STUDIO','상대가 보이면, 선택도 보입니다.','내 캐릭터와 상대를 선택하세요. 대진 근거와 상대 공통 대응을 구분해 보여드립니다.')}<div class="selection-board">${selectionCard(own,'own','내 캐릭터')}<div class="versus">VS</div>${selectionCard(opp,'opponent','상대 캐릭터','상대 선택')}</div>
+ ${!opp?`<div class="empty">${icon('swords')}<h3>상대할 캐릭터를 선택해주세요.</h3><p>대진 근거, 경계할 스킬, 추격·구출 대응을 한 화면으로 정리합니다.</p><button class="btn primary" data-action="picker" data-mode="opponent">상대 선택 ${icon('plus')}</button></div>`:
+ `<div class="briefing-header"><div><div class="eyebrow">30 SECOND BRIEFING</div><h2>${esc(own.name)} → ${esc(opp.name)}</h2></div><button class="btn small" data-action="share">${icon('link')} 이 대진 링크</button></div><div class="briefing"><article class="brief-card"><div class="brief-step">01 · 먼저 볼 것 ${icon('search')}</div><h3>경계할 핵심 스킬</h3><p>${esc(opp.skill)}</p></article><article class="brief-card"><div class="brief-step">02 · 움직이는 방법 ${icon('arrow')}</div><h3>상대에게 대응하기</h3><p>${esc(opp.response)}</p></article><article class="brief-card"><div class="brief-step">03 · 남겨 둘 자원 ${icon('clock')}</div><h3>내 스킬을 아낄 때</h3><p>${esc(own.hold)}</p></article></div><div class="note section-gap">브리핑은 상대 공통 대응과 내 캐릭터의 운영 요약입니다. 이 대진에만 검증된 내용은 아래 근거에서 확인하세요.</div>
+ <section class="section-gap"><div class="section-heading"><div><h2>상황이 바뀌면, 상성도 바뀝니다.</h2><p>추격과 구출을 하나의 유불리로 합치지 않습니다.</p></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${chip(e.language||'기존 근거')}</div><h3>${esc(e.summary)}</h3><p>${esc(cleanCondition(e.condition))}</p><div class="source-line"><span>${esc(e.type)}</span><span>·</span><span>${esc(e.patch)}</span></div><button class="btn small" data-action="evidence" data-id="${esc(e.id)}">${icon('book')} 원문·조건 확인</button></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진의 근거가 충분하지 않습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}</section>
+ <div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}상대 대응 팁</h2>${opp.tips.map((t,i)=>`<p class="prose ${i?'section-gap':''}">${esc(t)}</p>`).join('')}<div class="source-line">${link(opp.tipUrl,'대응 팁 원문')}<span>${esc(opp.tipType)}</span></div></div><div class="panel"><h2 class="panel-title">${icon('shield')}내 인격 기준</h2><p class="large-value">${esc(own.persona)}</p><p class="muted section-gap">${esc(own.personaReason)}</p><div class="divider"></div><p class="muted">대진 전용 최적화로 검증된 추천은 아닙니다. 팀 역할·맵·시작 위치에 맞춰 조정하세요.</p></div></div>`}`;
+}
+function miniCharacters(items){return `<div class="thumb-row">${items.filter(i=>byName[i.name]).map(i=>{const c=byName[i.name];return `<button class="mini-character" data-action="character" data-id="${c.id}">${portrait(c)}<span>${esc(c.name)}</span></button>`;}).join('')}</div>`;}
+function compareColumn(c,rows){
+ const s=statsFor(rows,c,state.stats);
+ return `<div class="compare-column"><div class="panel"><div class="compare-header">다루는 난이도</div><div class="compare-stars"><strong>${c.difficulty} <small>/ 5</small></strong>${difficulty(c.difficulty)}</div><p class="muted">${esc(c.difficultyReason)}</p></div><div class="panel"><h2 class="panel-title">${icon('chart')}대회 기록</h2><p class="large-value">${s.winRate===null?'표본 부족':pct(s.winRate)}</p><p class="muted small">출전 ${num(s.appearances)} · 결과 확인 ${num(s.results)}</p>${resultChart(s)}</div>${listPanel('장점',c.strengths,'green','plus')}${listPanel('단점',c.weaknesses,'warm','info')}<div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2><p class="large-value">${esc(c.persona)}</p><p class="muted section-gap">${esc(c.personaReason)}</p></div><div class="panel"><h2 class="panel-title">어려운 상대</h2>${miniCharacters(c.hard)}<div class="divider"></div><h2 class="panel-title">기회를 만들 상대</h2>${miniCharacters(c.easy)}<p class="muted small section-gap">정렬은 강함 순위가 아닙니다. 상세에서 적용 상황을 확인하세요.</p></div></div>`;
+}
+function comparePage(rows){const a=char(state.a),b=char(state.b,'붉은 나비');state.a=a.id;state.b=b.id;return `${title('SIDE BY SIDE','두 선택을, 같은 기준으로.','같은 진영의 두 캐릭터를 비교합니다. 난이도와 장단점, 대회 기록을 함께 보세요.')}<div class="selection-board">${selectionCard(a,'compare-a','캐릭터 A')}<div class="versus">VS</div>${selectionCard(b,'compare-b','캐릭터 B')}</div>${commonFilters('compare')}<div class="note">승률은 해당 캐릭터가 속한 진영의 대회 결과입니다. 실력·조합·맵·밴픽의 영향을 포함하며 캐릭터의 절대 성능을 뜻하지 않습니다.</div><div class="compare-grid section-gap">${compareColumn(a,rows)}${compareColumn(b,rows)}</div>`;}
+function banPage(rows){
+ const r=rankBans(rows,state.bans,state.banFilters);
+ return `${title('DRAFT LENS','밴에서 읽는, 다음 한 수.','감시자가 밴한 생존자를 최대 3명 선택하세요. 같은 밴이 관측된 대회 기록에서 대비할 감시자를 찾습니다.')}<div class="ban-slots">${state.bans.map((id,i)=>{const c=byId[id];return `<div class="ban-slot"><button data-action="picker" data-mode="ban-${i}" aria-label="생존자 밴 ${i+1} ${c?esc(c.name):'선택'}"><span class="label">SURVIVOR BAN 0${i+1}</span>${c?portrait(c):`<span class="slot-empty">${icon('plus')}</span>`}<strong>${c?esc(c.name):'생존자 선택'}</strong></button>${c?`<button class="remove" data-action="remove-ban" data-index="${i}" aria-label="밴 ${i+1} 선택 해제">${icon('close')}</button>`:''}</div>`;}).join('')}</div>${commonFilters('bans')}<details><summary>이미 제외된 감시자 설정</summary><div class="toolbar section-gap">${[0,1].map(i=>`<label class="filter-label">제외 감시자 ${i+1}<select class="filter-select" data-filter="excluded-${i}" data-scope="bans">${options(db.characters.filter(c=>c.side==='감시자').map(c=>c.name),byId[state.banFilters.excluded[i]]?.name,'없음')}</select></label>`).join('')}</div></details>
+ ${r.error?`<div class="empty section-gap">${icon('shield')}<h3>${esc(r.error)}</h3><p>선택하지 않은 칸은 비워 두면 됩니다. 중복된 캐릭터는 선택할 수 없습니다.</p></div>`:`<div class="stats-grid"><div class="stat-box"><label>조건에 맞는 기본 기록</label><strong>${num(r.base)}</strong><small>판</small></div><div class="stat-box"><label>선택한 밴이 모두 일치</label><strong>${num(r.matched)}</strong><small>판</small></div><div class="stat-box"><label>표본 상태</label><strong style="font-size:22px">${r.matched===0?'기록 없음':r.matched<30?'적은 표본':'30판 이상'}</strong></div></div>${r.matched<30?`<div class="note warm">${icon('info')}${r.matched===0?'일치 기록이 없어 후보를 제시하지 않습니다. 기간·맵·대회 조건을 넓혀 보세요.':'일치 표본이 적습니다. 특정 선수·팀·시즌의 밴 성향이 크게 반영될 수 있습니다.'}</div>`:''}${r.ranks.length?`<section class="section-gap"><div class="heading-inline"><h2>우선 대비할 감시자</h2><button class="btn small" data-action="share">${icon('link')} 선택 링크</button></div><div class="rank-list">${r.ranks.map((x,i)=>{const c=byId[x.id];return `<article class="rank-card"><span class="rank-num">0${i+1}</span><button data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략">${portrait(c)}</button><div><h3>${esc(c.name)}</h3><p>일치 ${x.count}판 · 관측 비중 ${pct(x.share)}</p><p>조건 내 기본 비중 ${pct(x.baseline)}</p></div><div class="rank-score"><strong>${pct(x.score)}</strong><small> 보정점수</small><div class="horizontal-bar"><i style="width:${x.score/r.ranks[0].score*100}%"></i></div></div></article>`;}).join('')}</div></section>`:''}`}
+ <div class="note section-gap">보정점수는 후보를 정렬하는 지표입니다. 일반 랭크에서 해당 감시자를 만날 확률이 아닙니다. 세트 구분 없이 유효한 전체 세트 기록을 사용합니다.</div><details class="section-gap"><summary>계산 기준과 한계</summary><p>선택한 생존자가 모두 포함된 선밴 기록을 찾습니다. 보정점수 = (해당 감시자의 일치 판 + 20 × 조건 내 기본 비중) ÷ (전체 일치 판 + 20). 표본이 적을수록 기본 비중으로 완화합니다. 후보 5명의 점수 합은 100%가 아닐 수 있습니다.</p><p class="section-gap">전역 금지와 추가 밴은 사용하지 않습니다. 출처 충돌·원경기 변경 등 보류 기록 6건을 제외했습니다. 대회 표본의 예측 성능이 일반 랭크에서 검증된 것은 아닙니다.</p></details>`;
+}
+function sourcesPage(){
+ return `${title('OPEN EVIDENCE','근거를 열어 두겠습니다.','문서 수가 많다고 합의가 강한 것은 아닙니다. 출처의 성격, 빈칸, 보류한 판단까지 함께 보여드립니다.')}<div class="data-health"><div class="health-card"><strong>202</strong><span>출처 문서 · 독립 작성자 수 아님</span></div><div class="health-card"><strong>447</strong><span>반영한 상황별 상성 근거</span></div><div class="health-card"><strong>223 / 890</strong><span>근거 부족으로 미표시한 상성 칸</span></div><div class="health-card"><strong>12</strong><span>확정하지 않고 보류한 상성 근거</span></div></div>
+ <div class="two-col"><div class="panel"><h2 class="panel-title">${icon('globe')}출처의 분포</h2><div class="source-totals">${chip('한국 97','green')}${chip('일본 85','green')}${chip('중국 15','green')}${chip('기존 범위 외 5')}</div><p class="muted">한국 97건 중 90건은 나무위키 미러 문서입니다. 국가별 문서 수는 실제 유저 수나 의견의 비율을 의미하지 않습니다. 미러는 원문과 독립된 근거가 아닙니다.</p></div><div class="panel"><h2 class="panel-title">${icon('clock')}어느 시점의 자료인가요?</h2><p>공략 검토 <strong>${db.meta.reviewedAt}</strong><br>경기·밴 최신 <strong>${db.meta.recordLatest}</strong><br>사이트 이관 <strong>${db.meta.importedAt}</strong></p><p class="muted section-gap">새 패치와 경기 결과는 자동 반영되지 않습니다. 서비스 오픈 이후의 모든 대회를 빠짐없이 담은 자료로 해석하지 마세요.</p></div></div>
+ <details class="methodology"><summary>평가·집계 기준 자세히 보기</summary><p>난이도는 조작·타이밍·자원 관리·운영 부담을 종합한 1~5점 편집 평가입니다. 공식 3단계 연기 난이도를 단순 환산하지 않았으며 성능·티어 평가와도 다릅니다.</p><p class="section-gap">상성은 일반 이용자의 구체적인 대진 경험을 우선하되, 공동편집 공략과 보완 자료를 함께 검토한 상황별 판단입니다. 합의율이나 투표 비율을 수치로 꾸미지 않습니다. 유리한 상황과 불리한 상황이 공존할 수 있습니다.</p><p class="section-gap">대회 자료는 유효한 경기 ${num(db.meta.matches)}건, 결과 확인 ${num(db.meta.results)}건, 선밴 ${num(db.meta.bans)}건입니다. 경기 2건과 밴 6건은 검증 보류로 제외했습니다. 승률은 승리 ÷ (승리+무승부+패배)이며 결과 확인 50경기 미만은 비율을 표시하지 않습니다.</p><p class="section-gap">번역·요약된 공략에는 문맥 누락이나 오류가 있을 수 있습니다. 중요한 판단은 원문·적용 상황·패치 정보를 함께 확인하세요. 즐겨찾기는 이 브라우저에만 저장되며 계정 동기화는 제공하지 않습니다.</p></details>
+ <div class="section-heading"><div><h2>출처 라이브러리</h2><p>실제로 검토한 자료를 찾아보세요.</p></div>${link(db.meta.sourceSheet,'원본 시트 ↗')}</div><div class="toolbar"><div class="segmented" aria-label="자료 지역">${['전체','한국','일본','중국','기존 범위 외'].map(s=>`<button data-action="region" data-region="${s}" class="${state.region===s?'active':''}">${s==='기존 범위 외'?'기타':s}</button>`).join('')}</div><label class="search-box">${icon('search')}<input id="source-search" placeholder="캐릭터 · 사이트 · 자료 검색" aria-label="출처 검색" value="${esc(state.sourceQuery)}"></label></div><div id="source-results"></div><details class="section-gap"><summary>이미지 출처와 권리</summary><p>캐릭터 프로필은 게임 이미지이며 © NetEase에 권리가 있습니다. 기본 프로필은 일본어 캐릭터 아이콘 자료, 신동·마음의 짐승은 Bilibili BWIKI를 참고했습니다.</p>${[...new Set(db.characters.map(c=>c.portraitSource))].map(u=>link(u,u.includes('biligame')?'Bilibili BWIKI 프로필 출처':'일본어 캐릭터 아이콘 자료')).join(' ')}</details>`;
+}
+function updateSources(){const list=db.sources.filter(s=>(state.region==='전체'||s.region===state.region)&&[s.site,s.scope,s.type,s.note].join(' ').toLowerCase().includes(state.sourceQuery.toLowerCase()));const root=$('#source-results');if(root)root.innerHTML=`<p class="result-count" role="status">${list.length}건의 자료</p><div class="source-grid">${list.map(sourceCard).join('')}</div>${!list.length?'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>지역이나 검색어를 변경해 보세요.</p></div>':''}`;}
+function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
+async function render({scroll=false}={}){
+ const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',sources:'근거 라이브러리'}[state.view])} · MANOR`;
+ $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
+ if(state.view==='explore'){body.innerHTML=explore();updateExplorer();}
+ else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='stats')try{const rows=await loadMatches();if(token===renderToken)$('#character-content').innerHTML=statsPanel(char(state.character),rows);}catch(e){if(token===renderToken)$('#character-content').innerHTML=loadError(e);}}
+ else if(state.view==='matchup')body.innerHTML=matchupPage();
+ else if(state.view==='sources'){body.innerHTML=sourcesPage();updateSources();}
+ else{body.innerHTML='<div class="loading-screen"><span class="loading-orbit"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';try{const rows=await(state.view==='bans'?loadBans():loadMatches());if(token!==renderToken)return;body.innerHTML=state.view==='bans'?banPage(rows):comparePage(rows);}catch(e){if(token===renderToken)body.innerHTML=loadError(e);}}
+}
+function openPicker(mode='jump'){
+ let side='',excluded=[],heading='캐릭터 빠른 검색';
+ if(mode==='opponent'){side=char(state.own).side==='감시자'?'생존자':'감시자';heading='상대 캐릭터 선택';}
+ if(mode==='own')heading='내 캐릭터 선택';
+ if(mode==='compare-a')heading='캐릭터 A 선택';
+ if(mode==='compare-b'){heading='캐릭터 B 선택';side=char(state.a).side;excluded=[state.a];}
+ if(mode.startsWith('ban-')){side='생존자';const idx=Number(mode.split('-')[1]);excluded=state.bans.filter((x,i)=>x&&i!==idx);heading=`생존자 밴 ${idx+1}`;}
+ pickerContext={mode,side,excluded};$('#picker').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>${heading}</h2><button class="icon-btn" data-action="close-dialog" data-dialog="picker" aria-label="선택 창 닫기">${icon('close')}</button></div><label class="search-box">${icon('search')}<input id="picker-search" aria-label="캐릭터 이름 검색" placeholder="이름으로 빠르게 찾기" autocomplete="off"></label></div><div class="dialog-body"><div id="picker-results"></div></div>`;updatePicker('');$('#picker').showModal();$('#picker-search').focus();
+}
+function updatePicker(q){const list=db.characters.filter(c=>(!pickerContext.side||c.side===pickerContext.side)&&!pickerContext.excluded.includes(c.id)&&c.name.replace(/\s/g,'').includes(q.replace(/\s/g,''))).sort((a,b)=>Number(state.favorites.has(b.id))-Number(state.favorites.has(a.id))||a.name.localeCompare(b.name,'ko'));$('#picker-results').innerHTML=`<p class="result-count">${list.length}명${pickerContext.side?' · '+pickerContext.side:''}</p><div class="picker-grid">${list.map(c=>`<button class="pick-option" data-action="pick" data-id="${c.id}">${portrait(c)}<span>${esc(c.name)}</span></button>`).join('')}</div>${!list.length?'<div class="empty"><p>일치하는 캐릭터가 없습니다.</p></div>':''}`;}
+function selectCharacter(id){
+ const m=pickerContext.mode;$('#picker').close();
+ if(m==='jump'){navigate({v:'character',c:id});return;}
+ if(m==='own'){state.own=id;if(byId[state.opponent]?.side===byId[id].side)state.opponent='';state.situation='';navigate({v:'matchup',own:id,...(state.opponent?{opp:state.opponent}:{})});return;}
+ if(m==='opponent'){state.opponent=id;state.situation='';navigate({v:'matchup',own:state.own,opp:id});return;}
+ if(m==='compare-a'){state.a=id;if(byId[state.b]?.side!==byId[id].side||state.b===id)state.b=db.characters.find(c=>c.side===byId[id].side&&c.id!==id).id;navigate({v:'compare',a:id,b:state.b});return;}
+ if(m==='compare-b'){state.b=id;navigate({v:'compare',a:state.a,b:id});return;}
+ if(m.startsWith('ban-')){state.bans[Number(m.split('-')[1])]=id;navigate({v:'bans',bans:state.bans.join(',')});}
+}
+function openEvidence(id){
+ const e=db.matchups.find(m=>m.id===id);if(!e){toast('연결된 근거를 찾을 수 없습니다.');return;}
+ const comments=db.community.filter(x=>x.evidence===id);
+ $('#evidence').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>${esc(e.hunter)} ↔ ${esc(e.survivor)}</h2><button class="icon-btn" data-action="close-dialog" data-dialog="evidence" aria-label="근거 창 닫기">${icon('close')}</button></div><div class="tag-row">${chip(e.situation)}${chip(e.status,e.status==='반영'?'green':'warm')}${chip(e.id)}</div></div><div class="dialog-body"><h3>해당 상황에서 ${esc(e.advantage)}에게 유리한 점</h3><p>${esc(e.summary)}</p><h3>조건·예외</h3><p>${esc(cleanCondition(e.condition))}</p><div class="note">${esc(e.type)}<br>패치 정보: ${esc(e.patch)}<br>열람: ${esc(e.reviewedAt)}</div><h3>검토한 원문</h3>${e.urls.map((u,i)=>link(u,`원문 ${i+1} · ${new URL(u).hostname}`)).join('')}${comments.length?`<h3>연결된 이용자 의견</h3>${comments.map(c=>`<div class="evidence-card"><div class="tag-row">${chip(c.platform)}${chip(c.language)}${chip(c.status,c.status==='보류'?'warm':'')}</div><p>${esc(c.summary)}</p><p class="muted">${esc(c.condition)}</p>${link(c.url,'이용자 의견 원문 ↗')}<p class="small muted">${esc(c.date)} · ${esc(c.patch)}</p></div>`).join('')}`:'<p class="muted">연결된 별도 이용자 게시글은 없습니다. 원문 공략의 적용 조건을 확인하세요.</p>'}<div class="note section-gap">문서 수는 독립 표본이나 유저 합의율이 아닙니다. 작성 시점과 현재 패치의 차이를 고려하세요.</div></div>`;$('#evidence').showModal();
+}
+async function share(){
+ const p={v:state.view};if(state.view==='character'){p.c=state.character;p.tab=state.tab;}if(state.view==='matchup'){p.own=state.own;if(state.opponent)p.opp=state.opponent;}if(state.view==='compare'){p.a=state.a;p.b=state.b;}if(state.view==='bans')p.bans=state.bans.join(',');
+ if(['bans','compare'].includes(state.view)||(state.view==='character'&&state.tab==='stats')){const f=state.view==='bans'?state.banFilters:state.stats;p.days=f.days;p.map=f.map;p.tour=f.tournament;if(state.view==='bans')p.ex=f.excluded.filter(Boolean).join(',');}
+ if(state.view==='matchup')p.situation=state.situation;
+ const url=location.origin+location.pathname+route(p);
+ try{await navigator.clipboard.writeText(url);toast('현재 선택의 링크를 복사했습니다.');}catch{$('#evidence').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>선택 링크</h2><button class="icon-btn" data-action="close-dialog" data-dialog="evidence" aria-label="닫기">${icon('close')}</button></div></div><div class="dialog-body"><p>아래 링크를 선택해 복사하세요.</p><input style="width:100%;padding:12px" aria-label="복사할 링크" value="${esc(url)}" readonly></div>`;$('#evidence').showModal();$('#evidence input').select();}
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-action]');if(!b||!db)return;const a=b.dataset.action;
+ if(a==='scroll-characters'){e.preventDefault();$('#characters')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});return;}
+ if(a==='character')navigate({v:'character',c:b.dataset.id});
+ if(a==='theme'){state.theme=state.theme==='light'?'dark':'light';document.documentElement.dataset.theme=state.theme;try{localStorage.setItem('manor-theme',state.theme);}catch{}header();}
+ if(a==='global-search')openPicker();
+ if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
+ if(a==='favorites'){state.favoriteOnly=!state.favoriteOnly;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
+ if(a==='reset-explore'){state.side='전체';state.favoriteOnly=false;state.search='';render();}
+ if(a==='favorite'){const id=b.dataset.id;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);try{localStorage.setItem('manor-favorites',JSON.stringify([...state.favorites]));}catch{toast('이 브라우저에서는 즐겨찾기를 저장할 수 없습니다.');}render();}
+ if(a==='character-tab'){state.tab=b.dataset.tab;navigate({v:'character',c:state.character,tab:state.tab});}
+ if(a==='own-matchup'){state.own=b.dataset.id;state.opponent='';state.situation='';navigate({v:'matchup',own:state.own});}
+ if(a==='picker')openPicker(b.dataset.mode);
+ if(a==='pick')selectCharacter(b.dataset.id);
+ if(a==='close-dialog')$('#'+b.dataset.dialog).close();
+ if(a==='evidence')openEvidence(b.dataset.id);
+ if(a==='share')share();
+ if(a==='remove-ban'){state.bans[Number(b.dataset.index)]='';navigate({v:'bans',bans:state.bans.join(',')});}
+ if(a==='region'){state.region=b.dataset.region;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
+ if(a==='retry')render();
+});
+document.addEventListener('input',e=>{if(!db)return;if(e.target.id==='character-search'){state.search=e.target.value;updateExplorer();}if(e.target.id==='source-search'){state.sourceQuery=e.target.value;updateSources();}if(e.target.id==='picker-search')updatePicker(e.target.value);});
+document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;render();}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open)openPicker();}});
+for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
+window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
+document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
+async function boot(){try{const r=await fetch('data.json');if(!r.ok)throw Error('캐릭터 자료를 불러오지 못했습니다.');db=await r.json();byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;readRoute();await render();}catch(e){$('#main').innerHTML=`<div class="shell"><div class="empty section-gap"><h1>장원의 기록을 불러오지 못했습니다.</h1><p>${esc(e.message)}</p><button class="btn primary" id="reload-app">다시 불러오기</button></div></div>`;$('#reload-app')?.addEventListener('click',()=>location.reload());}}
+boot();

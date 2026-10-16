@@ -1,0 +1,11 @@
+{
+  "name": "manor-identity-v",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Independently deployable MANOR Identity V guide",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --check dist/app.js && node --check dist/model.js && node validate.mjs"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+qa-summary.json
+.DS_Store
+.env
+.env.*
+!.env.example
+.wrangler/
+*.zip
+*.tar
+*.tar.gz
