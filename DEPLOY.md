@@ -1,67 +1,58 @@
-# 본인 계정에서 배포하기
+# 본인 계정에서 무료 배포하기
 
-문서 확인일: 2026-10-16. 이 문서는 배포 준비 안내이며, 현재 외부 계정에 배포되었음을 뜻하지 않습니다.
+문서 확인일: 2026-10-16. GitHub 소스 이전은 완료됐으며, GitHub Pages는 공개 전환 승인과 첫 배포를 기다리고 있습니다. 아직 운영 주소가 확정되지 않았습니다.
 
-## 권장 구성
+## 사용할 구성
 
-| 관리 대상 | 본인 소유 계정 | 목적 |
-| --- | --- | --- |
-| 전체 소스 | GitHub 개인 비공개 저장소 | 수정 이력·백업·호스팅 이전 |
-| 실제 사이트 | Cloudflare Pages | 파일 배포·HTTPS·변경 자동 배포 |
-| 사이트 주소 | Cloudflare가 프로젝트에 발급하는 `pages.dev` 주소 | 별도 도메인 구매 없이 접속 |
+| 관리 대상 | 구성 |
+| --- | --- |
+| 전체 소스와 이력 | `Tacocat070116/manor-identity-v` |
+| 실제 사이트 | GitHub Pages |
+| 사이트 주소 | GitHub Pages가 제공하는 무료 기본 주소 |
+| 배포 대상 | `main` 브랜치의 `dist/` 내용 |
+| 배포 전 검사 | Node.js 22에서 `npm test`와 파일 해시 검증 |
 
-현재 사이트는 정적 파일만 사용하므로 별도 서버와 데이터베이스를 계약할 필요가 없습니다. Cloudflare Pages 무료 플랜은 현재 월 500회 빌드, 사이트 20,000개 파일, 개별 파일 25 MiB를 지원합니다. 이 배포본은 해당 파일 한도 안에 있습니다. 이 프로젝트는 별도 도메인을 구매하지 않고 무료 `pages.dev` 기본 주소를 사용합니다.
+GitHub Free에서는 공개 저장소로 Pages를 사용할 수 있습니다. 별도 서버·데이터베이스·도메인 구매가 필요하지 않습니다. 저장소는 현재 비공개이므로, 소유자가 소스 코드·JSON 자료·이미지·변경 이력의 공개를 승인한 뒤 전환합니다. 이 사이트는 비상업적 게임 가이드입니다.
 
-## 1. 사용할 저장소
+## 1. 준비된 변경 확인
 
 저장소: https://github.com/Tacocat070116/manor-identity-v
 
-소유자는 `Tacocat070116`, 공개 범위는 비공개, 배포 브랜치는 `main`입니다. 저장소 루트의 `dist`, `package.json`, `validate.mjs`를 사용합니다. Cloudflare에 GitHub 접근을 허용할 때 이 저장소를 선택합니다.
+`deploy/github-pages` 브랜치에서 배포 워크플로와 안내 문서를 검토합니다. 워크플로는 공개 저장소의 `main`만 배포하도록 제한되어 있어 준비 브랜치에서는 사이트를 배포하지 않습니다.
 
-## 2. Cloudflare Pages에 저장소 연결
+## 2. 공개 범위 확인 후 Pages 활성화
 
-본인 Cloudflare 계정에서 **Workers & Pages → Create application → Pages → Import an existing Git repository**를 선택합니다. GitHub 연결을 요청하면 이 사이트 저장소를 지정합니다. 저장소를 선택한 다음 아래 값을 사용합니다.
+1. 소유자 승인 후 저장소 **Settings → General → Change visibility**에서 공개로 전환합니다.
+2. **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 설정합니다.
+3. 준비 브랜치의 변경을 `main`에 반영합니다. 원래 `main`에 다른 변경이 생겼다면 먼저 확인하고 통합합니다.
+4. **Actions → Deploy MANOR to GitHub Pages**의 실행 결과를 확인합니다. 필요하면 `main`에서 **Run workflow**를 사용합니다.
 
-| 항목 | 값 |
-| --- | --- |
-| Framework preset | None |
-| Production branch | main |
-| Root directory | 저장소 루트 |
-| Build command | `npm test` |
-| Build output directory | `dist` |
-| Node.js | `.node-version`의 `22` 사용 |
-| API 키·데이터베이스 | 사용하지 않음 |
+`.github/workflows/pages.yml`은 검증 성공 후 `dist`만 업로드합니다. 외부 패키지 설치나 개인 액세스 토큰은 필요하지 않습니다. 배포용 권한은 해당 실행의 GitHub 토큰과 Pages용 OIDC를 사용합니다. 검증이 실패하면 배포하지 않으며, 문제를 수정한 다음 다시 실행합니다.
 
-배포를 시작하면 구문 및 자료 검증이 먼저 실행됩니다. 검증이 실패하면 해당 변경을 수정한 다음 다시 배포합니다. 자동 배포가 켜진 상태에서 `main` 변경을 올리면 새 버전이 배포됩니다. 실제 발급되는 `pages.dev` 주소는 Cloudflare 결과를 사용하세요.
+## 3. 실제 주소 검증
 
-이 프로젝트는 빌드할 코드가 없으므로 Cloudflare 공식 정적 HTML 안내의 일반적인 `exit 0` 대신 기존 검증 명령인 `npm test`를 배포 전 검사로 사용합니다.
+첫 배포가 성공하면 **Settings → Pages** 또는 배포 결과에 표시된 실제 HTTPS 주소를 확인합니다. 그 주소로 아래 항목을 검사한 뒤 README에 운영 주소를 기록하고 `dist/index.html`에 같은 주소의 `og:url`과 `canonical`을 추가합니다. 예상 주소를 실제 운영 주소로 기록하지 않습니다.
 
-## 3. 무료 사이트 주소 사용
-
-첫 배포가 성공하면 Cloudflare 화면에 표시되는 실제 `https://…pages.dev` 주소를 사용합니다. 프로젝트 이름은 `manor-identity-v`를 우선 사용하되, 사용 가능 여부와 최종 주소는 Cloudflare 결과로 확인합니다. 별도 도메인 등록이나 구매는 필요하지 않습니다.
-
-주소가 확정되면 README에 실제 운영 주소를 기록하고 `dist/index.html`에 같은 HTTPS 주소의 `og:url`과 `canonical`을 추가합니다. 아직 발급되지 않은 예시 주소를 실제 운영 주소로 적지 않습니다.
-
-## 4. 외부 주소 확인
-
-- 휴대폰과 PC에서 첫 화면, 검색, 캐릭터 상세, 비교, 밴 분석을 확인합니다.
+- 첫 화면, 검색, 캐릭터 상세, 비교, 밴 분석이 열리는지 확인합니다.
 - 캐릭터 링크를 복사해 새 탭에서 열었을 때 같은 화면이 열리는지 확인합니다.
-- 프로필 89장과 출처 링크, 테마 전환, 즐겨찾기를 확인합니다.
-- 공개 운영이면 로그인하지 않은 창에서도 접근 가능한지 확인합니다. 비공개 운영이면 외부 접근 제어가 실제 적용되었는지 확인합니다.
+- 정사각형 프로필 89장과 JSON 자료가 프로젝트 하위 경로에서도 정상 로드되는지 확인합니다.
+- 테마 전환과 즐겨찾기, 모바일 화면을 확인합니다.
+- 로그인하지 않은 방문자도 사이트에 접근할 수 있는지 확인합니다.
 
-새 주소 확인을 마친 뒤 기존 안내 링크를 갱신합니다. Google Sheets 주소 자체를 일반 웹사이트 주소로 바꾸거나 자동 이동 주소로 만들 수는 없습니다. 시트에 새 사이트의 안내 링크를 둘 수 있습니다.
+리소스 경로는 상대 경로, 화면 이동은 URL 해시를 사용합니다. GitHub 프로젝트 사이트의 하위 경로에 배포할 수 있도록 구성돼 있습니다. `dist/_headers`는 Cloudflare용 설정이며 GitHub Pages에는 적용되지 않습니다.
 
-## GitHub 없이 직접 올리려면
+사이트 주소 확인을 마친 뒤 기존 안내 링크를 갱신합니다. Google Sheets 주소 자체가 일반 웹사이트 주소로 바뀌거나 자동 이동되는 것은 아닙니다. 시트에는 새 사이트 안내 링크를 둘 수 있습니다.
 
-Cloudflare Pages의 Direct Upload에서 **압축을 푼 `dist` 폴더만** 업로드할 수도 있습니다. 전체 소스 폴더를 업로드하지 마세요. 직접 업로드 프로젝트는 나중에 같은 프로젝트를 Git 연동 방식으로 바꿀 수 없으므로, 계속 관리할 계획이라면 처음부터 위의 Git 연동 방식을 권합니다.
+## 다른 호스팅으로 옮기기
 
-다른 호스팅을 쓰는 경우에도 웹 루트에 `dist` 내용이 오도록 배포하면 됩니다. ES module과 JSON 파일을 HTTP(S)로 제공할 수 있어야 합니다. 파일을 더블클릭해서 `file://`로 여는 방식은 지원하지 않습니다.
+`dist` 내용을 웹 루트로 배포하면 됩니다. ES module과 JSON을 HTTP(S)로 제공해야 하며 파일을 더블클릭해 여는 `file://` 방식은 지원하지 않습니다.
+
+Cloudflare Pages도 대안입니다. 계정 연결이 정상적으로 완료된 뒤 저장소를 연결하고 Framework preset `None`, Production branch `main`, Build command `npm test`, Build output directory `dist`, Node.js `.node-version`의 `22`를 사용합니다. Git 연동 대신 Direct Upload를 선택하면 압축을 푼 `dist` 폴더만 올립니다. 현재 Cloudflare 프로젝트나 운영 주소는 생성되지 않았습니다.
 
 ## 공식 문서
 
-- 정적 HTML 배포: https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
-- Git 연동: https://developers.cloudflare.com/pages/configuration/git-integration/
-- 개인 도메인 연결: https://developers.cloudflare.com/pages/configuration/custom-domains/
-- 무료 플랜 한도: https://developers.cloudflare.com/pages/platform/limits/
-- 직접 업로드: https://developers.cloudflare.com/pages/get-started/direct-upload/
-- 파일 응답 헤더: https://developers.cloudflare.com/pages/configuration/headers/
+- GitHub Pages 만들기: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
+- 배포 소스 설정: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+- 공식 정적 사이트 워크플로: https://github.com/actions/starter-workflows/blob/main/pages/static.yml
+- Cloudflare 정적 HTML 배포: https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
+- Cloudflare 직접 업로드: https://developers.cloudflare.com/pages/get-started/direct-upload/
