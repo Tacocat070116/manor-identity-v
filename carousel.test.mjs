@@ -108,12 +108,17 @@ test('card poses stay finite and within narrow mobile and desktop stages during 
  }
 });
 
-test('autoplay advances smoothly, keeps five unique cards, and crosses the deck boundary',()=>{
+test('autoplay starts each turn three seconds apart including animation, and crosses the deck boundary',()=>{
  const h=harness({index:88});const initial=h.current().dataset.id;
- h.advance(4500);assert.equal(h.session.index,88);assert.ok(h.tasks.size>0);
- h.advance(1000);assert.equal(h.session.index,89);assert.notEqual(h.current().dataset.id,initial);
+ const initialTransform=h.current().style.transform;
+ h.advance(2999);assert.equal(h.current().style.transform,initialTransform);
+ h.advance(101);assert.equal(h.session.index,88);assert.notEqual(h.current().style.transform,initialTransform);
+ h.advance(900);assert.equal(h.session.index,89);assert.notEqual(h.current().dataset.id,initial);
  assert.equal(h.current().dataset.id,h.session.roster[0].id);assert.equal(new Set(h.visibleIds()).size,5);
- h.advance(5500);assert.equal(h.session.index,90);assert.equal(h.stage.children.length,5);h.dispose();
+ const settledTransform=h.current().style.transform;
+ h.advance(1999);assert.equal(h.current().style.transform,settledTransform);
+ h.advance(101);assert.equal(h.session.index,89);assert.notEqual(h.current().style.transform,settledTransform);
+ h.advance(900);assert.equal(h.session.index,90);assert.equal(h.stage.children.length,5);h.dispose();
 });
 
 test('touch drags from all three visible cards survive capture transfer, track movement and suppress the release click',()=>{
@@ -187,7 +192,7 @@ test('cancellation and cleanup remove gesture capture, listeners, observers, tim
 });
 
 test('pausing during a turn finishes that turn smoothly and does not start another',()=>{
- const h=harness();h.advance(4600);const transform=h.current().style.transform;
+ const h=harness();h.advance(3200);const transform=h.current().style.transform;
  h.click(h.controls.toggle);assert.equal(h.current().style.transform,transform);
  h.advance(1200);assert.equal(h.session.index,1);h.advance(20000);assert.equal(h.session.index,1);h.dispose();
 });

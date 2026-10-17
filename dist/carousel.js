@@ -1,4 +1,4 @@
-const AUTO_DELAY=4400;
+const AUTO_INTERVAL=3000;
 const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
 const wrap=(index,length)=>((index%length)+length)%length;
 
@@ -41,9 +41,9 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
   toggle.setAttribute('aria-pressed',String(!session.paused));
   toggle.setAttribute('title',session.paused?'자동 넘김 시작':'자동 넘김 일시 정지');
  }
- function scheduleAuto(){
+ function scheduleAuto(delay=AUTO_INTERVAL){
   clearAuto();
-  if(canPlay()&&!motionFrame)autoTimer=win.setTimeout(()=>{autoTimer=0;if(canPlay())animateTo(Math.round(position)+1,{automatic:true});},Math.max(AUTO_DELAY,resumeAt-now()));
+  if(canPlay()&&!motionFrame)autoTimer=win.setTimeout(()=>{autoTimer=0;if(canPlay())animateTo(Math.round(position)+1,{automatic:true});},Math.max(delay,resumeAt-now()));
  }
  function preload(index){
   const c=session.roster[wrap(index,session.roster.length)];
@@ -78,11 +78,11 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
   if(drag){drag.origin=position;drag.startX=drag.lastX;drag.startY=drag.lastY;drag.step=Math.max(90,width*.43);}
   paint();
  }
- function finish(target,{announce=false,focusCard=false}={}){
+ function finish(target,{announce=false,focusCard=false,delay=AUTO_INTERVAL}={}){
   position=target;session.index=target;paint();
   if(announce){const c=session.roster[wrap(target,session.roster.length)];status.textContent=c.name+' · '+(wrap(target,session.roster.length)+1)+' / '+session.roster.length;}
   if(focusCard)cards.find(card=>card.index===target)?.element.focus({preventScroll:true});
-  scheduleAuto();
+  scheduleAuto(delay);
  }
  function animateTo(target,{automatic=false,announce=false,focusCard=false}={}){
   clearAuto();stopMotion();
@@ -95,7 +95,7 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
    const eased=automatic?t*t*(3-2*t):1-Math.pow(1-t,3);
    position=from+(target-from)*eased;paint();
    if(t<1)motionFrame=win.requestAnimationFrame(frame);
-   else{motionFrame=0;finish(target,{announce,focusCard});}
+   else{motionFrame=0;finish(target,{announce,focusCard,delay:automatic?Math.max(0,AUTO_INTERVAL-(time-started)):AUTO_INTERVAL});}
   }
   motionFrame=win.requestAnimationFrame(frame);
  }

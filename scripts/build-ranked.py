@@ -17,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist' / 'ranked'
 INPUT = ROOT / 'research' / 'ranked' / 'normalized-inputs.json.gz'
+SERVERS = {'asia', 'cn'}
 OUT.mkdir(parents=True, exist_ok=True)
 inputs = json.loads(gzip.decompress(INPUT.read_bytes()))
 roster = json.loads((ROOT / 'dist/data.json').read_text())['characters']
@@ -54,6 +55,8 @@ for group in [inputs['cn'], inputs['global']]:
         if isinstance(s.get('notes'), list): s['notes'] = ' '.join(s['notes'])
         if not any(x['id'] == s['id'] for x in sources): sources.append(s)
     for d in group['datasets']:
+        if d['server'] not in SERVERS:
+            continue
         assert d['id'] not in seen
         seen.add(d['id'])
         meta = {k: v for k, v in d.items() if k != 'rows'}
@@ -84,6 +87,10 @@ for group in [inputs['cn'], inputs['global']]:
         parts[meta['path']].append({'id': d['id'], 'rows': sorted(rows)})
         datasets.append(meta)
 
+source_ids = {sid for d in datasets for sid in [d['sourceId'], *d.get('sourceIds', [])]}
+sources = [s for s in sources if s['id'] in source_ids]
+# Remove the retired public export when rebuilding an existing checkout.
+(OUT / 'global-unknown-s42.json').unlink(missing_ok=True)
 for path, values in parts.items():
     dump(ROOT / 'dist' / path, {'columns':['id','pick','win','draw','loss','ban'],'datasets':values})
 (OUT / 'records.csv').unlink(missing_ok=True)
@@ -106,7 +113,7 @@ dump(OUT / 'badges.json', badges)
 meta = {
     'collectedAt':'2026-10-17', 'recordCount':total, 'datasetCount':len(datasets),
     'badgeRecordCount':badge_count, 'badgeDatasetCount':len(badges['datasets']),
-    'rawRankedRows':inputs['cn']['meta']['rawRowCount'] + sum(len(d['rows']) for d in inputs['global']['datasets']),
+    'rawRankedRows':inputs['cn']['meta']['rawRowCount'] + sum(len(d['rows']) for d in inputs['global']['datasets'] if d['server'] in SERVERS),
     'duplicateRowsRemoved':inputs['cn']['meta']['duplicateRowCount'],
     'reviewNeededDatasets':sum(d['status']=='needs-review' for d in datasets),
     'notes':[
@@ -114,9 +121,9 @@ meta = {
         '중국의 일별·주별·시즌 누적 통계는 자료 시점 선택에서 각각 구분합니다. 같은 경기의 중복 집계가 가능하므로 합산하지 않습니다.',
         '패배율이 원문에 없는 중국 자료는 100−승률−무승부율로 계산했습니다. 원본 비율의 반올림 오차가 포함됩니다.',
         '중국 S44 보관본은 정정 확인이 필요해 기본 선택에서 제외했습니다. 직접 선택하면 검토 필요 상태로 표시합니다.',
-        '아시아 S43은 감시자 9개 랭크 구간, 서버 세부 범위 미상의 글로벌 S42는 최고7 생존자 자료만 확보했습니다.'
+        '아시아 S43은 감시자 9개 랭크 구간을 수록했습니다. 서버가 확인된 아시아·중국 통계만 제공합니다.'
     ],
-    'unavailable':['아시아 S43 생존자 원자료','북미·유럽 원자료','한국 유저만의 통계','미공개 시즌·날짜·맵·인격별 통계','개별 랭킹전 전적과 실제 경기 수']
+    'unavailable':['아시아 S43 생존자 원자료','한국 유저만의 통계','미공개 시즌·날짜·맵·인격별 통계','개별 랭킹전 전적과 실제 경기 수']
 }
 catalog = {'schemaVersion':1, 'meta':meta, 'sources':sources, 'datasets':datasets, 'badgesPath':'ranked/badges.json'}
 dump(OUT / 'index.json', catalog)
@@ -125,7 +132,10 @@ with zipfile.ZipFile(OUT / 'statistics.zip', 'w', compression=zipfile.ZIP_DEFLAT
         entry=zipfile.ZipInfo(name,date_time=(2026,10,17,0,0,0))
         entry.compress_type=zipfile.ZIP_DEFLATED
         archive.writestr(entry,content.encode('utf-8'))
-manifest = {'meta':meta,'sources':sources,'datasets':datasets,'rawSources':inputs['manifest'], 'files':[]}
+source_ids.update(d['sourceId'] for d in badges['datasets'])
+legacy_source_ids = {'global/wiki-asia-s43-hunters.raw.txt':'wiki-discord-asia-s43', 'global/idv-index-s42-default.raw.txt':'idv-index-s42'}
+raw_sources = [{**s, 'sourceId':s.get('sourceId', legacy_source_ids.get(s['path']))} for s in inputs['manifest']]
+manifest = {'meta':meta,'sources':sources,'datasets':datasets,'rawSources':[s for s in raw_sources if s['sourceId'] in source_ids], 'files':[]}
 for p in sorted(OUT.glob('*')):
     if p.name == 'manifest.json': continue
     b = p.read_bytes()

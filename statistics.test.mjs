@@ -20,8 +20,9 @@ catalog.badges=read('ranked/badges.json').datasets;
 test('all imported rows retain their source rates, characters and distinct cohorts',()=>{
  const inputs=JSON.parse(gunzipSync(fs.readFileSync('research/ranked/normalized-inputs.json.gz')));
  const original=[...inputs.cn.datasets,...inputs.global.datasets];
- assert.equal(catalog.datasets.length,422);
- assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),32717);
+ assert.equal(catalog.datasets.length,421);
+ assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),32667);
+ assert.ok(catalog.datasets.every(d=>['asia','cn'].includes(d.server)));
  assert.equal(new Set(catalog.datasets.map(d=>d.id)).size,catalog.datasets.length);
  for(const d of catalog.datasets){
   const source=original.find(x=>x.id===d.id);
@@ -52,9 +53,13 @@ test('rank selection does not pool sources, periods, ranks or servers; review-ne
  const chosen=selectRanked(catalog,{...period.filters,snapshot:period.snapshots.at(-1).id});
  assert.equal(chosen.dataset.id,period.snapshots.at(-1).id);
  assert.ok(!cn.dataset.rows.some(r=>r.id==='c60'));assert.equal(rankedCharacter(cn.dataset,'c60'),null);
- const global=selectRanked(catalog,{server:'global-unknown',tier:'peak7'});
- assert.equal(global.dataset.server,'global-unknown');assert.equal(global.dataset.rows.length,50);
- assert.ok(global.dataset.rows.every(r=>r.loss===null));
+ const unsupported={id:'retired-global',server:'global-unknown',season:'S42',tier:'peak7',rows:[]};
+ const stale={...catalog,datasets:[...catalog.datasets,unsupported]};
+ for(const server of ['global-unknown','naeu','unrecognized']){
+  const selected=selectRanked(stale,{server,season:'S42',tier:'peak7',snapshot:unsupported.id});
+  assert.deepEqual(selected.servers,['asia','cn']);assert.equal(selected.dataset.server,'asia');
+ }
+ assert.equal(selectRanked({datasets:[unsupported]}).dataset,null);
 });
 
 test('tournament pick rates, result perspective, sample gates and distinct ban denominator are correct',()=>{
@@ -112,6 +117,14 @@ test('live app routes load only selected season files and render all three scope
  context.location.hash='#v=compare&a=c01&b=c02&scope=ranked&server=cn&season=S43&tier=all';app.readRoute();await app.render();
  html=nodes.get('#page-body').innerHTML;assert.match(html,/랭킹전/);assert.doesNotMatch(html,/class="panel-title">[^<]*대회/);
  assert.doesNotMatch(html,/undefined|NaN/);
+ for(const route of ['#v=statistics','#v=character&c=c01&tab=stats','#v=compare&a=c01&b=c02']){
+  context.location.hash=route+'&scope=ranked&server=global-unknown&season=S42&tier=peak7&snap=retired-global';
+  app.readRoute();await app.render();assert.equal(app.state.statistics.server,'asia');
+  const output=nodes.get(route.includes('v=character')?'#character-content':'#page-body').innerHTML;
+  assert.match(output,/<option value="asia"/);assert.match(output,/<option value="cn"/);
+  assert.doesNotMatch(output,/global-unknown|글로벌|naeu/);
+ }
+ assert.ok(!fetches.some(url=>url.includes('global-unknown')));
 });
 
 test('ranked import survives partial network failure without hiding tournament results',async()=>{

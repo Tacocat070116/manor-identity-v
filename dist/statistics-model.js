@@ -1,6 +1,6 @@
 import {filterRows} from './model.js';
 
-export const SERVER_LABELS={asia:'아시아',naeu:'북미 · 유럽',cn:'중국','global-unknown':'글로벌 · 서버 구분 미공개'};
+export const SERVER_LABELS={asia:'아시아',cn:'중국'};
 export const TIER_LABELS={all:'전체 랭크',peak7:'최고 7티어','7':'7티어','6':'6티어','5':'5티어','4':'4티어','3':'3티어','2':'2티어','1':'1티어'};
 export const TIER_ORDER=['all','peak7','7','6','5','4','3','2','1'];
 export const METRIC_LABELS={pick:'픽률',win:'승률',draw:'무승부율',loss:'패배율',ban:'밴율',appearances:'출전 수',name:'이름'};
@@ -10,7 +10,7 @@ export const compareSnapshots=(a,b)=>seasonNumber(b.season)-seasonNumber(a.seaso
 // A ranked dataset is a published aggregate, never an individual match sample.
 // Selecting one cohort avoids averaging overlapping seasons, ranks or sources.
 export function selectRanked(data,filters={}){
- const sets=(data?.datasets||[]).filter(d=>d.status!=='held');
+ const sets=(data?.datasets||[]).filter(d=>d.status!=='held'&&Object.hasOwn(SERVER_LABELS,d.server));
  const servers=Object.keys(SERVER_LABELS).filter(s=>sets.some(d=>d.server===s));
  const server=servers.includes(filters.server)?filters.server:(servers.includes('asia')?'asia':servers[0]||'');
  const region=sets.filter(d=>d.server===server).sort(compareSnapshots);
