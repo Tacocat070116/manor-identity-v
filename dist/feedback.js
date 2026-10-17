@@ -5,7 +5,7 @@ export const feedbackEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;'
 const e=feedbackEscape;
 const date=t=>new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(t));
 const glyph={message:'<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/>',up:'<path d="M12 20V4m-6 6 6-6 6 6"/>',down:'<path d="M12 4v16m-6-6 6 6 6-6"/>',plus:'<path d="M12 4v16M4 12h16"/>',back:'<path d="M20 12H4m6-6-6 6 6 6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',reply:'<path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7v4"/>',check:'<path d="m4 12 5 5L20 6"/>'};
-const icon=n=>`<svg class="fb-icon" aria-hidden="true" viewBox="0 0 24 24">${glyph[n]||glyph.message}</svg>`;
+const icon=n=>`<svg class="fb-icon fb-icon-${n}" aria-hidden="true" viewBox="0 0 24 24">${glyph[n]||glyph.message}</svg>`;
 const badge=p=>`<span class="fb-status status-${e(p.status)}">${e(FEEDBACK_STATUSES[p.status]||'의견 수렴')}</span>`;
 const options=(dict,value,first='')=>(first?`<option value="">${e(first)}</option>`:'')+Object.entries(dict).map(([k,v])=>`<option value="${k}" ${value===k?'selected':''}>${e(v)}</option>`).join('');
 const who=(a,chars,author=false)=>`<span class="fb-person">${chars[a?.characterId]?`<img src="${e(chars[a.characterId].portrait)}" alt="" width="30" height="30" loading="lazy">`:''}<span>${e(a?.name||'장원의 손님')}</span>${author?'<span class="fb-author-label">작성자</span>':''}</span>`;
