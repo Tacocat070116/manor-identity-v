@@ -7,6 +7,12 @@ import {selectRanked} from './dist/statistics-model.js';
 import {statsFor,rankBans,pairEvidence,safeUrl,filterRows} from './dist/model.js';
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
 const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
+const introductions=read('introductions.json');
+assert.deepEqual(Object.keys(introductions.characters).sort(),db.characters.map(c=>c.id).sort(),'one introduction per character');
+for(const ch of db.characters){
+ ch.introduction=introductions.characters[ch.id];
+ assert.ok(typeof ch.introduction==='string'&&ch.introduction.trim(),ch.name+' introduction');
+}
 assert.equal(Object.keys(specialties.characters).length,db.characters.length);
 Object.assign(db.meta,specialties.meta);
 for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);

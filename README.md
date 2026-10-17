@@ -43,6 +43,7 @@
 | `research/ranked/` | 정규화 입력 스냅샷과 원본 해시·수집 기록 |
 | `scripts/build-ranked.py` | 보존한 입력 스냅샷에서 배포 자료 재생성 |
 | `dist/data.json` | 캐릭터, 상성, 출처, 커뮤니티 근거 |
+| `dist/introductions.json` | 캐릭터 상세 상단에 표시하는 89명의 간편 소개 |
 | `dist/matches.json`, `dist/bans.json` | 경기·밴 기록 |
 | `dist/assets/` | 원본 정사각형 캐릭터 프로필 |
 | `validate.mjs` | 기존 데이터와 계산·화면 템플릿 검증 |
