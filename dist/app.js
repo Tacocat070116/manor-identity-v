@@ -1,6 +1,7 @@
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=7ecf60ab8d29';
 import {createStatisticsUI} from './statistics.js?v=d897b7b7fd61';
+import {mountFeedback} from './feedback.js?v=dd7e79593599';
 import {selectRanked} from './statistics-model.js?v=9f39dbee8345';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,6 +13,7 @@ grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width=
 swords:'<path d="m13.5 7.5 3.5-3.5 4-1-1 4-3.5 3.5"/><path d="M14 17 4 7 3 3l4 1 10 10-3 3Z"/><path d="m12.5 18.5 6-6m-13 0 6 6M15.5 15.5 20 20M8.5 15.5 4 20m14.5 1.5 3-3m-19 0 3 3"/>',
 compare:'<path d="M8 4H4v16h4m8-16h4v16h-4M12 3v18"/>',
 shield:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/>',
+message:'<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/>',
 book:'<path d="M12 6v15M3 3c3.5 0 6.5 1 9 3 2.5-2 5.5-3 9-3v15c-3.5 0-6.5 1-9 3-2.5-2-5.5-3-9-3V3Z"/>',
 star:'<path d="m12 3.4 2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.75 6.38 20.7l1.07-6.25L2.9 10l6.3-.9L12 3.4Z"/>',
 sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.75m0 13.5v2.75M2.5 12h2.75m13.5 0h2.75M5.3 5.3l1.95 1.95m9.5 9.5 1.95 1.95M5.3 18.7l1.95-1.95m9.5-9.5 1.95-1.95"/>',
@@ -39,7 +41,7 @@ const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',
 try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
 document.documentElement.dataset.theme=state.theme;
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
-let heroSession,disposeHeroCarousel=()=>{};
+let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
 const rankedFiles=new Map();
 const loadRanked=async()=>{
@@ -80,7 +82,7 @@ const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
- state.view=['explore','character','matchup','compare','bans','statistics','sources'].includes(p.get('v'))?p.get('v'):'explore';
+ state.view=['explore','character','matchup','compare','bans','statistics','sources','feedback'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','matchups','stats','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
@@ -89,6 +91,7 @@ function readRoute(){
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
  if(!['pick','win','draw','loss','ban','appearances','name'].includes(state.statistics.sort))state.statistics.sort='pick';
  if(!['asc','desc'].includes(state.statistics.direction))state.statistics.direction='desc';
+ state.feedbackPost=/^[0-9a-f-]{36}$/.test(p.get('post')||'')?p.get('post'):'';
  const f=state.view==='bans'?state.banFilters:state.stats;
  if(p.has('days')&&[0,30,90,365].includes(Number(p.get('days'))))f.days=Number(p.get('days'));
  if(p.has('map'))f.map=db.maps.includes(p.get('map'))?p.get('map'):'';
@@ -100,7 +103,7 @@ function readRoute(){
  if(byId[state.a]?.side!==byId[state.b]?.side||state.a===state.b)state.b=db.characters.find(c=>c.side===byId[state.a]?.side&&c.id!==state.a)?.id||'';
 }
 function header(){
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['sources','근거','book']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message']];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${(state.view===v||(state.view==='character'&&v==='explore'))?'active':''}" ${state.view===v?'aria-current="page"':''} href="${route({v})}">${icon(i)}<span>${label}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small>IDENTITY V COMPANION</small></div></a><nav class="desktop-nav" aria-label="주 메뉴">${links}</nav><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><nav class="mobile-nav" aria-label="모바일 주 메뉴">${links}</nav>`;
 }
@@ -209,9 +212,9 @@ function sourcesPage(){
 function updateSources(){const list=db.sources.filter(s=>(state.region==='전체'||s.region===state.region)&&[s.site,s.scope,s.type,s.note].join(' ').toLowerCase().includes(state.sourceQuery.toLowerCase()));const root=$('#source-results');if(root)root.innerHTML=`<p class="result-count" role="status">${list.length}건의 자료</p><div class="source-grid">${list.map(sourceCard).join('')}</div>${!list.length?'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>지역이나 검색어를 변경해 보세요.</p></div>':''}`;}
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
- disposeHeroCarousel();disposeHeroCarousel=()=>{};
+ disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',sources:'근거 라이브러리'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',sources:'자료와 평가 기준',feedback:'피드백'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='stats'){
@@ -225,6 +228,7 @@ async function render({scroll=false}={}){
   body.innerHTML=getStatisticsUI().page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
  }
  else if(state.view==='matchup')body.innerHTML=matchupPage();
+ else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,navigate:id=>navigate({v:'feedback',...(id?{post:id}:{})})});}
  else if(state.view==='sources'){body.innerHTML=sourcesPage();updateSources();}
  else{body.innerHTML='<div class="loading-screen"><span class="loading-orbit"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';try{const rows=await(state.view==='bans'?loadBans():loadMatches());if(state.view==='compare'){try{await loadRanked();}catch(e){rankedError=e.message;}}if(token!==renderToken)return;body.innerHTML=state.view==='bans'?banPage(rows):comparePage(rows);}catch(e){if(token===renderToken)body.innerHTML=loadError(e);}}
 }
