@@ -1,3 +1,4 @@
+import {mountNavigation} from './navigation.js?v=05e09b40f2b4';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=6d58e86ff19a';
@@ -43,6 +44,7 @@ document.documentElement.dataset.theme=state.theme;
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
+let navigationController;
 const rankedFiles=new Map();
 const loadRanked=async()=>{
  const data=await(rankedPromise||=fetch('ranked/index.json?v=e2c666f8f5df').then(r=>{if(!r.ok)throw Error('랭킹전 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedPromise=null;throw e;}));
@@ -103,9 +105,12 @@ function readRoute(){
  if(byId[state.a]?.side!==byId[state.b]?.side||state.a===state.b)state.b=db.characters.find(c=>c.side===byId[state.a]?.side&&c.id!==state.a)?.id||'';
 }
 function header(){
+ if(navigationController){navigationController.update({view:state.view,theme:state.theme});return;}
  const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message']];
- const links=nav.map(([v,label,i])=>`<a class="nav-item ${(state.view===v||(state.view==='character'&&v==='explore'))?'active':''}" ${state.view===v?'aria-current="page"':''} href="${route({v})}">${icon(i)}<span>${label}</span></a>`).join('');
+ const links=nav.map(([v,label,i])=>`<a class="nav-item ${(state.view===v||(state.view==='character'&&v==='explore'))?'active':''}" ${state.view===v?'aria-current="page"':''} data-view="${v}" href="${route({v})}">${icon(i)}<span>${label}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small>IDENTITY V COMPANION</small></div></a><nav class="desktop-nav" aria-label="주 메뉴">${links}</nav><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><nav class="mobile-nav" aria-label="모바일 주 메뉴">${links}</nav>`;
+ navigationController=mountNavigation($('#header'),{icon});
+ navigationController.update({view:state.view,theme:state.theme});
 }
 function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · v${db.meta.version}<br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 경기 자료 ${db.meta.recordLatest}<br>자료 이관 ${db.meta.importedAt} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=sources">자료와 평가 기준</a></div></div>`;}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
