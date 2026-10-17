@@ -4,31 +4,31 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
-search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',
-grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
-swords:'<path d="M13.5 7.5 17 4l4-1-1 4-3.5 3.5"/><path d="m3 3 4 1 10 10-3 3L4 7 3 3Z"/><path d="m12.5 18.5 6-6m-13 0 6 6M16 16l4.5 4.5M8 16l-4.5 4.5M19 22l3-3M2 19l3 3"/>',
-compare:'<path d="M9 4H4v16h5m6-16h5v16h-5M12 3v18"/>',
-shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/>',
-book:'<path d="M12 5v16M3 3c4 0 7 1 9 3 2-2 5-3 9-3v15c-4 0-7 1-9 3-2-2-5-3-9-3V3Z"/>',
-star:'<path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1 6.2-5.6-3-5.6 3 1-6.2L3 9.6l6.2-.9L12 3Z"/>',
-sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/>',
-moon:'<path d="M20 14.1A8.5 8.5 0 0 1 9.9 4 8.5 8.5 0 1 0 20 14.1Z"/>',
-arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
-back:'<path d="M20 12H4m6-6-6 6 6 6"/>',
-down:'<path d="m6 9 6 6 6-6"/>',
+search:'<circle cx="10.25" cy="10.25" r="6.75"/><path d="m15.1 15.1 5.4 5.4"/>',
+grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+swords:'<path d="m13.5 7.5 3.5-3.5 4-1-1 4-3.5 3.5"/><path d="M14 17 4 7 3 3l4 1 10 10-3 3Z"/><path d="m12.5 18.5 6-6m-13 0 6 6M15.5 15.5 20 20M8.5 15.5 4 20m14.5 1.5 3-3m-19 0 3 3"/>',
+compare:'<path d="M8 4H4v16h4m8-16h4v16h-4M12 3v18"/>',
+shield:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/>',
+book:'<path d="M12 6v15M3 3c3.5 0 6.5 1 9 3 2.5-2 5.5-3 9-3v15c-3.5 0-6.5 1-9 3-2.5-2-5.5-3-9-3V3Z"/>',
+star:'<path d="m12 3.4 2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.75 6.38 20.7l1.07-6.25L2.9 10l6.3-.9L12 3.4Z"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.75m0 13.5v2.75M2.5 12h2.75m13.5 0h2.75M5.3 5.3l1.95 1.95m9.5 9.5 1.95 1.95M5.3 18.7l1.95-1.95m9.5-9.5 1.95-1.95"/>',
+moon:'<path d="M20.45 13.65A8.5 8.5 0 0 1 10.35 3.55 8.5 8.5 0 1 0 20.45 13.65Z"/>',
+arrow:'<path d="M3.4 12h16m-6-6 6 6-6 6"/>',
+back:'<path d="M20.6 12h-16m6-6-6 6 6 6"/>',
+down:'<path d="m6 8.7 6 6 6-6"/>',
 close:'<path d="m6 6 12 12M6 18 18 6"/>',
 plus:'<path d="M12 4v16M4 12h16"/>',
-info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/>',
+info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/>',
 share:'<path d="M12 15V3m-4 4 4-4 4 4"/><path d="M7 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"/>',
 clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
 spark:'<path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/>',
-chart:'<path d="M4 3v17h17M8 15v-4m5 4V7m5 8v-6"/>',
-globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/>',
+chart:'<path d="M3.5 3.5v17h17M8 16v-5m5 5V7m5 9V9"/>',
+globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/>',
 external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
-hunter:'<path d="M6 3v6l6 12 6-12V3M6 7h12M9 12h6"/>',
-survivor:'<circle cx="12" cy="7" r="3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/>'
+hunter:'<path d="m8.4 13.6 8-8 4-2-2 4-8 8-2-2Z"/><path d="m6.4 11.6 6 6m-3-3-5.5 5.5m-1.5-1.5 3 3"/>',
+survivor:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"/>'
 };
-const icon=n=>`<svg class="icon" aria-hidden="true" viewBox="0 0 24 24">${paths[n]||paths.info}</svg>`;
+const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
 const link=(url,label,cls='text-link')=>safeUrl(url)?`<a class="${cls}" href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)}${cls.includes('btn')?icon('external'):''}</a>`:'';
 const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'name',favoriteOnly:false,region:'전체',sourceQuery:'',stats:{days:365,map:'',tournament:''},banFilters:{days:365,map:'',tournament:'',excluded:[]},bans:['','',''],situation:'',favorites:new Set(),theme:'light'};
 try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
