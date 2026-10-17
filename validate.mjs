@@ -3,13 +3,20 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {statsFor,rankBans,pairEvidence,safeUrl,filterRows} from './dist/model.js';
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
-const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json');
+const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
+assert.equal(Object.keys(specialties.characters).length,db.characters.length);
+Object.assign(db.meta,specialties.meta);
+for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
+const allowedSpecialties={생존자:['어그로 특화','커버 특화','구출 특화','운영 특화','해독 특화'],감시자:['사냥 특화','캠핑 특화','운영 특화']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,16757);assert.equal(bans.length,15516);
 assert.equal(db.sources.length,202);assert.equal(db.matchups.filter(x=>x.status==='반영').length,447);
 assert.equal(db.characters.reduce((n,c)=>n+10-c.hard.length-c.easy.length,0),223);
 for(const ch of db.characters){
+ assert.ok(allowedSpecialties[ch.side]?.includes(ch.specialty),ch.name+' specialty');
+ assert.ok(typeof ch.specialtyReason==='string'&&ch.specialtyReason.length>15,ch.name+' specialty reason');
+ for(const url of ch.specialtySources||[])assert.ok(safeUrl(url),ch.name+' specialty source');
  assert.ok(ch.strengths.length<=3&&ch.weaknesses.length<=3);
  assert.ok(ch.hard.length<=5&&ch.easy.length<=5);
  assert.ok(ch.difficulty>=1&&ch.difficulty<=5);
@@ -48,8 +55,9 @@ assert.equal(db.characters.filter(x=>x.side==='감시자').reduce((n,ch)=>n+stat
 assert.equal(db.characters.filter(x=>x.side==='생존자').reduce((n,ch)=>n+statsFor(matches,ch,{days:0}).appearances,0),matches.length*4);
 assert.ok(pairEvidence(db.matchups,c('사도'),c('탐사원')).length>0);
 const nodes=new Map();
+const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(){}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans};
+const context={console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').split('\n').slice(1).join('\n').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -66,12 +74,31 @@ audit.condition=cleanCondition('추가 공개 자료 1문서: 오른쪽 P:S 및 
 audit.escape=esc('<img src=x onerror=alert(1)>');
 location.hash='#v=compare&a='+byName['의사'].id+'&b='+byName['거미'].id;readRoute();audit.sameSide=byId[state.a].side===byId[state.b].side;
 location.hash='#v=bans&bans='+byName['의사'].id+','+byName['의사'].id+','+byName['거미'].id;readRoute();audit.cleanBans=state.bans.filter(Boolean);
+state.view='explore';state.favoriteOnly=false;state.search='';state.sort='name';
+audit.specialtyResults=[];
+for(const [side,roles] of Object.entries(specialtyGroups)){for(const role of roles){state.side=side;state.specialty=role;updateExplorer();audit.specialtyResults.push({side,role,html:$('#explorer-results').innerHTML});}}
+state.side='생존자';state.specialty='커버 특화';state.search='선 지자';state.favoriteOnly=true;state.favorites=new Set([byName['선지자'].id,byName['용병'].id]);updateExplorer();audit.combinedFilter=$('#explorer-results').innerHTML;
+state.specialty='구출 특화';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetInvalidSpecialty=state.specialty;
+state.specialty='운영 특화';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
+__handlers.click({target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
+footer();audit.footer=$('#footer').innerHTML;
 `;
 vm.runInNewContext(source,context,{timeout:15000});
 assert.equal(context.audit.checked,356);
 assert.ok(context.audit.condition.includes('구버전 중국어'));
 assert.ok(context.audit.escape.includes('&lt;img'));assert.ok(context.audit.sameSide);
 assert.equal(context.audit.cleanBans.length,1);
+for(const {side,role,html} of context.audit.specialtyResults){
+ const expected=db.characters.filter(ch=>ch.side===side&&ch.specialty===role).map(ch=>ch.id).sort();
+ const actual=[...html.matchAll(/class="character-card"[^>]*data-id="(c\d+)"/g)].map(m=>m[1]).sort();
+ assert.ok(expected.length>0,side+' '+role+' populated');
+ assert.deepEqual(actual,expected,side+' '+role+' filtered roster');
+}
+assert.ok(context.audit.combinedFilter.includes('data-id="'+c('선지자').id+'"'));
+assert.ok(!context.audit.combinedFilter.includes('data-id="'+c('용병').id+'"'));
+assert.equal(context.audit.resetInvalidSpecialty,'');
+assert.equal(context.audit.keepSharedSpecialty,'운영 특화');
+assert.deepEqual(Array.from(context.audit.resetExplore),['전체','','',false]);
 for(const html of context.audit.templates){assert.ok(html.length>100);assert.ok(!html.includes('undefined'));assert.ok(!html.includes('NaN'));}
 fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:356,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 695/694/296','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
 console.log('PASS: 89 portraits, 356 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, ban smoothing, exclusions, URL sanitization, and native-sheet golden cases.');

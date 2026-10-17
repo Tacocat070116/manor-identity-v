@@ -13,3 +13,21 @@ html[data-theme="dark"]{--bg:#101c19;--surface:#192823;--surface-soft:#20352d;--
 @media print{.site-header,.mobile-nav,.char-actions,.site-footer,.ambient{display:none}.page{padding:0}.shell{max-width:none}.panel,.character-hero{break-inside:avoid}.character-grid{grid-template-columns:repeat(6,1fr)}body{background:white;color:#182e24}}
 
 .panel+.character-grid{margin-top:20px}
+
+/* Specialty navigation. */
+.specialty-toolbar{display:flex;align-items:flex-start;gap:12px;margin:-6px 0 18px}
+.specialty-label{font-size:11px;font-weight:650;color:var(--muted);padding-top:12px;white-space:nowrap}
+.specialty-options{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.specialty-filter{min-height:40px;padding:8px 13px;border:1px solid var(--line);border-radius:13px;background:var(--surface);font-size:11px;line-height:1.4;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.specialty-filter.active{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:650}
+.card-specialty{display:block;margin-top:4px;color:var(--accent);font-size:10px;font-weight:600;line-height:1.5;white-space:nowrap}
+.tag.specialty-tag{background:var(--accent-soft);color:var(--accent)}
+.specialty-summary{display:flex;align-items:center;gap:15px;margin-bottom:20px;padding:19px 22px;border:1px solid var(--line);border-radius:22px;background:var(--surface-soft)}
+.specialty-summary-icon{display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--accent)}
+.specialty-summary-icon .icon{width:23px;height:23px}
+.specialty-summary h2{font-size:14px;margin-bottom:3px}
+.specialty-summary p{font-size:13px;line-height:1.6}
+.specialty-summary small{display:block;margin-top:5px;color:var(--muted);font-size:11px}
+.section-gap-bottom{margin-bottom:20px}
+@media(max-width:640px){.specialty-toolbar{flex-direction:column;gap:7px;margin:-5px 0 16px}.specialty-label{padding-top:0;font-size:10px}.specialty-filter{min-height:44px;padding:8px 11px;font-size:11px;border-radius:12px}.card-specialty{font-size:9px;margin-top:3px}.specialty-summary{padding:16px;gap:12px;align-items:flex-start}.specialty-summary-icon{width:36px;height:36px;flex-basis:36px}.specialty-summary p{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.specialty-filter{transition:none}}
