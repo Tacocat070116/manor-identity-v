@@ -1,0 +1,524 @@
+[
+  {
+    "originalName": "蜘蛛",
+    "characterId": "c01",
+    "name": "거미",
+    "side": "감시자"
+  },
+  {
+    "originalName": "厂长",
+    "characterId": "c02",
+    "name": "공장장",
+    "side": "감시자"
+  },
+  {
+    "originalName": "疯眼",
+    "characterId": "c03",
+    "name": "광기의 눈",
+    "side": "감시자"
+  },
+  {
+    "originalName": "小丑",
+    "characterId": "c04",
+    "name": "광대",
+    "side": "감시자"
+  },
+  {
+    "originalName": "梦之女巫",
+    "characterId": "c05",
+    "name": "꿈의 마녀",
+    "side": "감시자"
+  },
+  {
+    "originalName": "渔女",
+    "characterId": "c06",
+    "name": "나이아스",
+    "side": "감시자"
+  },
+  {
+    "originalName": "守夜人",
+    "characterId": "c07",
+    "name": "나이트 워치",
+    "side": "감시자"
+  },
+  {
+    "originalName": "黄衣之主",
+    "characterId": "c08",
+    "name": "노란 옷의 왕",
+    "side": "감시자"
+  },
+  {
+    "originalName": "台球手",
+    "characterId": "c09",
+    "name": "당구 선수",
+    "side": "감시자"
+  },
+  {
+    "originalName": "杰克",
+    "characterId": "c10",
+    "name": "리퍼",
+    "side": "감시자"
+  },
+  {
+    "originalName": "蜡像师",
+    "characterId": "c12",
+    "name": "밀랍인형사",
+    "side": "감시자"
+  },
+  {
+    "originalName": "小提琴家",
+    "characterId": "c13",
+    "name": "바이올리니스트",
+    "side": "감시자"
+  },
+  {
+    "originalName": "博士",
+    "characterId": "c14",
+    "name": "박사",
+    "side": "감시자"
+  },
+  {
+    "originalName": "红蝶",
+    "characterId": "c15",
+    "name": "붉은 나비",
+    "side": "감시자"
+  },
+  {
+    "originalName": "红夫人",
+    "characterId": "c16",
+    "name": "블러디 퀸",
+    "side": "감시자"
+  },
+  {
+    "originalName": "鹿头",
+    "characterId": "c17",
+    "name": "사냥터지기",
+    "side": "감시자"
+  },
+  {
+    "originalName": "使徒",
+    "characterId": "c18",
+    "name": "사도",
+    "side": "감시자"
+  },
+  {
+    "originalName": "摄影师",
+    "characterId": "c19",
+    "name": "사진사",
+    "side": "감시자"
+  },
+  {
+    "originalName": "记录员",
+    "characterId": "c20",
+    "name": "서기관",
+    "side": "감시자"
+  },
+  {
+    "originalName": "26号守卫",
+    "characterId": "c21",
+    "name": "수위 26호",
+    "side": "감시자"
+  },
+  {
+    "originalName": "时空之影",
+    "characterId": "c22",
+    "name": "시공의 그림자",
+    "side": "감시자"
+  },
+  {
+    "originalName": "噩梦",
+    "characterId": "c23",
+    "name": "악몽",
+    "side": "감시자"
+  },
+  {
+    "originalName": "女王蜂",
+    "characterId": "c24",
+    "name": "여왕벌",
+    "side": "감시자"
+  },
+  {
+    "originalName": "歌剧演员",
+    "characterId": "c25",
+    "name": "오페라 가수",
+    "side": "감시자"
+  },
+  {
+    "originalName": "宿伞之魂",
+    "characterId": "c26",
+    "name": "우산의 영혼",
+    "side": "감시자"
+  },
+  {
+    "originalName": "爱哭鬼",
+    "characterId": "c27",
+    "name": "울보",
+    "side": "감시자"
+  },
+  {
+    "originalName": "隐士",
+    "characterId": "c28",
+    "name": "은둔자",
+    "side": "감시자"
+  },
+  {
+    "originalName": "杂货商",
+    "characterId": "c29",
+    "name": "잡화상",
+    "side": "감시자"
+  },
+  {
+    "originalName": "孽蜥",
+    "characterId": "c30",
+    "name": "재앙의 도마뱀",
+    "side": "감시자"
+  },
+  {
+    "originalName": "跛脚羊",
+    "characterId": "c31",
+    "name": "절름발이 판",
+    "side": "감시자"
+  },
+  {
+    "originalName": "雕刻家",
+    "characterId": "c32",
+    "name": "조각가",
+    "side": "감시자"
+  },
+  {
+    "originalName": "牙医",
+    "characterId": "c33",
+    "name": "치과의사",
+    "side": "감시자"
+  },
+  {
+    "originalName": "破轮",
+    "characterId": "c34",
+    "name": "파멸의 바퀴",
+    "side": "감시자"
+  },
+  {
+    "originalName": "愚人金",
+    "characterId": "c35",
+    "name": "파이라이트",
+    "side": "감시자"
+  },
+  {
+    "originalName": "喧嚣",
+    "characterId": "c36",
+    "name": "훌라발루",
+    "side": "감시자"
+  },
+  {
+    "originalName": "杂技演员",
+    "characterId": "c37",
+    "name": "곡예사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "昆虫学者",
+    "characterId": "c38",
+    "name": "곤충학자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "古董商",
+    "characterId": "c39",
+    "name": "골동품 상인",
+    "side": "생존자"
+  },
+  {
+    "originalName": "空军",
+    "characterId": "c40",
+    "name": "공군",
+    "side": "생존자"
+  },
+  {
+    "originalName": "教授",
+    "characterId": "c41",
+    "name": "교수",
+    "side": "생존자"
+  },
+  {
+    "originalName": "弓箭手",
+    "characterId": "c42",
+    "name": "궁수",
+    "side": "생존자"
+  },
+  {
+    "originalName": "机械师",
+    "characterId": "c43",
+    "name": "기계공",
+    "side": "생존자"
+  },
+  {
+    "originalName": "骑士",
+    "characterId": "c44",
+    "name": "기사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "气象学家",
+    "characterId": "c45",
+    "name": "기상학자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "记者",
+    "characterId": "c46",
+    "name": "기자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "入殓师",
+    "characterId": "c47",
+    "name": "납관사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "慈善家",
+    "characterId": "c48",
+    "name": "도둑",
+    "side": "생존자"
+  },
+  {
+    "originalName": "魔术师",
+    "characterId": "c49",
+    "name": "마술사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "盲女",
+    "characterId": "c50",
+    "name": "맹인",
+    "side": "생존자"
+  },
+  {
+    "originalName": "冒险家",
+    "characterId": "c51",
+    "name": "모험가",
+    "side": "생존자"
+  },
+  {
+    "originalName": "守墓人",
+    "characterId": "c52",
+    "name": "묘지기",
+    "side": "생존자"
+  },
+  {
+    "originalName": "默剧艺人",
+    "characterId": "c53",
+    "name": "무언극 아티스트",
+    "side": "생존자"
+  },
+  {
+    "originalName": "舞女",
+    "characterId": "c54",
+    "name": "무희",
+    "side": "생존자"
+  },
+  {
+    "originalName": "调酒师",
+    "characterId": "c55",
+    "name": "바텐더",
+    "side": "생존자"
+  },
+  {
+    "originalName": "律师",
+    "characterId": "c56",
+    "name": "변호사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "祭司",
+    "characterId": "c57",
+    "name": "샤먼",
+    "side": "생존자"
+  },
+  {
+    "originalName": "先知",
+    "characterId": "c58",
+    "name": "선지자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "小说家",
+    "characterId": "c59",
+    "name": "소설가",
+    "side": "생존자"
+  },
+  {
+    "originalName": "心理学家",
+    "characterId": "c61",
+    "name": "심리학자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "野人",
+    "characterId": "c62",
+    "name": "야만인",
+    "side": "생존자"
+  },
+  {
+    "originalName": "小女孩",
+    "characterId": "c63",
+    "name": "여자아이",
+    "side": "생존자"
+  },
+  {
+    "originalName": "佣兵",
+    "characterId": "c64",
+    "name": "용병",
+    "side": "생존자"
+  },
+  {
+    "originalName": "哭泣小丑",
+    "characterId": "c65",
+    "name": "우는 광대",
+    "side": "생존자"
+  },
+  {
+    "originalName": "邮差",
+    "characterId": "c66",
+    "name": "우편 배달부",
+    "side": "생존자"
+  },
+  {
+    "originalName": "医生",
+    "characterId": "c67",
+    "name": "의사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "木偶师",
+    "characterId": "c68",
+    "name": "인형사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "作曲家",
+    "characterId": "c69",
+    "name": "작곡가",
+    "side": "생존자"
+  },
+  {
+    "originalName": "玩具商",
+    "characterId": "c70",
+    "name": "장난감 상인",
+    "side": "생존자"
+  },
+  {
+    "originalName": "园丁",
+    "characterId": "c71",
+    "name": "정원사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "调香师",
+    "characterId": "c72",
+    "name": "조향사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "囚徒",
+    "characterId": "c73",
+    "name": "죄수",
+    "side": "생존자"
+  },
+  {
+    "originalName": "咒术师",
+    "characterId": "c74",
+    "name": "주술사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "拉拉队员",
+    "characterId": "c75",
+    "name": "치어리더",
+    "side": "생존자"
+  },
+  {
+    "originalName": "牛仔",
+    "characterId": "c76",
+    "name": "카우보이",
+    "side": "생존자"
+  },
+  {
+    "originalName": "击球手",
+    "characterId": "c77",
+    "name": "타자",
+    "side": "생존자"
+  },
+  {
+    "originalName": "逃脱大师",
+    "characterId": "c78",
+    "name": "탈출 마스터",
+    "side": "생존자"
+  },
+  {
+    "originalName": "勘探员",
+    "characterId": "c79",
+    "name": "탐사원",
+    "side": "생존자"
+  },
+  {
+    "originalName": "斗牛士",
+    "characterId": "c80",
+    "name": "투우사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "法罗女士",
+    "characterId": "c81",
+    "name": "파로 부인",
+    "side": "생존자"
+  },
+  {
+    "originalName": "前锋",
+    "characterId": "c82",
+    "name": "포워드",
+    "side": "생존자"
+  },
+  {
+    "originalName": "飞行家",
+    "characterId": "c83",
+    "name": "항공 전문가",
+    "side": "생존자"
+  },
+  {
+    "originalName": "大副",
+    "characterId": "c84",
+    "name": "항해사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "幸运儿",
+    "characterId": "c85",
+    "name": "행운아",
+    "side": "생존자"
+  },
+  {
+    "originalName": "画家",
+    "characterId": "c86",
+    "name": "화가",
+    "side": "생존자"
+  },
+  {
+    "originalName": "火灾调查员",
+    "characterId": "c87",
+    "name": "화재조사관",
+    "side": "생존자"
+  },
+  {
+    "originalName": "幻灯师",
+    "characterId": "c88",
+    "name": "환등사",
+    "side": "생존자"
+  },
+  {
+    "originalName": "病患",
+    "characterId": "c89",
+    "name": "환자",
+    "side": "생존자"
+  }
+]

@@ -8,3 +8,5 @@ qa-summary.json
 *.zip
 *.tar
 *.tar.gz
+
+!dist/ranked/statistics.zip

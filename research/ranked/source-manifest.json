@@ -1,0 +1,166 @@
+[
+  {
+    "path": "rank-20250924.sql",
+    "sourceId": "cn-dmb-archive",
+    "url": "https://github.com/DMB-codegang/dwrg-tools/blob/5d4237eea5b24d752b86be69ce65ffce24d99512/rank.sql",
+    "bytes": 3239604,
+    "sha256": "98b45a7b89587be9d6260a8d11e2866d68debaa1f7020119d14fd76046177734",
+    "rowCount": 22092
+  },
+  {
+    "path": "netease-weekly-snapshot.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/t.json",
+    "bytes": 5470152,
+    "sha256": "657573cbead05761f989f1b4c7f687918fba1e284cd316c2a325f67971170de8",
+    "rowCount": 11718
+  },
+  {
+    "path": "asg-archive/S37-250416.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/S37-250416.json",
+    "bytes": 265597,
+    "sha256": "3a5aa66bb3da399706d012276cac75c598c1006a869782b6e901f77d48fd7bd3",
+    "rowCount": 711
+  },
+  {
+    "path": "asg-archive/S37-250420.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/S37-250420.json",
+    "bytes": 313253,
+    "sha256": "c6b091d08567870e5496406ea890f9fd5d0fb5348b2f6a9104d373a6b55d19da",
+    "rowCount": 711
+  },
+  {
+    "path": "asg-archive/S38-250709.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/S38-250709.json",
+    "bytes": 276003,
+    "sha256": "c350b8cb2cdd3d6fafead171a1517d0e1009f1dca4160976c10664a1be8ba1dc",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250716.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250716.json",
+    "bytes": 230474,
+    "sha256": "d307a43bc9b452a09dda846c8828e70fa75c3eeb86cd819353fbfe1e4a7ed6bf",
+    "rowCount": 616
+  },
+  {
+    "path": "asg-archive/Week_S39-250723.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250723.json",
+    "bytes": 259453,
+    "sha256": "c04ee8a54ff3433a561dcc3a0a34f1bdc734788c5a473f49367c26e07f800545",
+    "rowCount": 694
+  },
+  {
+    "path": "asg-archive/Week_S39-250730.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250730.json",
+    "bytes": 270632,
+    "sha256": "b5edab911ff80eef7bbc2bd724620c3232da30c5a6d87a958f27d3e887422760",
+    "rowCount": 724
+  },
+  {
+    "path": "asg-archive/Week_S39-250806.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250806.json",
+    "bytes": 272529,
+    "sha256": "a0af625389dde812385e96110bf0396327ad7fb8793e71dbb57299454a913b0a",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250813.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250813.json",
+    "bytes": 272587,
+    "sha256": "7da083f09ca120e75adc6258780d8d358142f731182f41c2bf435c83267010de",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250820.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250820.json",
+    "bytes": 272568,
+    "sha256": "48961205aed55e9127e2aa67ad38aeeea0f0ffa52d9ed4d43de2d2abe964a846",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250827.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250827.json",
+    "bytes": 272604,
+    "sha256": "e29ce36cf4d8a92bb3c5002598751bc1cff891a0f0c25bed81bcfc9b1b0af761",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250903.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250903.json",
+    "bytes": 272609,
+    "sha256": "b8cef9ec0b8407f1d9ef63530bff467afe76fed8f57ec013a9c470e07b1322d6",
+    "rowCount": 729
+  },
+  {
+    "path": "asg-archive/Week_S39-250910.json",
+    "sourceId": "cn-asg-archive",
+    "url": "https://github.com/luolangaga/ASGneo/blob/e0b337c9efdb2eefc9b5c897cbf3cd112bf1d8f5/ASG.Api/NeteaseJ/Week_S39-250910.json",
+    "bytes": 275914,
+    "sha256": "a65e897c33ec1a9bdaf859eb56e4d3d0d73538eb9b3fbeb044ffc19d6e3b2dbd",
+    "rowCount": 738
+  },
+  {
+    "path": "github-snapshot/raw/Day_20260429.json",
+    "sourceId": "cn-homework-archive",
+    "url": "https://github.com/wyxAIh/idv-wubang/blob/f0588e388136d812ada11399b418eab0d0a54ce1/data/raw/Day_20260429.json",
+    "bytes": 254119,
+    "sha256": "0a7cbc7cd1cb9c67748888971ba9e3c3c720d10dc08a6d9659bad73d0f9af76c",
+    "rowCount": 680
+  },
+  {
+    "path": "github-snapshot/raw/S43-260613.json",
+    "sourceId": "cn-homework-archive",
+    "url": "https://github.com/wyxAIh/idv-wubang/blob/f0588e388136d812ada11399b418eab0d0a54ce1/data/raw/S43-260613.json",
+    "bytes": 291759,
+    "sha256": "cfcadbdc45cc7b26e7f391f2d581c159b249e3dfa9a661333a451560aad7bc29",
+    "rowCount": 774
+  },
+  {
+    "path": "github-snapshot/raw/S44-260804.json",
+    "sourceId": "cn-homework-archive",
+    "url": "https://github.com/wyxAIh/idv-wubang/blob/f0588e388136d812ada11399b418eab0d0a54ce1/data/raw/S44-260804.json",
+    "bytes": 295303,
+    "sha256": "634d06da0005187befc4fcee8f199ebe5ebba73f27e89a60b2218eca93157727",
+    "rowCount": 783
+  },
+  {
+    "path": "github-snapshot/raw/Badge_20260613.json",
+    "kind": "character-knowledge-score",
+    "sourceId": "cn-homework-archive",
+    "url": "https://github.com/wyxAIh/idv-wubang/blob/f0588e388136d812ada11399b418eab0d0a54ce1/data/raw/Badge_20260613.json",
+    "bytes": 109488,
+    "sha256": "b4789dccd5057e3afd6e018c70ba28355ca147e68e32ef226ac69a313aa60d95",
+    "rowCount": 688
+  },
+  {
+    "path": "github-snapshot/raw/Badge_20260804.json",
+    "kind": "character-knowledge-score",
+    "sourceId": "cn-homework-archive",
+    "url": "https://github.com/wyxAIh/idv-wubang/blob/f0588e388136d812ada11399b418eab0d0a54ce1/data/raw/Badge_20260804.json",
+    "bytes": 110763,
+    "sha256": "70e29ef30af24fe8ae0e5b60f8e22b0bbb3c287ff5d2bc58982136abdea86306",
+    "rowCount": 696
+  },
+  {
+    "path": "global/wiki-asia-s43-hunters.raw.txt",
+    "bytes": 22496,
+    "sha256": "0b1b61e9aa394fb14cb91b6e93bab839ea9815a608871031a7d789c0aeda1bb2"
+  },
+  {
+    "path": "global/idv-index-s42-default.raw.txt",
+    "bytes": 16394,
+    "sha256": "5b22d0e7f33ed552b849206e7f7458ef904921b278c35af3c633e5d40b521acf"
+  }
+]

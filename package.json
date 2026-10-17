@@ -8,6 +8,6 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --check dist/app.js && node --check dist/model.js && node --check dist/carousel.js && node validate.mjs && node --test carousel.test.mjs"
+    "test": "node --check dist/app.js && node --check dist/model.js && node --check dist/carousel.js && node --check dist/statistics.js && node --check dist/statistics-model.js && node validate.mjs && node --test carousel.test.mjs statistics.test.mjs"
   }
 }

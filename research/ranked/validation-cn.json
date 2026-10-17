@@ -1,0 +1,7888 @@
+{
+  "meta": {
+    "collectedAt": "2026-10-17",
+    "region": "중국 서버",
+    "rawRowCount": 44615,
+    "duplicateRowCount": 12272,
+    "rowCount": 32343,
+    "datasetCount": 412,
+    "seasons": [
+      24,
+      26,
+      28,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      43,
+      44
+    ],
+    "periodStart": "2022-10-17",
+    "periodEnd": "2026-08-04",
+    "periodKinds": {
+      "season-cumulative": 152,
+      "daily": 74,
+      "weekly": 170,
+      "published-period": 16
+    },
+    "characterCount": 87,
+    "unknownCharacters": [],
+    "unavailableCurrentRoster": [
+      {
+        "id": "c11",
+        "name": "마음의 짐승"
+      },
+      {
+        "id": "c60",
+        "name": "신동"
+      }
+    ],
+    "reviewNeededDatasetCount": 9,
+    "knownSourceWarning": "출처는 S44의 2026-07-03~07-31에 게시된 시즌 누적 승률·맵 누적 승률 오류를 안내합니다. 2026-08-04 보관본은 안내된 게시일 범위 밖이지만 정정 여부를 직접 확인하지 못했습니다.",
+    "notes": [
+      "자료가 없는 시즌·랭크·캐릭터를 0으로 채우지 않았습니다.",
+      "시즌·기간·서버·랭크를 서로 평균하거나 합산하지 않았습니다.",
+      "원본 표본 수가 없어 통계적 신뢰구간 또는 전체 통합 승률을 추정하지 않았습니다.",
+      "현재 공식 원본의 직접 응답은 확보하지 못했으며 공개 보관본을 취득했습니다."
+    ]
+  },
+  "duplicateValuesConflictCount": 0,
+  "invalidRateCount": 0,
+  "invalidOutcomeSumCount": 0,
+  "allRowsMapped": true,
+  "cohorts": [
+    {
+      "id": "cn-s44-20260702-20260804-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 99.9999,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9998,
+          "banSum": 99.9996,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 99.9996,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s44-20260702-20260804-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 52,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 4,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9998,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0001,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260429-20260429-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 34,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0003,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9997,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9996,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 99.9996,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s43-20260423-20260613-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 35,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 51,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0005,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9996,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251113-20251119-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9996,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251106-20251112-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0005,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0003,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251030-20251105-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9996,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251023-20251029-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9996,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0006,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251016-20251022-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251009-20251015-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20251002-20251008-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 15,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250925-20251001-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 19,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 28,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250924-20250924-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 17,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 23,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9996,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9992,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250923-20250923-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 9,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 12,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9995,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250922-20250922-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 3,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250921-20250921-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9996,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250920-20250920-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 12,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0004,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250919-20250919-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 24,
+          "pickSum": 100.0006,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9996,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250924-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9997,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250918-20250918-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0005,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 100.0003,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20251119-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 50,
+          "pickSum": 99.9999,
+          "banSum": 99.9995,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 17,
+          "pickSum": 99.9996,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s40-20250917-20250917-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250911-20250916-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0004,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 100.0003,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 99.9997,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250904-20250910-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 33,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9996,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9997,
+          "banSum": 99.9996,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250828-20250903-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0004,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0003,
+          "banSum": 100.0005,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0003,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250821-20250827-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250814-20250820-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9995,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250807-20250813-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0004,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250731-20250806-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.0005,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 99.9996,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250724-20250730-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250717-20250723-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.2228,
+          "banSum": 99.3192,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.5654,
+          "banSum": 99.2619,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.5738,
+          "banSum": 99.2207,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.7217,
+          "banSum": 99.4719,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.7775,
+          "banSum": 99.6808,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.8353,
+          "banSum": 99.8474,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0003,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9123,
+          "banSum": 99.8796,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9117,
+          "banSum": 99.7491,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250916-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.7695,
+          "banSum": 99.5732,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0005,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 0,
+          "pickSum": 0,
+          "banSum": 0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9995,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0005,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s39-20250710-20250716-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9997,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 99.9996,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s38-20250430-20250709-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 32,
+          "pickSum": 99.9996,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 49,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250429-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9995,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0004,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250420-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9995,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0004,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9998,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0005,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9997,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250419-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0003,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250418-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250417-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0003,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0004,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9996,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 100.0005,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9998,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s37-20250220-20250416-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 48,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 99.9997,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0003,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 99.9997,
+          "banSum": 99.9995,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0002,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s36-20241212-20250219-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 47,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 99.9999,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 100.0002,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0,
+          "banSum": 100.0004,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 100.0001,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 99.9997,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 99.9997,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 99.9999,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s35-20240926-20241211-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 31,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 46,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9997,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 99.9999,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0001,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0,
+          "banSum": 99.9996,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0003,
+          "banSum": 100.0004,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0003,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s34-20240725-20240925-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 30,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9999,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0,
+          "banSum": 99.9997,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0003,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9998,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9998,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0002,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 99.9998,
+          "banSum": 100.0003,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9998,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0001,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s33-20240523-20240724-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 45,
+          "pickSum": 100.0001,
+          "banSum": 100.0001,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 99.9997,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0001,
+          "banSum": 100.0002,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9999,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0004,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0,
+          "banSum": 100.0001,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0,
+          "banSum": 99.9998,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 99.9998,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0002,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 99.9999,
+          "banSum": 100.0,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0,
+          "banSum": 99.9999,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0002,
+          "banSum": 99.9996,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s32-20240321-20240522-all",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 29,
+          "pickSum": 100.0002,
+          "banSum": 100.0002,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 44,
+          "pickSum": 100.0001,
+          "banSum": 99.9999,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 99.99,
+          "banSum": 100.01,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.99,
+          "banSum": 100.03,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.02,
+          "banSum": 100.01,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 100.0,
+          "banSum": 100.02,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 99.98,
+          "banSum": 100.01,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.99,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.0,
+          "banSum": 100.01,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.99,
+          "banSum": 100.03,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.0,
+          "banSum": 100.01,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.99,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 99.99,
+          "banSum": 100.02,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 100.01,
+          "banSum": 100.0,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.03,
+          "banSum": 99.99,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.97,
+          "banSum": 100.02,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s28-20230621-20230830-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 27,
+          "pickSum": 100.01,
+          "banSum": 99.99,
+          "banMissing": 0
+        },
+        {
+          "side": "생존자",
+          "rowCount": 41,
+          "pickSum": 99.98,
+          "banSum": 100.01,
+          "banMissing": 0
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 99.7,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.8,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.8,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 100.2,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 100.3,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s26-20230220-20230305-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.3,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 39,
+          "pickSum": 99.7,
+          "banSum": 0,
+          "banMissing": 39
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-peak7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.2,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-7",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-6",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-5",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.8,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 99.7,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-4",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.0,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.4,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-3",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-2",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.2,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    },
+    {
+      "id": "cn-s24-20221017-20221030-1",
+      "sums": [
+        {
+          "side": "감시자",
+          "rowCount": 25,
+          "pickSum": 99.9,
+          "banSum": 0,
+          "banMissing": 25
+        },
+        {
+          "side": "생존자",
+          "rowCount": 38,
+          "pickSum": 100.1,
+          "banSum": 0,
+          "banMissing": 38
+        }
+      ]
+    }
+  ]
+}
