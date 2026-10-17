@@ -8,14 +8,19 @@ assert.equal(Object.keys(specialties.characters).length,db.characters.length);
 Object.assign(db.meta,specialties.meta);
 for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
-const allowedSpecialties={생존자:['어그로 특화','커버 특화','구출 특화','운영 특화','해독 특화'],감시자:['사냥 특화','캠핑 특화','운영 특화']};
+const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,16757);assert.equal(bans.length,15516);
 assert.equal(db.sources.length,202);assert.equal(db.matchups.filter(x=>x.status==='반영').length,447);
 assert.equal(db.characters.reduce((n,c)=>n+10-c.hard.length-c.easy.length,0),223);
 for(const ch of db.characters){
- assert.ok(allowedSpecialties[ch.side]?.includes(ch.specialty),ch.name+' specialty');
- assert.ok(typeof ch.specialtyReason==='string'&&ch.specialtyReason.length>15,ch.name+' specialty reason');
+ assert.ok(Array.isArray(ch.specialties)&&ch.specialties.length>=1&&ch.specialties.length<=2,ch.name+' 1–2 role tags');
+ assert.equal(new Set(ch.specialties).size,ch.specialties.length,ch.name+' unique role tags');
+ assert.deepEqual(Object.keys(ch.specialtyReasons).sort(),[...ch.specialties].sort(),ch.name+' reason per tag');
+ for(const tag of ch.specialties){
+  assert.ok(allowedSpecialties[ch.side]?.includes(tag),ch.name+' '+tag);
+  assert.ok(typeof ch.specialtyReasons[tag]==='string'&&ch.specialtyReasons[tag].length>15,ch.name+' '+tag+' reason');
+ }
  for(const url of ch.specialtySources||[])assert.ok(safeUrl(url),ch.name+' specialty source');
  assert.ok(ch.strengths.length<=3&&ch.weaknesses.length<=3);
  assert.ok(ch.hard.length<=5&&ch.easy.length<=5);
@@ -62,7 +67,8 @@ let source=fs.readFileSync('dist/app.js','utf8').split('\n').slice(1).join('\n')
 source+=`
 db=__data;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
 state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 나비'].id;
-globalThis.audit={templates:[],checked:0};
+globalThis.audit={templates:[],checked:0,roleCards:[]};
+for(const c of db.characters){audit.roleCards.push({id:c.id,card:card(c),selection:selectionCard(c,'compare-a','캐릭터 A'),valid:validSpecialties(c.side,c)});}
 audit.templates.push(explore(),sourcesPage(),matchupPage(),comparePage(__matches),banPage(__bans));
 for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
@@ -77,10 +83,12 @@ location.hash='#v=bans&bans='+byName['의사'].id+','+byName['의사'].id+','+by
 state.view='explore';state.favoriteOnly=false;state.search='';state.sort='name';
 audit.specialtyResults=[];
 for(const [side,roles] of Object.entries(specialtyGroups)){for(const role of roles){state.side=side;state.specialty=role;updateExplorer();audit.specialtyResults.push({side,role,html:$('#explorer-results').innerHTML});}}
-state.side='생존자';state.specialty='커버 특화';state.search='선 지자';state.favoriteOnly=true;state.favorites=new Set([byName['선지자'].id,byName['용병'].id]);updateExplorer();audit.combinedFilter=$('#explorer-results').innerHTML;
-state.specialty='구출 특화';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetInvalidSpecialty=state.specialty;
-state.specialty='운영 특화';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
+state.side='생존자';state.specialty='커버';state.search='선 지자';state.favoriteOnly=true;state.favorites=new Set([byName['선지자'].id,byName['용병'].id]);updateExplorer();audit.combinedFilter=$('#explorer-results').innerHTML;
+state.search='교수';state.favorites=new Set([byName['교수'].id,byName['용병'].id]);updateExplorer();audit.secondaryCombinedFilter=$('#explorer-results').innerHTML;
+state.specialty='구출';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetInvalidSpecialty=state.specialty;
+state.specialty='운영';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
 __handlers.click({target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
+audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버','구출']},{specialties:['커버','커버']},{specialties:['사냥']},{specialties:['어그로'],specialtyReasons:{}}].map(role=>validSpecialties('생존자',role));
 footer();audit.footer=$('#footer').innerHTML;
 `;
 vm.runInNewContext(source,context,{timeout:15000});
@@ -89,7 +97,7 @@ assert.ok(context.audit.condition.includes('구버전 중국어'));
 assert.ok(context.audit.escape.includes('&lt;img'));assert.ok(context.audit.sameSide);
 assert.equal(context.audit.cleanBans.length,1);
 for(const {side,role,html} of context.audit.specialtyResults){
- const expected=db.characters.filter(ch=>ch.side===side&&ch.specialty===role).map(ch=>ch.id).sort();
+ const expected=db.characters.filter(ch=>ch.side===side&&ch.specialties.includes(role)).map(ch=>ch.id).sort();
  const actual=[...html.matchAll(/class="character-card"[^>]*data-id="(c\d+)"/g)].map(m=>m[1]).sort();
  assert.ok(expected.length>0,side+' '+role+' populated');
  assert.deepEqual(actual,expected,side+' '+role+' filtered roster');
@@ -97,7 +105,21 @@ for(const {side,role,html} of context.audit.specialtyResults){
 assert.ok(context.audit.combinedFilter.includes('data-id="'+c('선지자').id+'"'));
 assert.ok(!context.audit.combinedFilter.includes('data-id="'+c('용병').id+'"'));
 assert.equal(context.audit.resetInvalidSpecialty,'');
-assert.equal(context.audit.keepSharedSpecialty,'운영 특화');
+assert.equal(context.audit.keepSharedSpecialty,'운영');
+assert.ok(context.audit.secondaryCombinedFilter.includes('data-id="'+c('교수').id+'"'));
+assert.ok(!context.audit.secondaryCombinedFilter.includes('data-id="'+c('용병').id+'"'));
+assert.ok(context.audit.invalidRoles.every(result=>result===false));
+assert.ok(db.characters.some(ch=>ch.specialties.length===1));
+assert.ok(db.characters.some(ch=>ch.specialties.length===2));
+for(const result of context.audit.roleCards){
+ const ch=db.characters.find(c=>c.id===result.id);
+ assert.ok(result.valid,ch.name+' runtime role validation');
+ assert.ok(!result.card.includes('특화')&&!result.selection.includes('특화'),ch.name+' short labels');
+ const cardTags=[...result.card.matchAll(/<span>#([^<]+)<\/span>/g)].map(m=>m[1]);
+ const selectionTags=[...result.selection.matchAll(/class="tag specialty-tag">#([^<]+)<\/span>/g)].map(m=>m[1]);
+ assert.deepEqual(cardTags,ch.specialties,ch.name+' ordered card tags');
+ assert.deepEqual(selectionTags,ch.specialties,ch.name+' ordered compare tags');
+}
 assert.deepEqual(Array.from(context.audit.resetExplore),['전체','','',false]);
 for(const html of context.audit.templates){assert.ok(html.length>100);assert.ok(!html.includes('undefined'));assert.ok(!html.includes('NaN'));}
 fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:356,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 695/694/296','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
