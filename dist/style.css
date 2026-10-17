@@ -41,7 +41,8 @@ html[data-theme="dark"]{--bg:#101c19;--surface:#192823;--surface-soft:#20352d;--
 .hero-art.hero-carousel{--hero-card-width:184px;--hero-card-height:224px;height:330px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:stretch;justify-content:stretch;gap:8px;min-width:0}
 .hero-stage{position:relative;width:100%;min-width:0;height:100%;overflow:hidden;perspective:900px;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
 .hero-stage .art-orbit{pointer-events:none;inset:14px}
-.hero-stage .art-card{left:50%;top:50%;width:var(--hero-card-width);height:var(--hero-card-height);margin:0;opacity:0;cursor:inherit;touch-action:inherit;transform-origin:center;backface-visibility:hidden;will-change:transform,opacity;transition:none}
+/* Resolve gesture directions on the untransformed stage, not the rotated cards. */
+.hero-stage .art-card{left:50%;top:50%;width:var(--hero-card-width);height:var(--hero-card-height);margin:0;opacity:0;cursor:inherit;touch-action:auto;transform-origin:center;backface-visibility:hidden;will-change:transform,opacity;transition:none}
 .hero-stage .art-card img{pointer-events:none;-webkit-user-drag:none}
 .hero-stage .art-card span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}
 .hero-carousel.is-dragging .hero-stage{cursor:grabbing}

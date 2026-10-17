@@ -1,5 +1,5 @@
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js';
-import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=61f1f6747dba';
+import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=7ecf60ab8d29';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);

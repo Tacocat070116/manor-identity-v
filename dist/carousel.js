@@ -152,7 +152,9 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
  listen(win,'pointermove',pointerMove,{passive:false});
  listen(win,'pointerup',pointerEnd);
  listen(win,'pointercancel',e=>pointerEnd(e,true));
- listen(stage,'lostpointercapture',e=>pointerEnd(e,true));
+ // Touch implicitly captures the card first. Its bubbling capture loss during
+ // transfer to the stage is not a cancelled drag.
+ listen(stage,'lostpointercapture',e=>{if(e.target===stage)pointerEnd(e,true);});
  listen(stage,'dragstart',e=>e.preventDefault());
  listen(root,'click',click);
  listen(root,'keydown',e=>{

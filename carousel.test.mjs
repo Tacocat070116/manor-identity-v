@@ -42,19 +42,44 @@ function harness({reduced=false,index=0}={}){
  }
  const session=createCarouselSession(roster,seeded());session.index=index;
  const root=new Element('hero-carousel');root.ownerDocument=doc;
- const stage=new Element('hero-stage',root);stage.captured=new Set();stage.setPointerCapture=id=>stage.captured.add(id);stage.hasPointerCapture=id=>stage.captured.has(id);stage.releasePointerCapture=id=>{stage.captured.delete(id);stage.emit('lostpointercapture',{pointerId:id});};
+ const stage=new Element('hero-stage',root);
  for(const {index,character} of carouselItems(session)){
   const card=new Element('art-card',stage);card.dataset={id:character.id,index:String(index)};card.offsetWidth=140;card.offsetHeight=178;
   const image=new Element('',card);image.tag='img';image.src=character.portrait;
   const label=new Element('',card);label.tag='span';label.textContent=character.name;
+ }
+ // Touch captures the hit card implicitly. Capture changes are processed before
+ // the next pointer event; lostpointercapture bubbles from the old target.
+ const captures=new Map(),pendingCaptures=new Map();
+ for(const element of [stage,...stage.children]){
+  element.setPointerCapture=id=>pendingCaptures.set(id,element);
+  element.hasPointerCapture=id=>pendingCaptures.get(id)===element;
+  element.releasePointerCapture=id=>{if(element.hasPointerCapture(id))pendingCaptures.delete(id);};
+ }
+ function processCapture(id){
+  const previous=captures.get(id);
+  if(previous===pendingCaptures.get(id))return;
+  if(previous)stage.emit('lostpointercapture',{target:previous,pointerId:id,cancelable:false});
+  const next=pendingCaptures.get(id);
+  if(next){stage.emit('gotpointercapture',{target:next,pointerId:id,cancelable:false});captures.set(id,next);}
+  else captures.delete(id);
  }
  const controls={};for(const action of ['previous','toggle','next']){controls[action]=new Element('carousel-control',root);controls[action].dataset.carousel=action;}
  const status=new Element('carousel-status',root),selected=[];
  const mount=()=>mountHeroCarousel(root,session,{onSelect:id=>selected.push(id),icon:name=>name});
  let dispose=mount();
  const click=target=>root.emit('click',{target});
- const pointer=(type,x,y,extra={})=>(type==='pointerdown'?stage:win).emit(type,{pointerId:1,isPrimary:true,pointerType:'touch',button:0,clientX:x,clientY:y,...extra});
  const current=()=>stage.children.find(el=>el.tabIndex===0);
+ const pointer=(type,x,y,extra={})=>{
+  const properties={pointerId:1,isPrimary:true,pointerType:'touch',button:0,clientX:x,clientY:y,...extra},id=properties.pointerId;
+  if(type==='pointerdown'){
+   properties.target??=current();
+   if(properties.pointerType!=='mouse')properties.target.setPointerCapture(id);
+  }else{processCapture(id);properties.target??=captures.get(id)||stage;}
+  const event=(type==='pointerdown'?stage:win).emit(type,properties);
+  if(type==='pointerup'||type==='pointercancel'){pendingCaptures.delete(id);processCapture(id);}
+  return event;
+ };
  const visibleIds=()=>stage.children.map(el=>el.dataset.id);
  return {win,doc,media,root,stage,session,controls,status,selected,tasks,observers,advance,click,pointer,current,visibleIds,dispose:()=>dispose(),remount:()=>{dispose=mount();}};
 }
@@ -91,20 +116,38 @@ test('autoplay advances smoothly, keeps five unique cards, and crosses the deck 
  h.advance(5500);assert.equal(h.session.index,90);assert.equal(h.stage.children.length,5);h.dispose();
 });
 
-test('drag follows the pointer, settles with momentum, and suppresses the release click',()=>{
- const h=harness(),first=h.current(),before=first.style.transform;
- h.pointer('pointerdown',200,80);h.advance(16);h.pointer('pointermove',145,82);h.advance(16);
- assert.notEqual(first.style.transform,before);assert.ok(h.stage.captured.has(1));
- h.pointer('pointermove',75,82);h.advance(16);h.pointer('pointerup',75,82);
- const click=h.click(first);assert.ok(click.defaultPrevented);assert.equal(h.selected.length,0);
- h.advance(900);assert.ok(h.session.index>=1&&h.session.index<=3);assert.equal(new Set(h.visibleIds()).size,5);
- h.click(h.current());assert.deepEqual(h.selected,[h.current().dataset.id]);h.dispose();
+test('touch drags from all three visible cards survive capture transfer, track movement and suppress the release click',()=>{
+ for(const offset of [-1,0,1])for(const direction of [-1,1]){
+  const h=harness(),first=h.current(),target=h.stage.children.find(el=>Number(el.dataset.index)===offset),before=first.style.transform;
+  h.pointer('pointerdown',160,80,{target});assert.ok(target.hasPointerCapture(1));
+  h.advance(16);h.pointer('pointermove',160+55*direction,82);h.advance(16);
+  const firstMove=first.style.transform;assert.notEqual(firstMove,before);assert.ok(h.stage.hasPointerCapture(1));
+  h.pointer('pointermove',160+125*direction,82);h.advance(16);
+  assert.ok(h.root.classes.has('is-dragging'),'child capture loss must not end the drag');
+  assert.notEqual(first.style.transform,firstMove,'finger movement continues after capture transfers');
+  h.pointer('pointerup',160+125*direction,82);
+  const click=h.click(first);assert.ok(click.defaultPrevented);assert.equal(h.selected.length,0);
+  h.advance(900);assert.ok(h.session.index*direction<=-1&&h.session.index*direction>=-3);assert.equal(new Set(h.visibleIds()).size,5);
+  h.click(h.current());assert.deepEqual(h.selected,[h.current().dataset.id]);h.dispose();
+ }
+});
+
+test('mouse dragging still works and losing the stage capture really cancels the gesture',()=>{
+ const h=harness();
+ h.pointer('pointerdown',200,80,{pointerType:'mouse'});h.advance(16);h.pointer('pointermove',120,80,{pointerType:'mouse'});h.advance(16);
+ h.pointer('pointermove',100,80,{pointerType:'mouse'});h.advance(16);
+ assert.ok(h.root.classes.has('is-dragging'));assert.ok(h.stage.hasPointerCapture(1));
+ h.stage.releasePointerCapture(1);h.pointer('pointermove',80,80,{pointerType:'mouse'});
+ assert.equal(h.root.classes.has('is-dragging'),false);h.advance(900);
+ const index=h.session.index,transform=h.current().style.transform;
+ h.pointer('pointermove',10,80,{pointerType:'mouse'});h.advance(16);
+ assert.equal(h.session.index,index);assert.equal(h.current().style.transform,transform);h.dispose();
 });
 
 test('vertical gestures preserve page scrolling and a normal tap still opens the shown character',()=>{
  const h=harness(),initial=h.current().dataset.id;
  h.pointer('pointerdown',100,50);const move=h.pointer('pointermove',103,100);assert.equal(move.defaultPrevented,false);
- h.pointer('pointercancel',103,100);h.advance(800);assert.equal(h.session.index,0);assert.equal(h.stage.captured.size,0);
+ h.pointer('pointercancel',103,100);h.advance(800);assert.equal(h.session.index,0);assert.equal(h.stage.hasPointerCapture(1),false);
  h.pointer('pointerdown',100,50);h.pointer('pointerup',100,50);h.click(h.current());assert.deepEqual(h.selected,[initial]);h.dispose();
 });
 
@@ -136,7 +179,7 @@ test('hover and keyboard focus pause autoplay, and arrows announce and focus the
 
 test('cancellation and cleanup remove gesture capture, listeners, observers, timers and frames',()=>{
  const h=harness();h.pointer('pointerdown',200,80);h.advance(16);h.pointer('pointermove',120,80);h.advance(16);h.pointer('pointercancel',120,80);h.advance(900);
- assert.equal(h.stage.captured.size,0);assert.equal(h.root.classes.has('is-dragging'),false);assert.ok(Number.isInteger(h.session.index));
+ assert.equal(h.stage.hasPointerCapture(1),false);assert.equal(h.root.classes.has('is-dragging'),false);assert.ok(Number.isInteger(h.session.index));
  h.click(h.controls.next);h.advance(100);h.dispose();const index=h.session.index;
  assert.equal(h.tasks.size,0);for(const target of [h.root,h.stage,h.win,h.doc,h.media])assert.equal(target.listenerCount(),0);
  assert.ok(h.observers.every(o=>!o.connected));h.advance(50000);assert.equal(h.session.index,index);
