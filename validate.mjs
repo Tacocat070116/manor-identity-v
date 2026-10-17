@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {createCarouselSession,carouselItems} from './dist/carousel.js';
 import {statsFor,rankBans,pairEvidence,safeUrl,filterRows} from './dist/model.js';
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
 const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
@@ -62,8 +63,8 @@ assert.ok(pairEvidence(db.matchups,c('사도'),c('탐사원')).length>0);
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans,__handlers:handlers};
-let source=fs.readFileSync('dist/app.js','utf8').split('\n').slice(1).join('\n').replace(/\nboot\(\);\s*$/,'');
+const context={createCarouselSession,carouselItems,mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans,__handlers:handlers};
+let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
 state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 나비'].id;
