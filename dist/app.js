@@ -37,7 +37,7 @@ survivor:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"
 };
 const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
 const link=(url,label,cls='text-link')=>safeUrl(url)?`<a class="${cls}" href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)}${cls.includes('btn')?icon('external'):''}</a>`:'';
-const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'name',favoriteOnly:false,region:'전체',sourceQuery:'',stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banFilters:{days:365,map:'',tournament:'',excluded:[]},bans:['','',''],situation:'',favorites:new Set(),theme:'light'};
+const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'name',favoriteOnly:false,region:'전체',sourceQuery:'',stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],situation:'',favorites:new Set(),theme:'light'};
 try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
 document.documentElement.dataset.theme=state.theme;
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
