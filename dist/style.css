@@ -137,6 +137,29 @@ html[data-theme="dark"]{--accent:#9fd9bb;--danger:#efb29b;--danger-soft:#3d2b25;
 .filter-select option{background:var(--surface-solid);color:var(--ink)}
 html[data-theme="dark"] .ambient-one{background:#376d54}
 html[data-theme="dark"] .ambient-two{background:#304f3d}
+/* Slow, independent currents behind the liquid surfaces. Only transforms move. */
+@keyframes ambient-current-one{
+ 0%,100%{transform:translate3d(0,0,0) scale(1)}
+ 33%{transform:translate3d(calc(var(--ambient-travel-x) * -1),var(--ambient-travel-y),0) scale(1.06)}
+ 66%{transform:translate3d(calc(var(--ambient-travel-x) * -.25),calc(var(--ambient-travel-y) * 1.4),0) scale(.98)}
+}
+@keyframes ambient-current-two{
+ 0%,100%{transform:translate3d(0,0,0) scale(1)}
+ 38%{transform:translate3d(var(--ambient-travel-x),calc(var(--ambient-travel-y) * -.7),0) scale(1.05)}
+ 72%{transform:translate3d(calc(var(--ambient-travel-x) * .55),calc(var(--ambient-travel-y) * .8),0) scale(1.02)}
+}
+@media (prefers-reduced-motion:no-preference){
+ .ambient{
+  --ambient-travel-x:clamp(64px,10vw,144px);
+  --ambient-travel-y:clamp(60px,10vh,112px);
+  will-change:transform;
+ }
+ .ambient-one{animation:ambient-current-one 36s ease-in-out -9s infinite}
+ .ambient-two{animation:ambient-current-two 48s ease-in-out -24s infinite}
+}
+@media (prefers-reduced-motion:reduce){
+ .ambient{animation:none;transform:none;will-change:auto}
+}
 @media (hover:hover){.selection-card:hover{border-color:var(--accent-line);transform:translateY(-2px)}.ban-slot .remove:hover{background:var(--surface-soft);border-color:var(--line);color:var(--ink)}}
 @media (prefers-reduced-motion:reduce){.selection-card:hover{transform:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
