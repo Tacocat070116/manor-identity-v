@@ -41,7 +41,17 @@ export function rankBans(rows, selections, filters = {}) {
   return { base:base.length,matched:matched.length,ranks:ranks.slice(0,5),error:null };
 }
 export function pairEvidence(data, own, opponent, situation = '') {
-  return data.filter(x => x.status === '반영' && ((x.hunter === own.name && x.survivor === opponent.name) || (x.hunter === opponent.name && x.survivor === own.name)) && (!situation || x.situation.includes(situation)));
+  const seen = new Set();
+  return data.filter(x => {
+    if (x.status !== '반영' || !((x.hunter === own.name && x.survivor === opponent.name) || (x.hunter === opponent.name && x.survivor === own.name)) || (situation && !x.situation.includes(situation))) return false;
+    // Keep historical evidence IDs, but render identical reviewed text and
+    // sources once. Different situations and opposing findings remain visible.
+    const sources = (x.sourceSupport || []).map(s => s.url).sort();
+    const key = JSON.stringify([x.hunter,x.survivor,x.advantage,x.situation,x.summary,x.condition,sources]);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 export function safeUrl(value) {
   try { const u = new URL(value); return ['http:','https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; }

@@ -1,0 +1,3864 @@
+{
+  "reviewedAt": "2026-10-19",
+  "hunters": [
+    "c19",
+    "c20",
+    "c21",
+    "c22",
+    "c23",
+    "c24",
+    "c25",
+    "c26",
+    "c27"
+  ],
+  "sources": [
+    {
+      "url": "https://wikiwiki.jp/identity5ch/写真家",
+      "title": "写真家",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/사진사(제5인격)",
+      "title": "사진사",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/医師",
+      "title": "医師",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/人形師",
+      "title": "人形師",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/調香師",
+      "title": "調香師",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/患者",
+      "title": "患者",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/教授",
+      "title": "教授",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/278582869343866642",
+      "title": "鳞片硬化！全新求生者教授基础攻略爆料！",
+      "region": "CN",
+      "kind": "공식 공략",
+      "sourceFamily": "netease-professor-202205",
+      "publishedAt": "2022-05-25",
+      "accessedAt": "2026-10-19",
+      "scope": "능력·평가·대진 예외",
+      "notes": "게시·갱신일을 패치 적용일로 간주하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/航空エンジニア",
+      "title": "航空エンジニア",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.namu.moe/w/서기관(제5인격)",
+      "title": "서기관(제5인격)",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+      "title": "幻灯師",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/書記官",
+      "title": "書記官",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/冒険家",
+      "title": "冒険家",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/記者",
+      "title": "記者",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+      "title": "マイムアーティスト",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/レディ・ファウロ",
+      "title": "レディ・ファウロ",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+      "title": "ガードNo.26",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.namu.moe/w/수위 26호",
+      "title": "수위 26호",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.namu.moe/w/환등사",
+      "title": "환등사",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/踊り子",
+      "title": "踊り子",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.namu.moe/w/곤충학자(제5인격)",
+      "title": "곤충학자(제5인격)",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+      "title": "昆虫学者",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.namu.moe/w/기자(제5인격)",
+      "title": "기자(제5인격)",
+      "region": "KR",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/365068817728014690",
+      "title": "第五人格【三分钟学会古董商】进阶讲解",
+      "region": "CN",
+      "kind": "작성자 공략",
+      "sourceFamily": "diwu-xuyuanma-antiquarian-202301",
+      "publishedAt": "2023-01-19",
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "第五许愿码의 동일 명칭 위챗 공략 재게시. 수위 26호 대진과 거리 이탈 예외 확인."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/245868658591532292",
+      "title": "生而残缺《第五人格》求生者-哭泣小丑入门攻略新鲜出炉！",
+      "region": "CN",
+      "kind": "공식 초청 공략",
+      "sourceFamily": "netease-weepingclown-202202",
+      "publishedAt": "2022-02-24",
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "공식 계정 鹿头班恩 게시. 초청 작성자 飙黑车的司机. 로켓 구출 진입과 추격 이탈을 구분."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/神童",
+      "title": "神童",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/占い師",
+      "title": "占い師",
+      "region": "JP",
+      "kind": "이용자 공동편집",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "패치 적용일 별도. 미러는 원문과 동일 계열로 취급."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/146210860317018422",
+      "title": "【求生者-医生】高阶攻略",
+      "region": "CN",
+      "kind": "공식 초청 공략",
+      "sourceFamily": "netease-doctor-kongtiao-202105",
+      "publishedAt": "2021-05-25",
+      "accessedAt": "2026-10-19",
+      "scope": "능력·대진·예외 검토",
+      "notes": "공식 계정 鹿头班恩 게시. 초청 작성자 空调丷. 오래된 수치 대신 폭탄 앞 치료 장면만 현행 능력과 교차 확인."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+      "title": "マジシャン 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/시공의 그림자",
+      "title": "시공의 그림자 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/一等航海士",
+      "title": "一等航海士 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/時空の影",
+      "title": "時空の影 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/墓守",
+      "title": "墓守 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/泣きピエロ",
+      "title": "泣きピエロ 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/궁수(제5인격)",
+      "title": "궁수(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 열람. 대진별 적용 패치가 명시되지 않아 공지 날짜를 실측 날짜로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/항해사(제5인격)",
+      "title": "항해사(제5인격) 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+      "title": "探鉱者 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/탐사원",
+      "title": "탐사원 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/祭司",
+      "title": "祭司 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/脱出マスター",
+      "title": "脱出マスター 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/마술사(제5인격)",
+      "title": "마술사(제5인격) 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/悪夢",
+      "title": "悪夢 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/'파로 부인'",
+      "title": "'파로 부인' 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/280293763165717771",
+      "title": "教授角色攻略",
+      "region": "CN",
+      "kind": "작성자 공략 재게시",
+      "sourceFamily": "xiaozamo-professor-2022",
+      "publishedAt": "2022-05-30",
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "TapTap 林이 원저자 小砸墨의 바이자하오 글을 재게시. 원문과 같은 계열로 취급. 오래된 재사용 대기 수치는 채택하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/泥棒",
+      "title": "泥棒 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+      "title": "闘牛士 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/투우사(제5인격)",
+      "title": "투우사(제5인격) 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "대진·능력·예외 관련 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/女王蜂",
+      "title": "女王蜂 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/무언극 아티스트",
+      "title": "무언극 아티스트 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/心理学者",
+      "title": "心理学者 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/'여왕벌'",
+      "title": "'여왕벌' 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/小説家",
+      "title": "小説家 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/오페라 가수",
+      "title": "오페라 가수 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/騎士",
+      "title": "騎士 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/기사(제5인격)",
+      "title": "기사(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "기사 문서로 연결되는 주소. 추격 예측과 구출 피해 감소를 구분해 확인."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/オペラ歌手",
+      "title": "オペラ歌手 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/バーメイド",
+      "title": "バーメイド 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/화재조사관",
+      "title": "화재조사관 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+      "title": "火災調査員 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/弓使い",
+      "title": "弓使い 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/幸運児",
+      "title": "幸運児 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 페이지 갱신일을 대진 실측일로 해석하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/묘지기(제5인격)",
+      "title": "묘지기(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/納棺師",
+      "title": "納棺師 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/납관사",
+      "title": "납관사 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/샤먼(제5인격)",
+      "title": "샤먼(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/機械技師",
+      "title": "機械技師 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/기계공(제5인격)",
+      "title": "기계공(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+      "title": "白黒無常 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/맹인(제5인격)",
+      "title": "맹인(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/우산의 영혼",
+      "title": "우산의 영혼 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/気象学者",
+      "title": "気象学者 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/우편 배달부(제5인격)",
+      "title": "우편 배달부(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/'죄수'",
+      "title": "'죄수' 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/환자(제5인격)",
+      "title": "환자(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/作曲家",
+      "title": "作曲家 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/泣き虫",
+      "title": "泣き虫 캐릭터 공략",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "wikiwiki-identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/울보(제5인격)",
+      "title": "울보(제5인격) 캐릭터 공략",
+      "region": "KR",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "능력·추격·대진 및 예외 단락",
+      "notes": "현재 본문 확인. 대진별 최신 패치 실측을 뜻하지 않음."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/17012117269908185",
+      "title": "相中世界！《第五人格》摄影师进阶攻略登场！",
+      "region": "CN",
+      "kind": "공식 초청 공략",
+      "sourceFamily": "netease-photographer-shulanxiong-202005",
+      "publishedAt": "2020-05-29",
+      "accessedAt": "2026-10-19",
+      "scope": "사진사·용병의 피해 지연 상호작용",
+      "notes": "공식 계정 鹿头班恩이 초청 작성자 树懒熊是大魔王의 공략 게시. 오래된 글이므로 높은 평타 피해만 현행 한국 공략과 교차 확인."
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+      "title": "Maintenance Update on October 15",
+      "region": "공식",
+      "kind": "패치 공지",
+      "sourceFamily": "netease-patch-notes",
+      "publishedAt": "2026-10-15",
+      "accessedAt": "2026-10-19",
+      "scope": "신동 랭킹전 개방 및 상태별 판정 수정",
+      "notes": "랭킹전 추가, 공 밀기 조작과 공연 높이 판정 수정 확인. 개별 상성 우위의 독립 근거로 세지 않음."
+    }
+  ],
+  "records": [
+    {
+      "id": "M093",
+      "status": "반영",
+      "summary": "소수점 부상까지 치료해 사진 세계 종료 뒤 팀의 회복을 돕습니다.",
+      "condition": "직접 쫓기면 높은 평타 피해 때문에 자가 치료로 버티기 어렵습니다.",
+      "situation": "회복 지원",
+      "advantage": "의사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/医師",
+        "https://www.namu.moe/w/사진사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "회복 지원과 직접 추격 분리",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/医師",
+          "support": "direct",
+          "note": "사진 피해 회복 지원"
+        },
+        {
+          "url": "https://www.namu.moe/w/사진사(제5인격)",
+          "support": "exception",
+          "note": "지원 이점과 직접 추격 부담"
+        }
+      ]
+    },
+    {
+      "id": "M094",
+      "status": "반영",
+      "summary": "포털로 합류와 치료를 빠르게 이어가 사진사의 부상 운영을 줄입니다.",
+      "condition": "연결할 동료와 안전한 도착점이 필요하며, 사진 종료 직후의 기습을 경계합니다.",
+      "situation": "팀 재정비",
+      "advantage": "샤먼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/写真家",
+        "https://www.namu.moe/w/사진사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "합류·추격 대응 교차 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "direct",
+          "note": "포털 합류와 빠른 회복"
+        },
+        {
+          "url": "https://www.namu.moe/w/사진사(제5인격)",
+          "support": "direct",
+          "note": "포털·치료로 부상 운영 대응"
+        }
+      ]
+    },
+    {
+      "id": "M095",
+      "status": "반영",
+      "summary": "해독 가속 이후 암호기를 촬영 종료 전에 완성하면 진행도 손실을 피할 수 있습니다.",
+      "condition": "첫 촬영 때도 항상 가능한 것은 아니며, 먼저 발견되면 직접 추격이 약합니다.",
+      "situation": "해독 운영",
+      "advantage": "맹인",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "해독 한정 이점",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "direct",
+          "note": "해독 가속 뒤 촬영 내 완성"
+        }
+      ]
+    },
+    {
+      "id": "M096",
+      "status": "보류",
+      "summary": "지도로 사진사의 위치를 알려 팀의 숨기와 해독 선택을 도울 수 있습니다.",
+      "condition": "정보를 팀에 전달해야 하며, 직접 대진의 독립적인 보강 자료는 부족합니다.",
+      "situation": "정보 지원",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "재검토 보류",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "일본 공동편집 한 계열만 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "direct",
+          "note": "지도 정보의 팀 활용"
+        }
+      ]
+    },
+    {
+      "id": "M097",
+      "status": "반영",
+      "summary": "높은 평타 피해로 용병의 피해 지연을 뚫을 상황을 만들고 회복 부담을 늘립니다.",
+      "condition": "팔꿈치 보호대로 거리를 벌린 용병을 끝까지 추격하는 선택은 손해가 될 수 있습니다.",
+      "situation": "추격·치료",
+      "advantage": "사진사",
+      "urls": [
+        "https://www.taptap.cn/moment/17012117269908185",
+        "https://www.namu.moe/w/사진사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "오래된 CN 공략의 피해 상호작용을 현행 KR 대진과 교차 확인",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/17012117269908185",
+          "support": "direct",
+          "note": "높은 피해로 용병 지연 압박"
+        },
+        {
+          "url": "https://www.namu.moe/w/사진사(제5인격)",
+          "support": "direct",
+          "note": "회복 부담과 팔꿈치 이탈 예외"
+        }
+      ]
+    },
+    {
+      "id": "M098",
+      "status": "반영",
+      "summary": "연속된 높은 평타 피해는 스트레스가 회복되기 전에 심리학자를 쓰러뜨릴 수 있습니다.",
+      "condition": "호루라기의 팀 회복과 스트레스 발동 뒤 허상 이동은 별개이므로 연속 공격을 끊을 여지는 있습니다.",
+      "situation": "직접 추격",
+      "advantage": "사진사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/心理学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "직접 추격과 팀 회복 분리; 현재 허상 이동 예외 반영",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/心理学者",
+          "support": "direct",
+          "note": "높은 피해 추격과 호루라기 지원 구분"
+        }
+      ]
+    },
+    {
+      "id": "M099",
+      "status": "반영",
+      "summary": "사진상이 의자에 묶여 있으면 사진 종료 때 쓰러져 향수로 돌아갈 수 없습니다.",
+      "condition": "사진상이 묶이지 않았다면 종료 직전 향수로 정산 피해를 되돌리는 대응이 가능합니다.",
+      "situation": "사진 세계",
+      "advantage": "사진사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/調香師",
+        "https://www.namu.moe/w/사진사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "사진사 우위를 의자에 묶인 사진상으로 한정",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/調香師",
+          "support": "direct",
+          "note": "정산 직전 향수와 사진상 의자 예외"
+        },
+        {
+          "url": "https://www.namu.moe/w/사진사(제5인격)",
+          "support": "direct",
+          "note": "사진상이 묶이면 향수 복귀 불가"
+        }
+      ]
+    },
+    {
+      "id": "M100",
+      "status": "반영",
+      "summary": "사진 세계로 해독을 되돌려 경기를 늘리면 기계공의 인형 자원을 소모시킬 수 있습니다.",
+      "condition": "동료가 미완성 암호기를 이어 완성하면 지연 효과가 줄어듭니다.",
+      "situation": "장기 운영",
+      "advantage": "사진사",
+      "urls": [
+        "https://www.namu.moe/w/사진사(제5인격)",
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "장기 운영 이점. 모든 부상의 해독 감속이라는 잘못된 일반화 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/사진사(제5인격)",
+          "support": "direct",
+          "note": "장기전 인형 자원 소모"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "mechanic",
+          "note": "사진 종료 시 미완성 해독 되감기"
+        }
+      ]
+    },
+    {
+      "id": "M182",
+      "status": "보류",
+      "summary": "사진 종료 전에 동료 곁으로 이동하면 쓰러진 뒤의 회복을 준비할 수 있습니다.",
+      "condition": "순간이동 가능 상태와 도착점 안전을 확인해야 하며, 독립적인 보강 대진 자료가 부족합니다.",
+      "situation": "팀 재정비",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "재검토 보류",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "한 계열의 직접 설명만 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "direct",
+          "note": "사진 종료 전 동료에게 이동"
+        }
+      ]
+    },
+    {
+      "id": "M212",
+      "status": "반영",
+      "summary": "사진사의 높은 평타 피해가 용병의 피해 지연과 회복을 압박합니다.",
+      "condition": "추격 이탈에는 팔꿈치 보호대가 유효합니다.",
+      "situation": "피해 운영",
+      "advantage": "사진사",
+      "urls": [
+        "https://www.taptap.cn/moment/17012117269908185"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M097과 중복인 피해 상호작용; 대표 목록 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/17012117269908185",
+          "support": "direct",
+          "note": "용병의 피해 지연을 압박하는 평타"
+        }
+      ]
+    },
+    {
+      "id": "M213",
+      "status": "반영",
+      "summary": "사진사의 높은 평타 피해는 구출 직후 기사의 피해 감소가 남아 있어도 위협적입니다.",
+      "condition": "추격 중 평타 예측으로 공격을 막는 장점은 별도이므로 기사 전체를 불리하다고 단정하지 않습니다.",
+      "situation": "구출 후 피해 감소",
+      "advantage": "사진사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/騎士",
+        "https://www.namu.moe/w/기사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "추격과 구출·운영 상황 분리",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "구출 피해 감소와 추격 예측의 반대 조건을 분리",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/騎士",
+          "support": "direct",
+          "note": "사진사 평타 1.5에서 0.5 감소, 부상자는 여전히 위험"
+        },
+        {
+          "url": "https://www.namu.moe/w/기사(제5인격)",
+          "support": "direct",
+          "note": "추격 예측 이점과 구출 피해 감소 한계"
+        }
+      ]
+    },
+    {
+      "id": "M214",
+      "status": "반영",
+      "summary": "사진 정산으로 부상을 남기면 치료 제약이 있는 인형사의 재정비를 압박할 수 있습니다.",
+      "condition": "루이는 현재 높은 평타 피해를 받아낼 수 있으므로 직접 추격까지 같은 우위로 보지 않습니다.",
+      "situation": "피해 운영",
+      "advantage": "사진사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/人形師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "기존 1.5 평타로 루이를 뚫는 인상 제거",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/人形師",
+          "support": "direct",
+          "note": "사진 정산·치료 제약과 루이 방어 구분"
+        }
+      ]
+    },
+    {
+      "id": "M263",
+      "status": "반영",
+      "summary": "사진 세계가 남긴 소수점 피해를 치료해 팀의 부상 누적을 줄입니다.",
+      "condition": "의사 본인이 먼저 추격당하면 회복 지원을 이어가기 어렵습니다.",
+      "situation": "회복 운영",
+      "advantage": "의사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/医師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M093 회복 장면 중복",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/医師",
+          "support": "direct",
+          "note": "사진 정산 뒤 팀 회복"
+        }
+      ]
+    },
+    {
+      "id": "M312",
+      "status": "반영",
+      "summary": "비늘로 본체 평타를 막으면 구출하거나 다음 지형으로 옮길 시간을 벌 수 있습니다.",
+      "condition": "사진 세계 종료 때 반영되는 피해는 비늘로 막지 못합니다.",
+      "situation": "평타 방어",
+      "advantage": "교수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/278582869343866642"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "2022 공략과 현행 방어표 일치. 사진 운영 우위로 확대 불가",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "본체 평타와 사진 정산 방어 구분"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "mechanic",
+          "note": "비늘의 평타 방어 범위"
+        }
+      ]
+    },
+    {
+      "id": "M385",
+      "status": "보류",
+      "summary": "부엉이로 본체 평타를 막아 구출할 틈을 만듭니다.",
+      "condition": "사진 정산 피해는 별개이며 독립 보강 자료가 부족합니다.",
+      "situation": "구출",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "재검토 보류",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "구출 방어를 전체 상성으로 확대하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/写真家",
+          "support": "direct",
+          "note": "구출 시 본체 평타 방어"
+        }
+      ]
+    },
+    {
+      "id": "M397",
+      "status": "반영",
+      "summary": "루이로 본체의 높은 평타 피해를 받아내며 추격을 늘릴 수 있습니다.",
+      "condition": "사진 세계의 정산 피해와 치료 제약 때문에 장기 운영에서는 불리해질 수 있습니다.",
+      "situation": "직접 추격",
+      "advantage": "인형사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/人形師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M214와 반대 장면. 두 목록에 중복 노출하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/人形師",
+          "support": "direct",
+          "note": "현행 루이의 높은 평타 피해 흡수"
+        }
+      ]
+    },
+    {
+      "id": "M419",
+      "status": "반영",
+      "summary": "직접 추격에서는 마술봉의 환영과 은신으로 평타를 피하며 지형으로 이동할 수 있습니다.",
+      "condition": "사진 세계 정산 피해를 막는 능력은 아니며 사진상 기습과 잔상 이동은 따로 경계해야 합니다.",
+      "situation": "직접 추격",
+      "advantage": "마술사",
+      "urls": [
+        "https://www.namu.moe/w/마술사(제5인격)",
+        "https://wikiwiki.jp/identity5ch/マジシャン"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "추격과 구출·운영 상황 분리",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "사진 운영까지 마술사에게 유리하다고 확대하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/마술사(제5인격)",
+          "support": "direct",
+          "note": "사진사의 직접 추격에 대한 대응"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "mechanic",
+          "note": "환영·은신으로 평타 대응"
+        }
+      ]
+    },
+    {
+      "id": "M443",
+      "status": "반영",
+      "summary": "갈고리로 추격 구역을 벗어나면 즉시 따라갈 이동기가 부족한 사진사의 시간을 빼앗습니다.",
+      "condition": "갈고리를 걸 지형과 잔량이 필요하며, 사진 정산으로 쓰러질 상황은 따로 계산합니다.",
+      "situation": "지형 이동",
+      "advantage": "환자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://www.namu.moe/w/환자(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "이동 능력과 사진 운영 예외 교차 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "mechanic",
+          "note": "갈고리의 장거리 이탈"
+        },
+        {
+          "url": "https://www.namu.moe/w/환자(제5인격)",
+          "support": "direct",
+          "note": "사진사의 부족한 이동기와 갈고리 대응"
+        }
+      ]
+    },
+    {
+      "id": "M101",
+      "status": "반영",
+      "summary": "기록 중 판자·창틀을 쓰지 않고 비행으로 거리를 벌려 추격을 늘릴 수 있습니다.",
+      "condition": "제트 자원과 착지 공간이 필요하며, 팀의 해독 기록까지 막지는 못합니다.",
+      "situation": "추격",
+      "advantage": "항공 전문가",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/航空エンジニア",
+        "https://www.namu.moe/w/서기관(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "비행 대응 직접 평가와 서기관의 거리 추격 약점을 결합한 추론",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/航空エンジニア",
+          "support": "direct",
+          "note": "비행으로 기록 추격 회피"
+        },
+        {
+          "url": "https://www.namu.moe/w/서기관(제5인격)",
+          "support": "mechanic",
+          "note": "장거리 이동을 따라가기 어려운 추격"
+        }
+      ]
+    },
+    {
+      "id": "M102",
+      "status": "반영",
+      "summary": "위치 투영을 시작하면 본인에게 걸린 기록을 끊을 수 있습니다.",
+      "condition": "투영 잔량이 필요하고 다른 팀원의 기록·해독 봉쇄는 계속됩니다.",
+      "situation": "기록 대응",
+      "advantage": "환등사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幻灯師",
+        "https://wikiwiki.jp/identity5ch/書記官"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "직접 상호작용은 확인했으나 같은 공동편집 계열만 보강되어 목록 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "투영이 기록 해제·대상 지정 방지"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/書記官",
+          "support": "mechanic",
+          "note": "다른 대상 해독 기록은 유지"
+        }
+      ]
+    },
+    {
+      "id": "M103",
+      "status": "반영",
+      "summary": "기록한 공격으로 포털을 정리해 연결 지점을 압박할 수 있습니다.",
+      "condition": "샤먼은 짧은 포털로 거리를 벌릴 수 있어 포털 제거만으로 전체 우위를 정할 수 없습니다.",
+      "situation": "장거리 포털",
+      "advantage": "서기관",
+      "urls": [
+        "https://www.namu.moe/w/서기관(제5인격)",
+        "https://wikiwiki.jp/identity5ch/書記官"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "장거리 연결 한정 이점을 전체 상성에서 분리",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/서기관(제5인격)",
+          "support": "direct",
+          "note": "공격 기록으로 포털 정리"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/書記官",
+          "support": "exception",
+          "note": "장거리 이동에 약한 직접 추격"
+        }
+      ]
+    },
+    {
+      "id": "P010",
+      "status": "보류",
+      "summary": "보물을 기록 밖에서 사용하면 해독을 밀어 넣을 수 있지만, 사용 장면이 기록되면 진도가 되감깁니다.",
+      "condition": "보유 페이지와 기록 여부에 따라 반대 결과가 나므로 한쪽 우위를 표시하지 않습니다.",
+      "situation": "조건·자료 불일치",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/冒険家",
+        "https://wikiwiki.jp/identity5ch/書記官"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "기존 보류 유지: 해독 장면과 직접 추격을 분리",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/冒険家",
+          "support": "direct",
+          "note": "기록 중 보물 사용 되감기"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/書記官",
+          "support": "direct",
+          "note": "보물 사용 장면 기록 가능"
+        }
+      ]
+    },
+    {
+      "id": "M215",
+      "status": "보류",
+      "summary": "기록으로 맹인의 판자·창틀 사용을 압박할 수 있으나 고유한 대진 우위는 더 확인해야 합니다.",
+      "condition": "일반적인 판자 기록 효과만으로 맹인에게 특별히 강하다고 정하지 않습니다.",
+      "situation": "판자·창틀",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/書記官"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "맹인 고유 상성 단락이 현재 KR 원문에 없음. 일반 메커니즘만 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/書記官",
+          "support": "mechanic",
+          "note": "판자·창틀 기록 일반 효과"
+        }
+      ]
+    },
+    {
+      "id": "M216",
+      "status": "반영",
+      "summary": "환영의 판자 내리기를 기록하거나 판자를 먼저 닫아 기자의 방어를 역이용할 수 있습니다.",
+      "condition": "기자가 본체 기록 중 환영을 쓰거나 소환 위치를 바꾸면 대응이 달라집니다.",
+      "situation": "판자·창틀",
+      "advantage": "서기관",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/記者",
+        "https://www.namu.moe/w/서기관(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "환영 기록·선판자 상호작용을 양국에서 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "direct",
+          "note": "환영 기록과 본체 기록 중 소환 예외"
+        },
+        {
+          "url": "https://www.namu.moe/w/서기관(제5인격)",
+          "support": "direct",
+          "note": "판자 환영 기록·선판자 대응"
+        }
+      ]
+    },
+    {
+      "id": "M217",
+      "status": "보류",
+      "summary": "무언극 아티스트의 새 구조물과 서기관의 기록이 어떻게 맞물리는지는 추가 검증이 필요합니다.",
+      "condition": "기존 판자·창틀 설명을 새 벽 전체에 그대로 적용하지 않습니다.",
+      "situation": "판자·창틀",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マイムアーティスト"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "현재 원문에서 동일한 대진 근거를 재확인하지 못함",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+          "support": "mechanic",
+          "note": "생성 벽·판자 능력; 기록 대진 미확인"
+        }
+      ]
+    },
+    {
+      "id": "M278",
+      "status": "반영",
+      "summary": "은신 중에는 기록 대상 지정을 피하고 이미 걸린 기록을 해제할 수 있습니다.",
+      "condition": "은신이 풀린 뒤에는 다시 기록되며, 해독 견제까지 사라지는 것은 아닙니다.",
+      "situation": "은신",
+      "advantage": "파로 부인",
+      "urls": [
+        "https://www.namu.moe/w/서기관(제5인격)",
+        "https://wikiwiki.jp/identity5ch/レディ・ファウロ"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "KR 직접 설명만 확인. JP는 해독 대응을 설명하므로 이 은신 대진 목록의 독립 보강으로 세지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/서기관(제5인격)",
+          "support": "direct",
+          "note": "은신으로 기록 해제"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/レディ・ファウロ",
+          "support": "exception",
+          "note": "해독 대응은 은신 대진의 독립 보강 아님"
+        }
+      ]
+    },
+    {
+      "id": "M104",
+      "status": "반영",
+      "summary": "신호총으로 수위 26호를 멈추면 폭탄이 깔린 의자 앞 구출을 진행하기 쉬워집니다.",
+      "condition": "총을 가리는 장애물과 흥분을 확인하고, 이미 놓인 폭탄의 폭발도 피해야 합니다.",
+      "situation": "구출",
+      "advantage": "공군",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ガードNo.26",
+        "https://www.namu.moe/w/수위 26호"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "양국 직접 구출 평가 일치",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+          "support": "direct",
+          "note": "신호총으로 캠핑 구출 대응"
+        },
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "direct",
+          "note": "총 구출과 흥분·폭탄 예외"
+        }
+      ]
+    },
+    {
+      "id": "M105",
+      "status": "반영",
+      "summary": "관 부활로 폭탄 캠핑 구역에 직접 들어가지 않고 동료를 구할 수 있습니다.",
+      "condition": "관 위치가 미리 준비되어야 하며 순간이동·형상 이동을 통한 재추격은 경계합니다.",
+      "situation": "구출 지원",
+      "advantage": "납관사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ガードNo.26",
+        "https://www.namu.moe/w/납관사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "양국 직접 원격 구출 평가 일치",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+          "support": "direct",
+          "note": "관 부활이 폭탄 캠핑 우회"
+        },
+        {
+          "url": "https://www.namu.moe/w/납관사",
+          "support": "direct",
+          "note": "폭탄형 캠핑을 원격 구출로 우회"
+        }
+      ]
+    },
+    {
+      "id": "M106",
+      "status": "반영",
+      "summary": "투영으로 폭탄 피해의 반영을 늦추고 종료 시점의 회피를 준비할 수 있습니다.",
+      "condition": "플라이휠을 정확히 맞춰야 하며, 본체 평타와 의자 주변의 짧은 투영 시간은 별개입니다.",
+      "situation": "추격·지원",
+      "advantage": "환등사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幻灯師",
+        "https://www.namu.moe/w/환등사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "투영·폭탄 회피의 독립 보강 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "투영 피해 지연·플라이휠 회피"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "mechanic",
+          "note": "고정 투영의 피해 전달과 시간 제한"
+        }
+      ]
+    },
+    {
+      "id": "M107",
+      "status": "반영",
+      "summary": "갈고리로 폭탄이 이어지는 범위를 벗어나면 느린 본체가 다시 붙는 데 시간이 듭니다.",
+      "condition": "갈고리를 걸 지형과 안전한 착지점이 필요하며 직접 구출의 폭탄 위험은 남습니다.",
+      "situation": "추격",
+      "advantage": "환자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ガードNo.26",
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://www.namu.moe/w/수위 26호"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "환자 직접 평가와 본체 이동 약점을 교차 분석",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+          "support": "direct",
+          "note": "갈고리 이탈에 약한 추격"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "mechanic",
+          "note": "갈고리 이동과 착지 지형"
+        },
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "mechanic",
+          "note": "이동기가 부족한 본체"
+        }
+      ]
+    },
+    {
+      "id": "M108",
+      "status": "반영",
+      "summary": "연속 폭탄은 향수로 큰 피해 한 번을 되돌리는 운영을 어렵게 만듭니다.",
+      "condition": "폭탄이 없는 방향으로 먼저 옮기고 향수 시간을 분산하면 피해를 줄일 수 있습니다.",
+      "situation": "추격",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/調香師",
+        "https://www.namu.moe/w/수위 26호"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "소수점 연속 피해의 상성 일치",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/調香師",
+          "support": "direct",
+          "note": "연속 폭탄이 향수 회복 압박"
+        },
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "direct",
+          "note": "소수점 피해로 향수 대응"
+        }
+      ]
+    },
+    {
+      "id": "M109",
+      "status": "반영",
+      "summary": "루이 변신 뒤에도 연속 폭탄이 이어져 방어 자원을 빠르게 소모할 수 있습니다.",
+      "condition": "변신 전후의 체력과 폭발 간격에 따라 달라져 모든 폭탄을 그대로 받는다는 뜻은 아닙니다.",
+      "situation": "추격",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/人形師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "같은 계열의 능력 추론만 확보. 독립 직접 근거 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/人形師",
+          "support": "direct",
+          "note": "연속 소수점 피해가 변신 자원 압박"
+        }
+      ]
+    },
+    {
+      "id": "M110",
+      "status": "반영",
+      "summary": "감속 오르골 안에 머무르면 본체 속도와 무관한 폭탄 피해에 노출되기 쉽습니다.",
+      "condition": "오르골을 지키기보다 폭발 범위를 벗어나고 다른 지형으로 옮길 수 있습니다.",
+      "situation": "추격",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/踊り子"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "같은 공동편집 계열의 교차 설명이므로 목록에는 보강 필요",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/踊り子",
+          "support": "direct",
+          "note": "감속 안에서도 폭탄 피해는 유지"
+        }
+      ]
+    },
+    {
+      "id": "P002",
+      "status": "보류",
+      "summary": "폭탄 피해는 주술을 쌓게 하지만, 주술 사거리 밖에서 폭탄을 잇는 대응도 가능합니다.",
+      "condition": "거리와 중첩 수에 따라 추격·구출의 유불리가 뒤집혀 한쪽 우위를 정하지 않습니다.",
+      "situation": "조건·자료 불일치",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/수위 26호",
+        "https://wikiwiki.jp/identity5ch/ガードNo.26"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "쌍방 대응 구조로 보류 유지",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "direct",
+          "note": "주술 중첩과 사거리 밖 폭탄의 쌍방 대응"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+          "support": "mechanic",
+          "note": "연속 피해·거리 조절"
+        }
+      ]
+    },
+    {
+      "id": "M238",
+      "status": "보류",
+      "summary": "벌레로 초반 접근을 막을 수 있지만 폭탄은 벌레와 본체를 함께 압박할 수 있습니다.",
+      "condition": "존재감이 열린 뒤와 직접 구출에서는 벌레를 안전한 방패로 보기 어렵습니다.",
+      "situation": "초반 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/곤충학자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/昆虫学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "초반 밀기와 존재감 이후 연속 피해의 유불리가 달라 대표 우위 보류",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/곤충학자(제5인격)",
+          "support": "direct",
+          "note": "초반 밀기와 존재감 이후 폭탄의 차이"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+          "support": "exception",
+          "note": "폭탄은 벌레와 본체를 함께 압박"
+        }
+      ]
+    },
+    {
+      "id": "M254",
+      "status": "반영",
+      "summary": "환영을 먼저 보내면 의자 앞의 폭탄·평타 선택을 나눠 구출을 시도할 수 있습니다.",
+      "condition": "본체가 폭탄 범위에 함께 서면 같이 피해를 받을 수 있고, 진입 경로 확보가 필요합니다.",
+      "situation": "구출",
+      "advantage": "기자",
+      "urls": [
+        "https://www.namu.moe/w/기자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/記者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "KR의 환영 구출 이점과 JP의 본체 관통 경고를 함께 반영. 확정 구출 표현 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "환영 구출로 캠핑 선택 분산"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "exception",
+          "note": "본체가 폭탄 범위에 있으면 동시 피격"
+        }
+      ]
+    },
+    {
+      "id": "M306",
+      "status": "반영",
+      "summary": "무장 해제로 평타를 막아도 폭탄이 남아 근접 견제와 의자 접근을 압박합니다.",
+      "condition": "회전·도약으로 거리를 벌리면 느린 본체를 따돌릴 여지는 있습니다.",
+      "situation": "구출·추격",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://www.taptap.cn/moment/365068817728014690",
+        "https://wikiwiki.jp/identity5ch/ガードNo.26"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "CN 대진 설명과 JP 연속 스킬 피해 성질 교차",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/365068817728014690",
+          "support": "direct",
+          "note": "무장 해제로 폭탄을 막지 못함"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ガードNo.26",
+          "support": "mechanic",
+          "note": "평타와 별개인 연속 폭탄 피해"
+        }
+      ]
+    },
+    {
+      "id": "M313",
+      "status": "반영",
+      "summary": "비늘의 평타 방어를 피해 연속 폭탄으로 교수의 체력을 줄일 수 있습니다.",
+      "condition": "패시브 비늘의 작은 피해 방어는 남으므로 첫 폭탄부터 무조건 피해가 들어가지는 않습니다.",
+      "situation": "스킬 피해",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://www.taptap.cn/moment/278582869343866642",
+        "https://wikiwiki.jp/identity5ch/教授"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "능동·수동 비늘을 명확히 분리",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "mechanic",
+          "note": "능동 비늘과 패시브 피해 방어 구분"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "폭탄형 연속 피해에 대한 한계"
+        }
+      ]
+    },
+    {
+      "id": "M321",
+      "status": "반영",
+      "summary": "로켓으로 의자에 접근할 때 조향이 제한되어 폭탄 경로를 피하기 어렵습니다.",
+      "condition": "추격에서는 가속으로 폭발 범위 밖으로 빠질 수도 있어 로켓 전체가 불리한 것은 아닙니다.",
+      "situation": "로켓 접근",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://www.taptap.cn/moment/245868658591532292"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "2022 공략 자체의 로켓 이탈 장점도 반영. 구출 진입 한정",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/245868658591532292",
+          "support": "direct",
+          "note": "조향이 제한된 구출 진입과 거리 이탈의 차이"
+        }
+      ]
+    },
+    {
+      "id": "M324",
+      "status": "보류",
+      "summary": "손전등의 조사 거리 밖에서 폭탄을 던질 수 있어 봉쇄만 믿고 추격을 버티기 어렵습니다.",
+      "condition": "조사를 시작한 거리와 엄폐물에 따라 달라지며, 최신 독립 대진 자료가 부족합니다.",
+      "situation": "손전등 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/泥棒"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "현재 직접 설명은 한 계열; 과거 단일 경험담을 재승인하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泥棒",
+          "support": "direct",
+          "note": "조사 거리 밖 폭탄 공격 가능"
+        }
+      ]
+    },
+    {
+      "id": "M350",
+      "status": "보류",
+      "summary": "흙공을 미는 상태와 공 위에서 공연하는 상태의 폭탄 판정이 다릅니다.",
+      "condition": "공연 상태의 방어와 설치 위치에 따른 본체 피격을 나눠 추가 확인해야 합니다.",
+      "situation": "흙공 방어",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "조건 충돌 또는 독립 보강 부족",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "10/15 높이 판정 수정 후 독립 대진 검증 부족. 공 탑승만으로 안전하다는 표현 삭제",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "공 밀기와 공연의 폭탄 판정 차이"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "랭킹전 개방·공연 판정 수정"
+        }
+      ]
+    },
+    {
+      "id": "M380",
+      "status": "반영",
+      "summary": "신호총으로 폭탄 캠핑 중 구출할 틈을 만듭니다.",
+      "condition": "흥분·장애물·설치된 폭탄은 따로 확인합니다.",
+      "situation": "구출",
+      "advantage": "공군",
+      "urls": [
+        "https://www.namu.moe/w/수위 26호"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M104 구출 근거 중복",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "direct",
+          "note": "신호총으로 캠핑 구출 대응"
+        }
+      ]
+    },
+    {
+      "id": "M382",
+      "status": "반영",
+      "summary": "작은 폭탄 피해로 부엉이를 먼저 소모시키고 다음 피해를 이어갈 수 있습니다.",
+      "condition": "구출 동작에 맞춘 부엉이는 여전히 도움이 되므로 구출 지원까지 약하다고 보지 않습니다.",
+      "situation": "추격",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/占い師",
+        "https://www.namu.moe/w/수위 26호"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "직접 추격과 구출의 반대 유불리로 대표 목록 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "direct",
+          "note": "연속 피해가 부엉이 소모"
+        },
+        {
+          "url": "https://www.namu.moe/w/수위 26호",
+          "support": "exception",
+          "note": "구출에 맞춘 부엉이는 여전히 유효"
+        }
+      ]
+    },
+    {
+      "id": "M395",
+      "status": "반영",
+      "summary": "관 부활로 폭탄이 집중된 의자 앞 구출을 우회할 수 있습니다.",
+      "condition": "부활 직후 재추격을 피할 위치와 이동 경로를 준비해야 합니다.",
+      "situation": "원격 구출",
+      "advantage": "납관사",
+      "urls": [
+        "https://www.namu.moe/w/납관사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M105 원격 구출 근거 중복",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/납관사",
+          "support": "direct",
+          "note": "원격 구출로 폭탄 캠핑 우회"
+        }
+      ]
+    },
+    {
+      "id": "M455",
+      "status": "반영",
+      "summary": "판자 뒤에서 멈춰 치료하는 의사에게 폭탄을 이어 넣어 회복 시간을 빼앗습니다.",
+      "condition": "소수점 피해의 가속을 활용해 먼저 거리를 벌리거나 동료가 견제하면 치료할 여지가 생깁니다.",
+      "situation": "판자 뒤 자가 치료",
+      "advantage": "수위 26호",
+      "urls": [
+        "https://www.taptap.cn/moment/146210860317018422",
+        "https://wikiwiki.jp/identity5ch/医師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 각 대진의 적용 패치는 미표기",
+      "basis": "명시된 대진과 능력 조건을 함께 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "2021 장면 설명을 현행 의사의 피해 가속·회복 조건과 재검토",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/146210860317018422",
+          "support": "direct",
+          "note": "폭탄 앞 판자 치료 대신 이동"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/医師",
+          "support": "mechanic",
+          "note": "현행 피해 가속과 반복 회복 조건"
+        }
+      ]
+    },
+    {
+      "id": "M111",
+      "status": "반영",
+      "summary": "마술봉으로 빙의를 해제하고 은신 중에 다음 지형으로 이동할 수 있습니다.",
+      "condition": "봉을 소모한 뒤에는 다시 빙의될 수 있어 이동 경로를 미리 정해야 합니다.",
+      "situation": "추격",
+      "advantage": "마술사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://www.namu.moe/w/시공의 그림자"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "독립 양국 공략이 같은 작동을 명시",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "direct",
+          "note": "마술봉의 빙의 해제"
+        },
+        {
+          "url": "https://www.namu.moe/w/시공의 그림자",
+          "support": "direct",
+          "note": "빙의 해제와 가속으로 추격 방해"
+        }
+      ]
+    },
+    {
+      "id": "M112",
+      "status": "반영",
+      "summary": "시계를 켜 빙의를 끊고 이스인이 바라보는 방향을 숨길 수 있습니다.",
+      "condition": "최면이 끝난 뒤 다시 빙의되는 상황까지 막지는 못합니다.",
+      "situation": "추격",
+      "advantage": "항해사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/一等航海士"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "단일 계열의 상황별 상호작용 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "동일 JP 공동편집 계열 외 독립 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/一等航海士",
+          "support": "direct",
+          "note": "회중시계의 빙의 해제"
+        }
+      ]
+    },
+    {
+      "id": "M113",
+      "status": "반영",
+      "summary": "부엉이를 모으려고 감시자를 보는 행동이 침식을 쌓아 직접 추격이 까다롭습니다.",
+      "condition": "동료에게 부엉이를 보내는 지원 가치까지 낮다는 뜻은 아닙니다.",
+      "situation": "직접 추격",
+      "advantage": "시공의 그림자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/占い師",
+        "https://www.namu.moe/w/시공의 그림자"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "직접 추격으로 범위 한정",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "direct",
+          "note": "시선 충전과 침식 충돌"
+        },
+        {
+          "url": "https://www.namu.moe/w/시공의 그림자",
+          "support": "mechanic",
+          "note": "감시자를 보아야 하는 생존자 압박"
+        }
+      ]
+    },
+    {
+      "id": "M114",
+      "status": "반영",
+      "summary": "얼굴을 기억하려고 바라보는 동안 침식이 쌓여 첫 그림 준비가 방해받습니다.",
+      "condition": "이미 준비한 그림의 기절까지 무효화하는 대진은 아닙니다.",
+      "situation": "추격",
+      "advantage": "시공의 그림자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/時空の影",
+        "https://www.namu.moe/w/시공의 그림자"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "시선 능력 상호작용으로 판단",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/時空の影",
+          "support": "direct",
+          "note": "화가의 시선 조건 지적"
+        },
+        {
+          "url": "https://www.namu.moe/w/시공의 그림자",
+          "support": "mechanic",
+          "note": "시선 요구 능력과 침식의 충돌"
+        }
+      ]
+    },
+    {
+      "id": "M115",
+      "status": "반영",
+      "summary": "잠복해도 기존 빙의와 침식은 남아 침식이 가득 차면 지상으로 나오게 됩니다.",
+      "condition": "미리 잠복하면 새로운 빙의는 피할 수 있으며, 구출 역할까지 같은 불리함으로 확대하지 않습니다.",
+      "situation": "추격",
+      "advantage": "시공의 그림자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/墓守",
+        "https://www.namu.moe/w/묘지기(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "묘지기 양국 대진 교차 확인",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "양국 묘지기 본문의 직접 추격 불리 일치. 구출 역할의 강점은 별도",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/墓守",
+          "support": "direct",
+          "note": "기존 빙의 유지와 신규 빙의 방지 구분"
+        },
+        {
+          "url": "https://www.namu.moe/w/묘지기(제5인격)",
+          "support": "direct",
+          "note": "침식으로 잠복 해제, 구출 역할은 별도"
+        }
+      ]
+    },
+    {
+      "id": "M116",
+      "status": "반영",
+      "summary": "빙의된 상태에서 공포를 받으면 로켓에서 내려 추격을 끊기 어렵습니다.",
+      "condition": "빙의가 풀린 틈에 먼저 로켓으로 멀어지면 반대로 긴 거리를 벌릴 수 있습니다.",
+      "situation": "추격",
+      "advantage": "시공의 그림자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/泣きピエロ",
+        "https://www.namu.moe/w/시공의 그림자"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "로켓 사용 시점에 따라 유불리가 달라 대표목록 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泣きピエロ",
+          "support": "direct",
+          "note": "로켓 중단과 빙의가 없을 때 거리 이점"
+        },
+        {
+          "url": "https://www.namu.moe/w/시공의 그림자",
+          "support": "direct",
+          "note": "이동기 중단과 빙의 재사용 대기 중 약점"
+        }
+      ]
+    },
+    {
+      "id": "M117",
+      "status": "보류",
+      "summary": "공포나 침식 제어에 따른 흙공 하차 상호작용을 추가 확인하고 있습니다.",
+      "condition": "신동의 랭킹전 개방 직후로 공을 미는 상태와 공연 상태의 검증을 구분해야 합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "단일 계열의 상황별 상호작용 검토",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "10월 15일 개방·수정 이후 독립 실전 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "공포에 의한 하차 표"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "랭킹전 개방·공연 판정 수정"
+        }
+      ]
+    },
+    {
+      "id": "M268",
+      "status": "보류",
+      "summary": "의사의 회복 지원만으로 시공의 그림자에게 유리하다고 판단하기는 어렵습니다.",
+      "condition": "팀의 누적 부상 회복과 빙의·침식에 대응하는 직접 추격을 나누어 확인해야 합니다.",
+      "situation": "회복 운영",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/시공의 그림자"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "일반 회복 설명을 대진 우위로 사용한 기존 근거 보류",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/시공의 그림자",
+          "support": "mechanic",
+          "note": "빙의 이동과 침식으로 해독·추격 압박"
+        }
+      ]
+    },
+    {
+      "id": "M284",
+      "status": "반영",
+      "summary": "투영 고정 중에는 바라보기와 공포로 인한 침식 누적을 피할 수 있습니다.",
+      "condition": "침식 조각의 범위와 침식 전달까지 막지는 못하며, 빙의도 투영에 남습니다.",
+      "situation": "투영",
+      "advantage": "환등사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幻灯師",
+        "https://www.namu.moe/w/환등사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "침식 면역 범위에 이견이 있어 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "정면 시선과 공포 방어, 조각·전달 예외"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "exception",
+          "note": "침식 전반 방어라는 서술은 JP의 세부 예외와 불일치"
+        }
+      ]
+    },
+    {
+      "id": "M344",
+      "status": "보류",
+      "summary": "침식 제어로 흙공에서 내려지는 상황은 상태별 재확인이 필요합니다.",
+      "condition": "공 밀기와 공연을 나누고 최근 개방 이후의 실제 적용을 확인해야 합니다.",
+      "situation": "흙공 상태",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "단일 계열의 상황별 상호작용 검토",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "M117과 같은 대진의 보조 기록이며 독립 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "침식 제어 하차 표"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "랭킹전 개방·공연 판정 수정"
+        }
+      ]
+    },
+    {
+      "id": "M408",
+      "status": "반영",
+      "summary": "활을 겨누며 시선을 유지하면 침식이 쌓이고 공포로 조준이 끊길 수 있습니다.",
+      "condition": "명중한 화살의 효과와 직접 조준 중의 위험은 구분해야 합니다.",
+      "situation": "조준·커버",
+      "advantage": "시공의 그림자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/時空の影",
+        "https://www.namu.moe/w/궁수(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "대진·능력 상호작용 교차 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "궁수 본문과 감시자 본문의 직접 대진을 교차 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/時空の影",
+          "support": "direct",
+          "note": "궁수처럼 시선을 요구하는 능력 압박"
+        },
+        {
+          "url": "https://www.namu.moe/w/궁수(제5인격)",
+          "support": "direct",
+          "note": "침식 누적과 공포에 따른 조준 중단"
+        }
+      ]
+    },
+    {
+      "id": "M118",
+      "status": "반영",
+      "summary": "회중시계로 엿보기 지정을 풀어 자동으로 따라오는 돌진을 끊습니다.",
+      "condition": "시계가 끝나면 재지정될 수 있고 까마귀가 붙은 위치 추적은 남습니다.",
+      "situation": "추격",
+      "advantage": "항해사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/一等航海士",
+        "https://www.namu.moe/w/항해사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "효과 종료 뒤 재추격을 별도로 명시",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/一等航海士",
+          "support": "direct",
+          "note": "최면으로 엿보기 해제"
+        },
+        {
+          "url": "https://www.namu.moe/w/항해사(제5인격)",
+          "support": "direct",
+          "note": "회중시계로 엿보기를 끊는 대응"
+        }
+      ]
+    },
+    {
+      "id": "M119",
+      "status": "반영",
+      "summary": "급하게 반발 자석을 쓰면 돌진에 먼저 맞고 공격 후 경직까지 지워 줄 수 있습니다.",
+      "condition": "장애물로 돌진을 막고 자석 기절을 먼저 맞히는 추격에서는 결과가 달라집니다.",
+      "situation": "추격",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/探鉱者",
+        "https://www.namu.moe/w/탐사원"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "JP의 강한 불리 평가와 KR의 숙련도 조건 차이로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+          "support": "direct",
+          "note": "돌진 선타와 경직 삭제 위험"
+        },
+        {
+          "url": "https://www.namu.moe/w/탐사원",
+          "support": "exception",
+          "note": "지형·자석 숙련도에 따라 대처 가능"
+        }
+      ]
+    },
+    {
+      "id": "M120",
+      "status": "반영",
+      "summary": "엿보기가 붙으면 포털 설치 전에 돌진이 닿고 긴 포털 뒤에도 까마귀로 따라올 수 있습니다.",
+      "condition": "포털을 미리 준비하고 판자를 먼저 내리면 돌진 경로를 차단할 여지가 있습니다.",
+      "situation": "추격",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/祭司"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "상호작용은 확인했으나 독립 계열의 같은 대진 보강 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/祭司",
+          "support": "direct",
+          "note": "돌진에 앞선 포털 설치와 까마귀 후속 추격"
+        }
+      ]
+    },
+    {
+      "id": "M121",
+      "status": "반영",
+      "summary": "연막 안에서도 머리 위 까마귀가 보여 은신한 위치를 추적할 수 있습니다.",
+      "condition": "연막이 새 엿보기의 시야를 끊는 효과는 남습니다. 까마귀 부착 여부를 나눠 봐야 합니다.",
+      "situation": "추격",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/脱出マスター"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "까마귀가 붙은 경우로 한정, 독립 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/脱出マスター",
+          "support": "direct",
+          "note": "연막의 엿보기 차단과 까마귀 표시 예외"
+        }
+      ]
+    },
+    {
+      "id": "P009",
+      "status": "반영",
+      "summary": "마술봉으로 엿보기를 지우고 환영을 돌진 경로에 세워 추격을 끊을 수 있습니다.",
+      "condition": "짧은 은신 뒤 재지정과 까마귀 추적은 남으므로 봉을 쓸 때 다음 지형으로 이동해야 합니다.",
+      "situation": "직접 추격",
+      "advantage": "마술사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://www.namu.moe/w/마술사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "기존 판정 보류를 현재 양국 직접 대진으로 해소",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "direct",
+          "note": "엿보기 해제·환영 방어, 짧은 은신 한계"
+        },
+        {
+          "url": "https://www.namu.moe/w/마술사(제5인격)",
+          "support": "direct",
+          "note": "엿보기 해제와 분신 길막의 유리함"
+        }
+      ]
+    },
+    {
+      "id": "M256",
+      "status": "반영",
+      "summary": "뒤따르는 환영을 돌진 경로에 두면 기자 대신 공격을 받아 줄 수 있습니다.",
+      "condition": "환영이 옆으로 비키거나 이미 사라졌다면 보호되지 않아 위치와 사용 시점이 중요합니다.",
+      "situation": "추격",
+      "advantage": "기자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/悪夢",
+        "https://www.namu.moe/w/기자(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "자동 유도 돌진과 환영 위치의 상호작용 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/悪夢",
+          "support": "direct",
+          "note": "환영을 이용한 돌진 몸막기"
+        },
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "기자를 따라오는 환영으로 돌진 방어"
+        }
+      ]
+    },
+    {
+      "id": "M277",
+      "status": "반영",
+      "summary": "은신이 시작되면 엿보기 지정이 풀려 돌진 추격을 제한합니다.",
+      "condition": "까마귀 위치는 계속 보일 수 있으며 은신이 풀리면 다시 표적이 됩니다.",
+      "situation": "은신",
+      "advantage": "파로 부인",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/悪夢",
+        "https://www.namu.moe/w/'파로 부인'"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "은신 추격으로만 한정하며 무적·완전 은폐로 표현하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/悪夢",
+          "support": "direct",
+          "note": "파로 부인의 은신과 까마귀 예외"
+        },
+        {
+          "url": "https://www.namu.moe/w/'파로 부인'",
+          "support": "direct",
+          "note": "은신 시 엿보기 해제, 까마귀 위치는 유지"
+        }
+      ]
+    },
+    {
+      "id": "M287",
+      "status": "반영",
+      "summary": "엿보기와 까마귀가 투영에 남아 돌진으로 공격하고 해제 뒤에도 추적을 이어 갈 수 있습니다.",
+      "condition": "투영으로 시간을 벌더라도 끝날 때 벗어날 경로와 남은 피해를 함께 관리해야 합니다.",
+      "situation": "추격",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幻灯師",
+        "https://www.namu.moe/w/환등사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "투영이 자동 추적을 끊지 않는 점 교차 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "투영의 표적 유지와 자동 추적 공격"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "direct",
+          "note": "엿보기와 연속 돌진으로 투영 대응"
+        }
+      ]
+    },
+    {
+      "id": "M316",
+      "status": "반영",
+      "summary": "돌진 공격도 평타 판정이어서 비늘로 막고 거리를 벌릴 수 있습니다.",
+      "condition": "방어를 빼도록 공격을 늦추거나 재사용 대기 중에 다시 돌진하면 대응하기 어렵습니다.",
+      "situation": "평타 방어",
+      "advantage": "교수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/280293763165717771"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "2022 작성자 공략의 원리를 현재 JP 능력표와 재검토",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "악몽 돌진의 평타 방어 판정"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/280293763165717771",
+          "support": "direct",
+          "note": "교수의 악몽 평타 방어 공략"
+        }
+      ]
+    },
+    {
+      "id": "M327",
+      "status": "반영",
+      "summary": "엿보기가 이미 완료되면 손전등으로 스킬을 봉인해도 돌진 공격은 남습니다.",
+      "condition": "엿보기 전에는 손전등으로 시간을 벌 수 있어 존재감만으로 유불리를 나누면 부정확합니다.",
+      "situation": "풀존재 추격",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/泥棒"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "기존 오래된 체감평을 현재 조건으로 교체하되 단일 계열이므로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泥棒",
+          "support": "direct",
+          "note": "엿보기 전후 손전등 효율 차이"
+        }
+      ]
+    },
+    {
+      "id": "M436",
+      "status": "반영",
+      "summary": "엿보기가 붙어 있으면 물레타로 벌린 거리를 돌진으로 다시 좁힐 수 있습니다.",
+      "condition": "특히 존재감이 열린 뒤 연속 접근이 위협적이며, 벽과 판자로 돌진을 끊는 대응은 남습니다.",
+      "situation": "주시 이후",
+      "advantage": "악몽",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/闘牛士",
+        "https://www.namu.moe/w/투우사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "상호작용과 반대 조건을 함께 검토",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "재접근에 관한 양국 직접 대진 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+          "support": "direct",
+          "note": "연속 이동형 악몽이 물레타 이탈을 따라감"
+        },
+        {
+          "url": "https://www.namu.moe/w/투우사(제5인격)",
+          "support": "direct",
+          "note": "표식 이후 물레타 이탈을 스쳐날기로 추격"
+        }
+      ]
+    },
+    {
+      "id": "M122",
+      "status": "반영",
+      "summary": "높은 환영 벽을 세워 벌침의 직선 공격 경로를 끊을 수 있습니다.",
+      "condition": "벽이 생길 공간과 남은 공연 자원이 필요하며 낮은 지형 뒤에 숨는 것과는 다릅니다.",
+      "situation": "추격",
+      "advantage": "무언극 아티스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+        "https://wikiwiki.jp/identity5ch/女王蜂",
+        "https://www.namu.moe/w/무언극 아티스트"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "KR는 벽 생성만 확인하며 벌침 교차 실측은 부족해 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+          "support": "direct",
+          "note": "여왕벌 상대 높은 생성 벽의 방어"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/女王蜂",
+          "support": "mechanic",
+          "note": "벌침은 낮은 장애물을 넘지만 벽은 관통하지 않음"
+        },
+        {
+          "url": "https://www.namu.moe/w/무언극 아티스트",
+          "support": "mechanic",
+          "note": "환영 벽 생성의 공간 조건"
+        }
+      ]
+    },
+    {
+      "id": "M123",
+      "status": "반영",
+      "summary": "벌침과 평타를 짧게 이어 맞히면 스트레스 회복이 끝나기 전에 쓰러뜨릴 수 있습니다.",
+      "condition": "벌침 회피와 스트레스 발동 뒤의 환자 허상 이동으로 연속 공격을 끊는 대응은 남습니다.",
+      "situation": "추격",
+      "advantage": "여왕벌",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/心理学者",
+        "https://www.namu.moe/w/'여왕벌'"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "심리학자에게 추가된 허상 이동을 포함해 단순 무이동 체력형으로 서술하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/心理学者",
+          "support": "direct",
+          "note": "여왕벌 연속 피해와 스트레스, 주관 앵커 이동"
+        },
+        {
+          "url": "https://www.namu.moe/w/'여왕벌'",
+          "support": "mechanic",
+          "note": "에너지를 쓰는 연속 벌침과 평타 연계"
+        }
+      ]
+    },
+    {
+      "id": "M124",
+      "status": "반영",
+      "summary": "고정된 투영에 벌레를 접촉시켜 에너지를 모을 수 있습니다.",
+      "condition": "고정이 끝난 뒤의 추격도 대비해야 합니다.",
+      "situation": "추격",
+      "advantage": "여왕벌",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幻灯師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "독립 계열의 투영 상호작용 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "여왕벌이 고정 투영에서 에너지 확보"
+        }
+      ]
+    },
+    {
+      "id": "M341",
+      "status": "보류",
+      "summary": "공연 중인 신동 본체에 벌침이 닿는 상황은 공 밀기 방어와 구분해야 합니다.",
+      "condition": "10월 15일 수정은 벌레가 먹는 동안의 공 밀기 불가 현상이므로 벌침 방어가 바뀌었다고 단정하지 않습니다.",
+      "situation": "흙공 상태",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "벌침과 벌레의 공 밀기 오류를 분리; 독립 실전 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "공연 본체 피격과 공 밀기 벌침 방어가 별도 표기"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "랭킹전 개방·공연 판정 수정"
+        }
+      ]
+    },
+    {
+      "id": "M125",
+      "status": "반영",
+      "summary": "판자 사이에서 위치를 바꿔 기절을 노리고, 도약 도중 교환하면 이동을 끊을 수 있습니다.",
+      "condition": "교환 범위와 시점을 맞춰야 하며 흥분이나 먼저 닿는 공격에는 실패할 수 있습니다.",
+      "situation": "추격",
+      "advantage": "소설가",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/小説家",
+        "https://www.namu.moe/w/오페라 가수"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "양국 직접 대진의 핵심이 일치",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/小説家",
+          "support": "direct",
+          "note": "판자 교환과 도약 도중 위치 교환"
+        },
+        {
+          "url": "https://www.namu.moe/w/오페라 가수",
+          "support": "direct",
+          "note": "긴 판자 기절과 도약 재사용 대기 유도"
+        }
+      ]
+    },
+    {
+      "id": "M126",
+      "status": "반영",
+      "summary": "반복하는 그림자 도약을 예측해 봉인하면 접근을 늦추고 거리를 벌릴 수 있습니다.",
+      "condition": "범위에 들어오기 전에 예측을 준비해야 하며, 평타만 막고 도약이 남으면 재추격됩니다.",
+      "situation": "추격",
+      "advantage": "기사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/騎士",
+        "https://www.namu.moe/w/기사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "예측 성공을 전제하며 무조건 봉인으로 표현하지 않음",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/騎士",
+          "support": "direct",
+          "note": "반복 도약을 전술 예견으로 차단"
+        },
+        {
+          "url": "https://www.namu.moe/w/기사(제5인격)",
+          "support": "direct",
+          "note": "스킬 봉인의 이점과 도약이 남는 예외"
+        }
+      ]
+    },
+    {
+      "id": "M127",
+      "status": "반영",
+      "summary": "도약 중에 주술을 맞히면 이동을 끊고 다음 지형으로 넘어갈 시간을 만들 수 있습니다.",
+      "condition": "벽의 그림자 안에서 짧게 기절시킬 뿐이면 도약 재사용을 막지 못해 바로 따라올 수 있습니다.",
+      "situation": "추격",
+      "advantage": "주술사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/オペラ歌手",
+        "https://www.namu.moe/w/오페라 가수"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "기절 위치와 시점에 따른 차이가 커 상황 설명으로 유지",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/オペラ歌手",
+          "support": "direct",
+          "note": "도약 시점의 짧은 기절"
+        },
+        {
+          "url": "https://www.namu.moe/w/오페라 가수",
+          "support": "exception",
+          "note": "벽에 붙어 있을 때 재사용 대기가 생기지 않는 조건"
+        }
+      ]
+    },
+    {
+      "id": "M128",
+      "status": "반영",
+      "summary": "환영 벽에는 그림자 경로가 생기지 않아 새로운 판자 지형으로 추격을 끊을 수 있습니다.",
+      "condition": "벽과 판자가 실제로 생성되는 위치에 공연해야 하며 짧은 돌진만으로 거리를 벌리기는 어렵습니다.",
+      "situation": "추격",
+      "advantage": "무언극 아티스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+        "https://www.namu.moe/w/무언극 아티스트"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "독립 양국의 동일 특수 상호작용 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+          "support": "direct",
+          "note": "생성 벽에 오페라 그림자 없음"
+        },
+        {
+          "url": "https://www.namu.moe/w/무언극 아티스트",
+          "support": "direct",
+          "note": "그림자 경로 미생성과 지형 조건"
+        }
+      ]
+    },
+    {
+      "id": "M129",
+      "status": "반영",
+      "summary": "짧은 판자 구역도 그림자 이동과 잔영으로 다시 붙어 자가 치료 시간을 줄일 수 있습니다.",
+      "condition": "긴 창틀 동선이나 동료의 보호로 치료할 시간을 확보한 상황까지 같은 결과는 아닙니다.",
+      "situation": "추격",
+      "advantage": "오페라 가수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/医師",
+        "https://www.namu.moe/w/오페라 가수"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "직접 대진 설명을 감시자의 지형별 추격 원리와 대조",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/医師",
+          "support": "direct",
+          "note": "오페라 이동과 잔영이 단순 순환 지형 치료를 압박"
+        },
+        {
+          "url": "https://www.namu.moe/w/오페라 가수",
+          "support": "mechanic",
+          "note": "빠른 재접근과 창틀 지형의 약점"
+        }
+      ]
+    },
+    {
+      "id": "M130",
+      "status": "반영",
+      "summary": "도약으로 빠르게 다시 붙으면 술의 회복이 진행되는 시간을 확보하기 어렵습니다.",
+      "condition": "최근 회복 방식 변경과 회복 중 가속술 사용을 고려해 예전 회복 시간·피격 취소 설명은 쓰지 않습니다.",
+      "situation": "추격",
+      "advantage": "오페라 가수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/バーメイド",
+        "https://www.namu.moe/w/오페라 가수"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "회복 개편 전 수치와 취소 규칙이 KR 본문에 남아 대표 판단은 유보",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/バーメイド",
+          "support": "direct",
+          "note": "오페라 추격의 부담과 S42 회복 변경"
+        },
+        {
+          "url": "https://www.namu.moe/w/오페라 가수",
+          "support": "mechanic",
+          "note": "거리 벌리기 뒤 재접근"
+        }
+      ]
+    },
+    {
+      "id": "M289",
+      "status": "반영",
+      "summary": "빠른 재접근과 평타 추격으로 투영을 반복해서 압박하고 해제 뒤에도 따라붙기 쉽습니다.",
+      "condition": "투영이 지형을 대신 막아 주지는 않으므로 다음 창틀·판자까지 이동할 여유를 확보해야 합니다.",
+      "situation": "추격",
+      "advantage": "오페라 가수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/オペラ歌手",
+        "https://www.namu.moe/w/환등사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "한국 직접 대진과 일본 고속 재접근 능력을 결합한 추론",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/オペラ歌手",
+          "support": "mechanic",
+          "note": "고속 접근과 평타 재추격"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "direct",
+          "note": "고속 평타형 오페라가 투영 추격 압박"
+        }
+      ]
+    },
+    {
+      "id": "M292",
+      "status": "반영",
+      "summary": "에어백을 준비하기 전에 도약으로 접근하거나 빠르게 부수면 이동을 압박할 수 있습니다.",
+      "condition": "미리 에어백으로 그림자 경로를 막으면 오페라가 경로를 벗어나야 하는 반대 상황도 있습니다.",
+      "situation": "추격",
+      "advantage": "오페라 가수",
+      "urls": [
+        "https://www.namu.moe/w/화재조사관",
+        "https://wikiwiki.jp/identity5ch/火災調査員"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "일률적 하드카운터 대신 설치 전후 조건으로 축소",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/화재조사관",
+          "support": "direct",
+          "note": "접근과 빠른 차지 공격에 불리"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+          "support": "exception",
+          "note": "그림자 경로를 에어백으로 막는 이점"
+        }
+      ]
+    },
+    {
+      "id": "M405",
+      "status": "반영",
+      "summary": "화살을 맞힌 뒤에는 빠른 그림자 이동이 파열 누적을 재촉해 연속 추격을 끊을 수 있습니다.",
+      "condition": "명중이 먼저 필요하며 감시자가 멈추거나 엄폐하며 파열을 정리하면 효과가 줄어듭니다.",
+      "situation": "화살 명중",
+      "advantage": "궁수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/弓使い",
+        "https://www.namu.moe/w/궁수(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "화살 명중 이후의 특수 상호작용으로 한정",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/弓使い",
+          "support": "direct",
+          "note": "이동 속도가 높을수록 파열 누적, 오페라 직접 언급"
+        },
+        {
+          "url": "https://www.namu.moe/w/궁수(제5인격)",
+          "support": "direct",
+          "note": "빠른 이동과 도약에 파열 압박"
+        }
+      ]
+    },
+    {
+      "id": "M450",
+      "status": "반영",
+      "summary": "손전등을 확보해 비추면 그림자 스킬을 봉인하고 첫 추격의 시간을 벌 수 있습니다.",
+      "condition": "손전등 확보·조사 각도·남은 내구도가 필요해 행운아의 모든 상황에 적용되는 우위는 아닙니다.",
+      "situation": "첫 추격·손전등",
+      "advantage": "행운아",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幸運児"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 능력·예외 조건 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "아이템 선택이 필요한 단일 계열 상황 자료로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幸運児",
+          "support": "direct",
+          "note": "손전등 첫 추격 대응과 내구도 조건"
+        }
+      ]
+    },
+    {
+      "id": "M131",
+      "status": "반영",
+      "summary": "미리 잠복하면 섭혼과 탕백의 행동 방해를 피하며 이동하거나 구출에 접근할 수 있습니다.",
+      "condition": "땅을 파는 동작 중에는 탕백에 끊기므로 공격이 닿기 전에 잠복을 마쳐야 합니다.",
+      "situation": "추격",
+      "advantage": "묘지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/墓守",
+        "https://www.namu.moe/w/묘지기(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "동작 전후의 판정 차이까지 일치",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/墓守",
+          "support": "direct",
+          "note": "잠복 시 방어와 시작 동작 취소"
+        },
+        {
+          "url": "https://www.namu.moe/w/묘지기(제5인격)",
+          "support": "direct",
+          "note": "섭혼·탕백 방어 및 잠복 동작 중 탕백 예외"
+        }
+      ]
+    },
+    {
+      "id": "M132",
+      "status": "반영",
+      "summary": "부활 위치가 드러나면 우산으로 관 근처에 이동해 재추격을 이어 갈 수 있습니다.",
+      "condition": "먼 거리나 위층의 관은 바로 도달하기 어려우며 부활 직후 보호 효과가 끝나는 시점도 봐야 합니다.",
+      "situation": "부활 후 추격",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/納棺師",
+        "https://www.namu.moe/w/납관사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "관을 무조건 무력화한다고 쓰지 않고 배치 예외 반영",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/納棺師",
+          "support": "direct",
+          "note": "관 위치 공개 후 우산 이동"
+        },
+        {
+          "url": "https://www.namu.moe/w/납관사",
+          "support": "direct",
+          "note": "관 재추격과 장거리·위층 예외"
+        }
+      ]
+    },
+    {
+      "id": "M133",
+      "status": "반영",
+      "summary": "긴 포털의 도착 지점을 알아내면 우산으로 이동해 회복하기 전에 재추격을 노릴 수 있습니다.",
+      "condition": "멀리 이동해 치료를 끝내거나 층을 바꾸는 짧은 포털을 쓰면 샤먼 쪽에 유리해집니다.",
+      "situation": "장거리 포털",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/祭司",
+        "https://www.namu.moe/w/샤먼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "장거리 포털 추적만 보존하고 대진 전체 우위에서 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/祭司",
+          "support": "direct",
+          "note": "장거리 포털 후 순간 이동 위험"
+        },
+        {
+          "url": "https://www.namu.moe/w/샤먼(제5인격)",
+          "support": "exception",
+          "note": "장거리 치유 선행과 일반 추격에서 샤먼의 강점"
+        }
+      ]
+    },
+    {
+      "id": "M134",
+      "status": "반영",
+      "summary": "해독 중인 본체나 인형으로 우산 이동해 두 해독 지점의 운영을 흔들 수 있습니다.",
+      "condition": "인형과 본체를 떨어뜨려 두고 우산의 재사용 대기 동안 위치를 바꾸는 관리가 필요합니다.",
+      "situation": "해독기 기습",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/機械技師",
+        "https://www.namu.moe/w/기계공(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "두 개체의 동시 압박 위험을 양국에서 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/機械技師",
+          "support": "direct",
+          "note": "우산의 원거리 해독 압박과 인형 파괴"
+        },
+        {
+          "url": "https://www.namu.moe/w/기계공(제5인격)",
+          "support": "direct",
+          "note": "인형 파괴 뒤 본체까지 이동기로 따라가는 위험"
+        }
+      ]
+    },
+    {
+      "id": "M184",
+      "status": "반영",
+      "summary": "시작 위치나 해독기로 바로 우산 이동하면 모험가가 숨기 전에 추격을 시작할 수 있습니다.",
+      "condition": "축소 상태를 우산 탐지로 찾아내는 뜻은 아니며 미리 숨는 데 성공하면 결과가 달라집니다.",
+      "situation": "해독기 기습",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/冒険家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "한 계열의 시작 상황으로 제한",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/冒険家",
+          "support": "direct",
+          "note": "초반 우산 기습과 축소 탐지 면역 구분"
+        }
+      ]
+    },
+    {
+      "id": "M261",
+      "status": "반영",
+      "summary": "해독기에 기습해 판자·창틀까지 거리를 확보하기 전에 맹인을 압박할 수 있습니다.",
+      "condition": "미리 위치를 확인하고 강한 지형으로 이동한 맹인까지 바로 잡힌다는 뜻은 아닙니다.",
+      "situation": "첫 추격",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/白黒無常",
+        "https://www.namu.moe/w/맹인(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "낡은 해독 수치와 시야 표현을 제외하고 기습 원리만 채택",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+          "support": "direct",
+          "note": "기계공·맹인·죄수의 초반 기습"
+        },
+        {
+          "url": "https://www.namu.moe/w/맹인(제5인격)",
+          "support": "direct",
+          "note": "기동형 우산의 접근과 지형 이동 부담"
+        }
+      ]
+    },
+    {
+      "id": "M265",
+      "status": "반영",
+      "summary": "추격이 다른 곳으로 옮겨간 사이 의사가 부상을 회복하면 여러 명을 다치게 하는 운영을 늦춥니다.",
+      "condition": "의사 본인이 쫓기는 상황과 다르며 섭혼·탕백 중에 치료를 보장받는 것은 아닙니다.",
+      "situation": "회복 운영",
+      "advantage": "의사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/医師",
+        "https://www.namu.moe/w/우산의 영혼"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "일반 회복 장점을 상황 기록으로 유지하고 과거 창틀 디버프 서술 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/医師",
+          "support": "mechanic",
+          "note": "추격에서 벗어난 자가·동료 회복"
+        },
+        {
+          "url": "https://www.namu.moe/w/우산의 영혼",
+          "support": "direct",
+          "note": "의사 회복 운영과 직접 추격의 차이"
+        }
+      ]
+    },
+    {
+      "id": "M281",
+      "status": "반영",
+      "summary": "투영 고정 중 본체는 탕백으로 넘어지는 동작을 피할 수 있습니다.",
+      "condition": "교정 실패 상태 이상은 남으므로 방울을 무시해서는 안 됩니다.",
+      "situation": "투영",
+      "advantage": "환등사",
+      "urls": [
+        "https://www.namu.moe/w/환등사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "독립된 최신 투영 판정 자료 보강 부족",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "direct",
+          "note": "탕백 기절 회피와 교정 실패 상태 이상 예외"
+        }
+      ]
+    },
+    {
+      "id": "M315",
+      "status": "반영",
+      "summary": "평타에 맞춰 비늘을 쓰면 공격을 막고 밀어내 추격 시간을 늘릴 수 있습니다.",
+      "condition": "탕백 자체는 비늘로 막지 못하며 섭혼의 행동 제한과 방어 재사용 대기도 따로 관리해야 합니다.",
+      "situation": "평타 방어",
+      "advantage": "교수",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/280293763165717771"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "예전 작성자 공략의 원리를 현재 상호작용 표와 대조",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "우산 평타 방어 및 방울 방어 불가"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/280293763165717771",
+          "support": "direct",
+          "note": "우산처럼 평타 중심 감시자에 대한 비늘 활용"
+        }
+      ]
+    },
+    {
+      "id": "M336",
+      "status": "반영",
+      "summary": "우산 기습으로 구름을 준비할 틈을 줄이고 지형을 넘은 자리나 회복 위치로 따라갈 수 있습니다.",
+      "condition": "우산이 빠진 뒤 구름을 미리 배치해 둔 상황은 별도로 봐야 합니다.",
+      "situation": "추격·회복",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/気象学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "직접 대진은 있으나 한 계열이므로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/気象学者",
+          "support": "direct",
+          "note": "우산 기습이 구름 시전과 따뜻한 비 회복을 압박"
+        }
+      ]
+    },
+    {
+      "id": "M389",
+      "status": "반영",
+      "summary": "관이 공개되는 순간 우산 이동을 남겨 두면 부활한 대상을 다시 추격하기 쉽습니다.",
+      "condition": "멀리 떨어진 위층 배치는 도착을 늦출 수 있어 관의 위치에 따라 달라집니다.",
+      "situation": "관 복귀 압박",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://www.namu.moe/w/납관사"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M132와 같은 작동의 중복 기록으로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/납관사",
+          "support": "direct",
+          "note": "부활 지점 우산 추격과 층간 이동 한계"
+        }
+      ]
+    },
+    {
+      "id": "M418",
+      "status": "반영",
+      "summary": "초반에는 판자를 먼저 내리고 가까워질 때 환영을 세워 공격을 흘릴 수 있습니다.",
+      "condition": "백우산의 긴 공격은 은신 중에도 닿을 수 있고, 탕백이 열린 뒤에는 같은 방식만 반복하기 어렵습니다.",
+      "situation": "추격",
+      "advantage": "마술사",
+      "urls": [
+        "https://www.namu.moe/w/마술사(제5인격)",
+        "https://wikiwiki.jp/identity5ch/白黒無常"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "초반 상대 의견과 긴 사거리 예외를 함께 남겨 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/마술사(제5인격)",
+          "support": "direct",
+          "note": "선판자와 마술봉으로 초반 추격 대응"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+          "support": "exception",
+          "note": "긴 차지 공격이 은신 거리에도 도달"
+        }
+      ]
+    },
+    {
+      "id": "M426",
+      "status": "반영",
+      "summary": "초반에는 배달견 감속과 편지로 다음 판자까지 거리를 벌릴 수 있습니다.",
+      "condition": "섭혼과 탕백이 열린 뒤의 행동 제한까지 편지로 해결할 수 있는 것은 아닙니다.",
+      "situation": "초반 추격",
+      "advantage": "우편 배달부",
+      "urls": [
+        "https://www.namu.moe/w/우편 배달부(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "초반 한정 단일 계열 평가",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/우편 배달부(제5인격)",
+          "support": "direct",
+          "note": "초반 견제 이점과 존재감 이후 반대 조건"
+        }
+      ]
+    },
+    {
+      "id": "M432",
+      "status": "반영",
+      "summary": "우산으로 가까이 기습하면 연결을 준비할 틈이 줄고 짧은 전기 기절 뒤에도 압박이 이어집니다.",
+      "condition": "백우산의 사거리와 흑우산의 방울을 나눠 피해야 하며 먼저 거리를 벌린 상황은 다릅니다.",
+      "situation": "추격",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/白黒無常",
+        "https://www.namu.moe/w/'죄수'"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "해독 연결 전의 기습과 형태별 추격을 구체화",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+          "support": "direct",
+          "note": "죄수를 포함한 해독형 기습"
+        },
+        {
+          "url": "https://www.namu.moe/w/'죄수'",
+          "support": "direct",
+          "note": "긴 사거리·탕백과 짧은 전기 기절의 한계"
+        }
+      ]
+    },
+    {
+      "id": "M438",
+      "status": "반영",
+      "summary": "백우산의 긴 공격 준비를 보고 물레타로 받아내며 섭혼에서 벗어날 수 있습니다.",
+      "condition": "흑우산의 탕백은 돌진을 끊을 수 있으므로 형태가 바뀌면 같은 대응을 고집하면 안 됩니다.",
+      "situation": "백우산",
+      "advantage": "투우사",
+      "urls": [
+        "https://www.namu.moe/w/투우사(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "백우산 형태에 한정된 단일 계열 평가",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/투우사(제5인격)",
+          "support": "direct",
+          "note": "백우산 이점과 흑우산 탕백 예외"
+        }
+      ]
+    },
+    {
+      "id": "M444",
+      "status": "반영",
+      "summary": "갈고리로 벽을 넘거나 멀어지면 특히 흑우산의 느린 추격을 따돌리기 좋습니다.",
+      "condition": "백우산의 섭혼과 남은 우산 이동으로 다시 접근할 수 있어 지형과 갈고리 잔량을 함께 봐야 합니다.",
+      "situation": "지형 이동",
+      "advantage": "환자",
+      "urls": [
+        "https://www.namu.moe/w/환자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/白黒無常"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "형태·우산 잔량 의존도가 커 대표보다 상황 기록으로 유지",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환자(제5인격)",
+          "support": "direct",
+          "note": "흑우산 추격과 탕백을 갈고리로 회피"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+          "support": "mechanic",
+          "note": "거리 이동 능력에 약한 흑우산과 백우산의 추격 차이"
+        }
+      ]
+    },
+    {
+      "id": "M449",
+      "status": "반영",
+      "summary": "해독 중인 위치에 바로 우산 이동하면 접근 감지 뒤 가속을 준비할 여유가 줄어듭니다.",
+      "condition": "작곡가는 방울 교정이 생기지 않아 조작 반전에는 강하지만 넘어지는 동작까지 막지는 못합니다.",
+      "situation": "해독 중 기습",
+      "advantage": "우산의 영혼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/作曲家"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 형태·시점별 예외 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "기습과 방울 대응의 반대 조건을 보존, 독립 검증 부족",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/作曲家",
+          "support": "direct",
+          "note": "기습 약점과 방울 교정 면역의 차이"
+        }
+      ]
+    },
+    {
+      "id": "M135",
+      "status": "반영",
+      "summary": "벌레 떼를 원령이 지나오는 경로에 놓아 공격을 대신 막을 수 있습니다.",
+      "condition": "원령의 방향을 잘못 막거나 벌레 내구도가 떨어지면 본체가 그대로 맞을 수 있습니다.",
+      "situation": "추격",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/昆虫学者",
+        "https://www.namu.moe/w/곤충학자(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "두 계열에서 같은 투사체 방어 확인",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+          "support": "direct",
+          "note": "벌레의 원령 방어와 내구도 소모"
+        },
+        {
+          "url": "https://www.namu.moe/w/곤충학자(제5인격)",
+          "support": "direct",
+          "note": "울보 원령 차단에 유리"
+        }
+      ]
+    },
+    {
+      "id": "M136",
+      "status": "반영",
+      "summary": "포털로 벽이나 층을 넘으면 원령이 겨냥한 선에서 벗어나 추격을 늘리기 좋습니다.",
+      "condition": "포털 설치 전 공격을 받거나 출구와 원령 경로가 겹치는 상황에는 피격될 수 있습니다.",
+      "situation": "추격",
+      "advantage": "샤먼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/泣き虫",
+        "https://www.namu.moe/w/울보(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "포털 사용이 가능한 지형·시점 조건을 함께 반영",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泣き虫",
+          "support": "direct",
+          "note": "포털로 원령 조준이 어려워짐"
+        },
+        {
+          "url": "https://www.namu.moe/w/울보(제5인격)",
+          "support": "direct",
+          "note": "포털 원령 회피와 위층 이동"
+        }
+      ]
+    },
+    {
+      "id": "M137",
+      "status": "반영",
+      "summary": "가까운 원령이나 벽 뒤에서 오는 원령은 보고 향수를 쓰기 어려울 수 있습니다.",
+      "condition": "궤도가 보이는 공격을 미리 읽거나 평타에 향수를 맞추면 조향사가 버틸 수 있습니다.",
+      "situation": "추격",
+      "advantage": "울보",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/泣き虫",
+        "https://www.namu.moe/w/울보(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "한쪽의 강한 불리 평가를 단정하지 않고 원령 거리·시야로 한정",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泣き虫",
+          "support": "direct",
+          "note": "근거리 원령에 반응 향수가 늦는 위험"
+        },
+        {
+          "url": "https://www.namu.moe/w/울보(제5인격)",
+          "support": "exception",
+          "note": "리메이크 뒤 궤도 표시와 평타 비중으로 반대 대응"
+        }
+      ]
+    },
+    {
+      "id": "M236",
+      "status": "반영",
+      "summary": "원령과 본체 사이에 벌레를 두면 대신 공격을 받아 줄 수 있습니다.",
+      "condition": "벌레가 실제 원령 궤도를 가려야 하며 무제한으로 막을 수는 없습니다.",
+      "situation": "추격",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://www.namu.moe/w/곤충학자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/昆虫学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M135와 동일 대진의 중복 기록으로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/곤충학자(제5인격)",
+          "support": "direct",
+          "note": "원령 차단"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+          "support": "direct",
+          "note": "원령 방어와 내구도 소모"
+        }
+      ]
+    },
+    {
+      "id": "M342",
+      "status": "보류",
+      "summary": "흙공과 본체에 원령이 닿는 판정을 상태별로 확인하고 있습니다.",
+      "condition": "공연 중 본체 피격 설명만으로 공 밀기까지 같은 상성이라고 확대하지 않습니다.",
+      "situation": "흙공 상태",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "10월 15일 랭킹전 개방 뒤 독립 자료가 부족해 보류",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "상태별 원령 본체 피격 표"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "랭킹전 개방·공연 판정 수정"
+        }
+      ]
+    },
+    {
+      "id": "M407",
+      "status": "반영",
+      "summary": "활을 겨누느라 울보를 바라보면 뒤쪽에서 끌려오는 원령을 놓치기 쉽습니다.",
+      "condition": "원령 위치를 먼저 확인하고 조준을 끊어 피할 수 있어 화살 지원 전체가 무효가 되는 것은 아닙니다.",
+      "situation": "조준·커버",
+      "advantage": "울보",
+      "urls": [
+        "https://www.namu.moe/w/궁수(제5인격)",
+        "https://wikiwiki.jp/identity5ch/泣き虫"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "basis": "직접 대진과 공격 경로·시점 분석",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "조준 중 시야 부담에 한정된 해석으로 대표 제외",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/궁수(제5인격)",
+          "support": "direct",
+          "note": "조준 시야 뒤 원령 위험"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/泣き虫",
+          "support": "mechanic",
+          "note": "감시자와 원령 양방향을 확인해야 하는 공격 구조"
+        }
+      ]
+    }
+  ],
+  "additions": [],
+  "findings": [
+    {
+      "type": "source-quality",
+      "detail": "第五録 사진사 공략의 일반 부상→해독 감속 및 긴 평타 후딜 설명이 현재 KR/JP 기술 설명과 충돌하여 독립 보강 출처에서 제외."
+    },
+    {
+      "type": "scope",
+      "detail": "사진사-의사는 회복 지원과 직접 추격, 사진사-인형사는 루이 방어와 사진 정산을 분리해야 함. 동일 대진을 쉬움/어려움 양쪽 목록에 노출하지 않음."
+    },
+    {
+      "type": "matchup-exception",
+      "detail": "시공의 그림자–환등사는 침식 전부 면역이 아니다. 정면 시선·공포와 조각 범위·침식 전달을 분리해 문장을 수정했다. 시공의 그림자–우는 광대는 빙의 해제 후 로켓 거리 벌리기라는 반대 조건이 있어 대표 목록에서 제외했다."
+    },
+    {
+      "type": "matchup-exception",
+      "detail": "P009 악몽–마술사를 현재 양국 공략의 엿보기 해제·환영 방어에 따라 마술사 추격 우위로 복원했다. 악몽–도둑은 풀존재 여부 대신 엿보기 완료 전후를 기준으로 고쳤다. 탐사원은 자석 경직 삭제 위험과 지형 대응의 양면성을 보존했다."
+    },
+    {
+      "type": "matchup-exception",
+      "detail": "오페라–화재조사관은 빠른 에어백 파괴와 사전 배치로 그림자 경로를 막는 반대 조건을 함께 보존했다. 바텐더는 S42 회복 변경이 있어 오래된 19초·피격 시 술 취소 서술을 제외했다. 심리학자에게 추가된 허상 이동을 여왕벌 대진의 예외에 반영했다."
+    },
+    {
+      "type": "matchup-exception",
+      "detail": "우산의 영혼은 흑·백 형태와 존재감에 따라 반대 조건이 많아 마술사·우편 배달부·투우사·환자를 상황 기록으로 유지했다. 납관사와 샤먼은 관/긴 포털 추적과 층간·거리·치유 예외를 분리했다. 작곡가는 기습에 약하더라도 방울 교정에 면역인 예외를 추가했다."
+    },
+    {
+      "type": "freshness",
+      "detail": "2026-10-15 공식 공지에서 신동 랭킹전 개방과 공연 높이 관련 판정 수정을 확인. 신동 대진 5건은 공 밀기·공연을 구분하고 독립 실전 검증 전까지 보류. 여왕벌 수정은 벌레가 먹는 동안의 공 밀기 오류로, 벌침 방어 변경으로 해석하지 않음."
+    }
+  ]
+}

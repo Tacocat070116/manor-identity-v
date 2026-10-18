@@ -1,0 +1,673 @@
+{
+  "reviewedAt": "2026-10-19",
+  "officialPatch": "2026-10-15",
+  "characters": 89,
+  "reviewedExisting": 459,
+  "added": 3,
+  "accepted": 413,
+  "held": 49,
+  "eligibleEvidence": 230,
+  "displayedSlots": 400,
+  "capacity": 890,
+  "reviewedSourceDocuments": 194,
+  "reviewedSourceFamilies": 14,
+  "mixedPairs": [
+    [
+      "공장장",
+      "기자"
+    ],
+    [
+      "박사",
+      "타자"
+    ],
+    [
+      "사진사",
+      "인형사"
+    ],
+    [
+      "절름발이 판",
+      "포워드"
+    ],
+    [
+      "파멸의 바퀴",
+      "교수"
+    ],
+    [
+      "블러디 퀸",
+      "장난감 상인"
+    ],
+    [
+      "은둔자",
+      "심리학자"
+    ],
+    [
+      "공장장",
+      "공군"
+    ]
+  ],
+  "characterCoverage": [
+    {
+      "id": "c01",
+      "name": "거미",
+      "hard": 1,
+      "easy": 3,
+      "evidence": 10
+    },
+    {
+      "id": "c02",
+      "name": "공장장",
+      "hard": 5,
+      "easy": 0,
+      "evidence": 18
+    },
+    {
+      "id": "c03",
+      "name": "광기의 눈",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 10
+    },
+    {
+      "id": "c04",
+      "name": "광대",
+      "hard": 5,
+      "easy": 2,
+      "evidence": 24
+    },
+    {
+      "id": "c05",
+      "name": "꿈의 마녀",
+      "hard": 4,
+      "easy": 3,
+      "evidence": 15
+    },
+    {
+      "id": "c06",
+      "name": "나이아스",
+      "hard": 4,
+      "easy": 1,
+      "evidence": 8
+    },
+    {
+      "id": "c07",
+      "name": "나이트 워치",
+      "hard": 3,
+      "easy": 1,
+      "evidence": 7
+    },
+    {
+      "id": "c08",
+      "name": "노란 옷의 왕",
+      "hard": 3,
+      "easy": 3,
+      "evidence": 8
+    },
+    {
+      "id": "c09",
+      "name": "당구 선수",
+      "hard": 5,
+      "easy": 1,
+      "evidence": 13
+    },
+    {
+      "id": "c10",
+      "name": "리퍼",
+      "hard": 1,
+      "easy": 3,
+      "evidence": 8
+    },
+    {
+      "id": "c11",
+      "name": "마음의 짐승",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 3
+    },
+    {
+      "id": "c12",
+      "name": "밀랍인형사",
+      "hard": 4,
+      "easy": 1,
+      "evidence": 8
+    },
+    {
+      "id": "c13",
+      "name": "바이올리니스트",
+      "hard": 4,
+      "easy": 3,
+      "evidence": 8
+    },
+    {
+      "id": "c14",
+      "name": "박사",
+      "hard": 5,
+      "easy": 5,
+      "evidence": 20
+    },
+    {
+      "id": "c15",
+      "name": "붉은 나비",
+      "hard": 5,
+      "easy": 4,
+      "evidence": 15
+    },
+    {
+      "id": "c16",
+      "name": "블러디 퀸",
+      "hard": 5,
+      "easy": 5,
+      "evidence": 27
+    },
+    {
+      "id": "c17",
+      "name": "사냥터지기",
+      "hard": 5,
+      "easy": 3,
+      "evidence": 8
+    },
+    {
+      "id": "c18",
+      "name": "사도",
+      "hard": 3,
+      "easy": 5,
+      "evidence": 12
+    },
+    {
+      "id": "c19",
+      "name": "사진사",
+      "hard": 2,
+      "easy": 2,
+      "evidence": 15
+    },
+    {
+      "id": "c20",
+      "name": "서기관",
+      "hard": 1,
+      "easy": 1,
+      "evidence": 5
+    },
+    {
+      "id": "c21",
+      "name": "수위 26호",
+      "hard": 3,
+      "easy": 4,
+      "evidence": 15
+    },
+    {
+      "id": "c22",
+      "name": "시공의 그림자",
+      "hard": 1,
+      "easy": 4,
+      "evidence": 8
+    },
+    {
+      "id": "c23",
+      "name": "악몽",
+      "hard": 5,
+      "easy": 2,
+      "evidence": 11
+    },
+    {
+      "id": "c24",
+      "name": "여왕벌",
+      "hard": 0,
+      "easy": 1,
+      "evidence": 3
+    },
+    {
+      "id": "c25",
+      "name": "오페라 가수",
+      "hard": 4,
+      "easy": 2,
+      "evidence": 10
+    },
+    {
+      "id": "c26",
+      "name": "우산의 영혼",
+      "hard": 2,
+      "easy": 4,
+      "evidence": 17
+    },
+    {
+      "id": "c27",
+      "name": "울보",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 5
+    },
+    {
+      "id": "c28",
+      "name": "은둔자",
+      "hard": 4,
+      "easy": 1,
+      "evidence": 15
+    },
+    {
+      "id": "c29",
+      "name": "잡화상",
+      "hard": 0,
+      "easy": 5,
+      "evidence": 11
+    },
+    {
+      "id": "c30",
+      "name": "재앙의 도마뱀",
+      "hard": 0,
+      "easy": 2,
+      "evidence": 10
+    },
+    {
+      "id": "c31",
+      "name": "절름발이 판",
+      "hard": 1,
+      "easy": 0,
+      "evidence": 10
+    },
+    {
+      "id": "c32",
+      "name": "조각가",
+      "hard": 2,
+      "easy": 5,
+      "evidence": 13
+    },
+    {
+      "id": "c33",
+      "name": "치과의사",
+      "hard": 3,
+      "easy": 3,
+      "evidence": 11
+    },
+    {
+      "id": "c34",
+      "name": "파멸의 바퀴",
+      "hard": 1,
+      "easy": 5,
+      "evidence": 15
+    },
+    {
+      "id": "c35",
+      "name": "파이라이트",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 4
+    },
+    {
+      "id": "c36",
+      "name": "훌라발루",
+      "hard": 5,
+      "easy": 3,
+      "evidence": 13
+    },
+    {
+      "id": "c37",
+      "name": "곡예사",
+      "hard": 0,
+      "easy": 4,
+      "evidence": 8
+    },
+    {
+      "id": "c38",
+      "name": "곤충학자",
+      "hard": 4,
+      "easy": 5,
+      "evidence": 15
+    },
+    {
+      "id": "c39",
+      "name": "골동품 상인",
+      "hard": 3,
+      "easy": 5,
+      "evidence": 14
+    },
+    {
+      "id": "c40",
+      "name": "공군",
+      "hard": 4,
+      "easy": 3,
+      "evidence": 14
+    },
+    {
+      "id": "c41",
+      "name": "교수",
+      "hard": 5,
+      "easy": 5,
+      "evidence": 19
+    },
+    {
+      "id": "c42",
+      "name": "궁수",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 10
+    },
+    {
+      "id": "c43",
+      "name": "기계공",
+      "hard": 4,
+      "easy": 0,
+      "evidence": 6
+    },
+    {
+      "id": "c44",
+      "name": "기사",
+      "hard": 1,
+      "easy": 2,
+      "evidence": 7
+    },
+    {
+      "id": "c45",
+      "name": "기상학자",
+      "hard": 1,
+      "easy": 0,
+      "evidence": 5
+    },
+    {
+      "id": "c46",
+      "name": "기자",
+      "hard": 3,
+      "easy": 5,
+      "evidence": 15
+    },
+    {
+      "id": "c47",
+      "name": "납관사",
+      "hard": 3,
+      "easy": 4,
+      "evidence": 12
+    },
+    {
+      "id": "c48",
+      "name": "도둑",
+      "hard": 2,
+      "easy": 2,
+      "evidence": 9
+    },
+    {
+      "id": "c49",
+      "name": "마술사",
+      "hard": 1,
+      "easy": 4,
+      "evidence": 13
+    },
+    {
+      "id": "c50",
+      "name": "맹인",
+      "hard": 1,
+      "easy": 1,
+      "evidence": 4
+    },
+    {
+      "id": "c51",
+      "name": "모험가",
+      "hard": 0,
+      "easy": 1,
+      "evidence": 2
+    },
+    {
+      "id": "c52",
+      "name": "묘지기",
+      "hard": 1,
+      "easy": 4,
+      "evidence": 7
+    },
+    {
+      "id": "c53",
+      "name": "무언극 아티스트",
+      "hard": 0,
+      "easy": 3,
+      "evidence": 6
+    },
+    {
+      "id": "c54",
+      "name": "무희",
+      "hard": 1,
+      "easy": 0,
+      "evidence": 4
+    },
+    {
+      "id": "c55",
+      "name": "바텐더",
+      "hard": 2,
+      "easy": 2,
+      "evidence": 6
+    },
+    {
+      "id": "c56",
+      "name": "변호사",
+      "hard": 1,
+      "easy": 0,
+      "evidence": 1
+    },
+    {
+      "id": "c57",
+      "name": "샤먼",
+      "hard": 0,
+      "easy": 3,
+      "evidence": 12
+    },
+    {
+      "id": "c58",
+      "name": "선지자",
+      "hard": 3,
+      "easy": 5,
+      "evidence": 10
+    },
+    {
+      "id": "c59",
+      "name": "소설가",
+      "hard": 1,
+      "easy": 1,
+      "evidence": 4
+    },
+    {
+      "id": "c60",
+      "name": "신동",
+      "hard": 0,
+      "easy": 0,
+      "evidence": 6
+    },
+    {
+      "id": "c61",
+      "name": "심리학자",
+      "hard": 1,
+      "easy": 2,
+      "evidence": 8
+    },
+    {
+      "id": "c62",
+      "name": "야만인",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 7
+    },
+    {
+      "id": "c63",
+      "name": "여자아이",
+      "hard": 3,
+      "easy": 1,
+      "evidence": 6
+    },
+    {
+      "id": "c64",
+      "name": "용병",
+      "hard": 4,
+      "easy": 2,
+      "evidence": 11
+    },
+    {
+      "id": "c65",
+      "name": "우는 광대",
+      "hard": 3,
+      "easy": 0,
+      "evidence": 8
+    },
+    {
+      "id": "c66",
+      "name": "우편 배달부",
+      "hard": 1,
+      "easy": 0,
+      "evidence": 5
+    },
+    {
+      "id": "c67",
+      "name": "의사",
+      "hard": 4,
+      "easy": 4,
+      "evidence": 13
+    },
+    {
+      "id": "c68",
+      "name": "인형사",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 6
+    },
+    {
+      "id": "c69",
+      "name": "작곡가",
+      "hard": 0,
+      "easy": 1,
+      "evidence": 2
+    },
+    {
+      "id": "c70",
+      "name": "장난감 상인",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 7
+    },
+    {
+      "id": "c71",
+      "name": "정원사",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 4
+    },
+    {
+      "id": "c72",
+      "name": "조향사",
+      "hard": 3,
+      "easy": 4,
+      "evidence": 10
+    },
+    {
+      "id": "c73",
+      "name": "죄수",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 7
+    },
+    {
+      "id": "c74",
+      "name": "주술사",
+      "hard": 3,
+      "easy": 2,
+      "evidence": 7
+    },
+    {
+      "id": "c75",
+      "name": "치어리더",
+      "hard": 0,
+      "easy": 2,
+      "evidence": 4
+    },
+    {
+      "id": "c76",
+      "name": "카우보이",
+      "hard": 1,
+      "easy": 3,
+      "evidence": 6
+    },
+    {
+      "id": "c77",
+      "name": "타자",
+      "hard": 2,
+      "easy": 2,
+      "evidence": 8
+    },
+    {
+      "id": "c78",
+      "name": "탈출 마스터",
+      "hard": 0,
+      "easy": 3,
+      "evidence": 4
+    },
+    {
+      "id": "c79",
+      "name": "탐사원",
+      "hard": 2,
+      "easy": 2,
+      "evidence": 9
+    },
+    {
+      "id": "c80",
+      "name": "투우사",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 6
+    },
+    {
+      "id": "c81",
+      "name": "파로 부인",
+      "hard": 0,
+      "easy": 2,
+      "evidence": 5
+    },
+    {
+      "id": "c82",
+      "name": "포워드",
+      "hard": 5,
+      "easy": 2,
+      "evidence": 12
+    },
+    {
+      "id": "c83",
+      "name": "항공 전문가",
+      "hard": 1,
+      "easy": 3,
+      "evidence": 6
+    },
+    {
+      "id": "c84",
+      "name": "항해사",
+      "hard": 1,
+      "easy": 2,
+      "evidence": 6
+    },
+    {
+      "id": "c85",
+      "name": "행운아",
+      "hard": 0,
+      "easy": 0,
+      "evidence": 2
+    },
+    {
+      "id": "c86",
+      "name": "화가",
+      "hard": 2,
+      "easy": 0,
+      "evidence": 4
+    },
+    {
+      "id": "c87",
+      "name": "화재조사관",
+      "hard": 2,
+      "easy": 1,
+      "evidence": 5
+    },
+    {
+      "id": "c88",
+      "name": "환등사",
+      "hard": 5,
+      "easy": 3,
+      "evidence": 15
+    },
+    {
+      "id": "c89",
+      "name": "환자",
+      "hard": 1,
+      "easy": 5,
+      "evidence": 11
+    }
+  ]
+}

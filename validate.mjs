@@ -20,8 +20,23 @@ const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.
 const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,16757);assert.equal(bans.length,15516);
-assert.equal(db.sources.length,202);assert.equal(db.matchups.filter(x=>x.status==='반영').length,447);
-assert.equal(db.characters.reduce((n,c)=>n+10-c.hard.length-c.easy.length,0),223);
+const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
+assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
+assert.equal(db.sources.length,db.meta.sourceCount);
+assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted);
+assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.held);
+assert.equal(db.matchups.length,459+matchupReview.added);
+assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),matchupReview.displayedSlots);
+assert.equal(new Set(db.matchups.map(m=>m.id)).size,db.matchups.length,'unique evidence IDs');
+for(const m of db.matchups){
+ assert.equal(m.reviewedAt,db.meta.matchupReviewedAt,m.id+' review date');
+ assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
+ assert.equal(c(m.survivor)?.side,'생존자',m.id+' survivor side');
+ if(m.status==='보류')assert.equal(m.advantage,null,m.id+' unresolved direction');
+ else assert.ok([m.hunter,m.survivor].includes(m.advantage),m.id+' advantage direction');
+ if(m.listEligible)assert.ok(m.status==='반영'&&m.sourceFamilies.length>=2,m.id+' independent corroboration');
+ for(const s of m.sourceSupport)assert.ok(safeUrl(s.url)&&s.note,m.id+' source support');
+}
 for(const ch of db.characters){
  assert.ok(Array.isArray(ch.specialties)&&ch.specialties.length>=1&&ch.specialties.length<=2,ch.name+' 1–2 role tags');
  assert.equal(new Set(ch.specialties).size,ch.specialties.length,ch.name+' unique role tags');
@@ -35,9 +50,18 @@ for(const ch of db.characters){
  assert.ok(ch.hard.length<=5&&ch.easy.length<=5);
  assert.ok(ch.difficulty>=1&&ch.difficulty<=5);
  assert.ok(fs.existsSync('dist/'+ch.portrait),ch.name+' portrait');
- for(const item of [...ch.hard,...ch.easy]){
-  assert.ok(c(item.name),item.name);
-  if(item.evidence)assert.ok(db.matchups.some(x=>x.id===item.evidence),item.evidence);
+ assert.equal(ch.matchupReviewedAt,db.meta.matchupReviewedAt,ch.name+' matchup review');
+ assert.ok(!ch.hard.some(item=>ch.easy.some(other=>other.name===item.name)),ch.name+' conflicting list directions');
+ for(const kind of ['hard','easy']){
+  assert.equal(new Set(ch[kind].map(i=>i.name)).size,ch[kind].length,ch.name+' unique opponents');
+  for(const item of ch[kind]){
+   assert.ok(c(item.name)&&c(item.name).side!==ch.side,item.name+' opposing faction');
+   const evidence=db.matchups.find(x=>x.id===item.evidence);
+   assert.ok(evidence?.listEligible&&evidence.status==='반영',item.evidence+' approved list evidence');
+   assert.equal(evidence.advantage===ch.name,kind==='easy',item.evidence+' correct direction');
+   assert.ok([evidence.hunter,evidence.survivor].includes(ch.name)&&[evidence.hunter,evidence.survivor].includes(item.name),item.evidence+' correct pair');
+   assert.equal(item.reason,`[${evidence.situation}] ${evidence.summary}\n조건: ${evidence.condition}`,item.evidence+' current wording');
+  }
  }
 }
 for(const row of matches){assert.ok(ids.has(row[2]));assert.equal(row[3].length,4);assert.equal(new Set(row[3]).size,4);row[3].forEach(id=>assert.ok(ids.has(id)));}
@@ -68,6 +92,13 @@ for(const ch of db.characters){
 assert.equal(db.characters.filter(x=>x.side==='감시자').reduce((n,ch)=>n+statsFor(matches,ch,{days:0}).appearances,0),matches.length);
 assert.equal(db.characters.filter(x=>x.side==='생존자').reduce((n,ch)=>n+statsFor(matches,ch,{days:0}).appearances,0),matches.length*4);
 assert.ok(pairEvidence(db.matchups,c('사도'),c('탐사원')).length>0);
+for(const [hunter,survivor] of [['리퍼','곤충학자'],['밀랍인형사','묘지기'],['붉은 나비','도둑']]){
+ const evidence=pairEvidence(db.matchups,c(hunter),c(survivor));
+ assert.equal(new Set(evidence.map(m=>m.summary+'\n'+m.condition+'\n'+m.situation)).size,evidence.length,hunter+' duplicate cards');
+}
+const contextualPair=db.matchups.filter(m=>m.status==='반영'&&m.hunter==='사진사'&&m.survivor==='인형사');
+assert.ok(new Set(contextualPair.map(m=>m.advantage)).size>1,'opposite situational findings preserved');
+assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,contextualPair.length,'opposite situational findings remain readable');
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
@@ -79,9 +110,10 @@ state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 �
 globalThis.audit={templates:[],checked:0,roleCards:[]};
 for(const c of db.characters){audit.roleCards.push({id:c.id,card:card(c),selection:selectionCard(c,'compare-a','캐릭터 A'),valid:validSpecialties(c.side,c)});}
 audit.templates.push(explore(),sourcesPage(),matchupPage(),comparePage(__matches),banPage(__bans));
-for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);audit.checked++;}}
+for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
 state.own=byName['사도'].id;state.opponent=byName['탐사원'].id;audit.templates.push(matchupPage());
+state.own=byName['블러디 퀸'].id;state.opponent=byName['기상학자'].id;audit.heldMatchup=matchupPage();audit.templates.push(audit.heldMatchup);
 state.bans=[byName['의사'].id,byName['샤먼'].id,''];state.banFilters.days=0;audit.templates.push(banPage(__bans));
 audit.templates.push(statsPanel(byName['훌라발루'],__matches));
 state.favoriteOnly=true;state.favorites=new Set([byName['거미'].id,byName['사도'].id]);audit.templates.push(favoriteInsight([byName['거미'],byName['사도']]));
@@ -98,10 +130,14 @@ state.specialty='구출';__handlers.click({target:{closest:()=>({dataset:{action
 state.specialty='운영';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
 __handlers.click({target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
 audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버','구출']},{specialties:['커버','커버']},{specialties:['사냥']},{specialties:['어그로'],specialtyReasons:{}}].map(role=>validSpecialties('생존자',role));
+audit.evidenceDialogs=0;
+for(const e of db.matchups){openEvidence(e.id);const html=$('#evidence').innerHTML;if(html.includes('undefined')||html.includes('NaN')||!html.includes(esc(e.summary))||!html.includes('판단에 사용한 자료'))throw Error(e.id+' evidence dialog');audit.evidenceDialogs++;}
 footer();audit.footer=$('#footer').innerHTML;
 `;
 vm.runInNewContext(source,context,{timeout:15000});
 assert.equal(context.audit.checked,356);
+assert.equal(context.audit.evidenceDialogs,db.matchups.length);
+assert.ok(context.audit.heldMatchup.includes('판단을 보류한 내용')&&context.audit.heldMatchup.includes('보류 이유·원문 보기'),'held decisions remain reviewable without presenting an advantage');
 assert.ok(context.audit.condition.includes('구버전 중국어'));
 assert.ok(context.audit.escape.includes('&lt;img'));assert.ok(context.audit.sameSide);
 assert.equal(context.audit.cleanBans.length,1);

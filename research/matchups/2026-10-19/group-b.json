@@ -1,0 +1,5070 @@
+{
+  "reviewedAt": "2026-10-19",
+  "hunters": [
+    "c10",
+    "c11",
+    "c12",
+    "c13",
+    "c14",
+    "c15",
+    "c16",
+    "c17",
+    "c18"
+  ],
+  "sources": [
+    {
+      "url": "https://wikiwiki.jp/identity5ch/リッパー",
+      "title": "리퍼: 2025 개편·상성·예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "차가운 안개, 공격 봉쇄, 포털·벌레, 은신 조준",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/리퍼(제5인격)",
+      "title": "리퍼 기전 및 시즌40 평가",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": "2026-09-23",
+      "accessedAt": "2026-10-19",
+      "scope": "외적 특성·형태 변화·장단점",
+      "notes": "미러는 나무위키와 같은 작성 계열. 2025개편 및 은신을 교차확인; 랭킹 평가는 채택 안 함."
+    },
+    {
+      "url": "https://daigokouryakutv.com/entomologist/",
+      "title": "곤충학자 공략: 벌레가 막는 스킬",
+      "region": "JP",
+      "kind": "이용자 독립 공략",
+      "sourceFamily": "daigokouryakutv",
+      "publishedAt": "2024-04-07",
+      "accessedAt": "2026-10-19",
+      "scope": "벌레 설치·회수, 갈고리·안개·박사 돌진 차단",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/278582869343866642",
+      "title": "교수 기본 공략 — B站嗷呜小明",
+      "region": "CN",
+      "kind": "공식 초청 이용자 공략",
+      "sourceFamily": "creator:bilibili-aowuxiaoming",
+      "publishedAt": "2022-05-25",
+      "accessedAt": "2026-10-19",
+      "scope": "평타 방어·거울 본체 접근·붉은 나비 대응",
+      "notes": "초창기 수치·일회성 비늘 방어 특성은 현행으로 일반화하지 않음."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/245868658591532292",
+      "title": "우는 광대 입문 공략 — 飙黑车的司机",
+      "region": "CN",
+      "kind": "공식 초청 이용자 공략",
+      "sourceFamily": "creator:bilibili-biaoheichedesiji",
+      "publishedAt": "2022-02-24",
+      "accessedAt": "2026-10-19",
+      "scope": "로켓 제어·리퍼 원거리 공격",
+      "notes": "원문 작성시점의 기술 조건을 현행 리퍼의 공격 종류와 대조."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/バッツマン",
+      "title": "타자 공략: 은신 및 박사 대응",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "상대에 따른 공 조준·에너지 서지",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/教授",
+      "title": "교수 공략: 비늘 방어 범위",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "평타·스킬 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/心の獣",
+      "title": "마음의 짐승 현행 기전",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "도약과 돌진 구분·높은 벽·연속 타격",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/'마음의 짐승'",
+      "title": "마음의 짐승: 생존자별 상성",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": "2026-10-10",
+      "accessedAt": "2026-10-19",
+      "scope": "무언극·교수·궁수 상성과 공격 분류",
+      "notes": "일부 기본 수치표는 구버전과 혼재하므로 수치 인용 제외."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+      "title": "화재조사관: 장애물 우회 대진",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "에어백 봉쇄와 붉은 나비·마음의 짐승 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+      "title": "무언극 아티스트: 벽과 우산",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "높은 벽 생성·사격 차단·지형 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/弓使い",
+      "title": "궁수: 파열·고속 이동·조준 조건",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "명중 후 파열과 빗나감 위험",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+      "title": "밀랍인형사: 상성과 단계별 변화",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "곤충·묘지기·자석·열밀랍·갈고리 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+      "title": "밀랍인형사 독립 이용자 공략",
+      "region": "JP",
+      "kind": "이용자 독립 공략",
+      "sourceFamily": "daigokouryakutv",
+      "publishedAt": "2024-06-18",
+      "accessedAt": "2026-10-19",
+      "scope": "밀랍 외피·행동 봉쇄·열밀랍·높은 벽",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769",
+      "title": "밀랍 이용자의 유리·불리 대진 경험",
+      "region": "JP",
+      "kind": "독립 이용자 답변",
+      "sourceFamily": "yahoo:1253342552",
+      "publishedAt": "2025-01-07",
+      "accessedAt": "2026-10-19",
+      "scope": "곤충·묘지기·환자·거리 이탈",
+      "notes": "개별 경험담이며 승률 통계가 아님. 구체적인 도구 상호작용만 대조."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/墓守",
+      "title": "묘지기: 잠행·구출 판정",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "잠행 방어·빠른 구출·감시자별 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/人形師",
+      "title": "인형사: 루이 시간과 치료 제한",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "행동 봉쇄·루이 시간 소모·회복 운영",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+      "title": "투우사: 밀랍·박사 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "중거리 추격·열밀랍 연계 회피·서지 저항",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/患者",
+      "title": "환자: 갈고리 사용과 지형 조건",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "피해와 이동중단 구분·밀랍 봉쇄 우회",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+      "title": "바이올리니스트: 관통 공격과 추격·구출 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "벌레·봉·거리 이동·신호총",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+      "title": "바이올리니스트 실전 운용·상성",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "광상곡 벌레 처리·현 공격·이동기의 부재",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.taptap.io/kr/post/341790",
+      "title": "바이올리니스트 출시 공략",
+      "region": "CN",
+      "kind": "공식 계정 공략",
+      "sourceFamily": "netease:official-violin-guide",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "관통 음표·이동기 부재",
+      "notes": "초기 수치·인격 추천은 배제. 음표의 감속과 현의 피해를 구분하는 기전만 대조."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/踊り子",
+      "title": "무희: 오르골 밖에서 공격하는 감시자",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "바이올리니스트·미끄러짐 회피",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/納棺師",
+      "title": "납관사: 원격 구출과 재추격 위험",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "보행 캠핑 감시자·거울 이동·박사 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/応援団",
+      "title": "치어리더: 가속 후 감속·횟수 제한",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "자기 가속과 반복 사용 제한",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/神童",
+      "title": "신동: 굴리기·탑승별 피격 판정",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "바이올리니스트 현과 무궁동의 다른 판정·사도 기절",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+      "title": "2026-10-15 글로벌 업데이트",
+      "region": "GLOBAL",
+      "kind": "공식 패치 공지",
+      "sourceFamily": "netease:official",
+      "publishedAt": "2026-10-15",
+      "accessedAt": "2026-10-19",
+      "scope": "신동 높이 판정·블러디 퀸 오류 수정",
+      "notes": "10/19 기준 최신 공개 공지를 대조. 버그 수정만으로 대진 우세를 추론하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+      "title": "박사: 에너지 서지·다운 운영·지형 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "저항 행동·벌레 차단·치료·탐지·포털",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+      "title": "박사 실전 운용과 대처",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "돌진 장애물·서지 저항·풍선 없는 경기·다운 회복 시점",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/248031792894840155",
+      "title": "박사 고급 공략 — 莫莫莫不是末晶",
+      "region": "CN",
+      "kind": "공식 초청 이용자 공략",
+      "sourceFamily": "creator:bilibili-mojing",
+      "publishedAt": "2022-03-02",
+      "accessedAt": "2026-10-19",
+      "scope": "서지 공격·선지자·샤먼·다운 운영",
+      "notes": "2022년 밴 추천을 현재 랭크 순위로 사용하지 않음. 현행 기전 자료와 대조."
+    },
+    {
+      "url": "https://news.17173.com/content/08132025/175412342.shtml",
+      "title": "기상학자 기본 공략 — 공식 공략자 约宝",
+      "region": "CN",
+      "kind": "공식 초청 공략 재게시",
+      "sourceFamily": "creator:yuebao",
+      "publishedAt": "2025-08-13",
+      "accessedAt": "2026-10-19",
+      "scope": "따뜻한 비 다운 회복·블러디 퀸·사도 대응",
+      "notes": "17173 게시물은 공식 초청 원고의 재게시로 하나의 작성 계열. 다른 재게시와 중복 집계하지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/気象学者",
+      "title": "기상학자: 구름·회복·대진별 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사 앞 자동 회복 위험·블러디 퀸 높이·붉은 나비 비행",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/少女",
+      "title": "여자아이: 조각과 서지·거울",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "본체 밀치기 면역과 자기 이동 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+      "title": "탐사원: 감시자별 자석 판정",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사 서지·사도 고양이·사냥터지기 후속 공격",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/記者",
+      "title": "기자: 환영의 공격 차단과 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사 돌진·갈고리·덫·위층 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/기자(제5인격)",
+      "title": "기자: 박사와 환영 공격 회복",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": "2026-10-07",
+      "accessedAt": "2026-10-19",
+      "scope": "박사의 일반·스킬 공격 회복 차이",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/맹인(제5인격)",
+      "title": "맹인: 박사 탐지 방해·창틀 대응",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사 다운 복귀 강조 표시와 지팡이",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/의사(제5인격)",
+      "title": "의사: 박사전 회복 지원과 첫 추격 위험",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "치료 운영과 직접 추격의 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/타자(제5인격)",
+      "title": "타자: 박사전 직접 추격과 지원 구분",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "서지 밖 공 견제·서지 중 지원 한계",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/화재조사관",
+      "title": "화재조사관: 박사 에어백 차단",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": "2026-09-13",
+      "accessedAt": "2026-10-19",
+      "scope": "돌진 경로를 막는 벽",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/환자(제5인격)",
+      "title": "환자: 지형 이동 대진",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사가 못 넘는 지형·갈고리",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/납관사",
+      "title": "납관사: 다운 부활과 재추격",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "박사전 부활과 관 위치",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/芸者",
+      "title": "붉은 나비: 현행 평타·단타 방어·풍선 운반",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "2025-11 사거리 변경·부엉이·손전등·풍선 타격",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+      "title": "붉은 나비 운용·나비 시야와 지형 통과",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-01",
+      "accessedAt": "2026-10-19",
+      "scope": "나비 대상 이동·벽 관통·단일 평타·공과 팔꿈치 보호대 추격",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+      "title": "붉은 나비 심화 판정 — 电脑l简单 등",
+      "region": "CN",
+      "kind": "이용자 공동편집·자체 검증",
+      "sourceFamily": "bwiki:dwrg",
+      "publishedAt": "2026-03-24",
+      "accessedAt": "2026-10-19",
+      "scope": "은신·최면·잠행 대상 나비 이동 제한",
+      "notes": "자가 실험 기전 자료. 소스의 편집일을 패치일로 표시하지 않음."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377761567657209917.html",
+      "title": "도둑: 손전등과 붉은 나비 대처",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-01",
+      "accessedAt": "2026-10-19",
+      "scope": "나비 이동 봉쇄·조명 누적·후방 이동",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+      "title": "곤충학자: 벌레 우회 대진",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "붉은 나비 이동·벌레와 본체 분리",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+      "title": "곡예사: 나비 추격과 폭탄 종류",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "지형 이탈·스킬 봉쇄 공·재사용 대기",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/283954591144348295",
+      "title": "곡예사 고급 공략 — 嗷呜小明",
+      "region": "CN",
+      "kind": "공식 초청 이용자 공략",
+      "sourceFamily": "creator:bilibili-aowuxiaoming",
+      "publishedAt": "2022-06-09",
+      "accessedAt": "2026-10-19",
+      "scope": "붉은 나비·거울 본체에 맞힌 화염탄",
+      "notes": "과거 유리·불리 목록을 현재 결론으로 그대로 쓰지 않고 예외 기전 대조."
+    },
+    {
+      "url": "https://www.taptap.cn/moment/365068817728014690",
+      "title": "골동품 상인 심화 — 第五许愿码",
+      "region": "CN",
+      "kind": "독립 이용자 공략",
+      "sourceFamily": "creator:diwuxuyuanma",
+      "publishedAt": "2023-01-19",
+      "accessedAt": "2026-10-19",
+      "scope": "붉은 나비 이동 중 밀치기·사냥터지기 덫·거울 본체 범위",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/骨董商",
+      "title": "골동품 상인: 방어 가능한 오브젝트·공격",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "나비와 거울은 파괴 불가·현과 음표 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/'파로 부인'",
+      "title": "파로 부인: 은신 중 나비 목표 제한",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "은신과 붉은 나비 대상 인식",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/玩具職人",
+      "title": "장난감 상인: 비행·착지와 추격 위험",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "붉은 나비·블러디 퀸 대응·출발 전 준비",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+      "title": "마술사: 이동 직후 환영과 은신 한계",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "나비 직후 타격 유도·환영 방어와 무적의 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/占い師",
+      "title": "선지자: 부엉이 보호와 잔량 관리",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "붉은 나비 단타 방어·시야 충전·현행 지속시간",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/血の女王",
+      "title": "블러디 퀸: 원거리 거울·봉쇄·방어 예외",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "본체 범위·비늘·단타 방어·시전 중 기절",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+      "title": "블러디 퀸 실전 공략과 대응",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-01",
+      "accessedAt": "2026-10-19",
+      "scope": "탐사원·주술사·골동품·공군·납관사와 가속 이탈",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/騎士",
+      "title": "기사: 예측 범위와 거울 공격",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "본체 거리·거울 공격의 일반 공격 선택 판정",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/小説家",
+      "title": "소설가: 교환 범위·거울 위치",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "본체 거리와 근접 교환 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/画家",
+      "title": "화가: 얼굴 기억과 그림의 효과 범위",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "원거리 거울·본체에 그림을 보여 준 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/囚人",
+      "title": "죄수: 거울 기습과 짧은 방전 범위",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "심음 밖 기습·방전 구역의 제한",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/調香師",
+      "title": "조향사: 거울 공격의 되돌리기",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "향수와 단타 감시자·구출 전 사용",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/心理学者",
+      "title": "심리학자: 스트레스 반응과 연속 피해",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "스트레스 소모·일격필살과 공포의 일격 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377763650615651245.html",
+      "title": "심리학자 능력과 스트레스 회복",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-01",
+      "accessedAt": "2026-10-19",
+      "scope": "자동 회복·부상 이전의 여유",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+      "title": "환등사: 투영·피해 지연·거울 판정",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "스킬 피해 지연과 플라이휠·일반 공격 조기 종료",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://game.xiaomi.com/viewpoint/1160758920_1776392376893_16",
+      "title": "환등사 기본 공략 — 约宝",
+      "region": "CN",
+      "kind": "공식 계정 초청 이용자 공략",
+      "sourceFamily": "creator:yuebao",
+      "publishedAt": "2026-04-17",
+      "accessedAt": "2026-10-19",
+      "scope": "사냥터지기·블러디 퀸 대진과 투영 위치 전환",
+      "notes": "网易游戏小管家 게시, 원고 작성자 约宝. 재게시를 별도 독립 자료로 세지 않음."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/作曲家",
+      "title": "작곡가: 조율 이동과 사용 제한",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "가속 사용·재사용 대기",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/機械技師",
+      "title": "기계공: 거울의 인형 견제",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "노출된 인형 해독과 원거리 기습",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/幸運児",
+      "title": "행운아: 상자 동작의 위험과 거울 기습",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "상자 여닫기·수색 중 판정 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+      "title": "사냥터지기: 갈고리 적중 대상별 판정",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "야만인 하차·자석 재설정·환영·부엉이·벌레 설치와 탑승 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377359005187608248.html",
+      "title": "사냥터지기 운용과 태클·탑승 대응",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-01",
+      "accessedAt": "2026-10-19",
+      "scope": "갈고리와 포워드·야만인, 덫 경로",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/オフェンス",
+      "title": "포워드: 태클과 차단 수단",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "사냥터지기 덫·사도의 고양이 대응",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/野人",
+      "title": "야만인: 탑승·풍선 구출의 조건",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "탑승 이탈·돌진 커버와 의자 구출 구분",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/ポストマン",
+      "title": "우편 배달부: 배달견의 사선과 제약",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "사냥터지기 원거리 선타·기절 방해",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/선지자(제5인격)",
+      "title": "선지자: 부엉이의 갈고리 방어",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": "2026-08-15",
+      "accessedAt": "2026-10-19",
+      "scope": "사냥터지기 갈고리에 끌리지 않는 보호 판정",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/마술사(제5인격)",
+      "title": "마술사: 갈고리와 고양이 대응",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "사냥터지기 벽 판정·고양이 부착 후 약점",
+      "notes": "리퍼·블러디 퀸 등 일부 구형 과장 평가는 채택하지 않음."
+    },
+    {
+      "url": "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html",
+      "title": "2026-07-02 정식 업데이트",
+      "region": "JP",
+      "kind": "공식 패치 공지",
+      "sourceFamily": "netease:official",
+      "publishedAt": "2026-07-01",
+      "accessedAt": "2026-10-19",
+      "scope": "갈고리 13초·근거리 동시 끌기·끼임 완화",
+      "notes": "6월 테스트 서버 공지 대신 정식 서버 적용 공지로 확인."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/使徒",
+      "title": "사도: 기절·위협과 대진 조건",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "반발 자석·잠복·올가미·태클·향수",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+      "title": "사도 운용과 상대별 대응",
+      "region": "JP",
+      "kind": "편집부 공략",
+      "sourceFamily": "kamigame",
+      "publishedAt": "2026-10-02",
+      "accessedAt": "2026-10-19",
+      "scope": "카우보이·묘지기·탐사원 및 포워드·조향사·항해사·마술사",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/'사도'",
+      "title": "사도: 풍선 견제와 실제 추격의 차이",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "야만인 풍선 구출 제한·하차 봉쇄·의자 구출 예외",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.9game.cn/dwrg/5229327.html",
+      "title": "사도 심화 공략 — 胖香要稳住心态",
+      "region": "CN",
+      "kind": "공식 초청 이용자 공략 재게시",
+      "sourceFamily": "creator:bilibili-pangxiang",
+      "publishedAt": "2021-06-23",
+      "accessedAt": "2026-10-19",
+      "scope": "사용된 자석·기절 해제·향수 복귀 봉쇄",
+      "notes": "작성자 B站 胖香要稳住心态 명시. 과거 인격·시간 수치와 광범위 상성표는 미채택."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/呪術師",
+      "title": "주술사: 기절 거리와 선제 제어",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "사도의 고양이 기절과 주술 사용 순서",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/カウボーイ",
+      "title": "카우보이: 올가미와 감시자 넘기",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "올가미 이동과 풍선 구출 조건",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/一等航海士",
+      "title": "항해사: 시계 교란과 위치 노출",
+      "region": "JP",
+      "kind": "유저 공동편집 공략",
+      "sourceFamily": "identity5ch",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "고양이가 보여 주는 실제 위치와 피해 유예",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    },
+    {
+      "url": "https://www.namu.moe/w/환등사",
+      "title": "환등사: 고정 중 위협의 위치 갱신 차단",
+      "region": "KR",
+      "kind": "나무위키 미러",
+      "sourceFamily": "namuwiki",
+      "publishedAt": null,
+      "accessedAt": "2026-10-19",
+      "scope": "사도 위협·고정 위치 전환의 선후 관계",
+      "notes": "본문의 관련 기전과 예외를 확인. 열람일과 패치일은 다름."
+    }
+  ],
+  "records": [
+    {
+      "id": "M048",
+      "status": "반영",
+      "summary": "벌레를 사선에 두면 안개 칼날을 대신 맞아 추격을 늦춥니다.",
+      "condition": "근접 평타와 칼날이 함께 벌레에 닿으면 빠르게 소모됩니다. 회수 중이거나 옆으로 노출된 본체는 보호되지 않습니다.",
+      "situation": "추격",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://daigokouryakutv.com/entomologist/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "벌레 차단과 근접 이중타격 예외."
+        },
+        {
+          "url": "https://daigokouryakutv.com/entomologist/",
+          "support": "direct",
+          "note": "안개 칼날 방어 및 설치·회수 설명."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M235",
+      "status": "반영",
+      "summary": "벌레를 사선에 두면 안개 칼날을 대신 맞아 추격을 늦춥니다.",
+      "condition": "근접 평타와 칼날이 함께 벌레에 닿으면 빠르게 소모됩니다. 회수 중이거나 옆으로 노출된 본체는 보호되지 않습니다.",
+      "situation": "추격",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://daigokouryakutv.com/entomologist/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "벌레 차단과 근접 이중타격 예외."
+        },
+        {
+          "url": "https://daigokouryakutv.com/entomologist/",
+          "support": "direct",
+          "note": "안개 칼날 방어 및 설치·회수 설명."
+        }
+      ]
+    },
+    {
+      "id": "M049",
+      "status": "반영",
+      "summary": "포털로 지형을 건너면 리퍼가 추격 경로와 은신을 다시 정리해야 합니다.",
+      "condition": "차가운 안개로 포털을 적은 자원에 처리할 수 있어 예전의 칼날 한 번과 포털 한 번 교환을 그대로 전제할 수 없습니다.",
+      "situation": "추격",
+      "advantage": "샤먼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "조건부 이점은 유지하되 독립적인 현행 포털 대진 근거가 충분하지 않아 대표 쉬운/어려운 목록에서 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "포털 약점과 2025개편 이후 비용 감소."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "소형 칼날의 별도 자원 소비 확인."
+        }
+      ]
+    },
+    {
+      "id": "M050",
+      "status": "반영",
+      "summary": "은신 중인 리퍼는 공을 맞힐 본체 위치를 읽기 어렵습니다.",
+      "condition": "안광·공격 동작으로 위치를 읽거나 은신이 풀린 틈에는 밀치기가 가능합니다. 첫 존재감 전 추격과 구분합니다.",
+      "situation": "은신 추격",
+      "advantage": "리퍼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/バッツマン",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "공을 쏠 수 없다는 판정이 아니라 조준 부담에 관한 조건부 분석.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/バッツマン",
+          "support": "direct",
+          "note": "은신 리퍼 상대 조준 난도."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "은신 진입·공격이나 기절 후 해제."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M051",
+      "status": "반영",
+      "summary": "리퍼의 은신은 화살을 겨눌 위치를 흐려 원거리 견제를 어렵게 합니다.",
+      "condition": "은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "situation": "은신 추격",
+      "advantage": "리퍼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "은신 기전은 확인했으나 궁수 대진을 독립적으로 검증한 현행 자료가 부족하여 목록 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제."
+        }
+      ]
+    },
+    {
+      "id": "M409",
+      "status": "반영",
+      "summary": "리퍼의 은신은 화살을 겨눌 위치를 흐려 원거리 견제를 어렵게 합니다.",
+      "condition": "은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "situation": "조준·커버",
+      "advantage": "리퍼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "은신 기전은 확인했으나 궁수 대진을 독립적으로 검증한 현행 자료가 부족하여 목록 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제."
+        }
+      ]
+    },
+    {
+      "id": "M239",
+      "status": "반영",
+      "summary": "날아오는 안개 칼날은 비늘 경화의 평타 방어를 우회합니다.",
+      "condition": "차가운 안개의 근접 타격은 일반 공격 판정이므로 비늘로 막을 수 있습니다. 원거리 칼날과 직접 타격을 구분합니다.",
+      "situation": "추격",
+      "advantage": "리퍼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.taptap.cn/moment/278582869343866642"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "원거리 우위만 표시. 리퍼의 모든 공격이 비늘을 무시한다는 오독 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "차가운 안개 직접 타격은 비늘 반발 적용."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "mechanic",
+          "note": "비늘은 일반 공격 방어; 스킬 공격과 분리."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "P001",
+      "status": "보류",
+      "summary": "봉으로 공격을 봉쇄하면 칼날도 막지만, 은신 중에는 봉을 맞힐 위치부터 읽어야 합니다.",
+      "condition": "근접 봉 선타와 은신 상태의 원거리 칼날은 유불리가 다릅니다. 2023년 단일 대진 평가는 전체 우세로 쓰지 않습니다.",
+      "situation": "조건·자료 불일치",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "같은 대진을 서로 반대 방향으로 보여주던 모순 해소.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "공격 봉쇄와 은신 조준을 함께 기재."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "칼날이 공격에 연동되고 행동 시 은신 해제."
+        }
+      ]
+    },
+    {
+      "id": "M309",
+      "status": "보류",
+      "summary": "봉으로 공격을 봉쇄하면 칼날도 막지만, 은신 중에는 봉을 맞힐 위치부터 읽어야 합니다.",
+      "condition": "근접 봉 선타와 은신 상태의 원거리 칼날은 유불리가 다릅니다. 2023년 단일 대진 평가는 전체 우세로 쓰지 않습니다.",
+      "situation": "근접 제어",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "같은 대진을 서로 반대 방향으로 보여주던 모순 해소.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "공격 봉쇄와 은신 조준을 함께 기재."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "칼날이 공격에 연동되고 행동 시 은신 해제."
+        }
+      ]
+    },
+    {
+      "id": "M259",
+      "status": "보류",
+      "summary": "안개 칼날은 창틀을 넘는 맹인을 위협하지만, 이것만으로 첫 추격 우세를 확정하기 어렵습니다.",
+      "condition": "맹인의 벽 너머 시야와 은신 리퍼의 가속을 함께 검증해야 합니다. 기존 조건에 잘못 들어간 우산 설명을 삭제했습니다.",
+      "situation": "첫 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "타 감시자 조건이 섞인 행; 독립적인 맹인 대진 근거 부족.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "안개 칼날과 은신 가속만 확인."
+        }
+      ]
+    },
+    {
+      "id": "M320",
+      "status": "반영",
+      "summary": "로켓으로 직진하는 우는 광대는 안개 칼날의 사선을 피하기 까다롭습니다.",
+      "condition": "출발 전 벽으로 사선을 끊거나 로켓을 일찍 내려 방향을 바꾸면 달라집니다. 개활지 로켓 이동에 한정합니다.",
+      "situation": "로켓 접근",
+      "advantage": "리퍼",
+      "urls": [
+        "https://www.taptap.cn/moment/245868658591532292",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "구형 로켓 수치를 사용하지 않고 공격 경로의 상호작용만 유지.",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/245868658591532292",
+          "support": "direct",
+          "note": "원거리 피해와 로켓 조향 부담."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "직선 투사체·벽 관통 조건."
+        }
+      ]
+    },
+    {
+      "id": "M416",
+      "status": "보류",
+      "summary": "환영으로 칼날을 소모시킬 수 있지만 차가운 안개 추가 이후 리퍼의 처리 부담이 줄었습니다.",
+      "condition": "환영 뒤에 본체를 겹치게 두거나 근접 타격을 허용하면 안전하지 않습니다. 은신 이탈만으로 마술사 우세를 확정하지 않습니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/リッパー",
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "구형 환영 우세를 최신 상성으로 유지할 근거가 부족.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "2025개편 후 마술사 환영 처리 개선."
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "소형·대형 칼날 자원 분리."
+        }
+      ]
+    },
+    {
+      "id": "M425",
+      "status": "보류",
+      "summary": "배달견 감속은 접근을 늦출 수 있지만 칼날의 원거리 피해까지 막지는 않습니다.",
+      "condition": "기존 설명의 기절·연속 갈고리는 리퍼 능력이 아닙니다. 편지 종류·은신 단계별 대진 검증이 부족합니다.",
+      "situation": "초반 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/리퍼(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "다른 감시자 조건 복사 오류를 교정하고 단일 상성 판정을 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "실제 리퍼 능력 범위 확인."
+        }
+      ]
+    },
+    {
+      "id": "M052",
+      "status": "반영",
+      "summary": "사냥 도약으로 에어백을 넘으면 길을 막아 시간을 버는 효과가 줄어듭니다.",
+      "condition": "일반 돌진까지 장애물을 관통하는 것은 아닙니다. 도약이 불가능한 높이·배치와 이미 요격으로 전환된 시간은 예외입니다.",
+      "situation": "추격",
+      "advantage": "마음의 짐승",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/火災調査員",
+        "https://www.namu.moe/w/'마음의 짐승'"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "스킬 전체가 장애물을 넘는다는 표현을 첫 평타 도약으로 구체화.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+          "support": "direct",
+          "note": "에어백 우회 대진 명시."
+        },
+        {
+          "url": "https://www.namu.moe/w/'마음의 짐승'",
+          "support": "mechanic",
+          "note": "첫 평타의 낮은 장애물 도약과 일반 돌진 구분."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M357",
+      "status": "반영",
+      "summary": "높은 벽을 만들면 마음의 짐승의 직선 돌진과 도약 연계를 끊기 쉽습니다.",
+      "condition": "낮은 장애물이나 벽 끝이 열린 배치는 우회될 수 있습니다. 우산 자원을 쓰기 전에 붙잡힌 상황은 제외합니다.",
+      "situation": "추격",
+      "advantage": "무언극 아티스트",
+      "urls": [
+        "https://www.namu.moe/w/'마음의 짐승'",
+        "https://wikiwiki.jp/identity5ch/マイムアーティスト"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "신규 감시자 대진이므로 확정 카운터 대신 벽이 유효한 상황으로 한정.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/'마음의 짐승'",
+          "support": "direct",
+          "note": "무언극이 만든 벽과 근거리 반복 이동."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+          "support": "mechanic",
+          "note": "벽 생성의 높이·위치·유한 자원."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M358",
+      "status": "반영",
+      "summary": "교수의 공격 동작 감속과 비늘은 일반 공격을 섞는 연계를 늦출 수 있습니다.",
+      "condition": "비늘이 돌진의 모든 표식과 피해를 지우지는 않습니다. 평타를 읽어 방어할 수 있는 거리에서의 강점입니다.",
+      "situation": "추격",
+      "advantage": "교수",
+      "urls": [
+        "https://www.namu.moe/w/'마음의 짐승'",
+        "https://wikiwiki.jp/identity5ch/教授"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "하드 카운터라는 단일 출처 표현을 제거하고 기전 기반 조건부 평가.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/'마음의 짐승'",
+          "support": "direct",
+          "note": "교수의 감속이 평타 연계에 주는 부담."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "mechanic",
+          "note": "평타 감속·비늘 방어와 스킬 판정 구분."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M359",
+      "status": "보류",
+      "summary": "화살을 맞힌 뒤 파열이 발동하면 돌진 연계를 끊을 수 있습니다.",
+      "condition": "화살을 빗맞히면 근거리에서 역공당합니다. 명중 후 견제와 조준 중 취약함이 공존해 단일 우세는 보류합니다.",
+      "situation": "화살 명중",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/'마음의 짐승'",
+        "https://wikiwiki.jp/identity5ch/弓使い"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "원문은 상호 카운터인데 기존 행은 궁수 우세만 표시한 편향 수정.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/'마음의 짐승'",
+          "support": "direct",
+          "note": "양쪽 모두 조건부 카운터로 명시."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/弓使い",
+          "support": "mechanic",
+          "note": "이동에 따른 파열 누적과 조준 제약."
+        }
+      ]
+    },
+    {
+      "id": "M053",
+      "status": "반영",
+      "summary": "벌레 밀치기는 기절과 달라 밀랍 외피의 반격을 유발하지 않습니다.",
+      "condition": "벌레의 내구도가 남고 밀어낼 경로가 있어야 합니다. 밀랍 사선에 본체가 노출되면 누적을 피하지 못합니다.",
+      "situation": "추격·견제",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師",
+        "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "direct",
+          "note": "비기절 밀치기는 외피가 반응하지 않음."
+        },
+        {
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769",
+          "support": "direct",
+          "note": "벌레 이동·사선 이탈의 어려움 설명."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M054",
+      "status": "반영",
+      "summary": "잠행하면 밀랍 누적을 지우고 사격으로 굳는 상황을 피할 수 있습니다.",
+      "condition": "굳기 전에 삽을 써야 합니다. 잠행이 끝난 뒤 다시 노출되거나 삽을 소진한 상황은 보호되지 않습니다.",
+      "situation": "추격",
+      "advantage": "묘지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師",
+        "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "direct",
+          "note": "잠행 중 밀랍 미부착 및 열밀랍 누적 해제."
+        },
+        {
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769",
+          "support": "direct",
+          "note": "잠행하면 밀랍이 맞지 않는 대진 설명."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M208",
+      "status": "반영",
+      "summary": "잠행하면 밀랍 누적을 지우고 사격으로 굳는 상황을 피할 수 있습니다.",
+      "condition": "굳기 전에 삽을 써야 합니다. 잠행이 끝난 뒤 다시 노출되거나 삽을 소진한 상황은 보호되지 않습니다.",
+      "situation": "추격",
+      "advantage": "묘지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師",
+        "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "direct",
+          "note": "잠행 중 밀랍 미부착 및 열밀랍 누적 해제."
+        },
+        {
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769",
+          "support": "direct",
+          "note": "잠행하면 밀랍이 맞지 않는 대진 설명."
+        }
+      ]
+    },
+    {
+      "id": "M055",
+      "status": "반영",
+      "summary": "높은 벽을 만들어 밀랍 사선을 끊고 누적이 빠질 시간을 벌 수 있습니다.",
+      "condition": "벽 끝을 돌아 사격하거나 밀랍 덩어리를 넘겨 던지는 경로는 남습니다. 생성 위치와 우산 잔량이 필요합니다.",
+      "situation": "추격",
+      "advantage": "무언극 아티스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+          "support": "direct",
+          "note": "밀랍 상대 벽 생성 이점."
+        },
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "엄폐물을 통한 사선 차단이 대처 핵심."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M056",
+      "status": "반영",
+      "summary": "봉 사거리 밖에서 밀랍을 쌓으면 골동품 상인이 붙기 전에 행동을 묶을 수 있습니다.",
+      "condition": "봉으로 먼저 공격을 봉쇄한 상황은 다릅니다. 근접 기절 때 밀랍 외피가 더해지므로 누적치와 존재감 단계를 봅니다.",
+      "situation": "추격",
+      "advantage": "밀랍인형사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師",
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "기전은 유효하지만 골동품 상인의 방어·거리 확보를 함께 입증할 독립 대진 근거가 부족해 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "mechanic",
+          "note": "원거리 누적 및 외피 반격."
+        },
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "기절 시 밀랍 추가·열밀랍 피해."
+        }
+      ]
+    },
+    {
+      "id": "M057",
+      "status": "반영",
+      "summary": "루이 상태에서 밀랍에 굳으면 방어 시간이 이동 없이 소모됩니다.",
+      "condition": "굳기 전 엄폐물로 사선을 끊을 수 있다면 달라집니다. 루이를 썼다는 이유만으로 바로 피해를 받는다는 뜻은 아닙니다.",
+      "situation": "추격",
+      "advantage": "밀랍인형사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/人形師",
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "빙결이라는 용어 대신 밀랍 행동 봉쇄를 사용.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/人形師",
+          "support": "direct",
+          "note": "행동 봉쇄가 루이 시간 소모로 이어짐."
+        },
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "밀랍 누적 후 행동 봉쇄와 해제 조건."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M058",
+      "status": "반영",
+      "summary": "중거리를 유지하며 밀랍을 쌓으면 투우사가 근접 기술을 쓰기 부담스럽습니다.",
+      "condition": "망토의 회피로 굳은 뒤 열밀랍·평타 연계를 피할 수도 있습니다. 누적만으로 모든 회피가 봉쇄되는 것은 아닙니다.",
+      "situation": "추격",
+      "advantage": "밀랍인형사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/闘牛士",
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "투우사의 특수 회피 예외가 크고 독립 대진 근거가 아직 얕아 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+          "support": "direct",
+          "note": "중거리 약점과 열밀랍 연계 회피 양쪽 기재."
+        },
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "누적·열밀랍 전환 구조."
+        }
+      ]
+    },
+    {
+      "id": "P004",
+      "status": "보류",
+      "summary": "미리 붙인 반발 자석은 굳은 뒤 접근을 밀어낼 수 있지만 열밀랍은 멀리서 피해를 줍니다.",
+      "condition": "자석이 발동하기 전에 평타가 닿는 거리와 열밀랍 해금 뒤를 구분해야 합니다.",
+      "situation": "조건·자료 불일치",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師",
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "초반 반발 성공을 전 구간 우세로 일반화하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "direct",
+          "note": "자석 자동발동·가까운 타격·열밀랍 반례."
+        },
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "기절 외피와 존재감 단계별 공격 변화."
+        }
+      ]
+    },
+    {
+      "id": "M207",
+      "status": "보류",
+      "summary": "포털로 벽 반대편에 나가면 밀랍 사격이 이어지는 시간을 끊을 수 있습니다.",
+      "condition": "얇거나 짧은 벽에서는 다시 사선이 열립니다. 현재 확보한 독립 대진 근거만으로 샤먼 우세를 확정하지 않습니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://daigokouryakutv.com/wax-sculpture-master/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "일반적인 포털 장점만으로 특정 대진을 확정했던 행 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://daigokouryakutv.com/wax-sculpture-master/",
+          "support": "mechanic",
+          "note": "사선이 끊기는 높은 벽의 중요성."
+        }
+      ]
+    },
+    {
+      "id": "M353",
+      "status": "보류",
+      "summary": "흙공이 밀랍 사선을 가리는 조건은 확인이 더 필요합니다.",
+      "condition": "공을 굴리는 상태와 탑승 상태의 높이·피격 판정을 분리해야 합니다. 출시 직후 자료를 확정 상성으로 쓰지 않습니다.",
+      "situation": "흙공 방어",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "신동 최근 피격판정 수정 이후 독립적인 재검증 부족.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/蝋人形師",
+          "support": "mechanic",
+          "note": "밀랍 사격의 경로 조건."
+        }
+      ]
+    },
+    {
+      "id": "M442",
+      "status": "반영",
+      "summary": "환자는 갈고리로 밀랍이 막은 창틀·판자 구역을 벗어나 사선을 끊을 수 있습니다.",
+      "condition": "갈고리를 걸 지형과 착지 공간이 필요합니다. 사용 전에 굳거나 이동 경로가 계속 노출되는 경우는 다릅니다.",
+      "situation": "봉쇄 구역 탈출",
+      "advantage": "환자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "단순 밀랍 명중이 갈고리를 끊는다는 기존 문장과 단일 감시자 우세를 교정.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "direct",
+          "note": "갈고리는 일반 피해로 중단되지 않으며 밀랍 봉쇄 우회 가능."
+        },
+        {
+          "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14309075769",
+          "support": "direct",
+          "note": "환자의 거리 이동과 사선 이탈을 어려운 대진으로 평가."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M059",
+      "status": "반영",
+      "summary": "광상곡 이후에는 음표가 벌레를 지나 본체를 감속시키고, 이동하며 벌레를 처리할 수 있습니다.",
+      "condition": "음표 자체는 피해가 아닌 감속입니다. 광상곡 전 벌레 밀치기나 현 사선 밖으로 먼저 이동한 상황은 구분합니다.",
+      "situation": "추격",
+      "advantage": "바이올리니스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "음표와 현의 피해를 혼동하던 표현 수정.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "벌레 관통·광상곡 이동 타격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "direct",
+          "note": "곤충학자를 유리한 대진으로 기재."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M232",
+      "status": "반영",
+      "summary": "광상곡 이후에는 음표가 벌레를 지나 본체를 감속시키고, 이동하며 벌레를 처리할 수 있습니다.",
+      "condition": "음표 자체는 피해가 아닌 감속입니다. 광상곡 전 벌레 밀치기나 현 사선 밖으로 먼저 이동한 상황은 구분합니다.",
+      "situation": "존재감 이후",
+      "advantage": "바이올리니스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "음표와 현의 피해를 혼동하던 표현 수정.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "벌레 관통·광상곡 이동 타격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "direct",
+          "note": "곤충학자를 유리한 대진으로 기재."
+        }
+      ]
+    },
+    {
+      "id": "M060",
+      "status": "반영",
+      "summary": "봉으로 현을 지울 수 없어, 골동품 상인은 현이 깔린 의자에 접근할 때 우회가 필요합니다.",
+      "condition": "본체를 먼저 기절시키면 시전을 늦출 수 있습니다. 봉의 투사체 방어가 현 공격까지 없애 주는 것은 아닙니다.",
+      "situation": "구출",
+      "advantage": "바이올리니스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "골동품 상인의 아이템으로 지울 수 없는 공격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "mechanic",
+          "note": "지형을 가로지르는 현 생성·구출 저지."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M061",
+      "status": "반영",
+      "summary": "오르골 밖에서 현을 그으면 무희가 좁은 판자 구역에 계속 머물기 어렵습니다.",
+      "condition": "미끄러짐으로 현이 생기는 순간을 피하거나 오르골을 떠나면 달라집니다. 오르골의 감속 자체가 사라지는 것은 아닙니다.",
+      "situation": "추격",
+      "advantage": "바이올리니스트",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/踊り子",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/踊り子",
+          "support": "direct",
+          "note": "느린 오르골을 무시하는 원거리 현 공격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "mechanic",
+          "note": "현의 생성 순간 피해와 범위 공격."
+        }
+      ]
+    },
+    {
+      "id": "M062",
+      "status": "반영",
+      "summary": "신호총을 먼저 맞히면 의자 앞 현 연계를 끊고 구출할 시간을 확보합니다.",
+      "condition": "총알이 가려지거나 흥분으로 기절을 풀면 성립하지 않습니다. 이미 생긴 현의 공격 범위와 두 번째 음표 타이밍도 피해야 합니다.",
+      "situation": "구출",
+      "advantage": "공군",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "기절 중 새 현을 놓을 수 없다는 기전을 이용한 조건부 구출 판단.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "공군의 무피해 구출이 존재감 획득을 늦춤."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "mechanic",
+          "note": "현과 평타를 잇는 캠핑 방식."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M063",
+      "status": "반영",
+      "summary": "갈고리로 현이 닿는 구역을 벗어나면 이동기가 없는 본체가 다시 따라와야 합니다.",
+      "condition": "갈고리를 걸 지형·남은 횟수와 안전한 착지점이 필요합니다. 의자 앞에서 현을 맞은 뒤의 구출까지 유리하다는 뜻은 아닙니다.",
+      "situation": "추격",
+      "advantage": "환자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://www.taptap.io/kr/post/341790"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "거리 추격이 가능한 환자를 피하도록 권고."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "mechanic",
+          "note": "갈고리 지형 이동과 사용 제약."
+        },
+        {
+          "url": "https://www.taptap.io/kr/post/341790",
+          "support": "mechanic",
+          "note": "전용 이동기가 없어 감속에 의존."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M064",
+      "status": "반영",
+      "summary": "현을 맞기 전에 가속해 구역을 옮기면 바이올리니스트의 재접근을 늦춥니다.",
+      "condition": "가속이 끝난 뒤의 감속 구간을 개활지에 남기지 않아야 합니다. 격려를 소진했거나 이미 음표 감속이 쌓인 상황은 다릅니다.",
+      "situation": "추격",
+      "advantage": "치어리더",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://wikiwiki.jp/identity5ch/応援団",
+        "https://www.taptap.io/kr/post/341790"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+          "support": "direct",
+          "note": "치어리더의 거리 추격을 피하도록 권고."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/応援団",
+          "support": "exception",
+          "note": "가속 뒤 감속과 자기 격려 사용 제한."
+        },
+        {
+          "url": "https://www.taptap.io/kr/post/341790",
+          "support": "mechanic",
+          "note": "이동기가 없는 감시자 구조."
+        }
+      ]
+    },
+    {
+      "id": "M065",
+      "status": "반영",
+      "summary": "미리 준비한 관으로 멀리 부활하면 현이 겹친 의자 앞 구출을 건너뛸 수 있습니다.",
+      "condition": "관 위치와 얼굴 등록을 준비해야 하며, 형상 이동·순간이동으로 재추격당할 수 있습니다. 초반부터 관을 쓰는 것이 항상 시간 이득은 아닙니다.",
+      "situation": "구출 지원",
+      "advantage": "납관사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/納棺師",
+        "https://kamigame.jp/identity5/page/377360244134681878.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "구출 지원의 조건부 이점으로 한정; 첫 추격 판정 아님.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/納棺師",
+          "support": "direct",
+          "note": "구출 저지가 강한 보행 감시자 상대 원격 구출."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360244134681878.html",
+          "support": "mechanic",
+          "note": "캠핑 중심 공격과 이동기의 부재."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M355",
+      "status": "보류",
+      "summary": "신동의 흙공은 바이올리니스트의 모든 공격을 같은 방식으로 막지 않습니다.",
+      "condition": "현이 처음 생기는 공격과 무궁동, 공을 굴릴 때와 탑승할 때의 피격이 다릅니다. 최근 높이 판정 수정 뒤 독립적인 재검증이 부족합니다.",
+      "situation": "자료 충돌",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "상반된 출시 초기 공략을 평균내지 않고 판정 검증 대기.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "형태별 현·무궁동 판정 차이."
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+          "support": "exception",
+          "note": "신동 높이와 일반 피격 판정 오류 수정."
+        }
+      ]
+    },
+    {
+      "id": "M066",
+      "status": "반영",
+      "summary": "에너지 서지의 저항이 붙은 공격 동작은 자석으로 밀거나 끊기 어렵습니다.",
+      "condition": "공격 동작 밖이나 서지 전에는 자석이 작동합니다. 차지 내려찍기의 모든 구간까지 무조건 면역이라고 보지 않습니다.",
+      "situation": "추격",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/探鉱者",
+        "https://www.taptap.cn/moment/248031792894840155"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "에너지 수치만 보고 상시 면역으로 오해하지 않도록 행동 범위를 제한.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+          "support": "direct",
+          "note": "서지 돌진·도약 공격에서 자석 제한."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/248031792894840155",
+          "support": "mechanic",
+          "note": "서지 상태의 일반 공격 저항."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M067",
+      "status": "반영",
+      "summary": "서지 공격 중에는 공 견제가 제한되고, 풍선 운반도 없어 풍선 구출을 노릴 수 없습니다.",
+      "condition": "서지 밖의 공격은 공으로 끊을 수 있습니다. 타자가 판자·창틀을 끼고 직접 도망치는 상황과 지원 상황을 분리합니다.",
+      "situation": "추격·견제",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/バッツマン",
+        "https://kamigame.jp/identity5/page/377360363370326692.html",
+        "https://www.namu.moe/w/타자(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M403과 장면에 따라 반대 이점. 대표 목록에서는 한쪽으로 단정하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/バッツマン",
+          "support": "direct",
+          "note": "서지 차지 공격과 풍선 없는 구조."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "서지 저항과 운반 없는 탈락 방식."
+        },
+        {
+          "url": "https://www.namu.moe/w/타자(제5인격)",
+          "support": "exception",
+          "note": "직접 추격에서는 지형과 공으로 버틸 여지."
+        }
+      ]
+    },
+    {
+      "id": "M068",
+      "status": "반영",
+      "summary": "풍선 운반이 없어 포워드의 태클 구출 기회가 생기지 않습니다.",
+      "condition": "공을 이동에 써서 지형을 옮길 수는 있습니다. 서지 밖의 기절 지원까지 모두 무효라는 뜻은 아닙니다.",
+      "situation": "구출 역할 제한",
+      "advantage": "박사",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377360363370326692.html",
+        "https://www.taptap.cn/moment/248031792894840155"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "direct",
+          "note": "포워드의 운반 중 구출 상실."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/248031792894840155",
+          "support": "mechanic",
+          "note": "다운 후 출혈 탈락과 서지 저항."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M069",
+      "status": "반영",
+      "summary": "서지 공격 중에는 투우사의 밀치기로 접근을 끊기 어렵습니다.",
+      "condition": "서지 밖에서는 밀칠 수 있으며 망토 회피는 별개입니다. 돌진을 연속으로 맞는 개활지와 창틀을 낀 추격을 구분합니다.",
+      "situation": "추격",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/闘牛士",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+          "support": "direct",
+          "note": "박사 서지 저항·연속 돌진과 투우사 상호작용."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "서지 공격 저항과 돌진 장애물."
+        }
+      ]
+    },
+    {
+      "id": "M070",
+      "status": "반영",
+      "summary": "루이 이후 치료 제약은 쓰러진 팀원을 계속 회복시키는 박사전에서 부담이 커집니다.",
+      "condition": "내려찍기에 묶이면 루이 시간이 소모될 수 있습니다. 따뜻한 비 같은 별도 회복과 안전한 지형으로 재정비한 상황은 다릅니다.",
+      "situation": "다운 후 회복 운영",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/人形師",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/人形師",
+          "support": "direct",
+          "note": "박사 대진의 치료 부담과 루이 시간 소모."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "다운과 재회복을 반복하는 탈락 구조."
+        }
+      ]
+    },
+    {
+      "id": "M071",
+      "status": "반영",
+      "summary": "따뜻한 비는 쓰러진 팀원도 회복시켜 박사의 출혈 압박을 늦출 수 있습니다.",
+      "condition": "박사가 곁에서 일어나는 순간을 기다리면 다시 쓰러져 탈락이 빨라질 수 있습니다. 안전한 회복 위치와 비의 대상을 먼저 확보합니다.",
+      "situation": "회복 지원",
+      "advantage": "기상학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/気象学者",
+        "https://news.17173.com/content/08132025/175412342.shtml"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "안전한 회복 위치를 확보한 상황에서만 이점. 자동 회복 뒤 즉시 재다운되면 탈락이 빨라지는 역효과가 커 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/気象学者",
+          "support": "direct",
+          "note": "다운 회복과 회복 직후 재타격 위험."
+        },
+        {
+          "url": "https://news.17173.com/content/08132025/175412342.shtml",
+          "support": "mechanic",
+          "note": "따뜻한 비는 다운 상태에도 적용되고 감시자에게 보임."
+        }
+      ]
+    },
+    {
+      "id": "M072",
+      "status": "반영",
+      "summary": "벌레를 돌진 경로에 세우면 박사가 멈춰 재접근해야 합니다.",
+      "condition": "벌레를 옆으로 비껴가거나 먼저 제거한 뒤에는 막지 못합니다. 서지의 기절 저항과 장애물 충돌은 다른 판정입니다.",
+      "situation": "추격",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/アンデッド",
+        "https://daigokouryakutv.com/entomologist/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+          "support": "direct",
+          "note": "벌레 충돌로 돌진 정지."
+        },
+        {
+          "url": "https://daigokouryakutv.com/entomologist/",
+          "support": "direct",
+          "note": "설치 벌레가 박사 돌진을 막음."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M181",
+      "status": "반영",
+      "summary": "서지 돌진은 기억 조각의 밀치기를 무시하고 여자아이에게 닿을 수 있습니다.",
+      "condition": "조각으로 여자아이 자신을 옆으로 이동시키면 피할 여지가 있습니다. 박사를 밀어내는 효과와 자기 이동을 구분합니다.",
+      "situation": "추격",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/少女",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/少女",
+          "support": "direct",
+          "note": "서지 돌진이 조각을 통과하나 횡이동은 가능."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "서지 돌진 저항과 직선 경로."
+        }
+      ]
+    },
+    {
+      "id": "M246",
+      "status": "반영",
+      "summary": "돌진과 내려찍기의 스킬 피해는 교수의 비늘 경화로 막기 어렵습니다.",
+      "condition": "일반 공격은 막을 수 있지만 서지 공격 중에는 반발이 생기지 않습니다. 창틀을 돌아 평타를 유도할 때는 평가가 달라집니다.",
+      "situation": "개활지 추격",
+      "advantage": "박사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/278582869343866642",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "스킬 피해와 서지 평타 방어·반발 구분."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "mechanic",
+          "note": "일반 공격을 방어하는 비늘의 범위."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "서지 공격 저항."
+        }
+      ]
+    },
+    {
+      "id": "M257",
+      "status": "반영",
+      "summary": "환영을 돌진 앞에 두면 대신 맞게 해 박사의 추격 시간을 소모시킬 수 있습니다.",
+      "condition": "환영과 본체가 겹쳐 내려찍기 범위에 들거나 도약으로 우회당하면 위험합니다. 환영이 먼저 경로를 가리는 상황에 한정합니다.",
+      "situation": "추격",
+      "advantage": "기자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/記者",
+        "https://www.namu.moe/w/기자(제5인격)"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "한국 원문의 무조건 승리 표현 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "direct",
+          "note": "환영으로 에너지 충격 차단·계단 도약 예외."
+        },
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "환영에 대한 스킬 공격의 회복 부담."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M262",
+      "status": "반영",
+      "summary": "지팡이의 탐지 방해는 다운 뒤 일어난 위치가 드러나는 것을 막아 박사의 재추격을 늦춥니다.",
+      "condition": "개활지에서 돌진을 피하는 능력까지 생기지는 않습니다. 시작하자마자 지팡이로 위치를 알리거나 탐지 방해가 끝난 뒤는 구분합니다.",
+      "situation": "다운 후 탐지 방해",
+      "advantage": "맹인",
+      "urls": [
+        "https://www.namu.moe/w/맹인(제5인격)",
+        "https://wikiwiki.jp/identity5ch/アンデッド"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/맹인(제5인격)",
+          "support": "direct",
+          "note": "오라 감지 방해·창틀 시야·초반 노출 위험."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+          "support": "direct",
+          "note": "맹인 반향정위가 회복 후 강조 표시를 차단."
+        }
+      ]
+    },
+    {
+      "id": "M269",
+      "status": "반영",
+      "summary": "의사의 반복 치료는 박사가 여러 생존자에게 남긴 부상을 정리하는 데 도움이 됩니다.",
+      "condition": "의사가 먼저 추격당하면 치료할 틈이 줄어듭니다. 박사 바로 앞에서 다운된 동료를 서둘러 일으키는 것은 재타격 위험이 있습니다.",
+      "situation": "안전한 위치의 회복 지원",
+      "advantage": "의사",
+      "urls": [
+        "https://www.namu.moe/w/의사(제5인격)",
+        "https://wikiwiki.jp/identity5ch/アンデッド"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/의사(제5인격)",
+          "support": "direct",
+          "note": "박사전 치료 지원과 우선 추격 위험."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+          "support": "direct",
+          "note": "회복 운영에는 취약하지만 의사 직접 추격은 가능."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M291",
+      "status": "반영",
+      "summary": "통로의 에어백은 박사의 직선 돌진을 막고 파괴하거나 돌아가게 합니다.",
+      "condition": "옆길이 열려 있거나 도약으로 넘을 수 있는 높이·배치라면 지연이 줄어듭니다. 이미 돌진에 맞은 뒤 설치하는 방어가 아닙니다.",
+      "situation": "추격",
+      "advantage": "화재조사관",
+      "urls": [
+        "https://www.namu.moe/w/화재조사관",
+        "https://wikiwiki.jp/identity5ch/火災調査員",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/화재조사관",
+          "support": "direct",
+          "note": "박사가 에어백을 파괴하고 지나가야 하는 부담."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+          "support": "mechanic",
+          "note": "통로를 막는 물체와 설치 제약."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "돌진은 장애물에 막히고 도약은 일부만 통과."
+        }
+      ]
+    },
+    {
+      "id": "M326",
+      "status": "보류",
+      "summary": "박사의 빠른 돌진은 손전등을 계속 비추며 거리를 유지하기 어렵게 만듭니다.",
+      "condition": "창틀과 판자로 진입을 막고 비추는 상황은 다릅니다. 기존 단일 경험담 외에 손전등과 서지의 현행 판정을 입증할 근거가 부족합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "커뮤니티 한 건의 넓은 체감 평가를 최신 확정 상성에서 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "직선 돌진과 서지 저항."
+        }
+      ]
+    },
+    {
+      "id": "M381",
+      "status": "반영",
+      "summary": "서지의 저항이 적용된 공격 동작에 쏜 신호총은 박사를 멈추기 어렵습니다.",
+      "condition": "공격 후 회복이나 서지 밖을 노리면 총이 통할 수 있습니다. 총을 보유했다는 이유만으로 다운된 동료를 안전하게 일으킬 수 있는 것은 아닙니다.",
+      "situation": "에너지 폭발",
+      "advantage": "박사",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377360363370326692.html",
+        "https://www.taptap.cn/moment/248031792894840155"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "신호총 타이밍을 대조한 독립 최신 대진 공략이 부족해 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "서지 저항과 비서지의 기절 취약함."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/248031792894840155",
+          "support": "mechanic",
+          "note": "서지 일반 공격의 제어 저항."
+        }
+      ]
+    },
+    {
+      "id": "M387",
+      "status": "반영",
+      "summary": "부엉이가 한 번의 피해를 대신 받으면 박사의 첫 다운이 늦어질 수 있습니다.",
+      "condition": "짧은 차지 내려찍기는 부엉이를 벗기지 못하지만, 보호가 끝난 뒤의 돌진은 별개입니다. 부엉이 잔량과 지원 타이밍이 필요합니다.",
+      "situation": "첫 추격·부엉이 지원",
+      "advantage": "선지자",
+      "urls": [
+        "https://www.taptap.cn/moment/248031792894840155",
+        "https://wikiwiki.jp/identity5ch/アンデッド"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "2022년 밴 추천은 사용하지 않고 현행 보호 판정만 조건부로 유지.",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/248031792894840155",
+          "support": "direct",
+          "note": "선지자의 방어와 시작 정보가 첫 추격을 지연."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+          "support": "direct",
+          "note": "짧은 내려찍기로 부엉이를 벗길 수 없는 예외."
+        }
+      ]
+    },
+    {
+      "id": "M396",
+      "status": "반영",
+      "summary": "관으로 쓰러진 생존자를 다른 위치에서 일으켜 박사의 다운 관리를 끊을 수 있습니다.",
+      "condition": "관과 등록을 미리 준비해야 합니다. 출혈 진행에 따른 사용 제한과 관 위치로의 재추격을 고려하며, 박사는 의자 캠핑을 하지 않습니다.",
+      "situation": "다운 후 원격 부활",
+      "advantage": "납관사",
+      "urls": [
+        "https://www.namu.moe/w/납관사",
+        "https://wikiwiki.jp/identity5ch/納棺師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "박사전에는 없는 의자 캠핑 문구 삭제. 탈출 확정이라는 구형 과장 미채택.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/납관사",
+          "support": "direct",
+          "note": "박사전 다운 부활과 이동 재추격."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/納棺師",
+          "support": "mechanic",
+          "note": "다운 부활·관 위치 공개·운영 부담."
+        }
+      ]
+    },
+    {
+      "id": "M403",
+      "status": "반영",
+      "summary": "타자는 창틀·판자를 끼고 서지 밖에 공을 맞히면 박사의 접근을 늦출 수 있습니다.",
+      "condition": "서지 공격을 공으로 끊으려 하면 실패할 수 있습니다. 직접 추격의 지형 이점을 동료 커버나 개활지에 그대로 적용하지 않습니다.",
+      "situation": "직접 추격",
+      "advantage": "타자",
+      "urls": [
+        "https://www.namu.moe/w/타자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/バッツマン",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M067과 장면별 반대 방향이므로 세부 설명만 유지.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/타자(제5인격)",
+          "support": "direct",
+          "note": "직접 추격의 공·창틀 이점과 서지 커버 제약."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/バッツマン",
+          "support": "exception",
+          "note": "서지 차지 공격에는 공이 통하지 않음."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "좁은 장애물과 비서지 기절 취약함."
+        }
+      ]
+    },
+    {
+      "id": "M445",
+      "status": "반영",
+      "summary": "갈고리로 박사의 도약이 넘지 못하는 지형을 건너면 돌진 경로를 끊을 수 있습니다.",
+      "condition": "착지점이 직선으로 열려 있으면 다시 따라잡힙니다. 갈고리 잔량과 실제로 넘을 수 있는 높이를 확인해야 합니다.",
+      "situation": "지형 이동",
+      "advantage": "환자",
+      "urls": [
+        "https://www.namu.moe/w/환자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://kamigame.jp/identity5/page/377360363370326692.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환자(제5인격)",
+          "support": "direct",
+          "note": "박사가 못 넘는 지형을 쓰는 갈고리."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "mechanic",
+          "note": "갈고리 지형 이동 제약."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360363370326692.html",
+          "support": "mechanic",
+          "note": "돌진 장애물·도약 통과 범위."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M457",
+      "status": "반영",
+      "summary": "포털로 경로를 끊고 떨어진 곳에서 회복하면 박사가 다운 압박을 이어가기 어렵습니다.",
+      "condition": "포털을 쓸 지형·연결받을 동료가 필요합니다. 남은 흔적과 형상 이동으로 재추격할 수 있으므로 포털만으로 안전이 보장되지는 않습니다.",
+      "situation": "지형 이동·회복 지원",
+      "advantage": "샤먼",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/アンデッド",
+        "https://www.taptap.cn/moment/248031792894840155"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "오래된 밴 추천 대신 두 공략이 공통으로 설명하는 기전만 반영.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/アンデッド",
+          "support": "direct",
+          "note": "돌진의 포털 통과 불가·원거리 회복 부담."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/248031792894840155",
+          "support": "direct",
+          "note": "포털 추격 지연과 회복 지원."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M073",
+      "status": "반영",
+      "summary": "부엉이로 평타 한 번을 막으면 붉은 나비가 다음 공격을 위해 다시 접근해야 합니다.",
+      "condition": "보호 중 공격을 미루거나 끝나는 순간을 노릴 수 있습니다. 부엉이가 남아 있고 공격 전에 지원이 도착해야 합니다.",
+      "situation": "추격 지원",
+      "advantage": "선지자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/占い師",
+        "https://wikiwiki.jp/identity5ch/芸者",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "mechanic",
+          "note": "부엉이 보호·재충전과 지속 제한."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "direct",
+          "note": "단타 구조에서 부엉이 방어가 주는 부담."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "이동 뒤 일반 공격으로 피해를 주는 구조."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M074",
+      "status": "반영",
+      "summary": "손전등으로 스킬을 봉쇄하면 나비가 붙지 않은 상태에서도 생멸을 막을 수 있습니다.",
+      "condition": "빛을 계속 닿게 할 거리와 시야가 필요합니다. 벽 반대편 나비로 우회하거나 이미 평타 거리에 붙으면 손전등만으로 안전하지 않습니다.",
+      "situation": "추격",
+      "advantage": "도둑",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/芸者",
+        "https://kamigame.jp/identity5/page/377761567657209917.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "direct",
+          "note": "나비 부착 없이도 스킬 봉쇄."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377761567657209917.html",
+          "support": "direct",
+          "note": "손전등을 든 채 생멸을 멈추는 대진."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M293",
+      "status": "반영",
+      "summary": "손전등으로 스킬을 봉쇄하면 나비가 붙지 않은 상태에서도 생멸을 막을 수 있습니다.",
+      "condition": "빛을 계속 닿게 할 거리와 시야가 필요합니다. 벽 반대편 나비로 우회하거나 이미 평타 거리에 붙으면 손전등만으로 안전하지 않습니다.",
+      "situation": "추격",
+      "advantage": "도둑",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/芸者",
+        "https://kamigame.jp/identity5/page/377761567657209917.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "direct",
+          "note": "나비 부착 없이도 스킬 봉쇄."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377761567657209917.html",
+          "support": "direct",
+          "note": "손전등을 든 채 생멸을 멈추는 대진."
+        }
+      ]
+    },
+    {
+      "id": "M075",
+      "status": "반영",
+      "summary": "풍선 운반 중에는 짧은 타격 범위 바깥에서 태클을 준비해 구출을 노릴 수 있습니다.",
+      "condition": "풍선을 내려놓고 생멸로 포워드부터 쫓으면 달라집니다. 일반 추격에서는 공으로 벌린 거리를 나비로 좁힐 수 있습니다.",
+      "situation": "풍선 견제",
+      "advantage": "포워드",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/芸者",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "풍선 운반이라는 좁은 상황의 이점. 전체 상성으로 단정하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "direct",
+          "note": "풍선 타격의 짧은 범위와 포워드 견제."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "exception",
+          "note": "공 이동 후 생멸 재접근 가능."
+        }
+      ]
+    },
+    {
+      "id": "M076",
+      "status": "반영",
+      "summary": "벌레 너머의 나비가 보이면 생멸로 차단선을 지나 곤충학자에게 접근할 수 있습니다.",
+      "condition": "나비가 없는 방향으로 벌레를 타고 옮기거나 주시로 생멸을 끊으면 달라집니다. 벌레의 모든 지원이 무효인 것은 아닙니다.",
+      "situation": "추격",
+      "advantage": "붉은 나비",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/昆虫学者",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+          "support": "direct",
+          "note": "붉은 나비가 벌레를 무시해 이동."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "나비를 향한 장애물 관통 이동."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M077",
+      "status": "보류",
+      "summary": "곡예사의 도약 지형을 나비로 따라갈 수 있지만, 폭탄 종류와 생멸 사용 순서에 따라 유불리가 바뀝니다.",
+      "condition": "화염탄으로 스킬을 막거나 생멸 뒤 도약하면 곡예사가 시간을 벌 수 있습니다. 나비가 준비된 경로의 단순 선제 도약과 구분합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/曲芸師",
+        "https://www.taptap.cn/moment/283954591144348295",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "JP의 불리 평가와 CN의 유리 평가가 갈려 스킬 순서의 조건만 제시.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+          "support": "direct",
+          "note": "지형 우회에 약하지만 스킬에 맞춰 폭탄 사용 가능."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/283954591144348295",
+          "support": "exception",
+          "note": "붉은 나비 상대로 후도약·감속을 활용하는 반대 평가."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "나비 시야를 통한 지형 통과."
+        }
+      ]
+    },
+    {
+      "id": "M229",
+      "status": "보류",
+      "summary": "곡예사의 도약 지형을 나비로 따라갈 수 있지만, 폭탄 종류와 생멸 사용 순서에 따라 유불리가 바뀝니다.",
+      "condition": "화염탄으로 스킬을 막거나 생멸 뒤 도약하면 곡예사가 시간을 벌 수 있습니다. 나비가 준비된 경로의 단순 선제 도약과 구분합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/曲芸師",
+        "https://www.taptap.cn/moment/283954591144348295",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "JP의 불리 평가와 CN의 유리 평가가 갈려 스킬 순서의 조건만 제시.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+          "support": "direct",
+          "note": "지형 우회에 약하지만 스킬에 맞춰 폭탄 사용 가능."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/283954591144348295",
+          "support": "exception",
+          "note": "붉은 나비 상대로 후도약·감속을 활용하는 반대 평가."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "나비 시야를 통한 지형 통과."
+        }
+      ]
+    },
+    {
+      "id": "M078",
+      "status": "반영",
+      "summary": "에어백 반대편 나비를 향해 생멸하면 통로를 막아 얻는 시간을 줄일 수 있습니다.",
+      "condition": "나비 시야가 없거나 화재조사관의 주시로 생멸이 끊기면 우회가 필요합니다. 일반 이동으로 에어백을 통과한다는 뜻은 아닙니다.",
+      "situation": "추격",
+      "advantage": "붉은 나비",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/火災調査員",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/火災調査員",
+          "support": "direct",
+          "note": "붉은 나비의 에어백 통과 예외."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "나비 목표 이동·주시와 시야 제약."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M260",
+      "status": "보류",
+      "summary": "나비로 빠르게 붙는 첫 추격은 이동 도구가 없는 맹인에게 부담이 됩니다.",
+      "condition": "맹인도 나비를 붙인 상태에서 주시로 생멸을 끊을 수 있습니다. 구형 공략의 주시 불가 주장과 잘못 섞인 우산 조건은 사용하지 않습니다.",
+      "situation": "첫 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://www.namu.moe/w/맹인(제5인격)",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "대진 원문의 구버전 모순 때문에 최신 단일 우세 판정 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/맹인(제5인격)",
+          "support": "exception",
+          "note": "이동 취약성은 있으나 구형 주시 설명이 혼재."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "나비 부착 생존자의 주시 조건."
+        }
+      ]
+    },
+    {
+      "id": "M272",
+      "status": "반영",
+      "summary": "나비가 남은 비행 경로로 생멸하면 장난감 상인의 착지 거리를 빠르게 좁힐 수 있습니다.",
+      "condition": "비행 자체를 무조건 취소시키는 것은 아닙니다. 나비 시야를 끊는 착지점이나 생멸 재사용 대기 중 출발은 예외입니다.",
+      "situation": "재추격",
+      "advantage": "붉은 나비",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/玩具職人",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/玩具職人",
+          "support": "direct",
+          "note": "붉은 나비의 즉시 재접근을 경계."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "높낮이·장애물을 넘는 나비 목표 이동."
+        }
+      ]
+    },
+    {
+      "id": "M276",
+      "status": "반영",
+      "summary": "은신한 파로 부인에게 붙은 나비는 생멸의 직접 목표로 삼기 어렵습니다.",
+      "condition": "주변에 따로 놓인 나비로 접근한 뒤 흔적을 따라 평타를 칠 수 있습니다. 은신 해제 후에도 같은 보호가 유지되지는 않습니다.",
+      "situation": "은신",
+      "advantage": "파로 부인",
+      "urls": [
+        "https://www.namu.moe/w/'파로 부인'",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/'파로 부인'",
+          "support": "direct",
+          "note": "은신 중 붙은 나비 인식 불가와 주변 나비 우회."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "direct",
+          "note": "은신한 파로 부인에게 직접 생멸 불가."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M294",
+      "status": "보류",
+      "summary": "포털을 건너 생멸 시야를 끊으면 추격 경로를 바꿀 수 있습니다.",
+      "condition": "나비가 반대편에 남아 있으면 지형을 그대로 따라올 수 있습니다. 포털 거리·연결 위치별 독립적인 현행 대진 근거가 부족합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "포털의 일반 장점을 붉은 나비 카운터로 확대하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "벽 반대편 나비로 추격 가능."
+        }
+      ]
+    },
+    {
+      "id": "M295",
+      "status": "반영",
+      "summary": "용병은 지연 피해를 이용해 단타 중심의 붉은 나비에게 맞고도 구출을 마칠 여지가 있습니다.",
+      "condition": "구출 전부터 피해가 누적됐거나 멀리서 맞고 들어오면 달라집니다. 팔꿈치 보호대만으로 생멸 추격을 따돌린다는 평가는 아닙니다.",
+      "situation": "구출",
+      "advantage": "용병",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/芸者",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "구출 지연 피해의 기전은 알려져 있으나 별도 현행 용병 구출 자료 교차검증이 부족해 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "direct",
+          "note": "용병을 첫 추격하는 비용과 단타 제약."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "exception",
+          "note": "팔꿈치 보호대 직후 생멸로 재접근 가능."
+        }
+      ]
+    },
+    {
+      "id": "M304",
+      "status": "반영",
+      "summary": "생멸로 들어오는 본체를 봉으로 밀고 공격을 봉쇄하면 평타 연결을 늦춥니다.",
+      "condition": "봉을 빗맞히거나 벽 기절 없이 끝나면 재접근을 허용합니다. 나비 자체를 봉으로 부술 수는 없습니다.",
+      "situation": "생멸 대응",
+      "advantage": "골동품 상인",
+      "urls": [
+        "https://www.taptap.cn/moment/365068817728014690",
+        "https://wikiwiki.jp/identity5ch/骨董商",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/365068817728014690",
+          "support": "direct",
+          "note": "생멸 이동 중 봉으로 차단 가능."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "나비 파괴 불가와 공격 봉쇄 조건."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "접근 뒤 평타를 사용하는 구조."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M310",
+      "status": "반영",
+      "summary": "생멸 뒤 이어지는 평타를 읽어 비늘로 막으면 붉은 나비의 공격 흐름을 끊을 수 있습니다.",
+      "condition": "비늘을 미리 빼게 하거나 방어가 끝난 뒤 치면 통하지 않습니다. 생멸 이동 자체를 비늘이 막는 것은 아닙니다.",
+      "situation": "평타 방어",
+      "advantage": "교수",
+      "urls": [
+        "https://www.taptap.cn/moment/278582869343866642",
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://kamigame.jp/identity5/page/377359422789289041.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "기존 조건에 섞인 사진 세계 정산 설명 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "direct",
+          "note": "붉은 나비 접근 타이밍의 비늘 방어."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "mechanic",
+          "note": "일반 공격 방어와 실패 후 재사용 부담."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359422789289041.html",
+          "support": "mechanic",
+          "note": "피해 수단이 일반 공격."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M338",
+      "status": "보류",
+      "summary": "붉은 나비가 구름의 이동 경로를 따라오면 기상학자의 지형 이탈 효과가 줄 수 있습니다.",
+      "condition": "미리 준비한 강풍으로 접근을 밀어낼 수 있습니다. 구름 높이에 따른 비행 판정과 알려진 오류의 현행 여부가 충분히 교차검증되지 않았습니다.",
+      "situation": "추격·회복",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/気象学者",
+        "https://news.17173.com/content/08132025/175412342.shtml"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "버그 여부가 불분명한 구름 대진을 최신 확정 상성으로 제시하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/気象学者",
+          "support": "direct",
+          "note": "지형 이동을 따라오지만 강풍 대응 가능·높이 오류 경고."
+        },
+        {
+          "url": "https://news.17173.com/content/08132025/175412342.shtml",
+          "support": "mechanic",
+          "note": "강풍 선준비와 구름 사용 조건."
+        }
+      ]
+    },
+    {
+      "id": "M388",
+      "status": "반영",
+      "summary": "붉은 나비를 바라보며 부엉이를 모을 수 있지만 주시 차단과 부엉이 충전은 별도 조건입니다.",
+      "condition": "나비 부착 여부·본체 시야·구간 높이가 달라지면 생멸을 멈추지 못할 수 있습니다. 관찰만으로 첫 추격 우위를 보장하지 않습니다.",
+      "situation": "주시",
+      "advantage": "선지자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/占い師",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "구형 바라보기 카운터를 부엉이 방어 M073과 분리해 좁은 설명만 유지.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "mechanic",
+          "note": "본체 관찰에 따른 부엉이 충전."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "생멸 차단에 필요한 나비 부착과 주시 조건."
+        }
+      ]
+    },
+    {
+      "id": "M399",
+      "status": "반영",
+      "summary": "생멸 도착 지점을 보고 공을 준비하면 붉은 나비를 밀어 재접근을 늦출 수 있습니다.",
+      "condition": "가까운 나비를 바꿔 타거나 공의 사선을 비켜 오면 빗맞힐 수 있습니다. 공을 든 상태만으로 모든 생멸이 막히지는 않습니다.",
+      "situation": "추격",
+      "advantage": "타자",
+      "urls": [
+        "https://www.namu.moe/w/타자(제5인격)",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "현재 나비 목표 조건을 적용한 조준 성공 상황의 이점.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/타자(제5인격)",
+          "support": "direct",
+          "note": "도착 지점을 겨냥한 공과 나비 주시."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "부착 나비의 주시·목표 전환 조건."
+        }
+      ]
+    },
+    {
+      "id": "M417",
+      "status": "반영",
+      "summary": "생멸 직후 환영을 남기면 이어지는 평타를 환영으로 받아 시간을 벌 수 있습니다.",
+      "condition": "평타를 늦추거나 본체의 이동 흔적을 읽으면 대응할 수 있습니다. 은신 중에도 피해를 받으므로 무적 기술처럼 쓰면 안 됩니다.",
+      "situation": "추격",
+      "advantage": "마술사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "리퍼의 칼날 관련 복사 조건 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "direct",
+          "note": "생멸 직후 환영 타격 유도."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "마술봉 은신 중 직접 생멸 대상 제한."
+        }
+      ]
+    },
+    {
+      "id": "M440",
+      "status": "반영",
+      "summary": "환자에게 나비가 붙고 시야가 이어지면 갈고리 이동을 생멸로 따라갈 수 있습니다.",
+      "condition": "환자가 반대편으로 꺾어 나비 시야를 끊거나 생멸이 끝난 뒤 갈고리를 쓰면 달라집니다. 갈고리를 무조건 중단시키는 능력은 아닙니다.",
+      "situation": "갈고리 추격",
+      "advantage": "붉은 나비",
+      "urls": [
+        "https://www.namu.moe/w/환자(제5인격)",
+        "https://wiki.biligame.com/dwrg/红蝶/进阶"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환자(제5인격)",
+          "support": "direct",
+          "note": "나비 부착 시 갈고리 이동 추격."
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "대상 나비와 시야에 의존하는 생멸."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M079",
+      "status": "반영",
+      "summary": "본체가 자석 범위 밖에서 거울을 움직이면 탐사원은 자석으로 그 공격을 끊기 어렵습니다.",
+      "condition": "본체에 접근해 자석을 붙이거나 거울을 꺼내는 동작을 끊는 상황은 다릅니다. 거울이 끝난 뒤에는 근접 견제가 다시 가능합니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/探鉱者",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+          "support": "direct",
+          "note": "거울상 대상 자석 제한."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "자석 범위 밖에서 거울로 공격."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M297",
+      "status": "반영",
+      "summary": "본체가 자석 범위 밖에서 거울을 움직이면 탐사원은 자석으로 그 공격을 끊기 어렵습니다.",
+      "condition": "본체에 접근해 자석을 붙이거나 거울을 꺼내는 동작을 끊는 상황은 다릅니다. 거울이 끝난 뒤에는 근접 견제가 다시 가능합니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/探鉱者",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+          "support": "direct",
+          "note": "거울상 대상 자석 제한."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "자석 범위 밖에서 거울로 공격."
+        }
+      ]
+    },
+    {
+      "id": "M080",
+      "status": "반영",
+      "summary": "거울상만 맞히는 공격은 교수의 비늘 경화를 우회합니다.",
+      "condition": "가까운 본체의 평타는 비늘로 막을 수 있습니다. 본체와 거울상이 함께 닿는 경우의 평타 판정을 거울 단독 타격과 구분합니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/278582869343866642",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "CN의 본체 방어 권고를 거울 방어 가능으로 뒤집어 해석하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "거울 단독과 본체 동시 타격의 방어 구분."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "exception",
+          "note": "거울 대신 본체 쪽 평타를 막는 대처."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "mechanic",
+          "note": "교수 비늘에 대한 거울의 스킬 판정."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M241",
+      "status": "반영",
+      "summary": "거울상만 맞히는 공격은 교수의 비늘 경화를 우회합니다.",
+      "condition": "가까운 본체의 평타는 비늘로 막을 수 있습니다. 본체와 거울상이 함께 닿는 경우의 평타 판정을 거울 단독 타격과 구분합니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/教授",
+        "https://www.taptap.cn/moment/278582869343866642",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "CN의 본체 방어 권고를 거울 방어 가능으로 뒤집어 해석하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/教授",
+          "support": "direct",
+          "note": "거울 단독과 본체 동시 타격의 방어 구분."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/278582869343866642",
+          "support": "exception",
+          "note": "거울 대신 본체 쪽 평타를 막는 대처."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "mechanic",
+          "note": "교수 비늘에 대한 거울의 스킬 판정."
+        }
+      ]
+    },
+    {
+      "id": "M081",
+      "status": "반영",
+      "summary": "본체가 방전 범위 밖에 있으면 죄수의 짧은 기절로 거울 공격을 막기 어렵습니다.",
+      "condition": "본체가 가까워지거나 거울 재사용 대기 중이면 방전으로 거리를 벌릴 수 있습니다. 해독기 주변 방전도 먼 본체에는 닿지 않습니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/囚人",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/囚人",
+          "support": "direct",
+          "note": "원거리 거울 기습과 방전 구역 한계."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "장애물 너머 원거리 공격과 본체 분리."
+        }
+      ]
+    },
+    {
+      "id": "M431",
+      "status": "반영",
+      "summary": "본체가 방전 범위 밖에 있으면 죄수의 짧은 기절로 거울 공격을 막기 어렵습니다.",
+      "condition": "본체가 가까워지거나 거울 재사용 대기 중이면 방전으로 거리를 벌릴 수 있습니다. 해독기 주변 방전도 먼 본체에는 닿지 않습니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/囚人",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/囚人",
+          "support": "direct",
+          "note": "원거리 거울 기습과 방전 구역 한계."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "장애물 너머 원거리 공격과 본체 분리."
+        }
+      ]
+    },
+    {
+      "id": "M082",
+      "status": "반영",
+      "summary": "봉이 닿지 않는 본체가 거울로 공격하면 골동품 상인의 밀치기와 공격 봉쇄를 피할 수 있습니다.",
+      "condition": "거울 시전 전에 본체를 기절시키거나 가까운 본체를 봉쇄하면 달라집니다. 봉으로 거울상 자체를 부수지는 못합니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://www.taptap.cn/moment/365068817728014690",
+        "https://wikiwiki.jp/identity5ch/骨董商",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/365068817728014690",
+          "support": "direct",
+          "note": "본체에 근접해야 하는 봉과 거울 추격의 상극."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "거울 파괴 불가."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "기절 범위 밖 거울 공격."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M305",
+      "status": "반영",
+      "summary": "봉이 닿지 않는 본체가 거울로 공격하면 골동품 상인의 밀치기와 공격 봉쇄를 피할 수 있습니다.",
+      "condition": "거울 시전 전에 본체를 기절시키거나 가까운 본체를 봉쇄하면 달라집니다. 봉으로 거울상 자체를 부수지는 못합니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://www.taptap.cn/moment/365068817728014690",
+        "https://wikiwiki.jp/identity5ch/骨董商",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/365068817728014690",
+          "support": "direct",
+          "note": "본체에 근접해야 하는 봉과 거울 추격의 상극."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "거울 파괴 불가."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "기절 범위 밖 거울 공격."
+        }
+      ]
+    },
+    {
+      "id": "M083",
+      "status": "반영",
+      "summary": "본체가 멀리서 거울을 조종하면 화가가 얼굴을 기억하거나 그림을 보여 주기 어렵습니다.",
+      "condition": "이미 그린 그림에 본체가 들어와 시선을 주면 거울도 끊길 수 있습니다. 그림 효과 범위 안의 근접 대치와 분리합니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/画家",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/画家",
+          "support": "direct",
+          "note": "얼굴 확보 난도와 그림으로 거울 중단 예외."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "본체를 안전한 위치에 둔 원거리 타격."
+        }
+      ]
+    },
+    {
+      "id": "M084",
+      "status": "반영",
+      "summary": "벽 뒤나 총 사거리 밖의 본체가 거울로 치면 공군이 신호총으로 견제하기 어렵습니다.",
+      "condition": "본체가 보이는 각도를 잡거나 가까운 시전 동작에 총을 맞히면 달라집니다. 의자 앞 구출용 신호총의 가치까지 없어지는 것은 아닙니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377359983953609614.html",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "신호총이 닿지 않는 장애물 너머 거울."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "mechanic",
+          "note": "시전 중 기절로 거울 취소 가능."
+        }
+      ]
+    },
+    {
+      "id": "M085",
+      "status": "반영",
+      "summary": "거울 타격 전에 향수를 쓰면 맞은 피해를 되돌려 거울 한 번의 성과를 줄일 수 있습니다.",
+      "condition": "복귀하기 전에 쓰러지거나 돌아갈 위치에서 후속 공격을 맞으면 안전하지 않습니다. 향수 잔량과 복귀 시간을 확보해야 합니다.",
+      "situation": "추격",
+      "advantage": "조향사",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/調香師",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/調香師",
+          "support": "direct",
+          "note": "단발 거울 공격을 되돌려 시간 확보."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "단타 방어형 생존자에 취약한 구조."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M086",
+      "status": "반영",
+      "summary": "부엉이로 거울 타격을 받아내면 블러디 퀸이 다음 공격 기회를 다시 만들어야 합니다.",
+      "condition": "보호가 끝날 때까지 기다리거나 본체와 거울로 길을 막아 후속 공격할 수 있습니다. 공격 전에 부엉이가 도착해야 합니다.",
+      "situation": "추격 지원",
+      "advantage": "선지자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/血の女王",
+        "https://kamigame.jp/identity5/page/377359983953609614.html",
+        "https://wikiwiki.jp/identity5ch/占い師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "direct",
+          "note": "단타 공격을 막는 선지자에 대한 부담."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울의 긴 재사용과 보호 수단의 이점."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "mechanic",
+          "note": "보호 시간·지원 도착과 잔량."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M087",
+      "status": "반영",
+      "summary": "스트레스가 남아 있으면 첫 거울 타격 뒤 자동 회복으로 한 번 더 버틸 여지가 생깁니다.",
+      "condition": "이미 회복량을 썼거나 회복 전에 연속으로 맞으면 달라집니다. 공포의 일격과 만류의 큰 피해까지 보장하는 방어는 아닙니다.",
+      "situation": "추격",
+      "advantage": "심리학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/血の女王",
+        "https://kamigame.jp/identity5/page/377763650615651245.html",
+        "https://wikiwiki.jp/identity5ch/心理学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "direct",
+          "note": "추가 타격을 요구하는 심리학자에 대한 부담."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377763650615651245.html",
+          "support": "mechanic",
+          "note": "시간에 걸친 자동 회복과 최대 회복량."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/心理学者",
+          "support": "exception",
+          "note": "통전 뒤 일격필살과 공포의 일격 위험."
+        }
+      ]
+    },
+    {
+      "id": "M088",
+      "status": "반영",
+      "summary": "본체가 예측 범위 밖에 있으면 기사는 거울 공격을 예측으로 제지하기 어렵습니다.",
+      "condition": "본체가 범위 안에 들어오면 예측할 수 있습니다. 그때 거울 타격은 일반 공격 선택에 해당하므로 스킬 선택과 혼동하지 않습니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/騎士",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/騎士",
+          "support": "direct",
+          "note": "범위 밖 공격과 범위 안의 일반 공격 판정."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "본체와 거울을 떨어뜨린 공격 경로."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M089",
+      "status": "반영",
+      "summary": "소설가가 본체와 교환할 거리 밖에서 거울을 맞으면 위치 교환을 쓰기 어렵습니다.",
+      "condition": "본체가 교환 범위 안에 들어오면 거울 배치까지 흔들 수 있습니다. 거울상을 직접 교환하는 능력으로 보지 않습니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/小説家",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/小説家",
+          "support": "direct",
+          "note": "교환 거리 제약과 본체 교환 시 거울 위치 변화."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "원거리 거울 공격."
+        }
+      ]
+    },
+    {
+      "id": "M180",
+      "status": "반영",
+      "summary": "기억 조각이 먼 본체에 닿지 않으면 여자아이는 거울 공격을 밀치기로 끊기 어렵습니다.",
+      "condition": "조각의 자기 이동으로 잠시 거리를 벌릴 수 있습니다. 본체가 장애물에 막혀 거울을 따라 움직일 수 없는 위치라면 탈출 여지가 생깁니다.",
+      "situation": "거울 추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/少女",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/少女",
+          "support": "direct",
+          "note": "본체 거리와 조각 자기 이동의 예외."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "본체 동작을 따라가는 원거리 거울."
+        }
+      ]
+    },
+    {
+      "id": "M230",
+      "status": "반영",
+      "summary": "거울상은 곡예사가 넘은 장애물이나 폭탄 구역을 지나 공격할 수 있습니다.",
+      "condition": "화염탄을 실제 본체에 맞혀 스킬을 봉쇄하면 거울이 사라질 수 있습니다. 거울을 향해 폭탄을 던지는 것과 구분합니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/曲芸師",
+        "https://www.taptap.cn/moment/283954591144348295",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "본체에 화염탄을 맞힌 반대 조건이 커 대표 목록보다 세부 조건에 적합.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+          "support": "direct",
+          "note": "지형 무시 공격에 취약하나 사전 위치 선정 가능."
+        },
+        {
+          "url": "https://www.taptap.cn/moment/283954591144348295",
+          "support": "direct",
+          "note": "본체 화염탄 명중 시 거울 소멸과 원거리 거울의 어려움."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "exception",
+          "note": "스킬 봉쇄 시 거울 종료."
+        }
+      ]
+    },
+    {
+      "id": "M233",
+      "status": "반영",
+      "summary": "거울상이 벌레 차단선을 지나면 곤충학자는 벌레 뒤에 서 있는 것만으로 보호받기 어렵습니다.",
+      "condition": "벌레로 본체를 밀거나 거울이 놓인 구역에서 먼저 이탈하면 달라집니다. 본체와 거울이 양쪽을 막은 상황을 경계합니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/昆虫学者",
+        "https://kamigame.jp/identity5/page/377359983953609614.html",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/昆虫学者",
+          "support": "mechanic",
+          "note": "벌레 차단·본체 이동의 작용 범위."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울상의 장애물 관통."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "direct",
+          "note": "곤충학자의 근거리 견제를 원거리에서 우회."
+        }
+      ]
+    },
+    {
+      "id": "M274",
+      "status": "반영",
+      "summary": "미리 놓은 발사기를 거울이 나온 뒤 쓰면 첫 거울의 공격 구역을 벗어날 수 있습니다.",
+      "condition": "발사기 없이 기습당하거나 착지점을 거울로 먼저 막으면 위험합니다. 출발 준비가 된 경우의 이점입니다.",
+      "situation": "첫 거울 회피",
+      "advantage": "장난감 상인",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/玩具職人",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M275와 반대 준비 조건이므로 한쪽 우세 대표 목록에는 넣지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/玩具職人",
+          "support": "exception",
+          "note": "발사기 미준비·착지 예측의 취약함."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울이 놓인 뒤 이동기로 이탈하는 대처."
+        }
+      ]
+    },
+    {
+      "id": "M275",
+      "status": "반영",
+      "summary": "장난감 상인의 착지점을 미리 읽고 거울을 놓으면 비행으로 벌린 거리를 다시 좁힐 수 있습니다.",
+      "condition": "장난감 상인이 거울을 본 뒤 다른 경로로 출발하면 실패할 수 있습니다. 이미 안전한 착지점으로 이탈한 경우와 구분합니다.",
+      "situation": "착지 압박",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/玩具職人",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "M274와 모순이 아니라 준비 시점이 다른 상황. 대표 목록 양쪽 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/玩具職人",
+          "support": "direct",
+          "note": "착지 선점과 거울 교환 재추격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울 교환을 통한 지형 이동."
+        }
+      ]
+    },
+    {
+      "id": "M282",
+      "status": "반영",
+      "summary": "투영을 미리 남기고 거울이 놓인 뒤 위치를 바꾸면 거울의 타격 계획을 흔들 수 있습니다.",
+      "condition": "거울의 스킬 피해를 지연했을 때 플라이휠로 피할 수 있지만, 실제 본체의 평타는 투영을 일찍 끝냅니다. 종료 타이밍을 맞춰야 합니다.",
+      "situation": "투영",
+      "advantage": "환등사",
+      "urls": [
+        "https://game.xiaomi.com/viewpoint/1160758920_1776392376893_16",
+        "https://wikiwiki.jp/identity5ch/幻灯師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "공식 초청 공략의 대응과 독립 판정 자료를 교차 확인.",
+      "sourceSupport": [
+        {
+          "url": "https://game.xiaomi.com/viewpoint/1160758920_1776392376893_16",
+          "support": "direct",
+          "note": "거울 설치 후 투영 위치 전환과 플라이휠 연계."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "거울은 스킬 피해·본체 평타는 조기 종료."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M296",
+      "status": "반영",
+      "summary": "인형의 위치가 드러나면 거울로 멀리서 타격해 기계공의 별도 해독을 끊을 수 있습니다.",
+      "condition": "인형을 숨겼거나 위치를 옮겼다면 곧바로 맞힐 수 없습니다. 인형이 보이지 않은 상태까지 자동 탐지하는 능력은 아닙니다.",
+      "situation": "노출된 인형 견제",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/機械技師",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/機械技師",
+          "support": "direct",
+          "note": "원거리 인형 견제와 위치·해독 시작 시점."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "해독기 기습과 장애물 관통."
+        }
+      ]
+    },
+    {
+      "id": "M298",
+      "status": "반영",
+      "summary": "본체가 주술 범위 밖에서 거울로 치면 주술사의 기절 견제를 피할 수 있습니다.",
+      "condition": "본체가 범위에 들어오거나 시전 중 기절을 맞으면 거울을 끊을 수 있습니다. 모아 둔 주술의 근접 구출 가치는 별개입니다.",
+      "situation": "추격",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://kamigame.jp/identity5/page/377359983953609614.html",
+        "https://wikiwiki.jp/identity5ch/血の女王"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "주술사 범위 밖의 거울 공격."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/血の女王",
+          "support": "mechanic",
+          "note": "근접 제어 우회와 시전 취소 예외."
+        }
+      ]
+    },
+    {
+      "id": "M335",
+      "status": "보류",
+      "summary": "구름을 준비하기 전 거울 기습은 위험하지만, 미리 높인 구름이나 강풍은 거울을 피하는 수단이 됩니다.",
+      "condition": "CN 공략은 선준비 회피를, JP 공략은 늦은 구름 시전의 취약함을 강조합니다. 준비 여부를 빼고 어느 한쪽의 우세로 정하지 않습니다.",
+      "situation": "추격·회복",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://news.17173.com/content/08132025/175412342.shtml",
+        "https://wikiwiki.jp/identity5ch/気象学者"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "두 독립 자료의 반대 판정을 사전 준비라는 조건 차이로 해석; 단일 방향 목록 보류.",
+      "sourceSupport": [
+        {
+          "url": "https://news.17173.com/content/08132025/175412342.shtml",
+          "support": "direct",
+          "note": "높은 구름 선준비·본체 강풍으로 거울 회피."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/気象学者",
+          "support": "exception",
+          "note": "기습에 구름을 그릴 시간이 부족한 반대 상황."
+        }
+      ]
+    },
+    {
+      "id": "M391",
+      "status": "반영",
+      "summary": "부활 위치가 공개되면 거울 교환으로 관에 접근해 납관사의 재추격을 노릴 수 있습니다.",
+      "condition": "관이 거울 범위 밖이거나 높이·벽 배치 때문에 접근이 늦으면 부활한 생존자가 빠져나갑니다. 관마다 자동으로 따라가는 것은 아닙니다.",
+      "situation": "관 복귀 압박",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/納棺師",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/納棺師",
+          "support": "direct",
+          "note": "공개된 관 위치에 워프하는 감시자의 재추격."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "direct",
+          "note": "납관 후 거울 교환으로 거리 축소."
+        }
+      ]
+    },
+    {
+      "id": "M420",
+      "status": "보류",
+      "summary": "환영과 은신은 거울 타격을 헛치게 만들 수 있지만 자동으로 거울 공격을 막지는 않습니다.",
+      "condition": "본체와 환영의 이동을 읽으면 은신 중에도 맞힐 수 있습니다. 거울로 환영을 쳤을 때의 표시 판정도 평타와 달라 추가 검증이 필요합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "독립적인 현행 마술사 우세 근거 부족. 잘못 섞인 리퍼 근접 칼날 조건 삭제.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "exception",
+          "note": "거울 타격은 환영의 일반 공격 탐지 효과와 다름."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "장애물과 본체 분리 공격."
+        }
+      ]
+    },
+    {
+      "id": "M446",
+      "status": "반영",
+      "summary": "거울이 놓인 뒤 갈고리로 멀리 이동하면 그 거울에서 벗어나 추격 시간을 벌 수 있습니다.",
+      "condition": "짧게 벽만 넘어 거울 사선에 남거나 착지점이 본체 쪽이면 위험합니다. 갈고리를 걸 지형과 안전한 이동 방향이 필요합니다.",
+      "situation": "지형 이동",
+      "advantage": "환자",
+      "urls": [
+        "https://www.namu.moe/w/환자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/患者",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환자(제5인격)",
+          "support": "direct",
+          "note": "설치된 거울 범위를 갈고리로 이탈."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/患者",
+          "support": "exception",
+          "note": "벽 뒤 스킬 피해를 받는 갈고리 경로의 위험."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울 이후 이동기 사용과 교환 뒤 재사용 공백."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M447",
+      "status": "반영",
+      "summary": "거울이 놓이는 순간 조율 가속으로 방향을 바꾸면 거울을 헛쓰게 할 수 있습니다.",
+      "condition": "가속이 준비되어 있고 이동할 공간이 있어야 합니다. 본체와 거울 사이에 갇혔거나 가속이 끝난 뒤 붙잡히는 상황은 별개입니다.",
+      "situation": "거울 추격",
+      "advantage": "작곡가",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/作曲家",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "작곡가를 지목한 원문 순위가 아니라 두 기전의 교차 분석.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/作曲家",
+          "support": "mechanic",
+          "note": "원하는 시점의 가속과 재사용 대기."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "거울 설치 후 가속 이탈 대처."
+        }
+      ]
+    },
+    {
+      "id": "M451",
+      "status": "반영",
+      "summary": "상자 위치가 읽히면 아이템을 얻기 전 거울 기습을 받을 수 있습니다.",
+      "condition": "공포의 일격은 상자를 여닫는 동작과 관련되며 수색 도중과 구분합니다. 이미 방어 도구를 확보했거나 거울을 피해 움직이면 달라집니다.",
+      "situation": "상자 수색 기습",
+      "advantage": "블러디 퀸",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/幸運児",
+        "https://kamigame.jp/identity5/page/377359983953609614.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "행운아 자체의 전체 상성보다 첫 상자 위치라는 좁은 조건에 해당.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幸運児",
+          "support": "direct",
+          "note": "상자 기습과 여닫기·수색 판정 구분."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359983953609614.html",
+          "support": "mechanic",
+          "note": "멀리서 상호작용 지점 기습."
+        }
+      ]
+    },
+    {
+      "id": "M090",
+      "status": "반영",
+      "summary": "갈고리에 맞은 야만인은 멧돼지에서 내려져 탑승 보호를 잃습니다.",
+      "condition": "갈고리 사선을 지형으로 끊거나 빗나가게 하면 탑승 이동을 이어갈 수 있습니다. 평타만으로 멧돼지를 상대하는 상황과 구분합니다.",
+      "situation": "추격",
+      "advantage": "사냥터지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/断罪狩人",
+        "https://kamigame.jp/identity5/page/377359005187608248.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "direct",
+          "note": "멧돼지 체력과 무관한 갈고리 하차."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359005187608248.html",
+          "support": "direct",
+          "note": "야만인을 강제로 내리는 대진."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M091",
+      "status": "반영",
+      "summary": "덫으로 태클 통로를 막고 갈고리로 공 이동을 따라가면 포워드의 풍선 견제를 제한할 수 있습니다.",
+      "condition": "덫을 놓지 못한 넓은 경로나 갈고리를 빗나간 직후에는 태클 기회가 생깁니다. 포워드가 공을 이동에만 쓰는 경우도 구분합니다.",
+      "situation": "풍선 견제",
+      "advantage": "사냥터지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/オフェンス",
+        "https://kamigame.jp/identity5/page/377359005187608248.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/オフェンス",
+          "support": "direct",
+          "note": "덫이 태클 경로를 끊는 약점."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359005187608248.html",
+          "support": "direct",
+          "note": "덫으로 풍선 구출 차단·갈고리로 공 이동 추격."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M092",
+      "status": "보류",
+      "summary": "반발 자석은 덫의 경직을 풀 수 있지만 갈고리에 맞으면 자석 발동이 늦어져 후속 타격을 허용할 수 있습니다.",
+      "condition": "갈고리와 압박에 자석 발동 게이지가 초기화됩니다. 늦게 발동한 자석이 감시자의 공격 회복을 줄일 수도 있어 확정 구출로 쓰면 위험합니다.",
+      "situation": "추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/探鉱者",
+        "https://wikiwiki.jp/identity5ch/断罪狩人"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "기존 자석 자동 발동만으로 생존자 우세를 정한 설명 철회; 독립 현행 대진 근거도 부족.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/探鉱者",
+          "support": "exception",
+          "note": "제어 중 자석 작동과 후속타가 먼저 닿는 예외."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "direct",
+          "note": "갈고리·압박의 자석 게이지 초기화와 공격 회복 제거."
+        }
+      ]
+    },
+    {
+      "id": "P005",
+      "status": "보류",
+      "summary": "묘지기는 잠복으로 덫을 지나고 빠른 구출을 노릴 수 있지만 갈고리를 맞으면 잠복이 풀립니다.",
+      "condition": "잠복 중 갈고리는 피해와 끌기를 막아도 삽을 소모시킵니다. 의자 앞까지 도착한 구출과 멀리서 갈고리에 걸린 진입을 같은 우세로 묶지 않습니다.",
+      "situation": "조건·자료 불일치",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/墓守",
+        "https://wikiwiki.jp/identity5ch/断罪狩人"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "같은 작성 계열의 추격·구출 평가가 다르고 독립 검증 부족. 기존 보류 유지.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/墓守",
+          "support": "direct",
+          "note": "갈고리 피격 시 잠복 해제·피해와 끌기 방어."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "exception",
+          "note": "빠른 구출의 부담과 원거리 차단."
+        }
+      ]
+    },
+    {
+      "id": "M237",
+      "status": "반영",
+      "summary": "벌레를 갈고리 사선에 세우면 동료를 향한 끌어당기기를 막을 수 있습니다.",
+      "condition": "벌레에 타고 달릴 때는 갈고리나 압박으로 탑승이 끊길 수 있습니다. 설치한 벌레의 차단과 탑승 중 직접 추격을 구분합니다.",
+      "situation": "설치 벌레로 추격 지원",
+      "advantage": "곤충학자",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/断罪狩人",
+        "https://daigokouryakutv.com/entomologist/"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "직접 추격 전체 우세 대신 설치 벌레를 이용한 지원 상황으로 좁힘.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "direct",
+          "note": "설치 벌레 차단·탑승에는 압박과 접근이 유효."
+        },
+        {
+          "url": "https://daigokouryakutv.com/entomologist/",
+          "support": "direct",
+          "note": "정지 벌레가 갈고리의 사선을 차단."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M251",
+      "status": "반영",
+      "summary": "환영을 먼저 보내 덫을 소모시키거나 갈고리를 대신 받게 하면 기자의 구출 진입을 도울 수 있습니다.",
+      "condition": "본체가 먼저 노출되면 막지 못합니다. 7월 변경 후 갈고리가 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서는 배치를 피합니다.",
+      "situation": "구출",
+      "advantage": "기자",
+      "urls": [
+        "https://www.namu.moe/w/기자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/記者",
+        "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-07-02 갈고리 변경 및 2026-10-15 글로벌 공지 대조",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "공략의 한 명만 적중한다는 옛 설명은 현행 공식 변경으로 제한. 환영에 붙어 서도 완전 방어라는 주장은 하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "환영의 덫 소모·갈고리 방어."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "mechanic",
+          "note": "환영 경로와 투사체 방어의 배치 조건."
+        },
+        {
+          "url": "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html",
+          "support": "exception",
+          "note": "갈고리 적중 대상 주변 생존자의 동시 끌기."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M279",
+      "status": "반영",
+      "summary": "미리 투영하면 덫을 지나거나 갈고리가 닿은 뒤 위치를 바꿔 후속 타격을 피할 여지가 생깁니다.",
+      "condition": "갈고리의 끌기 자체는 지연되지 않습니다. 스킬 피해를 넘기려면 투영 종료와 플라이휠을 맞춰야 하며 일반 공격을 먼저 허용하면 투영이 끝납니다.",
+      "situation": "선투영 뒤 갈고리 대응",
+      "advantage": "환등사",
+      "urls": [
+        "https://game.xiaomi.com/viewpoint/1160758920_1776392376893_16",
+        "https://wikiwiki.jp/identity5ch/幻灯師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://game.xiaomi.com/viewpoint/1160758920_1776392376893_16",
+          "support": "direct",
+          "note": "갈고리 후 위치 갱신·플라이휠 연계와 덫 통과."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "exception",
+          "note": "끌기는 즉시·스킬 피해 지연·일반 공격 종료."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M303",
+      "status": "반영",
+      "summary": "봉으로 덫을 없애고 가까이 온 사냥터지기의 평타를 봉쇄하면 추격 경로를 열 수 있습니다.",
+      "condition": "날아오는 갈고리는 봉으로 막지 못합니다. 봉이 닿기 전에 끌리거나 여러 생존자가 붙어 있어 공격 봉쇄가 짧아진 상황은 위험합니다.",
+      "situation": "근접 추격",
+      "advantage": "골동품 상인",
+      "urls": [
+        "https://www.taptap.cn/moment/365068817728014690",
+        "https://wikiwiki.jp/identity5ch/骨董商"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "구형 갈고리 방어 가능 주장 대신 2025년 실측을 기록한 JP 예외 적용.",
+      "sourceSupport": [
+        {
+          "url": "https://www.taptap.cn/moment/365068817728014690",
+          "support": "direct",
+          "note": "덫 제거와 가까이 온 본체의 공격 봉쇄."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "direct",
+          "note": "덫 파괴 가능·갈고리 방어 불가 및 주변 동료의 봉쇄 감소."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M386",
+      "status": "반영",
+      "summary": "부엉이가 갈고리를 받아내면 피해와 끌어당기기를 함께 막아 거리를 지킬 수 있습니다.",
+      "condition": "갈고리가 닿기 전에 부엉이가 도착해야 합니다. 보호를 먼저 소모시킨 뒤의 갈고리나 보호 종료 후 평타는 막지 못합니다.",
+      "situation": "추격",
+      "advantage": "선지자",
+      "urls": [
+        "https://www.namu.moe/w/선지자(제5인격)",
+        "https://wikiwiki.jp/identity5ch/断罪狩人"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/선지자(제5인격)",
+          "support": "direct",
+          "note": "피해 없는 초기 갈고리도 부엉이로 끌기 방어."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "direct",
+          "note": "부엉이 소모 시 끌기 없음·연속 갈고리 제한."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M421",
+      "status": "반영",
+      "summary": "마술사의 환영은 벽으로 판정되어 갈고리를 걸고 접근하는 발판이 될 수 있습니다.",
+      "condition": "환영 자체는 갈고리나 압박으로 사라지지 않습니다. 좁은 통로를 완전히 막으면 사냥터지기도 평타로 치우는 시간이 필요합니다.",
+      "situation": "추격",
+      "advantage": "사냥터지기",
+      "urls": [
+        "https://www.namu.moe/w/마술사(제5인격)",
+        "https://wikiwiki.jp/identity5ch/断罪狩人"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/마술사(제5인격)",
+          "support": "direct",
+          "note": "환영의 벽 판정으로 갈고리 접근."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "direct",
+          "note": "접근·압박·다시 던지기와 환영 파괴 불가."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M427",
+      "status": "보류",
+      "summary": "배달견이 닿기 전 원거리 갈고리에 맞으면 우편 배달부의 감속 이득이 줄어듭니다.",
+      "condition": "배달견의 직선 사선과 갈고리 거리를 함께 확인해야 합니다. 편지 종류별 검증이 부족해 초반 우세를 정하지 않으며 기존 은신 조건도 삭제했습니다.",
+      "situation": "초반 추격",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/ポストマン",
+        "https://kamigame.jp/identity5/page/377359005187608248.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "사냥터지기에 없는 은신이 섞인 문구 교정. 배달견 일반 장점만으로 생존자 우세를 유지하지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/ポストマン",
+          "support": "direct",
+          "note": "감속 전 원거리 공격과 배달견 직선 사선."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377359005187608248.html",
+          "support": "mechanic",
+          "note": "갈고리 원거리 접근과 지형 제약."
+        }
+      ]
+    },
+    {
+      "id": "M001",
+      "status": "반영",
+      "summary": "미리 붙인 반발 자석은 고양이 기절 중에도 발동해 탐사원을 밀어내고 기절을 풀 수 있습니다.",
+      "condition": "흡인 자석은 같은 대응이 아닙니다. 자석을 던지기 전에 위협을 맞거나 반발 발동 전 평타가 닿으면 보호받지 못합니다.",
+      "situation": "추격",
+      "advantage": "탐사원",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://www.9game.cn/dwrg/5229327.html",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "구형 CN 글의 흡인도 동일하다는 해석을 현행 JP 타이밍과 대조해 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "반발과 흡인 순서·기존 자석은 봉쇄 중에도 작동."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "mechanic",
+          "note": "이미 던진 자석은 위협 뒤에도 유지."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "탐사원에 대한 기절 상성."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M211",
+      "status": "반영",
+      "summary": "미리 붙인 반발 자석은 고양이 기절 중에도 발동해 탐사원을 밀어내고 기절을 풀 수 있습니다.",
+      "condition": "흡인 자석은 같은 대응이 아닙니다. 자석을 던지기 전에 위협을 맞거나 반발 발동 전 평타가 닿으면 보호받지 못합니다.",
+      "situation": "추격",
+      "advantage": "탐사원",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://www.9game.cn/dwrg/5229327.html",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "구형 CN 글의 흡인도 동일하다는 해석을 현행 JP 타이밍과 대조해 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "반발과 흡인 순서·기존 자석은 봉쇄 중에도 작동."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "mechanic",
+          "note": "이미 던진 자석은 위협 뒤에도 유지."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "탐사원에 대한 기절 상성."
+        }
+      ]
+    },
+    {
+      "id": "M002",
+      "status": "반영",
+      "summary": "고양이가 붙은 뒤 사도에게 올가미를 걸어 뛰어넘으면 기절을 피하며 거리를 벌릴 수 있습니다.",
+      "condition": "기절 전에 올가미를 성공시켜야 합니다. 풍선 근처에서 고양이를 맞고 묶인 상황까지 안전한 구출을 보장하지 않습니다.",
+      "situation": "추격",
+      "advantage": "카우보이",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://kamigame.jp/identity5/page/377360153688712547.html",
+        "https://wikiwiki.jp/identity5ch/カウボーイ"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "고양이 부착 상태의 올가미 넘기에는 기절이 발생하지 않음."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "카우보이의 대응 우세."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/カウボーイ",
+          "support": "mechanic",
+          "note": "감시자 넘기·올가미 사용 조건."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M003",
+      "status": "반영",
+      "summary": "미리 잠복한 묘지기는 고양이 기절을 피하며 의자에 접근할 수 있습니다.",
+      "condition": "잠복 전 위협을 맞으면 삽을 쓰기 어렵습니다. 사도가 끝날 때까지 기다리거나 기절 범위 밖에서 삽을 벗긴 뒤 접근하는 대응도 가능합니다.",
+      "situation": "추격·구출",
+      "advantage": "묘지기",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://www.9game.cn/dwrg/5229327.html",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "잠복 기절 면역·위협으로 잠복 해제되지 않음."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "direct",
+          "note": "잠복 대상 고양이 기절 불가·범위 밖 선타 예외."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "묘지기의 잠복 대응."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M004",
+      "status": "반영",
+      "summary": "태클 전에 고양이를 붙이거나 위협으로 공 사용을 막으면 포워드의 풍선 구출을 끊을 수 있습니다.",
+      "condition": "포워드가 고양이를 피한 채 먼저 태클하거나 지형 밖에서 공으로 이탈하면 달라집니다. 공을 쓰는 모든 추격 상황에서 사도가 우세하다는 뜻은 아닙니다.",
+      "situation": "태클·풍선 구출 제한",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "M209의 야만인 탑승 조건 복사 오류 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "근거리 견제를 고양이 기절·봉쇄로 제한."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "포워드의 공 봉쇄와 태클 제어."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M209",
+      "status": "반영",
+      "summary": "태클 전에 고양이를 붙이거나 위협으로 공 사용을 막으면 포워드의 풍선 구출을 끊을 수 있습니다.",
+      "condition": "포워드가 고양이를 피한 채 먼저 태클하거나 지형 밖에서 공으로 이탈하면 달라집니다. 공을 쓰는 모든 추격 상황에서 사도가 우세하다는 뜻은 아닙니다.",
+      "situation": "태클·풍선 구출 제한",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "M209의 야만인 탑승 조건 복사 오류 제거.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "근거리 견제를 고양이 기절·봉쇄로 제한."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "포워드의 공 봉쇄와 태클 제어."
+        }
+      ]
+    },
+    {
+      "id": "M005",
+      "status": "반영",
+      "summary": "고양이 기절로 향수 시간을 소모시키거나 위협으로 복귀를 막으면 조향사의 피해 되돌리기를 제한할 수 있습니다.",
+      "condition": "기절 도중 일찍 때리면 기절이 풀려 향수 복귀를 허용할 수 있습니다. 향수 사용 시점과 위협이 닿는 순서를 확인해야 합니다.",
+      "situation": "추격",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/使徒",
+        "https://www.9game.cn/dwrg/5229327.html",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/使徒",
+          "support": "direct",
+          "note": "향수 시간 소모와 일찍 타격했을 때 복귀 허용."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "direct",
+          "note": "위협 중 향수 복귀 불가·피해로 기절 해제."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "조향사의 향수 방어 무력화."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "M006",
+      "status": "반영",
+      "summary": "주술 범위에 접근하기 전에 고양이로 묶으면 주술사가 기절로 반격할 틈을 줄일 수 있습니다.",
+      "condition": "주술을 먼저 맞히거나 고양이가 없는 동안 거리를 벌리면 달라집니다. 이미 모아 둔 주술이 사라지는 효과는 아닙니다.",
+      "situation": "추격",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/呪術師",
+        "https://www.9game.cn/dwrg/5229327.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "사도의 제어 기전과 주술 범위를 합친 조건부 분석. 무조건 기절 면역이라는 의미가 아님.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/呪術師",
+          "support": "direct",
+          "note": "주술보다 고양이 기절이 먼저 닿는 대진."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "mechanic",
+          "note": "기절 후 위협으로 아이템 사용을 막는 순서."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "G001",
+      "status": "반영",
+      "summary": "고양이가 실제 위치를 보여 주면 항해사의 시계가 만드는 시각적 혼란을 줄일 수 있습니다.",
+      "condition": "고양이를 피한 채 시계를 쓰거나 다른 층으로 벗어나면 달라집니다. 시계의 구출 후 피해 유예 효과까지 무효화하는 것은 아닙니다.",
+      "situation": "고양이 부착 후 위치 추적",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/一等航海士",
+        "https://kamigame.jp/identity5/page/377360153688712547.html",
+        "https://www.9game.cn/dwrg/5229327.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/一等航海士",
+          "support": "direct",
+          "note": "고양이가 실제 위치를 표시하는 약점."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "시계 중에도 위치 파악."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "exception",
+          "note": "항해사의 구출은 별도 대응이 필요."
+        }
+      ],
+      "listPriority": 4
+    },
+    {
+      "id": "G002",
+      "status": "반영",
+      "summary": "마술사 본체에 붙은 고양이는 은신 뒤에도 위치를 보여 줘 추격을 이어가게 합니다.",
+      "condition": "환영을 먼저 놓아 고양이를 대신 받거나 좁은 통로를 막으면 마술사가 시간을 벌 수 있습니다. 고양이 부착 전후를 구분해야 합니다.",
+      "situation": "고양이가 본체에 붙은 뒤 추격",
+      "advantage": "사도",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://kamigame.jp/identity5/page/377360153688712547.html",
+        "https://www.namu.moe/w/'사도'"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "선환영과 부착 후 은신의 반대 조건이 커 대표 목록 제외.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/マジシャン",
+          "support": "direct",
+          "note": "본체 고양이 지속·환영도 고양이 대상이 되는 현행 판정."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "direct",
+          "note": "은신 중 실제 위치 확인."
+        },
+        {
+          "url": "https://www.namu.moe/w/'사도'",
+          "support": "exception",
+          "note": "환영 길막 지형에서는 마술사의 역이점."
+        }
+      ]
+    },
+    {
+      "id": "M210",
+      "status": "반영",
+      "summary": "고양이 범위 안에서 생존자를 들면 야만인의 근접 돌진을 묶어 풍선 구출을 제한할 수 있습니다.",
+      "condition": "고양이를 피한 몸막기와 의자 구출은 별개입니다. 탑승 중 위협은 멧돼지에서 강제로 내리는 것이 아니라 내리는 행동을 막습니다.",
+      "situation": "고양이 범위 안 풍선 구출",
+      "advantage": "사도",
+      "urls": [
+        "https://www.namu.moe/w/'사도'",
+        "https://www.9game.cn/dwrg/5229327.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "풍선 견제를 전체 커버 우세로 넓히지 않으며 하차 판정도 사냥터지기와 구분.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/'사도'",
+          "support": "direct",
+          "note": "풍선 구출 봉쇄·의자 구출 예외·위협 중 하차 불가."
+        },
+        {
+          "url": "https://www.9game.cn/dwrg/5229327.html",
+          "support": "mechanic",
+          "note": "고양이로 근접 제어 후 위협·운반 견제의 조건."
+        }
+      ]
+    },
+    {
+      "id": "M285",
+      "status": "반영",
+      "summary": "투영된 몸에 위협을 적용하면 환등사의 위치 갱신을 막아 평타를 노릴 수 있습니다.",
+      "condition": "고양이가 사라지기 전에 위치를 바꾸면 피할 여지가 있습니다. 지연 가능한 고양이 기절과 즉시 적용되는 위협의 스킬 봉쇄는 다릅니다.",
+      "situation": "추격",
+      "advantage": "사도",
+      "urls": [
+        "https://www.namu.moe/w/환등사",
+        "https://wikiwiki.jp/identity5ch/幻灯師"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "중간",
+      "listEligible": true,
+      "reviewNote": "막연한 실력·맵 조건 대신 위협과 위치 갱신의 순서를 명시.",
+      "sourceSupport": [
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "direct",
+          "note": "위협 전 위치 갱신 가능·위협 후 갱신 봉쇄."
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "봉쇄는 즉시 적용되지만 기절은 지연 가능."
+        }
+      ],
+      "listPriority": 5
+    },
+    {
+      "id": "M348",
+      "status": "보류",
+      "summary": "공에 올라탄 신동은 고양이 기절로 탑승 이동이 끊길 수 있습니다.",
+      "condition": "공을 굴리는 상태와 탑승 상태의 판정은 다릅니다. 출시 직후 대진을 직접 비교한 독립 자료가 부족해 사도의 확정 우세로 표시하지 않습니다.",
+      "situation": "흙공 상태",
+      "advantage": "판정 보류",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/神童",
+        "https://kamigame.jp/identity5/page/377360153688712547.html"
+      ],
+      "reviewedAt": "2026-10-19",
+      "patch": "2026-10-15 글로벌 공지 대조 / 개별 기전은 각 출처의 작성·수정 시점 기준",
+      "basis": "기전 교차분석 · 편집 판단",
+      "confidence": "낮음",
+      "listEligible": false,
+      "reviewNote": "신동 한국 문서는 아직 기본 틀 위주. 일반 사도 기전만으로 독립 대진 검증을 충족했다고 세지 않음.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/神童",
+          "support": "direct",
+          "note": "탑승 중 기절과 굴리기 상태를 구분한 잠정 공략."
+        },
+        {
+          "url": "https://kamigame.jp/identity5/page/377360153688712547.html",
+          "support": "mechanic",
+          "note": "고양이 기절의 일반 작동 조건."
+        }
+      ]
+    }
+  ],
+  "additions": [],
+  "findings": [
+    "리퍼의 포털·마술사 평가는 2025-04 차가운 안개 추가를 누락하면 과장됨.",
+    "리퍼 대 맹인·우편 배달부 조건에 다른 감시자의 우산·갈고리가 섞인 오류 발견.",
+    "리퍼 대 골동품 상인은 공격 봉쇄 성공과 은신 조준 조건이 달라 단일 방향 확정 보류.",
+    "마음의 짐승 대 궁수 원문은 상호 카운터인데 기존 행이 궁수 우세만 뽑음. 단일 방향 보류.",
+    "밀랍인형사 대 환자 M442는 밀랍 명중과 완전 봉쇄를 혼동. 환자의 선제 갈고리·봉쇄 지형 이탈 이점으로 교정.",
+    "박사 대 기상학자는 따뜻한 비로 회복할 수 있지만 감시자 앞 자동 부활은 재다운·탈락 가속 위험.",
+    "박사 대 타자: 직접 지형 추격과 서지 커버의 방향이 달라 대표 목록 단정 금지.",
+    "박사 대 납관사에 실제로 없는 의자 캠핑 문구 삭제.",
+    "붉은 나비는 2025-11 평타 사거리 상향. 예전 최단 사거리 평가는 풍선 운반 타격과 구분해야 함.",
+    "붉은 나비 대 곡예사는 JP/CN 유불리 설명이 다름. 생멸·폭탄 순서에 따라 달라 대표 목록 보류.",
+    "파로 부인 은신은 붙은 나비 직접 목표를 숨기지만 주변 나비를 통한 접근과 평타는 가능.",
+    "블러디 퀸 대 기상학자는 선준비 구름·강풍과 미준비 기습의 유불리가 갈려 단일 방향 보류.",
+    "블러디 퀸 대 장난감 상인의 첫 거울 이탈과 착지 선점은 반대 조건으로 대표 목록에서 모두 제외.",
+    "환등사 대 블러디 퀸은 투영의 위치 전환·스킬 피해 지연을 2026-04 공식 초청 공략과 JP 판정 자료로 교차검증.",
+    "사냥터지기 갈고리는 2026-07-02 정식 패치에서 근처 생존자도 함께 끌도록 변경. 기자 환영 방어를 무조건 안전하다고 단정하지 않음.",
+    "사냥터지기 대 탐사원은 갈고리의 자석 게이지 초기화를 반영해 우세 판정 보류.",
+    "사냥터지기 대 곤충학자는 설치 벌레 지원과 벌레 탑승 중 직접 추격의 방향이 달라 조건을 분리.",
+    "사도 대 마술사는 선환영의 고양이 방어와 본체 부착 후 은신의 약점이 달라 대표 목록 제외.",
+    "사도 대 야만인은 풍선 구출과 일반 몸막기·의자 구출을 구분하며 위협을 강제 하차로 잘못 설명하지 않음.",
+    "사도 대 환등사는 고양이 기절 지연과 위협 즉시 적용을 명확히 분리.",
+    "사도 대 신동은 신규 대진의 독립 검증 부족으로 보류."
+  ]
+}

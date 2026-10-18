@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-10-19",
+  "latestConfirmedPatch": "2026-10-15",
+  "baselineCommit": "03854e1eb4727532e5f4c2f5ca881359d5abc353",
+  "baselineRecords": 459,
+  "baselineAccepted": 447,
+  "baselineHeld": 12,
+  "sources": [
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20261015/35288_1316673.html",
+      "title": "Identity V · 10월 15일 공식 업데이트",
+      "region": "기존 범위 외",
+      "kind": "공식 패치",
+      "sourceFamily": "netease-official",
+      "publishedAt": "2026-10-15",
+      "accessedAt": "2026-10-19",
+      "scope": "신동 · 훌라발루 · 의사 · 조향사 · 광대 · 블러디 퀸 · 서기관 · 여왕벌 · 치과의사 · 여자아이",
+      "notes": "일반 대전 관련 전투 변경·버그 수정을 확인. 별도 이벤트 모드와 다음 주 예고는 현재 상성에서 제외."
+    }
+  ],
+  "indexChecks": [
+    "https://www.identityvgame.com/en/newspage.html",
+    "https://www.identityvgame.com/jp/news/update/"
+  ],
+  "effectiveAt": "2026-10-15 08:00 UTC+8 핫픽스; 10:30 이후 패치 수신·랭크 재개 안내",
+  "serverScope": "글로벌 정식 서버 공지를 기준으로 대조. 중국 공략은 판정 보완 자료이며 서버·테스트 버전이 다르면 확정하지 않음.",
+  "changes": [
+    {"characters":["신동"],"note":"랭킹전 추가. 공포 반경 밖 햄스터 소모 감소와 공 밀기·충돌 개선."},
+    {"characters":["훌라발루","의사","조향사"],"note":"치료 중단 누락과 향수 복귀 후 표식 소거 오류 수정."},
+    {"characters":["광대","블러디 퀸","신동"],"note":"연주 중 돌진 직접 타격과 원거리 거울 타격의 오염 증가 오류 수정."},
+    {"characters":["서기관","여왕벌","신동"],"note":"연주 상태 상호작용 재현 누락과 벌레 포식 중 공 밀기 불가 수정."},
+    {"characters":["치과의사","여자아이","신동"],"note":"세균공생 판정 크기·시각 일치 개선."}
+  ],
+  "limitations": [
+    "확인한 최신 공식 공지 날짜와 개별 대진의 실전 검증 날짜는 다릅니다.",
+    "신동은 랭킹전 도입 직후이며 수정된 판정의 독립 관찰이 부족한 대진은 보류합니다.",
+    "접근 가능한 공개 자료를 교차 검토했습니다. 모든 게시물·영상과 모든 맵·인격 조합을 실험한 자료가 아닙니다."
+  ]
+}

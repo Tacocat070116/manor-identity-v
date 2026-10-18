@@ -1,0 +1,30 @@
+{
+  "reviewedAt": "2026-10-19",
+  "hunters": [],
+  "sources": [
+    {"url":"https://wikiwiki.jp/identity5ch/夢の魔女","title":"꿈의 마녀 공동편집 공략","region":"일본","kind":"공동편집 공략","sourceFamily":"identity5ch","publishedAt":null,"accessedAt":"2026-10-19","scope":"꿈의 마녀 · 변호사","notes":"탐지·협공 단락을 확인. 티어와 대회 실적은 상성 근거로 사용하지 않음."},
+    {"url":"https://shouyou.3dmgame.com/news/73408.html","title":"꿈의 마녀 심화 공략 · 공식 공략팀 约宝","region":"중국","kind":"공식 초청 공략 전재","sourceFamily":"netease-guide-yuebao","publishedAt":"2025-02-25","accessedAt":"2026-10-19","scope":"꿈의 마녀 · 변호사","notes":"원저자 표기와 초반 대상 선정·협공 단락을 확인. 같은 글의 타 매체 전재는 별도 의견으로 세지 않음. 옛 수치·밴 우선순위는 제외."},
+    {"url":"https://www.namu.moe/w/변호사(제5인격)","title":"변호사 · 나무위키 미러","region":"한국","kind":"공동편집 공략 미러","sourceFamily":"namuwiki","publishedAt":null,"accessedAt":"2026-10-19","scope":"변호사 · 꿈의 마녀","notes":"지도, 이동·창틀 성장, 공포의 일격 면역을 확인. 일반 공격 피해 면역으로 해석하지 않음."},
+    {"url":"https://wikiwiki.jp/identity5ch/庭師","title":"정원사 공동편집 공략","region":"일본","kind":"공동편집 공략","sourceFamily":"identity5ch","publishedAt":null,"accessedAt":"2026-10-19","scope":"정원사 · 파멸의 바퀴 · 박사","notes":"2025년 11월 보호막 조정 후의 가시·비관 예외와 박사 대진 단락을 확인."},
+    {"url":"https://www.namu.moe/w/파멸의 바퀴","title":"파멸의 바퀴 · 나무위키 미러","region":"한국","kind":"공동편집 공략 미러","sourceFamily":"namuwiki","publishedAt":null,"accessedAt":"2026-10-19","scope":"파멸의 바퀴 · 정원사","notes":"비관과 일반 공격의 차이, 보호막 예외를 확인. 극단적인 밴 권유는 채택하지 않음."},
+    {"url":"https://www.18183.com/dwrg/202206/3985404.html","title":"파멸의 바퀴 실전 공략","region":"중국","kind":"공략 매체","sourceFamily":"18183","publishedAt":"2022-06-08","accessedAt":"2026-10-19","scope":"파멸의 바퀴 · 정원사","notes":"옛 자료의 보호막 관통 설명만 현행 KR·JP 문서와 대조. 새 패치 평가나 현재 티어 자료로 사용하지 않음."},
+    {"url":"https://www.namu.moe/w/정원사(제5인격)","title":"정원사 · 나무위키 미러","region":"한국","kind":"공동편집 공략 미러","sourceFamily":"namuwiki","publishedAt":null,"accessedAt":"2026-10-19","scope":"정원사 · 박사","notes":"박사 상대 공구함의 한계와 보호막 재생성 중 공격 노출을 확인."}
+  ],
+  "records": [],
+  "additions": [
+    {
+      "id":"NEW","hunter":"꿈의 마녀","survivor":"변호사","advantage":"꿈의 마녀","status":"반영","situation":"탐지·협공","summary":"숨어서 추격을 피하려는 변호사를 찾아내고, 신도로 양쪽 퇴로를 압박합니다.","condition":"두 신도의 협공이 갖춰진 상황입니다. 미리 이동한 변호사의 판자·창틀 활용과 공포의 일격 면역은 남아 있습니다.","urls":["https://wikiwiki.jp/identity5ch/夢の魔女","https://shouyou.3dmgame.com/news/73408.html","https://www.namu.moe/w/변호사(제5인격)"],"reviewedAt":"2026-10-19","patch":"10/15 공식 공지 대조 · 대진별 실험 패치 미표기","basis":"대진 공략·스킬 구조 교차 분석","confidence":"중간","listEligible":true,"reviewNote":"지도 정보가 있어도 협공을 자동으로 피하는 것은 아닙니다. 단일 신도의 추격 전체를 확정 우세로 판단하지 않았습니다.","sourceSupport":[{"url":"https://wikiwiki.jp/identity5ch/夢の魔女","support":"direct","note":"정보형 생존자의 숨기 대응을 설명."},{"url":"https://shouyou.3dmgame.com/news/73408.html","support":"direct","note":"변호사를 초반 대상에 포함하고 신도 협공을 설명."},{"url":"https://www.namu.moe/w/변호사(제5인격)","support":"exception","note":"이동·창틀 강화와 공포의 일격 면역 확인."}]
+    },
+    {
+      "id":"NEW","hunter":"파멸의 바퀴","survivor":"정원사","advantage":"파멸의 바퀴","status":"반영","situation":"가시 누적·피해 전환","summary":"가시가 박힌 정원사에게 비관을 쓰면 보호막을 우회해 피해를 줍니다.","condition":"가시 누적과 비관 사용이 전제입니다. 보호막으로 일반 공격이나 첫 가시 부여를 막는 경우까지 무효가 되는 것은 아닙니다.","urls":["https://wikiwiki.jp/identity5ch/庭師","https://www.namu.moe/w/파멸의 바퀴","https://www.18183.com/dwrg/202206/3985404.html"],"reviewedAt":"2026-10-19","patch":"2025/11 보호막 조정 이후 설명 대조 · 10/15 공지 확인","basis":"한·일 판정 설명과 중국 공략 교차 검토","confidence":"중간","listEligible":true,"reviewNote":"일반 타격 방어와 이미 쌓인 가시의 피해 전환을 분리했습니다.","sourceSupport":[{"url":"https://wikiwiki.jp/identity5ch/庭師","support":"direct","note":"보호막 조정 뒤에도 비관 관통이 남는다고 명시."},{"url":"https://www.namu.moe/w/파멸의 바퀴","support":"direct","note":"비관의 보호막 관통과 선행 가시 조건 확인."},{"url":"https://www.18183.com/dwrg/202206/3985404.html","support":"mechanic","note":"비관·덫과 보호막 판정의 과거 설명을 대조."}]
+    },
+    {
+      "id":"NEW","hunter":"박사","survivor":"정원사","advantage":"박사","status":"반영","situation":"추격·커버","summary":"의자를 쓰지 않아 정원사의 의자 파괴를 무력화하고, 보호막을 다시 만드는 정지 시간을 공격합니다.","condition":"보호막 자체가 사라지는 상성은 아닙니다. 준비된 보호막과 창틀을 쓰면 버틸 수 있으며, 차징 스트라이크가 닿는 위치를 피해야 합니다.","urls":["https://wikiwiki.jp/identity5ch/庭師","https://www.namu.moe/w/정원사(제5인격)"],"reviewedAt":"2026-10-19","patch":"10/15 공식 공지 대조 · 대진별 실험 패치 미표기","basis":"서로 다른 공동편집 공략의 대진 설명 대조","confidence":"중간","listEligible":true,"reviewNote":"공구함의 한계와 보호막 재생성의 위험을 근거로 삼고, 모든 공격이 보호막을 관통한다고 확대하지 않았습니다.","sourceSupport":[{"url":"https://wikiwiki.jp/identity5ch/庭師","support":"direct","note":"의자 파괴의 무효와 회상 중 강타 위험을 설명."},{"url":"https://www.namu.moe/w/정원사(제5인격)","support":"direct","note":"같은 대진에서 공구함·보호막 갱신의 한계를 확인."}]
+    }
+  ],
+  "findings": [
+    "새 날짜의 SEO 글도 판정 오류가 있으면 채택하지 않았습니다. 정원사에게 공포의 일격 면역이 있다고 설명한 글은 제외했습니다.",
+    "변호사–박사의 지형 활용은 한 한국 문서에 구체적으로 있으나 독립적인 대진 근거가 부족해 이번 추가 목록에 넣지 않았습니다.",
+    "모험가의 숨기·암호 페이지는 탐지와 운영의 장점일 수 있으나 그 자체로 모든 감시자에 대한 전체 우세를 뜻하지 않습니다."
+  ]
+}

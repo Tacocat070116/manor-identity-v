@@ -248,3 +248,6 @@ html[data-theme="dark"] .ambient-two{background:#304f3d}
 @media print{
  .character-hero .char-actions{display:none}
 }
+.matchup-section-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start}
+.matchup-section-heading h2{word-break:keep-all;overflow-wrap:anywhere}
+.matchup-section-heading>span{white-space:nowrap;line-height:28px}
