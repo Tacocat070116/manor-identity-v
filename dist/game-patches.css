@@ -47,13 +47,14 @@
 /* Reviewed patch directions use both symbols and labels, with theme-specific contrast. */
 :root{--patch-buff-ink:#2467a9;--patch-buff-bg:#e5f0fc;--patch-nerf-ink:#b03e4f;--patch-nerf-bg:#fce9ed;--patch-adjustment-ink:#856200;--patch-adjustment-bg:#fff3c7}
 [data-theme="dark"]{--patch-buff-ink:#91c6ff;--patch-buff-bg:#233d51;--patch-nerf-ink:#ffadb6;--patch-nerf-bg:#4b2d35;--patch-adjustment-ink:#edcf75;--patch-adjustment-bg:#433d25}
-.character-patch .patch-changes{list-style:none;padding:0;gap:18px}
-.patch-change{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:12px;--patch-ink:var(--muted);--patch-bg:var(--surface)}
+.character-patch .patch-changes{list-style:none;padding:0;margin:0;gap:20px}
+.patch-change{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;column-gap:12px;min-width:0;--patch-ink:var(--muted);--patch-bg:var(--surface)}
 .patch-change[data-impact="buff"]{--patch-ink:var(--patch-buff-ink);--patch-bg:var(--patch-buff-bg)}
 .patch-change[data-impact="nerf"]{--patch-ink:var(--patch-nerf-ink);--patch-bg:var(--patch-nerf-bg)}
 .patch-change[data-impact="adjustment"]{--patch-ink:var(--patch-adjustment-ink);--patch-bg:var(--patch-adjustment-bg)}
-.patch-change-icon{display:grid;place-items:center;width:32px;height:32px;flex-shrink:0;border-radius:10px;color:var(--patch-ink);background:var(--patch-bg);border:1px solid var(--line)}
-.patch-change-icon .icon{width:19px;height:19px;stroke-width:1.9}
-.patch-change-label{display:block;font-size:11px;font-weight:700;line-height:18px;color:var(--patch-ink);margin-bottom:3px}
+.patch-change-icon{display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:32px;min-width:32px;height:32px;min-height:32px;align-self:start;margin:0;padding:0;border-radius:10px;color:var(--patch-ink);background:var(--patch-bg);border:1px solid var(--line);line-height:0}
+.patch-change-icon .icon{display:block;flex:0 0 20px;width:20px;height:20px;margin:0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.patch-change-label{display:flex;align-items:center;min-height:32px;font-size:12px;font-weight:700;line-height:20px;color:var(--patch-ink);margin:0 0 4px}
+.patch-change>div{min-width:0}
 .patch-change p{margin:0;word-break:keep-all;overflow-wrap:anywhere}
 .character-patch-links{border-top:1px solid var(--accent-line);padding-top:16px;margin-top:20px;gap:10px 16px}

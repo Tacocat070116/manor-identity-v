@@ -29,7 +29,7 @@ function harness({reduced=false,animationSupport=true}={}){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
- const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='게임 패치노트'?224:188;
+ const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='게임 패치노트'?224:150;
  toggle.getBoundingClientRect=()=>({width:toggle.activeAnimation?.sampleWidth??naturalWidth()});
  if(animationSupport)for(const target of [toggle,currentLabel])target.animate=(frames,options)=>{
   const animation={frames,options,target,sampleWidth:parseFloat(frames[0].width),cancelled:false,
@@ -131,7 +131,7 @@ test('breakpoint changes, page restoration and teardown cannot leave an invisibl
 test('category width springs past its destination and interruptions start from the visible width',()=>{
  const h=harness();h.update('explore');assert.equal(h.animations.length,0);
  h.update('patchnotes');const first=h.toggle.activeAnimation;
- assert.equal(parseFloat(first.frames[0].width),188);
+ assert.equal(parseFloat(first.frames[0].width),150);
  assert.equal(parseFloat(first.frames.at(-1).width),248);
  assert.ok(first.frames.some(frame=>parseFloat(frame.width)>248));
  assert.ok(first.frames.every(frame=>Number.isFinite(parseFloat(frame.width))));
@@ -142,7 +142,7 @@ test('category width springs past its destination and interruptions start from t
  assert.ok(second.frames.some(frame=>parseFloat(frame.width)<224));
  h.update('gamepatches','dark');assert.equal(h.toggle.activeAnimation,second);
  second.finish();assert.equal(h.toggle.getBoundingClientRect().width,224);
- h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),188);
+ h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),150);
  h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
 });
 test('reduced motion, unsupported animation and viewport changes retain natural layout',()=>{
@@ -153,7 +153,7 @@ test('reduced motion, unsupported animation and viewport changes retain natural 
  const h=harness();h.update('explore');h.update('patchnotes');
  h.reducedMotion.matches=true;h.reducedMotion.emit('change');
  assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
- h.update('explore');assert.equal(h.toggle.getBoundingClientRect().width,188);
+ h.update('explore');assert.equal(h.toggle.getBoundingClientRect().width,150);
  h.reducedMotion.matches=false;h.update('patchnotes');const previous=h.toggle.activeAnimation;
  h.win.emit('resize');assert.equal(previous.cancelled,true);assert.equal(h.toggle.getBoundingClientRect().width,248);
  h.controller.destroy();

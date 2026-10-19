@@ -30,10 +30,10 @@ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5
 share:'<path d="M12 15V3m-4 4 4-4 4 4"/><path d="M7 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"/>',
 clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
 history:'<path d="M3 12a9 9 0 1 0 2.5-6.2L3 8M3 3v5h5"/><path d="M12 7v5l3 2"/>',
-buff:'<path d="M12 20V4m-6 6 6-6 6 6"/>',
-nerf:'<path d="M12 4v16m-6-6 6 6 6-6"/>',
-adjustment:'<path d="M20 10a8 8 0 0 0-13.7-3.7L4 9m0-5v5h5M4 14a8 8 0 0 0 13.7 3.7L20 15m0 5v-5h-5"/>',
-fix:'<path d="M14.4 6.2a5 5 0 0 0-6.6 6.6l-4.5 4.5a2.4 2.4 0 0 0 3.4 3.4l4.5-4.5a5 5 0 0 0 6.6-6.6l-3.2 3.2-3.4-3.4 3.2-3.2Z"/>',
+buff:'<path d="M12 19V5m-7 7 7-7 7 7"/>',
+nerf:'<path d="M12 5v14m-7-7 7 7 7-7"/>',
+adjustment:'<path d="M5 12a7 7 0 0 1 11.95-4.95L19 9m0-4v4h-4M19 12a7 7 0 0 1-11.95 4.95L5 15m0 4v-4h4"/>',
+fix:'<path d="M14 5a5 5 0 0 0-5.6 6.9l-2.7 2.7a2.4 2.4 0 0 0 3.4 3.4l2.7-2.7A5 5 0 0 0 19 10l-3 3-5-5 3-3Z"/>',
 spark:'<path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/>',
 chart:'<path d="M3.5 3.5v17h17M8 16v-5m5 5V7m5 9V9"/>',
 globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/>',
@@ -361,7 +361,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=42a4ee92922a'),fetch('patches/characters.json?v=36df47e546c4')]);
+ const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=7664e6646df9'),fetch('patches/characters.json?v=36df47e546c4')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
