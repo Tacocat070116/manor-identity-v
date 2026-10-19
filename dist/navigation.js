@@ -18,7 +18,7 @@ export function mountNavigation(root,{icon}){
   sizeAnimation=labelAnimation=null;
  }
  function changeCurrent(current,view){
-  // Read the visible width before cancelling an interrupted spring.
+  // Continue an interrupted transition from its currently visible width.
   const animate=selected&&!reducedMotion.matches&&typeof toggle.animate==='function';
   const from=animate?toggle.getBoundingClientRect().width:0;
   stopMotion();
@@ -27,15 +27,14 @@ export function mountNavigation(root,{icon}){
   if(!animate)return;
   const to=toggle.getBoundingClientRect().width;
   if(Math.abs(to-from)<.5)return;
-  // A damped spring settles at the natural width; text is never scaled.
-  const frames=Array.from({length:33},(_,i)=>{
-   const t=i/32,progress=i===32?1:1-Math.exp(-8*t)*(Math.cos(12*t)+2/3*Math.sin(12*t));
-   return {offset:t,width:(from+(to-from)*progress)+'px',minWidth:'0px'};
-  });
-  const spring=toggle.animate(frames,{duration:540,easing:'linear'});
-  sizeAnimation=spring;
-  spring.onfinish=()=>{if(sizeAnimation===spring)sizeAnimation=null;};
-  const label=currentLabel.animate([{opacity:0,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.16,1,.3,1)'});
+  // Bounded ease-in-out has no overshoot or rebound; text is never scaled.
+  const motion=toggle.animate([
+   {width:from+'px',minWidth:'0px'},
+   {width:to+'px',minWidth:'0px'}
+  ],{duration:640,easing:'cubic-bezier(.4,0,.2,1)'});
+  sizeAnimation=motion;
+  motion.onfinish=()=>{if(sizeAnimation===motion)sizeAnimation=null;};
+  const label=currentLabel.animate([{opacity:0},{opacity:1}],{duration:420,easing:'ease-out'});
   labelAnimation=label;
   label.onfinish=()=>{if(labelAnimation===label)labelAnimation=null;};
  }

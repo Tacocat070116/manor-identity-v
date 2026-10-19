@@ -128,18 +128,20 @@ test('breakpoint changes, page restoration and teardown cannot leave an invisibl
  h.toggle.emit('click');h.update('feedback');assertClosed(h);assert.equal(h.currentLabel.textContent,'도감');
  h.controller.destroy();
 });
-test('category width springs past its destination and interruptions start from the visible width',()=>{
+test('category width stays within its endpoints and interruptions continue from the visible width',()=>{
  const h=harness();h.update('explore');assert.equal(h.animations.length,0);
  h.update('patchnotes');const first=h.toggle.activeAnimation;
  assert.equal(parseFloat(first.frames[0].width),150);
  assert.equal(parseFloat(first.frames.at(-1).width),248);
- assert.ok(first.frames.some(frame=>parseFloat(frame.width)>248));
+ assert.ok(first.frames.every(frame=>parseFloat(frame.width)>=150&&parseFloat(frame.width)<=248));
+ assert.equal(first.options.easing,'cubic-bezier(.4,0,.2,1)');
+ assert.equal(first.options.duration,640);
  assert.ok(first.frames.every(frame=>Number.isFinite(parseFloat(frame.width))));
  first.sampleWidth=235;
  h.update('gamepatches');const second=h.toggle.activeAnimation;
  assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),235);
  assert.equal(parseFloat(second.frames.at(-1).width),224);
- assert.ok(second.frames.some(frame=>parseFloat(frame.width)<224));
+ assert.ok(second.frames.every(frame=>parseFloat(frame.width)>=224&&parseFloat(frame.width)<=235));
  h.update('gamepatches','dark');assert.equal(h.toggle.activeAnimation,second);
  second.finish();assert.equal(h.toggle.getBoundingClientRect().width,224);
  h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),150);
