@@ -81,7 +81,13 @@ test('latest character cards link only to confirmed live notices and editorial s
   assert.ok(note.characterIds.includes(id));assert.ok(note.sources.some(s=>s.url===change.sourceUrl));
   assert.ok(change.types.every(t=>['balance','fix'].includes(t)));
   assert.deepEqual(change.summary,editorial.characters[id].summary);assert.ok(change.summary.every(s=>s.length>10));
+  assert.deepEqual(change.summaryImpacts,editorial.characters[id].summaryImpacts);
+  assert.equal(change.summaryImpacts.length,change.summary.length);
+  assert.ok(change.summaryImpacts.every(impact=>['buff','nerf','adjustment','fix'].includes(impact)));
+  if(!change.types.includes('balance'))assert.ok(change.summaryImpacts.every(impact=>impact==='fix'));
  }
+ assert.deepEqual(latest.characters.c60.summaryImpacts,['buff','adjustment','fix']);
+ assert.deepEqual(latest.characters.c42.summaryImpacts,['nerf','adjustment']);
 });
 
 test('archive templates escape source text and mounted filtering is disposed on leaving',()=>{
@@ -103,8 +109,16 @@ test('app lazily loads archive, retains hash filters and disposes its controller
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state};',context);await context.app.boot();
- assert.equal(fetches.some(url=>url.startsWith('patches/archive')),false);assert.ok(nodes.get('#page-body').innerHTML.includes('최근 게임 변경'));
+ vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state,latestPatch};',context);await context.app.boot();
+ assert.equal(fetches.some(url=>url.startsWith('patches/archive')),false);assert.ok(nodes.get('#page-body').innerHTML.includes('최근 패치노트'));
+ for(const [id,change] of Object.entries(latest.characters)){
+  const compact=context.app.latestPatch(characters[id],true),detail=context.app.latestPatch(characters[id]);
+  assert.ok(compact.includes('최근 패치 날짜'));assert.ok(compact.includes('datetime="'+change.date+'"'));
+  assert.ok(!compact.includes(change.summary[0]),id+' cards must remain date-only');
+  assert.ok(!detail.includes('공략 검토일'));assert.ok(!detail.includes('<small>'));
+  assert.ok(detail.includes('공식 원문'));assert.ok(detail.includes('변경 이력'));
+  for(const impact of change.summaryImpacts)assert.ok(detail.includes('data-impact="'+impact+'"'));
+ }
  context.location.hash='#v=gamepatches&c=c01&since=2020-01-01&q=거미';context.app.readRoute();await context.app.render();
  assert.equal(mounts[0].params.c,'c01');assert.equal(mounts[0].params.since,'2020-01-01');assert.equal(context.app.state.statistics.search,'');
  assert.equal(context.document.title,'게임 패치노트 · MANOR');

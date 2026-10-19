@@ -15,6 +15,10 @@
       "evidence": [
         "クモの巣加速効果を1/2/3層",
         "クモの巣の判定体積"
+      ],
+      "summaryImpacts": [
+        "buff",
+        "buff"
       ]
     },
     "c02": {
@@ -29,6 +33,9 @@
       ],
       "evidence": [
         "怨念熾盛"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c03": {
@@ -46,6 +53,9 @@
       ],
       "relatedCharacterIds": [
         "c68"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c04": {
@@ -63,6 +73,9 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c05": {
@@ -80,6 +93,9 @@
       ],
       "relatedCharacterIds": [
         "c77"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c06": {
@@ -94,6 +110,9 @@
       ],
       "evidence": [
         "漁師の淵の封鎖エリア"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c07": {
@@ -108,6 +127,9 @@
       ],
       "evidence": [
         "カメラ遅延問題"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c08": {
@@ -125,6 +147,9 @@
       ],
       "relatedCharacterIds": [
         "c78"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c09": {
@@ -139,6 +164,9 @@
       ],
       "evidence": [
         "手球が誤った軌道"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c10": {
@@ -153,6 +181,9 @@
       ],
       "evidence": [
         "リッパーが隠れた後も"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c11": {
@@ -167,6 +198,9 @@
       ],
       "evidence": [
         "走行アクションが特定の状況"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c12": {
@@ -181,6 +215,9 @@
       ],
       "evidence": [
         "蝋油の進捗が100"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c13": {
@@ -197,6 +234,10 @@
       "evidence": [
         "移動速度低下効果を6%から3%",
         "5秒から6秒"
+      ],
+      "summaryImpacts": [
+        "buff",
+        "buff"
       ]
     },
     "c14": {
@@ -211,6 +252,9 @@
       ],
       "evidence": [
         "Survivor elimination is now determined first"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c15": {
@@ -225,6 +269,9 @@
       ],
       "evidence": [
         "芸者がスキルでダッシュした後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c16": {
@@ -242,6 +289,9 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c17": {
@@ -258,6 +308,10 @@
       "evidence": [
         "might not be entrapped",
         "sound effect played from the wrong position"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c18": {
@@ -272,6 +326,9 @@
       ],
       "evidence": [
         "愛猫を放った後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c19": {
@@ -289,6 +346,9 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c20": {
@@ -308,6 +368,10 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c21": {
@@ -322,6 +386,9 @@
       ],
       "evidence": [
         "リモート爆弾の残りスキル時間"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c22": {
@@ -336,6 +403,9 @@
       ],
       "evidence": [
         "Yithian could get stuck"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c23": {
@@ -350,6 +420,9 @@
       ],
       "evidence": [
         "渡鴉が旋回している"
+      ],
+      "summaryImpacts": [
+        "buff"
       ]
     },
     "c24": {
@@ -367,6 +440,9 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c25": {
@@ -381,6 +457,9 @@
       ],
       "evidence": [
         "Shadow Realm area in the Antique shop"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c26": {
@@ -398,6 +477,9 @@
       ],
       "relatedCharacterIds": [
         "c67"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c27": {
@@ -415,6 +497,9 @@
       ],
       "relatedCharacterIds": [
         "c46"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c28": {
@@ -429,6 +514,9 @@
       ],
       "evidence": [
         "電荷の効果音が消失"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c29": {
@@ -450,6 +538,10 @@
         "c80",
         "c86",
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c30": {
@@ -467,6 +559,9 @@
       ],
       "relatedCharacterIds": [
         "c44"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c31": {
@@ -483,6 +578,10 @@
       "evidence": [
         "Resentment consumption became abnormal",
         "Backstep to pass through a cage"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c32": {
@@ -497,6 +596,9 @@
       ],
       "evidence": [
         "象形墓場を使用した後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c33": {
@@ -518,6 +620,10 @@
       "relatedCharacterIds": [
         "c63",
         "c60"
+      ],
+      "summaryImpacts": [
+        "adjustment",
+        "fix"
       ]
     },
     "c34": {
@@ -535,6 +641,9 @@
       ],
       "relatedCharacterIds": [
         "c79"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c35": {
@@ -549,6 +658,9 @@
       ],
       "evidence": [
         "不安定エリアのエフェクト範囲表示"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c36": {
@@ -571,6 +683,11 @@
       "relatedCharacterIds": [
         "c67",
         "c72"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix",
+        "fix"
       ]
     },
     "c37": {
@@ -585,6 +702,9 @@
       ],
       "evidence": [
         "永眠町の旧芸妓楼付近で、曲芸師"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c38": {
@@ -599,6 +719,9 @@
       ],
       "evidence": [
         "サバイバーが抵抗して落下"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c39": {
@@ -613,6 +736,9 @@
       ],
       "evidence": [
         "骨董商が雲門を使用した後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c40": {
@@ -627,6 +753,9 @@
       ],
       "evidence": [
         "信号銃を発射した後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c41": {
@@ -644,6 +773,9 @@
       ],
       "relatedCharacterIds": [
         "c76"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c42": {
@@ -660,6 +792,10 @@
       "evidence": [
         "アームボウのクールタイム",
         "感知範囲の減少量が24%"
+      ],
+      "summaryImpacts": [
+        "nerf",
+        "adjustment"
       ]
     },
     "c43": {
@@ -680,6 +816,10 @@
       "relatedCharacterIds": [
         "c60",
         "c80"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c44": {
@@ -697,6 +837,9 @@
       ],
       "relatedCharacterIds": [
         "c30"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c45": {
@@ -714,6 +857,9 @@
       ],
       "relatedCharacterIds": [
         "c11"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c46": {
@@ -728,6 +874,9 @@
       ],
       "evidence": [
         "記者の持ち物のクールタイム"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c47": {
@@ -742,6 +891,9 @@
       ],
       "evidence": [
         "ハンターが納棺師の棺桶の位置"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c48": {
@@ -756,6 +908,9 @@
       ],
       "evidence": [
         "フラッシュライトエフェクト"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c49": {
@@ -770,6 +925,9 @@
       ],
       "evidence": [
         "マジシャンがダウンした際"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c50": {
@@ -787,6 +945,9 @@
       ],
       "relatedCharacterIds": [
         "c51"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c51": {
@@ -801,6 +962,9 @@
       ],
       "evidence": [
         "縮小後に表示される異常な警告"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c52": {
@@ -815,6 +979,9 @@
       ],
       "evidence": [
         "古いエンジュの木付近"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c53": {
@@ -833,6 +1000,11 @@
         "疑似的な木の板を落とした後",
         "雨傘が消えた後も移動を妨げる",
         "壁をすり抜けて地下室の入口"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix",
+        "fix"
       ]
     },
     "c54": {
@@ -850,6 +1022,9 @@
       ],
       "relatedCharacterIds": [
         "c53"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c55": {
@@ -866,6 +1041,10 @@
       "evidence": [
         "恐怖値を回復する際",
         "使用した後に荘園から脱出"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c56": {
@@ -880,6 +1059,9 @@
       ],
       "evidence": [
         "Note-taking Speed doubles when moving or vaulting"
+      ],
+      "summaryImpacts": [
+        "buff"
       ]
     },
     "c57": {
@@ -899,6 +1081,10 @@
       ],
       "relatedCharacterIds": [
         "c60"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c58": {
@@ -913,6 +1099,9 @@
       ],
       "evidence": [
         "使い鳥を使用した直後に解読調整"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c59": {
@@ -933,6 +1122,10 @@
       ],
       "relatedCharacterIds": [
         "c11"
+      ],
+      "summaryImpacts": [
+        "nerf",
+        "fix"
       ]
     },
     "c60": {
@@ -955,6 +1148,11 @@
       ],
       "relatedCharacterIds": [
         "c33"
+      ],
+      "summaryImpacts": [
+        "buff",
+        "adjustment",
+        "fix"
       ]
     },
     "c61": {
@@ -969,6 +1167,9 @@
       ],
       "evidence": [
         "主観アンカースキルボタン"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c62": {
@@ -986,6 +1187,9 @@
       ],
       "relatedCharacterIds": [
         "c33"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c63": {
@@ -1003,6 +1207,9 @@
       ],
       "relatedCharacterIds": [
         "c33"
+      ],
+      "summaryImpacts": [
+        "adjustment"
       ]
     },
     "c64": {
@@ -1020,6 +1227,9 @@
       ],
       "relatedCharacterIds": [
         "c19"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c65": {
@@ -1034,6 +1244,9 @@
       ],
       "evidence": [
         "泣きピエロがロケットを使用すると"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c66": {
@@ -1048,6 +1261,9 @@
       ],
       "evidence": [
         "応援団とポストマンはこの最適化"
+      ],
+      "summaryImpacts": [
+        "adjustment"
       ]
     },
     "c67": {
@@ -1065,6 +1281,9 @@
       ],
       "relatedCharacterIds": [
         "c36"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c68": {
@@ -1079,6 +1298,9 @@
       ],
       "evidence": [
         "人形師がロケットチェアから救助"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c69": {
@@ -1093,6 +1315,9 @@
       ],
       "evidence": [
         "最大返還時間を10秒から6秒"
+      ],
+      "summaryImpacts": [
+        "nerf"
       ]
     },
     "c70": {
@@ -1107,6 +1332,9 @@
       ],
       "evidence": [
         "玩具職人の弾射板車を使用してステージ"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c71": {
@@ -1121,6 +1349,9 @@
       ],
       "evidence": [
         "工具箱のクールタイムが12秒から14秒"
+      ],
+      "summaryImpacts": [
+        "nerf"
       ]
     },
     "c72": {
@@ -1138,6 +1369,9 @@
       ],
       "relatedCharacterIds": [
         "c36"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c73": {
@@ -1152,6 +1386,9 @@
       ],
       "evidence": [
         "暗号機の解読完了と同時に"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c74": {
@@ -1166,6 +1403,9 @@
       ],
       "evidence": [
         "呪術師が脱出ゲートの電源スイッチ"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c75": {
@@ -1183,6 +1423,9 @@
       ],
       "relatedCharacterIds": [
         "c87"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c76": {
@@ -1197,6 +1440,9 @@
       ],
       "evidence": [
         "ダウン状態のサバイバーを背負ったカウボーイ"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c77": {
@@ -1211,6 +1457,9 @@
       ],
       "evidence": [
         "ブーストのクールタイム中に共感覚"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c78": {
@@ -1225,6 +1474,9 @@
       ],
       "evidence": [
         "スモークジェネレーターを投げた後"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c79": {
@@ -1239,6 +1491,9 @@
       ],
       "evidence": [
         "探鉱者が解読調整が現れた瞬間"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c80": {
@@ -1261,6 +1516,11 @@
       "relatedCharacterIds": [
         "c43",
         "c29"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix",
+        "fix"
       ]
     },
     "c81": {
@@ -1275,6 +1535,9 @@
       ],
       "evidence": [
         "雲隠れ中にアロマの杖を使い切った際"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c82": {
@@ -1289,6 +1552,9 @@
       ],
       "evidence": [
         "ラグビーボールのクールタイムが5秒から6秒"
+      ],
+      "summaryImpacts": [
+        "nerf"
       ]
     },
     "c83": {
@@ -1303,6 +1569,9 @@
       ],
       "evidence": [
         "航空エンジニアが罪の森"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c84": {
@@ -1320,6 +1589,9 @@
       ],
       "relatedCharacterIds": [
         "c19"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c85": {
@@ -1336,6 +1608,10 @@
       "evidence": [
         "箱を開ける速度が100%増加から40%",
         "次に箱を開ける時間が2.5秒増加から3.5秒"
+      ],
+      "summaryImpacts": [
+        "nerf",
+        "nerf"
       ]
     },
     "c86": {
@@ -1353,6 +1629,9 @@
       ],
       "relatedCharacterIds": [
         "c29"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     },
     "c87": {
@@ -1367,6 +1646,9 @@
       ],
       "evidence": [
         "エアーボールを長押しで投げる際のドラッグ感度"
+      ],
+      "summaryImpacts": [
+        "adjustment"
       ]
     },
     "c88": {
@@ -1383,6 +1665,10 @@
       "evidence": [
         "幻灯師がロケットチェアを記録した後",
         "軍需工場の廃材エリアの一部位置"
+      ],
+      "summaryImpacts": [
+        "fix",
+        "fix"
       ]
     },
     "c89": {
@@ -1397,6 +1683,9 @@
       ],
       "evidence": [
         "患者が罪の森の狩人小屋"
+      ],
+      "summaryImpacts": [
+        "fix"
       ]
     }
   }

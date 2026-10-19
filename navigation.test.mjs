@@ -13,9 +13,10 @@ class Target{
  }
  count(){return [...this.listeners.values()].reduce((n,s)=>n+s.size,0);}
 }
-function harness(){
- const doc=new Target(),win=new Target(),media=new Target();
- doc.defaultView=win;win.matchMedia=()=>media;
+function harness({reduced=false,animationSupport=true}={}){
+ const doc=new Target(),win=new Target(),media=new Target(),reducedMotion=new Target(),animations=[];
+ reducedMotion.matches=reduced;
+ doc.defaultView=win;win.matchMedia=query=>query.includes('reduced-motion')?reducedMotion:media;
  function element(parent=null){
   const node=new Target(),classes=new Set();
   Object.assign(node,{parent,dataset:{},attrs:{},classes,textContent:'',innerHTML:'',inert:false,
@@ -28,6 +29,15 @@ function harness(){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
+ const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='게임 패치노트'?224:188;
+ toggle.getBoundingClientRect=()=>({width:toggle.activeAnimation?.sampleWidth??naturalWidth()});
+ if(animationSupport)for(const target of [toggle,currentLabel])target.animate=(frames,options)=>{
+  const animation={frames,options,target,sampleWidth:parseFloat(frames[0].width),cancelled:false,
+   cancel(){this.cancelled=true;if(target.activeAnimation===this)target.activeAnimation=null;},
+   finish(){if(target.activeAnimation===this)target.activeAnimation=null;this.onfinish?.();}
+  };
+  target.activeAnimation=animation;animations.push(animation);return animation;
+ };
  const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['gamepatches','게임 패치노트','history'],['patchnotes','MANOR 업데이트','spark']];
  const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
@@ -35,7 +45,7 @@ function harness(){
  toggle.querySelector=s=>s==='[data-nav-current-icon]'?currentIcon:currentLabel;
  const root={ownerDocument:doc,querySelector:s=>s==='.category-nav'?nav:themeButton};
  const controller=mountNavigation(root,{icon:n=>'icon:'+n});
- return {controller,doc,win,media,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
+ return {controller,doc,win,media,reducedMotion,animations,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
   update:(view,theme='light')=>controller.update({view,theme}),
   isOpen:()=>toggle.attrs['aria-expanded']==='true'
  };
@@ -114,7 +124,37 @@ test('breakpoint changes, page restoration and teardown cannot leave an invisibl
  }
  h.toggle.emit('click');h.links[5].focus();h.controller.destroy();assertClosed(h);
  assert.equal(h.doc.activeElement,h.toggle);
- for(const target of [h.toggle,h.panel,h.doc,h.win,h.media])assert.equal(target.count(),0);
+ for(const target of [h.toggle,h.panel,h.doc,h.win,h.media,h.reducedMotion])assert.equal(target.count(),0);
  h.toggle.emit('click');h.update('feedback');assertClosed(h);assert.equal(h.currentLabel.textContent,'도감');
+ h.controller.destroy();
+});
+test('category width springs past its destination and interruptions start from the visible width',()=>{
+ const h=harness();h.update('explore');assert.equal(h.animations.length,0);
+ h.update('patchnotes');const first=h.toggle.activeAnimation;
+ assert.equal(parseFloat(first.frames[0].width),188);
+ assert.equal(parseFloat(first.frames.at(-1).width),248);
+ assert.ok(first.frames.some(frame=>parseFloat(frame.width)>248));
+ assert.ok(first.frames.every(frame=>Number.isFinite(parseFloat(frame.width))));
+ first.sampleWidth=235;
+ h.update('gamepatches');const second=h.toggle.activeAnimation;
+ assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),235);
+ assert.equal(parseFloat(second.frames.at(-1).width),224);
+ assert.ok(second.frames.some(frame=>parseFloat(frame.width)<224));
+ h.update('gamepatches','dark');assert.equal(h.toggle.activeAnimation,second);
+ second.finish();assert.equal(h.toggle.getBoundingClientRect().width,224);
+ h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),188);
+ h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
+});
+test('reduced motion, unsupported animation and viewport changes retain natural layout',()=>{
+ for(const options of [{reduced:true},{animationSupport:false}]){
+  const h=harness(options);h.update('explore');h.update('patchnotes');
+  assert.equal(h.animations.length,0);assert.equal(h.toggle.getBoundingClientRect().width,248);h.controller.destroy();
+ }
+ const h=harness();h.update('explore');h.update('patchnotes');
+ h.reducedMotion.matches=true;h.reducedMotion.emit('change');
+ assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
+ h.update('explore');assert.equal(h.toggle.getBoundingClientRect().width,188);
+ h.reducedMotion.matches=false;h.update('patchnotes');const previous=h.toggle.activeAnimation;
+ h.win.emit('resize');assert.equal(previous.cancelled,true);assert.equal(h.toggle.getBoundingClientRect().width,248);
  h.controller.destroy();
 });

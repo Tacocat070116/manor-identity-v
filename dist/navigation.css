@@ -4,7 +4,9 @@
 .category-toggle{display:flex;align-items:center;gap:10px;min-width:188px;min-height:48px;padding:10px 14px;border:1px solid var(--control-line);border-radius:26px;background:var(--surface);background-image:var(--glass-sheen);color:var(--accent);box-shadow:var(--selected-shadow);font-size:13px;font-weight:680;line-height:20px;touch-action:manipulation;transition:background 240ms ease,border-color 240ms ease,box-shadow 360ms ease}
 .category-current-icon{display:flex;align-items:center;justify-content:center;flex:0 0 22px}
 .category-current-icon .icon{width:22px;height:22px}
-.category-current-label{flex:1;text-align:left;white-space:nowrap}
+.category-current-label{flex:1;min-width:0;overflow:hidden;text-align:left;white-space:nowrap}
+.category-nav,.category-toggle{max-width:calc(100vw - 40px)}
+.category-toggle-hint,.category-chevron{flex-shrink:0}
 .category-toggle-hint{padding-left:12px;border-left:1px solid var(--line);font-size:11px;font-weight:550;color:var(--muted);line-height:16px}
 .category-chevron{display:flex;align-items:center;justify-content:center}
 .category-chevron .icon{width:16px;height:16px;transition:transform 440ms cubic-bezier(.22,.75,.2,1)}

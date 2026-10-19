@@ -1,7 +1,7 @@
-import {mountNavigation} from './navigation.js?v=5e5fe9ef4faa';
+import {mountNavigation} from './navigation.js?v=ad9db3b13741';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=367d630b89a5';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=5152b3f04b3c';
+import {createStatisticsUI} from './statistics.js?v=969f3540fb73';
 import {mountGamePatches} from './game-patches.js?v=952b5ef2a173';
 import {mountFeedback} from './feedback.js?v=12a0e2e09032';
 import {selectRanked} from './statistics-model.js?v=6f0d0dcf43d0';
@@ -30,6 +30,10 @@ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5
 share:'<path d="M12 15V3m-4 4 4-4 4 4"/><path d="M7 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"/>',
 clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
 history:'<path d="M3 12a9 9 0 1 0 2.5-6.2L3 8M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+buff:'<path d="M12 20V4m-6 6 6-6 6 6"/>',
+nerf:'<path d="M12 4v16m-6-6 6 6 6-6"/>',
+adjustment:'<path d="M20 10a8 8 0 0 0-13.7-3.7L4 9m0-5v5h5M4 14a8 8 0 0 0 13.7 3.7L20 15m0 5v-5h-5"/>',
+fix:'<path d="M14.4 6.2a5 5 0 0 0-6.6 6.6l-4.5 4.5a2.4 2.4 0 0 0 3.4 3.4l4.5-4.5a5 5 0 0 0 6.6-6.6l-3.2 3.2-3.4-3.4 3.2-3.2Z"/>',
 spark:'<path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/>',
 chart:'<path d="M3.5 3.5v17h17M8 16v-5m5 5V7m5 9V9"/>',
 globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/>',
@@ -127,9 +131,15 @@ function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');cl
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
 function latestPatch(c,compact=false){
  const change=characterPatches.characters?.[c.id];
- if(compact)return change?`<span class="card-game-patch"><small>최근 게임 변경 · ${esc(change.date.replaceAll('-','.'))}</small><span>${esc(change.summary[0])}</span></span>`:'';
+ if(compact)return change?`<span class="card-game-patch"><small>최근 패치 날짜</small><time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time></span>`:'';
  const history=route({v:'gamepatches',c:c.id});
- return `<section class="character-patch" aria-label="최근 게임 패치"><div class="character-patch-header"><h2>${icon('history')}최근 게임 변경</h2>${change?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${change?`<ul>${change.summary.map(text=>`<li>${esc(text)}</li>`).join('')}</ul>`:'<p>확인된 개별 변경 요약이 없습니다. 전체 공식 기록에서 관련 내용을 확인하세요.</p>'}<div class="character-patch-links">${change?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 변경 이력 →</a>${change?link(change.sourceUrl,'공식 원문 ↗'):''}</div><small>수집한 글로벌 정식 서버 공지의 전투 조정·오류 수정 기준 · ${esc(characterPatches.meta?.checkedAt||'')} 확인<br>위 변경일과 공략 검토일은 별개입니다. 전투 조작·표시 수정 포함 · 스킨·테스트 서버·예고 제외</small></section>`;
+ const labels={buff:'버프',nerf:'너프',adjustment:'조정',fix:'오류 수정'};
+ const changes=change?.summary.map((text,i)=>{
+  const value=change.summaryImpacts?.[i];
+  const impact=Object.hasOwn(labels,value)?value:change.types.every(type=>type==='fix')?'fix':'adjustment';
+  return `<li class="patch-change" data-impact="${impact}"><span class="patch-change-icon">${icon(impact)}</span><div><strong class="patch-change-label">${labels[impact]}</strong><p>${esc(text)}</p></div></li>`;
+ }).join('');
+ return `<section class="character-patch" aria-label="최근 패치노트"><div class="character-patch-header"><h2>${icon('history')}최근 패치노트</h2>${change?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${change?`<ul class="patch-changes">${changes}</ul>`:'<p>확인된 개별 변경 요약이 없습니다. 전체 공식 기록에서 관련 내용을 확인하세요.</p>'}<div class="character-patch-links">${change?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 변경 이력 →</a>${change?link(change.sourceUrl,'공식 원문 ↗'):''}</div></section>`;
 }
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${c.specialties.map(t=>`<span>#${esc(t)}</span>`).join('')}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div>${latestPatch(c,true)}</div></button>`;}
 function heroCarousel(){
@@ -140,7 +150,7 @@ function explore(){
  return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>다음 한 수를,<br><span>더 선명하게.</span></h1><p>캐릭터의 가능성부터 상대의 빈틈까지.<br>흩어진 장원의 기록을, 당신의 플레이로 연결합니다.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
  <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>${num(db.meta.matchupCount)}</strong>상황별 근거</span><span><strong>KR · JP · CN</strong>자료 검토</span><span class="subtle">상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt} · <a class="text-link" href="#v=sources">데이터 기준</a> · <a class="text-link" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></span></div>
  <a class="gp-home-link" href="#v=gamepatches">${icon('history')}<div><strong>게임 패치노트</strong><p>2018년부터 쌓인 공식 기록. 내 캐릭터와 마지막 플레이 날짜로 찾아보세요.</p></div>${icon('arrow')}</a>
- <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>장원의 모든 얼굴</h2><p>당신의 캐릭터를 찾고, 한 단계 더 깊이 이해하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="이름 · 본명 · 별명" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판으로도 검색할 수 있어요. <span>출시순은 글로벌 서버 기준입니다.</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
+ <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>장원의 모든 얼굴</h2><p>당신의 캐릭터를 찾고, 한 단계 더 깊이 이해하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판으로도 검색할 수 있어요. <span>출시순은 글로벌 서버 기준입니다.</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
  <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대가 정해졌다면</strong><p>상황별 대응과 30초 브리핑</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴에서 읽는 다음 수</strong><p>생존자 밴 3개로 감시자 후보 탐색</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>두 선택 사이에서</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
 }
 function updateExplorer(){
@@ -277,7 +287,7 @@ function openPicker(mode='jump'){
  if(mode==='compare-a')heading='캐릭터 A 선택';
  if(mode==='compare-b'){heading='캐릭터 B 선택';side=char(state.a).side;excluded=[state.a];}
  if(mode.startsWith('ban-')){side='생존자';const idx=Number(mode.split('-')[1]);excluded=state.bans.filter((x,i)=>x&&i!==idx);heading=`생존자 밴 ${idx+1}`;}
- pickerContext={mode,side,excluded,sort:'release'};$('#picker').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>${heading}</h2><button class="icon-btn" data-action="close-dialog" data-dialog="picker" aria-label="선택 창 닫기">${icon('close')}</button></div><div class="picker-toolbar"><label class="search-box">${icon('search')}<input id="picker-search" type="search" aria-label="캐릭터 이름 검색" placeholder="이름 · 본명 · 별명" autocomplete="off" maxlength="120" spellcheck="false"></label><label class="picker-sort"><select id="picker-sort" class="filter-select" aria-label="검색 결과 정렬">${characterSortOptions.map(([value,label])=>`<option value="${value}">${label}</option>`).join('')}</select></label></div><p class="search-help">초성·영문 자판도 지원해요. 출시순은 글로벌 서버 기준입니다.</p></div><div class="dialog-body"><div id="picker-results"></div></div>`;updatePicker('');$('#picker').showModal();$('#picker-search').focus();
+ pickerContext={mode,side,excluded,sort:'release'};$('#picker').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>${heading}</h2><button class="icon-btn" data-action="close-dialog" data-dialog="picker" aria-label="선택 창 닫기">${icon('close')}</button></div><div class="picker-toolbar"><label class="search-box">${icon('search')}<input id="picker-search" type="search" aria-label="캐릭터 이름 검색" placeholder="캐릭터 검색" autocomplete="off" maxlength="120" spellcheck="false"></label><label class="picker-sort"><select id="picker-sort" class="filter-select" aria-label="검색 결과 정렬">${characterSortOptions.map(([value,label])=>`<option value="${value}">${label}</option>`).join('')}</select></label></div><p class="search-help">초성·영문 자판도 지원해요. 출시순은 글로벌 서버 기준입니다.</p></div><div class="dialog-body"><div id="picker-results"></div></div>`;updatePicker('');$('#picker').showModal();$('#picker-search').focus();
 }
 function updatePicker(q){const list=sortCharacters(db.characters.filter(c=>(!pickerContext.side||c.side===pickerContext.side)&&!pickerContext.excluded.includes(c.id)&&matchesCharacter(c,q)),pickerContext.sort);$('#picker-results').innerHTML=`<p class="result-count" role="status" aria-live="polite">${list.length}명${pickerContext.side?' · '+pickerContext.side:''}</p><div class="picker-grid">${list.map(c=>`<button class="pick-option" data-action="pick" data-id="${c.id}">${portrait(c)}<span>${esc(c.name)}</span></button>`).join('')}</div>${!list.length?'<div class="empty"><p>일치하는 캐릭터가 없습니다.</p></div>':''}`;}
 function selectCharacter(id){
@@ -351,7 +361,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=81e992bdf0c1'),fetch('patches/characters.json?v=ecd743be3a1a')]);
+ const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=42a4ee92922a'),fetch('patches/characters.json?v=36df47e546c4')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

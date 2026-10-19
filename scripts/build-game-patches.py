@@ -128,7 +128,10 @@ def build(cache):
         for cid,change in read(editorial)['characters'].items():
             entry=lookup.get(change['sourceUrl'])
             if not entry or entry['scope']!='live' or entry['effectiveDate']!=change['date'] or entry['dateStatus']!='confirmed':raise ValueError('Editorial latest source/date mismatch: '+cid)
-            latest[cid]={key:change[key] for key in ['date','sourceUrl','sourceLanguage','types','summary']};latest[cid]['patchId']=entry['id']
+            impacts=change.get('summaryImpacts',[])
+            if len(impacts)!=len(change['summary']) or any(impact not in ['buff','nerf','adjustment','fix'] for impact in impacts):raise ValueError('Editorial summary impacts missing/invalid: '+cid)
+            if 'balance' not in change['types'] and any(impact!='fix' for impact in impacts):raise ValueError('Bug fixes must not imply balance direction: '+cid)
+            latest[cid]={key:change[key] for key in ['date','sourceUrl','sourceLanguage','types','summary','summaryImpacts']};latest[cid]['patchId']=entry['id']
             if cid not in entry['characterIds']:entry['characterIds'].append(cid)
             entry['characterChanges'].setdefault(cid,[])
             for kind in change['types']:

@@ -9,7 +9,36 @@ export function mountNavigation(root,{icon}){
  const currentLabel=toggle.querySelector('[data-nav-current-label]');
  const themeButton=root.querySelector('[data-action="theme"]');
  const mobile=win.matchMedia('(max-width:640px)');
+ const reducedMotion=win.matchMedia('(prefers-reduced-motion:reduce)');
  let expanded=false,selected='',routeView='',theme='',destroyed=false;
+ let sizeAnimation,labelAnimation;
+
+ function stopMotion(){
+  sizeAnimation?.cancel();labelAnimation?.cancel();
+  sizeAnimation=labelAnimation=null;
+ }
+ function changeCurrent(current,view){
+  // Read the visible width before cancelling an interrupted spring.
+  const animate=selected&&!reducedMotion.matches&&typeof toggle.animate==='function';
+  const from=animate?toggle.getBoundingClientRect().width:0;
+  stopMotion();
+  currentLabel.textContent=current?.dataset.navLabel||(view==='sources'?'자료 기준':'메뉴');
+  currentIcon.innerHTML=icon(current?.dataset.navIcon||(view==='sources'?'book':'grid'));
+  if(!animate)return;
+  const to=toggle.getBoundingClientRect().width;
+  if(Math.abs(to-from)<.5)return;
+  // A damped spring settles at the natural width; text is never scaled.
+  const frames=Array.from({length:33},(_,i)=>{
+   const t=i/32,progress=i===32?1:1-Math.exp(-8*t)*(Math.cos(12*t)+2/3*Math.sin(12*t));
+   return {offset:t,width:(from+(to-from)*progress)+'px',minWidth:'0px'};
+  });
+  const spring=toggle.animate(frames,{duration:540,easing:'linear'});
+  sizeAnimation=spring;
+  spring.onfinish=()=>{if(sizeAnimation===spring)sizeAnimation=null;};
+  const label=currentLabel.animate([{opacity:0,transform:'translateY(3px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.16,1,.3,1)'});
+  labelAnimation=label;
+  label.onfinish=()=>{if(labelAnimation===label)labelAnimation=null;};
+ }
 
  function labelToggle(){
   toggle.setAttribute('aria-label','카테고리 메뉴 '+(expanded?'닫기':'열기')+' · 현재 '+currentLabel.textContent);
@@ -35,15 +64,14 @@ export function mountNavigation(root,{icon}){
   }
   const view=next.view==='character'?'explore':next.view;
   if(view!==selected){
-   selected=view;
    const current=links.find(link=>link.dataset.view===view);
    for(const link of links){
     const active=link===current;
     link.classList.toggle('active',active);
     if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
    }
-   currentLabel.textContent=current?.dataset.navLabel||(view==='sources'?'자료 기준':'메뉴');
-   currentIcon.innerHTML=icon(current?.dataset.navIcon||(view==='sources'?'book':'grid'));
+   changeCurrent(current,view);
+   selected=view;
    labelToggle();
   }
   if(next.theme!==theme){
@@ -70,15 +98,16 @@ export function mountNavigation(root,{icon}){
    event.preventDefault();setOpen(false,{restoreFocus:true});
   }
  }
- const close=()=>setOpen(false,{restoreFocus:true});
+ const close=()=>{stopMotion();setOpen(false,{restoreFocus:true});};
  const events=[[toggle,'click',onToggle],[toggle,'keydown',onToggleKey],[panel,'click',onSelect],
   [doc,'pointerdown',onOutside],[doc,'focusin',onFocus],[doc,'keydown',onEscape],
-  [win,'pagehide',close],[win,'pageshow',close],[mobile,'change',close]];
+  [win,'pagehide',close],[win,'pageshow',close],[mobile,'change',close],
+  [win,'resize',stopMotion],[reducedMotion,'change',stopMotion]];
  for(const [target,type,handler] of events)target.addEventListener(type,handler);
  setOpen(false);
  return {update,destroy(){
   if(destroyed)return;
-  setOpen(false,{restoreFocus:true});destroyed=true;
+  stopMotion();setOpen(false,{restoreFocus:true});destroyed=true;
   for(const [target,type,handler] of events)target.removeEventListener(type,handler);
  }};
 }
