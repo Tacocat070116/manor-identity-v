@@ -46,11 +46,11 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.equal(context.document.title,'패치노트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
  const header=nodes.get('#header').innerHTML;
- assert.equal((header.match(/class="nav-item /g)||[]).length,7,'desktop and mobile share seven links');
+ assert.equal((header.match(/class="nav-item /g)||[]).length,8,'desktop and mobile share eight links including the limited practice BETA');
  assert.ok(header.includes('aria-controls="category-panel"'));
  assert.ok(header.includes('aria-expanded="false"'));
  assert.ok(header.includes('aria-hidden="true" inert'));
- assert.equal((header.match(/tabindex="-1"/g)||[]).length,7);
+ assert.equal((header.match(/tabindex="-1"/g)||[]).length,8);
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
  assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));

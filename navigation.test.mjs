@@ -28,7 +28,7 @@ function harness(){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
- const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
+ const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['practice','연습실 BETA','spark'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
  const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
  panel.querySelectorAll=()=>links;
