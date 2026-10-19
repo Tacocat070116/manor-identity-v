@@ -18,11 +18,11 @@ function transformed(value,width,height){
 function harness({reduced=false,animate=true,observe=true}={}){
  const win=new Target(),media=new Target();media.matches=reduced;
  win.matchMedia=()=>media;
- const views=['explore','matchup','compare','bans','statistics','feedback'],animations=[],observers=[];
+ const views=['explore','matchup','compare','bans','statistics','feedback','patchnotes'],animations=[],observers=[];
  let width=362,pill;
  const frame={left:14,top:700};
  const nav={dataset:{},clientLeft:1,clientTop:1,prepend(el){pill=el;},getBoundingClientRect:()=>({...frame,width,height:width?66:0})};
- const mobile=views.map((view,i)=>link(view,()=>width?{left:frame.left+9+i*(width-18)/6,top:frame.top+9,width:(width-18)/6,height:48}:{left:0,top:0,width:0,height:0}));
+ const mobile=views.map((view,i)=>link(view,()=>width?{left:frame.left+9+i*(width-18)/views.length,top:frame.top+9,width:(width-18)/views.length,height:48}:{left:0,top:0,width:0,height:0}));
  const desktop=views.map(view=>link(view));
  const links=[...desktop,...mobile];nav.contains=el=>mobile.includes(el);
  const themeButton=link('theme');
@@ -59,16 +59,16 @@ test('selection follows routing immediately while one noninteractive glass layer
  const h=harness();h.update('explore');
  assert.equal(h.animations.length,0);assert.equal(h.pill().attrs['aria-hidden'],'true');
  assert.equal(h.mobile[0].attrs['aria-current'],'page');
- const pill=h.pill();h.update('feedback');
+ const pill=h.pill();h.update('patchnotes');
  assert.equal(h.pill(),pill);assert.equal(h.animations.length,1);
- assert.equal(h.mobile[5].attrs['aria-current'],'page');assert.equal(h.desktop[5].attrs['aria-current'],'page');
+ assert.equal(h.mobile[6].attrs['aria-current'],'page');assert.equal(h.desktop[6].attrs['aria-current'],'page');
  assert.equal(h.mobile[0].attrs['aria-current'],undefined);
  assert.ok(h.animations[0].options.duration>=520&&h.animations[0].options.duration<=660);
  const frames=h.animations[0].frames,w=parseFloat(pill.style.width),height=parseFloat(pill.style.height);
  const start=transformed(frames[0].transform,w,height),end=transformed(frames.at(-1).transform,w,height);
- close(start.x,8);close(end.x,8+5*w);close(end.width,w);close(end.height,48);
+ close(start.x,8);close(end.x,8+6*w);close(end.width,w);close(end.height,48);
  assert.ok(frames.slice(1,-1).some(f=>transformed(f.transform,w,height).width>w));
- h.update('feedback','dark');assert.equal(h.animations.length,1);
+ h.update('patchnotes','dark');assert.equal(h.animations.length,1);
  assert.equal(h.themeButton.innerHTML,'icon:sun');assert.match(h.themeButton.attrs['aria-label'],/라이트/);
  h.controller.destroy();
 });
@@ -91,7 +91,7 @@ test('reduced motion, resize, hidden desktop layout and non-menu routes settle w
  const h=harness({reduced:true});h.update('explore');h.update('bans');assert.equal(h.animations.length,0);
  h.media.matches=false;h.media.emit('change');h.update('feedback');assert.equal(h.animations.length,1);
  h.media.matches=true;h.media.emit('change');assert.ok(h.animations[0].cancelled);
- h.resize(400);close(parseFloat(h.pill().style.width),(400-18)/6);
+ h.resize(400);close(parseFloat(h.pill().style.width),(400-18)/7);
  h.resize(0);assert.ok(h.pill().hidden);assert.equal(h.nav.dataset.navMotion,undefined);
  h.update('compare');h.resize(320);assert.equal(h.pill().hidden,false);assert.equal(h.animations.length,1);
  h.update('sources');assert.ok(h.pill().hidden);assert.ok(h.links.every(link=>!link.classes.has('active')));
@@ -102,7 +102,7 @@ test('reduced motion, resize, hidden desktop layout and non-menu routes settle w
 test('unavailable animation and resize APIs retain immediate selection and clean teardown',()=>{
  const h=harness({animate:false,observe:false});h.update('explore');h.update('statistics');h.resize(340);
  assert.equal(h.mobile[4].attrs['aria-current'],'page');assert.equal(h.animations.length,0);
- close(parseFloat(h.pill().style.width),(340-18)/6);
+ close(parseFloat(h.pill().style.width),(340-18)/7);
  h.win.emit('pageshow');h.controller.destroy();assert.ok(h.pill().removed);
  h.update('feedback');assert.equal(h.mobile[4].attrs['aria-current'],'page');assert.equal(h.win.count(),0);
 });
