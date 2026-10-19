@@ -1,8 +1,8 @@
 import {mountNavigation} from './navigation.js?v=5e5fe9ef4faa';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js?v=96af9be1a38b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=6d58e86ff19a';
-import {mountGamePatches} from './game-patches.js?v=49486c89bdf2';
+import {createStatisticsUI} from './statistics.js?v=f49c398aa40b';
+import {mountGamePatches} from './game-patches.js?v=b5965c9a7e71';
 import {mountFeedback} from './feedback.js?v=12a0e2e09032';
 import {selectRanked} from './statistics-model.js?v=9470c84b8754';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=aacecb10d3f5';
@@ -351,7 +351,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=e7ff1f04ef70'),fetch('patches/characters.json?v=ecd743be3a1a')]);
+ const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=7ecd72593fc0'),fetch('patches/characters.json?v=ecd743be3a1a')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

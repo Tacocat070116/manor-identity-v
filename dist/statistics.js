@@ -3,13 +3,22 @@ import {SERVER_LABELS,TIER_LABELS,METRIC_LABELS,selectRanked,sortStatistics,tour
 export function createStatisticsUI({characters,esc,num,portrait,icon,link,commonFilters}){
  const byId=Object.fromEntries(characters.map(c=>[c.id,c]));
  const percent=n=>Number.isFinite(n)?`${n.toFixed(1)}%`:'—';
- const select=(key,label,choices,value)=>`<label class="filter-label">${label}<select class="filter-select" data-stat-filter="${key}">${choices.map(([v,t])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(t)}</option>`).join('')}</select></label>`;
+ const select=(key,label,choices,value)=>`<label class="filter-label${key==='snapshot'?' statistics-snapshot-filter':''}">${label}<select class="filter-select" data-stat-filter="${key}">${choices.map(([v,t])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(t)}</option>`).join('')}</select></label>`;
+ function snapshotChoice(d){
+  // The season has its own filter; retain the complete period without internal source IDs.
+  const kind={daily:'일별',weekly:'주별','season-cumulative':'시즌 누적'}[d.periodKind];
+  const start=d.periodStart,end=d.periodEnd||d.asOf;
+  if(!kind||!end)return d.timeLabel||snapshotLabel(d);
+  const date=value=>value.replaceAll('-','.');
+  const period=start&&start!==end?date(start)+'–'+date(start.slice(0,4)===end.slice(0,4)?end.slice(5):end):date(end);
+  return `${kind} · ${period}`;
+ }
  const noData=(message='선택한 조건의 공개 통계가 없습니다.')=>`<div class="statistics-empty">${icon('chart')}<p>${esc(message)}</p></div>`;
  function scopeSwitch(scope){return `<div class="statistics-switch segmented" role="group" aria-label="통계 종류">${[['all','전체'],['tournament','대회'],['ranked','랭킹전']].map(([v,t])=>`<button type="button" data-action="statistics-scope" data-value="${v}" class="${scope===v?'active':''}" aria-pressed="${scope===v}">${t}</button>`).join('')}</div>`;}
  function rankFilters(data,filters){
   const s=selectRanked(data,filters);Object.assign(filters,s.filters);
   if(!s.dataset)return '';
-  return `<div class="statistics-filters">${select('server','서버',s.servers.map(v=>[v,SERVER_LABELS[v]]),s.filters.server)}${select('season','시즌',s.seasons.map(v=>[v,v]),s.filters.season)}${select('tier','랭크',s.tiers.map(v=>[v,TIER_LABELS[v]]),s.filters.tier)}${s.snapshots.length>1?select('snapshot','자료 시점',s.snapshots.map(d=>[d.id,`${d.timeLabel||snapshotLabel(d)} · ${data.sources.find(x=>x.id===d.sourceId)?.shortName||d.sourceId}`]),s.filters.snapshot):`<span class="date-pill">${icon('clock')}${esc(snapshotLabel(s.dataset))}</span>`}</div>`;
+  return `<div class="statistics-filters">${select('server','서버',s.servers.map(v=>[v,SERVER_LABELS[v]]),s.filters.server)}${select('season','시즌',s.seasons.map(v=>[v,v]),s.filters.season)}${select('tier','랭크',s.tiers.map(v=>[v,TIER_LABELS[v]]),s.filters.tier)}${s.snapshots.length>1?select('snapshot','자료 시점',s.snapshots.map(d=>[d.id,snapshotChoice(d)]),s.filters.snapshot):`<span class="date-pill">${icon('clock')}${esc(snapshotLabel(s.dataset))}</span>`}</div>`;
  }
  function resultBar(row){
   const rates=resultPercentages(row);if(!rates)return '';
