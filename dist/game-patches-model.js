@@ -1,3 +1,4 @@
+import {matchesCharacter} from './character-search.js?v=bb16060d15ab';
 export const patchTypes={balance:'전투·밸런스 조정',fix:'오류 수정',new:'캐릭터·콘텐츠 추가',system:'시스템',event:'이벤트',cosmetic:'스킨·상점',other:'기타'};
 export const patchScopes={live:'글로벌 정식 서버',test:'테스트 서버'};
 const normalize=value=>String(value??'').normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g,' ').trim();
@@ -20,7 +21,7 @@ export function selectGamePatches(catalog,characters,params={}){
   // An unknown effective date cannot be represented as a confirmed post-return change.
   if(filters.since&&(!entry.effectiveDate||entry.dateStatus!=='confirmed'||entry.effectiveDate<=filters.since))return false;
   const text=normalize([entry.date,entry.title,...entry.summary,...(entry.highlights||[]).map(change=>change.text),...(entry.sources||[]).map(source=>source.title),...entry.characterIds.map(id=>characters[id]?.name||''),...entry.types.map(type=>patchTypes[type]),entry.searchText||''].join(' '));
-  return terms.every(term=>text.includes(term));
+  return terms.every(term=>text.includes(term)||entry.characterIds.some(id=>characters[id]&&matchesCharacter(characters[id],term)));
  }).sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
  const size=16,pages=Math.max(1,Math.ceil(matches.length/size));
  const requested=/^[1-9]\d{0,4}$/.test(String(params.page||''))?Number(params.page):1;

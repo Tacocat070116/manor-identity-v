@@ -1,0 +1,1454 @@
+{
+  "checkedAt": "2026-10-19",
+  "releaseBasis": "글로벌 서버 최초 획득 가능일. 정수·이벤트 선행 획득을 포함하며 중국 서버·테스트 서버·상점 후속 판매일은 제외. 최초 캐릭터는 글로벌 iOS 서비스 개시일로 묶고 같은 날은 가나다순.",
+  "aliasBasis": "KO/EN 본명, EN/JA 직업명, 한국어 축약·표기 변형 및 검색 편의용 별명. 공식 표시명을 바꾸지 않으며 같은 본명을 공유하는 생존자·감시자는 함께 검색한다. 별칭은 검색용 편집 사전이며 모두 공식 명칭이나 통용 빈도가 높은 호칭이라는 뜻은 아니다.",
+  "userAliases": {
+    "c15": [
+      "미치코빠칭코",
+      "미치코 빠칭코"
+    ]
+  },
+  "characters": {
+    "c01": {
+      "name": "거미",
+      "aliases": [
+        "비올레타",
+        "Violetta",
+        "거미녀",
+        "Soul Weaver",
+        "結魂者"
+      ],
+      "releaseDate": "2018-07-18",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955826.html"
+      ]
+    },
+    "c02": {
+      "name": "공장장",
+      "aliases": [
+        "레오 벡",
+        "Leo Beck",
+        "레오",
+        "Hell Ember",
+        "復讐者"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c03": {
+      "name": "광기의 눈",
+      "aliases": [
+        "발크",
+        "Burke",
+        "바크",
+        "광눈",
+        "할배",
+        "Mad Eyes",
+        "狂眼"
+      ],
+      "releaseDate": "2018-11-29",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955806.html"
+      ]
+    },
+    "c04": {
+      "name": "광대",
+      "aliases": [
+        "조커",
+        "Joker",
+        "피에로",
+        "Smiley Face",
+        "道化師"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c05": {
+      "name": "꿈의 마녀",
+      "aliases": [
+        "이드라",
+        "Yidhra",
+        "이 드라",
+        "꿈마",
+        "Dream Witch",
+        "夢の魔女"
+      ],
+      "releaseDate": "2019-01-31",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955797.html"
+      ]
+    },
+    "c06": {
+      "name": "나이아스",
+      "aliases": [
+        "그레이스",
+        "Grace",
+        "나이아드",
+        "나야",
+        "나이아",
+        "Naiad",
+        "漁師"
+      ],
+      "releaseDate": "2021-06-24",
+      "sources": [
+        "https://www.identityvgame.com/kr/news/announcement/20210628/35362_956486.html",
+        "https://www.identityvgame.com/en/news/announcement/20210628/35288_956484.html",
+        "https://www.identityv.jp/news/weihu/2021/06/24/29436_955877.html"
+      ]
+    },
+    "c07": {
+      "name": "나이트 워치",
+      "aliases": [
+        "이타콰",
+        "Ithaqua",
+        "이타카",
+        "나워",
+        "Night Watch",
+        "夜の番人"
+      ],
+      "releaseDate": "2023-03-02",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20230316/35288_1078159.html",
+        "https://www.identityvgame.com/jp/news/update/20230301/35356_1076048.html"
+      ]
+    },
+    "c08": {
+      "name": "노란 옷의 왕",
+      "aliases": [
+        "하스터",
+        "Hastur",
+        "노옷왕",
+        "노왕",
+        "문어",
+        "The Feaster",
+        "Feaster",
+        "黄衣の王"
+      ],
+      "releaseDate": "2018-08-23",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955821.html"
+      ]
+    },
+    "c09": {
+      "name": "당구 선수",
+      "aliases": [
+        "마커스 손",
+        "Marcus Thorne",
+        "마커스",
+        "당구",
+        "큐이스트",
+        "Cueist",
+        "Billiard Player",
+        "ビリヤードプレイヤー"
+      ],
+      "releaseDate": "2025-08-28",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20250828/35288_1256620.html",
+        "https://www.identityvgame.com/jp/news/update/20250827/35356_1256426.html"
+      ]
+    },
+    "c10": {
+      "name": "리퍼",
+      "aliases": [
+        "잭",
+        "Jack",
+        "안개칼",
+        "The Ripper",
+        "Ripper",
+        "リッパー"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c11": {
+      "name": "마음의 짐승",
+      "aliases": [
+        "에밀",
+        "Emil",
+        "에미르",
+        "마짐",
+        "하트비스트",
+        "Herztier",
+        "心の獣"
+      ],
+      "releaseDate": "2026-08-13",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
+        "https://www.identityvgame.com/jp/news/update/20260812/35356_1310913.html"
+      ]
+    },
+    "c12": {
+      "name": "밀랍인형사",
+      "aliases": [
+        "필리프",
+        "Philippe",
+        "필립",
+        "밀랍",
+        "Wax Artist",
+        "蝋人形師"
+      ],
+      "releaseDate": "2021-10-14",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20211021/35288_980627.html",
+        "https://www.identityvgame.com/jp/news/update/20211013/35356_978810.html"
+      ]
+    },
+    "c13": {
+      "name": "바이올리니스트",
+      "aliases": [
+        "안토니오",
+        "Antonio",
+        "바이올린",
+        "바올",
+        "Violinist",
+        "ヴァイオリニスト"
+      ],
+      "releaseDate": "2020-05-14",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955731.html"
+      ]
+    },
+    "c14": {
+      "name": "박사",
+      "aliases": [
+        "퍼시",
+        "Percy",
+        "언데드",
+        "Undead",
+        "アンデッド"
+      ],
+      "releaseDate": "2020-11-26",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955700.html"
+      ]
+    },
+    "c15": {
+      "name": "붉은 나비",
+      "aliases": [
+        "미치코",
+        "Michiko",
+        "붉나",
+        "치코",
+        "미치코빠칭코",
+        "미치코 빠칭코",
+        "게이샤",
+        "Geisha",
+        "芸者"
+      ],
+      "releaseDate": "2018-08-01",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955824.html"
+      ]
+    },
+    "c16": {
+      "name": "블러디 퀸",
+      "aliases": [
+        "마리",
+        "Mary",
+        "블퀸",
+        "블러디퀸",
+        "메리",
+        "Bloody Queen",
+        "血の女王"
+      ],
+      "releaseDate": "2019-09-05",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955767.html"
+      ]
+    },
+    "c17": {
+      "name": "사냥터지기",
+      "aliases": [
+        "베인 페레즈",
+        "Bane Perez",
+        "베인",
+        "사슴",
+        "Gamekeeper",
+        "断罪狩人"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c18": {
+      "name": "사도",
+      "aliases": [
+        "앤",
+        "Ann",
+        "안",
+        "고양이",
+        "Disciple",
+        "Herald",
+        "「使徒」"
+      ],
+      "releaseDate": "2020-01-20",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955746.html"
+      ]
+    },
+    "c19": {
+      "name": "사진사",
+      "aliases": [
+        "요셉 데소니에",
+        "Joseph Desaulniers",
+        "요셉",
+        "조셉",
+        "사진가",
+        "Photographer",
+        "写真家"
+      ],
+      "releaseDate": "2018-11-01",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955810.html"
+      ]
+    },
+    "c20": {
+      "name": "서기관",
+      "aliases": [
+        "케이건 니콜라스 키오",
+        "Keigan Nicholas Keogh",
+        "케이건",
+        "클러크",
+        "Clerk",
+        "書記官"
+      ],
+      "releaseDate": "2022-04-07",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20220407/35288_1011696.html",
+        "https://www.identityvgame.com/jp/news/update/20220406/35356_1011603.html"
+      ]
+    },
+    "c21": {
+      "name": "수위 26호",
+      "aliases": [
+        "봉봉",
+        "Bonbon",
+        "본본",
+        "펭귄",
+        "수위",
+        "가드26",
+        "Guard 26",
+        "ガードNo.26"
+      ],
+      "releaseDate": "2019-10-24",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955760.html"
+      ]
+    },
+    "c22": {
+      "name": "시공의 그림자",
+      "aliases": [
+        "아이비",
+        "Ivy",
+        "시그",
+        "시공",
+        "The Shadow",
+        "時空の影"
+      ],
+      "releaseDate": "2024-03-21",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html",
+        "https://www.identityvgame.com/jp/news/update/20240320/35356_1144453.html"
+      ]
+    },
+    "c23": {
+      "name": "악몽",
+      "aliases": [
+        "오르페우스",
+        "Orpheus",
+        "올페",
+        "악몽오르페우스",
+        "Nightmare",
+        "「悪夢」"
+      ],
+      "releaseDate": "2021-11-12",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
+        "https://www.identityvgame.com/jp/news/update/20211110/35356_984901.html"
+      ],
+      "note": "상점 판매일이 아닌 최초 이벤트 획득 개방일 기준."
+    },
+    "c24": {
+      "name": "여왕벌",
+      "aliases": [
+        "멜리 플리니우스",
+        "Melly Plinius",
+        "멜리",
+        "퀸비",
+        "Queen Bee",
+        "女王蜂"
+      ],
+      "releaseDate": "2025-11-27",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html",
+        "https://www.identityvgame.com/jp/news/update/20251126/35356_1273371.html"
+      ]
+    },
+    "c25": {
+      "name": "오페라 가수",
+      "aliases": [
+        "상그리아",
+        "Sangria",
+        "상그",
+        "오페라",
+        "Opera Singer",
+        "オペラ歌手"
+      ],
+      "releaseDate": "2023-06-21",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20230629/35288_1095795.html",
+        "https://www.identityvgame.com/jp/news/update/20230620/35356_1094315.html"
+      ]
+    },
+    "c26": {
+      "name": "우산의 영혼",
+      "aliases": [
+        "사필안 범무구",
+        "Xie Bi'an",
+        "Fan Wujiu",
+        "사필안",
+        "범무구",
+        "우산",
+        "우영",
+        "백무상",
+        "흑무상",
+        "흑백무상",
+        "Wu Chang",
+        "白黒無常"
+      ],
+      "releaseDate": "2018-09-27",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955815.html"
+      ]
+    },
+    "c27": {
+      "name": "울보",
+      "aliases": [
+        "로비 화이트",
+        "Robbie White",
+        "로비",
+        "Axe Boy",
+        "泣き虫"
+      ],
+      "releaseDate": "2019-04-18",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955787.html"
+      ]
+    },
+    "c28": {
+      "name": "은둔자",
+      "aliases": [
+        "알바 로렌츠",
+        "Alva Lorenz",
+        "알바",
+        "알바 로렌즈",
+        "Hermit",
+        "隠者"
+      ],
+      "releaseDate": "2022-08-25",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html",
+        "https://www.identityvgame.com/jp/news/update/20220824/35356_1038978.html"
+      ]
+    },
+    "c29": {
+      "name": "잡화상",
+      "aliases": [
+        "발렌티나 야가 바실리예바",
+        "Valentina Yaga Vasilieva",
+        "발렌티나",
+        "잡화",
+        "Peddler",
+        "雑貨商"
+      ],
+      "releaseDate": "2025-04-24",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+        "https://www.identityvgame.com/jp/news/update/20250423/35356_1229790.html"
+      ]
+    },
+    "c30": {
+      "name": "재앙의 도마뱀",
+      "aliases": [
+        "루키노 디루시",
+        "Luchino Diruse",
+        "루키노",
+        "루치노",
+        "도마뱀",
+        "Evil Reptilian",
+        "魔トカゲ"
+      ],
+      "releaseDate": "2019-06-20",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955779.html"
+      ]
+    },
+    "c31": {
+      "name": "절름발이 판",
+      "aliases": [
+        "제프리 보나비타",
+        "Jeffrey Bonavita",
+        "제프리",
+        "절판",
+        "염소",
+        "양",
+        "Goatman",
+        "足萎えの羊"
+      ],
+      "releaseDate": "2024-08-22",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20240821/35356_1176004.html"
+      ]
+    },
+    "c32": {
+      "name": "조각가",
+      "aliases": [
+        "갈라테아",
+        "Galatea",
+        "갈라",
+        "조각",
+        "Sculptor",
+        "彫刻師"
+      ],
+      "releaseDate": "2020-08-13",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955718.html"
+      ]
+    },
+    "c33": {
+      "name": "치과의사",
+      "aliases": [
+        "핀센 헌트",
+        "Finsen Hunt",
+        "핀센",
+        "치과",
+        "Dentist",
+        "歯医者"
+      ],
+      "releaseDate": "2026-04-23",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
+      ]
+    },
+    "c34": {
+      "name": "파멸의 바퀴",
+      "aliases": [
+        "폴룬",
+        "Polun",
+        "바퀴",
+        "삼형제",
+        "The Breaking Wheel",
+        "Breaking Wheel",
+        "破輪"
+      ],
+      "releaseDate": "2021-03-25",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955666.html"
+      ]
+    },
+    "c35": {
+      "name": "파이라이트",
+      "aliases": [
+        "노튼 캠벨",
+        "Norton Campbell",
+        "노튼",
+        "감시자 노튼",
+        "감노",
+        "풀스골드",
+        "황철석",
+        "Fool's Gold",
+        "フールズ・ゴールド"
+      ],
+      "releaseDate": "2023-11-02",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20231102/35288_1118012.html",
+        "https://www.identityvgame.com/jp/news/update/20231101/35356_1117996.html"
+      ]
+    },
+    "c36": {
+      "name": "훌라발루",
+      "aliases": [
+        "마이크 모튼",
+        "Mike Morton",
+        "마이크",
+        "훌라",
+        "훌라발루",
+        "Hullabaloo",
+        "フラバルー"
+      ],
+      "releaseDate": "2024-11-14",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20241113/35356_1193446.html"
+      ]
+    },
+    "c37": {
+      "name": "곡예사",
+      "aliases": [
+        "마이크 모튼",
+        "Mike Morton",
+        "마이크",
+        "곡예",
+        "Acrobat",
+        "曲芸師"
+      ],
+      "releaseDate": "2019-07-11",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955776.html"
+      ]
+    },
+    "c38": {
+      "name": "곤충학자",
+      "aliases": [
+        "멜리 플리니우스",
+        "Melly Plinius",
+        "멜리",
+        "곤충",
+        "곤학",
+        "Entomologist",
+        "昆虫学者"
+      ],
+      "releaseDate": "2020-07-02",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955724.html"
+      ]
+    },
+    "c39": {
+      "name": "골동품 상인",
+      "aliases": [
+        "치 스이",
+        "Qi Shiyi",
+        "치스이",
+        "치시이",
+        "척십일",
+        "골동품",
+        "골상",
+        "Antiquarian",
+        "骨董商"
+      ],
+      "releaseDate": "2022-08-04",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20220804/35288_1035118.html",
+        "https://www.identityvgame.com/jp/news/update/20220803/35356_1035066.html"
+      ]
+    },
+    "c40": {
+      "name": "공군",
+      "aliases": [
+        "마샤 베함필",
+        "Martha Behamfil",
+        "마샤",
+        "마르타",
+        "Coordinator",
+        "空軍"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c41": {
+      "name": "교수",
+      "aliases": [
+        "루키노 디루시",
+        "Luchino Diruse",
+        "루키노",
+        "루치노",
+        "생존자 루키노",
+        "Professor",
+        "教授"
+      ],
+      "releaseDate": "2022-04-28",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20220428/35288_1015042.html",
+        "https://www.identityvgame.com/jp/news/update/20220427/35356_1015012.html"
+      ]
+    },
+    "c42": {
+      "name": "궁수",
+      "aliases": [
+        "브륀힐데 벨프",
+        "Brunhilde Welf",
+        "브륀힐데",
+        "브륀힐트",
+        "활쟁이",
+        "Archer",
+        "弓使い"
+      ],
+      "releaseDate": "2025-03-13",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20250312/35356_1218428.html"
+      ]
+    },
+    "c43": {
+      "name": "기계공",
+      "aliases": [
+        "트레이시 레즈닉",
+        "Tracy Reznik",
+        "트레이시",
+        "기공",
+        "Mechanic",
+        "機械技師"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c44": {
+      "name": "기사",
+      "aliases": [
+        "리처드 스털링",
+        "Richard Sterling",
+        "리처드",
+        "리차드",
+        "Knight",
+        "「騎士」"
+      ],
+      "releaseDate": "2024-10-17",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20241017/35288_1187429.html",
+        "https://www.identityvgame.com/jp/news/update/20241016/35356_1187327.html"
+      ]
+    },
+    "c45": {
+      "name": "기상학자",
+      "aliases": [
+        "웬디 푸트",
+        "Wendy Foote",
+        "웬디",
+        "기상",
+        "기학",
+        "Meteorologist",
+        "気象学者"
+      ],
+      "releaseDate": "2025-01-23",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20250122/35356_1208861.html"
+      ]
+    },
+    "c46": {
+      "name": "기자",
+      "aliases": [
+        "앨리스 데로스",
+        "Alice DeRoss",
+        "앨리스",
+        "알리스",
+        "Journalist",
+        "Reporter",
+        "記者"
+      ],
+      "releaseDate": "2023-04-20",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20230420/35288_1084054.html",
+        "https://www.identityvgame.com/jp/news/update/20230419/35356_1083925.html"
+      ]
+    },
+    "c47": {
+      "name": "납관사",
+      "aliases": [
+        "이솝 칼",
+        "Aesop Carl",
+        "이솝",
+        "납관",
+        "Embalmer",
+        "納棺師"
+      ],
+      "releaseDate": "2018-12-20",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955803.html"
+      ]
+    },
+    "c48": {
+      "name": "도둑",
+      "aliases": [
+        "크리처 피어슨",
+        "Kreacher Pierson",
+        "크리처",
+        "Thief",
+        "泥棒"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c49": {
+      "name": "마술사",
+      "aliases": [
+        "세르베 르 로이",
+        "Servais Le Roy",
+        "세르베",
+        "세르베 르로이",
+        "Magician",
+        "マジシャン"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c50": {
+      "name": "맹인",
+      "aliases": [
+        "헬레나 애덤스",
+        "Helena Adams",
+        "헬레나",
+        "The Mind's Eye",
+        "Mind's Eye",
+        "心眼"
+      ],
+      "releaseDate": "2018-07-25",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955825.html"
+      ]
+    },
+    "c51": {
+      "name": "모험가",
+      "aliases": [
+        "커트 프랭크",
+        "Kurt Frank",
+        "커트",
+        "Explorer",
+        "冒険家"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c52": {
+      "name": "묘지기",
+      "aliases": [
+        "앤드류 크레스",
+        "Andrew Kreiss",
+        "앤드류",
+        "묘기",
+        "Grave Keeper",
+        "墓守"
+      ],
+      "releaseDate": "2020-03-05",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955741.html"
+      ]
+    },
+    "c53": {
+      "name": "무언극 아티스트",
+      "aliases": [
+        "클레오 데크루",
+        "Cléo Decroux",
+        "Cleo Decroux",
+        "클레오",
+        "마임",
+        "무언극",
+        "Mime Artist",
+        "マイムアーティスト"
+      ],
+      "releaseDate": "2026-06-03",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
+        "https://www.identityvgame.com/jp/news/update/20260602/35356_1302631.html"
+      ]
+    },
+    "c54": {
+      "name": "무희",
+      "aliases": [
+        "마르가레타 젤레",
+        "Margaretha Zelle",
+        "마르가레타",
+        "마가레타",
+        "나탈리",
+        "Dancer",
+        "踊り子"
+      ],
+      "releaseDate": "2018-10-18",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955812.html"
+      ]
+    },
+    "c55": {
+      "name": "바텐더",
+      "aliases": [
+        "데미 버번",
+        "Demi Bourbon",
+        "데미",
+        "바메이드",
+        "Barmaid",
+        "バーメイド"
+      ],
+      "releaseDate": "2019-09-30",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955763.html"
+      ]
+    },
+    "c56": {
+      "name": "변호사",
+      "aliases": [
+        "프레디 라일리",
+        "Freddy Riley",
+        "프레디",
+        "Lawyer",
+        "弁護士"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c57": {
+      "name": "샤먼",
+      "aliases": [
+        "피오나 길먼",
+        "Fiona Gilman",
+        "피오나",
+        "제사장",
+        "Priestess",
+        "祭司"
+      ],
+      "releaseDate": null,
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955823.html"
+      ],
+      "releaseWindow": [
+        "2018-08-07",
+        "2018-08-09"
+      ],
+      "note": "이관된 초기 공지의 날짜가 충돌하므로 정확한 출시일은 확정하지 않는다. 이 기간에 다른 캐릭터 출시는 없어 출시순에는 영향이 없다."
+    },
+    "c58": {
+      "name": "선지자",
+      "aliases": [
+        "일라이 클락",
+        "Eli Clark",
+        "일라이",
+        "부엉이",
+        "Seer",
+        "占い師"
+      ],
+      "releaseDate": "2018-11-15",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html"
+      ]
+    },
+    "c59": {
+      "name": "소설가",
+      "aliases": [
+        "오르페우스",
+        "Orpheus",
+        "올페",
+        "소설",
+        "Novelist",
+        "小説家"
+      ],
+      "releaseDate": "2021-10-29",
+      "sources": [
+        "https://id5.fandom.com/wiki/Anniversary_Tales_Collection_Booklet",
+        "https://www.identityvgame.com/en/news/announcement/20211104/35288_983722.html"
+      ],
+      "note": "상점 판매일이 아닌 최초 이벤트 획득 개방일 기준. 공식 인게임 기념 책자 전재의 입장일과 출시 직후 공식 수정 공지를 교차 확인."
+    },
+    "c60": {
+      "name": "신동",
+      "aliases": [
+        "카이",
+        "Kai",
+        "프로디지",
+        "Prodigy",
+        "「神童」"
+      ],
+      "releaseDate": "2026-09-30",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20260929/35288_1315507.html",
+        "https://www.identityvgame.com/jp/news/update/20260929/35356_1315506.html"
+      ]
+    },
+    "c61": {
+      "name": "심리학자",
+      "aliases": [
+        "에이다 메스머",
+        "Ada Mesmer",
+        "에이다",
+        "에다",
+        "심학",
+        "Psychologist",
+        "心理学者"
+      ],
+      "releaseDate": "2021-08-12",
+      "sources": [
+        "https://www.identityvgame.com/kr/news/announcement/20210812/35362_965837.html",
+        "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
+        "https://www.identityvgame.com/jp/news/update/20210811/35356_965768.html",
+        "https://www.identityvgame.com/jp/news/update/20251216/35356_965770.html"
+      ]
+    },
+    "c62": {
+      "name": "야만인",
+      "aliases": [
+        "무로",
+        "Murro",
+        "멧돼지",
+        "야만",
+        "Wildling",
+        "野人"
+      ],
+      "releaseDate": "2019-05-23",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html"
+      ]
+    },
+    "c63": {
+      "name": "여자아이",
+      "aliases": [
+        "기억",
+        "Memory",
+        "여아",
+        "어린아이",
+        "꼬마",
+        "리틀걸",
+        "Little Girl",
+        "「少女」"
+      ],
+      "releaseDate": "2021-11-11",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
+        "https://www.identityvgame.com/jp/news/update/20211110/35356_984901.html"
+      ]
+    },
+    "c64": {
+      "name": "용병",
+      "aliases": [
+        "나이브 수베다르",
+        "Naib Subedar",
+        "나이브",
+        "Mercenary",
+        "傭兵"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c65": {
+      "name": "우는 광대",
+      "aliases": [
+        "조커",
+        "Joker",
+        "우광",
+        "우는광대",
+        "Weeping Clown",
+        "泣きピエロ"
+      ],
+      "releaseDate": "2022-01-20",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20220124/35288_999643.html",
+        "https://www.identityvgame.com/jp/news/update/20220119/35356_998889.html"
+      ]
+    },
+    "c66": {
+      "name": "우편 배달부",
+      "aliases": [
+        "빅터 그랜츠",
+        "Victor Grantz",
+        "빅터",
+        "우편부",
+        "우배부",
+        "우배",
+        "Postman",
+        "ポストマン"
+      ],
+      "releaseDate": "2019-12-12",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955752.html"
+      ]
+    },
+    "c67": {
+      "name": "의사",
+      "aliases": [
+        "에밀리 다이어",
+        "Emily Dyer",
+        "에밀리",
+        "Doctor",
+        "医師"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c68": {
+      "name": "인형사",
+      "aliases": [
+        "마티아스 체르닌",
+        "Matthias Czernin",
+        "마티아스",
+        "루이",
+        "인형",
+        "Puppeteer",
+        "人形師"
+      ],
+      "releaseDate": "2024-02-01",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20240201/35288_1135707.html",
+        "https://www.identityvgame.com/jp/news/update/20240131/35356_1135643.html"
+      ]
+    },
+    "c69": {
+      "name": "작곡가",
+      "aliases": [
+        "프레데리크 크레이버그",
+        "Frederick Kreiburg",
+        "프레데리크",
+        "프레드릭",
+        "프레더릭",
+        "작곡",
+        "Composer",
+        "作曲家"
+      ],
+      "releaseDate": "2022-12-01",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20221201/35288_1055755.html",
+        "https://www.identityvgame.com/jp/news/update/20221130/35356_1055682.html"
+      ]
+    },
+    "c70": {
+      "name": "장난감 상인",
+      "aliases": [
+        "애니 레스터",
+        "Annie Lester",
+        "애니",
+        "장상",
+        "장난감",
+        "Toy Merchant",
+        "玩具職人"
+      ],
+      "releaseDate": "2021-05-13",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955659.html"
+      ]
+    },
+    "c71": {
+      "name": "정원사",
+      "aliases": [
+        "엠마 우즈",
+        "Emma Woods",
+        "엠마",
+        "리사 벡",
+        "Lisa Beck",
+        "Gardener",
+        "庭師"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c72": {
+      "name": "조향사",
+      "aliases": [
+        "베라 나이르",
+        "Vera Nair",
+        "베라",
+        "클로이 나이르",
+        "Chloe Nair",
+        "Perfumer",
+        "調香師"
+      ],
+      "releaseDate": "2018-08-30",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955819.html"
+      ]
+    },
+    "c73": {
+      "name": "죄수",
+      "aliases": [
+        "루카 바르사",
+        "Luca Balsa",
+        "루카",
+        "루카스",
+        "Prisoner",
+        "「囚人」"
+      ],
+      "releaseDate": "2020-03-26",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955738.html"
+      ]
+    },
+    "c74": {
+      "name": "주술사",
+      "aliases": [
+        "패트리샤 도빌",
+        "Patricia Dorval",
+        "패트리샤",
+        "파트리샤",
+        "주술",
+        "Enchantress",
+        "呪術師"
+      ],
+      "releaseDate": "2019-04-04",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955789.html"
+      ]
+    },
+    "c75": {
+      "name": "치어리더",
+      "aliases": [
+        "릴리 바리에르",
+        "Lily Barriere",
+        "릴리",
+        "치어",
+        "Cheerleader",
+        "応援団"
+      ],
+      "releaseDate": "2023-08-31",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html",
+        "https://www.identityvgame.com/jp/news/update/20230830/35356_1107467.html"
+      ]
+    },
+    "c76": {
+      "name": "카우보이",
+      "aliases": [
+        "케빈 아유소",
+        "Kevin Ayuso",
+        "케빈",
+        "카보",
+        "Cowboy",
+        "カウボーイ"
+      ],
+      "releaseDate": "2018-09-13",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955817.html"
+      ]
+    },
+    "c77": {
+      "name": "타자",
+      "aliases": [
+        "간지 굽타",
+        "Ganji Gupta",
+        "간지",
+        "가나지",
+        "배터",
+        "Batter",
+        "バッツマン"
+      ],
+      "releaseDate": "2020-12-31",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955694.html"
+      ]
+    },
+    "c78": {
+      "name": "탈출 마스터",
+      "aliases": [
+        "에프론 와이즈",
+        "Efron Weisz",
+        "에프론",
+        "탈마",
+        "탈출",
+        "Escapologist",
+        "脱出マスター"
+      ],
+      "releaseDate": "2025-05-22",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20250522/35288_1236038.html",
+        "https://www.identityvgame.com/jp/news/update/20250521/35356_1235827.html"
+      ]
+    },
+    "c79": {
+      "name": "탐사원",
+      "aliases": [
+        "노튼 캠벨",
+        "Norton Campbell",
+        "노튼",
+        "탐사",
+        "생존자 노튼",
+        "Prospector",
+        "探鉱者"
+      ],
+      "releaseDate": "2019-03-14",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955792.html"
+      ]
+    },
+    "c80": {
+      "name": "투우사",
+      "aliases": [
+        "에르난도 로메로",
+        "Hernando Romero",
+        "에르난도",
+        "헤르난도",
+        "투우",
+        "Matador",
+        "闘牛士"
+      ],
+      "releaseDate": "2026-02-05",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20260205/35288_1285646.html",
+        "https://www.identityvgame.com/jp/news/update/20260204/35356_1285494.html"
+      ]
+    },
+    "c81": {
+      "name": "파로 부인",
+      "aliases": [
+        "에블린 모라",
+        "Evelyn Mora",
+        "에블린",
+        "에블린 모레이",
+        "파로",
+        "파로부인",
+        "Faro Lady",
+        "レディ・ファウロ"
+      ],
+      "releaseDate": "2024-06-13",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html",
+        "https://www.identityvgame.com/jp/news/update/20240612/35356_1160679.html"
+      ]
+    },
+    "c82": {
+      "name": "포워드",
+      "aliases": [
+        "윌리엄 엘리스",
+        "William Ellis",
+        "윌리엄",
+        "포워",
+        "포도",
+        "Forward",
+        "オフェンス"
+      ],
+      "releaseDate": "2018-07-11",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c83": {
+      "name": "항공 전문가",
+      "aliases": [
+        "찰스 홀트",
+        "Charles Holt",
+        "찰스",
+        "항공",
+        "항전",
+        "Aeroplanist",
+        "航空エンジニア"
+      ],
+      "releaseDate": "2023-07-27",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20230727/35288_1101150.html",
+        "https://www.identityvgame.com/jp/news/update/20230726/35356_1101083.html"
+      ]
+    },
+    "c84": {
+      "name": "항해사",
+      "aliases": [
+        "호세 바덴",
+        "Jose Baden",
+        "호세",
+        "항해",
+        "First Officer",
+        "一等航海士"
+      ],
+      "releaseDate": "2019-07-25",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955774.html"
+      ]
+    },
+    "c85": {
+      "name": "행운아",
+      "aliases": [
+        "Lucky Guy",
+        "행아",
+        "幸運児"
+      ],
+      "releaseDate": "2018-07-05",
+      "sources": [
+        "https://id5.fandom.com/wiki/Season_1",
+        "https://www.identityvgame.com/jp/news/official/20210723/35355_955966.html"
+      ]
+    },
+    "c86": {
+      "name": "화가",
+      "aliases": [
+        "에드가 발덴",
+        "Edgar Valden",
+        "에드가",
+        "에드가 왈덴",
+        "Painter",
+        "画家"
+      ],
+      "releaseDate": "2020-09-30",
+      "sources": [
+        "https://www.identityvgame.com/jp/news/update/20210723/35356_955708.html"
+      ]
+    },
+    "c87": {
+      "name": "화재조사관",
+      "aliases": [
+        "플로리안 브랜드",
+        "Florian Brand",
+        "플로리안",
+        "화조",
+        "소방관",
+        "Fire Investigator",
+        "火災調査員"
+      ],
+      "releaseDate": "2024-04-30",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20240430/35288_1152811.html",
+        "https://www.identityvgame.com/jp/news/update/20240429/35356_1152754.html"
+      ]
+    },
+    "c88": {
+      "name": "환등사",
+      "aliases": [
+        "아만다 가디스",
+        "Amanda Gaddis",
+        "아만다",
+        "환등",
+        "Lanternist",
+        "幻灯師"
+      ],
+      "releaseDate": "2025-10-11",
+      "sources": [
+        "https://www.identityvgame.com/en/news/announcement/20251011/35288_1264165.html",
+        "https://www.identityvgame.com/jp/news/update/20251010/35356_1264114.html"
+      ]
+    },
+    "c89": {
+      "name": "환자",
+      "aliases": [
+        "에밀",
+        "Emil",
+        "에미르",
+        "환자에밀",
+        "Patient",
+        "患者"
+      ],
+      "releaseDate": "2021-08-12",
+      "sources": [
+        "https://www.identityvgame.com/kr/news/announcement/20210812/35362_965837.html",
+        "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
+        "https://www.identityvgame.com/jp/news/update/20210811/35356_965768.html",
+        "https://www.identityvgame.com/jp/news/update/20251216/35356_965770.html"
+      ]
+    }
+  }
+}

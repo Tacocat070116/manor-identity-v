@@ -1,4 +1,4 @@
-import {filterRows} from './model.js';
+import {filterRows,matchesCharacter} from './model.js?v=367d630b89a5';
 
 export const SERVER_LABELS={asia:'아시아',cn:'중국'};
 export const TIER_LABELS={all:'전체 랭크',peak7:'최고 7티어','7':'7티어','6':'6티어','5':'5티어','4':'4티어','3':'3티어','2':'2티어','1':'1티어'};
@@ -40,9 +40,8 @@ export function tournamentStatistics(matches,bans,characters,filters={}){
 }
 
 export function sortStatistics(rows,{side='생존자',search='',sort='pick',direction='desc'}={}){
- const query=String(search).replace(/\s/g,'').toLocaleLowerCase();
  const key=Object.hasOwn(METRIC_LABELS,sort)?sort:'pick';
- return rows.filter(r=>(side==='전체'||r.side===side)&&(!query||[r.name,r.originalName].some(n=>String(n||'').replace(/\s/g,'').toLocaleLowerCase().includes(query)))).sort((a,b)=>{
+ return rows.filter(r=>(side==='전체'||r.side===side)&&matchesCharacter(r,search)).sort((a,b)=>{
   if(key==='name')return a.name.localeCompare(b.name,'ko')*(direction==='asc'?1:-1);
   const x=a[key],y=b[key];if(x==null&&y==null)return a.name.localeCompare(b.name,'ko');if(x==null)return 1;if(y==null)return -1;
   return (direction==='asc'?x-y:y-x)||a.name.localeCompare(b.name,'ko');

@@ -1,11 +1,11 @@
-import {patchTypes,patchScopes,patchRoute,selectGamePatches} from './game-patches-model.js?v=e0a55e8f4caa';
+import {patchTypes,patchScopes,patchRoute,selectGamePatches} from './game-patches-model.js?v=4439b1226542';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=value=>String(value||'').replaceAll('-','.');
 const safeURL=value=>{try{const url=new URL(value);return url.protocol==='https:'?url.href:'';}catch{return '';}};
 const language={ko:'한국어',en:'영어',ja:'일본어'};
 const tag=type=>`<span class="gp-tag" data-kind="${esc(type)}">${esc(patchTypes[type]||type)}</span>`;
 function sources(entry){return `<div class="gp-source-links">${entry.sources.map(source=>{const url=safeURL(source.url);return url?`<a class="btn small" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(source.official===false?'보조 기록':'공식 원문')} · ${esc(language[source.language]||source.language)} ↗</a>`:'';}).join('')}</div>`;}
-function people(entry,characters){return `<div class="gp-people">${entry.characterIds.map(id=>characters[id]).filter(Boolean).map(c=>`<a href="${patchRoute({c:c.id,scope:entry.scope})}"><img src="${esc(c.portrait)}" alt="" width="24" height="24" loading="lazy"><span>${esc(c.name)}</span></a>`).join('')}</div>`;}
+function people(entry,characters){return `<div class="gp-people">${entry.characterIds.map(id=>characters[id]).filter(Boolean).map(c=>`<a href="${patchRoute({c:c.id,scope:entry.scope})}"><img src="${esc(c.portrait)}" alt="" width="32" height="32" loading="lazy"><span>${esc(c.name)}</span></a>`).join('')}</div>`;}
 function coverage(catalog){
  const meta=catalog.meta;
  return `<details class="gp-coverage"><summary>수집 범위와 자료 기준</summary><div><p>${esc(meta.coverageText)}</p><p>자료 확인 ${date(meta.checkedAt)} · ${Number(meta.sourceCount).toLocaleString('ko-KR')}개 원문 대조</p><ul>${(meta.limitations||[]).map(text=>`<li>${esc(text)}</li>`).join('')}</ul><div class="gp-year-coverage">${(meta.years||[]).map(y=>`<span><strong>${esc(y.year)}</strong> ${Number(y.count)}건</span>`).join('')}</div></div></details>`;

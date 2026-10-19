@@ -1,3 +1,4 @@
+export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=bb16060d15ab';
 export const REFERENCE_DATE = '2026-10-16';
 export function cutoff(days, reference = REFERENCE_DATE) {
   if (!Number(days)) return '';

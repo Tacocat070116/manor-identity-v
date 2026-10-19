@@ -11,3 +11,35 @@
 .gp-filter input[type=date]{-webkit-appearance:none;appearance:none;box-sizing:border-box;text-align:left}
 .gp-filter input[type=date]::-webkit-date-and-time-value{min-width:0;min-height:1.5em;text-align:left}
 .gp-filter input[type=date]::-webkit-datetime-edit{min-width:0;padding:0}
+
+/* Small character links must not inherit the full-size portrait rule. */
+.gp-people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr));gap:10px}
+.gp-people a{min-width:0;max-width:100%;min-height:54px;padding:9px 12px;gap:10px;background:var(--surface-soft)}
+.gp-people img{display:block;width:32px;height:32px;min-width:32px;max-width:32px;flex:0 0 32px;aspect-ratio:1;object-fit:cover;border-radius:8px}
+.gp-people a>span{min-width:0;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere}
+.gp-people a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.gp-detail,.gp-filter-form,.gp-heading>div{min-width:0;max-width:100%;box-sizing:border-box}
+.gp-detail h2,.gp-detail h3,.gp-detail p,.gp-detail li{word-break:keep-all;overflow-wrap:anywhere}
+.gp-detail>.gp-tags{gap:8px}
+.gp-detail>.note{margin-top:20px;line-height:1.8}
+.gp-detail section,.gp-detail-summary{margin-top:32px}
+.gp-detail h3{margin-bottom:16px;line-height:1.5}
+.gp-detail-summary ul{padding-left:20px;gap:12px;line-height:1.8}
+.gp-tag,.gp-server{max-width:100%;box-sizing:border-box;word-break:keep-all;overflow-wrap:anywhere}
+.gp-changes>div:last-child{padding-bottom:0}
+.gp-source-links .btn{white-space:normal;text-align:center;line-height:1.5;max-width:100%}
+.gp-home-link>div{min-width:0}
+.gp-results-heading{flex-wrap:wrap;row-gap:8px}
+@media(max-width:640px){
+ .gp-detail{padding:20px}
+ .gp-detail-top{gap:8px 12px;margin-top:24px}
+ .gp-detail h2{font-size:22px;line-height:1.45;margin-bottom:20px}
+ .gp-detail>.note{margin-top:16px}
+ .gp-detail section,.gp-detail-summary{margin-top:28px}
+ .gp-people{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .gp-people a{padding:8px;gap:8px;font-size:12px}
+ .gp-source-links{display:grid;grid-template-columns:minmax(0,1fr)}
+ .gp-source-links .btn{width:100%}
+ .gp-pagination{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px}
+}
+@media(max-width:359px){.gp-people{grid-template-columns:minmax(0,1fr)}}

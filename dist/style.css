@@ -281,3 +281,25 @@ html[data-theme="dark"] .ambient-two{background:#304f3d}
 @media(max-width:640px){
  .filter-select,.toolbar .filter-select,.statistics-filters select{font-size:16px}
 }
+/* Search controls share a stable row and shrink without pushing the page wider. */
+.search-help{font-size:12px;color:var(--muted);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+#characters>.toolbar{margin-bottom:12px}
+#characters>.search-help{margin-bottom:20px}
+.picker-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,150px);gap:12px;align-items:stretch}
+.picker-toolbar .search-box{min-width:0;max-width:none;width:100%;box-sizing:border-box}
+.picker-sort{min-width:0;display:flex;align-items:stretch}
+.picker-sort select{min-width:0;width:100%;max-width:100%;box-sizing:border-box}
+.dialog-head>.search-help{margin-top:12px}
+.toolbar>.search-box{min-width:0}
+.section-heading>div,.dialog-title h2,.character-info,.card-info{min-width:0}
+.section-heading h2,.dialog-title h2,.pick-option>span{word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:640px){
+ #characters>.toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,142px);gap:12px}
+ #characters>.toolbar>.segmented{grid-column:1/-1;min-width:0}
+ #characters>.toolbar>.search-box{min-width:0;width:100%;max-width:none;box-sizing:border-box}
+ #characters>.toolbar>.filter-select{min-width:0;max-width:none;width:100%;box-sizing:border-box}
+ .search-help{font-size:11px}
+ .search-help>span{display:block;margin-top:4px}
+ .picker-toolbar{grid-template-columns:minmax(0,1fr);gap:10px}
+ .picker-sort select{min-height:44px}
+}
