@@ -1,4 +1,4 @@
-import {mountNavigation} from './navigation.js?v=05e09b40f2b4';
+import {mountNavigation} from './navigation.js?v=5e5fe9ef4faa';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js?v=96af9be1a38b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=6d58e86ff19a';
@@ -111,8 +111,9 @@ function readRoute(){
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme});return;}
  const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
- const links=nav.map(([v,label,i])=>`<a class="nav-item ${(state.view===v||(state.view==='character'&&v==='explore'))?'active':''}" ${state.view===v?'aria-current="page"':''} data-view="${v}" href="${route({v})}">${icon(i)}<span>${label}</span></a>`).join('');
- $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><nav class="desktop-nav" aria-label="주 메뉴">${links}</nav><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><nav class="mobile-nav" aria-label="모바일 주 메뉴">${links}</nav>`;
+ const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view))||['sources','자료 기준','book'];
+ const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span>${label}</span></a>`).join('');
+ $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme});
 }
@@ -334,7 +335,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=5f3730a851e6')]);
+ const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=0198c79d12b1')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

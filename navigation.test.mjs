@@ -6,103 +6,115 @@ class Target{
  listeners=new Map();
  addEventListener(type,fn){if(!this.listeners.has(type))this.listeners.set(type,new Set());this.listeners.get(type).add(fn);}
  removeEventListener(type,fn){this.listeners.get(type)?.delete(fn);}
- emit(type){for(const fn of this.listeners.get(type)||[])fn();}
+ emit(type,detail={}){
+  const event={target:this,button:0,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;},...detail};
+  for(const fn of this.listeners.get(type)||[])fn(event);
+  return event;
+ }
  count(){return [...this.listeners.values()].reduce((n,s)=>n+s.size,0);}
 }
-function transformed(value,width,height){
- const m=value.match(/translate3d\(([^,]+),([^,]+),0\) scale\(([^,]+),([^)]+)\)/);
- assert.ok(m,'valid transform');
- const [x,y,sx,sy]=m.slice(1).map(parseFloat);
- return {x:x+width/2-width*sx/2,y:y+height/2-height*sy/2,width:width*sx,height:height*sy};
-}
-function harness({reduced=false,animate=true,observe=true}={}){
- const win=new Target(),media=new Target();media.matches=reduced;
- win.matchMedia=()=>media;
- const views=['explore','matchup','compare','bans','statistics','feedback','patchnotes'],animations=[],observers=[];
- let width=362,pill;
- const frame={left:14,top:700};
- const nav={dataset:{},clientLeft:1,clientTop:1,prepend(el){pill=el;},getBoundingClientRect:()=>({...frame,width,height:width?66:0})};
- const mobile=views.map((view,i)=>link(view,()=>width?{left:frame.left+9+i*(width-18)/views.length,top:frame.top+9,width:(width-18)/views.length,height:48}:{left:0,top:0,width:0,height:0}));
- const desktop=views.map(view=>link(view));
- const links=[...desktop,...mobile];nav.contains=el=>mobile.includes(el);
- const themeButton=link('theme');
- function link(view,rect){
-  const classes=new Set(),attrs={};
-  return {dataset:{view},attrs,classes,innerHTML:'',classList:{toggle(c,on){on?classes.add(c):classes.delete(c);}},setAttribute(k,v){attrs[k]=v;},removeAttribute(k){delete attrs[k];},getBoundingClientRect:rect};
+function harness(){
+ const doc=new Target(),win=new Target(),media=new Target();
+ doc.defaultView=win;win.matchMedia=()=>media;
+ function element(parent=null){
+  const node=new Target(),classes=new Set();
+  Object.assign(node,{parent,dataset:{},attrs:{},classes,textContent:'',innerHTML:'',inert:false,
+   classList:{toggle(name,on){on?classes.add(name):classes.delete(name);}},
+   setAttribute(name,value){this.attrs[name]=value;},removeAttribute(name){delete this.attrs[name];},
+   contains(other){for(let p=other;p;p=p.parent)if(p===this)return true;return false;},
+   focus(){doc.activeElement=this;doc.emit('focusin',{target:this});},
+   closest(selector){for(let p=this;p;p=p.parent)if(selector==='.nav-item'&&p.dataset.view)return p;return null;}
+  });
+  return node;
  }
- if(observe)win.ResizeObserver=class{
-  constructor(callback){this.callback=callback;this.targets=[];this.disconnected=false;observers.push(this);}
-  observe(target){this.targets.push(target);}
-  disconnect(){this.disconnected=true;}
- };
- const doc={defaultView:win,createElement(){
-  const el={style:{},attrs:{},visual:null,hidden:false,setAttribute(k,v){this.attrs[k]=v;},remove(){this.removed=true;},getBoundingClientRect(){
-   const b=this.visual||transformed(this.style.transform,parseFloat(this.style.width),parseFloat(this.style.height));
-   return {left:frame.left+1+b.x,top:frame.top+1+b.y,width:b.width,height:b.height};
-  }};
-  if(animate)el.animate=(frames,options)=>{
-   const motion={frames,options,cancelled:false,onfinish:null,cancel(){this.cancelled=true;el.visual=null;}};
-   animations.push(motion);return motion;
-  };
-  return el;
- }};
- const root={ownerDocument:doc,querySelectorAll:()=>links,querySelector:s=>s==='.mobile-nav'?nav:themeButton};
+ const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
+ const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
+ const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
+ nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
+ panel.querySelectorAll=()=>links;
+ toggle.querySelector=s=>s==='[data-nav-current-icon]'?currentIcon:currentLabel;
+ const root={ownerDocument:doc,querySelector:s=>s==='.category-nav'?nav:themeButton};
  const controller=mountNavigation(root,{icon:n=>'icon:'+n});
- return {controller,nav,mobile,desktop,links,media,win,themeButton,animations,observers,pill:()=>pill,
+ return {controller,doc,win,media,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
   update:(view,theme='light')=>controller.update({view,theme}),
-  resize(w){width=w;if(observers.length)observers[0].callback();else win.emit('resize');}
+  isOpen:()=>toggle.attrs['aria-expanded']==='true'
  };
 }
-const close=(a,b)=>assert.ok(Math.abs(a-b)<.00001,a+' equals '+b);
-
-test('selection follows routing immediately while one noninteractive glass layer moves',()=>{
- const h=harness();h.update('explore');
- assert.equal(h.animations.length,0);assert.equal(h.pill().attrs['aria-hidden'],'true');
- assert.equal(h.mobile[0].attrs['aria-current'],'page');
- const pill=h.pill();h.update('patchnotes');
- assert.equal(h.pill(),pill);assert.equal(h.animations.length,1);
- assert.equal(h.mobile[6].attrs['aria-current'],'page');assert.equal(h.desktop[6].attrs['aria-current'],'page');
- assert.equal(h.mobile[0].attrs['aria-current'],undefined);
- assert.ok(h.animations[0].options.duration>=520&&h.animations[0].options.duration<=660);
- const frames=h.animations[0].frames,w=parseFloat(pill.style.width),height=parseFloat(pill.style.height);
- const start=transformed(frames[0].transform,w,height),end=transformed(frames.at(-1).transform,w,height);
- close(start.x,8);close(end.x,8+6*w);close(end.width,w);close(end.height,48);
- assert.ok(frames.slice(1,-1).some(f=>transformed(f.transform,w,height).width>w));
- h.update('patchnotes','dark');assert.equal(h.animations.length,1);
+function assertClosed(h){
+ assert.equal(h.isOpen(),false);assert.equal(h.panel.inert,true);assert.equal(h.panel.attrs['aria-hidden'],'true');
+ assert.ok(h.links.every(link=>link.attrs.tabindex==='-1'));
+}
+test('one collapsed menu reports the current route, including character and source pages',()=>{
+ const h=harness();h.update('feedback');assertClosed(h);
+ assert.equal(h.currentLabel.textContent,'피드백');assert.equal(h.currentIcon.innerHTML,'icon:message');
+ assert.match(h.toggle.attrs['aria-label'],/열기.*피드백/);
+ assert.equal(h.links.filter(link=>link.attrs['aria-current']==='page').length,1);
+ const sameLinks=[...h.links];h.update('character');
+ assert.equal(h.currentLabel.textContent,'도감');assert.equal(h.links[0].attrs['aria-current'],'page');
+ h.update('sources');assert.equal(h.currentLabel.textContent,'자료 기준');
+ assert.ok(h.links.every(link=>!link.attrs['aria-current']));
+ h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'패치노트');
  assert.equal(h.themeButton.innerHTML,'icon:sun');assert.match(h.themeButton.attrs['aria-label'],/라이트/);
+ assert.ok(h.links.every((link,i)=>link===sameLinks[i]));h.controller.destroy();
+});
+test('touch/click toggles reverse immediately and hidden links stay outside the tab order',()=>{
+ const h=harness();h.update('explore');
+ for(let i=0;i<30;i++){
+  h.toggle.emit('click');assert.equal(h.isOpen(),true);
+  assert.equal(h.panel.inert,false);assert.equal(h.panel.attrs['aria-hidden'],'false');
+  assert.ok(h.links.every(link=>link.attrs.tabindex===undefined));
+  h.doc.emit('pointerdown',{target:h.links[2],pointerType:'touch'});assert.equal(h.isOpen(),true);
+  h.toggle.emit('click');assertClosed(h);
+ }
+ assert.equal(h.toggle.count(),2);h.controller.destroy();
+});
+test('normal link selection closes the menu without intercepting native navigation',()=>{
+ const h=harness();h.update('compare');h.toggle.emit('click');h.links[2].focus();
+ const child=h.element(h.links[2]),event=h.panel.emit('click',{target:child});
+ assert.equal(event.defaultPrevented,false);assertClosed(h);assert.equal(h.doc.activeElement,h.toggle);
+ for(const detail of [{ctrlKey:true},{metaKey:true},{shiftKey:true},{altKey:true},{button:1},{defaultPrevented:true}]){
+  if(!h.isOpen())h.toggle.emit('click');
+  h.panel.emit('click',{target:h.links[4],...detail});assert.equal(h.isOpen(),true);
+ }
+ h.panel.emit('click',{target:h.links[4]});assertClosed(h);
+ h.update('statistics');assert.equal(h.currentLabel.textContent,'통계');h.controller.destroy();
+});
+test('keyboard opening, Escape and tabbing away preserve a useful focus position',()=>{
+ const h=harness();h.update('bans');h.toggle.focus();
+ const down=h.toggle.emit('keydown',{key:'ArrowDown'});assert.ok(down.defaultPrevented);
+ assert.equal(h.isOpen(),true);assert.equal(h.doc.activeElement,h.links[3]);
+ const escape=h.doc.emit('keydown',{key:'Escape'});assert.ok(escape.defaultPrevented);
+ assertClosed(h);assert.equal(h.doc.activeElement,h.toggle);
+ h.toggle.emit('keydown',{key:'ArrowUp'});assert.equal(h.doc.activeElement,h.links.at(-1));
+ h.outside.focus();assertClosed(h);assert.equal(h.doc.activeElement,h.outside);
+ assert.equal(h.doc.emit('keydown',{key:'Escape'}).defaultPrevented,false);
+ assert.equal(h.toggle.emit('keydown',{key:'Tab'}).defaultPrevented,false);h.controller.destroy();
+});
+test('outside pointer actions dismiss without blocking the page or stealing new focus',()=>{
+ const h=harness();h.update('explore');h.toggle.emit('click');h.links[0].focus();
+ const event=h.doc.emit('pointerdown',{target:h.outside,pointerType:'touch'});
+ assert.equal(event.defaultPrevented,false);assertClosed(h);
+ assert.equal(h.doc.activeElement,h.toggle);h.outside.focus();assert.equal(h.doc.activeElement,h.outside);
+ h.toggle.emit('click');h.doc.emit('pointerdown',{target:h.toggle});assert.equal(h.isOpen(),true);
+ h.toggle.emit('click');assertClosed(h);h.controller.destroy();
+});
+test('routing closes the disclosure while same-route theme updates retain its state',()=>{
+ const h=harness();h.update('explore');h.toggle.emit('click');
+ h.update('explore','dark');assert.equal(h.isOpen(),true);
+ h.links[0].focus();h.update('character','dark');assertClosed(h);
+ assert.equal(h.currentLabel.textContent,'도감');assert.equal(h.doc.activeElement,h.toggle);
+ h.toggle.emit('click');h.update('feedback');assertClosed(h);
+ assert.equal(h.currentLabel.textContent,'피드백');h.controller.destroy();
+});
+test('breakpoint changes, page restoration and teardown cannot leave an invisible focused menu',()=>{
+ const h=harness();h.update('explore');
+ for(const [target,type] of [[h.media,'change'],[h.win,'pagehide'],[h.win,'pageshow']]){
+  h.toggle.emit('click');h.links[1].focus();target.emit(type);
+  assertClosed(h);assert.equal(h.doc.activeElement,h.toggle);
+ }
+ h.toggle.emit('click');h.links[5].focus();h.controller.destroy();assertClosed(h);
+ assert.equal(h.doc.activeElement,h.toggle);
+ for(const target of [h.toggle,h.panel,h.doc,h.win,h.media])assert.equal(target.count(),0);
+ h.toggle.emit('click');h.update('feedback');assertClosed(h);assert.equal(h.currentLabel.textContent,'도감');
  h.controller.destroy();
-});
-
-test('rapid changes continue from the actual in-flight position and keep link identity',()=>{
- const h=harness();h.update('explore');h.update('statistics');
- const previous=h.animations[0],links=[...h.links],visual={x:105.25,y:9.5,width:64.75,height:46.25};
- h.pill().visual=visual;h.update('matchup');
- assert.ok(previous.cancelled);assert.equal(h.animations.length,2);
- const pill=h.pill(),first=h.animations[1].frames[0];
- const from=transformed(first.transform,parseFloat(pill.style.width),parseFloat(pill.style.height));
- for(const key of ['x','y','width','height'])close(from[key],visual[key]);
- assert.ok(h.links.every((link,i)=>link===links[i]));
- h.update('matchup');assert.equal(h.animations.length,2);
- h.update('character');assert.equal(h.mobile[0].attrs['aria-current'],'page');
- h.controller.destroy();
-});
-
-test('reduced motion, resize, hidden desktop layout and non-menu routes settle without stale animation',()=>{
- const h=harness({reduced:true});h.update('explore');h.update('bans');assert.equal(h.animations.length,0);
- h.media.matches=false;h.media.emit('change');h.update('feedback');assert.equal(h.animations.length,1);
- h.media.matches=true;h.media.emit('change');assert.ok(h.animations[0].cancelled);
- h.resize(400);close(parseFloat(h.pill().style.width),(400-18)/7);
- h.resize(0);assert.ok(h.pill().hidden);assert.equal(h.nav.dataset.navMotion,undefined);
- h.update('compare');h.resize(320);assert.equal(h.pill().hidden,false);assert.equal(h.animations.length,1);
- h.update('sources');assert.ok(h.pill().hidden);assert.ok(h.links.every(link=>!link.classes.has('active')));
- h.update('character');assert.equal(h.mobile[0].attrs['aria-current'],'page');assert.equal(h.pill().hidden,false);
- h.controller.destroy();assert.ok(h.observers[0].disconnected);assert.equal(h.media.count(),0);assert.equal(h.win.count(),0);
-});
-
-test('unavailable animation and resize APIs retain immediate selection and clean teardown',()=>{
- const h=harness({animate:false,observe:false});h.update('explore');h.update('statistics');h.resize(340);
- assert.equal(h.mobile[4].attrs['aria-current'],'page');assert.equal(h.animations.length,0);
- close(parseFloat(h.pill().style.width),(340-18)/7);
- h.win.emit('pageshow');h.controller.destroy();assert.ok(h.pill().removed);
- h.update('feedback');assert.equal(h.mobile[4].attrs['aria-current'],'page');assert.equal(h.win.count(),0);
 });

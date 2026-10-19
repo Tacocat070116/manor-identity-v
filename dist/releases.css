@@ -27,11 +27,7 @@
 .release-kind{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:2px 4px;font-size:10px;font-weight:650;line-height:18px;border-radius:8px;border:1px solid var(--line);background:var(--surface-soft);color:var(--muted);white-space:nowrap}
 .release-kind[data-kind="추가"]{color:var(--accent);background:var(--accent-soft);border-color:var(--accent-line)}
 .release-feedback-link{display:inline-flex;gap:8px;align-items:center;min-height:44px}
-@media(max-width:850px){
- .desktop-nav .nav-item{padding-inline:8px}
-}
 @media(max-width:640px){
- .mobile-nav .nav-item{flex:1 1 0;min-width:0;padding-inline:2px}
  .release-summary{grid-template-columns:1fr;gap:24px;margin-bottom:24px}
  .release-summary dl{padding-top:20px;border-top:1px solid var(--line);gap:16px}
  .release-summary dd{font-size:16px;line-height:24px}
@@ -49,7 +45,6 @@
  .release-card .release-changes li{grid-template-columns:36px minmax(0,1fr);gap:10px}
 }
 @media(max-width:360px){
- .mobile-nav{left:6px;right:6px;padding:4px}
  .release-card{padding:16px}
 }
 @media print{

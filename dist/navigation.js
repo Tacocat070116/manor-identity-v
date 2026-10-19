@@ -1,66 +1,50 @@
-const mix=(a,b,t)=>a+(b-a)*t;
-const transform=(box,size)=>'translate3d('+(box.x+box.width/2-size.width/2)+'px,'+(box.y+box.height/2-size.height/2)+'px,0) scale('+(box.width/size.width)+','+(box.height/size.height)+')';
-
-// Retain the links so focus and interrupted glass movement survive routing.
+// One disclosure and one set of links serve both the desktop header and mobile dock.
 export function mountNavigation(root,{icon}){
  const doc=root.ownerDocument,win=doc.defaultView;
- const links=[...root.querySelectorAll('.nav-item')];
- const nav=root.querySelector('.mobile-nav');
- const mobileLinks=links.filter(link=>nav.contains(link));
+ const nav=root.querySelector('.category-nav');
+ const toggle=nav.querySelector('[data-nav-toggle]');
+ const panel=nav.querySelector('.category-panel');
+ const links=[...panel.querySelectorAll('.nav-item')];
+ const currentIcon=toggle.querySelector('[data-nav-current-icon]');
+ const currentLabel=toggle.querySelector('[data-nav-current-label]');
  const themeButton=root.querySelector('[data-action="theme"]');
- const media=win.matchMedia('(prefers-reduced-motion: reduce)');
- const pill=doc.createElement('span');
- pill.className='nav-indicator';pill.setAttribute('aria-hidden','true');pill.hidden=true;
- nav.prepend(pill);
- let selected='',theme='',placed=false,animation=null,destroyed=false;
- function stop(){
-  if(animation){animation.onfinish=null;animation.cancel();animation=null;}
+ const mobile=win.matchMedia('(max-width:640px)');
+ let expanded=false,selected='',routeView='',theme='',destroyed=false;
+
+ function labelToggle(){
+  toggle.setAttribute('aria-label','카테고리 메뉴 '+(expanded?'닫기':'열기')+' · 현재 '+currentLabel.textContent);
  }
- function rect(element){
-  const box=element.getBoundingClientRect(),frame=nav.getBoundingClientRect();
-  return {x:box.left-frame.left-nav.clientLeft,y:box.top-frame.top-nav.clientTop,width:box.width,height:box.height};
- }
- function place(animate=false){
+ function setOpen(open,{restoreFocus=false}={}){
   if(destroyed)return;
-  const active=mobileLinks.find(link=>link.dataset.view===selected);
-  const target=active&&rect(active);
-  if(!target||!target.width||!target.height){
-   stop();pill.hidden=true;placed=false;delete nav.dataset.navMotion;return;
-  }
-  // Capture the current visual position before cancelling an unfinished turn.
-  const from=placed?rect(pill):target;
-  stop();pill.hidden=false;
-  pill.style.width=target.width+'px';pill.style.height=target.height+'px';
-  pill.style.transform=transform(target,target);
-  nav.dataset.navMotion='ready';
-  const distance=Math.hypot(target.x-from.x,target.y-from.y);
-  if(animate&&placed&&!media.matches&&typeof pill.animate==='function'&&distance>.5){
-   const stretch=Math.min(.18,distance/target.width*.035);
-   const frames=[0,.35,.7,1].map(t=>{
-    const wave=Math.sin(Math.PI*t);
-    const width=mix(from.width,target.width,t)+target.width*stretch*wave;
-    const height=mix(from.height,target.height,t)-target.height*.055*wave;
-    const cx=mix(from.x+from.width/2,target.x+target.width/2,t);
-    const cy=mix(from.y+from.height/2,target.y+target.height/2,t);
-    return {offset:t,transform:transform({x:cx-width/2,y:cy-height/2,width,height},target)};
-   });
-   const motion=pill.animate(frames,{duration:520+Math.min(140,distance*.4),easing:'cubic-bezier(.22,.75,.2,1)'});
-   animation=motion;
-   motion.onfinish=()=>{if(animation===motion)animation=null;};
-  }
-  placed=true;
+  expanded=open;
+  // Move focus before making its former container inert.
+  if(!open&&restoreFocus&&panel.contains(doc.activeElement))toggle.focus({preventScroll:true});
+  nav.dataset.expanded=String(open);
+  toggle.setAttribute('aria-expanded',String(open));
+  panel.inert=!open;
+  panel.setAttribute('aria-hidden',String(!open));
+  // Also keep collapsed links out of the tab order in older browsers without inert.
+  for(const link of links){if(open)link.removeAttribute('tabindex');else link.setAttribute('tabindex','-1');}
+  labelToggle();
  }
  function update(next){
   if(destroyed)return;
+  if(next.view!==routeView){
+   routeView=next.view;
+   setOpen(false,{restoreFocus:true});
+  }
   const view=next.view==='character'?'explore':next.view;
   if(view!==selected){
    selected=view;
+   const current=links.find(link=>link.dataset.view===view);
    for(const link of links){
-    const active=link.dataset.view===view;
+    const active=link===current;
     link.classList.toggle('active',active);
     if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
    }
-   place(true);
+   currentLabel.textContent=current?.dataset.navLabel||(view==='sources'?'자료 기준':'메뉴');
+   currentIcon.innerHTML=icon(current?.dataset.navIcon||(view==='sources'?'book':'grid'));
+   labelToggle();
   }
   if(next.theme!==theme){
    theme=next.theme;
@@ -68,16 +52,33 @@ export function mountNavigation(root,{icon}){
    themeButton.innerHTML=icon(theme==='light'?'moon':'sun');
   }
  }
- const settle=()=>place(false);
- const observer=win.ResizeObserver?new win.ResizeObserver(settle):null;
- if(observer){observer.observe(nav);mobileLinks.forEach(link=>observer.observe(link));}
- else win.addEventListener('resize',settle);
- media.addEventListener('change',settle);
- win.addEventListener('pageshow',settle);
+ const onToggle=()=>setOpen(!expanded);
+ function onToggleKey(event){
+  if(event.key!=='ArrowDown'&&event.key!=='ArrowUp')return;
+  event.preventDefault();setOpen(true);
+  (event.key==='ArrowUp'?links.at(-1):links.find(link=>link.dataset.view===selected)||links[0])?.focus();
+ }
+ function onSelect(event){
+  const link=event.target.closest('.nav-item');
+  if(!link||!panel.contains(link)||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  setOpen(false,{restoreFocus:true});
+ }
+ const onOutside=event=>{if(expanded&&!nav.contains(event.target))setOpen(false,{restoreFocus:true});};
+ const onFocus=event=>{if(expanded&&!nav.contains(event.target))setOpen(false);};
+ function onEscape(event){
+  if(expanded&&event.key==='Escape'){
+   event.preventDefault();setOpen(false,{restoreFocus:true});
+  }
+ }
+ const close=()=>setOpen(false,{restoreFocus:true});
+ const events=[[toggle,'click',onToggle],[toggle,'keydown',onToggleKey],[panel,'click',onSelect],
+  [doc,'pointerdown',onOutside],[doc,'focusin',onFocus],[doc,'keydown',onEscape],
+  [win,'pagehide',close],[win,'pageshow',close],[mobile,'change',close]];
+ for(const [target,type,handler] of events)target.addEventListener(type,handler);
+ setOpen(false);
  return {update,destroy(){
-  destroyed=true;stop();observer?.disconnect();
-  win.removeEventListener('resize',settle);win.removeEventListener('pageshow',settle);
-  media.removeEventListener('change',settle);
-  pill.remove();delete nav.dataset.navMotion;
+  if(destroyed)return;
+  setOpen(false,{restoreFocus:true});destroyed=true;
+  for(const [target,type,handler] of events)target.removeEventListener(type,handler);
  }};
 }
