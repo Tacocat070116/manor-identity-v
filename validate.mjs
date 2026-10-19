@@ -29,6 +29,8 @@ assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.hel
 assert.equal(db.matchups.length,459+matchupReview.added);
 assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),matchupReview.displayedSlots);
 assert.equal(new Set(db.matchups.map(m=>m.id)).size,db.matchups.length,'unique evidence IDs');
+const evidenceIds=new Set(db.matchups.map(m=>m.id));
+for(const comment of db.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
 for(const m of db.matchups){
  assert.equal(m.reviewedAt,db.meta.matchupReviewedAt,m.id+' review date');
  assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
@@ -51,6 +53,7 @@ for(const ch of db.characters){
  assert.ok(ch.hard.length<=5&&ch.easy.length<=5);
  assert.ok(ch.difficulty>=1&&ch.difficulty<=5);
  assert.ok(fs.existsSync('dist/'+ch.portrait),ch.name+' portrait');
+ assert.equal(new Set(ch.sources).size,ch.sources.length,ch.name+' unique source URLs');
  assert.equal(ch.matchupReviewedAt,db.meta.matchupReviewedAt,ch.name+' matchup review');
  assert.ok(!ch.hard.some(item=>ch.easy.some(other=>other.name===item.name)),ch.name+' conflicting list directions');
  for(const kind of ['hard','easy']){
