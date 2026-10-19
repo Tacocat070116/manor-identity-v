@@ -1,4 +1,3 @@
-import {practiceEntryFor} from './dist/practice.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -104,10 +103,7 @@ assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,cont
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...releaseUI,practiceEntryFor,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
-const practiceMounts=[],practiceCleanups=[];
-context.navigator={};
-context.mountPractice=(root,options)=>{practiceMounts.push(options);return ()=>practiceCleanups.push(options.params.scene);};
+const context={...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-16',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -138,21 +134,8 @@ audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버
 audit.evidenceDialogs=0;
 for(const e of db.matchups){openEvidence(e.id);const html=$('#evidence').innerHTML;if(html.includes('undefined')||html.includes('NaN')||!html.includes(esc(e.summary))||!html.includes('판단에 사용한 자료'))throw Error(e.id+' evidence dialog');audit.evidenceDialogs++;}
 footer();audit.footer=$('#footer').innerHTML;
-audit.practiceCharacters=db.characters.filter(c=>practiceLink(c)).map(c=>c.id).sort();
-audit.practiceUnsupportedPair=practiceLink(byName['블러디 퀸'],byName['공군']);
-audit.practiceSupportedPair=practiceLink(byName['조향사'],byName['블러디 퀸']);
-location.hash='#v=practice&c=c72&case=perfume-order&variant=after';readRoute();render();
-audit.practiceTitle=document.title;audit.practiceHeader=$('#header').innerHTML;
-location.hash='#v=explore';readRoute();render();
 `;
 vm.runInNewContext(source,context,{timeout:15000});
-assert.deepEqual(Array.from(context.audit.practiceCharacters),['c16','c40','c58','c72']);
-assert.equal(context.audit.practiceUnsupportedPair,'');
-assert.ok(context.audit.practiceSupportedPair.includes('case=perfume-order'));
-assert.equal(practiceMounts.length,1);assert.equal(practiceCleanups.length,1,'leaving the practice route disposes its listeners');
-assert.equal(practiceMounts[0].params.character,'c72');assert.equal(practiceMounts[0].params.scene,'perfume-order');assert.equal(practiceMounts[0].params.variant,'after');
-assert.equal(context.audit.practiceTitle,'실전 연습실 BETA · MANOR');
-assert.ok(context.audit.practiceHeader.includes('data-view="practice"'));
 assert.equal(context.audit.checked,356);
 assert.equal(context.audit.evidenceDialogs,db.matchups.length);
 assert.ok(context.audit.heldMatchup.includes('판단을 보류한 내용')&&context.audit.heldMatchup.includes('보류 이유·원문 보기'),'held decisions remain reviewable without presenting an advantage');

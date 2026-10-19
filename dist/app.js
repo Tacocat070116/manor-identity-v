@@ -1,11 +1,11 @@
-import {mountPractice,practiceEntryFor} from './practice.js?v=f7a325d9ef24';
 import {mountNavigation} from './navigation.js?v=5e5fe9ef4faa';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE} from './model.js?v=96af9be1a38b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=6d58e86ff19a';
+import {mountGamePatches} from './game-patches.js?v=49486c89bdf2';
 import {mountFeedback} from './feedback.js?v=12a0e2e09032';
 import {selectRanked} from './statistics-model.js?v=9470c84b8754';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=cb1ec28e7749';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=aacecb10d3f5';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
@@ -45,11 +45,12 @@ const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',
 try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
 document.documentElement.dataset.theme=state.theme;
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
-let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{},disposePractice=()=>{};
-const practiceSession={};
+let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
-let releaseLog;
+let releaseLog,characterPatches={characters:{}},gamePatchesPromise;
+let disposeGamePatches=()=>{};
+const loadGamePatches=()=>gamePatchesPromise||=fetch('patches/archive.json?v=22516befa801').then(r=>{if(!r.ok)throw Error('게임 패치 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{gamePatchesPromise=null;throw e;});
 const releaseFilters={query:'',type:'전체'};
 const rankedFiles=new Map();
 const loadRanked=async()=>{
@@ -90,16 +91,16 @@ const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
- state.view=['explore','character','matchup','compare','bans','statistics','sources','feedback','patchnotes','practice'].includes(p.get('v'))?p.get('v'):'explore';
+ state.gamePatches=Object.fromEntries(['c','year','type','scope','since','q','page','note'].filter(key=>p.has(key)).map(key=>[key,p.get(key)]));
+ state.view=['explore','character','matchup','compare','bans','statistics','sources','feedback','patchnotes','gamepatches'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','matchups','stats','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
- for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
+ if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
  if(!['pick','win','draw','loss','ban','appearances','name'].includes(state.statistics.sort))state.statistics.sort='pick';
  if(!['asc','desc'].includes(state.statistics.direction))state.statistics.direction='desc';
- state.practice={character:(p.get('c')||'').slice(0,80),scene:(p.get('case')||'').slice(0,80),variant:(p.get('variant')||'').slice(0,80)};
  state.feedbackPost=/^[0-9a-f-]{36}$/.test(p.get('post')||'')?p.get('post'):'';
  const f=state.view==='bans'?state.banFilters:state.stats;
  if(p.has('days')&&[0,30,90,365].includes(Number(p.get('days'))))f.days=Number(p.get('days'));
@@ -113,22 +114,24 @@ function readRoute(){
 }
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme});return;}
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['practice','연습실 BETA','spark'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['gamepatches','게임 패치노트','history'],['patchnotes','MANOR 업데이트','spark']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view))||['sources','자료 기준','book'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span>${label}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme});
 }
-function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>경기 자료 ${db.meta.recordLatest} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=patchnotes">패치노트</a><a href="#v=sources">자료와 평가 기준</a></div></div>`;}
+function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>경기 자료 ${db.meta.recordLatest} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=gamepatches">게임 패치노트</a><a href="#v=patchnotes">MANOR 업데이트</a><a href="#v=sources">자료와 평가 기준</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
-function practiceLink(c,opponent){
- const scene=practiceEntryFor(c.id,opponent?.id);if(!scene)return '';
- return `<aside class="practice-entry"><div><strong>이 캐릭터로 상황 연습<span class="practice-beta">BETA</span></strong><p>${esc(scene.title)}</p></div><a class="btn" href="${route({v:'practice',c:c.id,case:scene.id})}">연습해 보기 ${icon('arrow')}</a></aside>`;
+function latestPatch(c,compact=false){
+ const change=characterPatches.characters?.[c.id];
+ if(compact)return change?`<span class="card-game-patch"><small>최근 게임 변경 · ${esc(change.date.replaceAll('-','.'))}</small><span>${esc(change.summary[0])}</span></span>`:'';
+ const history=route({v:'gamepatches',c:c.id});
+ return `<section class="character-patch" aria-label="최근 게임 패치"><div class="character-patch-header"><h2>${icon('history')}최근 게임 변경</h2>${change?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${change?`<ul>${change.summary.map(text=>`<li>${esc(text)}</li>`).join('')}</ul>`:'<p>확인된 개별 변경 요약이 없습니다. 전체 공식 기록에서 관련 내용을 확인하세요.</p>'}<div class="character-patch-links">${change?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 변경 이력 →</a>${change?link(change.sourceUrl,'공식 원문 ↗'):''}</div><small>수집한 글로벌 정식 서버 공지의 전투 조정·오류 수정 기준 · ${esc(characterPatches.meta?.checkedAt||'')} 확인<br>위 변경일과 공략 검토일은 별개입니다. 전투 조작·표시 수정 포함 · 스킨·테스트 서버·예고 제외</small></section>`;
 }
-function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${c.specialties.map(t=>`<span>#${esc(t)}</span>`).join('')}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div></div></button>`;}
+function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${c.specialties.map(t=>`<span>#${esc(t)}</span>`).join('')}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div>${latestPatch(c,true)}</div></button>`;}
 function heroCarousel(){
  heroSession??=createCarouselSession(db.characters);
  return `<div class="hero-art hero-carousel" id="hero-carousel" role="region" aria-roledescription="캐러셀" aria-label="장원의 캐릭터" aria-describedby="hero-carousel-hint"><div class="hero-stage"><div class="art-orbit" aria-hidden="true"></div>${carouselItems(heroSession).map(({index,character:c})=>`<button class="art-card" type="button" data-id="${c.id}" data-index="${index}" aria-label="${esc(c.name)} 공략 보기" tabindex="${index===heroSession.index?0:-1}">${portrait(c,index===heroSession.index)}<span>${esc(c.name)}</span></button>`).join('')}</div><div class="hero-carousel-footer"><span id="hero-carousel-hint">드래그해서 둘러보기</span><div class="carousel-controls"><button type="button" class="carousel-control" data-carousel="previous" aria-label="이전 캐릭터">${icon('back')}</button><button type="button" class="carousel-control" data-carousel="toggle" aria-label="자동 넘김" aria-pressed="${heroSession.paused!==true}">${icon(heroSession.paused?'play':'pause')}</button><button type="button" class="carousel-control" data-carousel="next" aria-label="다음 캐릭터">${icon('arrow')}</button></div></div><span class="visually-hidden carousel-status" role="status" aria-live="polite" aria-atomic="true"></span></div>`;
@@ -136,8 +139,9 @@ function heroCarousel(){
 function explore(){
  return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>다음 한 수를,<br><span>더 선명하게.</span></h1><p>캐릭터의 가능성부터 상대의 빈틈까지.<br>흩어진 장원의 기록을, 당신의 플레이로 연결합니다.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
  <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>${num(db.meta.matchupCount)}</strong>상황별 근거</span><span><strong>KR · JP · CN</strong>자료 검토</span><span class="subtle">상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt} · <a class="text-link" href="#v=sources">데이터 기준</a> · <a class="text-link" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></span></div>
+ <a class="gp-home-link" href="#v=gamepatches">${icon('history')}<div><strong>게임 패치노트</strong><p>2018년부터 쌓인 공식 기록. 내 캐릭터와 마지막 플레이 날짜로 찾아보세요.</p></div>${icon('arrow')}</a>
  <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>장원의 모든 얼굴</h2><p>당신의 캐릭터를 찾고, 한 단계 더 깊이 이해하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" placeholder="캐릭터 이름 검색" aria-label="캐릭터 이름 검색" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${[['name','이름순'],['easy','난이도 낮은순'],['hard','난이도 높은순']].map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div>${specialtyFilters()}<div id="explorer-results"></div></section>
- <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대가 정해졌다면</strong><p>상황별 대응과 30초 브리핑</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴에서 읽는 다음 수</strong><p>생존자 밴 3개로 감시자 후보 탐색</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>두 선택 사이에서</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div><aside class="practice-entry"><div><strong>실전 판단 연습실<span class="practice-beta">BETA · 제한 공개</span></strong><p>4개 장면에서 선택하고, 조건을 바꿔 다시 생각해 보세요.</p></div><a class="btn" href="#v=practice">연습실 둘러보기 ${icon('arrow')}</a></aside>`;
+ <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대가 정해졌다면</strong><p>상황별 대응과 30초 브리핑</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴에서 읽는 다음 수</strong><p>생존자 밴 3개로 감시자 후보 탐색</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>두 선택 사이에서</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
 }
 function updateExplorer(){
  const list=db.characters.filter(c=>(state.side==='전체'||c.side===state.side)&&(!state.specialty||c.specialties.includes(state.specialty))&&(!state.favoriteOnly||state.favorites.has(c.id))&&c.name.replace(/\s/g,'').includes(state.search.replace(/\s/g,''))).sort((a,b)=>state.sort==='easy'?a.difficulty-b.difficulty||a.name.localeCompare(b.name,'ko'):state.sort==='hard'?b.difficulty-a.difficulty||a.name.localeCompare(b.name,'ko'):a.name.localeCompare(b.name,'ko'));
@@ -159,8 +163,9 @@ function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 c
 function characterPage(){
  const c=char(state.character);state.character=c.id;
  return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}검토 ${esc(c.reviewedAt)}</span></div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
+ ${latestPatch(c)}
  <div class="tab-row" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['stats','통계'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- ${state.tab==='overview'?practiceLink(c):''}<div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function characterOverview(c){
@@ -212,7 +217,7 @@ function matchupPage(){
  return `${title('MATCHUP STUDIO','상대가 보이면, 선택도 보입니다.','내 캐릭터와 상대를 선택하세요. 대진 근거와 상대 공통 대응을 구분해 보여드립니다.')}<div class="selection-board">${selectionCard(own,'own','내 캐릭터')}<div class="versus">VS</div>${selectionCard(opp,'opponent','상대 캐릭터','상대 선택')}</div>
  ${!opp?`<div class="empty">${icon('swords')}<h3>상대할 캐릭터를 선택해주세요.</h3><p>대진 근거, 경계할 스킬, 추격·구출 대응을 한 화면으로 정리합니다.</p><button class="btn primary" data-action="picker" data-mode="opponent">상대 선택 ${icon('plus')}</button></div>`:
  `<div class="briefing-header"><div><div class="eyebrow">30 SECOND BRIEFING</div><h2>${esc(own.name)} → ${esc(opp.name)}</h2></div><button class="btn small share-btn" data-action="share" aria-label="현재 대진 공유">${icon('share')}<span>공유</span></button></div><div class="briefing"><article class="brief-card"><div class="brief-step">01 · 먼저 볼 것 ${icon('search')}</div><h3>경계할 핵심 스킬</h3><p>${esc(opp.skill)}</p></article><article class="brief-card"><div class="brief-step">02 · 움직이는 방법 ${icon('arrow')}</div><h3>상대에게 대응하기</h3><p>${esc(opp.response)}</p></article><article class="brief-card"><div class="brief-step">03 · 남겨 둘 자원 ${icon('clock')}</div><h3>내 스킬을 아낄 때</h3><p>${esc(own.hold)}</p></article></div><div class="note section-gap">브리핑은 상대 공통 대응과 내 캐릭터의 운영 요약입니다. 이 대진에만 검증된 내용은 아래 근거에서 확인하세요.</div>
- ${practiceLink(own,opp)}<section class="section-gap"><div class="section-heading"><div><h2>상황이 바뀌면, 상성도 바뀝니다.</h2><p>추격과 구출을 하나의 유불리로 합치지 않습니다.</p></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${chip(e.language||'기존 근거')}</div><h3>${esc(e.summary)}</h3><p>${esc(cleanCondition(e.condition))}</p><div class="source-line"><span>${esc(e.basis||e.type)}</span><span>·</span><span>${esc(e.patch)}</span></div><button class="btn small" data-action="evidence" data-id="${esc(e.id)}">${icon('book')} 원문·조건 확인</button></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진의 근거가 충분하지 않습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}${held.length?`<details class="methodology section-gap"><summary>판단을 보류한 내용 ${held.length}건</summary><p class="muted">자료가 충돌하거나 현재 판정을 충분히 확인하지 못한 내용입니다. 쉬운 상대·어려운 상대의 근거로 사용하지 않습니다.</p><div class="matchup-list section-gap">${held.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip('보류','warm')}</div><p>${esc(e.summary)}</p><button class="btn small section-gap" data-action="evidence" data-id="${esc(e.id)}">${icon('book')} 보류 이유·원문 보기</button></article>`).join('')}</div></details>`:''}</section>
+ <section class="section-gap"><div class="section-heading"><div><h2>상황이 바뀌면, 상성도 바뀝니다.</h2><p>추격과 구출을 하나의 유불리로 합치지 않습니다.</p></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${chip(e.language||'기존 근거')}</div><h3>${esc(e.summary)}</h3><p>${esc(cleanCondition(e.condition))}</p><div class="source-line"><span>${esc(e.basis||e.type)}</span><span>·</span><span>${esc(e.patch)}</span></div><button class="btn small" data-action="evidence" data-id="${esc(e.id)}">${icon('book')} 원문·조건 확인</button></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진의 근거가 충분하지 않습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}${held.length?`<details class="methodology section-gap"><summary>판단을 보류한 내용 ${held.length}건</summary><p class="muted">자료가 충돌하거나 현재 판정을 충분히 확인하지 못한 내용입니다. 쉬운 상대·어려운 상대의 근거로 사용하지 않습니다.</p><div class="matchup-list section-gap">${held.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip('보류','warm')}</div><p>${esc(e.summary)}</p><button class="btn small section-gap" data-action="evidence" data-id="${esc(e.id)}">${icon('book')} 보류 이유·원문 보기</button></article>`).join('')}</div></details>`:''}</section>
  <div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}상대 대응 팁</h2>${opp.tips.map((t,i)=>`<p class="prose ${i?'section-gap':''}">${esc(t)}</p>`).join('')}<div class="source-line">${link(opp.tipUrl,'대응 팁 원문')}<span>${esc(opp.tipType)}</span></div></div><div class="panel"><h2 class="panel-title">${icon('shield')}내 인격 기준</h2><p class="large-value">${esc(own.persona)}</p><p class="muted section-gap">${esc(own.personaReason)}</p><div class="divider"></div><p class="muted">대진 전용 최적화로 검증된 추천은 아닙니다. 팀 역할·맵·시작 위치에 맞춰 조정하세요.</p></div></div>`}`;
 }
 function miniCharacters(items){if(!items.length)return '<p class="muted small">충분히 뒷받침되는 상대가 없습니다.</p>';return `<div class="thumb-row">${items.filter(i=>byName[i.name]).map(i=>{const c=byName[i.name];return `<button class="mini-character" data-action="character" data-id="${c.id}">${portrait(c)}<span>${esc(c.name)}</span></button>`;}).join('')}</div>`;}
@@ -240,9 +245,9 @@ function sourcesPage(){
 function updateSources(){const list=db.sources.filter(s=>(state.region==='전체'||s.region===state.region)&&[s.site,s.scope,s.type,s.note].join(' ').toLowerCase().includes(state.sourceQuery.toLowerCase()));const root=$('#source-results');if(root)root.innerHTML=`<p class="result-count" role="status">${list.length}건의 자료</p><div class="source-grid">${list.map(sourceCard).join('')}</div>${!list.length?'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>지역이나 검색어를 변경해 보세요.</p></div>':''}`;}
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposePractice();disposePractice=()=>{};
+ disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeGamePatches();disposeGamePatches=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',sources:'자료와 평가 기준',feedback:'피드백',patchnotes:'패치노트',practice:'실전 연습실 BETA'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',sources:'자료와 평가 기준',feedback:'피드백',patchnotes:'MANOR 업데이트',gamepatches:'게임 패치노트'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='stats'){
@@ -256,7 +261,10 @@ async function render({scroll=false}={}){
   body.innerHTML=getStatisticsUI().page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
  }
  else if(state.view==='matchup')body.innerHTML=matchupPage();
- else if(state.view==='practice'){let storage;try{storage=window.localStorage;}catch{}disposePractice=mountPractice(body,{characters:byId,params:state.practice,navigate,session:practiceSession,storage,clipboard:navigator.clipboard,toast});if(scroll&&state.practice.scene){body.querySelector('[data-practice-exercise]')?.scrollIntoView({block:'start',behavior:'instant'});body.querySelector('#practice-scene-title')?.focus({preventScroll:true});}}
+ else if(state.view==='gamepatches'){
+  body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>장원의 업데이트 기록을 펼치고 있습니다.</p></div>';
+  try{const catalog=await loadGamePatches();if(token!==renderToken)return;disposeGamePatches=mountGamePatches(body,{catalog,characters:byId,params:state.gamePatches,navigate});}catch(e){if(token===renderToken)body.innerHTML=loadError(e);}
+ }
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
  else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,navigate:id=>navigate({v:'feedback',...(id?{post:id}:{})})});}
  else if(state.view==='sources'){body.innerHTML=sourcesPage();updateSources();}
@@ -343,11 +351,12 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=839de974fff8')]);
+ const responses=await Promise.all([fetch('data.json?v=9f7fb918b96a'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=e7ff1f04ef70'),fetch('patches/characters.json?v=ecd743be3a1a')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
- const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
+ const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
- releaseLog=releases;db=data;Object.assign(db.meta,specialties.meta);
+ if(!patches.meta?.checkedAt||!patches.characters)throw Error('캐릭터 패치 자료를 확인하지 못했습니다.');
+ characterPatches=patches;releaseLog=releases;db=data;Object.assign(db.meta,specialties.meta);
  for(const c of db.characters){const role=specialties.characters[c.id];if(!validSpecialties(c.side,role))throw Error('캐릭터 역할 태그 자료를 확인하지 못했습니다.');Object.assign(c,role);const introduction=introductions.characters[c.id];if(typeof introduction!=='string'||!introduction.trim())throw Error('캐릭터 소개 자료를 확인하지 못했습니다.');c.introduction=introduction;}
  byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;readRoute();await render();
  }catch(e){$('#main').innerHTML=`<div class="shell"><div class="empty section-gap"><h1>장원의 기록을 불러오지 못했습니다.</h1><p>${esc(e.message)}</p><button class="btn primary" id="reload-app">다시 불러오기</button></div></div>`;$('#reload-app')?.addEventListener('click',()=>location.reload());}}

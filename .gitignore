@@ -1,4 +1,6 @@
 node_modules/
+__pycache__/
+*.pyc
 qa-summary.json
 .DS_Store
 .env

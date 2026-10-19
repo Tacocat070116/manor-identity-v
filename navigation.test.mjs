@@ -28,7 +28,7 @@ function harness(){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
- const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['practice','연습실 BETA','spark'],['feedback','피드백','message'],['patchnotes','패치노트','history']];
+ const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['gamepatches','게임 패치노트','history'],['patchnotes','MANOR 업데이트','spark']];
  const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
  panel.querySelectorAll=()=>links;
@@ -53,7 +53,7 @@ test('one collapsed menu reports the current route, including character and sour
  assert.equal(h.currentLabel.textContent,'도감');assert.equal(h.links[0].attrs['aria-current'],'page');
  h.update('sources');assert.equal(h.currentLabel.textContent,'자료 기준');
  assert.ok(h.links.every(link=>!link.attrs['aria-current']));
- h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'패치노트');
+ h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
  assert.equal(h.themeButton.innerHTML,'icon:sun');assert.match(h.themeButton.attrs['aria-label'],/라이트/);
  assert.ok(h.links.every((link,i)=>link===sameLinks[i]));h.controller.destroy();
 });
