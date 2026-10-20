@@ -3,7 +3,7 @@
 Run after collect-game-patches.py with --cache pointing to its external cache.
 Editorial date exceptions and latest-character summaries are retained in research/patches.
 """
-import argparse, collections, hashlib, importlib.util, json, re, unicodedata
+import argparse, collections, hashlib, importlib.util, json, re, subprocess, unicodedata
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 CHECKED='2026-10-19'
@@ -142,6 +142,8 @@ def build(cache):
     meta={'checkedAt':CHECKED,'startDate':min(e['date'] for e in live),'latestDate':max(e['date'] for e in live),'sourceCount':len(inventory),'coverageText':'2018년부터 현재까지 확보한 글로벌 정식 서버의 공식 점검·업데이트 기록입니다. 같은 적용일의 여러 언어 공지는 한 기록으로 연결했습니다.','limitations':['확보한 첫 기록은 2018년 7월 11일 Android 출시 안내입니다. 출시 초기와 삭제된 공지까지 모두 복원했다는 뜻은 아닙니다.','공식 일본어 업데이트 목록 32페이지, 영어 공지 목록 19페이지, 한국어 공지 목록 2페이지와 업데이트 목록을 대조했습니다. 이전 일본어 공식 목록 31페이지에서 원문 7개를 보충했습니다.','날짜는 공지 제목·본문·다른 언어 원문을 대조했습니다. 이전된 웹 주소의 날짜와 실제 적용일은 다를 수 있습니다.','캐릭터 연결과 변경 분야는 원문에서 확인된 언급을 기준으로 합니다. 스킬명만 적힌 일부 과거 항목은 캐릭터 검색에서 빠질 수 있습니다. 전체 번역은 제공하지 않으며 세부 조건은 원문을 확인하세요.','테스트 서버는 별도 필터로 제공하며 중국 서버 전용 공지는 수집 범위에 포함하지 않습니다.','자료 확인일 이후의 업데이트는 자동 반영되지 않습니다.'], 'years':[{'year':year,'count':count} for year,count in sorted(years.items(),reverse=True)]}
     write(ROOT/'dist/patches/archive.json',{'meta':meta,'entries':entries})
     write(ROOT/'dist/patches/characters.json',{'meta':{'checkedAt':CHECKED,'count':len(latest),'basis':'검토한 글로벌 정식 서버 공지의 최근 전투 조정·오류 수정'},'characters':latest})
+    if (ROOT/'research/patches/character-history-review.json').exists():
+        subprocess.run(['node','scripts/build-character-history.mjs'],cwd=ROOT,check=True)
     write(ROOT/'research/patches/source-inventory.json',{'checkedAt':CHECKED,'sources':inventory,'excluded':excluded})
     print(json.dumps({'entries':len(entries),'live':len(live),'test':len(entries)-len(live),'sources':len(inventory),'excluded':len(excluded),'latestCharacters':len(latest),'years':years,'unconfirmed':[e['id'] for e in entries if e['dateStatus']!='confirmed']},ensure_ascii=False))
 

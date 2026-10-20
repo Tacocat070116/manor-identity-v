@@ -129,17 +129,30 @@ function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div cla
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
+const patchLabels={buff:'버프',nerf:'너프',adjustment:'조정'};
+function characterPatchGroups(id){
+ const wiki=characterPatches.history?.characters?.[id];
+ const groups=(wiki?.entries||[]).map(entry=>({...entry,sourceUrl:wiki.sourceUrl,mirrorUrl:wiki.mirrorUrl,basis:entry.officialUrl?'cross-checked':'wiki',changes:entry.changes.filter(change=>Object.hasOwn(patchLabels,change.impact))}));
+ const latest=characterPatches.characters?.[id];
+ const changes=(latest?.summary||[]).map((text,i)=>({text,impact:latest.summaryImpacts?.[i]})).filter(change=>Object.hasOwn(patchLabels,change.impact));
+ if(changes.length)groups.push({id:'official-'+id+'-'+latest.date,date:latest.date,precision:'day',basis:'official',officialUrl:latest.sourceUrl,patchId:latest.patchId,changes});
+ return groups.filter(group=>group.changes.length).sort((a,b)=>(b.date||'').localeCompare(a.date||'')||a.id.localeCompare(b.id));
+}
+function latestBalanceDate(id){return characterPatchGroups(id).find(group=>group.precision==='day')?.date||'';}
+function patchChangeList(changes){return `<ul class="patch-changes">${changes.map(({text,impact})=>`<li class="patch-change" data-impact="${impact}"><span class="patch-change-icon">${icon(impact)}</span><div><strong class="patch-change-label">${patchLabels[impact]}</strong><p>${esc(text)}</p></div></li>`).join('')}</ul>`;}
+function patchHistoryEntry(group,characterId,open=false){
+ const date=group.date?group.date.replaceAll('-','.'):(group.period?group.period+' · ':'')+'적용일 미기재';
+ const sourceLabel=group.precision==='month'?'월까지만 기재':group.precision!=='day'?'날짜 미확인':group.basis==='wiki'?'위키 기재일':'글로벌 공식 적용일';
+ const kinds=[...new Set(group.changes.map(change=>change.impact))];
+ return `<details class="character-patch patch-history-entry" ${open?'open':''}><summary><span class="patch-history-date">${group.precision==='day'?`<time datetime="${esc(group.date)}">${esc(date)}</time>`:`<strong>${esc(date)}</strong>`}<small>${sourceLabel}</small></span><span class="patch-history-kinds">${kinds.map(impact=>`<span data-impact="${impact}">${patchLabels[impact]}</span>`).join('')}</span><span class="patch-history-chevron">${icon('down')}</span></summary><div class="patch-history-body">${patchChangeList(group.changes)}${group.note?`<p class="patch-history-note">${esc(group.note)}</p>`:''}<div class="character-patch-links">${group.officialUrl?link(group.officialUrl,'공식 원문 ↗'):''}${group.sourceUrl?link(group.sourceUrl,'나무위키 기록 ↗'):''}${group.patchId?`<a class="text-link" href="${route({v:'gamepatches',c:characterId,type:'balance',note:group.patchId})}">이 패치 자세히 →</a>`:''}</div></div></details>`;
+}
 function latestPatch(c,compact=false){
- const change=characterPatches.characters?.[c.id];
- const labels={buff:'버프',nerf:'너프',adjustment:'조정'};
- const entries=(change?.summary||[]).map((text,i)=>({text,impact:change.summaryImpacts?.[i]})).filter(({impact})=>Object.hasOwn(labels,impact));
- const hasChanges=entries.length>0;
- if(compact)return hasChanges?`<span class="card-game-patch"><small>최근 패치 날짜</small><time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time></span>`:'';
+ const groups=characterPatchGroups(c.id),date=latestBalanceDate(c.id);
+ if(compact)return date?`<span class="card-game-patch"><small>최근 패치 날짜</small><time datetime="${esc(date)}">${esc(date.replaceAll('-','.'))}</time></span>`:'';
+ const wiki=characterPatches.history?.characters?.[c.id];
+ const dated=groups.filter(group=>group.date),undated=groups.filter(group=>!group.date);
  const history=route({v:'gamepatches',c:c.id,type:'balance'});
- const changes=entries.map(({text,impact})=>{
-  return `<li class="patch-change" data-impact="${impact}"><span class="patch-change-icon">${icon(impact)}</span><div><strong class="patch-change-label">${labels[impact]}</strong><p>${esc(text)}</p></div></li>`;
- }).join('');
- return `<section class="character-patch" aria-label="최근 패치노트"><div class="character-patch-header"><h2>${icon('history')}최근 패치노트</h2>${hasChanges?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${hasChanges?`<ul class="patch-changes">${changes}</ul>`:'<p>최근 확인된 패치에는 표시할 버프·너프·조정 요약이 없습니다. 이전 밸런스 변경은 아래 이력에서 확인하세요.</p>'}<div class="character-patch-links">${hasChanges?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,type:'balance',note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 밸런스 변경 이력 →</a>${hasChanges?link(change.sourceUrl,'공식 원문 ↗'):''}</div></section>`;
+ return `<section class="character-patch-history" aria-label="캐릭터 패치노트"><div class="patch-history-heading"><div><h2>${icon('history')}패치노트</h2><p>버프·너프·조정 기록을 최신순으로 확인하세요.</p></div><span>${num(groups.length)}개 기록</span></div>${groups.length?`<div class="patch-history-list">${dated.map((group,i)=>patchHistoryEntry(group,c.id,i===0)).join('')}</div>${undated.length?`<div class="patch-history-undated"><h3>날짜 미기재 기록</h3><div class="patch-history-list">${undated.map((group,i)=>patchHistoryEntry(group,c.id,!dated.length&&i===0)).join('')}</div></div>`:''}`:'<div class="empty"><p>현재 수록된 버프·너프·조정 기록이 없습니다. 공식 변경 이력에서 관련 공지를 확인해 주세요.</p></div>'}<div class="patch-history-footer"><a class="text-link" href="${history}">${esc(c.name)} 공식 밸런스 변경 이력 →</a></div>${wiki?`<details class="patch-history-sources"><summary>수록 범위와 출처</summary><p>${wiki.status==='available'?'나무위키의 패치노트 표를 미러본으로 확인해 정리했습니다.':'확인한 나무위키 미러 문서에는 패치노트 표가 없습니다.'} 문서에 없는 과거 변경이 있을 수 있습니다. 공식 공지를 대조한 기록에는 공식 적용일을 표시하며, 나머지 날짜는 위키 기재일입니다.</p><p>날짜 미기재 기록은 최근 패치 날짜 계산에서 제외합니다. 확인일: ${esc(characterPatches.history.meta.checkedAt)}</p><div>${link(wiki.sourceUrl,'나무위키 원문 ↗')}${link(wiki.mirrorUrl,'확인한 미러본 ↗')}</div></details>`:''}</section>`;
 }
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${c.specialties.map(t=>`<span>#${esc(t)}</span>`).join('')}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div>${latestPatch(c,true)}</div></button>`;}
 function heroCarousel(){
@@ -360,7 +373,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=58d88f1aacba'),fetch('patches/characters.json?v=36df47e546c4')]);
+ const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=1bc2b9a9a257'),fetch('patches/characters.json?v=542f7a67c062')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

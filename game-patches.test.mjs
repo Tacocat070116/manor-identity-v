@@ -72,7 +72,7 @@ test('filter URLs, invalid dates, pagination and missing notes remain determinis
  assert.ok(selectGamePatches(catalog,characters,{q:'거미줄'}).matches.some(e=>e.date==='2026-07-02'));
 });
 
-test('latest character cards link only to confirmed live notices and editorial summaries',()=>{
+test('official character summaries retain their reviewed source records',()=>{
  assert.equal(Object.keys(latest.characters).length,89);
  const editorial=JSON.parse(fs.readFileSync('research/patches/latest-character-changes.json'));
  for(const [id,change] of Object.entries(latest.characters)){
@@ -88,6 +88,37 @@ test('latest character cards link only to confirmed live notices and editorial s
  }
  assert.deepEqual(latest.characters.c60.summaryImpacts,['buff','adjustment','fix']);
  assert.deepEqual(latest.characters.c42.summaryImpacts,['nerf','adjustment']);
+});
+
+test('wiki history covers every inspected character and retains date precision and official corrections',()=>{
+ const review=JSON.parse(fs.readFileSync('research/patches/character-history-review.json','utf8'));
+ const history=latest.history;
+ assert.equal(history.meta.auditedCharacters,89);assert.equal(history.meta.withWikiHistory,35);
+ assert.equal(history.meta.entryCount,92);assert.equal(history.meta.changeCount,167);
+ assert.deepEqual(Object.keys(history.characters).sort(),Object.keys(characters).sort());
+ assert.equal(review.audit.filter(a=>a.status==='section-absent').length,54);
+ const ids=new Set();let count=0;
+ for(const audit of review.audit){
+  const actual=history.characters[audit.characterId];
+  assert.equal(actual.status,audit.status);
+  assert.equal(new URL(actual.sourceUrl).hostname,'namu.wiki');
+  assert.ok(new URL(actual.mirrorUrl).hostname.endsWith('namu.moe'));
+  assert.equal(actual.entries.length>0,audit.status==='available');
+  assert.equal(actual.entries.length,(review.characters[audit.characterId]||[]).length);
+  for(const entry of actual.entries){
+   assert.ok(!ids.has(entry.id));ids.add(entry.id);count+=entry.changes.length;
+   assert.ok(entry.changes.every(c=>['buff','nerf','adjustment'].includes(c.impact)));
+   if(entry.precision==='day')assert.ok(validPatchDate(entry.date));
+   else if(entry.precision==='month')assert.match(entry.date,/^\d{4}-\d{2}$/);
+   else assert.equal(entry.date,null);
+   if(entry.officialUrl){const note=catalog.entries.find(n=>n.id===entry.patchId);assert.equal(note.effectiveDate,entry.date);assert.ok(note.sources.some(s=>s.url===entry.officialUrl));}
+  }
+ }
+ assert.equal(ids.size,history.meta.entryCount);assert.equal(count,history.meta.changeCount);
+ assert.equal(history.characters.c09.entries[0].date,'2025-09-04');
+ assert.ok(history.characters.c36.entries.find(e=>e.date==='2025-12-25').changes[0].text.includes('15 → 18초'));
+ assert.ok(history.characters.c80.entries.find(e=>e.date==='2026-07-02').changes[1].text.includes('투우사가 받는'));
+ assert.ok(review.excluded.some(e=>e.characterId==='c22'&&e.sourceLines==='489'));
 });
 
 test('archive templates escape source text and mounted filtering is disposed on leaving',()=>{
@@ -109,40 +140,58 @@ test('character patch tab shows only reviewed balance changes and archive routes
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state,latestPatch,characterPage};',context);await context.app.boot();
+ vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state,latestPatch,characterPage,characterPatchGroups,latestBalanceDate,patchHistoryEntry};',context);await context.app.boot();
  assert.equal(fetches.some(url=>url.startsWith('patches/archive')),false);
  assert.ok(nodes.get('#page-body').innerHTML.includes('data-tab="patches"'));
- assert.ok(!nodes.get('#page-body').innerHTML.includes('class="character-patch"'),'opening a character starts with the guide');
+ assert.ok(!nodes.get('#page-body').innerHTML.includes('class="character-patch-history"'),'opening a character starts with the guide');
  handlers.click({target:{closest:()=>({dataset:{action:'character-tab',tab:'patches'}})}});
  assert.equal(context.location.hash,'#v=character&c=c60&tab=patches');
  context.app.readRoute();await context.app.render();
  assert.equal(context.app.state.tab,'patches');
- assert.ok(nodes.get('#page-body').innerHTML.includes('aria-label="최근 패치노트"'));
- assert.ok(nodes.get('#page-body').innerHTML.indexOf('character-tabs')<nodes.get('#page-body').innerHTML.indexOf('class="character-patch"'));
+ assert.ok(nodes.get('#page-body').innerHTML.includes('aria-label="캐릭터 패치노트"'));
+ assert.ok(nodes.get('#page-body').innerHTML.indexOf('character-tabs')<nodes.get('#page-body').innerHTML.indexOf('class="character-patch-history"'));
  assert.ok(nodes.get('#page-body').innerHTML.includes('data-tab="patches" class="active" aria-pressed="true"'));
  for(const tab of ['overview','matchups','stats','sources']){
   context.app.state.tab=tab;
-  assert.ok(!context.app.characterPage().includes('class="character-patch"'),tab+' must not contain patch notes');
+  assert.ok(!context.app.characterPage().includes('class="character-patch-history"'),tab+' must not contain patch notes');
  }
  for(const [id,change] of Object.entries(latest.characters)){
   const compact=context.app.latestPatch(characters[id],true),detail=context.app.latestPatch(characters[id]);
-  const visible=change.summaryImpacts.some(impact=>['buff','nerf','adjustment'].includes(impact));
-  if(visible){assert.ok(compact.includes('최근 패치 날짜'));assert.ok(compact.includes('datetime="'+change.date+'"'));assert.ok(detail.includes('공식 원문'));}
-  else{assert.equal(compact,'');assert.ok(detail.includes('표시할 버프·너프·조정 요약이 없습니다'));assert.ok(!detail.includes('<time'));assert.ok(!detail.includes('이 패치 자세히'));}
+  const groups=context.app.characterPatchGroups(id),date=context.app.latestBalanceDate(id);
+  if(date){assert.ok(compact.includes('최근 패치 날짜'));assert.ok(compact.includes('datetime="'+date+'"'));}
+  else{assert.equal(compact,'');assert.ok(!detail.includes('<time'));}
+  if(!groups.length){assert.ok(detail.includes('현재 수록된 버프·너프·조정 기록이 없습니다'));assert.ok(!detail.includes('이 패치 자세히'));}
   assert.ok(!compact.includes(change.summary[0]),id+' cards must remain date-only');
-  assert.ok(!detail.includes('공략 검토일'));assert.ok(!detail.includes('<small>'));
+  assert.ok(!detail.includes('공략 검토일'));
   assert.ok(detail.includes('밸런스 변경 이력'));assert.ok(detail.includes('type=balance'));
   assert.ok(!detail.includes('data-impact="fix"'));assert.ok(!detail.includes('오류 수정'));
   for(const [index,impact] of change.summaryImpacts.entries()){
    if(impact==='fix')assert.ok(!detail.includes(change.summary[index]),id+' excludes individual fixes in a mixed patch');
    else{assert.ok(detail.includes('data-impact="'+impact+'"'));assert.ok(detail.includes(change.summary[index]));}
   }
+  for(const entry of latest.history.characters[id].entries){
+   for(const item of entry.changes)assert.ok(detail.includes(item.text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')),id+' retains every curated historical change');
+   if(entry.patchId)assert.ok(detail.includes('c='+id+'&amp;')||detail.includes('c='+id+'&type=balance&note='+entry.patchId));
+  }
+  const dates=Array.from(groups.filter(g=>g.date),g=>g.date);
+  assert.deepEqual(dates,[...dates].sort().reverse());
  }
+ assert.equal(context.app.latestBalanceDate('c03'),'','undated records never acquire a fabricated card date');
+ assert.equal(context.app.latestBalanceDate('c06'),'','a season does not imply an exact day');
+ assert.equal(context.app.latestBalanceDate('c43'),'2025-04-24','a newer fix does not hide an older balance update');
+ assert.equal(context.app.latestBalanceDate('c09'),'2025-09-04','use the corrected official effective date');
+ assert.equal(context.app.latestBalanceDate('c79'),'2024-01-11','month-only rows remain imprecise');
+ const undatedHTML=context.app.latestPatch(characters.c22);
+ assert.ok(undatedHTML.indexOf('2024.04.11')<undatedHTML.indexOf('날짜 미기재 기록'));
+ assert.ok(context.app.latestPatch(characters.c79).includes('월까지만 기재'));
+ assert.ok(context.app.latestPatch(characters.c15).includes('패치노트 표가 없습니다'));
+ const unsafe=context.app.patchHistoryEntry({date:null,precision:'unknown',basis:'wiki',period:'<img src=x>',note:'<script>bad</script>',changes:[{impact:'buff',text:'<img src=x onerror=bad>'}],sourceUrl:'javascript:bad()'},'c01');
+ assert.ok(!unsafe.includes('<script>'));assert.ok(!unsafe.includes('<img src=x'));assert.ok(!unsafe.includes('javascript:'));assert.ok(unsafe.includes('&lt;script&gt;'));
  context.location.hash='#v=character&c=c60&tab=patches';context.app.readRoute();await context.app.render();
  assert.equal(context.app.state.tab,'patches','shared patch-tab URLs restore the selected section');
  assert.equal(fetches.some(url=>url.startsWith('patches/archive')),false);
  context.location.hash='#v=character&c=c60&tab=unknown';context.app.readRoute();await context.app.render();
- assert.equal(context.app.state.tab,'overview');assert.ok(!nodes.get('#page-body').innerHTML.includes('class="character-patch"'));
+ assert.equal(context.app.state.tab,'overview');assert.ok(!nodes.get('#page-body').innerHTML.includes('class="character-patch-history"'));
  context.location.hash='#v=gamepatches&c=c01&since=2020-01-01&q=거미';context.app.readRoute();await context.app.render();
  assert.equal(mounts[0].params.c,'c01');assert.equal(mounts[0].params.since,'2020-01-01');assert.equal(context.app.state.statistics.search,'');
  assert.equal(context.document.title,'게임 패치노트 · MANOR');
