@@ -307,3 +307,10 @@ html[data-theme="dark"] .ambient-two{background:#304f3d}
  .picker-toolbar{grid-template-columns:minmax(0,1fr);gap:10px}
  .picker-sort select{min-height:44px}
 }
+
+/* Keep all five character sections visible on narrow screens. */
+@media(max-width:640px){
+ .character-tabs{display:grid;grid-template-columns:1.4fr .8fr .8fr 1.2fr .8fr}
+ .character-tabs button{min-width:0;padding:10px 4px}
+}
+@media(max-width:360px){.character-tabs button{font-size:11px}}

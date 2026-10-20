@@ -114,7 +114,7 @@ state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 �
 globalThis.audit={templates:[],checked:0,roleCards:[]};
 for(const c of db.characters){audit.roleCards.push({id:c.id,card:card(c),selection:selectionCard(c,'compare-a','캐릭터 A'),valid:validSpecialties(c.side,c)});}
 audit.templates.push(explore(),sourcesPage(),matchupPage(),comparePage(__matches),banPage(__bans));
-for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.checked++;}}
+for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats','patches']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
 state.own=byName['사도'].id;state.opponent=byName['탐사원'].id;audit.templates.push(matchupPage());
 state.own=byName['블러디 퀸'].id;state.opponent=byName['기상학자'].id;audit.heldMatchup=matchupPage();audit.templates.push(audit.heldMatchup);
@@ -139,7 +139,7 @@ for(const e of db.matchups){openEvidence(e.id);const html=$('#evidence').innerHT
 footer();audit.footer=$('#footer').innerHTML;
 `;
 vm.runInNewContext(source,context,{timeout:15000});
-assert.equal(context.audit.checked,356);
+assert.equal(context.audit.checked,445);
 assert.equal(context.audit.evidenceDialogs,db.matchups.length);
 assert.ok(context.audit.heldMatchup.includes('판단을 보류한 내용')&&context.audit.heldMatchup.includes('보류 이유·원문 보기'),'held decisions remain reviewable without presenting an advantage');
 assert.ok(context.audit.condition.includes('구버전 중국어'));
@@ -171,5 +171,5 @@ for(const result of context.audit.roleCards){
 }
 assert.deepEqual(Array.from(context.audit.resetExplore),['전체','','',false]);
 for(const html of context.audit.templates){assert.ok(html.length>100);assert.ok(!html.includes('undefined'));assert.ok(!html.includes('NaN'));}
-fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:356,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 695/694/296','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
-console.log('PASS: 89 portraits, 356 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, ban smoothing, exclusions, URL sanitization, and native-sheet golden cases.');
+fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:445,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 695/694/296','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
+console.log('PASS: 89 portraits, 445 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, ban smoothing, exclusions, URL sanitization, and native-sheet golden cases.');

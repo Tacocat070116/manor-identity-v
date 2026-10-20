@@ -99,7 +99,7 @@ function readRoute(){
  state.view=['explore','character','matchup','compare','bans','statistics','sources','feedback','patchnotes','gamepatches'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
- state.tab=['overview','matchups','stats','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
+ state.tab=['overview','matchups','stats','patches','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
  if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
@@ -131,15 +131,15 @@ function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');cl
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
 function latestPatch(c,compact=false){
  const change=characterPatches.characters?.[c.id];
- if(compact)return change?`<span class="card-game-patch"><small>최근 패치 날짜</small><time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time></span>`:'';
- const history=route({v:'gamepatches',c:c.id});
- const labels={buff:'버프',nerf:'너프',adjustment:'조정',fix:'오류 수정'};
- const changes=change?.summary.map((text,i)=>{
-  const value=change.summaryImpacts?.[i];
-  const impact=Object.hasOwn(labels,value)?value:change.types.every(type=>type==='fix')?'fix':'adjustment';
+ const labels={buff:'버프',nerf:'너프',adjustment:'조정'};
+ const entries=(change?.summary||[]).map((text,i)=>({text,impact:change.summaryImpacts?.[i]})).filter(({impact})=>Object.hasOwn(labels,impact));
+ const hasChanges=entries.length>0;
+ if(compact)return hasChanges?`<span class="card-game-patch"><small>최근 패치 날짜</small><time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time></span>`:'';
+ const history=route({v:'gamepatches',c:c.id,type:'balance'});
+ const changes=entries.map(({text,impact})=>{
   return `<li class="patch-change" data-impact="${impact}"><span class="patch-change-icon">${icon(impact)}</span><div><strong class="patch-change-label">${labels[impact]}</strong><p>${esc(text)}</p></div></li>`;
  }).join('');
- return `<section class="character-patch" aria-label="최근 패치노트"><div class="character-patch-header"><h2>${icon('history')}최근 패치노트</h2>${change?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${change?`<ul class="patch-changes">${changes}</ul>`:'<p>확인된 개별 변경 요약이 없습니다. 전체 공식 기록에서 관련 내용을 확인하세요.</p>'}<div class="character-patch-links">${change?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 변경 이력 →</a>${change?link(change.sourceUrl,'공식 원문 ↗'):''}</div></section>`;
+ return `<section class="character-patch" aria-label="최근 패치노트"><div class="character-patch-header"><h2>${icon('history')}최근 패치노트</h2>${hasChanges?`<time datetime="${esc(change.date)}">${esc(change.date.replaceAll('-','.'))}</time>`:''}</div>${hasChanges?`<ul class="patch-changes">${changes}</ul>`:'<p>최근 확인된 패치에는 표시할 버프·너프·조정 요약이 없습니다. 이전 밸런스 변경은 아래 이력에서 확인하세요.</p>'}<div class="character-patch-links">${hasChanges?`<a class="text-link" href="${route({v:'gamepatches',c:c.id,type:'balance',note:change.patchId})}">이 패치 자세히 →</a>`:''}<a class="text-link" href="${history}">${esc(c.name)} 밸런스 변경 이력 →</a>${hasChanges?link(change.sourceUrl,'공식 원문 ↗'):''}</div></section>`;
 }
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot">${icon(c.side==='감시자'?'hunter':'survivor')}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${c.specialties.map(t=>`<span>#${esc(t)}</span>`).join('')}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div>${latestPatch(c,true)}</div></button>`;}
 function heroCarousel(){
@@ -173,9 +173,8 @@ function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 c
 function characterPage(){
  const c=char(state.character);state.character=c.id;
  return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}검토 ${esc(c.reviewedAt)}</span></div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
- ${latestPatch(c)}
- <div class="tab-row" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['stats','통계'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['stats','통계'],['patches','패치노트'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
+ <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='patches'?latestPatch(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function characterOverview(c){
@@ -361,7 +360,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=ba24d8047b4b'),fetch('patches/characters.json?v=36df47e546c4')]);
+ const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=58d88f1aacba'),fetch('patches/characters.json?v=36df47e546c4')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
