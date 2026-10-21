@@ -321,3 +321,26 @@ html[data-theme="dark"] .ambient-two{background:#304f3d}
 .note.has-icon>.icon{display:block;margin:2px 0 0;width:16px;height:16px}
 .note.has-icon>span{min-width:0;overflow-wrap:anywhere}
 @media(max-width:640px){.compare-column .numbered-list>li{grid-template-columns:20px minmax(0,1fr);column-gap:8px}.compare-column .numbered-list .number{font-size:11px}}
+
+/* Final Persona talents keep their game artwork legible in both themes. */
+.persona-build,.persona-talent{min-width:0}
+.panel .persona-direction{margin:0 0 12px;color:var(--accent);font-size:13px;font-weight:700;line-height:20px}
+.persona-talents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.persona-talent{display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 8px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft);text-align:center}
+.persona-talent-art{display:grid;place-items:center;flex:0 0 64px;width:64px;height:64px;border:1px solid #547362;border-radius:16px;background:#294638;box-shadow:inset 0 1px 0 #ffffff14}
+.persona-talent-art>img{display:block;width:48px;height:48px;max-width:100%;object-fit:contain}
+.persona-talent-name{max-width:100%;color:var(--ink);font-size:14px;font-weight:700;line-height:20px;word-break:keep-all;overflow-wrap:anywhere}
+.play-guide-section+.play-guide-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}
+.play-guide-section>.small-heading{margin:0 0 8px;font-size:13px;line-height:20px}
+.play-guide-section>p{margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.play-guide-caution>.small-heading{display:flex;align-items:center;gap:8px;color:var(--danger)}
+.play-guide-caution>.small-heading>.icon{display:block;flex:0 0 16px;width:16px;height:16px}
+@media(max-width:640px){
+ .persona-talents{gap:10px}
+ .persona-talent{padding:14px 6px}
+ .persona-talent-name{font-size:13px}
+ .compare-column .persona-talents{grid-template-columns:minmax(0,1fr)}
+ .compare-column .persona-talent{gap:8px;padding:12px 6px}
+ .compare-column .persona-talent-name{font-size:12px}
+ .play-guide-section+.play-guide-section{margin-top:20px;padding-top:20px}
+}

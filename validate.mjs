@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {createHash} from 'node:crypto';
 import {createCarouselSession,carouselItems} from './dist/carousel.js';
 import {createStatisticsUI} from './dist/statistics.js';
 import {selectRanked} from './dist/statistics-model.js';
@@ -9,6 +10,17 @@ import {statsFor,rankBans,pairEvidence,safeUrl,filterRows,matchesCharacter,sortC
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
 const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
 const introductions=read('introductions.json'),releases=read('releases.json');
+const personaAssets=JSON.parse(fs.readFileSync('research/persona-icons.json','utf8')).talents;
+assert.equal(personaAssets.length,8,'all eight final Persona talent images');
+assert.equal(new Set(personaAssets.map(t=>t.id)).size,8,'unique talent images');
+for(const talent of personaAssets){
+ const image=fs.readFileSync('dist/'+talent.image);
+ assert.equal(image.subarray(0,8).toString('hex'),'89504e470d0a1a0a',talent.name+' PNG');
+ assert.equal(image.readUInt32BE(16),talent.width,talent.name+' original width');
+ assert.equal(image.readUInt32BE(20),talent.height,talent.name+' original height');
+ assert.equal(createHash('sha256').update(image).digest('hex'),talent.sha256,talent.name+' unmodified source image');
+ assert.ok(safeUrl(talent.sourcePage)&&safeUrl(talent.sourceImage),talent.name+' source attribution');
+}
 assert.deepEqual(Object.keys(introductions.characters).sort(),db.characters.map(c=>c.id).sort(),'one introduction per character');
 for(const ch of db.characters){
  ch.introduction=introductions.characters[ch.id];
@@ -111,7 +123,9 @@ let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'')
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
 state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 나비'].id;
-globalThis.audit={templates:[],checked:0,roleCards:[]};
+globalThis.audit={templates:[],checked:0,roleCards:[],personaGuides:[]};
+for(const c of db.characters){audit.personaGuides.push({id:c.id,build:personaBuild(c),guide:playGuide(c),overview:characterOverview(c),copy:[c.use,c.hold,c.caution].map(esc)});}
+audit.unmappedPersona=personaBuild({side:'생존자',persona:'새 인격 + 확인 중'});
 for(const c of db.characters){audit.roleCards.push({id:c.id,card:card(c),selection:selectionCard(c,'compare-a','캐릭터 A'),valid:validSpecialties(c.side,c)});}
 audit.templates.push(explore(),sourcesPage(),matchupPage(),comparePage(__matches),banPage(__bans));
 for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','sources','stats','patches']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.checked++;}}
@@ -140,6 +154,27 @@ footer();audit.footer=$('#footer').innerHTML;
 `;
 vm.runInNewContext(source,context,{timeout:15000});
 assert.equal(context.audit.checked,445);
+for(const result of context.audit.personaGuides){
+ const ch=db.characters.find(c=>c.id===result.id);
+ const [direction,build]=ch.persona.split('|').map(s=>s.trim());
+ const expected=build.split('+').map(s=>s.trim()).map(name=>{
+  const talent=personaAssets.find(t=>t.name===name&&t.side===ch.side);
+  assert.ok(talent,ch.name+' mapped final talent '+name);
+  assert.ok(direction.includes(String(talent.clock)),ch.name+' talent direction');
+  assert.ok(result.build.includes('>'+name+'</span>'),ch.name+' visible talent name');
+  return talent.image;
+ });
+ assert.deepEqual([...result.build.matchAll(/<img src="([^"]+)"/g)].map(m=>m[1]),expected,ch.name+' correct ordered Persona artwork');
+ assert.ok(result.overview.includes(result.build),ch.name+' Persona images in overview');
+ assert.ok(result.overview.includes(result.guide),ch.name+' combined guide in overview');
+ assert.ok(!result.overview.includes('스킬을 쓰는 순간'),ch.name+' old card title removed');
+ assert.equal((result.overview.match(/class="panel play-guide"/g)||[]).length,1,ch.name+' one combined guide');
+ const sections=[...result.guide.matchAll(/<section class="play-guide-section[^\"]*">([\s\S]*?)<\/section>/g)].map(m=>m[1]);
+ assert.equal(sections.length,3,ch.name+' use, hold and caution sections');
+ result.copy.forEach((copy,i)=>assert.ok(copy&&sections[i].includes('<p>'+copy+'</p>'),ch.name+' preserved guide section '+i));
+ assert.equal(result.overview.split(result.copy[2]).length-1,1,ch.name+' caution appears once');
+}
+assert.ok(context.audit.unmappedPersona.includes('새 인격 + 확인 중')&&!context.audit.unmappedPersona.includes('<img'),'unknown builds preserve readable text');
 assert.equal(context.audit.evidenceDialogs,db.matchups.length);
 assert.ok(context.audit.heldMatchup.includes('판단을 보류한 내용')&&context.audit.heldMatchup.includes('보류 이유·원문 보기'),'held decisions remain reviewable without presenting an advantage');
 assert.ok(context.audit.condition.includes('구버전 중국어'));
