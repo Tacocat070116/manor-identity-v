@@ -5,11 +5,11 @@
  --surface-soft:rgba(var(--inset-rgb),.48);
  --surface-hover:rgba(var(--surface-rgb),.78);
  --line:rgba(var(--ink-rgb),.16);
- --control-line:rgba(var(--ink-rgb),.28);
+ --control-line:transparent;
  --accent-line:rgba(var(--accent-rgb),.30);
  --accent-soft:rgba(var(--accent-soft-rgb),.74);
  --glass:rgba(var(--surface-rgb),.38);
- --glass-line:rgba(var(--ink-rgb),.10);
+ --glass-line:transparent;
  --glass-sheen:radial-gradient(ellipse at 8% 0%,rgba(var(--sheen-rgb),.20),transparent 54%),linear-gradient(120deg,rgba(var(--surface-rgb),.08),transparent 45%,rgba(var(--accent-rgb),.035));
  --nav-surface:rgba(var(--surface-rgb),.56);
  --shadow:0 14px 32px -22px rgba(var(--shadow-rgb),.30),0 2px 5px -3px rgba(var(--shadow-rgb),.12);
@@ -200,7 +200,7 @@ html[data-theme="plum"]{
 .theme-option{position:relative;min-width:0;cursor:pointer}
 .theme-option>input{scroll-margin-block:104px 24px}
 .theme-option>input{position:absolute;width:1px;height:1px;padding:0;margin:0;opacity:0;clip-path:inset(50%);overflow:hidden}
-.theme-option-card{display:block;padding:6px;border:2px solid var(--line);border-radius:18px;background:var(--surface);transition:border-color .25s ease,background-color .25s ease}
+.theme-option-card{display:block;padding:6px;border:2px solid var(--glass-line);border-radius:18px;background:var(--surface);transition:border-color .25s ease,background-color .25s ease}
 .theme-option>input:checked+.theme-option-card{border-color:var(--accent);background:var(--accent-soft)}
 .theme-option>input:focus-visible+.theme-option-card{outline:3px solid var(--accent);outline-offset:3px}
 .theme-preview{display:block;height:88px;overflow:hidden;padding:10px;border-radius:11px;background:var(--preview-bg);color:var(--preview-ink)}
@@ -231,6 +231,7 @@ html[data-theme="plum"]{
 @media(hover:hover){.theme-option:hover .theme-option-card{border-color:var(--accent)}}
 @media(prefers-reduced-motion:reduce){.theme-option-card{transition:none}}
 @media(forced-colors:active){
+ :root{--control-line:ButtonText;--glass-line:CanvasText;}
  .theme-option>input:checked+.theme-option-card{border-color:Highlight;outline:2px solid Highlight}
  .theme-option>input:checked+.theme-option-card .theme-check{background:Highlight;color:HighlightText}
 }

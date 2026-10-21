@@ -1,4 +1,4 @@
-/* A shared, viewport-aligned environment is painted once per palette/resize.
+/* A seamless ambient field is cached once per palette/resize.
    Each visible lens resamples that actual background through a curved rim.
    Canvas 2D is intentional: Safari does not need SVG backdrop displacement.
    No DOM duplication, screenshots, external assets, pixel reads or idle loop. */
@@ -24,31 +24,49 @@ export function lensSample(rect,zoom){
  return {x:rect.left+rect.width/2-rect.width/(2*zoom),y:rect.top+rect.height/2-rect.height/(2*zoom),width:rect.width/zoom,height:rect.height/zoom};
 }
 
-export function paintScene(ctx,width,height,palette){
- const {bg,ambientOne,ambientTwo,surface}=palette;
- ctx.clearRect(0,0,width,height);
- ctx.fillStyle=bg;ctx.fillRect(0,0,width,height);
- const wash=(x,y,rx,ry,color,opacity)=>{
-  ctx.save();ctx.translate(x,y);ctx.scale(rx,ry);
-  const g=ctx.createRadialGradient(0,0,0,0,0,1);
-  g.addColorStop(0,color);g.addColorStop(1,color+'00');
-  ctx.globalAlpha=opacity;ctx.fillStyle=g;ctx.fillRect(-1,-1,2,2);ctx.restore();
- };
- wash(width*.9,height*.05,width*.8,height*.9,ambientOne,.76);
- wash(width*.03,height*.9,width*.75,height*.85,ambientTwo,.62);
- wash(width*.24,height*.12,width*.6,height*.58,surface,.48);
- // A broad, soft fold gives transparent glass something to transmit and bend.
- // It is painted into the environment, not attached as a stripe to each card.
- ctx.save();ctx.filter='blur(18px)';
- const fold=ctx.createLinearGradient(width*.3,height, width*.9,0);
- fold.addColorStop(0,mixColor(bg,ambientTwo,.5));
- fold.addColorStop(.48,mixColor(bg,ambientOne,.9));
- fold.addColorStop(1,mixColor(bg,surface,.7));
- ctx.strokeStyle=fold;ctx.globalAlpha=.55;ctx.lineWidth=Math.max(84,width*.13);ctx.lineCap='round';
- ctx.beginPath();ctx.moveTo(width*1.12,-height*.12);
- ctx.bezierCurveTo(width*.38,height*.2,width*.94,height*.62,width*.46,height*1.12);
- ctx.stroke();ctx.restore();
- wash(width*.72,height*.42,width*.27,height*.56,surface,.30);
+export function ambientPattern(seed=0x4d414e4f){
+ // A stable layout for this visit, shared by all palettes. Integer-frequency
+ // waves make an irregular field whose colour AND slope meet at tile edges.
+ const random=()=>{seed=(seed+0x6D2B79F5)|0;let n=Math.imul(seed^seed>>>15,1|seed);n^=n+Math.imul(n^n>>>7,61|n);return ((n^n>>>14)>>>0)/4294967296;};
+ return Array.from({length:12},(_,i)=>{
+  const x=Math.floor(random()*5)-2,y=Math.floor(random()*5)-2||1;
+  return {x,y,phase:random()*Math.PI*2,weight:1/(1+x*x+y*y),color:i%3};
+ });
+}
+
+export function sampleAmbient(x,y,waves){
+ const sums=[0,0,0],weights=[0,0,0];
+ for(const w of waves){sums[w.color]+=Math.cos(Math.PI*2*(w.x*x+w.y*y)+w.phase)*w.weight;weights[w.color]+=w.weight;}
+ return sums.map((v,i)=>(1+v/weights[i])/2);
+}
+
+export function ambientOffset(scroll,height,reduced=false){
+ return reduced?0:((scroll*.24)%height+height)%height;
+}
+
+export function paintScene(ctx,width,height,palette,seed){
+ // Write a small, seamless texture once. CanvasPattern interpolates and wraps
+ // it; no screen pixels are read and scrolling never regenerates this field.
+ const pw=ctx.canvas.width,ph=ctx.canvas.height,pixels=ctx.createImageData(pw,ph);
+ const rgb=hex=>hex.slice(1).match(/../g).map(v=>parseInt(v,16));
+ const base=rgb(palette.bg),colors=[palette.ambientOne,palette.ambientTwo,palette.surface].map(rgb),opacity=[.36,.30,.12];
+ const weights=[0,0,0],waves=ambientPattern(seed).map(w=>{
+  weights[w.color]+=w.weight;
+  return {...w,cx:Float64Array.from({length:pw},(_,x)=>Math.cos(Math.PI*2*w.x*(x+.5)/pw)),sx:Float64Array.from({length:pw},(_,x)=>Math.sin(Math.PI*2*w.x*(x+.5)/pw))};
+ });
+ const sums=[0,0,0],alpha=[0,0,0];
+ for(let y=0;y<ph;y++){
+  for(const w of waves){const phase=Math.PI*2*w.y*(y+.5)/ph+w.phase;w.cy=Math.cos(phase)*w.weight;w.sy=Math.sin(phase)*w.weight;}
+  for(let x=0;x<pw;x++){
+   sums.fill(0);
+   for(const w of waves)sums[w.color]+=w.cx[x]*w.cy-w.sx[x]*w.sy;
+   for(let i=0;i<3;i++){const t=Math.max(0,Math.min(1,(1+sums[i]/weights[i])/2));alpha[i]=t*t*(3-2*t)*opacity[i];}
+   const index=(y*pw+x)*4;
+   for(let c=0;c<3;c++){let value=base[c];for(let i=0;i<3;i++)value+=(colors[i][c]-value)*alpha[i];pixels.data[index+c]=Math.round(value);}
+   pixels.data[index+3]=255;
+  }
+ }
+ ctx.putImageData(pixels,0,0);
 }
 
 function roundedPath(ctx,x,y,w,h,r){
@@ -96,12 +114,16 @@ export function mountGlass(document,window){
  const root=document.documentElement;
  const reduce=window.matchMedia('(prefers-reduced-transparency: reduce)');
  const forced=window.matchMedia('(forced-colors: active)');
+ const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
  const supported=window.CSS?.supports('backdrop-filter','blur(1px)')||window.CSS?.supports('-webkit-backdrop-filter','blur(1px)');
  if(!supported)return ()=>{};
  const scene=document.createElement('canvas'),context=scene.getContext('2d');
  if(!context)return ()=>{};
+ const texture=document.createElement('canvas'),textureContext=texture.getContext('2d');
+ if(!textureContext)return ()=>{};
+ const seed=Math.floor(Math.random()*4294967296);
  scene.className='glass-scene';scene.setAttribute('aria-hidden','true');
- const materials=new Map();let frame=0,dirtyScene=true,dirtyScan=true,palette,viewport,stopped=false;
+ const materials=new Map();let frame=0,dirtyScene=true,dirtyScan=true,palette,viewport,stopped=false,tile,pattern,lastOffset=NaN;
  const schedule=()=>{if(!frame&&!document.hidden&&!stopped)frame=window.requestAnimationFrame(render);};
  const resize=new window.ResizeObserver(schedule);
  const visible=new window.IntersectionObserver(entries=>{for(const entry of entries){const item=materials.get(entry.target);if(item)item.visible=entry.isIntersecting;}schedule();},{rootMargin:'40px'});
@@ -127,7 +149,24 @@ export function mountGlass(document,window){
   const size=lensMetrics(viewport.width,viewport.height,window.devicePixelRatio);
   scene.width=size.width;scene.height=size.height;
   context.setTransform(size.width/viewport.width,0,0,size.height/viewport.height,0,0);
-  paintScene(context,viewport.width,viewport.height,palette);
+  tile={width:Math.min(1600,Math.max(720,viewport.width)),height:Math.max(960,viewport.height)};
+  const ratio=Math.min(1,320/Math.max(tile.width,tile.height));
+  const tileSize={width:Math.max(1,Math.round(tile.width*ratio)),height:Math.max(1,Math.round(tile.height*ratio))};
+  texture.width=tileSize.width;texture.height=tileSize.height;
+  textureContext.setTransform(tileSize.width/tile.width,0,0,tileSize.height/tile.height,0,0);
+  paintScene(textureContext,tile.width,tile.height,palette,seed);
+  pattern=context.createPattern(texture,'repeat');lastOffset=NaN;
+ }
+ function drawEnvironment(){
+  const offset=ambientOffset(window.scrollY||0,tile.height,motion.matches);
+  if(offset===lastOffset)return;
+  lastOffset=offset;
+  context.clearRect(0,0,viewport.width,viewport.height);
+  context.save();context.translate(0,-offset);
+  context.scale(tile.width/texture.width,tile.height/texture.height);
+  context.fillStyle=pattern;
+  context.fillRect(0,offset*texture.height/tile.height,viewport.width*texture.width/tile.width,viewport.height*texture.height/tile.height);
+  context.restore();
  }
  function render(){
   frame=0;if(stopped||document.hidden)return;
@@ -135,6 +174,7 @@ export function mountGlass(document,window){
   if(!scene.isConnected){document.body.prepend(scene);root.classList.add('glass-ready');dirtyScene=true;}
   if(dirtyScan){dirtyScan=false;scan();}
   if(dirtyScene){dirtyScene=false;paintEnvironment();}
+  drawEnvironment();
   // Batch layout reads before canvas writes. Offscreen cards cost no drawing.
   const jobs=[];
   for(const [element,item]of materials)if(item.visible){
@@ -170,16 +210,17 @@ export function mountGlass(document,window){
  window.addEventListener('resize',resized,{passive:true});
  window.addEventListener('scroll',schedule,{passive:true,capture:true});
  document.addEventListener('visibilitychange',schedule);
- reduce.addEventListener('change',preference);forced.addEventListener('change',preference);
+ reduce.addEventListener('change',preference);forced.addEventListener('change',preference);motion.addEventListener('change',preference);
  schedule();
  return ()=>{
   stopped=true;if(frame)window.cancelAnimationFrame(frame);
   changes.disconnect();theme.disconnect();resize.disconnect();visible.disconnect();
   window.removeEventListener('resize',resized);window.removeEventListener('scroll',schedule,true);
   document.removeEventListener('visibilitychange',schedule);
-  reduce.removeEventListener('change',preference);forced.removeEventListener('change',preference);
+  reduce.removeEventListener('change',preference);forced.removeEventListener('change',preference);motion.removeEventListener('change',preference);
   for(const [element,item]of materials){item.canvas.remove();element.classList.remove('glass-material');if(item.anchor)element.classList.remove('glass-anchor');}
   scene.remove();root.classList.remove('glass-ready');
+  texture.width=texture.height=1;
  };
 }
 

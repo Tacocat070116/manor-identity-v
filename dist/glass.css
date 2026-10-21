@@ -7,10 +7,12 @@
 .glass-material{isolation:isolate}
 .glass-optics{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;border-radius:inherit;pointer-events:none;user-select:none;contain:strict}
 
-/* One restrained outer contour; refraction no longer adds parallel inner rims. */
+/* Decorative outer strokes are transparent. The surface and soft shadow define
+   its edge; focus/selected states keep their separate, visible outlines. */
 :where(.nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.character-card,.quick-link,.character-hero,.panel:not(.green):not(.warm),.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.gp-filter-form,.gp-detail,.fb-summary,.fb-card,.fb-detail).glass-material{border-color:var(--glass-line)}
 .nav-shell,.category-toggle,.category-panel{border-color:var(--glass-line)}
 .nav-shell .icon-btn{border-color:var(--glass-line)}
+.panel.green,.panel.warm,.character-patch,.gp-home-link,.fb-response,.fb-notice{border-color:var(--glass-line)}
 
 :is(.character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.statistics-table-wrap,.gp-filter-form,.gp-detail,.character-patch,.gp-home-link,.fb-summary,.fb-card,.fb-detail,details){
  background-image:var(--glass-sheen);
@@ -51,6 +53,10 @@ dialog{border-color:var(--glass-line);background-color:var(--nav-surface);-webki
  .glass-material,.nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.character-card,.icon-btn,.btn:not(.primary):not(.quiet),.search-box,.filter-select,dialog{background-color:var(--surface-solid);background-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
  .nav-shell .icon-btn{background-color:var(--surface-solid)}
 }
+@media(prefers-reduced-transparency:reduce){
+ .filter-select{background-image:var(--select-arrow);background-position:right 10px center;background-size:16px 16px;background-repeat:no-repeat}
+}
+@media(forced-colors:active){.filter-select{background-image:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
  .glass-scene,.glass-optics{display:none}
  .nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.nav-shell .icon-btn{background-color:var(--surface-solid)}
