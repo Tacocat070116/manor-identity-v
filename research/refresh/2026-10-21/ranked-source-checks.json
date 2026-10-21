@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-21",
+  "newRows": 0,
+  "publishedRows": 32667,
+  "publishedDatasets": 421,
+  "checks": [
+    {
+      "url": "https://github.com/DMB-codegang/dwrg-tools",
+      "head": "5d4237eea5b24d752b86be69ce65ffce24d99512",
+      "result": "기존 수록 자료 대비 새 공개 통계 파일 미확보"
+    },
+    {
+      "url": "https://github.com/luolangaga/ASGneo",
+      "result": "기존 수록 자료 대비 새 공개 통계 파일 미확보"
+    },
+    {
+      "url": "https://github.com/wyxAIh/idv-wubang",
+      "head": "f0588e388136d812ada11399b418eab0d0a54ce1",
+      "result": "보관 JSON은 기존 S43-260613·S44-260804·Day20260429 범위"
+    },
+    {
+      "url": "https://wikiwiki.jp/identity5ch/前シーズン勝率-ハンター",
+      "result": "아시아 S43 공개표 재확인; 새 시즌 표 미확보"
+    },
+    {
+      "url": "https://wiki.biligame.com/dwrg/排位数据",
+      "result": "공개 페이지 집계 기준 확인; 추가 수치 원자료 미확보"
+    },
+    {
+      "url": "https://web.homeworkkun.top/胜率数据/form",
+      "result": "HTTP 403. 제한을 우회하지 않고 수집 중단"
+    }
+  ],
+  "policy": "원자료 수집일과 단순 점검일을 분리. 통계가 없는 서버·시즌 또는 실제 경기 수를 추정하지 않음."
+}

@@ -1,0 +1,803 @@
+[
+  {
+    "id": "c01",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%B5%90%E9%AD%82%E8%80%85",
+    "title": "結魂者 - identity5ch",
+    "ref": "turn61view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c02",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BE%A9%E8%AE%90%E8%80%85",
+    "title": "復讐者 - identity5ch",
+    "ref": "turn61view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c03",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%8B%82%E7%9C%BC",
+    "title": "狂眼 - identity5ch",
+    "ref": "turn61view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c04",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%81%93%E5%8C%96%E5%B8%AB",
+    "title": "道化師 - identity5ch",
+    "ref": "turn61view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c05",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%A4%A2%E3%81%AE%E9%AD%94%E5%A5%B3",
+    "title": "夢の魔女 - identity5ch",
+    "ref": "turn61view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c06",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%BC%81%E5%B8%AB",
+    "title": "漁師 - identity5ch",
+    "ref": "turn61view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c07",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%A4%9C%E3%81%AE%E7%95%AA%E4%BA%BA",
+    "title": "夜の番人 - identity5ch",
+    "ref": "turn61view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c08",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%BB%84%E8%A1%A3%E3%81%AE%E7%8E%8B",
+    "title": "黄衣の王 - identity5ch",
+    "ref": "turn61view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c09",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%93%E3%83%AA%E3%83%A4%E3%83%BC%E3%83%89%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC",
+    "title": "ビリヤードプレイヤー - identity5ch",
+    "ref": "turn61view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c10",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%AA%E3%83%83%E3%83%91%E3%83%BC",
+    "title": "リッパー - identity5ch",
+    "ref": "turn61view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c11",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BF%83%E3%81%AE%E7%8D%A3",
+    "title": "心の獣 - identity5ch",
+    "ref": "turn62view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c12",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%9D%8B%E4%BA%BA%E5%BD%A2%E5%B8%AB",
+    "title": "蝋人形師 - identity5ch",
+    "ref": "turn62view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c13",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%B4%E3%82%A1%E3%82%A4%E3%82%AA%E3%83%AA%E3%83%8B%E3%82%B9%E3%83%88",
+    "title": "ヴァイオリニスト - identity5ch",
+    "ref": "turn62view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c14",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%82%A2%E3%83%B3%E3%83%87%E3%83%83%E3%83%89",
+    "title": "アンデッド - identity5ch",
+    "ref": "turn62view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c15",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%8A%B8%E8%80%85",
+    "title": "芸者 - identity5ch",
+    "ref": "turn62view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c16",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%A1%80%E3%81%AE%E5%A5%B3%E7%8E%8B",
+    "title": "血の女王 - identity5ch",
+    "ref": "turn62view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c17",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%96%AD%E7%BD%AA%E7%8B%A9%E4%BA%BA",
+    "title": "断罪狩人 - identity5ch",
+    "ref": "turn62view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c18",
+    "url": "https://wikiwiki.jp/identity5ch/%E4%BD%BF%E5%BE%92",
+    "title": "使徒 - identity5ch",
+    "ref": "turn62view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c19",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%86%99%E7%9C%9F%E5%AE%B6",
+    "title": "写真家 - identity5ch",
+    "ref": "turn62view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c20",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%9B%B8%E8%A8%98%E5%AE%98",
+    "title": "書記官 - identity5ch",
+    "ref": "turn62view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c21",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%82%AC%E3%83%BC%E3%83%89No.26",
+    "title": "ガードNo.26 - IdentityV(第五人格)5ch攻略 Wiki*",
+    "ref": "turn63view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c22",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%99%82%E7%A9%BA%E3%81%AE%E5%BD%B1",
+    "title": "時空の影 - identity5ch",
+    "ref": "turn63view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c23",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%82%AA%E5%A4%A2",
+    "title": "悪夢 - identity5ch",
+    "ref": "turn63view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c24",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%A5%B3%E7%8E%8B%E8%9C%82",
+    "title": "女王蜂 - identity5ch",
+    "ref": "turn63view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c25",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%82%AA%E3%83%9A%E3%83%A9%E6%AD%8C%E6%89%8B",
+    "title": "オペラ歌手 - identity5ch",
+    "ref": "turn63view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c26",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%99%BD%E9%BB%92%E7%84%A1%E5%B8%B8",
+    "title": "白黒無常 - identity5ch",
+    "ref": "turn63view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c27",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%B3%A3%E3%81%8D%E8%99%AB",
+    "title": "泣き虫 - identity5ch",
+    "ref": "turn63view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c28",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%9A%A0%E8%80%85",
+    "title": "隠者 - identity5ch",
+    "ref": "turn63view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c29",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%9B%91%E8%B2%A8%E5%95%86",
+    "title": "雑貨商 - identity5ch",
+    "ref": "turn63view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c30",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%AD%94%E3%83%88%E3%82%AB%E3%82%B2",
+    "title": "魔トカゲ - identity5ch",
+    "ref": "turn63view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c31",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%B6%B3%E8%90%8E%E3%81%88%E3%81%AE%E7%BE%8A",
+    "title": "足萎えの羊 - identity5ch",
+    "ref": "turn64view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c32",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BD%AB%E5%88%BB%E5%B8%AB",
+    "title": "彫刻師 - identity5ch",
+    "ref": "turn64view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c33",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%AD%AF%E5%8C%BB%E8%80%85",
+    "title": "歯医者 - identity5ch",
+    "ref": "turn64view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c34",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%A0%B4%E8%BC%AA",
+    "title": "破輪 - identity5ch",
+    "ref": "turn64view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c35",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%95%E3%83%BC%E3%83%AB%E3%82%BA%E3%83%BB%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%89",
+    "title": "フールズ・ゴールド - identity5ch",
+    "ref": "turn64view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c36",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%95%E3%83%A9%E3%83%90%E3%83%AB%E3%83%BC",
+    "title": "フラバルー - identity5ch",
+    "ref": "turn64view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c37",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%9B%B2%E8%8A%B8%E5%B8%AB",
+    "title": "曲芸師 - identity5ch",
+    "ref": "turn64view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c38",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%98%86%E8%99%AB%E5%AD%A6%E8%80%85",
+    "title": "昆虫学者 - identity5ch",
+    "ref": "turn64view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c39",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%AA%A8%E8%91%A3%E5%95%86",
+    "title": "骨董商 - identity5ch",
+    "ref": "turn64view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c40",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%A9%BA%E8%BB%8D",
+    "title": "空軍 - identity5ch",
+    "ref": "turn64view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c41",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%95%99%E6%8E%88",
+    "title": "教授 - identity5ch",
+    "ref": "turn65view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c42",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BC%93%E4%BD%BF%E3%81%84",
+    "title": "弓使い - identity5ch",
+    "ref": "turn65view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c43",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%A9%9F%E6%A2%B0%E6%8A%80%E5%B8%AB",
+    "title": "機械技師 - identity5ch",
+    "ref": "turn65view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c44",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%A8%8E%E5%A3%AB",
+    "title": "騎士 - identity5ch",
+    "ref": "turn65view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c45",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%B0%97%E8%B1%A1%E5%AD%A6%E8%80%85",
+    "title": "気象学者 - identity5ch",
+    "ref": "turn65view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c46",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%A8%98%E8%80%85",
+    "title": "記者 - identity5ch",
+    "ref": "turn65view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c47",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%B4%8D%E6%A3%BA%E5%B8%AB",
+    "title": "納棺師 - identity5ch",
+    "ref": "turn65view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c48",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%B3%A5%E6%A3%92",
+    "title": "泥棒 - identity5ch",
+    "ref": "turn65view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c49",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%9E%E3%82%B8%E3%82%B7%E3%83%A3%E3%83%B3",
+    "title": "マジシャン - identity5ch",
+    "ref": "turn65view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c50",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BF%83%E7%9C%BC",
+    "title": "心眼 - identity5ch",
+    "ref": "turn65view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c51",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%86%92%E9%99%BA%E5%AE%B6",
+    "title": "冒険家 - identity5ch",
+    "ref": "turn66view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c52",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%A2%93%E5%AE%88",
+    "title": "墓守 - identity5ch",
+    "ref": "turn66view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c53",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%9E%E3%82%A4%E3%83%A0%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B9%E3%83%88",
+    "title": "マイムアーティスト - identity5ch",
+    "ref": "turn66view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c54",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%B8%8A%E3%82%8A%E5%AD%90",
+    "title": "踊り子 - identity5ch",
+    "ref": "turn66view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c55",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%90%E3%83%BC%E3%83%A1%E3%82%A4%E3%83%89",
+    "title": "バーメイド - identity5ch",
+    "ref": "turn66view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c56",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BC%81%E8%AD%B7%E5%A3%AB",
+    "title": "弁護士 - identity5ch",
+    "ref": "turn66view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c57",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%A5%AD%E5%8F%B8",
+    "title": "祭司 - identity5ch",
+    "ref": "turn66view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c58",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%8D%A0%E3%81%84%E5%B8%AB",
+    "title": "占い師 - identity5ch",
+    "ref": "turn66view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c59",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%B0%8F%E8%AA%AC%E5%AE%B6",
+    "title": "小説家 - identity5ch",
+    "ref": "turn66view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c60",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%A5%9E%E7%AB%A5",
+    "title": "神童 - identity5ch",
+    "ref": "turn66view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c61",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BF%83%E7%90%86%E5%AD%A6%E8%80%85",
+    "title": "心理学者 - identity5ch",
+    "ref": "turn67view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c62",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%87%8E%E4%BA%BA",
+    "title": "野人 - identity5ch",
+    "ref": "turn67view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c63",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%B0%91%E5%A5%B3",
+    "title": "少女 - identity5ch",
+    "ref": "turn67view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c64",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%82%AD%E5%85%B5",
+    "title": "傭兵 - identity5ch",
+    "ref": "turn67view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c65",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%B3%A3%E3%81%8D%E3%83%94%E3%82%A8%E3%83%AD",
+    "title": "泣きピエロ - identity5ch",
+    "ref": "turn67view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c66",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%9D%E3%82%B9%E3%83%88%E3%83%9E%E3%83%B3",
+    "title": "ポストマン - identity5ch",
+    "ref": "turn67view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c67",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%8C%BB%E5%B8%AB",
+    "title": "医師 - identity5ch",
+    "ref": "turn67view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c68",
+    "url": "https://wikiwiki.jp/identity5ch/%E4%BA%BA%E5%BD%A2%E5%B8%AB",
+    "title": "人形師 - identity5ch",
+    "ref": "turn67view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c69",
+    "url": "https://wikiwiki.jp/identity5ch/%E4%BD%9C%E6%9B%B2%E5%AE%B6",
+    "title": "作曲家 - identity5ch",
+    "ref": "turn67view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c70",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%8E%A9%E5%85%B7%E8%81%B7%E4%BA%BA",
+    "title": "玩具職人 - identity5ch",
+    "ref": "turn67view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c71",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BA%AD%E5%B8%AB",
+    "title": "庭師 - identity5ch",
+    "ref": "turn68view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c72",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%AA%BF%E9%A6%99%E5%B8%AB",
+    "title": "調香師 - identity5ch",
+    "ref": "turn68view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c73",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%9B%9A%E4%BA%BA",
+    "title": "囚人 - identity5ch",
+    "ref": "turn68view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c74",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%91%AA%E8%A1%93%E5%B8%AB",
+    "title": "呪術師 - identity5ch",
+    "ref": "turn68view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c75",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%BF%9C%E6%8F%B4%E5%9B%A3",
+    "title": "応援団 - identity5ch",
+    "ref": "turn68view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c76",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%82%AB%E3%82%A6%E3%83%9C%E3%83%BC%E3%82%A4",
+    "title": "カウボーイ - identity5ch",
+    "ref": "turn68view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c77",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%90%E3%83%83%E3%83%84%E3%83%9E%E3%83%B3",
+    "title": "バッツマン - identity5ch",
+    "ref": "turn68view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c78",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%84%B1%E5%87%BA%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC",
+    "title": "脱出マスター - identity5ch",
+    "ref": "turn68view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c79",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%8E%A2%E9%89%B1%E8%80%85",
+    "title": "探鉱者 - identity5ch",
+    "ref": "turn68view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c80",
+    "url": "https://wikiwiki.jp/identity5ch/%E9%97%98%E7%89%9B%E5%A3%AB",
+    "title": "闘牛士 - identity5ch",
+    "ref": "turn68view9",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c81",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%83%AC%E3%83%87%E3%82%A3%E3%83%BB%E3%83%95%E3%82%A1%E3%82%A6%E3%83%AD",
+    "title": "レディ・ファウロ - identity5ch",
+    "ref": "turn69view0",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c82",
+    "url": "https://wikiwiki.jp/identity5ch/%E3%82%AA%E3%83%95%E3%82%A7%E3%83%B3%E3%82%B9",
+    "title": "オフェンス - identity5ch",
+    "ref": "turn69view1",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c83",
+    "url": "https://wikiwiki.jp/identity5ch/%E8%88%AA%E7%A9%BA%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2",
+    "title": "航空エンジニア - identity5ch",
+    "ref": "turn69view2",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c84",
+    "url": "https://wikiwiki.jp/identity5ch/%E4%B8%80%E7%AD%89%E8%88%AA%E6%B5%B7%E5%A3%AB",
+    "title": "一等航海士 - identity5ch",
+    "ref": "turn69view3",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c85",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%B9%B8%E9%81%8B%E5%85%90",
+    "title": "幸運児 - identity5ch",
+    "ref": "turn69view4",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c86",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%94%BB%E5%AE%B6",
+    "title": "画家 - identity5ch",
+    "ref": "turn69view5",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c87",
+    "url": "https://wikiwiki.jp/identity5ch/%E7%81%AB%E7%81%BD%E8%AA%BF%E6%9F%BB%E5%93%A1",
+    "title": "火災調査員 - identity5ch",
+    "ref": "turn69view6",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c88",
+    "url": "https://wikiwiki.jp/identity5ch/%E5%B9%BB%E7%81%AF%E5%B8%AB",
+    "title": "幻灯師 - identity5ch",
+    "ref": "turn69view7",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  },
+  {
+    "id": "c89",
+    "url": "https://wikiwiki.jp/identity5ch/%E6%82%A3%E8%80%85",
+    "title": "患者 - identity5ch",
+    "ref": "turn69view8",
+    "scope": "외재 특성·스킬 설명",
+    "accessedAt": "2026-10-21",
+    "retrieved": true
+  }
+]

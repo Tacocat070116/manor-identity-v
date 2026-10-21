@@ -1,5 +1,5 @@
 export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=bb16060d15ab';
-export const REFERENCE_DATE = '2026-10-16';
+export const REFERENCE_DATE = '2026-10-21';
 export function cutoff(days, reference = REFERENCE_DATE) {
   if (!Number(days)) return '';
   const d = new Date(reference + 'T00:00:00Z');
@@ -22,7 +22,8 @@ export function statsFor(rows, character, filters = {}) {
     else if ((r[5] === '승') === (character.side === '감시자')) totals.win++;
     else totals.loss++;
   }
-  totals.winRate = totals.results >= 50 ? totals.win / totals.results : null;
+  totals.winRate = totals.results > 0 ? totals.win / totals.results : null;
+  totals.smallSample = totals.results > 0 && totals.results < 50;
   return totals;
 }
 export function rankBans(rows, selections, filters = {}) {

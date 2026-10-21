@@ -1,3 +1,4 @@
+import * as compendium from './dist/compendium-model.js';
 import * as themeUI from './dist/themes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -74,7 +75,7 @@ test('tournament pick rates, result perspective, sample gates and distinct ban d
  assert.equal(s.rows[1].ban,25);assert.equal(s.rows[0].ban,null);
  assert.equal(s.rows.filter(r=>r.side==='생존자').reduce((n,r)=>n+r.pick,0),400);
  const tiny=tournamentStatistics(matches.slice(0,49),[],characters,{days:0});
- assert.equal(tiny.rows[0].win,null);assert.equal(tiny.rows[0].pick,100);assert.equal(tiny.rows[1].ban,null);
+ assert.equal(tiny.rows[0].win,40/49*100);assert.equal(tiny.rows[0].pick,100);assert.equal(tiny.rows[1].ban,null);
  const empty=tournamentStatistics(matches,bans,characters,{map:'없는 맵'});assert.equal(empty.games,0);assert.equal(empty.rows[0].pick,null);
 });
 
@@ -87,7 +88,7 @@ test('missing values sort last and zero remains a real zero',()=>{
 function runtime(){
  const nodes=new Map(),handlers={},fetches=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},focus(){},showModal(){},close(){}});
- const context={...themeUI,...model,...releaseUI,createStatisticsUI,selectRanked,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={...compendium,...themeUI,...model,...releaseUI,createStatisticsUI,selectRanked,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
  document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},getElementById(id){return nodes.get('#'+id);},addEventListener(t,h){handlers[t]=h;}},
  window:{addEventListener(){},scrollTo(){},scrollY:0,history:{replaceState(_a,_b,url){context.location.hash=url;}}},
  location:{hash:'#v=statistics',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
@@ -133,5 +134,5 @@ test('ranked import survives partial network failure without hiding tournament r
  const {context,nodes,app}=runtime();const fetch=context.fetch;
  context.fetch=async url=>url.startsWith('ranked/')?{ok:false}:fetch(url);
  await app.boot();const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,757/);
+ assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,851/);
 });

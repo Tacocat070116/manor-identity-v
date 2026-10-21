@@ -1,6 +1,6 @@
 {
   "name": "manor-identity-v",
-  "version": "1.7.6",
+  "version": "1.8.0",
   "private": true,
   "type": "module",
   "description": "Independently deployable MANOR Identity V guide",
@@ -9,6 +9,6 @@
   },
   "scripts": {
     "release": "node scripts/release.mjs",
-    "test": "node scripts/check-release.mjs && node --check dist/releases.js && node --check dist/navigation.js && node --check dist/game-patches.js && node --check dist/game-patches-model.js && node --check dist/app.js && node --check dist/themes.js && node --check dist/feedback.js && node --check dist/model.js && node --check dist/character-search.js && node --check dist/character-search-data.js && node --check dist/carousel.js && node --check dist/statistics.js && node --check dist/statistics-model.js && node validate.mjs && node --test navigation.test.mjs carousel.test.mjs statistics.test.mjs feedback.test.mjs release.test.mjs game-patches.test.mjs character-search.test.mjs themes.test.mjs selection-swap.test.mjs"
+    "test": "node scripts/check-release.mjs && node --check dist/releases.js && node --check dist/navigation.js && node --check dist/game-patches.js && node --check dist/game-patches-model.js && node --check dist/app.js && node --check dist/themes.js && node --check dist/feedback.js && node --check dist/compendium-model.js && node --check dist/model.js && node --check dist/character-search.js && node --check dist/character-search-data.js && node --check dist/carousel.js && node --check dist/statistics.js && node --check dist/statistics-model.js && node validate.mjs && node --test navigation.test.mjs carousel.test.mjs statistics.test.mjs feedback.test.mjs release.test.mjs game-patches.test.mjs character-search.test.mjs themes.test.mjs selection-swap.test.mjs compendium.test.mjs"
   }
 }

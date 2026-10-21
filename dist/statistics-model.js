@@ -1,4 +1,4 @@
-import {filterRows,matchesCharacter} from './model.js?v=367d630b89a5';
+import {filterRows,matchesCharacter} from './model.js?v=27437535d180';
 
 export const SERVER_LABELS={asia:'아시아',cn:'중국'};
 export const TIER_LABELS={all:'전체 랭크',peak7:'최고 7티어','7':'7티어','6':'6티어','5':'5티어','4':'4티어','3':'3티어','2':'2티어','1':'1티어'};
@@ -35,7 +35,7 @@ export function tournamentStatistics(matches,bans,characters,filters={}){
   }
  }
  for(const b of banRows)for(const id of new Set(b[3])){const r=map.get(id);if(r?.banCount!==null&&r?.banCount!==undefined)r.banCount++;}
- const rows=[...map.values()].map(r=>({...r,pick:games.length?r.appearances/games.length*100:null,win:r.results>=50?r.wins/r.results*100:null,draw:r.results>=50?r.draws/r.results*100:null,loss:r.results>=50?r.losses/r.results*100:null,ban:banRows.length&&r.banCount!==null?r.banCount/banRows.length*100:null}));
+ const rows=[...map.values()].map(r=>({...r,pick:games.length?r.appearances/games.length*100:null,win:r.results>0?r.wins/r.results*100:null,draw:r.results>0?r.draws/r.results*100:null,loss:r.results>0?r.losses/r.results*100:null,ban:banRows.length&&r.banCount!==null?r.banCount/banRows.length*100:null}));
  return {rows,games:games.length,banGames:banRows.length,results:games.filter(g=>['승','무','패'].includes(g[5])).length,first:games.reduce((v,g)=>!v||g[0]<v?g[0]:v,''),last:games.reduce((v,g)=>g[0]>v?g[0]:v,'')};
 }
 
