@@ -1,0 +1,56 @@
+/* Optical depth without changing any component's box, typography or hit area.
+   Native backdrop filters transmit live content; the canvas bends the shared
+   background scene at the curved edge. Neither layer filters foreground text. */
+.glass-scene{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;user-select:none}
+.glass-ready .ambient{display:none}
+.glass-anchor{position:relative}
+.glass-material{isolation:isolate}
+.glass-optics{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;border-radius:inherit;pointer-events:none;user-select:none;contain:strict;filter:blur(.45px)}
+
+:is(.character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.statistics-table-wrap,.gp-filter-form,.gp-detail,.character-patch,.gp-home-link,.fb-summary,.fb-card,.fb-detail,details){
+ background-image:var(--glass-sheen);
+ -webkit-backdrop-filter:blur(5px) saturate(1.12);
+ backdrop-filter:blur(5px) saturate(1.12);
+}
+.nav-shell,.category-toggle,.hero-carousel-footer{
+ -webkit-backdrop-filter:blur(10px) saturate(1.22);
+ backdrop-filter:blur(10px) saturate(1.22);
+}
+.category-panel{
+ -webkit-backdrop-filter:blur(18px) saturate(1.18);
+ backdrop-filter:blur(18px) saturate(1.18);
+}
+.nav-shell{background-color:var(--glass)}
+.category-toggle{background-color:var(--nav-surface)}
+.icon-btn,.btn:not(.primary):not(.quiet),.search-box,.filter-select{
+ -webkit-backdrop-filter:blur(6px) saturate(1.12);
+ backdrop-filter:blur(6px) saturate(1.12);
+}
+/* Controls nested in another sheet already receive its background treatment. */
+.nav-shell .icon-btn,.glass-material .panel.relation-card,details details{
+ -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+.nav-shell .icon-btn{background-color:rgba(var(--surface-rgb),.44)}
+.panel.warm{background-color:color-mix(in srgb,var(--danger-soft) 76%,transparent)}
+.fb-summary button:last-of-type{border-right:0}
+.btn.primary{
+ background-image:radial-gradient(ellipse at 15% 0%,rgba(var(--surface-rgb),.13),transparent 65%);
+}
+/* Dialogs remain readable above arbitrary page content. */
+dialog{background-color:var(--nav-surface);-webkit-backdrop-filter:blur(20px) saturate(1.12);backdrop-filter:blur(20px) saturate(1.12)}
+.dialog-head{background-color:rgba(var(--surface-rgb),.92)}
+.theme-dialog{background-color:var(--nav-surface)}
+
+@media(prefers-reduced-transparency:reduce),(forced-colors:active){
+ .glass-scene,.glass-optics{display:none}
+ .glass-material,.nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.character-card,.icon-btn,.btn:not(.primary):not(.quiet),.search-box,.filter-select,dialog{background-color:var(--surface-solid);background-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+ .nav-shell .icon-btn{background-color:var(--surface-solid)}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .glass-scene,.glass-optics{display:none}
+ .nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.nav-shell .icon-btn{background-color:var(--surface-solid)}
+}
+@media print{
+ .glass-scene,.glass-optics{display:none}
+ .glass-material{-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;background:white}
+}

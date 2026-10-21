@@ -106,7 +106,7 @@ function personaBuild(c){
  return `<div class="persona-build" role="group" aria-label="${esc(c.persona)}"><p class="persona-direction">${esc(direction)}</p><div class="persona-talents">${names.map(name=>`<div class="persona-talent"><span class="persona-talent-art"><img src="assets/persona/${personaTalents[name].id}.png" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="persona-talent-name">${esc(name)}</span></div>`).join('')}</div></div>`;
 }
 function playGuide(c){
- return `<div class="panel play-guide"><h2 class="panel-title">${icon('clock')}실전 운용 가이드</h2><section class="play-guide-section"><h3 class="small-heading">먼저 사용할 때</h3><p>${esc(c.use)}</p></section><section class="play-guide-section"><h3 class="small-heading">아껴야 할 때</h3><p>${esc(c.hold)}</p></section><section class="play-guide-section play-guide-caution"><h3 class="small-heading">${icon('info')}주의할 점</h3><p>${esc(c.caution)}</p></section></div>`;
+ return `<div class="panel play-guide"><h2 class="panel-title">${icon('clock')}실전 운용 가이드</h2><section class="play-guide-section"><h3 class="small-heading">스킬을 사용해야 할 때</h3><p>${esc(c.use)}</p></section><section class="play-guide-section"><h3 class="small-heading">스킬을 아껴야 할 때</h3><p>${esc(c.hold)}</p></section><section class="play-guide-section play-guide-caution"><h3 class="small-heading">${icon('info')}주의할 점</h3><p>${esc(c.caution)}</p></section></div>`;
 }
 const difficulty=n=>`<span class="difficulty" role="img" aria-label="난이도 ${Number(n)}/5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
 const chip=(t,tone='')=>`<span class="tag ${tone}">${esc(t)}</span>`;
@@ -441,7 +441,7 @@ for(const d of[$('#picker'),$('#evidence'),$('#theme-picker')])d.addEventListene
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=b042b500ef72'),fetch('patches/characters.json?v=542f7a67c062')]);
+ const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=c10fe2cdcfb6'),fetch('patches/characters.json?v=542f7a67c062')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
