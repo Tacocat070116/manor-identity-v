@@ -5,7 +5,12 @@
 .glass-ready .ambient{display:none}
 .glass-anchor{position:relative}
 .glass-material{isolation:isolate}
-.glass-optics{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;border-radius:inherit;pointer-events:none;user-select:none;contain:strict;filter:blur(.45px)}
+.glass-optics{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;border-radius:inherit;pointer-events:none;user-select:none;contain:strict}
+
+/* One restrained outer contour; refraction no longer adds parallel inner rims. */
+:where(.nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.character-card,.quick-link,.character-hero,.panel:not(.green):not(.warm),.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.gp-filter-form,.gp-detail,.fb-summary,.fb-card,.fb-detail).glass-material{border-color:var(--glass-line)}
+.nav-shell,.category-toggle,.category-panel{border-color:var(--glass-line)}
+.nav-shell .icon-btn{border-color:var(--glass-line)}
 
 :is(.character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.statistics-table-wrap,.gp-filter-form,.gp-detail,.character-patch,.gp-home-link,.fb-summary,.fb-card,.fb-detail,details){
  background-image:var(--glass-sheen);
@@ -37,7 +42,7 @@
  background-image:radial-gradient(ellipse at 15% 0%,rgba(var(--surface-rgb),.13),transparent 65%);
 }
 /* Dialogs remain readable above arbitrary page content. */
-dialog{background-color:var(--nav-surface);-webkit-backdrop-filter:blur(20px) saturate(1.12);backdrop-filter:blur(20px) saturate(1.12)}
+dialog{border-color:var(--glass-line);background-color:var(--nav-surface);-webkit-backdrop-filter:blur(20px) saturate(1.12);backdrop-filter:blur(20px) saturate(1.12)}
 .dialog-head{background-color:rgba(var(--surface-rgb),.92)}
 .theme-dialog{background-color:var(--nav-surface)}
 

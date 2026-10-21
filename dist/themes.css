@@ -9,7 +9,7 @@
  --accent-line:rgba(var(--accent-rgb),.30);
  --accent-soft:rgba(var(--accent-soft-rgb),.74);
  --glass:rgba(var(--surface-rgb),.38);
- --glass-line:var(--line);
+ --glass-line:rgba(var(--ink-rgb),.10);
  --glass-sheen:radial-gradient(ellipse at 8% 0%,rgba(var(--sheen-rgb),.20),transparent 54%),linear-gradient(120deg,rgba(var(--surface-rgb),.08),transparent 45%,rgba(var(--accent-rgb),.035));
  --nav-surface:rgba(var(--surface-rgb),.56);
  --shadow:0 14px 32px -22px rgba(var(--shadow-rgb),.30),0 2px 5px -3px rgba(var(--shadow-rgb),.12);

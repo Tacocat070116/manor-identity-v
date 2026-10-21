@@ -59,7 +59,7 @@ function roundedPath(ctx,x,y,w,h,r){
 }
 
 export function paintLens(ctx,scene,rect,radius,palette,viewport){
- const w=rect.width,h=rect.height,depth=Math.min(14,radius*.65,w*.13,h*.21);
+ const w=rect.width,h=rect.height,depth=Math.min(20,radius*.8,w*.16,h*.28);
  ctx.clearRect(0,0,w,h);
  const transmit=(zoom,opacity,reflection=false)=>{
   const sample=lensSample(rect,zoom);
@@ -72,31 +72,23 @@ export function paintLens(ctx,scene,rect,radius,palette,viewport){
   ctx.restore();
  };
  ctx.save();ctx.beginPath();roundedPath(ctx,0,0,w,h,radius);ctx.clip();
- transmit(1.012,.13);
- // Concentric curved bands approximate a convex slab's changing surface normal.
- // The narrow outer bands bend more; the broad centre stays optically calm.
- const bands=8;
- for(let i=0;i<bands;i++){
-  const outer=depth*i/bands,inner=depth*(i+1)/bands;
-  ctx.save();ctx.beginPath();
-  roundedPath(ctx,outer,outer,w-2*outer,h-2*outer,radius-outer);
-  roundedPath(ctx,inner,inner,w-2*inner,h-2*inner,radius-inner);
-  ctx.clip('evenodd');
-  const curvature=(1-i/bands)**2;
-  transmit(1+(4+26*curvature)/Math.max(w,h),.25+.38*curvature);
-  if(i<3)transmit(1.06,.13*(1-i/3),true);
-  const grazing=ctx.createLinearGradient(0,0,w,h);
-  grazing.addColorStop(0,palette.light+'80');grazing.addColorStop(.38,palette.light+'05');
-  grazing.addColorStop(.65,palette.light+'00');grazing.addColorStop(1,palette.light+'38');
-  ctx.globalAlpha=curvature*.7;ctx.fillStyle=grazing;ctx.fillRect(0,0,w,h);
-  ctx.restore();
- }
- // A broad grazing reflection is coloured by the environment and fades into
- // the body. No uniform white outline, duplicated border or inset stroke.
+ // One continuous sample, never separately clipped concentric bands. Their
+ // antialiased edges used to accumulate into visible contour lines on phones.
+ transmit(1+18/Math.max(w,h),.32);
+ transmit(1.018,.045,true);
  ctx.globalAlpha=1;
  const reflection=ctx.createRadialGradient(w*.12,-h*.3,0,w*.12,-h*.3,Math.max(w*.82,h*.7));
- reflection.addColorStop(0,palette.light+'50');reflection.addColorStop(.6,palette.light+'12');reflection.addColorStop(1,palette.light+'00');
+ reflection.addColorStop(0,palette.light+'48');reflection.addColorStop(.6,palette.light+'10');reflection.addColorStop(1,palette.light+'00');
  ctx.fillStyle=reflection;ctx.fillRect(0,0,w,h);
+ // Feather using only a blurred silhouette, with its source shape outside the
+ // canvas. Including the solid source would leave another hard inner contour.
+ // Shadows work in Safari without CanvasRenderingContext2D.filter; their
+ // offsets/blur use device pixels, independently of the current transform.
+ const scale=ctx.getTransform?.()?.d||1,offset=h+depth*4;
+ ctx.save();ctx.globalCompositeOperation='destination-out';ctx.globalAlpha=.82;
+ ctx.fillStyle='#000';ctx.shadowColor='#000';ctx.shadowBlur=depth*1.1*scale;ctx.shadowOffsetY=-offset*scale;
+ ctx.beginPath();roundedPath(ctx,depth,depth+offset,w-2*depth,h-2*depth,Math.max(0,radius-depth));ctx.fill();ctx.restore();
+ transmit(1.008,.045);
  ctx.restore();ctx.globalAlpha=1;
 }
 
@@ -148,8 +140,12 @@ export function mountGlass(document,window){
   for(const [element,item]of materials)if(item.visible){
    const rect=element.getBoundingClientRect();
    if(rect.width>0&&rect.height>0&&rect.bottom>0&&rect.top<viewport.height&&rect.right>0&&rect.left<viewport.width){
-    const radius=parseFloat(window.getComputedStyle(element).borderTopLeftRadius)||16;
-    const box={left:rect.left+element.clientLeft,top:rect.top+element.clientTop,width:element.clientWidth,height:element.clientHeight};
+    const style=window.getComputedStyle(element),radius=parseFloat(style.borderTopLeftRadius)||16;
+    // Keep fractional CSS pixels on dense/mobile grids; rounding to clientWidth
+    // can stretch the optical edge relative to the actual rounded border.
+    const left=parseFloat(style.borderLeftWidth)||0,right=parseFloat(style.borderRightWidth)||0;
+    const top=parseFloat(style.borderTopWidth)||0,bottom=parseFloat(style.borderBottomWidth)||0;
+    const box={left:rect.left+left,top:rect.top+top,width:rect.width-left-right,height:rect.height-top-bottom};
     jobs.push({item,box,radius});
    }
   }
