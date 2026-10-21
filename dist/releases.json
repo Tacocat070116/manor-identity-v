@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-5-3",
+      "version": "1.5.3",
+      "date": "2026-10-21",
+      "title": "태그야, 조금만 가까이",
+      "changes": [
+        {
+          "type": "수정",
+          "text": "도감 카드 이름의 고정 두 줄 높이를 없애고 태그와의 간격을 4px로 맞췄습니다. 긴 이름은 줄바꿈 뒤에 태그가 자연스럽게 이어집니다."
+        },
+        {
+          "type": "개선",
+          "text": "구출·운영 아이콘을 이전 구명환·연결점 형태로 복원했습니다. 캠핑은 이전 버전과 같은 의자 모양을 유지합니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-5-2",
       "version": "1.5.2",
