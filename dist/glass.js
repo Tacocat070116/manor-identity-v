@@ -181,22 +181,20 @@ export function mountGlass(document,window){
    const rect=element.getBoundingClientRect();
    if(rect.width>0&&rect.height>0&&rect.bottom>0&&rect.top<viewport.height&&rect.right>0&&rect.left<viewport.width){
     const style=window.getComputedStyle(element),radius=parseFloat(style.borderTopLeftRadius)||16;
-    // Keep fractional CSS pixels on dense/mobile grids; rounding to clientWidth
-    // can stretch the optical edge relative to the actual rounded border.
-    const left=parseFloat(style.borderLeftWidth)||0,right=parseFloat(style.borderRightWidth)||0;
-    const top=parseFloat(style.borderTopWidth)||0,bottom=parseFloat(style.borderBottomWidth)||0;
-    const box={left:rect.left+left,top:rect.top+top,width:rect.width-left-right,height:rect.height-top-bottom};
+    // Match the entire border box, including fractional CSS pixels. The 1px
+    // transparent layout border must not separate the optical and CSS fills.
+    const box={left:rect.left,top:rect.top,width:rect.width,height:rect.height};
     jobs.push({item,box,radius});
    }
   }
   for(const {item,box,radius}of jobs){
-   // Canvas covers the padding box, inside the existing one-pixel border.
+   // Canvas and the non-repeating CSS sheen share the exact outer curve.
    if(!box.width||!box.height)continue;
    const size=lensMetrics(box.width,box.height,window.devicePixelRatio);
    if(item.canvas.width!==size.width)item.canvas.width=size.width;
    if(item.canvas.height!==size.height)item.canvas.height=size.height;
    item.ctx.setTransform(size.width/box.width,0,0,size.height/box.height,0,0);
-   paintLens(item.ctx,scene,box,radius-1,palette,viewport);
+   paintLens(item.ctx,scene,box,radius,palette,viewport);
   }
  }
  const changes=new window.MutationObserver(records=>{

@@ -5,7 +5,14 @@
 .glass-ready .ambient{display:none}
 .glass-anchor{position:relative}
 .glass-material{isolation:isolate}
-.glass-optics{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;border-radius:inherit;pointer-events:none;user-select:none;contain:strict}
+/* All material hosts retain a 1px transparent border for stable layout. Paint
+   through that reserved space so it cannot become a one-pixel optical seam. */
+.glass-optics{position:absolute;inset:-1px;z-index:-1;display:block;width:calc(100% + 2px);height:calc(100% + 2px);border-radius:inherit;pointer-events:none;user-select:none;contain:strict}
+
+/* A gradient defaults to the padding box and repeats into a transparent border.
+   Give the complete surface one non-repeating fill, including its outer pixel. */
+:is(.nav-shell,.category-toggle,.category-panel,.hero-carousel-footer,.character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,.evidence-card,.stat-box,.ban-slot,.rank-card,.source-card,.health-card,.statistics-overview>div,.statistics-table-wrap,.gp-filter-form,.gp-detail,.character-patch,.gp-home-link,.fb-summary,.fb-card,.fb-detail,details,dialog,.icon-btn,.btn,.search-box,.art-card,.fb-comment-form,.fb-compose,.fb-admin-form){background-origin:border-box;background-clip:border-box;background-repeat:no-repeat}
+.filter-select{background-origin:padding-box,border-box,border-box;background-clip:border-box}
 
 /* Decorative outer strokes are transparent. The surface and soft shadow define
    its edge; focus/selected states keep their separate, visible outlines. */
@@ -54,7 +61,7 @@ dialog{border-color:var(--glass-line);background-color:var(--nav-surface);-webki
  .nav-shell .icon-btn{background-color:var(--surface-solid)}
 }
 @media(prefers-reduced-transparency:reduce){
- .filter-select{background-image:var(--select-arrow);background-position:right 10px center;background-size:16px 16px;background-repeat:no-repeat}
+ .filter-select{background-image:var(--select-arrow);background-position:right 10px center;background-size:16px 16px;background-repeat:no-repeat;background-origin:padding-box}
 }
 @media(forced-colors:active){.filter-select{background-image:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
