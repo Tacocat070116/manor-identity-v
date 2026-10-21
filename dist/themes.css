@@ -1,23 +1,34 @@
-/* One surface system for all eight palettes. Geometry lives in component CSS.
-   Reflection is a soft, tinted wash: never an inset white stroke or an extra rim. */
+/* Shared translucent material, without displacement or edge optics.
+   Broad, feathered reflections live in the surface background, below its content. */
 :root{
- --surface:rgba(var(--surface-rgb),.82);
- --surface-soft:rgba(var(--inset-rgb),.72);
- --surface-hover:rgba(var(--surface-rgb),.96);
+ --surface:rgba(var(--surface-rgb),.64);
+ --surface-soft:rgba(var(--inset-rgb),.58);
+ --surface-hover:rgba(var(--surface-rgb),.88);
  --line:rgba(var(--ink-rgb),.16);
- --control-line:rgba(var(--ink-rgb),.28);
+ --control-line:rgba(var(--ink-rgb),.22);
  --accent-line:rgba(var(--accent-rgb),.30);
- --accent-soft:rgba(var(--accent-soft-rgb),.74);
- --glass:rgba(var(--surface-rgb),.70);
- --glass-line:var(--line);
- --glass-sheen:linear-gradient(140deg,rgba(var(--sheen-rgb),.12),rgba(var(--sheen-rgb),.02) 40%,rgba(var(--sheen-rgb),0) 65%);
- --nav-surface:rgba(var(--surface-rgb),.84);
- --shadow:0 8px 24px -16px rgba(var(--shadow-rgb),.20);
- --nav-shadow:0 12px 32px -16px rgba(var(--shadow-rgb),.24),0 2px 6px -3px rgba(var(--shadow-rgb),.10);
+ --accent-soft:rgba(var(--accent-soft-rgb),.64);
+ --glass:rgba(var(--surface-rgb),.48);
+ --glass-line:rgba(var(--ink-rgb),.10);
+ --sheen-peak:.48;
+ --sheen-spread:.12;
+ --sheen-return:.16;
+ --glass-sheen:radial-gradient(ellipse at 12% 0%,rgba(var(--sheen-rgb),var(--sheen-peak)) 0%,rgba(var(--sheen-rgb),var(--sheen-spread)) 34%,rgba(var(--sheen-rgb),0) 72%),radial-gradient(ellipse at 100% 110%,rgba(var(--sheen-rgb),var(--sheen-return)) 0%,rgba(var(--sheen-rgb),0) 65%);
+ --action-sheen:linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,0) 68%);
+ --nav-surface:rgba(var(--surface-rgb),.68);
+ --shadow:0 10px 28px -18px rgba(var(--shadow-rgb),.22),0 3px 8px -6px rgba(var(--shadow-rgb),.12);
+ --nav-shadow:0 14px 36px -18px rgba(var(--shadow-rgb),.26),0 3px 8px -4px rgba(var(--shadow-rgb),.12);
  --selected-shadow:0 3px 8px -3px rgba(var(--shadow-rgb),.16);
  --overlay:rgba(var(--shadow-rgb),.32);
  --overlay-opaque:rgba(var(--shadow-rgb),.82);
  --persona-line:rgba(var(--accent-rgb),.30);
+}
+
+/* Dark glass receives a quieter reflection tinted by its own palette. */
+html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){
+ --sheen-peak:.13;
+ --sheen-spread:.03;
+ --sheen-return:.045;
 }
 
 :root,
@@ -190,7 +201,7 @@ html[data-theme="plum"]{
 }
 
 /* The picker stays compact on phones and uses native radio-keyboard behavior. */
-.theme-dialog{width:min(740px,calc(100vw - 32px));max-height:min(86vh,760px);max-height:min(86dvh,760px);background-color:var(--surface-solid);overflow:auto;overscroll-behavior:contain}
+.theme-dialog{width:min(740px,calc(100vw - 32px));max-height:min(86vh,760px);max-height:min(86dvh,760px);background-color:var(--nav-surface);overflow:auto;overscroll-behavior:contain}
 .theme-dialog .dialog-head{padding-bottom:16px}
 .theme-dialog .dialog-title{margin-bottom:8px}
 .theme-dialog .dialog-title h2{display:flex;align-items:center;gap:10px;line-height:28px}
@@ -235,10 +246,29 @@ html[data-theme="plum"]{
  .theme-option>input:checked+.theme-option-card .theme-check{background:Highlight;color:HighlightText}
 }
 
+/* Every reflection fills the rounded border box once. No overlay, rim or mask
+   can cross an icon, and nested materials do not repeat a small highlight tile. */
+:where(.nav-shell,.category-toggle,.category-panel,.art-card,.hero-carousel-footer,
+ .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
+ .evidence-card,.stat-box,.ban-slot,.rank-card,details,.source-card,.health-card,
+ .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,
+ .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form,
+ .gp-filter-form,.gp-detail,.gp-home-link,.character-patch){
+ background-origin:border-box;
+ background-clip:border-box;
+ background-repeat:no-repeat;
+ background-size:100% 100%;
+}
+.gp-detail,.gp-home-link,.character-patch{background-image:var(--glass-sheen)}
+.gp-detail,.gp-filter-form{backdrop-filter:blur(16px) saturate(1.08);-webkit-backdrop-filter:blur(16px) saturate(1.08)}
+.btn.primary{background-image:var(--action-sheen)}
+
 /* Keep opaque-surface preferences stronger than every palette. */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
- :root[data-theme]{--surface:var(--surface-solid);--glass:var(--surface-solid);--nav-surface:var(--surface-solid);--surface-soft:var(--surface-inset);--glass-sheen:none}
+ :root[data-theme]{--surface:var(--surface-solid);--glass:var(--surface-solid);--nav-surface:var(--surface-solid);--surface-soft:var(--surface-inset);--surface-hover:var(--surface-solid);--accent-soft:rgb(var(--accent-soft-rgb));--glass-sheen:none;--action-sheen:none}
 }
 @media(prefers-reduced-transparency:reduce){
- :root[data-theme]{--surface:var(--surface-solid);--glass:var(--surface-solid);--nav-surface:var(--surface-solid);--surface-soft:var(--surface-inset);--surface-hover:var(--surface-solid);--glass-sheen:none}
+ :root[data-theme]{--surface:var(--surface-solid);--glass:var(--surface-solid);--nav-surface:var(--surface-solid);--surface-soft:var(--surface-inset);--surface-hover:var(--surface-solid);--accent-soft:rgb(var(--accent-soft-rgb));--glass-sheen:none;--action-sheen:none}
+ .gp-detail,.gp-filter-form{backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+@media(forced-colors:active){:root[data-theme]{--glass-sheen:none;--action-sheen:none}}
