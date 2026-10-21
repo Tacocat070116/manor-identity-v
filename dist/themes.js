@@ -1,10 +1,10 @@
 export const colorThemes=Object.freeze([
  {id:'light',name:'화이트',mode:'light',bg:'#e9f1ed',surface:'#f6faf7',ink:'#192e29',muted:'#53685d',accent:'#17634e',onAccent:'#ffffff'},
  {id:'dark',name:'다크',mode:'dark',bg:'#101e19',surface:'#1c3027',ink:'#edf6f0',muted:'#adc1b5',accent:'#9fd9bb',onAccent:'#101c19'},
- {id:'ocean',name:'오션',mode:'light',bg:'#e7eff7',surface:'#f6f9fd',ink:'#1a2d42',muted:'#50647b',accent:'#275e91',onAccent:'#ffffff'},
- {id:'lavender',name:'라벤더',mode:'light',bg:'#efebf7',surface:'#faf8fe',ink:'#302840',muted:'#696077',accent:'#695096',onAccent:'#ffffff'},
- {id:'rose',name:'로즈',mode:'light',bg:'#f7ebee',surface:'#fff8fa',ink:'#422a33',muted:'#7a5965',accent:'#9b4965',onAccent:'#ffffff'},
- {id:'sand',name:'샌드',mode:'light',bg:'#f3eee5',surface:'#fcfaf5',ink:'#3b3227',muted:'#70614c',accent:'#88642d',onAccent:'#ffffff'},
+ {id:'ocean',name:'오션',mode:'light',bg:'#e7eff7',surface:'#f6f9fd',ink:'#1a2d42',muted:'#495f76',accent:'#275e91',onAccent:'#ffffff'},
+ {id:'lavender',name:'라벤더',mode:'light',bg:'#efebf7',surface:'#faf8fe',ink:'#302840',muted:'#62566e',accent:'#695096',onAccent:'#ffffff'},
+ {id:'rose',name:'로즈',mode:'light',bg:'#f7ebee',surface:'#fff8fa',ink:'#422a33',muted:'#73525e',accent:'#9b4965',onAccent:'#ffffff'},
+ {id:'sand',name:'샌드',mode:'light',bg:'#f3eee5',surface:'#fcfaf5',ink:'#3b3227',muted:'#695a46',accent:'#88642d',onAccent:'#ffffff'},
  {id:'midnight',name:'미드나이트',mode:'dark',bg:'#111b2c',surface:'#1b2a40',ink:'#edf3fc',muted:'#acbbd2',accent:'#a4c7f3',onAccent:'#14243a'},
  {id:'plum',name:'플럼',mode:'dark',bg:'#231b2d',surface:'#31253f',ink:'#f4effa',muted:'#c4b4d3',accent:'#d8b7ee',onAccent:'#2b1b3a'}
 ].map(theme=>Object.freeze(theme)));

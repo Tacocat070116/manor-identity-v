@@ -51,10 +51,25 @@ test('theme text, muted captions and action labels maintain readable contrast',(
   assert.ok(contrast(t.accent,t.onAccent)>=4.5,t.id+' action label');
  }
  const css=fs.readFileSync('dist/themes.css','utf8');
- for(const theme of colorThemes.slice(2)){
+ for(const theme of colorThemes){
   const block=css.split(`html[data-theme="${theme.id}"]{`)[1]?.split('}')[0];
   assert.ok(block,theme.id+' stylesheet palette');
   for(const key of ['bg','ink','muted','accent'])assert.ok(block.includes(`--${key}:${theme[key]};`),theme.id+' preview matches live palette');
+ }
+});
+
+test('palettes cannot change component geometry or add another reflective edge',()=>{
+ const css=fs.readFileSync('dist/themes.css','utf8');
+ const palettes=colorThemes.map(theme=>css.split(`html[data-theme="${theme.id}"]{`)[1].split('}')[0]);
+ const keys=block=>[...block.matchAll(/(--[\w-]+):/g)].map(m=>m[1]).sort();
+ for(const block of palettes){
+  assert.deepEqual(keys(block),keys(palettes[0]),'every palette supplies the same color tokens');
+  assert.doesNotMatch(block,/(?:\d|\))\s*(?:px|rem|em|vh|vw)\b|(?:font|padding|margin|width|height|transform)\s*:/,'layout is theme-independent');
+ }
+ for(const shadow of ['shadow','nav-shadow','selected-shadow']){
+  const definitions=[...css.matchAll(new RegExp(`--${shadow}:([^;]+);`,'g'))];
+  assert.equal(definitions.length,1,'one shared shadow geometry');
+  assert.doesNotMatch(definitions[0][1],/inset/,'no inset highlight on top of a border');
  }
 });
 
