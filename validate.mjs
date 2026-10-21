@@ -164,8 +164,13 @@ for(const result of context.audit.roleCards){
  const ch=db.characters.find(c=>c.id===result.id);
  assert.ok(result.valid,ch.name+' runtime role validation');
  assert.ok(!result.card.includes('특화')&&!result.selection.includes('특화'),ch.name+' short labels');
- const cardTags=[...result.card.matchAll(/<span>#([^<]+)<\/span>/g)].map(m=>m[1]);
- const selectionTags=[...result.selection.matchAll(/class="tag specialty-tag">#([^<]+)<\/span>/g)].map(m=>m[1]);
+ const cardTags=[...result.card.matchAll(/data-specialty="([^"]+)"/g)].map(m=>m[1]);
+ const selectionTags=[...result.selection.matchAll(/data-specialty="([^"]+)"/g)].map(m=>m[1]);
+ assert.equal((result.card.match(/data-priority="primary"/g)||[]).length,1,ch.name+' one main role');
+ assert.equal((result.card.match(/data-priority="secondary"/g)||[]).length,ch.specialties.length-1,ch.name+' optional supporting role');
+ assert.ok(result.card.includes('메인 #'+ch.specialties[0]),ch.name+' accessible main role');
+ assert.ok(!/card-game-patch|최근 패치 날짜|<time/.test(result.card),ch.name+' no patch date on catalog card');
+ assert.ok(!/icon-hunter|icon-survivor|icon-info/.test(result.card),ch.name+' specialty icon without faction fallback');
  assert.deepEqual(cardTags,ch.specialties,ch.name+' ordered card tags');
  assert.deepEqual(selectionTags,ch.specialties,ch.name+' ordered compare tags');
 }

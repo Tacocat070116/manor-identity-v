@@ -140,7 +140,7 @@ test('character patch tab shows only reviewed balance changes and archive routes
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state,latestPatch,characterPage,characterPatchGroups,latestBalanceDate,patchHistoryEntry};',context);await context.app.boot();
+ vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render,state,characterPatchHistory,characterPage,characterPatchGroups,patchHistoryEntry};',context);await context.app.boot();
  assert.equal(fetches.some(url=>url.startsWith('patches/archive')),false);
  assert.ok(nodes.get('#page-body').innerHTML.includes('data-tab="patches"'));
  assert.ok(!nodes.get('#page-body').innerHTML.includes('class="character-patch-history"'),'opening a character starts with the guide');
@@ -156,12 +156,10 @@ test('character patch tab shows only reviewed balance changes and archive routes
   assert.ok(!context.app.characterPage().includes('class="character-patch-history"'),tab+' must not contain patch notes');
  }
  for(const [id,change] of Object.entries(latest.characters)){
-  const compact=context.app.latestPatch(characters[id],true),detail=context.app.latestPatch(characters[id]);
-  const groups=context.app.characterPatchGroups(id),date=context.app.latestBalanceDate(id);
-  if(date){assert.ok(compact.includes('최근 패치 날짜'));assert.ok(compact.includes('datetime="'+date+'"'));}
-  else{assert.equal(compact,'');assert.ok(!detail.includes('<time'));}
+  const detail=context.app.characterPatchHistory(characters[id]);
+  const groups=context.app.characterPatchGroups(id);
+  if(!groups.some(group=>group.date))assert.ok(!detail.includes('<time'));
   if(!groups.length){assert.ok(detail.includes('현재 수록된 버프·너프·조정 기록이 없습니다'));assert.ok(!detail.includes('이 패치 자세히'));}
-  assert.ok(!compact.includes(change.summary[0]),id+' cards must remain date-only');
   assert.ok(!detail.includes('공략 검토일'));
   assert.ok(detail.includes('밸런스 변경 이력'));assert.ok(detail.includes('type=balance'));
   assert.ok(!detail.includes('data-impact="fix"'));assert.ok(!detail.includes('오류 수정'));
@@ -176,15 +174,16 @@ test('character patch tab shows only reviewed balance changes and archive routes
   const dates=Array.from(groups.filter(g=>g.date),g=>g.date);
   assert.deepEqual(dates,[...dates].sort().reverse());
  }
- assert.equal(context.app.latestBalanceDate('c03'),'','undated records never acquire a fabricated card date');
- assert.equal(context.app.latestBalanceDate('c06'),'','a season does not imply an exact day');
- assert.equal(context.app.latestBalanceDate('c43'),'2025-04-24','a newer fix does not hide an older balance update');
- assert.equal(context.app.latestBalanceDate('c09'),'2025-09-04','use the corrected official effective date');
- assert.equal(context.app.latestBalanceDate('c79'),'2024-01-11','month-only rows remain imprecise');
- const undatedHTML=context.app.latestPatch(characters.c22);
+ const firstExactDate=id=>context.app.characterPatchGroups(id).find(group=>group.precision==='day')?.date||'';
+ assert.equal(firstExactDate('c03'),'','undated records never acquire a fabricated date');
+ assert.equal(firstExactDate('c06'),'','a season does not imply an exact day');
+ assert.equal(firstExactDate('c43'),'2025-04-24','a newer fix does not hide an older balance update');
+ assert.equal(firstExactDate('c09'),'2025-09-04','use the corrected official effective date');
+ assert.equal(firstExactDate('c79'),'2024-01-11','month-only rows remain imprecise');
+ const undatedHTML=context.app.characterPatchHistory(characters.c22);
  assert.ok(undatedHTML.indexOf('2024.04.11')<undatedHTML.indexOf('날짜 미기재 기록'));
- assert.ok(context.app.latestPatch(characters.c79).includes('월까지만 기재'));
- assert.ok(context.app.latestPatch(characters.c15).includes('패치노트 표가 없습니다'));
+ assert.ok(context.app.characterPatchHistory(characters.c79).includes('월까지만 기재'));
+ assert.ok(context.app.characterPatchHistory(characters.c15).includes('패치노트 표가 없습니다'));
  const unsafe=context.app.patchHistoryEntry({date:null,precision:'unknown',basis:'wiki',period:'<img src=x>',note:'<script>bad</script>',changes:[{impact:'buff',text:'<img src=x onerror=bad>'}],sourceUrl:'javascript:bad()'},'c01');
  assert.ok(!unsafe.includes('<script>'));assert.ok(!unsafe.includes('<img src=x'));assert.ok(!unsafe.includes('javascript:'));assert.ok(unsafe.includes('&lt;script&gt;'));
  context.location.hash='#v=character&c=c60&tab=patches';context.app.readRoute();await context.app.render();
