@@ -40,12 +40,12 @@ globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><p
 external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
 play:'<path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none"/>',
 pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
-'role-kite':'<circle cx="15" cy="4.5" r="2"/><path d="m5 11 4-3 4 2 3 4h4M13 10l-3 5 4 3v3M10 15l-4 5H3"/>',
+'role-kite':'<path d="M8 4h4l1 5 7 4a3 3 0 0 1 1 2.2V19H5v-6l3-9ZM5 16h16M12 9l-2 2m5 0-2 2M2 7h3m-3 3h2"/>',
 'role-cover':'<path d="M12 2 3 6v5c0 5 4 8 9 11 5-3 9-6 9-11V6zM8 15a4 4 0 0 1 8 0"/><circle cx="12" cy="9" r="2.5"/>',
-'role-rescue':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6m5.6 5.6 3.6 3.6m-12.8 0 3.6-3.6m5.6-5.6 3.6-3.6"/>',
+'role-rescue':'<path d="M2 13h4v8H2zM6 14l3-3h4a2 2 0 0 1 0 4h-3m3 0 5-3a2 2 0 0 1 2 3l-5 5H6M16 2v6m-3-3h6"/>',
 'role-control':'<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6h10M5 8v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8M12 14v3"/>',
 'role-decode':'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M6 9V3h12v6M9 6h6M7 13h1m3 0h2m3 0h1M7 17h1m3 0h2m3 0h1"/>',
-'role-hunt':'<path d="M8 3C8 9 5 16 2 20M15 3c0 7-3 13-7 18M22 4c-1 7-4 13-7 17"/>',
+'role-hunt':'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>',
 'role-camp':'<path d="M7 14V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9M3 10v7h18v-7M3 14h18M6 17v4m12-4v4M10 7h4"/>'
 };
 const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
@@ -380,7 +380,7 @@ for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=813ecc2b2ed7'),fetch('patches/characters.json?v=542f7a67c062')]);
+ const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=3298f4e55442'),fetch('patches/characters.json?v=542f7a67c062')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
