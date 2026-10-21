@@ -369,7 +369,7 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 .observed-build>strong small{display:block;color:var(--muted);font-size:11px;font-weight:400}
 .observed-talents{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;min-width:0}
 .observed-talents>span{display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.4}
-.observed-talents img{width:32px;height:32px;object-fit:contain;flex:0 0 32px}
+.observed-talents img{display:block;width:32px;height:32px;object-fit:contain;flex:0 0 32px;padding:4px;border:1px solid var(--persona-line);border-radius:8px;background:var(--persona-bg)}
 .observation-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:20px 0}
 .observation-metrics>div{display:grid;gap:6px;min-width:0}
 .observation-metrics span,.observation-metrics small{color:var(--muted);font-size:12px;line-height:1.5}
