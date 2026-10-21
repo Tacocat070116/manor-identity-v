@@ -1,4 +1,5 @@
-import {mountNavigation} from './navigation.js?v=402d1184da64';
+import {mountNavigation} from './navigation.js?v=9a13f36e0666';
+import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=73e51a45ff2c';
 import {statsFor, rankBans, pairEvidence, safeUrl, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=367d630b89a5';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=969f3540fb73';
@@ -11,6 +12,8 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
+palette:'<path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.3 1.3 0 0 1 .9-2.2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-8.9Z"/><circle cx="7" cy="11" r=".9"/><circle cx="10" cy="7" r=".9"/><circle cx="15" cy="7.5" r=".9"/>',
+check:'<path d="m5 12 4 4L19 6"/>',
 search:'<circle cx="10.25" cy="10.25" r="6.75"/><path d="m15.1 15.1 5.4 5.4"/>',
 grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
 swords:'<path d="m13.5 7.5 3.5-3.5 4-1-1 4-3.5 3.5"/><path d="M14 17 4 7 3 3l4 1 10 10-3 3Z"/><path d="m12.5 18.5 6-6m-13 0 6 6M15.5 15.5 20 20M8.5 15.5 4 20m14.5 1.5 3-3m-19 0 3 3"/>',
@@ -51,8 +54,10 @@ pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
 const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
 const link=(url,label,cls='text-link')=>safeUrl(url)?`<a class="${cls}" href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)}${cls.includes('btn')?icon('external'):''}</a>`:'';
 const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'release',favoriteOnly:false,region:'전체',sourceQuery:'',stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],situation:'',favorites:new Set(),theme:'light'};
-try{state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));state.theme=localStorage.getItem('manor-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch{}
-document.documentElement.dataset.theme=state.theme;
+let themeStorage;
+try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));}catch{}
+state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').matches).id;
+applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
@@ -145,13 +150,13 @@ function readRoute(){
  if(byId[state.a]?.side!==byId[state.b]?.side||state.a===state.b)state.b=db.characters.find(c=>c.side===byId[state.a]?.side&&c.id!==state.a)?.id||'';
 }
 function header(){
- if(navigationController){navigationController.update({view:state.view,theme:state.theme});return;}
+ if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
  const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['gamepatches','게임 패치노트','history'],['patchnotes','MANOR 업데이트','spark']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view))||['sources','자료 기준','book'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span>${label}</span></a>`).join('');
- $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="${state.theme==='light'?'다크':'라이트'} 모드로 전환">${icon(state.theme==='light'?'moon':'sun')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
+ $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
- navigationController.update({view:state.view,theme:state.theme});
+ navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
 function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>경기 자료 ${db.meta.recordLatest} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=gamepatches">게임 패치노트</a><a href="#v=patchnotes">MANOR 업데이트</a><a href="#v=sources">자료와 평가 기준</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
@@ -367,11 +372,23 @@ async function share(){
  try{await navigator.clipboard.writeText(url);toast('공유 링크를 복사했습니다.');}
  catch{$('#evidence').innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2>공유</h2><button class="icon-btn" data-action="close-dialog" data-dialog="evidence" aria-label="공유 창 닫기">${icon('close')}</button></div></div><div class="dialog-body"><p>공유할 링크를 길게 누르거나 선택해 복사하세요.</p><input class="share-link-input" aria-label="공유 링크" value="${esc(url)}" readonly></div>`;$('#evidence').showModal();$('#evidence input').focus();$('#evidence input').select();}
 }
+function openThemePicker(){
+ const dialog=$('#theme-picker');
+ dialog.innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2 id="theme-title">${icon('palette')}컬러 테마</h2><button class="icon-btn" data-action="close-dialog" data-dialog="theme-picker" aria-label="테마 선택 창 닫기">${icon('close')}</button></div><p>나의 장원, 나의 색.</p></div><div class="theme-options" role="radiogroup" aria-label="컬러 테마 선택">${themeOptions(state.theme,icon('check'))}</div><p class="theme-status" id="theme-status" role="status">${resolveTheme(state.theme).name} 테마 사용 중 · 선택한 테마는 자동으로 저장돼요.</p>`;
+ dialog.showModal();
+ dialog.querySelector('input:checked')?.focus();
+}
+function selectColorTheme(id){
+ if(!colorThemes.some(theme=>theme.id===id))return;
+ const {theme,saved}=applyTheme(id,{document,storage:themeStorage});
+ state.theme=theme.id;header();
+ $('#theme-status').textContent=theme.name+' 테마 사용 중 · '+(saved?'다음 방문에도 유지돼요.':'브라우저에서 저장을 허용하지 않아 이번 방문에만 적용돼요.');
+}
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-action]');if(!b||!db)return;const a=b.dataset.action;
  if(a==='scroll-characters'){e.preventDefault();$('#characters')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});return;}
  if(a==='character')navigate({v:'character',c:b.dataset.id});
- if(a==='theme'){state.theme=state.theme==='light'?'dark':'light';document.documentElement.dataset.theme=state.theme;try{localStorage.setItem('manor-theme',state.theme);}catch{}header();}
+ if(a==='theme')openThemePicker();
  if(a==='global-search')openPicker();
  if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}
@@ -393,13 +410,13 @@ document.addEventListener('click',e=>{
  if(a==='retry')render();
 });
 document.addEventListener('input',e=>{if(!db)return;if(e.target.id==='release-search'){releaseFilters.query=e.target.value;updateReleaseNotes();}if(e.target.id==='statistics-search'){state.statistics.search=e.target.value;clearTimeout(statisticsSearchTimer);statisticsSearchTimer=setTimeout(refreshStatistics,220);}if(e.target.id==='character-search'){state.search=e.target.value;updateExplorer();}if(e.target.id==='source-search'){state.sourceQuery=e.target.value;updateSources();}if(e.target.id==='picker-search')updatePicker(e.target.value);});
-document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans')render();else refreshStatistics();}});
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open)openPicker();}});
-for(const d of[$('#picker'),$('#evidence')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
+document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans')render();else refreshStatistics();}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
+for(const d of[$('#picker'),$('#evidence'),$('#theme-picker')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=a2b7f3be3a94'),fetch('patches/characters.json?v=542f7a67c062')]);
+ const responses=await Promise.all([fetch('data.json?v=67a4cc03b215'),fetch('specialties.json?v=3e7c8dd494c8'),fetch('introductions.json?v=9428a6ffd648'),fetch('releases.json?v=6bda55fe05df'),fetch('patches/characters.json?v=542f7a67c062')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

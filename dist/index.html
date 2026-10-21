@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#eff4f1">
+<meta name="theme-color" content="#e9f1ed">
+<script>
+try{const saved=localStorage.getItem('manor-theme');document.documentElement.dataset.theme=/^(light|dark|ocean|lavender|rose|sand|midnight|plum)$/.test(saved)?saved:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+</script>
 <meta name="description" content="89명의 캐릭터, 2018년부터의 공식 게임 패치 기록, 상성·통계와 밴 분석. 제5인격의 다음 한 수를 더 선명하게.">
 <meta property="og:title" content="MANOR · 제5인격 플레이 가이드">
 <meta property="og:description" content="캐릭터 탐색부터 상대 대응까지, 근거와 함께 보는 제5인격 가이드.">
 <meta property="og:url" content="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="canonical" href="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=4f16b4b9aa0f">
+<link rel="stylesheet" href="style.css?v=6bc39ce7ab03">
 <title>MANOR · 제5인격 가이드</title>
 <link rel="stylesheet" href="navigation.css?v=64a6af49388e">
 <link rel="stylesheet" href="feedback.css?v=fdaa960eb085">
 <link rel="stylesheet" href="releases.css?v=6bf62f9a38cf">
-<link rel="stylesheet" href="game-patches.css?v=f2f3b5a39f17">
+<link rel="stylesheet" href="game-patches.css?v=6df20d649834">
+<link rel="stylesheet" href="themes.css?v=34d6aec46b3a">
 </head>
 <body>
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -25,7 +30,8 @@
 <footer id="footer"></footer>
 <dialog id="picker" class="picker-dialog" aria-label="캐릭터 선택"></dialog>
 <dialog id="evidence" class="evidence-dialog" aria-label="분석 근거"></dialog>
+<dialog id="theme-picker" class="theme-dialog" aria-labelledby="theme-title"></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script type="module" src="app.js?v=e6e3286167a9"></script>
+<script type="module" src="app.js?v=7dcdc9d1b8ab"></script>
 </body>
 </html>

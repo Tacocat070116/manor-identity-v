@@ -1,3 +1,4 @@
+import * as themeUI from './dist/themes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -134,7 +135,7 @@ test('archive templates escape source text and mounted filtering is disposed on 
 test('character patch tab shows only reviewed balance changes and archive routes stay lazy',async()=>{
  const nodes=new Map(),fetches=[],mounts=[],handlers={};let disposed=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
- const context={...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=character&c=c60'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
   mountNavigation:()=>({update(){}}),mountGamePatches:(root,opts)=>{mounts.push(opts);root.innerHTML='archive';return ()=>disposed++;},
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}

@@ -75,8 +75,8 @@ export function mountNavigation(root,{icon}){
   }
   if(next.theme!==theme){
    theme=next.theme;
-   themeButton.setAttribute('aria-label',(theme==='light'?'다크':'라이트')+' 모드로 전환');
-   themeButton.innerHTML=icon(theme==='light'?'moon':'sun');
+   themeButton.setAttribute('aria-label','컬러 테마 선택 · 현재 '+(next.themeLabel||theme));
+   themeButton.innerHTML=icon('palette');
   }
  }
  const onToggle=()=>setOpen(!expanded);

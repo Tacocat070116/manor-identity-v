@@ -1,3 +1,4 @@
+import * as themeUI from './dist/themes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -29,7 +30,7 @@ test('failed shared-data loading shows an explicit retry screen rather than fabr
 test('live site navigation replaces the main evidence tab, restores post links, and disposes the board on leaving',async()=>{
  const db=JSON.parse(fs.readFileSync('dist/data.json')),specialties=JSON.parse(fs.readFileSync('dist/specialties.json')),introductions=JSON.parse(fs.readFileSync('dist/introductions.json')),releases=JSON.parse(fs.readFileSync('dist/releases.json'));const nodes=new Map(),mounts=[];let disposed=0,navMounts=0;const navUpdates=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
- const context={...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
  document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(){}},window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=feedback&post='+id},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
  mountFeedback:(root,opts)=>{mounts.push(opts);root.innerHTML='shared feedback';return ()=>disposed++;},createCarouselSession:()=>({}),carouselItems:()=>[],mountNavigation:()=>{navMounts++;return {update(next){navUpdates.push({...next});}};},mountHeroCarousel:()=>()=>{},fetch:async url=>({ok:true,json:async()=>url.startsWith('specialties')?specialties:url.startsWith('introductions')?introductions:url.startsWith('releases')?releases:url.startsWith('patches/')?JSON.parse(fs.readFileSync('dist/patches/characters.json')):db})};
  let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state};',context);await context.app.boot();assert.equal(mounts[0].postId,id);assert(nodes.get('#header').innerHTML.includes('피드백'));assert(!nodes.get('#header').innerHTML.includes('>근거<'));assert(nodes.get('#footer').innerHTML.includes('#v=sources'));

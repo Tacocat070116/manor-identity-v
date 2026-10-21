@@ -46,7 +46,7 @@
 
 /* Reviewed patch directions use both symbols and labels, with theme-specific contrast. */
 :root{--patch-buff-ink:#2467a9;--patch-buff-bg:#e5f0fc;--patch-nerf-ink:#b03e4f;--patch-nerf-bg:#fce9ed;--patch-adjustment-ink:#856200;--patch-adjustment-bg:#fff3c7}
-[data-theme="dark"]{--patch-buff-ink:#91c6ff;--patch-buff-bg:#233d51;--patch-nerf-ink:#ffadb6;--patch-nerf-bg:#4b2d35;--patch-adjustment-ink:#edcf75;--patch-adjustment-bg:#433d25}
+:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--patch-buff-ink:#91c6ff;--patch-buff-bg:#233d51;--patch-nerf-ink:#ffadb6;--patch-nerf-bg:#4b2d35;--patch-adjustment-ink:#edcf75;--patch-adjustment-bg:#433d25}
 .character-patch .patch-changes{list-style:none;padding:0;margin:0;gap:20px}
 .patch-change{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;column-gap:12px;min-width:0;--patch-ink:var(--muted);--patch-bg:var(--surface)}
 .patch-change[data-impact="buff"]{--patch-ink:var(--patch-buff-ink);--patch-bg:var(--patch-buff-bg)}

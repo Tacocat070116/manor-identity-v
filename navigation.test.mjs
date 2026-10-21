@@ -46,7 +46,7 @@ function harness({reduced=false,animationSupport=true}={}){
  const root={ownerDocument:doc,querySelector:s=>s==='.category-nav'?nav:themeButton};
  const controller=mountNavigation(root,{icon:n=>'icon:'+n});
  return {controller,doc,win,media,reducedMotion,animations,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
-  update:(view,theme='light')=>controller.update({view,theme}),
+  update:(view,theme='light')=>controller.update({view,theme,themeLabel:theme==='dark'?'다크':'화이트'}),
   isOpen:()=>toggle.attrs['aria-expanded']==='true'
  };
 }
@@ -64,7 +64,7 @@ test('one collapsed menu reports the current route, including character and sour
  h.update('sources');assert.equal(h.currentLabel.textContent,'자료 기준');
  assert.ok(h.links.every(link=>!link.attrs['aria-current']));
  h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
- assert.equal(h.themeButton.innerHTML,'icon:sun');assert.match(h.themeButton.attrs['aria-label'],/라이트/);
+ assert.equal(h.themeButton.innerHTML,'icon:palette');assert.equal(h.themeButton.attrs['aria-label'],'컬러 테마 선택 · 현재 다크');
  assert.ok(h.links.every((link,i)=>link===sameLinks[i]));h.controller.destroy();
 });
 test('touch/click toggles reverse immediately and hidden links stay outside the tab order',()=>{

@@ -1,3 +1,4 @@
+import * as themeUI from './dist/themes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -34,7 +35,7 @@ test('history lists every entry, searches with type filters and escapes text',()
 test('patchnotes deep link, shared version, filters and return navigation work in the app',async()=>{
  const nodes=new Map(),handlers={},fetches=[],views=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
- const context={...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
   mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
