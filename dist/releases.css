@@ -34,7 +34,7 @@
  .release-toolbar{align-items:stretch;gap:12px}
  .release-toolbar .search-box{flex-basis:100%;max-width:none}
  .release-toolbar .search-box input{font-size:16px;min-width:0}
- .release-toolbar .filter-label{flex-direction:row;align-items:center;gap:12px}
+ .release-toolbar .filter-label{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px}
  .release-day{grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:32px}
  .release-date{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
  .release-date>span{margin:0;white-space:nowrap}
