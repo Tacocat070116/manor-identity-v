@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-10-22",
+  "policy": "한국어 공식 공지에서 확인한 명칭을 우선하고, 공식 원문을 직접 확인하지 못한 항목은 국내 공략의 명칭으로 구분한다. 평타·후딜·해독기·아드처럼 국내 이용자가 널리 쓰는 표현은 설명의 문맥에 맞게 유지한다. 용어 자료의 게시일을 게임 판정의 최신 검증일로 취급하지 않는다.",
+  "sources": [
+    {"id":"K01","kind":"한국어 공식 공지","url":"https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html","supports":["원한의 그림자","꼭두각시","자석의 척력"]},
+    {"id":"K02","kind":"한국어 공식 공지","url":"https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html","supports":["발사기","상형 무덤","외적 특성","비늘 표피","플라이휠 효과"]},
+    {"id":"K03","kind":"한국어 공식 공지","url":"https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html","supports":["순찰자","보조 특성","발사기"]},
+    {"id":"U01","kind":"국내 이용자 용어 정리","url":"https://gall.dcinside.com/mgallery/board/view/?id=identity5&no=741717","supports":["평타","해독기","아드","선딜"]},
+    {"id":"U02","kind":"국내 이용자 입문 공략","url":"https://gall.dcinside.com/mgallery/board/view/?id=identity5&no=917700","supports":["평타","후딜","해독기","어그로"]},
+    {"id":"U03","kind":"국내 이용자 공략","url":"https://gall.dcinside.com/mgallery/board/view/?id=identity5&no=1285736","supports":["이스인","침식"]},
+    {"id":"U04","kind":"한국어 공동편집 공략 미러","url":"https://namu.moe/w/광기의%20눈","supports":["콘솔"]},
+    {"id":"U05","kind":"한국어 공동편집 공략 미러","url":"https://namu.moe/w/'절름발이%20판'","supports":["케이지"]},
+    {"id":"U06","kind":"한국어 공동편집 공략 미러","url":"https://namu.moe/w/화재조사관","supports":["에어백"]},
+    {"id":"U07","kind":"한국어 공동편집 공략 미러","url":"https://www.namu.moe/w/울보(제5인격)","supports":["원령"]},
+    {"id":"U08","kind":"한국어 공동편집 공략 미러","url":"https://d.namu.moe/w/'여자아이'","supports":["추억 조각","기억 동기화"]},
+    {"id":"U09","kind":"한국어 공동편집 공략 미러","url":"https://namu.moe/w/'박사'","supports":["에너지 폭발 상태","차징 스트라이크"]},
+    {"id":"U10","kind":"한국어 공동편집 공략 미러","url":"https://www.namu.moe/w/제5인격/감시자/보조%20특성","supports":["물어서 이동을 방해하는 순찰자","위치를 드러내는 정탐자","형상 이동과 플래시의 구분"]},
+    {"id":"U11","kind":"한국어 공동편집 공략 미러","url":"https://namu.moe/w/타자(제5인격)","supports":["폭발 상태"]}
+  ],
+  "terms": [
+    {"scope":"공장장","before":["분신","분노 분신"],"after":"원한의 그림자","sources":["K01"]},
+    {"scope":"공장장","before":["인형"],"after":"꼭두각시","sources":["K01"],"note":"기계공의 기계 인형이나 캐릭터 이름 인형사는 바꾸지 않는다."},
+    {"scope":"광기의 눈","before":["제어대"],"after":"콘솔","sources":["U04"]},
+    {"scope":"시공의 그림자","before":["이시스","부패"],"after":"이스인 / 침식","sources":["U03"]},
+    {"scope":"울보","before":["원혼"],"after":"원령","sources":["U07"]},
+    {"scope":"절름발이 판","before":["우리"],"after":"케이지","sources":["U05"]},
+    {"scope":"화재조사관","before":["에어볼"],"after":"에어백","sources":["U06"]},
+    {"scope":"장난감 상인","before":["발사대","발사판","발판"],"after":"발사기","sources":["K02","K03"]},
+    {"scope":"여자아이","before":["페이지","기억 조각","기억의 조각","기억 파편"],"after":"추억 조각","sources":["U08"],"note":"모험가의 암호 페이지, 이벤트 재화의 기억 조각과 구별한다."},
+    {"scope":"박사","before":["서지","에너지 서지"],"after":"에너지 폭발 상태","sources":["U09"]},
+    {"scope":"타자","before":["흥분 상태의 공"],"after":"폭발 상태에서 친 공","sources":["U11"],"note":"감시자의 보조 특성 흥분과 구별한다."},
+    {"scope":"탐사원","before":["반발 자석","흡인 자석"],"after":"척력 자석 / 인력 자석","sources":["K01"],"note":"공식 공지에서 척력을 확인했다. 인력은 기존 자석의 끌어당김을 설명하는 대응 표현이며, 효과를 새로 검증한 항목은 아니다."},
+    {"scope":"조각가","before":["상형 묘지"],"after":"상형 무덤","sources":["K02"]},
+    {"scope":"보조 특성","before":["정탐자에 물림"],"after":"순찰자에게 물림","sources":["K03","U10"],"note":"정탐자는 별도 특성으로 유지한다. 형상 이동과 플래시도 합치지 않는다."},
+    {"scope":"국내 통용 표현","before":["암호기","공격 회복 경직"],"after":"해독기 / 공격 후딜","sources":["U01","U02"]},
+    {"scope":"국내 통용 표현","before":[],"after":"평타 / 아드 / 어그로","sources":["U01","U02"],"note":"이미 자연스럽게 쓰인 표현은 유지한다."}
+  ]
+}

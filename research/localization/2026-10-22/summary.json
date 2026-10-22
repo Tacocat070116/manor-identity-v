@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-22",
+  "baselineCommit": "3496f220e28d2bdbd2364817d32556855763e231",
+  "charactersReviewed": 89,
+  "matchupRowsReviewed": 462,
+  "synergyAndTraitRowsReviewed": 275,
+  "editedTextFields": 1241,
+  "changedFieldsByFile": {
+    "data.json": 1208,
+    "introductions.json": 16,
+    "specialties.json": 20
+  },
+  "preserved": {
+    "matches": 16851,
+    "results": 16830,
+    "bans": 15516,
+    "matchupStatuses": {
+      "반영": 413,
+      "보류": 49
+    },
+    "sourceCount": 240,
+    "guideReviewedAt": "2026-10-21",
+    "matchupReviewedAt": "2026-10-19"
+  },
+  "scope": "한국어 용어·문장 교정. 게임 판정이나 상성 우열을 새로 실험한 검토가 아님."
+}
