@@ -43,10 +43,9 @@ function harness({reduced=false,animationSupport=true}={}){
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
  panel.querySelectorAll=()=>links;
  toggle.querySelector=s=>s==='[data-nav-current-icon]'?currentIcon:currentLabel;
- const primaryLinks=['explore','matchup','statistics'].map(primaryView=>Object.assign(element(),{dataset:{primaryView}}));
- const root={ownerDocument:doc,querySelector:s=>s==='.category-nav'?nav:themeButton,querySelectorAll:()=>primaryLinks};
+ const root={ownerDocument:doc,querySelector:s=>s==='.category-nav'?nav:themeButton};
  const controller=mountNavigation(root,{icon:n=>'icon:'+n});
- return {controller,primaryLinks,doc,win,media,reducedMotion,animations,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
+ return {controller,doc,win,media,reducedMotion,animations,nav,toggle,panel,links,currentIcon,currentLabel,themeButton,outside,element,
   update:(view,theme='light')=>controller.update({view,theme,themeLabel:theme==='dark'?'다크':'화이트'}),
   isOpen:()=>toggle.attrs['aria-expanded']==='true'
  };
@@ -160,14 +159,4 @@ test('reduced motion, unsupported animation and viewport changes retain natural 
  h.reducedMotion.matches=false;h.update('patchnotes');const previous=h.toggle.activeAnimation;
  h.win.emit('resize');assert.equal(previous.cancelled,true);assert.equal(h.toggle.getBoundingClientRect().width,248);
  h.controller.destroy();
-});
-
-
-test('direct navigation tracks the route without inheriting collapsed menu inertness',()=>{
- const h=harness();h.update('character');
- assert.equal(h.primaryLinks[0].attrs['aria-current'],'page');
- h.update('matchup');assert.equal(h.primaryLinks[0].attrs['aria-current'],undefined);
- assert.equal(h.primaryLinks[1].attrs['aria-current'],'page');
- assert.ok(h.primaryLinks.every(link=>!link.inert&&!link.attrs.tabindex));
- h.update('feedback');assert.ok(h.primaryLinks.every(link=>!link.attrs['aria-current']));
 });

@@ -1,5 +1,5 @@
 export const colorThemes=Object.freeze([
- {id:'light',name:'화이트',mode:'light',bg:'#f4f3ed',surface:'#fffef9',ink:'#242c27',muted:'#61675e',accent:'#2c5546',onAccent:'#ffffff'},
+ {id:'light',name:'화이트',mode:'light',bg:'#e9f1ed',surface:'#f6faf7',ink:'#192e29',muted:'#53685d',accent:'#17634e',onAccent:'#ffffff'},
  {id:'dark',name:'다크',mode:'dark',bg:'#101e19',surface:'#1c3027',ink:'#edf6f0',muted:'#adc1b5',accent:'#9fd9bb',onAccent:'#101c19'},
  {id:'ocean',name:'오션',mode:'light',bg:'#e7eff7',surface:'#f6f9fd',ink:'#1a2d42',muted:'#495f76',accent:'#275e91',onAccent:'#ffffff'},
  {id:'lavender',name:'라벤더',mode:'light',bg:'#efebf7',surface:'#faf8fe',ink:'#302840',muted:'#62566e',accent:'#695096',onAccent:'#ffffff'},

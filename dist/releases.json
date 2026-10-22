@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-9-1",
+      "version": "1.9.1",
+      "date": "2026-10-23",
+      "title": "v1.8.2 구성으로 롤백",
+      "changes": [
+        {
+          "type": "수정",
+          "text": "v1.9.0에서 변경한 인터페이스와 매치업 구성을 v1.8.2 상태로 되돌렸습니다."
+        },
+        {
+          "type": "수정",
+          "text": "반투명 표면과 은은한 반사, 부드러운 곡선, 캐릭터 캐러셀과 접이식 메뉴를 복원했습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-9-0",
       "version": "1.9.0",
