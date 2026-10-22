@@ -1,3 +1,4 @@
+import {matchupBrief} from './dist/matchup-model.js';
 import * as compendium from './dist/compendium-model.js';
 import * as themeUI from './dist/themes.js';
 import assert from 'node:assert/strict';
@@ -124,7 +125,7 @@ assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,cont
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-21',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={matchupBrief,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-21',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));

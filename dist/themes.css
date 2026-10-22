@@ -33,20 +33,20 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){
 
 :root,
 html[data-theme="light"]{
- --ink:#192e29;
- --muted:#53685d;
- --accent:#17634e;
+ --ink:#242c27;
+ --muted:#61675e;
+ --accent:#2c5546;
  --on-accent:#ffffff;
- --bg:#e9f1ed;
- --surface-solid:#f6faf7;
- --surface-inset:#e2ede6;
- --surface-rgb:246,250,247;
- --inset-rgb:226,237,230;
- --ink-rgb:25,46,41;
- --accent-rgb:23,99,78;
- --accent-soft-rgb:196,226,208;
- --sheen-rgb:246,250,247;
- --shadow-rgb:25,46,41;
+ --bg:#f4f3ed;
+ --surface-solid:#fffef9;
+ --surface-inset:#eaece3;
+ --surface-rgb:255,254,249;
+ --inset-rgb:234,236,227;
+ --ink-rgb:36,44,39;
+ --accent-rgb:44,85,70;
+ --accent-soft-rgb:224,232,211;
+ --sheen-rgb:255,254,249;
+ --shadow-rgb:36,44,39;
  --ambient-one:#a9d2bb;
  --ambient-two:#c2d8b8;
  --persona-bg:#294638;

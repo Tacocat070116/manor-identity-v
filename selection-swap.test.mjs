@@ -1,3 +1,4 @@
+import {matchupBrief} from './dist/matchup-model.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -17,14 +18,14 @@ const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'
 async function harness(hash){
  const nodes=new Map(),handlers={},history=[],scrolls=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},focus(options){this.focusOptions=options;}});
- const context={...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
+ const context={matchupBrief,...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
   URL,URLSearchParams,Intl,setTimeout:()=>0,clearTimeout(){},location:{hash},
   localStorage:{getItem:()=>null},matchMedia:()=>({matches:false}),
   document:{documentElement:{dataset:{}},addEventListener(type,handler){handlers[type]=handler;},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);}},
   fetch:async path=>({ok:true,json:async()=>read('dist/'+path.split('?')[0])})
  };
  context.window={scrollY:180,scrollTo:options=>scrolls.push(options),addEventListener(){},history:{pushState(_state,_unused,hash){history.push(hash);context.location.hash=hash;}}};
- vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
+ vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,changeSituation,currentViewParams};`,context);
  context.app.readRoute();await context.app.render();
  return {...context.app,nodes,handlers,history,scrolls,context,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
 }
@@ -39,6 +40,7 @@ test('matchup swap reverses perspective, retains situation and focus, and can be
  assert.equal(h.state.situation,'추격');assert.equal(h.params().get('situation'),'추격');
  assert.ok(h.html().includes('경계할 핵심 스킬</h3><p>'+byId.c16.skill));
  assert.ok(h.html().includes('내 스킬을 아낄 때</h3><p>'+byId.c37.hold));
+ assert.ok(h.html().indexOf('class="decision-grid"')<h.html().indexOf('class="general-guide"'),'pair evidence precedes general advice');
  assert.equal(h.scrolls.at(-1).top,180);
  assert.equal(h.nodes.get('[data-action="swap-selection"]').focusOptions.preventScroll,true);
  await h.swapSelections('matchup');
@@ -70,4 +72,33 @@ test('empty, invalid or stale swap requests leave the selection and route untouc
  h.state.opponent='c15';await h.swapSelections('matchup');
  h.state.opponent='unknown';await h.swapSelections('matchup');
  assert.equal(h.history.length,0);assert.equal(h.context.location.hash,initial);assert.equal(h.state.own,'c16');
+});
+
+
+test('pair briefing deduplicates evidence, exposes all source buttons, and keeps absent evidence explicit',async()=>{
+ const h=await harness('#v=matchup&own=c16&opp=c41');
+ assert.equal((h.html().match(/data-evidence-group=/g)||[]).length,1);
+ for(const id of ['M080','M241'])assert.ok(h.html().includes('data-id="'+id+'"'));
+ assert.ok(h.html().includes('거울상만 맞히는 공격은 교수의 비늘 경화를 우회합니다.'));
+ assert.ok(h.html().includes('가까운 본체의 평타는 비늘로 막을 수 있습니다.'));
+ assert.match(h.html(),/class="general-guide" >/,'generic advice starts collapsed');
+ h.context.location.hash='#v=matchup&own=c16&opp=c41&situation=없는상황';h.readRoute();await h.render();
+ assert.ok(h.html().includes('이 상황에서 반영된 대진 근거가 없습니다.'));
+ assert.match(h.html(),/class="general-guide" open>/);
+ h.context.location.hash='#v=matchup&own=c16&opp=c41';h.readRoute();await h.render();
+ assert.equal(h.state.situation,'');assert.ok(h.html().includes('data-evidence-group="M080"'));
+});
+
+
+test('situation selection updates the shareable route and preserves filter focus and scroll',async()=>{
+ const h=await harness('#v=matchup&own=c16&opp=c41');
+ await h.changeSituation('거울 추격');
+ assert.equal(h.params().get('situation'),'거울 추격');
+ assert.ok(h.html().includes('data-id="M080"'));
+ assert.ok(!h.html().includes('data-id="M241"'));
+ assert.equal(h.nodes.get('#situation-filter').focusOptions.preventScroll,true);
+ assert.equal(h.scrolls.at(-1).top,180);
+ await h.changeSituation('');
+ assert.equal(h.params().has('situation'),false);
+ assert.ok(h.html().includes('data-id="M241"'));
 });

@@ -5,6 +5,7 @@ export function mountNavigation(root,{icon}){
  const toggle=nav.querySelector('[data-nav-toggle]');
  const panel=nav.querySelector('.category-panel');
  const links=[...panel.querySelectorAll('.nav-item')];
+ const primaryLinks=[...(root.querySelectorAll?.('[data-primary-view]')||[])];
  const currentIcon=toggle.querySelector('[data-nav-current-icon]');
  const currentLabel=toggle.querySelector('[data-nav-current-label]');
  const themeButton=root.querySelector('[data-action="theme"]');
@@ -63,6 +64,9 @@ export function mountNavigation(root,{icon}){
   }
   const view=next.view==='character'?'explore':next.view;
   if(view!==selected){
+   for(const link of primaryLinks){
+    if(link.dataset.primaryView===view)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+   }
    const current=links.find(link=>link.dataset.view===view);
    for(const link of links){
     const active=link===current;
