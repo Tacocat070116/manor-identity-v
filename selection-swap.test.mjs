@@ -16,7 +16,7 @@ const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
 const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 async function harness(hash){
  const nodes=new Map(),handlers={},history=[],scrolls=[],tipMounts=[];let tipsDisposed=0;
- const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},focus(options){this.focusOptions=options;}});
+ const node=()=>({innerHTML:'',textContent:'',value:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(options){this.focusOptions=options;}});
  const context={...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
   URL,URLSearchParams,Intl,setTimeout:()=>0,clearTimeout(){},location:{hash},
   mountMatchupTips:(root,options)=>{tipMounts.push(options);return ()=>tipsDisposed++;},
@@ -25,7 +25,7 @@ async function harness(hash){
   fetch:async path=>({ok:true,json:async()=>read('dist/'+path.split('?')[0])})
  };
  context.window={scrollY:180,scrollTo:options=>scrolls.push(options),addEventListener(){},history:{pushState(_state,_unused,hash){history.push(hash);context.location.hash=hash;}}};
- vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
+ vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,heroMatchup,readRoute,render,swapSelections,selectionSwap,currentViewParams,openPicker,selectCharacter,openHeroMatchup,heroMatchupReady};`,context);
  context.app.readRoute();await context.app.render();
  return {...context.app,nodes,handlers,history,scrolls,context,tipMounts,tipsDisposed:()=>tipsDisposed,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
 }
@@ -78,4 +78,54 @@ test('empty, invalid or stale swap requests leave the selection and route untouc
  h.state.opponent='c15';await h.swapSelections('matchup');
  h.state.opponent='unknown';await h.swapSelections('matchup');
  assert.equal(h.history.length,0);assert.equal(h.context.location.hash,initial);assert.equal(h.state.own,'c16');
+});
+
+test('homepage waits for a chosen pair, then opens the right perspective without a stale situation',async()=>{
+ const h=await harness('#v=explore');
+ h.state.own='c16';h.state.opponent='c37';h.state.situation='구출';await h.render();
+ assert.match(h.html(),/data-action="hero-matchup"[^>]* disabled/);
+ assert.equal(h.heroMatchupReady(),false,'matchup defaults are not preselected on the homepage');
+ h.openHeroMatchup();assert.equal(h.params().get('v'),'explore');
+ h.openPicker('hero-own');h.selectCharacter('c16');
+ assert.equal(h.params().get('v'),'explore','picking a character stays on the homepage');
+ assert.equal(h.nodes.get('[data-action="hero-matchup"]').disabled,true);
+ h.openPicker('hero-opponent');h.selectCharacter('c37');
+ assert.equal(h.heroMatchupReady(),true);
+ assert.equal(h.nodes.get('[data-action="hero-matchup"]').disabled,false);
+ assert.match(h.nodes.get('#hero-matchup-fields').innerHTML,/블러디 퀸/);
+ assert.match(h.nodes.get('#hero-matchup-fields').innerHTML,/곡예사/);
+ h.handlers.click({target:{closest:()=>({dataset:{action:'hero-matchup'}})}});
+ assert.equal(h.params().get('own'),'c16');assert.equal(h.params().get('opp'),'c37');assert.equal(h.params().get('v'),'matchup');
+ assert.equal(h.state.situation,'');assert.equal(h.params().has('situation'),false);
+ h.readRoute();await h.render();
+ assert.equal(h.tipMounts.at(-1).ownId,'c16');assert.equal(h.tipMounts.at(-1).opponentId,'c37');
+ h.context.location.hash='#v=explore';h.readRoute();await h.render();
+ assert.equal(h.heroMatchup.own,'c16');assert.equal(h.heroMatchup.opponent,'c37','returning retains the chosen pair');
+});
+
+test('homepage supports opponent first, faction filtering, aliases, cancellation and invalid selections',async()=>{
+ const h=await harness('#v=explore');
+ const options=()=>[...h.nodes.get('#picker-results').innerHTML.matchAll(/data-id="(c\d+)"/g)].map(m=>m[1]);
+ h.openPicker('hero-opponent');h.selectCharacter('c16');
+ h.openPicker('hero-own');assert.ok(options().length>0);assert.ok(options().every(id=>byId[id].side==='생존자'));
+ h.selectCharacter('c15');h.selectCharacter('unknown');assert.equal(h.heroMatchup.own,'');assert.equal(h.nodes.get('#picker').open,true);
+ h.handlers.click({target:{closest:()=>({dataset:{action:'close-dialog',dialog:'picker'}})}});
+ assert.equal(h.nodes.get('#picker').open,false);assert.equal(h.heroMatchup.opponent,'c16');assert.equal(h.heroMatchup.own,'');
+ h.openPicker('hero-own');h.selectCharacter('c37');assert.equal(h.heroMatchupReady(),true);
+ h.openPicker('hero-opponent');assert.ok(options().every(id=>byId[id].side==='감시자'));
+ h.handlers.input({target:{id:'picker-search',value:'qnfrdmsskql'}});assert.deepEqual(options(),['c15']);
+ h.selectCharacter('c15');h.openHeroMatchup();assert.equal(h.params().get('own'),'c37');assert.equal(h.params().get('opp'),'c15');
+});
+
+test('changing my faction clears an incompatible opponent and disables submission',async()=>{
+ const h=await harness('#v=explore');
+ h.openPicker('hero-own');h.selectCharacter('c16');h.openPicker('hero-opponent');h.selectCharacter('c37');
+ h.openPicker('hero-own');h.selectCharacter('c79');
+ assert.equal(h.heroMatchup.own,'c79');assert.equal(h.heroMatchup.opponent,'');assert.equal(h.heroMatchupReady(),false);
+ assert.equal(h.nodes.get('[data-action="hero-matchup"]').disabled,true);
+ assert.match(h.nodes.get('#hero-matchup-hint').textContent,/진영이 바뀌어 상대 선택을 해제/);
+ assert.equal(h.nodes.get('[data-mode="hero-own"]').focusOptions.preventScroll,true);
+ h.openHeroMatchup();assert.equal(h.params().get('v'),'explore');
+ h.openPicker('hero-opponent');h.selectCharacter('c15');h.state.view='compare';h.openHeroMatchup();
+ assert.equal(h.params().get('v'),'explore','stale homepage submission does not navigate');
 });
