@@ -29,7 +29,7 @@ function harness({reduced=false,animationSupport=true}={}){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
- const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='게임 패치노트'?224:150;
+ const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='밴 분석'?184:150;
  toggle.getBoundingClientRect=()=>({width:toggle.activeAnimation?.sampleWidth??naturalWidth()});
  if(animationSupport)for(const target of [toggle,currentLabel])target.animate=(frames,options)=>{
   const animation={frames,options,target,sampleWidth:parseFloat(frames[0].width),cancelled:false,
@@ -38,7 +38,7 @@ function harness({reduced=false,animationSupport=true}={}){
   };
   target.activeAnimation=animation;animations.push(animation);return animation;
  };
- const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['gamepatches','게임 패치노트','history'],['patchnotes','MANOR 업데이트','spark']];
+ const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','MANOR 업데이트','spark']];
  const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
  panel.querySelectorAll=()=>links;
@@ -138,12 +138,12 @@ test('category width stays within its endpoints and interruptions continue from 
  assert.equal(first.options.duration,640);
  assert.ok(first.frames.every(frame=>Number.isFinite(parseFloat(frame.width))));
  first.sampleWidth=235;
- h.update('gamepatches');const second=h.toggle.activeAnimation;
+ h.update('bans');const second=h.toggle.activeAnimation;
  assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),235);
- assert.equal(parseFloat(second.frames.at(-1).width),224);
- assert.ok(second.frames.every(frame=>parseFloat(frame.width)>=224&&parseFloat(frame.width)<=235));
- h.update('gamepatches','dark');assert.equal(h.toggle.activeAnimation,second);
- second.finish();assert.equal(h.toggle.getBoundingClientRect().width,224);
+ assert.equal(parseFloat(second.frames.at(-1).width),184);
+ assert.ok(second.frames.every(frame=>parseFloat(frame.width)>=184&&parseFloat(frame.width)<=235));
+ h.update('bans','dark');assert.equal(h.toggle.activeAnimation,second);
+ second.finish();assert.equal(h.toggle.getBoundingClientRect().width,184);
  h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),150);
  h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
 });

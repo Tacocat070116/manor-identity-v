@@ -8,20 +8,19 @@
 try{const saved=localStorage.getItem('manor-theme');document.documentElement.dataset.theme=/^(light|dark|ocean|lavender|rose|sand|midnight|plum)$/.test(saved)?saved:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
 catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
 </script>
-<meta name="description" content="89명의 캐릭터, 2018년부터의 공식 게임 패치 기록, 상성·통계와 밴 분석. 제5인격의 다음 한 수를 더 선명하게.">
+<meta name="description" content="89명의 캐릭터 공략과 유저 상대법, 상성·통계와 밴 분석. 제5인격의 다음 한 수를 더 선명하게.">
 <meta property="og:title" content="MANOR · 제5인격 플레이 가이드">
 <meta property="og:description" content="캐릭터 탐색부터 상대 대응까지, 공략과 통계를 한눈에 보는 제5인격 가이드.">
 <meta property="og:url" content="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="canonical" href="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=a227dfe3ae85">
+<link rel="stylesheet" href="style.css?v=b75b942bbf32">
 <title>MANOR · 제5인격 가이드</title>
 <link rel="stylesheet" href="navigation.css?v=06244655de2f">
 <link rel="stylesheet" href="feedback.css?v=ab7c7810ea33">
 <link rel="stylesheet" href="matchup-tips.css?v=57b23fab55b8">
 <link rel="stylesheet" href="releases.css?v=6bf62f9a38cf">
-<link rel="stylesheet" href="game-patches.css?v=6df20d649834">
-<link rel="stylesheet" href="themes.css?v=a89212744213">
+<link rel="stylesheet" href="themes.css?v=c644ff389ad6">
 </head>
 <body>
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -33,6 +32,6 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <dialog id="share-dialog" class="share-dialog" aria-label="공유"></dialog>
 <dialog id="theme-picker" class="theme-dialog" aria-labelledby="theme-title"></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script type="module" src="app.js?v=9f6a35b6c5db"></script>
+<script type="module" src="app.js?v=a60f4b313dc5"></script>
 </body>
 </html>

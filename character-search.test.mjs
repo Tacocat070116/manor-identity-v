@@ -6,7 +6,6 @@ import vm from 'node:vm';
 import {matchesCharacter,keyboardSearchKey,sortCharacters} from './dist/character-search.js';
 import {characterSearchData} from './dist/character-search-data.js';
 import {sortStatistics} from './dist/statistics-model.js';
-import {selectGamePatches} from './dist/game-patches-model.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
 
@@ -64,15 +63,6 @@ test('statistics aliases preserve faction, rates and metric sorting',()=>{
  assert.deepEqual(sortStatistics(rows,{side:'생존자',search:'노튼'}).map(c=>c.id),['c79']);
  assert.deepEqual(sortStatistics(rows,{side:'전체',search:'노튼',sort:'pick'}).map(c=>c.id),['c79','c35']);
  assert.equal(sortStatistics(rows,{side:'감시자',search:'마리'})[0].win,0);
-});
-
-test('patch content search combines aliases with dates and existing text filters',()=>{
- const entry=(id,characterIds,title)=>({id,date:'2026-10-15',scope:'live',title,summary:['오류 수정'],types:['fix'],characterIds,characterChanges:Object.fromEntries(characterIds.map(id=>[id,['fix']]))});
- const catalog={entries:[entry('geisha',['c15'],'추격 수정'),entry('mary',['c16'],'거울 수정'),entry('other',['c37'],'다른 변경')]};
- for(const q of ['미치코빠칭코','qnfrdmsskql','붉은나비','붉은 나비'])assert.deepEqual(selectGamePatches(catalog,byId,{q}).matches.map(e=>e.id),['geisha']);
- assert.deepEqual(selectGamePatches(catalog,byId,{q:'마리 오류 2026'}).matches.map(e=>e.id),['mary']);
- assert.equal(selectGamePatches(catalog,byId,{q:'마리',c:'c15'}).matches.length,0);
- assert.equal(selectGamePatches(catalog,byId,{q:'마리 없는단어'}).matches.length,0);
 });
 
 test('live app input/change handlers apply search and sorting in catalogue, comparison and bans',async()=>{

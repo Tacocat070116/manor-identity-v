@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,27 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-10-2",
+      "version": "1.10.2",
+      "date": "2026-10-23",
+      "title": "인게임 패치노트 기능 정리",
+      "changes": [
+        {
+          "type": "개선",
+          "text": "게임 패치노트 메뉴와 홈 바로가기, 캐릭터별 패치 탭 및 관련 검색·필터 기능을 삭제했습니다."
+        },
+        {
+          "type": "개선",
+          "text": "전용 코드·스타일·데이터와 수집 도구를 정리하고 첫 로딩의 패치 데이터 요청을 제거했습니다. MANOR 업데이트는 유지합니다."
+        },
+        {
+          "type": "수정",
+          "text": "이전 게임 패치 주소는 도감으로, 캐릭터 패치 탭 주소는 해당 캐릭터의 기본 화면으로 연결됩니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-10-1",
       "version": "1.10.1",

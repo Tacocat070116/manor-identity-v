@@ -252,15 +252,12 @@ html[data-theme="plum"]{
  .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
  .evidence-card,.stat-box,.ban-slot,.rank-card,details,.source-card,.health-card,
  .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,
- .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form,
- .gp-filter-form,.gp-detail,.gp-home-link,.character-patch){
+ .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form){
  background-origin:border-box;
  background-clip:border-box;
  background-repeat:no-repeat;
  background-size:100% 100%;
 }
-.gp-detail,.gp-home-link,.character-patch{background-image:var(--glass-sheen)}
-.gp-detail,.gp-filter-form{backdrop-filter:blur(16px) saturate(1.08);-webkit-backdrop-filter:blur(16px) saturate(1.08)}
 .btn.primary{background-image:var(--action-sheen)}
 
 /* Keep opaque-surface preferences stronger than every palette. */
@@ -269,6 +266,5 @@ html[data-theme="plum"]{
 }
 @media(prefers-reduced-transparency:reduce){
  :root[data-theme]{--surface:var(--surface-solid);--glass:var(--surface-solid);--nav-surface:var(--surface-solid);--surface-soft:var(--surface-inset);--surface-hover:var(--surface-solid);--accent-soft:rgb(var(--accent-soft-rgb));--glass-sheen:none;--action-sheen:none}
- .gp-detail,.gp-filter-form{backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 @media(forced-colors:active){:root[data-theme]{--glass-sheen:none;--action-sheen:none}}

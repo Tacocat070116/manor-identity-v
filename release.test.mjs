@@ -47,14 +47,15 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
  const header=nodes.get('#header').innerHTML;
- assert.equal((header.match(/class="nav-item /g)||[]).length,8,'desktop and mobile share eight links');
+ assert.equal((header.match(/class="nav-item /g)||[]).length,7,'desktop and mobile share seven links');
  assert.ok(header.includes('aria-controls="category-panel"'));
+ for(const selector of ['#header','#footer','#page-body'])assert.ok(!nodes.get(selector).innerHTML.includes('#v=gamepatches'),'game-patch links are removed from '+selector);
  assert.ok(header.includes('aria-expanded="false"'));
  assert.ok(header.includes('aria-hidden="true" inert'));
- assert.equal((header.match(/tabindex="-1"/g)||[]).length,8);
+ assert.equal((header.match(/tabindex="-1"/g)||[]).length,7);
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
- assert.equal(fetches.length,5);assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
+ assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>url.startsWith('patches/')));assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
  handlers.input({target:{id:'release-search',value:'임의 닉네임'}});
  assert.ok(nodes.get('#release-results').innerHTML.includes('함께 만드는 피드백 게시판'));
  handlers.change({target:{id:'release-type',value:'데이터',dataset:{}}});

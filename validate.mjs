@@ -134,7 +134,7 @@ for(const c of db.characters){audit.personaGuides.push({id:c.id,build:personaBui
 audit.unmappedPersona=personaBuild({side:'생존자',persona:'새 인격 + 확인 중'});
 for(const c of db.characters){audit.roleCards.push({id:c.id,card:card(c),selection:selectionCard(c,'compare-a','캐릭터 A'),valid:validSpecialties(c.side,c)});}
 audit.templates.push(explore(),matchupPage(),comparePage(__matches),banPage(__bans));
-for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','tips','stats','patches']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
+for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
 state.own=byName['사도'].id;state.opponent=byName['탐사원'].id;audit.templates.push(matchupPage());
 state.own=byName['블러디 퀸'].id;state.opponent=byName['기상학자'].id;audit.heldMatchup=matchupPage();audit.templates.push(audit.heldMatchup);
@@ -157,10 +157,12 @@ audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버
 footer();audit.footer=$('#footer').innerHTML;
 location.hash='#v=sources';readRoute();audit.retiredSourceRoute=state.view;
 location.hash='#v=character&c=c01&tab=sources';readRoute();audit.retiredSourceTab=state.tab;
+location.hash='#v=gamepatches&c=c16&since=2020-01-01&note=retired';readRoute();audit.retiredGameRoute=state.view;
+location.hash='#v=character&c=c16&tab=patches';readRoute();audit.retiredGameTab=state.tab;
 audit.shareFallback=share().then(()=>({open:$('#share-dialog').open,html:$('#share-dialog').innerHTML}));
 `;
 vm.runInNewContext(source,context,{timeout:15000});
-assert.equal(context.audit.checked,445);
+assert.equal(context.audit.checked,356);
 for(const result of context.audit.personaGuides){
  const ch=db.characters.find(c=>c.id===result.id);
  const [direction,build]=ch.persona.split('|').map(s=>s.trim());
@@ -184,11 +186,13 @@ for(const result of context.audit.personaGuides){
 assert.ok(context.audit.unmappedPersona.includes('새 인격 + 확인 중')&&!context.audit.unmappedPersona.includes('<img'),'unknown builds preserve readable text');
 assert.equal(context.audit.retiredSourceRoute,'explore','retired source routes return to the catalog');
 assert.equal(context.audit.retiredSourceTab,'overview','retired source tabs return to the character overview');
+assert.equal(context.audit.retiredGameRoute,'explore','retired game-patch routes return to the catalog');
+assert.equal(context.audit.retiredGameTab,'overview','retired patch tabs return to the character overview');
 const shareFallback=await context.audit.shareFallback;
 assert.equal(shareFallback.open,true,'manual sharing still opens without native share or clipboard support');
 assert.match(shareFallback.html,/aria-label="공유 링크"/);
 assert.match(shareFallback.html,/data-dialog="share-dialog"/);
-for(const html of [...context.audit.templates,context.audit.footer])assert.doesNotMatch(html,/#v=sources|data-tab="sources"|data-action="evidence"|href="https?:|\bdownload(?:[ =>])|판단을 보류한 내용|계산 기준과 한계|집계 범위·최근 원문/,'public templates do not expose source browsing or internal review controls');
+for(const html of [...context.audit.templates,context.audit.footer])assert.doesNotMatch(html,/#v=gamepatches|data-tab="patches"|#v=sources|data-tab="sources"|data-action="evidence"|href="https?:|\bdownload(?:[ =>])|판단을 보류한 내용|계산 기준과 한계|집계 범위·최근 원문/,'public templates do not expose source browsing or internal review controls');
 assert.ok(!context.audit.heldMatchup.includes('판단을 보류한 내용'),'unresolved review records remain internal');
 for(const e of db.matchups.filter(e=>e.status==='보류'&&e.hunter==='블러디 퀸'&&e.survivor==='기상학자'))assert.ok(!context.audit.heldMatchup.includes(e.summary),'held matchup content is not rendered');
 assert.ok(context.audit.condition.includes('구버전 중국어'));
@@ -225,5 +229,5 @@ for(const result of context.audit.roleCards){
 }
 assert.deepEqual(Array.from(context.audit.resetExplore),['전체','','',false]);
 for(const html of context.audit.templates){assert.ok(html.length>100);assert.ok(!html.includes('undefined'));assert.ok(!html.includes('NaN'));}
-fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:445,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 707/707/302','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
-console.log('PASS: 89 portraits, 445 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, ban smoothing, exclusions, URL sanitization, and native-sheet golden cases.');
+fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:356,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 707/707/302','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
+console.log('PASS: 89 portraits, 356 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, ban smoothing, exclusions, URL sanitization, and native-sheet golden cases.');
