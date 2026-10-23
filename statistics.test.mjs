@@ -104,6 +104,7 @@ test('live app routes load only selected season files and render all three scope
  const {context,nodes,fetches,app}=runtime();await app.boot();
  let html=nodes.get('#page-body').innerHTML;
  assert.match(html,/id="ranked-title"/);assert.match(html,/id="tournament-title"/);
+ assert.doesNotMatch(html,/href="https?:|출처 ↗|수집 범위|\bdownload(?:[ =>])|ranked\/statistics.zip/);
  assert.ok(fetches.some(x=>x.startsWith('ranked/asia-s43.json')));
  assert.ok(!fetches.some(x=>x.startsWith('ranked/cn-')));
  app.state.statistics.scope='ranked';await app.render();html=nodes.get('#page-body').innerHTML;
@@ -111,12 +112,12 @@ test('live app routes load only selected season files and render all three scope
  app.state.statistics.scope='tournament';await app.render();html=nodes.get('#page-body').innerHTML;
  assert.doesNotMatch(html,/id="ranked-title"/);assert.match(html,/id="tournament-title"/);
  Object.assign(app.state.statistics,{server:'cn',season:'S44',tier:'all',snapshot:'',scope:'ranked'});await app.render();html=nodes.get('#page-body').innerHTML;
- assert.match(html,/정정 확인이 필요한 보관본/);assert.match(html,/인지 점수/);assert.match(html,/2026-08-04/);
+ assert.match(html,/정정 확인이 필요한 과거 통계/);assert.match(html,/인지 점수/);assert.match(html,/2026-08-04/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
  app.state.statistics.search='거미';await app.render();assert.match(nodes.get('#page-body').innerHTML,/1개 캐릭터/);
  app.syncStatisticsRoute();assert.match(context.location.hash,/season=S44/);
  app.readRoute();assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.search,'거미');
  context.location.hash='#v=character&c=c01&tab=stats&scope=all&server=cn&season=S43&tier=all';app.readRoute();await app.render();
- html=nodes.get('#character-content').innerHTML;assert.match(html,/>대회</);assert.match(html,/>랭킹전</);assert.match(html,/거미|48\.3%/);
+ html=nodes.get('#character-content').innerHTML;assert.doesNotMatch(html,/href="https?:|집계 범위·최근 원문|출처 ↗/);assert.match(html,/>대회</);assert.match(html,/>랭킹전</);assert.match(html,/거미|48\.3%/);
  context.location.hash='#v=compare&a=c01&b=c02&scope=ranked&server=cn&season=S43&tier=all';app.readRoute();await app.render();
  html=nodes.get('#page-body').innerHTML;assert.match(html,/랭킹전/);assert.doesNotMatch(html,/class="panel-title">[^<]*대회/);
  assert.doesNotMatch(html,/undefined|NaN/);

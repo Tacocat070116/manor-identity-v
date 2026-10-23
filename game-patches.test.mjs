@@ -127,6 +127,7 @@ test('archive templates escape source text and mounted filtering is disposed on 
  const bad=structuredClone(catalog);bad.entries[0].title='<script>bad</script>';bad.entries[0].summary=['<img src=x onerror=bad>'];bad.entries[0].sources[0].url='javascript:bad()';
  const html=gamePatchesHTML(bad,characters,{note:bad.entries[0].id,q:'" onfocus="bad'});
  assert.ok(!html.includes('<script>'));assert.ok(!html.includes('<img src=x'));assert.ok(!html.includes('javascript:'));assert.ok(html.includes('&lt;script&gt;'));
+ for(const rendered of [html,gamePatchesHTML(catalog,characters)])assert.doesNotMatch(rendered,/href="https?:|공식 원문|원문 제목|수집 범위와 자료 기준/);
  const handlers={},root={innerHTML:'',addEventListener:(k,h)=>handlers[k]=h,removeEventListener:k=>delete handlers[k]};let next;
  const dispose=mountGamePatches(root,{catalog,characters,navigate:p=>next=p});
  handlers.submit({target:{matches:()=>true,elements:{namedItem:key=>({value:({c:'c01',since:'2020-01-01',scope:'live'})[key]||''})}},preventDefault(){}});
@@ -153,7 +154,7 @@ test('character patch tab shows only reviewed balance changes and archive routes
  assert.ok(nodes.get('#page-body').innerHTML.includes('aria-label="캐릭터 패치노트"'));
  assert.ok(nodes.get('#page-body').innerHTML.indexOf('character-tabs')<nodes.get('#page-body').innerHTML.indexOf('class="character-patch-history"'));
  assert.ok(nodes.get('#page-body').innerHTML.includes('data-tab="patches" class="active" aria-pressed="true"'));
- for(const tab of ['overview','matchups','stats','sources']){
+ for(const tab of ['overview','matchups','tips','stats']){
   context.app.state.tab=tab;
   assert.ok(!context.app.characterPage().includes('class="character-patch-history"'),tab+' must not contain patch notes');
  }
@@ -162,7 +163,7 @@ test('character patch tab shows only reviewed balance changes and archive routes
   const groups=context.app.characterPatchGroups(id);
   if(!groups.some(group=>group.date))assert.ok(!detail.includes('<time'));
   if(!groups.length){assert.ok(detail.includes('현재 수록된 버프·너프·조정 기록이 없습니다'));assert.ok(!detail.includes('이 패치 자세히'));}
-  assert.ok(!detail.includes('공략 검토일'));
+  assert.ok(!detail.includes('공략 검토일'));assert.doesNotMatch(detail,/href="https?:|수록 범위와 출처|공식 원문|나무위키 기록/);
   assert.ok(detail.includes('밸런스 변경 이력'));assert.ok(detail.includes('type=balance'));
   assert.ok(!detail.includes('data-impact="fix"'));assert.ok(!detail.includes('오류 수정'));
   for(const [index,impact] of change.summaryImpacts.entries()){
@@ -185,7 +186,7 @@ test('character patch tab shows only reviewed balance changes and archive routes
  const undatedHTML=context.app.characterPatchHistory(characters.c22);
  assert.ok(undatedHTML.indexOf('2024.04.11')<undatedHTML.indexOf('날짜 미기재 기록'));
  assert.ok(context.app.characterPatchHistory(characters.c79).includes('월까지만 기재'));
- assert.ok(context.app.characterPatchHistory(characters.c15).includes('패치노트 표가 없습니다'));
+ assert.ok(!context.app.characterPatchHistory(characters.c15).includes('수록 범위와 출처'));
  const unsafe=context.app.patchHistoryEntry({date:null,precision:'unknown',basis:'wiki',period:'<img src=x>',note:'<script>bad</script>',changes:[{impact:'buff',text:'<img src=x onerror=bad>'}],sourceUrl:'javascript:bad()'},'c01');
  assert.ok(!unsafe.includes('<script>'));assert.ok(!unsafe.includes('<img src=x'));assert.ok(!unsafe.includes('javascript:'));assert.ok(unsafe.includes('&lt;script&gt;'));
  context.location.hash='#v=character&c=c60&tab=patches';context.app.readRoute();await context.app.render();

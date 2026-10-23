@@ -54,14 +54,14 @@ function assertClosed(h){
  assert.equal(h.isOpen(),false);assert.equal(h.panel.inert,true);assert.equal(h.panel.attrs['aria-hidden'],'true');
  assert.ok(h.links.every(link=>link.attrs.tabindex==='-1'));
 }
-test('one collapsed menu reports the current route, including character and source pages',()=>{
+test('one collapsed menu reports the current route, including character pages and unknown routes',()=>{
  const h=harness();h.update('feedback');assertClosed(h);
  assert.equal(h.currentLabel.textContent,'피드백');assert.equal(h.currentIcon.innerHTML,'icon:message');
  assert.match(h.toggle.attrs['aria-label'],/열기.*피드백/);
  assert.equal(h.links.filter(link=>link.attrs['aria-current']==='page').length,1);
  const sameLinks=[...h.links];h.update('character');
  assert.equal(h.currentLabel.textContent,'도감');assert.equal(h.links[0].attrs['aria-current'],'page');
- h.update('sources');assert.equal(h.currentLabel.textContent,'자료 기준');
+ h.update('unknown');assert.equal(h.currentLabel.textContent,'메뉴');
  assert.ok(h.links.every(link=>!link.attrs['aria-current']));
  h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
  assert.equal(h.themeButton.innerHTML,'icon:palette');assert.equal(h.themeButton.attrs['aria-label'],'컬러 테마 선택 · 현재 다크');

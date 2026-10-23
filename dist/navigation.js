@@ -22,8 +22,8 @@ export function mountNavigation(root,{icon}){
   const animate=selected&&!reducedMotion.matches&&typeof toggle.animate==='function';
   const from=animate?toggle.getBoundingClientRect().width:0;
   stopMotion();
-  currentLabel.textContent=current?.dataset.navLabel||(view==='sources'?'자료 기준':'메뉴');
-  currentIcon.innerHTML=icon(current?.dataset.navIcon||(view==='sources'?'book':'grid'));
+  currentLabel.textContent=current?.dataset.navLabel||'메뉴';
+  currentIcon.innerHTML=icon(current?.dataset.navIcon||'grid');
   if(!animate)return;
   const to=toggle.getBoundingClientRect().width;
   if(Math.abs(to-from)<.5)return;
