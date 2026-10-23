@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-9-2",
+      "version": "1.9.2",
+      "date": "2026-10-23",
+      "title": "상단 메뉴 반투명 효과 수정",
+      "changes": [
+        {
+          "type": "수정",
+          "text": "상단 바의 메뉴 버튼이 불투명하게 보이던 배경 중첩을 줄이고, 배경 흐림 효과를 적용했습니다."
+        },
+        {
+          "type": "수정",
+          "text": "메뉴를 펼치거나 마우스를 올렸을 때도 반투명 효과가 유지되도록 조정했습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-9-1",
       "version": "1.9.1",
