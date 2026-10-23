@@ -6,6 +6,7 @@ import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.
 import {createStatisticsUI} from './statistics.js?v=b4fa17839577';
 import {mountGamePatches} from './game-patches.js?v=952b5ef2a173';
 import {mountFeedback} from './feedback.js?v=476cf2cb3cae';
+import {mountMatchupTips} from './matchup-tips.js';
 import {selectRanked} from './statistics-model.js?v=c582a4c4dd0b';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=aacecb10d3f5';
 const $=(s,r=document)=>r.querySelector(s);
@@ -62,6 +63,7 @@ state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').mat
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
+let disposeMatchupTips=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController,detailsPromise,observedBansPromise;
 let releaseLog,characterPatches={characters:{}},gamePatchesPromise;
@@ -136,7 +138,7 @@ function readRoute(){
  state.view=['explore','character','matchup','compare','bans','statistics','sources','feedback','patchnotes','gamepatches'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
- state.tab=['overview','matchups','stats','patches','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
+ state.tab=['overview','matchups','tips','stats','patches','sources'].includes(p.get('tab'))?p.get('tab'):'overview';
  if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
@@ -222,8 +224,8 @@ function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 c
 function characterPage(){
  const c=char(state.character);state.character=c.id;
  return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}검토 ${esc(c.reviewedAt)}</span></div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
- <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['stats','통계'],['patches','패치노트'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='patches'?characterPatchHistory(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['tips','유저 상대법'],['stats','통계'],['patches','패치노트'],['sources','근거']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
+ <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':state.tab==='patches'?characterPatchHistory(c):state.tab==='sources'?characterSources(c):'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function synergyCard(l){
@@ -329,12 +331,12 @@ function sourcesPage(){
 function updateSources(){const list=db.sources.filter(s=>(state.region==='전체'||s.region===state.region)&&[s.site,s.scope,s.type,s.note].join(' ').toLowerCase().includes(state.sourceQuery.toLowerCase()));const root=$('#source-results');if(root)root.innerHTML=`<p class="result-count" role="status">${list.length}건의 자료</p><div class="source-grid">${list.map(sourceCard).join('')}</div>${!list.length?'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>지역이나 검색어를 변경해 보세요.</p></div>':''}`;}
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeGamePatches();disposeGamePatches=()=>{};
+ disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeGamePatches();disposeGamePatches=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
  document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',sources:'자료와 평가 기준',feedback:'피드백',patchnotes:'MANOR 업데이트',gamepatches:'게임 패치노트'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
- else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='stats'){
+ else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
   rankedError=r.status==='rejected'?r.reason.message:'';
   $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
@@ -348,7 +350,8 @@ async function render({scroll=false}={}){
   body.innerHTML=matchupPage();
   const own=char(state.own),opp=byId[state.opponent];
   if(opp){
-   body.innerHTML+='<section class="panel section-gap" id="pair-observations"><p class="muted">대회의 같은 대진을 불러오고 있습니다.</p></section>';
+   body.innerHTML+='<div id="matchup-tips"></div><section class="panel section-gap" id="pair-observations"><p class="muted">대회의 같은 대진을 불러오고 있습니다.</p></section>';
+   disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:own.id,opponentId:opp.id});
    try{const rows=await loadMatches();if(token!==renderToken)return;const s=statsFor(rows,own,{...state.stats,opponent:opp.id});
     $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 추격 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
    }catch(e){if(token===renderToken)$('#pair-observations').innerHTML=loadError(e);}
@@ -476,7 +479,7 @@ for(const d of[$('#picker'),$('#evidence'),$('#theme-picker')])d.addEventListene
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=712052c3373a'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=bb4acc6859fc'),fetch('patches/characters.json?v=542f7a67c062')]);
+ const responses=await Promise.all([fetch('data.json?v=712052c3373a'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=9e0624a97a24'),fetch('patches/characters.json?v=542f7a67c062')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases,patches]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

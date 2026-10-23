@@ -306,9 +306,9 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
  .picker-sort select{min-height:44px}
 }
 
-/* Keep all five character sections visible on narrow screens. */
+/* Keep all six character sections visible on narrow screens. */
 @media(max-width:640px){
- .character-tabs{display:grid;grid-template-columns:1.4fr .8fr .8fr 1.2fr .8fr}
+ .character-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
  .character-tabs button{min-width:0;padding:10px 4px}
 }
 @media(max-width:360px){.character-tabs button{font-size:11px}}
