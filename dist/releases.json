@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.10.8",
+  "version": "1.10.9",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,19 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-10-9",
+      "version": "1.10.9",
+      "date": "2026-10-25",
+      "title": "실전 운용 가이드 본문 정리",
+      "changes": [
+        {
+          "type": "개선",
+          "text": "캐릭터 89명의 가이드 본문 267개를 사용 시점·아껴야 할 상황·주의할 점에 맞춰 다시 쓰고, 불필요한 스킬명 반복과 패치 연혁 설명을 줄였습니다. 소제목은 그대로 유지했습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-10-8",
       "version": "1.10.8",

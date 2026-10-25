@@ -79,7 +79,9 @@ test('detail source identities and talent side mappings are valid; old and full 
 test('all 89 characters have consistent team totals and source-backed updated core descriptions',()=>{
  const edits=read('research/refresh/2026-10-21/guide-edits.json').records;
  const languageEdits=new Map(read('research/localization/2026-10-22/edits.json').map(e=>[e.path,e]));
+ const guideEdits=new Map(read('research/editorial/2026-10-25/skill-guide-edits.json').records.map(e=>[e.id,e]));
  assert.equal(edits.length,89);
+ assert.equal(guideEdits.size,89);
  for(const [index,c] of db.characters.entries()){
   const r=tournamentRelations(matches,c),s=statsFor(matches,c);
   assert.equal(r.appearances,s.appearances);
@@ -87,11 +89,15 @@ test('all 89 characters have consistent team totals and source-backed updated co
   assert.equal(r.opponents.reduce((n,x)=>n+x.appearances,0),s.appearances*(c.side==='감시자'?4:1));
   if(c.side==='생존자')assert.equal(r.companions.reduce((n,x)=>n+x.appearances,0),s.appearances*3);
   const e=edits.find(e=>e.id===c.id);
+  const guideEdit=guideEdits.get(c.id);
   for(const field of ['skill','caution']){
    const languageEdit=languageEdits.get(`dist/data.json/characters/${index}/${field}`);
    if(languageEdit)assert.equal(languageEdit.before,e[field],c.name+' '+field+' retains its reviewed source wording');
-   assert.equal(c[field],languageEdit?.after??e[field],c.name+' '+field+' matches the recorded editorial revision');
+   const previous=languageEdit?.after??e[field];
+   if(field==='caution')assert.equal(guideEdit.before[field],previous,c.name+' caution retains its editorial history');
+   assert.equal(c[field],field==='caution'?guideEdit.after[field]:previous,c.name+' '+field+' matches the recorded editorial revision');
   }
+  for(const field of ['use','hold','caution'])assert.equal(c[field],guideEdit.after[field],c.name+' '+field+' matches the guide revision');
   assert.equal(c.reviewedAt,'2026-10-21');
  }
 });
