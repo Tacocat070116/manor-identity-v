@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES} from './dist/creators-model.js';
+import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_SERVERS} from './dist/creators-model.js';
 import {creatorCard,creatorEditor} from './dist/creators.js';
 const characters={c16:{id:'c16',name:'블러디 퀸',portrait:'assets/portraits/c16.webp'}};
 const roster=new Map(Object.entries(characters));
@@ -42,10 +42,18 @@ test('editor keeps tiers and badges optional and safely restores entered copy',(
 
 test('country tags stay distinct from game servers and never imply a curated channel submitted its own post',()=>{
  assert.equal(Object.keys(CREATOR_COUNTRIES).length,250);
- const v=normalizeCreator({...base(),country:'KR',server:'naeu'},roster);assert.equal(v.country,'KR');assert.equal(v.server,'naeu');
+ const v=normalizeCreator({...base(),country:'KR',server:'asia'},roster);assert.equal(v.country,'KR');assert.equal(v.server,'asia');
  assert.equal(normalizeCreator(base(),roster).country,'unspecified');assert.throws(()=>normalizeCreator({...base(),country:'ZZ'},roster),/국가/);
  const html=creatorCard({...base(),country:'JP',origin:'curated'},characters,{detail:true});
  assert.match(html,/#일본/);assert.match(html,/MANOR 소개/);assert.match(html,/직접 등록한 글은 아닙니다/);assert.doesNotMatch(html,/인증 완료|검증 완료/);
  const card=creatorCard({...base(),country:'KR'},characters);assert.match(card,/data-cr="country" data-country="KR"/);
  const editor=creatorEditor({...base(),country:'KR'},characters);assert.match(editor,/name="country"/);assert.match(editor,/<option value="KR" selected>한국/);
+});
+
+
+test('creator server choices omit NA/EU and old saved drafts remain editable without relabelling them',()=>{
+ assert.deepEqual(Object.keys(CREATOR_SERVERS),['unspecified','asia','cn']);
+ const legacy=normalizeCreator({...base(),server:'naeu'},roster);assert.equal(legacy.server,'unspecified');
+ const editor=creatorEditor(legacy,characters);assert.doesNotMatch(editor,/NA\/EU|value="naeu"/);
+ assert.match(editor,/<option value="unspecified" selected>선택 안 함/);
 });
