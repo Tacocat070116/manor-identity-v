@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.10.9",
+  "version": "1.11.0",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,31 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-11-0",
+      "version": "1.11.0",
+      "date": "2026-10-25",
+      "title": "유튜브 채널 홍보 게시판",
+      "changes": [
+        {
+          "type": "추가",
+          "text": "누구나 제5인격 유튜브 채널을 등록하고 소개할 수 있는 유튜브 카테고리"
+        },
+        {
+          "type": "추가",
+          "text": "직접 만드는 태그, 주력 캐릭터, 역대 휘장·최고 티어, 대표 영상과 카드 색상 꾸미기"
+        },
+        {
+          "type": "추가",
+          "text": "채널 검색과 필터, 내 게시글 수정·삭제, 다른 기기 연결용 관리키"
+        },
+        {
+          "type": "추가",
+          "text": "채널 사칭·도배 신고와 운영자 관리 기능"
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-10-9",
       "version": "1.10.9",

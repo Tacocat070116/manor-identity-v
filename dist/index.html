@@ -8,7 +8,7 @@
 try{const saved=localStorage.getItem('manor-theme');document.documentElement.dataset.theme=/^(light|dark|ocean|lavender|rose|sand|midnight|plum)$/.test(saved)?saved:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
 catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
 </script>
-<meta name="description" content="89명의 캐릭터 공략과 유저 상대법, 상성·통계와 밴 분석. 제5인격의 다음 한 수를 더 선명하게.">
+<meta name="description" content="89명의 캐릭터 공략과 유저 상대법, 유튜브 채널 홍보, 상성·통계와 밴 분석. 제5인격의 다음 한 수를 더 선명하게.">
 <meta property="og:title" content="MANOR · 제5인격 플레이 가이드">
 <meta property="og:description" content="캐릭터 탐색부터 상대 대응까지, 공략과 통계를 한눈에 보는 제5인격 가이드.">
 <meta property="og:url" content="https://tacocat070116.github.io/manor-identity-v/">
@@ -19,6 +19,7 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <link rel="stylesheet" href="navigation.css?v=e90b35d669e1">
 <link rel="stylesheet" href="feedback.css?v=ab7c7810ea33">
 <link rel="stylesheet" href="matchup-tips.css?v=57b23fab55b8">
+<link rel="stylesheet" href="creators.css">
 <link rel="stylesheet" href="releases.css?v=6bf62f9a38cf">
 <link rel="stylesheet" href="themes.css?v=c644ff389ad6">
 </head>
@@ -32,6 +33,6 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <dialog id="share-dialog" class="share-dialog" aria-label="공유"></dialog>
 <dialog id="theme-picker" class="theme-dialog" aria-labelledby="theme-title"></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script type="module" src="app.js?v=8e580df21221"></script>
+<script type="module" src="app.js?v=b334f8187ff8"></script>
 </body>
 </html>
