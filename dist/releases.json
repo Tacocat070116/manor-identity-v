@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.10.6",
+  "version": "1.10.7",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-10-7",
+      "version": "1.10.7",
+      "date": "2026-10-25",
+      "title": "카테고리 텍스트 수납·펼침 동작 개선",
+      "changes": [
+        {
+          "type": "수정",
+          "text": "기존 카테고리명이 오른쪽 경계 안으로 들어간 뒤, 새 이름이 같은 경계에서 왼쪽으로 펼쳐지도록 변경했습니다."
+        },
+        {
+          "type": "개선",
+          "text": "버튼 크기를 글자의 퇴장·등장에 맞춰 조절하고, 빠른 연속 선택과 동작 줄이기 설정에서도 선택한 이름이 정확하게 유지되도록 했습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-10-6",
       "version": "1.10.6",

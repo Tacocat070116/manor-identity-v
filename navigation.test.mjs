@@ -13,7 +13,7 @@ class Target{
  }
  count(){return [...this.listeners.values()].reduce((n,s)=>n+s.size,0);}
 }
-function harness({reduced=false,animationSupport=true}={}){
+function harness({reduced=false,animationSupport=false}={}){
  const doc=new Target(),win=new Target(),media=new Target(),reducedMotion=new Target(),animations=[];
  reducedMotion.matches=reduced;
  doc.defaultView=win;win.matchMedia=query=>query.includes('reduced-motion')?reducedMotion:media;
@@ -31,6 +31,7 @@ function harness({reduced=false,animationSupport=true}={}){
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
  const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='밴 분석'?184:150;
  toggle.getBoundingClientRect=()=>({width:toggle.activeAnimation?.sampleWidth??naturalWidth()});
+ currentLabel.getBoundingClientRect=()=>({width:Math.max(0,toggle.getBoundingClientRect().width-124)});
  if(animationSupport)for(const target of [toggle,currentLabel])target.animate=(frames,options)=>{
   const animation={frames,options,target,sampleWidth:parseFloat(frames[0].width),cancelled:false,
    cancel(){this.cancelled=true;if(target.activeAnimation===this)target.activeAnimation=null;},
@@ -128,35 +129,56 @@ test('breakpoint changes, page restoration and teardown cannot leave an invisibl
  h.toggle.emit('click');h.update('feedback');assertClosed(h);assert.equal(h.currentLabel.textContent,'도감');
  h.controller.destroy();
 });
-test('category width stays within its endpoints and interruptions continue from the visible width',()=>{
- const h=harness();h.update('explore');assert.equal(h.animations.length,0);
- h.update('patchnotes');const first=h.toggle.activeAnimation;
- assert.equal(parseFloat(first.frames[0].width),150);
- assert.equal(parseFloat(first.frames.at(-1).width),248);
- assert.ok(first.frames.every(frame=>parseFloat(frame.width)>=150&&parseFloat(frame.width)<=248));
- assert.equal(first.options.easing,'cubic-bezier(.4,0,.2,1)');
- assert.equal(first.options.duration,640);
- assert.ok(first.frames.every(frame=>Number.isFinite(parseFloat(frame.width))));
- first.sampleWidth=235;
+test('old text retracts completely before the new label expands, for longer, shorter and equal names',()=>{
+ const h=harness({animationSupport:true});h.update('explore');assert.equal(h.animations.length,0);
+ for(const [view,name,width] of [['patchnotes','MANOR 업데이트',248],['explore','도감',150],['compare','비교',150]]){
+  const previous=h.currentLabel.textContent,previousIcon=h.currentIcon.innerHTML,from=h.toggle.getBoundingClientRect().width;
+  h.update(view);const retract=h.toggle.activeAnimation;
+  assert.equal(h.currentLabel.textContent,previous,'outgoing text remains visible during retraction');
+  assert.equal(h.currentIcon.innerHTML,previousIcon);
+  assert.equal(h.toggle.attrs['aria-label'],'카테고리 메뉴 열기 · 현재 '+name);
+  assert.equal(parseFloat(retract.frames[0].width),from);
+  assert.equal(parseFloat(retract.frames.at(-1).width),124);
+  retract.finish();const reveal=h.toggle.activeAnimation;
+  assert.equal(h.currentLabel.textContent,name);
+  assert.equal(parseFloat(reveal.frames[0].width),124);
+  assert.equal(parseFloat(reveal.frames.at(-1).width),width);
+  assert.equal(retract.options.duration+reveal.options.duration,640);
+  reveal.finish();assert.equal(h.toggle.getBoundingClientRect().width,width);
+ }
+ h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);
+});
+test('interrupted retraction and reveal keep their visible text and ignore stale finish callbacks',()=>{
+ const h=harness({animationSupport:true});h.update('explore');h.update('patchnotes');
+ const first=h.toggle.activeAnimation;first.sampleWidth=140;
  h.update('bans');const second=h.toggle.activeAnimation;
- assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),235);
- assert.equal(parseFloat(second.frames.at(-1).width),184);
- assert.ok(second.frames.every(frame=>parseFloat(frame.width)>=184&&parseFloat(frame.width)<=235));
- h.update('bans','dark');assert.equal(h.toggle.activeAnimation,second);
- second.finish();assert.equal(h.toggle.getBoundingClientRect().width,184);
- h.update('explore');assert.equal(parseFloat(h.toggle.activeAnimation.frames.at(-1).width),150);
- h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
+ assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),140);
+ assert.equal(h.currentLabel.textContent,'도감');
+ first.finish();assert.equal(h.toggle.activeAnimation,second);assert.equal(h.currentLabel.textContent,'도감');
+ second.finish();const reveal=h.toggle.activeAnimation;
+ assert.equal(h.currentLabel.textContent,'밴 분석');reveal.sampleWidth=160;
+ h.update('feedback');const third=h.toggle.activeAnimation;
+ assert.equal(reveal.cancelled,true);assert.equal(parseFloat(third.frames[0].width),160);
+ assert.equal(h.currentLabel.textContent,'밴 분석');
+ reveal.finish();assert.equal(h.toggle.activeAnimation,third);
+ h.update('feedback','dark');assert.equal(h.toggle.activeAnimation,third);
+ h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);
+ assert.equal(h.currentLabel.textContent,'피드백');assert.equal(h.currentIcon.innerHTML,'icon:message');
+ third.finish();assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'피드백');
 });
 test('reduced motion, unsupported animation and viewport changes retain natural layout',()=>{
- for(const options of [{reduced:true},{animationSupport:false}]){
+ for(const options of [{reduced:true,animationSupport:true},{animationSupport:false}]){
   const h=harness(options);h.update('explore');h.update('patchnotes');
   assert.equal(h.animations.length,0);assert.equal(h.toggle.getBoundingClientRect().width,248);h.controller.destroy();
  }
- const h=harness();h.update('explore');h.update('patchnotes');
+ const h=harness({animationSupport:true});h.update('explore');h.update('patchnotes');
  h.reducedMotion.matches=true;h.reducedMotion.emit('change');
- assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.activeAnimation,null);
+ assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
  h.update('explore');assert.equal(h.toggle.getBoundingClientRect().width,150);
  h.reducedMotion.matches=false;h.update('patchnotes');const previous=h.toggle.activeAnimation;
  h.win.emit('resize');assert.equal(previous.cancelled,true);assert.equal(h.toggle.getBoundingClientRect().width,248);
+ assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
+ h.update('bans');h.toggle.activeAnimation.finish();
+ h.win.emit('resize');assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'밴 분석');
  h.controller.destroy();
 });

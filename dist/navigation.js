@@ -11,36 +11,55 @@ export function mountNavigation(root,{icon}){
  const mobile=win.matchMedia('(max-width:640px)');
  const reducedMotion=win.matchMedia('(prefers-reduced-motion:reduce)');
  let expanded=false,selected='',routeView='',theme='',destroyed=false;
- let sizeAnimation,labelAnimation;
+ let sizeAnimation,currentSelection;
 
- function stopMotion(){
-  sizeAnimation?.cancel();labelAnimation?.cancel();
-  sizeAnimation=labelAnimation=null;
+ function showCurrent(){
+  if(!currentSelection)return;
+  currentLabel.textContent=currentSelection.label;
+  currentIcon.innerHTML=icon(currentSelection.icon);
  }
- function changeCurrent(current,view){
-  // Continue an interrupted transition from its currently visible width.
+ function stopMotion({settle=true}={}){
+  const motion=sizeAnimation;
+  sizeAnimation=null;
+  motion?.cancel();
+  if(settle)showCurrent();
+ }
+ function changeCurrent(current){
+  // Keep the outgoing text until it has retracted behind the right-hand edge.
+  // A new selection during either phase continues from the visible width.
   const animate=selected&&!reducedMotion.matches&&typeof toggle.animate==='function';
   const from=animate?toggle.getBoundingClientRect().width:0;
-  stopMotion();
-  currentLabel.textContent=current?.dataset.navLabel||'메뉴';
-  currentIcon.innerHTML=icon(current?.dataset.navIcon||'grid');
-  if(!animate)return;
-  const to=toggle.getBoundingClientRect().width;
-  if(Math.abs(to-from)<.5)return;
-  // Bounded ease-in-out has no overshoot or rebound; text is never scaled.
-  const motion=toggle.animate([
+  const empty=animate?Math.max(0,from-currentLabel.getBoundingClientRect().width):0;
+  stopMotion({settle:false});
+  currentSelection={label:current?.dataset.navLabel||'메뉴',icon:current?.dataset.navIcon||'grid'};
+  if(!animate){showCurrent();return;}
+  function reveal(){
+   showCurrent();
+   const to=toggle.getBoundingClientRect().width;
+   const motion=toggle.animate([
+    {width:empty+'px',minWidth:'0px'},
+    {width:to+'px',minWidth:'0px'}
+   ],{duration:420,easing:'cubic-bezier(.2,0,.2,1)'});
+   sizeAnimation=motion;
+   motion.onfinish=()=>{if(sizeAnimation===motion)sizeAnimation=null;};
+  }
+  if(from-empty<.5){reveal();return;}
+  const retract=toggle.animate([
    {width:from+'px',minWidth:'0px'},
-   {width:to+'px',minWidth:'0px'}
-  ],{duration:640,easing:'cubic-bezier(.4,0,.2,1)'});
-  sizeAnimation=motion;
-  motion.onfinish=()=>{if(sizeAnimation===motion)sizeAnimation=null;};
-  const label=currentLabel.animate([{opacity:0},{opacity:1}],{duration:420,easing:'ease-out'});
-  labelAnimation=label;
-  label.onfinish=()=>{if(labelAnimation===label)labelAnimation=null;};
+   {width:empty+'px',minWidth:'0px'}
+  ],{duration:220,easing:'cubic-bezier(.4,0,1,1)',fill:'forwards'});
+  sizeAnimation=retract;
+  retract.onfinish=()=>{
+   if(sizeAnimation!==retract)return;
+   sizeAnimation=null;
+   retract.cancel();
+   reveal();
+  };
  }
 
  function labelToggle(){
-  toggle.setAttribute('aria-label','카테고리 메뉴 '+(expanded?'닫기':'열기')+' · 현재 '+currentLabel.textContent);
+  // Announce the selected page immediately, even while its predecessor exits.
+  toggle.setAttribute('aria-label','카테고리 메뉴 '+(expanded?'닫기':'열기')+' · 현재 '+(currentSelection?.label||currentLabel.textContent));
  }
  function setOpen(open,{restoreFocus=false}={}){
   if(destroyed)return;
@@ -69,7 +88,7 @@ export function mountNavigation(root,{icon}){
     link.classList.toggle('active',active);
     if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
    }
-   changeCurrent(current,view);
+   changeCurrent(current);
    selected=view;
    labelToggle();
   }
