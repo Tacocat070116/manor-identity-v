@@ -57,3 +57,13 @@ test('creator server choices omit NA/EU and old saved drafts remain editable wit
  const editor=creatorEditor(legacy,characters);assert.doesNotMatch(editor,/NA\/EU|value="naeu"/);
  assert.match(editor,/<option value="unspecified" selected>선택 안 함/);
 });
+
+test('compact cards link to complete tags and self-reported records without discarding channel details',()=>{
+ const c={...base(),id:'compact-example',tags:['공략','생존자','랭크','생방송','예능','편안한분위기'],body:'전체 소개는 상세 화면에서 읽을 수 있습니다.',badges:[{characterId:'c16',grade:'A',season:'시즌 40'},{characterId:'c16',grade:'S',season:'시즌 42'}],tiers:[{side:'hunter',tier:'히드라',season:'시즌 42'}]};
+ const list=creatorCard(c,characters),detail=creatorCard(c,characters,{detail:true}),preview=creatorCard(c,characters,{preview:true});
+ assert.match(list,/is-compact/);assert.match(list,/태그 3개 더 보기/);assert.match(list,/이력 1개 더 보기/);assert.match(list,/data-cr="open" data-id="compact-example"/);assert.match(list,/직접 입력한 이력/);
+ for(const tag of c.tags)assert(detail.includes('#'+tag));
+ for(const season of ['시즌 40','시즌 42'])assert(detail.includes(season));
+ assert(detail.includes(c.body));assert.match(detail,/is-detail/);assert.doesNotMatch(detail,/class="creator-extra-tags"/);
+ assert.doesNotMatch(preview,/data-cr="open"/);assert.equal(c.tags.length,6);assert.equal(c.badges.length,2);
+});

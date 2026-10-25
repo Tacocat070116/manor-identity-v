@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,27 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-12-2",
+      "version": "1.12.2",
+      "date": "2026-10-25",
+      "title": "더 많은 채널을 한눈에",
+      "changes": [
+        {
+          "type": "개선",
+          "text": "큰 배너형 채널 카드를 작은 썸네일과 간결한 소개가 있는 카드로 정리하고 여백을 줄였습니다."
+        },
+        {
+          "type": "개선",
+          "text": "목록에서는 핵심 태그와 이력을 보여주고 +N 또는 소개에서 전체 내용을 볼 수 있습니다."
+        },
+        {
+          "type": "개선",
+          "text": "모바일 검색과 필터를 두 줄로, 콘텐츠 태그를 가로로 넘기는 한 줄로 정리했습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-12-1",
       "version": "1.12.1",
