@@ -143,7 +143,7 @@ test('old text retracts completely before the new label expands, for longer, sho
   assert.equal(h.currentLabel.textContent,name);
   assert.equal(parseFloat(reveal.frames[0].width),124);
   assert.equal(parseFloat(reveal.frames.at(-1).width),width);
-  assert.equal(retract.options.duration+reveal.options.duration,640);
+  assert.equal(retract.options.duration+reveal.options.duration,840);
   reveal.finish();assert.equal(h.toggle.getBoundingClientRect().width,width);
  }
  h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);

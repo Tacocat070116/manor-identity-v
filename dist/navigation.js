@@ -39,7 +39,7 @@ export function mountNavigation(root,{icon}){
    const motion=toggle.animate([
     {width:empty+'px',minWidth:'0px'},
     {width:to+'px',minWidth:'0px'}
-   ],{duration:420,easing:'cubic-bezier(.2,0,.2,1)'});
+   ],{duration:520,easing:'cubic-bezier(.22,0,.18,1)'});
    sizeAnimation=motion;
    motion.onfinish=()=>{if(sizeAnimation===motion)sizeAnimation=null;};
   }
@@ -47,7 +47,7 @@ export function mountNavigation(root,{icon}){
   const retract=toggle.animate([
    {width:from+'px',minWidth:'0px'},
    {width:empty+'px',minWidth:'0px'}
-  ],{duration:220,easing:'cubic-bezier(.4,0,1,1)',fill:'forwards'});
+  ],{duration:320,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
   sizeAnimation=retract;
   retract.onfinish=()=>{
    if(sizeAnimation!==retract)return;
