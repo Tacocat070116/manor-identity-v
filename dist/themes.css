@@ -248,7 +248,7 @@ html[data-theme="plum"]{
 
 /* Every reflection fills the rounded border box once. No overlay, rim or mask
    can cross an icon, and nested materials do not repeat a small highlight tile. */
-:where(.nav-shell,.category-toggle,.category-panel,
+:where(.nav-shell,.category-toggle,.category-panel,.art-card,.hero-carousel-footer,
  .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
  .evidence-card,.stat-box,.ban-slot,.rank-card,details,.source-card,.health-card,
  .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,

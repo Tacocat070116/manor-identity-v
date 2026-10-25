@@ -38,7 +38,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
-  mountNavigation:()=>({update:({view})=>views.push(view)}),
+  mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');

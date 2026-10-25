@@ -92,7 +92,7 @@ function runtime(){
  document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},getElementById(id){return nodes.get('#'+id);},addEventListener(t,h){handlers[t]=h;}},
  window:{addEventListener(){},scrollTo(){},scrollY:0,history:{replaceState(_a,_b,url){context.location.hash=url;}}},
  location:{hash:'#v=statistics',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
- mountNavigation:()=>({update(){}}),
+ mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
