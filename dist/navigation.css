@@ -6,7 +6,9 @@
 .category-toggle{display:flex;align-items:center;gap:10px;width:max-content;min-width:0;min-height:48px;padding:10px 14px;border:1px solid var(--control-line);border-radius:26px;background:var(--category-surface);background-image:var(--category-sheen);backdrop-filter:blur(24px) saturate(1.08);-webkit-backdrop-filter:blur(24px) saturate(1.08);color:var(--accent);box-shadow:var(--selected-shadow);font-size:13px;font-weight:680;line-height:20px;touch-action:manipulation;transition:background 240ms ease,border-color 240ms ease,box-shadow 360ms ease}
 .category-current-icon{display:flex;align-items:center;justify-content:center;flex:0 0 22px}
 .category-current-icon .icon{width:22px;height:22px}
-.category-current-label{flex:0 1 auto;min-width:0;overflow:hidden;text-align:left;white-space:nowrap}
+/* Keep the label against the divider as the pill grows or shrinks. Let it
+   absorb the animated width so the menu hint and chevron retain their inset. */
+.category-current-label{display:flex;justify-content:flex-end;flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap}
 .category-nav,.category-toggle{max-width:calc(100vw - 40px)}
 .category-toggle-hint,.category-chevron{flex-shrink:0}
 .category-toggle-hint{padding-left:12px;border-left:1px solid var(--line);font-size:11px;font-weight:550;color:var(--muted);line-height:16px}
