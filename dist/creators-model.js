@@ -1,10 +1,14 @@
 export const CREATOR_ORIGIN='https://manor-feedback.just-bean-5735.chatgpt.site';
 export const CREATOR_TAGS=['캐릭터공략','입문가이드','랭크','하이라이트','예능','생방송','대회분석','생존자','감시자','새내기','편안한분위기','한국어'];
 export const CREATOR_SERVERS={unspecified:'선택 안 함',asia:'글로벌 · 아시아',naeu:'글로벌 · NA/EU',cn:'중국'};
+const countryNames=new Intl.DisplayNames(['ko'],{type:'region'});
+const countryCodes='AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split(' ');
+const countryLabels={KR:'한국',JP:'일본',CN:'중국',TW:'대만',HK:'홍콩',MO:'마카오'};
+export const CREATOR_COUNTRIES={unspecified:'선택 안 함',...countryLabels,...Object.fromEntries(countryCodes.filter(code=>!Object.hasOwn(countryLabels,code)).map(code=>[code,countryNames.of(code)]).sort((a,b)=>a[1].localeCompare(b[1],'ko')))};
 export const CREATOR_COLORS={mint:'민트',lilac:'라일락',sky:'스카이',rose:'로즈',gold:'샌드',ink:'잉크'};
 export const CREATOR_TIERS={survivor:['일벌','사냥개','엘크','매머드','그리핀','유니콘','용사','헤라클레스'],hunter:['타란툴라','코브라','악어','스밀로돈','만티코어','키클롭스','이블 드래곤','히드라']};
 export const CREATOR_SIDES={survivor:'생존자',hunter:'감시자'};
-export const CREATOR_REPORTS={spam:'도배·광고',impersonation:'채널 사칭',unrelated:'제5인격과 무관한 내용',inappropriate:'부적절한 내용',other:'기타'};
+export const CREATOR_REPORTS={spam:'도배·광고',impersonation:'채널 사칭',unrelated:'제5인격과 무관한 내용',inappropriate:'부적절한 내용',correction:'채널 정보 수정·삭제 요청',other:'기타'};
 export const creatorEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bad=message=>{throw new Error(message);};
 function clean(value,min,max,label){
@@ -43,7 +47,8 @@ export function videoThumbnail(url){try{const video=normalizeVideo(url);return v
 export function normalizeTag(value){const tag=clean(value,1,20,'태그').replace(/^#/,'');if(!/^[\p{L}\p{N}][\p{L}\p{N}_-]{0,17}$/u.test(tag))bad('태그는 공백 없이 글자·숫자·_·-로 18자까지 입력해 주세요.');return tag;}
 export function normalizeCreator(input,characters){
  const channel=normalizeChannel(input.channelUrl);
- const v={channelUrl:channel.url,channelKey:channel.key,title:clean(input.title,1,50,'채널 이름'),tagline:clean(input.tagline,5,120,'한 줄 소개'),body:clean(input.body||'',0,1800,'자세한 소개'),videoUrl:normalizeVideo(input.videoUrl||''),server:input.server||'unspecified',color:input.color||'mint'};
+ const v={channelUrl:channel.url,channelKey:channel.key,title:clean(input.title,1,50,'채널 이름'),tagline:clean(input.tagline,5,120,'한 줄 소개'),body:clean(input.body||'',0,1800,'자세한 소개'),videoUrl:normalizeVideo(input.videoUrl||''),server:input.server||'unspecified',color:input.color||'mint',country:input.country||'unspecified'};
+ if(!Object.hasOwn(CREATOR_COUNTRIES,v.country))bad('국가·지역을 확인해 주세요.');
  if(!Object.hasOwn(CREATOR_SERVERS,v.server)||!Object.hasOwn(CREATOR_COLORS,v.color))bad('서버와 카드 색상을 확인해 주세요.');
  if(!Array.isArray(input.tags)||input.tags.length>6)bad('태그는 최대 6개까지 선택해 주세요.');
  v.tags=input.tags.map(normalizeTag);if(new Set(v.tags.map(t=>t.toLocaleLowerCase('en-US'))).size!==v.tags.length)bad('같은 태그를 중복해서 넣을 수 없습니다.');

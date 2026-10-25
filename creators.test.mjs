@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail} from './dist/creators-model.js';
+import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES} from './dist/creators-model.js';
 import {creatorCard,creatorEditor} from './dist/creators.js';
 const characters={c16:{id:'c16',name:'블러디 퀸',portrait:'assets/portraits/c16.webp'}};
 const roster=new Map(Object.entries(characters));
@@ -37,4 +37,15 @@ test('editor keeps tiers and badges optional and safely restores entered copy',(
  assert.match(html,/value="&quot; autofocus onfocus=&quot;alert\(1\)"/);
  assert.match(html,/없어도 등록할 수 있어요/);assert.doesNotMatch(html,/<select name="tier-[^"]+"[^>]*required/);
  assert.match(html,/name="customTag"/);assert.match(html,/name="color"/);assert.match(html,/data-cr-preview/);assert.doesNotMatch(html,/name="uid"|구독자 수.*required/);
+});
+
+
+test('country tags stay distinct from game servers and never imply a curated channel submitted its own post',()=>{
+ assert.equal(Object.keys(CREATOR_COUNTRIES).length,250);
+ const v=normalizeCreator({...base(),country:'KR',server:'naeu'},roster);assert.equal(v.country,'KR');assert.equal(v.server,'naeu');
+ assert.equal(normalizeCreator(base(),roster).country,'unspecified');assert.throws(()=>normalizeCreator({...base(),country:'ZZ'},roster),/국가/);
+ const html=creatorCard({...base(),country:'JP',origin:'curated'},characters,{detail:true});
+ assert.match(html,/#일본/);assert.match(html,/MANOR 소개/);assert.match(html,/직접 등록한 글은 아닙니다/);assert.doesNotMatch(html,/인증 완료|검증 완료/);
+ const card=creatorCard({...base(),country:'KR'},characters);assert.match(card,/data-cr="country" data-country="KR"/);
+ const editor=creatorEditor({...base(),country:'KR'},characters);assert.match(editor,/name="country"/);assert.match(editor,/<option value="KR" selected>한국/);
 });
