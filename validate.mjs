@@ -36,15 +36,17 @@ const allowedSpecialties={생존자:['어그로','커버','구출','운영','해
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,16953);assert.equal(bans.length,15516);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
+const situationReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-27/situation-review.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
 const retired=JSON.parse(fs.readFileSync('research/refresh/2026-10-27/retired-public-data.json','utf8'));
 assert.equal(retired.sources.length,db.meta.sourceCount);
 assert.ok(!('sources' in db)&&!('community' in db),'retired public payload stays outside boot data');
-assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted);
+assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted+situationReview.added.length);
 assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.held);
-assert.equal(db.matchups.length,459+matchupReview.added);
+assert.equal(db.matchups.length,459+matchupReview.added+situationReview.added.length);
 const refresh=JSON.parse(fs.readFileSync('research/refresh/2026-10-21/reconciliation.json','utf8'));
-assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),refresh.displayedSlots);
+assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),situationReview.afterCounts.displayedSlots);
+assert.equal(refresh.displayedSlots,situationReview.beforeCounts.displayedSlots);
 assert.equal(refresh.displayedSlots,632);
 assert.equal(matches.length,db.meta.matches);
 assert.equal(matches.filter(r=>['승','무','패'].includes(r[5])).length,db.meta.results);
@@ -52,7 +54,8 @@ assert.equal(new Set(db.matchups.map(m=>m.id)).size,db.matchups.length,'unique e
 const evidenceIds=new Set(db.matchups.map(m=>m.id));
 for(const comment of retired.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
 for(const m of db.matchups){
- assert.equal(m.reviewedAt,db.meta.matchupReviewedAt,m.id+' review date');
+ const pairReviewed=[...situationReview.matchupEdits,...situationReview.added].some(e=>e.id===m.id);
+ assert.equal(m.reviewedAt,pairReviewed?situationReview.date:db.meta.matchupReviewedAt,m.id+' review date');
  assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
  assert.equal(c(m.survivor)?.side,'생존자',m.id+' survivor side');
  if(m.status==='보류')assert.equal(m.advantage,null,m.id+' unresolved direction');
@@ -74,7 +77,7 @@ for(const ch of db.characters){
  assert.ok(ch.difficulty>=1&&ch.difficulty<=5);
  assert.ok(fs.existsSync('dist/'+ch.portrait),ch.name+' portrait');
  assert.equal(new Set(ch.sources).size,ch.sources.length,ch.name+' unique source URLs');
- assert.equal(ch.matchupReviewedAt,db.meta.matchupReviewedAt,ch.name+' matchup review');
+ assert.equal(ch.matchupReviewedAt,situationReview.reviewedPair.includes(ch.name)?situationReview.date:db.meta.matchupReviewedAt,ch.name+' matchup review');
  for(const item of ch.hard){const opposite=ch.easy.find(other=>other.name===item.name);if(opposite){const a=db.matchups.find(m=>m.id===item.evidence),b=db.matchups.find(m=>m.id===opposite.evidence);assert.notEqual(a.id,b.id);assert.ok(a.condition&&b.condition&&a.condition!==b.condition,ch.name+' opposing directions require distinct conditions');}}
  for(const kind of ['hard','easy']){
   assert.equal(new Set(ch[kind].map(i=>i.name)).size,ch[kind].length,ch.name+' unique opponents');

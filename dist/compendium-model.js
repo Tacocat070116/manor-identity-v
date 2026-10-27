@@ -1,4 +1,10 @@
-import {filterRows,cutoff} from './model.js?v=e238acfa45e9';
+import {filterRows,cutoff} from './model.js?v=4af73c4d1266';
+
+export function contextEvidence(records,id){
+ const primary=records.find(m=>m.id===id&&m.status==='반영');
+ if(!primary)return [];
+ return records.filter(m=>m.status==='반영'&&m.contextFor===id&&m.hunter===primary.hunter&&m.survivor===primary.survivor);
+}
 
 function countResult(target,result,hunter){
  target.appearances++;
@@ -54,7 +60,7 @@ export function characterEvidence(records,character,kind){
  const seen=new Set();
  return records.filter(m=>{
   if(m.status!=='반영'||!m.listEligible||![m.hunter,m.survivor].includes(character.name)||(m.advantage===character.name)!==(kind==='easy'))return false;
-  const key=JSON.stringify([m.hunter,m.survivor,m.advantage,m.situation,m.summary,m.condition]);
+  const key=JSON.stringify([m.hunter,m.survivor,m.advantage,m.situation,m.situationDetail,m.summary,m.condition]);
   if(seen.has(key))return false;seen.add(key);return true;
  }).sort((a,b)=>(b.listPriority||3)-(a.listPriority||3)||a.id.localeCompare(b.id));
 }

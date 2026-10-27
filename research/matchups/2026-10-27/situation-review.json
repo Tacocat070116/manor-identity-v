@@ -1,0 +1,2248 @@
+{
+  "date": "2026-10-27",
+  "baseline": "dab28e6eca03a20511c0b1c8deac4c068cf4d1a0",
+  "feedback": "https://tacocat070116.github.io/manor-identity-v/#v=feedback&post=93646651-f8c8-4520-9088-a1e540e5712a",
+  "scope": "공개 상성 문장의 상황 분류 및 우산의 영혼·묘지기 대진 수정",
+  "reviewedPair": [
+    "우산의 영혼",
+    "묘지기"
+  ],
+  "labelEdits": [
+    {
+      "id": "M001",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M002",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M003",
+      "before": "추격·구출",
+      "after": "구출"
+    },
+    {
+      "id": "M004",
+      "before": "태클·풍선 구출 제한",
+      "after": "커버"
+    },
+    {
+      "id": "M005",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M006",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M007",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M008",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M009",
+      "before": "풍선 구출",
+      "after": "커버"
+    },
+    {
+      "id": "M010",
+      "before": "공중 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M011",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M012",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M013",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M014",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M015",
+      "before": "콘솔 견제",
+      "after": "운영"
+    },
+    {
+      "id": "M016",
+      "before": "콘솔 견제",
+      "after": "운영"
+    },
+    {
+      "id": "M017",
+      "before": "콘솔 견제",
+      "after": "운영"
+    },
+    {
+      "id": "M018",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M019",
+      "before": "장기 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M020",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M021",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M022",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M023",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M024",
+      "before": "치료 부담",
+      "after": "운영"
+    },
+    {
+      "id": "M025",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M026",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M027",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M028",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M029",
+      "before": "회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M030",
+      "before": "회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M031",
+      "before": "팀 재정비",
+      "after": "운영"
+    },
+    {
+      "id": "M032",
+      "before": "장기 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M033",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M034",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M035",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M036",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M037",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M038",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M039",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M040",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M041",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M042",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M043",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M044",
+      "before": "구출 지원",
+      "after": "구출"
+    },
+    {
+      "id": "M045",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M046",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M047",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M048",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M049",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M050",
+      "before": "은신 추격",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M051",
+      "before": "은신 추격",
+      "after": "커버"
+    },
+    {
+      "id": "M052",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M053",
+      "before": "추격·견제",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M054",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M055",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M056",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M057",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M058",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M059",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M060",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M061",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M062",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M063",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M064",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M065",
+      "before": "구출 지원",
+      "after": "구출"
+    },
+    {
+      "id": "M066",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M067",
+      "before": "추격·견제",
+      "after": "커버"
+    },
+    {
+      "id": "M068",
+      "before": "구출 역할 제한",
+      "after": "커버"
+    },
+    {
+      "id": "M069",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M070",
+      "before": "다운 후 회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M071",
+      "before": "회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M072",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M073",
+      "before": "추격 지원",
+      "after": "커버"
+    },
+    {
+      "id": "M074",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M075",
+      "before": "풍선 견제",
+      "after": "커버"
+    },
+    {
+      "id": "M076",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M078",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M079",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M080",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M081",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M082",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M083",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M084",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M085",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M086",
+      "before": "추격 지원",
+      "after": "커버"
+    },
+    {
+      "id": "M087",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M088",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M089",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M090",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M091",
+      "before": "풍선 견제",
+      "after": "커버"
+    },
+    {
+      "id": "M093",
+      "before": "회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M094",
+      "before": "팀 재정비",
+      "after": "운영"
+    },
+    {
+      "id": "M095",
+      "before": "해독 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M097",
+      "before": "추격·치료",
+      "after": "추격·운영"
+    },
+    {
+      "id": "M098",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M099",
+      "before": "사진 세계",
+      "after": "운영"
+    },
+    {
+      "id": "M100",
+      "before": "장기 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M101",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M102",
+      "before": "기록 대응",
+      "after": "추격"
+    },
+    {
+      "id": "M103",
+      "before": "장거리 포탈",
+      "after": "운영"
+    },
+    {
+      "id": "M104",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M105",
+      "before": "구출 지원",
+      "after": "구출"
+    },
+    {
+      "id": "M106",
+      "before": "추격·지원",
+      "after": "추격"
+    },
+    {
+      "id": "M107",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M108",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M109",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M110",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M111",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M112",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M113",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M114",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M115",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M116",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M118",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M119",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M120",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M121",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M122",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M123",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M124",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M125",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M126",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M127",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M128",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M129",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M130",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M131",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M132",
+      "before": "부활 후 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M133",
+      "before": "장거리 포탈",
+      "after": "추격"
+    },
+    {
+      "id": "M134",
+      "before": "해독기 기습",
+      "after": "운영"
+    },
+    {
+      "id": "M135",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M136",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M137",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M138",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M139",
+      "before": "회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M140",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M141",
+      "before": "해독 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M142",
+      "before": "견제",
+      "after": "커버"
+    },
+    {
+      "id": "M144",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M145",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M146",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M147",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M148",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M149",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M150",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M151",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M152",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M153",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M154",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M155",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M156",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M157",
+      "before": "추격·지원",
+      "after": "추격"
+    },
+    {
+      "id": "M158",
+      "before": "구출 지원",
+      "after": "구출"
+    },
+    {
+      "id": "M159",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M160",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M161",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M162",
+      "before": "근접 견제",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M163",
+      "before": "근접 견제",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M164",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M165",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M166",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M167",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M168",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M169",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M170",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M171",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M172",
+      "before": "추격",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M173",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M174",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M175",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M176",
+      "before": "풍선 커버·태클",
+      "after": "커버"
+    },
+    {
+      "id": "M177",
+      "before": "견제·구출",
+      "after": "추격"
+    },
+    {
+      "id": "M178",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M179",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M180",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M181",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M183",
+      "before": "추격 지원",
+      "after": "추격"
+    },
+    {
+      "id": "M184",
+      "before": "해독기 기습",
+      "after": "추격"
+    },
+    {
+      "id": "M185",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "P008",
+      "before": "케이지 안 체공",
+      "after": "추격"
+    },
+    {
+      "id": "P009",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "G001",
+      "before": "고양이 부착 후 위치 추적",
+      "after": "추격"
+    },
+    {
+      "id": "G002",
+      "before": "고양이가 본체에 붙은 뒤 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M198",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M199",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M200",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M201",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M202",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M203",
+      "before": "탐지",
+      "after": "운영"
+    },
+    {
+      "id": "M204",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M205",
+      "before": "구출 접근",
+      "after": "구출"
+    },
+    {
+      "id": "M206",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M208",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M209",
+      "before": "태클·풍선 구출 제한",
+      "after": "커버"
+    },
+    {
+      "id": "M210",
+      "before": "고양이 범위 안 풍선 구출",
+      "after": "커버"
+    },
+    {
+      "id": "M211",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M212",
+      "before": "피해 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M213",
+      "before": "구출 후 피해 감소",
+      "after": "구출"
+    },
+    {
+      "id": "M214",
+      "before": "피해 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M216",
+      "before": "판자·창틀",
+      "after": "추격"
+    },
+    {
+      "id": "M219",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M220",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M221",
+      "before": "풍선 구출 경로",
+      "after": "커버"
+    },
+    {
+      "id": "M222",
+      "before": "판자·커버",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M223",
+      "before": "판자·커버",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M224",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M225",
+      "before": "재추격",
+      "after": "추격"
+    },
+    {
+      "id": "M226",
+      "before": "재추격",
+      "after": "추격"
+    },
+    {
+      "id": "M227",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M228",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M230",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M231",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M232",
+      "before": "존재감 이후",
+      "after": "추격"
+    },
+    {
+      "id": "M233",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M234",
+      "before": "돌진 차단·지원",
+      "after": "커버"
+    },
+    {
+      "id": "M235",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M236",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M237",
+      "before": "설치 벌레로 추격 지원",
+      "after": "커버"
+    },
+    {
+      "id": "M239",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M240",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M241",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M242",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M243",
+      "before": "존재감 이후",
+      "after": "추격"
+    },
+    {
+      "id": "M244",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M245",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M246",
+      "before": "개활지 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M247",
+      "before": "구출·추격",
+      "after": "구출"
+    },
+    {
+      "id": "M248",
+      "before": "구출·추격",
+      "after": "구출"
+    },
+    {
+      "id": "M249",
+      "before": "구출·추격",
+      "after": "추격"
+    },
+    {
+      "id": "M250",
+      "before": "고치 구출",
+      "after": "구출"
+    },
+    {
+      "id": "M251",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M252",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M253",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M254",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M255",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M256",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M257",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M258",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M261",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M262",
+      "before": "다운 후 탐지 방해",
+      "after": "추격"
+    },
+    {
+      "id": "M263",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M264",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M265",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M266",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M267",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M269",
+      "before": "안전한 위치의 회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M270",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M271",
+      "before": "재추격",
+      "after": "추격"
+    },
+    {
+      "id": "M272",
+      "before": "재추격",
+      "after": "추격"
+    },
+    {
+      "id": "M273",
+      "before": "활공",
+      "after": "추격"
+    },
+    {
+      "id": "M274",
+      "before": "첫 거울 회피",
+      "after": "추격"
+    },
+    {
+      "id": "M275",
+      "before": "착지 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M276",
+      "before": "은신",
+      "after": "추격"
+    },
+    {
+      "id": "M277",
+      "before": "은신",
+      "after": "추격"
+    },
+    {
+      "id": "M278",
+      "before": "은신",
+      "after": "추격"
+    },
+    {
+      "id": "M279",
+      "before": "선투영 뒤 갈고리 대응",
+      "after": "추격"
+    },
+    {
+      "id": "M281",
+      "before": "투영",
+      "after": "추격"
+    },
+    {
+      "id": "M282",
+      "before": "투영",
+      "after": "추격"
+    },
+    {
+      "id": "M283",
+      "before": "전기 기절 대응",
+      "after": "추격"
+    },
+    {
+      "id": "M284",
+      "before": "투영",
+      "after": "추격"
+    },
+    {
+      "id": "M285",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M286",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M287",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M288",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M289",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M290",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M291",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M292",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M293",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M295",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M296",
+      "before": "노출된 인형 견제",
+      "after": "운영"
+    },
+    {
+      "id": "M297",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M298",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M299",
+      "before": "이동 회복",
+      "after": "운영"
+    },
+    {
+      "id": "M300",
+      "before": "회복 운영",
+      "after": "운영"
+    },
+    {
+      "id": "M301",
+      "before": "추격",
+      "after": "운영"
+    },
+    {
+      "id": "M302",
+      "before": "누적 피해 후 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M303",
+      "before": "근접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M304",
+      "before": "생멸 대응",
+      "after": "추격"
+    },
+    {
+      "id": "M305",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M306",
+      "before": "구출·추격",
+      "after": "추격·구출"
+    },
+    {
+      "id": "M307",
+      "before": "근접 제어",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M308",
+      "before": "근접 제어",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M310",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M311",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M312",
+      "before": "평타 방어",
+      "after": "추격·구출"
+    },
+    {
+      "id": "M313",
+      "before": "스킬 피해",
+      "after": "추격"
+    },
+    {
+      "id": "M314",
+      "before": "스킬 피해",
+      "after": "추격"
+    },
+    {
+      "id": "M315",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M316",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M317",
+      "before": "팀 재정비",
+      "after": "운영"
+    },
+    {
+      "id": "M318",
+      "before": "돌진 차단",
+      "after": "추격"
+    },
+    {
+      "id": "M319",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M320",
+      "before": "로켓 접근",
+      "after": "추격"
+    },
+    {
+      "id": "M321",
+      "before": "로켓 접근",
+      "after": "구출"
+    },
+    {
+      "id": "M322",
+      "before": "거리 벌리기",
+      "after": "추격"
+    },
+    {
+      "id": "M323",
+      "before": "거리 벌리기",
+      "after": "추격"
+    },
+    {
+      "id": "M325",
+      "before": "손전등 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M327",
+      "before": "풀존재 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M328",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M330",
+      "before": "첫 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M331",
+      "before": "근접 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M332",
+      "before": "근접 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M333",
+      "before": "연막",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M334",
+      "before": "이동 대응",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M336",
+      "before": "추격·회복",
+      "after": "추격"
+    },
+    {
+      "id": "M337",
+      "before": "추격·회복",
+      "after": "추격"
+    },
+    {
+      "id": "M339",
+      "before": "벽 이동",
+      "after": "추격"
+    },
+    {
+      "id": "M346",
+      "before": "흙공 상태",
+      "after": "추격"
+    },
+    {
+      "id": "M347",
+      "before": "흙공 상태",
+      "after": "추격"
+    },
+    {
+      "id": "M349",
+      "before": "흙공 상태",
+      "after": "추격"
+    },
+    {
+      "id": "M351",
+      "before": "흙공 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M352",
+      "before": "흙공 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M354",
+      "before": "흙공 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M357",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M358",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M360",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M361",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M362",
+      "before": "평타 방어",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M363",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M364",
+      "before": "평타 방어",
+      "after": "추격"
+    },
+    {
+      "id": "M365",
+      "before": "풍선 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M366",
+      "before": "풍선 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M367",
+      "before": "풍선 커버",
+      "after": "커버"
+    },
+    {
+      "id": "M368",
+      "before": "구출 접근",
+      "after": "구출"
+    },
+    {
+      "id": "M369",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M370",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M371",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M372",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M373",
+      "before": "풍선 커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M374",
+      "before": "추격·구출",
+      "after": "추격·구출"
+    },
+    {
+      "id": "M375",
+      "before": "추격·구출",
+      "after": "추격"
+    },
+    {
+      "id": "M376",
+      "before": "초반 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M377",
+      "before": "신호총 대응",
+      "after": "구출"
+    },
+    {
+      "id": "M378",
+      "before": "신호총 대응",
+      "after": "추격"
+    },
+    {
+      "id": "M379",
+      "before": "신호총 대응",
+      "after": "추격·구출·커버"
+    },
+    {
+      "id": "M380",
+      "before": "구출",
+      "after": "구출"
+    },
+    {
+      "id": "M381",
+      "before": "에너지 폭발",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M382",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M383",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M384",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M386",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M387",
+      "before": "첫 추격·부엉이 지원",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M388",
+      "before": "주시",
+      "after": "추격"
+    },
+    {
+      "id": "M389",
+      "before": "관 복귀 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M390",
+      "before": "관 복귀 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M391",
+      "before": "관 복귀 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M392",
+      "before": "관 복귀 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M393",
+      "before": "관 복귀 압박",
+      "after": "추격"
+    },
+    {
+      "id": "M394",
+      "before": "원격 구출",
+      "after": "구출"
+    },
+    {
+      "id": "M395",
+      "before": "원격 구출",
+      "after": "구출"
+    },
+    {
+      "id": "M396",
+      "before": "다운 후 원격 부활",
+      "after": "운영"
+    },
+    {
+      "id": "M397",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M398",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M399",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M400",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M401",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M402",
+      "before": "커버 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M403",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M404",
+      "before": "화살 명중",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M405",
+      "before": "화살 명중",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M406",
+      "before": "초반 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M407",
+      "before": "조준·커버",
+      "after": "커버"
+    },
+    {
+      "id": "M408",
+      "before": "조준·커버",
+      "after": "커버"
+    },
+    {
+      "id": "M409",
+      "before": "조준·커버",
+      "after": "커버"
+    },
+    {
+      "id": "M410",
+      "before": "조준·커버",
+      "after": "커버"
+    },
+    {
+      "id": "M411",
+      "before": "조준·커버",
+      "after": "커버"
+    },
+    {
+      "id": "M412",
+      "before": "초반 준비",
+      "after": "추격"
+    },
+    {
+      "id": "M413",
+      "before": "구역 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M414",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M415",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M417",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M418",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M419",
+      "before": "직접 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M421",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M422",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M423",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M424",
+      "before": "초반 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M426",
+      "before": "초반 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M428",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M429",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M430",
+      "before": "돌진 차단",
+      "after": "추격"
+    },
+    {
+      "id": "M431",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M432",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M433",
+      "before": "추격",
+      "after": "추격"
+    },
+    {
+      "id": "M434",
+      "before": "후반 해독",
+      "after": "운영"
+    },
+    {
+      "id": "M435",
+      "before": "돌진 대응",
+      "after": "커버"
+    },
+    {
+      "id": "M436",
+      "before": "주시 이후",
+      "after": "추격"
+    },
+    {
+      "id": "M437",
+      "before": "화염 영역",
+      "after": "추격"
+    },
+    {
+      "id": "M438",
+      "before": "백우산",
+      "after": "추격"
+    },
+    {
+      "id": "M439",
+      "before": "갈고리 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M440",
+      "before": "갈고리 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M441",
+      "before": "갈고리 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M442",
+      "before": "봉쇄 구역 탈출",
+      "after": "추격"
+    },
+    {
+      "id": "M443",
+      "before": "지형 이동",
+      "after": "추격"
+    },
+    {
+      "id": "M444",
+      "before": "지형 이동",
+      "after": "추격"
+    },
+    {
+      "id": "M445",
+      "before": "지형 이동",
+      "after": "추격"
+    },
+    {
+      "id": "M446",
+      "before": "지형 이동",
+      "after": "추격"
+    },
+    {
+      "id": "M447",
+      "before": "거울 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M449",
+      "before": "해독 중 기습",
+      "after": "추격"
+    },
+    {
+      "id": "M450",
+      "before": "첫 추격·손전등",
+      "after": "추격"
+    },
+    {
+      "id": "M451",
+      "before": "상자 수색 기습",
+      "after": "추격"
+    },
+    {
+      "id": "M452",
+      "before": "첫 추격·열린 지형",
+      "after": "추격"
+    },
+    {
+      "id": "M453",
+      "before": "전기 구체 회피",
+      "after": "추격"
+    },
+    {
+      "id": "M454",
+      "before": "집중 추격",
+      "after": "추격"
+    },
+    {
+      "id": "M455",
+      "before": "판자 뒤 자가 치료",
+      "after": "추격"
+    },
+    {
+      "id": "M456",
+      "before": "판자 뒤 자가 치료",
+      "after": "추격"
+    },
+    {
+      "id": "M457",
+      "before": "지형 이동·회복 지원",
+      "after": "추격·운영"
+    },
+    {
+      "id": "M458",
+      "before": "돌진 차단",
+      "after": "추격·커버"
+    },
+    {
+      "id": "M459",
+      "before": "원격 회복 지원",
+      "after": "운영"
+    },
+    {
+      "id": "M460",
+      "before": "탐지·협공",
+      "after": "추격"
+    },
+    {
+      "id": "M461",
+      "before": "가시 누적·피해 전환",
+      "after": "추격"
+    },
+    {
+      "id": "M462",
+      "before": "추격·커버",
+      "after": "추격·운영"
+    }
+  ],
+  "matchupEdits": [
+    {
+      "id": "M131",
+      "before": {
+        "id": "M131",
+        "status": "반영",
+        "hunter": "우산의 영혼",
+        "survivor": "묘지기",
+        "advantage": "묘지기",
+        "situation": "추격",
+        "summary": "미리 잠복하면 섭혼과 탕백의 행동 방해를 피하며 이동하거나 구출에 접근할 수 있습니다.",
+        "condition": "땅을 파는 동작 중에는 탕백에 끊기므로 공격이 닿기 전에 잠복을 마쳐야 합니다.",
+        "urls": [
+          "https://wikiwiki.jp/identity5ch/墓守",
+          "https://www.namu.moe/w/묘지기(제5인격)"
+        ],
+        "type": "상황별 상성 재검토",
+        "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+        "reviewedAt": "2026-10-19",
+        "documents": 2,
+        "priority": 60,
+        "language": "일본어 · 한국어",
+        "basis": "직접 대진과 형태·시점별 예외 분석",
+        "confidence": "중간",
+        "listEligible": true,
+        "reviewNote": "동작 전후의 판정 차이까지 일치",
+        "sourceSupport": [
+          {
+            "url": "https://wikiwiki.jp/identity5ch/墓守",
+            "support": "direct",
+            "note": "잠복 시 방어와 시작 동작 취소",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://www.namu.moe/w/묘지기(제5인격)",
+            "support": "direct",
+            "note": "섭혼·탕백 방어 및 잠복 동작 중 탕백 예외",
+            "sourceFamily": "namuwiki"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "namuwiki"
+        ],
+        "evidenceLevel": "복수 출처",
+        "selectionReviewedAt": "2026-10-21"
+      },
+      "after": {
+        "id": "M131",
+        "status": "반영",
+        "hunter": "우산의 영혼",
+        "survivor": "묘지기",
+        "advantage": "우산의 영혼",
+        "situation": "추격",
+        "summary": "사필안의 긴 공격 사거리는 잠복한 묘지기의 삽을 소모시키기 쉽고, 범무구의 빠른 판자 파괴는 다음 구역으로 이동할 여유를 줄입니다. 첫 추격에서 묘지기가 상대하기 까다로운 감시자입니다.",
+        "condition": "묘지기는 돌진을 동반한 잠복 해제로 거리를 벌릴 수 있으므로 일방적인 하드 카운터로 단정하지 않습니다. 남은 삽, 판자·창틀 배치와 우산의 형태에 따라 달라집니다.",
+        "urls": [
+          "https://wikiwiki.jp/identity5ch/白黒無常",
+          "https://wikiwiki.jp/identity5ch/墓守",
+          "https://tacocat070116.github.io/manor-identity-v/#v=feedback&post=93646651-f8c8-4520-9088-a1e540e5712a",
+          "https://www.identityvgame.com/en/news/announcement/20260910/35288_1313606.html"
+        ],
+        "type": "이용자 피드백 반영 · 추격과 구출 분리",
+        "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+        "reviewedAt": "2026-10-27",
+        "documents": 4,
+        "priority": 60,
+        "language": "일본어 · 한국어 · 영어",
+        "basis": "공개 기전 설명과 이용자 추격 경험을 대조한 편집 판단",
+        "confidence": "중간",
+        "listEligible": true,
+        "reviewNote": "구출 시 잠복의 이점을 추격 우위로 일반화하지 않도록 방향을 변경했습니다. 추격 우위는 통계적 검증 결과나 공식 판정이 아닙니다.",
+        "sourceSupport": [
+          {
+            "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+            "support": "mechanism",
+            "note": "사필안의 긴 사거리, 범무구의 빠른 판자 파괴와 잠복 시작 동작 압박. 문서의 포괄적 상성 평가는 추격 우위의 직접 근거로 사용하지 않음.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/墓守",
+            "support": "mechanism",
+            "note": "잠복 피해 방어와 이동 후 지상으로 나오는 기술. 돌진이 있으므로 일방적인 카운터로 서술하지 않음.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://tacocat070116.github.io/manor-identity-v/#v=feedback&post=93646651-f8c8-4520-9088-a1e540e5712a",
+            "support": "community",
+            "note": "추격에서는 우산이 까다롭고 구출에서는 묘지기의 이점이 남는다는 이용자 제안. 추격 빈도나 특정 선수의 선택을 통계로 일반화하지 않음.",
+            "sourceFamily": "manor-feedback"
+          },
+          {
+            "url": "https://www.identityvgame.com/en/news/announcement/20260910/35288_1313606.html",
+            "support": "mechanism",
+            "note": "공식 공지의 낙서 모드 잠복 돌진 오류 수정은 돌진 기술의 존재만 확인하며 상성 방향을 입증하지 않음.",
+            "sourceFamily": "identityv-official"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "manor-feedback",
+          "identityv-official"
+        ],
+        "evidenceLevel": "기전·이용자 의견 기반 편집 판단",
+        "selectionReviewedAt": "2026-10-27",
+        "situationDetail": "첫 추격·삽 소모"
+      }
+    }
+  ],
+  "added": [
+    {
+      "id": "M463",
+      "status": "반영",
+      "hunter": "우산의 영혼",
+      "survivor": "묘지기",
+      "advantage": "묘지기",
+      "situation": "구출",
+      "summary": "미리 잠복한 채 의자에 접근하면 섭혼·탕백의 행동 방해를 피하며 구출을 시도할 수 있어, 이 상황에서는 묘지기가 유리할 수 있습니다.",
+      "condition": "의자에 접근하기 전에 잠복을 마치고 삽이 남아 있어야 합니다. 잠복 시작 동작은 탕백이나 공격에 끊길 수 있고, 먼저 추격받아 삽을 소모했다면 이 구출 이점을 활용하기 어렵습니다.",
+      "urls": [
+        "https://wikiwiki.jp/identity5ch/白黒無常",
+        "https://wikiwiki.jp/identity5ch/墓守"
+      ],
+      "type": "구출 조건 보충",
+      "patch": "2026-10-15 공지 확인 / 대진별 적용 패치 미표기",
+      "reviewedAt": "2026-10-27",
+      "documents": 2,
+      "priority": 60,
+      "language": "일본어",
+      "basis": "미리 잠복한 구출 접근과 잠복 시작 동작의 구분",
+      "confidence": "중간",
+      "listEligible": false,
+      "reviewNote": "추격의 어려운 상대 카드에 함께 표시하는 구출 예외입니다. 묘지기의 쉬운 상대 목록에는 우산을 중복 등록하지 않습니다.",
+      "sourceSupport": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/白黒無常",
+          "support": "direct",
+          "note": "미리 잠복한 경우 섭혼·탕백을 피하며 특히 구출 저지에 대응한다는 설명과 잠복 시작 동작의 예외.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/墓守",
+          "support": "mechanism",
+          "note": "잠복 중 일부 제어 효과 방어와 피해 없이 직접 잠복을 해제한 뒤의 구출 이점.",
+          "sourceFamily": "identity5ch"
+        }
+      ],
+      "sourceFamilies": [
+        "identity5ch"
+      ],
+      "evidenceLevel": "동일 출처군의 기전·구출 분석",
+      "selectionReviewedAt": "2026-10-27",
+      "situationDetail": "미리 잠복한 구출 접근",
+      "contextFor": "M131"
+    }
+  ],
+  "beforeCounts": {
+    "accepted": 413,
+    "held": 49,
+    "displayedSlots": 632
+  },
+  "afterCounts": {
+    "accepted": 414,
+    "held": 49,
+    "displayedSlots": 631
+  },
+  "limitations": [
+    "상황 분류는 기존 요약·조건 문장을 검토한 것으로 모든 대진의 최신 실전 성능을 다시 검증한 작업이 아닙니다.",
+    "우산·묘지기의 추격 판단은 이용자 피드백과 기전 설명을 바탕으로 한 편집 판단이며 공식 승률 또는 하드 카운터 판정이 아닙니다.",
+    "기존 상성 자료의 방향이 다른 이유를 구출과 추격의 차이로 남깁니다. 동일 위키의 두 문서는 독립 출처로 세지 않습니다."
+  ]
+}

@@ -1,13 +1,13 @@
-import {tournamentRelations,observedDetails,characterEvidence} from './compendium-model.js?v=48d5bd908f3b';
+import {tournamentRelations,observedDetails,characterEvidence,contextEvidence} from './compendium-model.js?v=4d1d84b011d2';
 import {mountNavigation} from './navigation.js?v=e004cdac4973';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
-import {statsFor, rankBans, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=e238acfa45e9';
+import {statsFor, rankBans, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=4af73c4d1266';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=6e42e7bcdaf6';
+import {createStatisticsUI} from './statistics.js?v=c5861ae86927';
 import {mountFeedback} from './feedback.js?v=f084d6426a1b';
 import {mountMatchupTips} from './matchup-tips.js?v=cf5c74282a6e';
 import {mountCreators} from './creators.js';
-import {selectRanked} from './statistics-model.js?v=e196f7e6398c';
+import {selectRanked} from './statistics-model.js?v=45f34accabdb';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=faf9431158c2';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -206,12 +206,13 @@ function characterOverview(c){
 function matchupItem(i){
  const c=byName[i.name];if(!c)return '';
  const [reason,...conditions]=String(i.reason||'').split(/\r?\n조건:\s*/);
- return `<article class="panel relation-card">${characterHeading(c)}<p class="relation-copy">${esc(reason)}</p>${conditions.length?`<div class="divider"></div><h4 class="small-heading">활용 조건</h4><p class="relation-copy muted">${esc(conditions.join('\n'))}</p>`:''}</article>`;
+ const contexts=contextEvidence(db.matchups,i.evidence);
+ return `<article class="panel relation-card">${characterHeading(c)}<p class="relation-copy">${esc(reason)}</p>${conditions.length?`<div class="divider"></div><h4 class="small-heading">활용 조건</h4><p class="relation-copy muted">${esc(conditions.join('\n'))}</p>`:''}${contexts.map(m=>`<aside class="matchup-context"><h4 class="small-heading">다른 상황에서는</h4><p class="relation-copy">[${esc(m.situation)}] ${esc(m.summary)}</p><p class="relation-copy muted">조건: ${esc(m.condition)}</p></aside>`).join('')}</article>`;
 }
 function matchupLabel(c,kind){return `상대하기 ${kind==='hard'?'어려운':'쉬운'} ${c.side==='생존자'?'감시자':'생존자'}`;}
 function characterMatchups(c){
  const item=m=>({name:c.side==='감시자'?m.survivor:m.hunter,reason:`[${m.situation}] ${m.summary}\n조건: ${m.condition}`,evidence:m.id});
- return `<div class="note has-icon">${icon('info')}<span>상황과 조건에 따라 상성이 달라집니다. 추격과 구출에서 판단이 다르면 같은 상대가 양쪽에 표시될 수 있습니다.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 표시 범위 갱신 ${esc(db.meta.matchupSelectionReviewedAt)}. 아래 결과는 상황별 분석이며 대진 승률 순위가 아닙니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
+ return `<div class="note has-icon">${icon('info')}<span>대괄호는 설명이 적용되는 상황입니다. [추격] 직접 쫓기는 상황 · [구출] 의자에서 구하기 · [커버] 동료 보호·풍선 구출 · [운영] 해독·회복·재정비. 다른 상황의 유불리는 별도 설명이나 반대쪽 목록에서 함께 확인하세요.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 상황 표기 정리 ${esc(db.meta.matchupSituationReviewedAt)}. 상황별 분석이며 대진 승률 순위가 아닙니다. 표기 정리는 모든 대진의 새로운 실전 검증을 뜻하지 않습니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
  const all=characterEvidence(db.matchups,c,kind),selected=new Set(c[kind].map(i=>i.evidence)),rest=all.filter(m=>!selected.has(m.id));
  return `<section><div class="heading-inline matchup-section-heading"><h2>${matchupLabel(c,kind)}</h2><span>상황별 ${all.length}건</span></div><div class="matchup-list">${c[kind].map(matchupItem).join('')}${!all.length?'<div class="note">이 방향에서 확인된 상성 정보는 아직 없습니다. 통계 탭에서 실제 상대별 출전 기록을 함께 볼 수 있습니다.</div>':''}</div>${rest.length?`<details class="methodology section-gap"><summary>다른 상대·상황 ${rest.length}건 더 보기</summary><div class="matchup-list section-gap">${rest.map(m=>matchupItem(item(m))).join('')}</div></details>`:''}</section>`;
  }).join('')}</div><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">실제 대회의 상대별 결과·동반 조합 보기 →</a>`;
@@ -260,11 +261,12 @@ function selectionSwap(mode,disabled=false){
 function cleanCondition(t){return String(t||'').replace(/추가 공개 자료 \d+문서: 오른쪽 P:S 및 \[커뮤니티 근거\] 참조\.?/g,'').trim();}
 function matchupPage(){
  const own=char(state.own);state.own=own.id;const opp=byId[state.opponent];
- const evidence=opp?pairEvidence(db.matchups,own,opp,state.situation):[],situations=[...new Set((opp?pairEvidence(db.matchups,own,opp):[]).map(e=>e.situation))];
+ const allEvidence=opp?pairEvidence(db.matchups,own,opp):[],evidence=opp?pairEvidence(db.matchups,own,opp,state.situation):[],situations=['추격','구출','커버','운영'].filter(s=>allEvidence.some(e=>e.situation.split('·').includes(s)));
+ if(state.situation&&!situations.includes(state.situation)&&allEvidence.some(e=>e.situationDetail===state.situation))situations.push(state.situation);
  return `${title('MATCHUP STUDIO','상대가 보이면, 선택도 보입니다.','내 캐릭터와 상대를 선택하고, 상황별 상성과 대응 방법을 확인하세요.')}<div class="selection-board">${selectionCard(own,'own','내 캐릭터')}${selectionSwap('matchup',!opp)}${selectionCard(opp,'opponent','상대 캐릭터','상대 선택')}</div>
  ${!opp?`<div class="empty">${icon('swords')}<h3>상대할 캐릭터를 선택해주세요.</h3><p>상황별 상성, 경계할 스킬, 추격·구출 대응을 한 화면으로 정리합니다.</p><button class="btn primary" data-action="picker" data-mode="opponent">상대 선택 ${icon('plus')}</button></div>`:
  `<div class="briefing-header"><div><div class="eyebrow">30 SECOND BRIEFING</div><h2>${esc(own.name)} → ${esc(opp.name)}</h2></div><button class="btn small share-btn" data-action="share" aria-label="현재 대진 공유">${icon('share')}<span>공유</span></button></div><div class="briefing"><article class="brief-card"><div class="brief-step">01 · 먼저 볼 것 ${icon('search')}</div><h3>경계할 핵심 스킬</h3><p>${esc(opp.skill)}</p></article><article class="brief-card"><div class="brief-step">02 · 움직이는 방법 ${icon('arrow')}</div><h3>상대에게 대응하기</h3><p>${esc(opp.response)}</p></article><article class="brief-card"><div class="brief-step">03 · 남겨 둘 자원 ${icon('clock')}</div><h3>내 스킬을 아낄 때</h3><p>${esc(own.hold)}</p></article></div><div class="note section-gap">브리핑은 상대 공통 대응과 내 캐릭터의 운영 요약입니다. 두 캐릭터의 상황별 상성과 적용 조건을 함께 확인하세요.</div>
- <section class="section-gap"><div class="section-heading"><div><h2>상황이 바뀌면, 상성도 바뀝니다.</h2><p>추격과 구출을 하나의 유불리로 합치지 않습니다.</p></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}</div><h3>${esc(e.summary)}</h3><p>${esc(cleanCondition(e.condition))}</p></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진에서 확인된 상성 정보가 없습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}</section>
+ <section class="section-gap"><div class="section-heading"><div><h2>상황이 바뀌면, 상성도 바뀝니다.</h2><p>추격·구출·커버·운영에서의 유불리를 구분해 확인하세요.</p></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${e.situationDetail&&e.situationDetail!==e.situation?chip(e.situationDetail):''}</div><h3>[${esc(e.situation)}] ${esc(e.summary)}</h3><p>${esc(cleanCondition(e.condition))}</p></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진에서 확인된 상성 정보가 없습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}</section>
  <div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}상대 대응 팁</h2>${opp.tips.map((t,i)=>`<p class="prose ${i?'section-gap':''}">${esc(t)}</p>`).join('')}</div><div class="panel"><h2 class="panel-title">${icon('shield')}내 인격 기준</h2>${personaBuild(own)}<p class="muted section-gap">${esc(own.personaReason)}</p><div class="divider"></div><p class="muted">대진 전용 최적화로 검증된 추천은 아닙니다. 팀 역할·맵·시작 위치에 맞춰 조정하세요.</p></div></div>`}`;
 }
 function miniCharacters(items){if(!items.length)return '<p class="muted small">충분히 뒷받침되는 상대가 없습니다.</p>';return `<div class="thumb-row">${items.filter(i=>byName[i.name]).map(i=>{const c=byName[i.name];return `<button class="mini-character" data-action="character" data-id="${c.id}">${portrait(c)}<span>${esc(c.name)}</span></button>`;}).join('')}</div>`;}
@@ -407,7 +409,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=78335f85d8c5'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=32d2f479b28a')]);
+ const responses=await Promise.all([fetch('data.json?v=63a3a14e273f'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=8b6b135cfc23')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

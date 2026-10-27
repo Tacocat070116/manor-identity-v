@@ -117,6 +117,9 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 .character-name a:focus-visible{border-radius:4px}
 .relation-card{min-width:0}
 .relation-copy{white-space:pre-line;overflow-wrap:anywhere}
+.matchup-context{margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--line)}
+.matchup-context .small-heading{margin-bottom:var(--space-2);color:var(--accent)}
+.matchup-context .relation-copy+.relation-copy{margin-top:var(--space-3)}
 .relation-footer{display:flex;margin-top:var(--space-6)}
 .relation-footer .btn{gap:var(--space-2)}
 .relation-footer .icon{width:16px;height:16px}

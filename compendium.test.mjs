@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {statsFor} from './dist/model.js';
-import {tournamentRelations,observedDetails,characterEvidence} from './dist/compendium-model.js';
+import {statsFor,pairEvidence} from './dist/model.js';
+import {tournamentRelations,observedDetails,characterEvidence,contextEvidence} from './dist/compendium-model.js';
 
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const db=read('dist/data.json'),matches=read('dist/matches.json'),details=read('dist/tournament-details.json');
@@ -122,6 +122,42 @@ test('single-source and opposite situational evidence remain reachable without p
  assert.ok(db.matchups.some(m=>m.listEligible&&m.sourceFamilies.length===1));
  assert.equal(db.matchups.filter(m=>m.status==='보류').length,49);
  assert.ok(db.characters.some(c=>c.easy.some(a=>c.hard.some(b=>a.name===b.name))));
+});
+
+test('Grave Keeper chase disadvantage keeps the separate rescue exception reachable',()=>{
+ const grave=db.characters.find(c=>c.name==='묘지기'),wu=db.characters.find(c=>c.name==='우산의 영혼');
+ for(const [own,other,kind] of [[grave,wu,'hard'],[wu,grave,'easy']]){
+  assert.ok(own[kind].some(i=>i.name===other.name&&i.evidence==='M131'));
+  assert.ok(!characterEvidence(db.matchups,own,kind==='hard'?'easy':'hard').some(m=>m.hunter===wu.name&&m.survivor===grave.name));
+ }
+ const chase=pairEvidence(db.matchups,grave,wu,'추격'),rescue=pairEvidence(db.matchups,grave,wu,'구출');
+ assert.deepEqual(chase.map(m=>m.advantage),[wu.name]);
+ assert.deepEqual(rescue.map(m=>m.advantage),[grave.name]);
+ assert.match(chase[0].condition,/돌진/);
+ assert.match(rescue[0].condition,/잠복을 마치고 삽이 남아/);
+ assert.match(rescue[0].condition,/먼저 추격받아/);
+ assert.deepEqual(contextEvidence(db.matchups,'M131'),rescue);
+ assert.deepEqual(pairEvidence(db.matchups,wu,grave,'구출'),rescue);
+});
+
+test('situation labels describe activities while legacy detail filters keep working',()=>{
+ const allowed=new Set(['추격','구출','커버','운영']);
+ for(const m of db.matchups.filter(m=>m.status==='반영')){
+  assert.ok(m.situation.split('·').every(s=>allowed.has(s)),m.id);
+  assert.ok(m.situationDetail,m.id);
+ }
+ for(const [id,phase] of [['M003','구출'],['M209','커버'],['M247','구출'],['M249','추격'],['M265','운영'],['M321','구출']])assert.equal(db.matchups.find(m=>m.id===id).situation,phase,id);
+ const professor=db.characters.find(c=>c.name==='교수'),wu=db.characters.find(c=>c.name==='우산의 영혼');
+ assert.ok(pairEvidence(db.matchups,professor,wu,'추격').some(m=>m.id==='M315'));
+ assert.ok(pairEvidence(db.matchups,professor,wu,'평타 방어').some(m=>m.id==='M315'));
+ assert.equal(pairEvidence(db.matchups,professor,wu,'구출').length,0);
+});
+
+test('conditional notes never leak from held records or another pair',()=>{
+ const primary={id:'one',status:'반영',hunter:'A',survivor:'B'};
+ const valid={id:'two',status:'반영',contextFor:'one',hunter:'A',survivor:'B'};
+ assert.deepEqual(contextEvidence([primary,valid,{...valid,id:'held',status:'보류'},{...valid,id:'wrong',survivor:'C'}],'one'),[valid]);
+ assert.deepEqual(contextEvidence([valid],'one'),[]);
 });
 
 

@@ -45,11 +45,11 @@ export function rankBans(rows, selections, filters = {}) {
 export function pairEvidence(data, own, opponent, situation = '') {
   const seen = new Set();
   return data.filter(x => {
-    if (x.status !== '반영' || !((x.hunter === own.name && x.survivor === opponent.name) || (x.hunter === opponent.name && x.survivor === own.name)) || (situation && !x.situation.includes(situation))) return false;
+    if (x.status !== '반영' || !((x.hunter === own.name && x.survivor === opponent.name) || (x.hunter === opponent.name && x.survivor === own.name)) || (situation && x.situation!==situation && !x.situation.split('·').includes(situation) && x.situationDetail !== situation)) return false;
     // Keep historical evidence IDs, but render identical reviewed text and
     // sources once. Different situations and opposing findings remain visible.
     const sources = (x.sourceSupport || []).map(s => s.url).sort();
-    const key = JSON.stringify([x.hunter,x.survivor,x.advantage,x.situation,x.summary,x.condition,sources]);
+    const key = JSON.stringify([x.hunter,x.survivor,x.advantage,x.situation,x.situationDetail,x.summary,x.condition,sources]);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
