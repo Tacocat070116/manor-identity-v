@@ -1,13 +1,13 @@
-import {tournamentRelations,observedDetails,characterEvidence} from './compendium-model.js?v=b06b0096dc33';
+import {tournamentRelations,observedDetails,characterEvidence} from './compendium-model.js?v=48d5bd908f3b';
 import {mountNavigation} from './navigation.js?v=e004cdac4973';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
-import {statsFor, rankBans, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=27437535d180';
+import {statsFor, rankBans, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=e238acfa45e9';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=16092340dc76';
+import {createStatisticsUI} from './statistics.js?v=6e42e7bcdaf6';
 import {mountFeedback} from './feedback.js?v=476cf2cb3cae';
 import {mountMatchupTips} from './matchup-tips.js?v=cf5c74282a6e';
 import {mountCreators} from './creators.js';
-import {selectRanked} from './statistics-model.js?v=c582a4c4dd0b';
+import {selectRanked} from './statistics-model.js?v=e196f7e6398c';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=faf9431158c2';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -82,10 +82,10 @@ const loadRanked=async()=>{
  }
  rankedData=data;rankedError='';return data;
 };
-const loadMatches=()=>matchesPromise||=fetch('matches.json?v=2db7a9f0753e').then(r=>{if(!r.ok)throw Error('경기 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{matchesPromise=null;throw e;});
+const loadMatches=()=>matchesPromise||=fetch('matches.json?v=e9e58d54f975').then(r=>{if(!r.ok)throw Error('경기 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{matchesPromise=null;throw e;});
 const loadBans=()=>bansPromise||=fetch('bans.json?v=ea94c7967200').then(r=>{if(!r.ok)throw Error('밴 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{bansPromise=null;throw e;});
-const loadDetails=()=>detailsPromise||=fetch('tournament-details.json?v=3f63d7fc9191').then(r=>{if(!r.ok)throw Error('세부 대회 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{detailsPromise=null;throw e;});
-const loadObservedBans=()=>observedBansPromise||=fetch('bans-observed.json?v=c849ef0cd767').then(r=>{if(!r.ok)throw Error('공개 밴 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{observedBansPromise=null;throw e;});
+const loadDetails=()=>detailsPromise||=fetch('tournament-details.json?v=1d033d96cda4').then(r=>{if(!r.ok)throw Error('세부 대회 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{detailsPromise=null;throw e;});
+const loadObservedBans=()=>observedBansPromise||=fetch('bans-observed.json?v=e41c726e4ddb').then(r=>{if(!r.ok)throw Error('공개 밴 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{observedBansPromise=null;throw e;});
 const portrait=(c,priority=false)=>`<img src="${esc(c.portrait)}" alt="${esc(c.name)}" width="200" height="200" ${priority?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const personaTalents={
  '히든카드':{id:'trump-card',side:'감시자'},
@@ -157,7 +157,7 @@ function header(){
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
-function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>경기 자료 ${db.meta.recordLatest} · 새 패치를 자동 반영하지 않습니다.</p></div><div class="footer-links"><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
+function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
@@ -191,7 +191,7 @@ function favoriteInsight(list){
 function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${esc(t)}</span></li>`).join('')}</ul></div>`;}
 function characterPage(){
  const c=char(state.character);state.character=c.id;
- return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}검토 ${esc(c.reviewedAt)}</span></div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
+ return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}공략 검토 ${esc(c.reviewedAt)}</span>${c.gamePatchDate?`<span class="date-pill">${icon('check')}게임 반영 ${esc(c.gamePatchDate)}</span>`:''}</div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
  <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
  <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
@@ -407,7 +407,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=c6b8e6b33cd4'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=30076c2c9c1a')]);
+ const responses=await Promise.all([fetch('data.json?v=78335f85d8c5'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=32d2f479b28a')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

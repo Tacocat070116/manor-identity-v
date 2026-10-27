@@ -1,4 +1,4 @@
-import {filterRows,cutoff} from './model.js?v=27437535d180';
+import {filterRows,cutoff} from './model.js?v=e238acfa45e9';
 
 function countResult(target,result,hunter){
  target.appearances++;

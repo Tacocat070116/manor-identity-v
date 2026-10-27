@@ -34,10 +34,12 @@ for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
 const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
-assert.equal(matches.length,16851);assert.equal(bans.length,15516);
+assert.equal(matches.length,16953);assert.equal(bans.length,15516);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
-assert.equal(db.sources.length,db.meta.sourceCount);
+const retired=JSON.parse(fs.readFileSync('research/refresh/2026-10-27/retired-public-data.json','utf8'));
+assert.equal(retired.sources.length,db.meta.sourceCount);
+assert.ok(!('sources' in db)&&!('community' in db),'retired public payload stays outside boot data');
 assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted);
 assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.held);
 assert.equal(db.matchups.length,459+matchupReview.added);
@@ -48,7 +50,7 @@ assert.equal(matches.length,db.meta.matches);
 assert.equal(matches.filter(r=>['승','무','패'].includes(r[5])).length,db.meta.results);
 assert.equal(new Set(db.matchups.map(m=>m.id)).size,db.matchups.length,'unique evidence IDs');
 const evidenceIds=new Set(db.matchups.map(m=>m.id));
-for(const comment of db.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
+for(const comment of retired.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
 for(const m of db.matchups){
  assert.equal(m.reviewedAt,db.meta.matchupReviewedAt,m.id+' review date');
  assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
@@ -89,7 +91,7 @@ for(const ch of db.characters){
 for(const row of matches){assert.ok(ids.has(row[2]));assert.equal(row[3].length,4);assert.equal(new Set(row[3]).size,4);row[3].forEach(id=>assert.ok(ids.has(id)));}
 for(const row of bans){assert.ok(ids.has(row[2]));row[3].forEach(id=>assert.ok(ids.has(id)));assert.ok(row[3].length>=1);}
 const hull=statsFor(matches,c('훌라발루'),{days:0});
-assert.equal(hull.appearances,707);assert.equal(hull.results,707);assert.equal(hull.win,302);assert.equal(hull.draw,296);assert.equal(hull.loss,109);assert.equal(hull.unknown,0);
+assert.equal(hull.appearances,717);assert.equal(hull.results,717);assert.equal(hull.win,304);assert.equal(hull.draw,301);assert.equal(hull.loss,112);assert.equal(hull.unknown,0);
 const prediction=rankBans(bans,[c('의사').id,c('샤먼').id],{days:0});
 assert.equal(prediction.base,15516);assert.equal(prediction.matched,5);
 assert.deepEqual(prediction.ranks.map(x=>x.id),['광기의 눈','밀랍인형사','오페라 가수','꿈의 마녀','조각가'].map(n=>c(n).id));
@@ -124,7 +126,7 @@ assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,cont
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-21',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,rankBans,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));

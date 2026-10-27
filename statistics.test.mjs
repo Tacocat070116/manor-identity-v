@@ -135,5 +135,5 @@ test('ranked import survives partial network failure without hiding tournament r
  const {context,nodes,app}=runtime();const fetch=context.fetch;
  context.fetch=async url=>url.startsWith('ranked/')?{ok:false}:fetch(url);
  await app.boot();const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,851/);
+ assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,953/);
 });

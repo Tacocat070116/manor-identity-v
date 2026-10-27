@@ -1,4 +1,4 @@
-import {filterRows,matchesCharacter} from './model.js?v=27437535d180';
+import {filterRows,matchesCharacter} from './model.js?v=e238acfa45e9';
 
 export const SERVER_LABELS={asia:'아시아',cn:'중국'};
 export const TIER_LABELS={all:'전체 랭크',peak7:'최고 7티어','7':'7티어','6':'6티어','5':'5티어','4':'4티어','3':'3티어','2':'2티어','1':'1티어'};

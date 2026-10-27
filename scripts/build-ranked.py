@@ -4,13 +4,10 @@ Run: python scripts/build-ranked.py
 Raw-source URLs and hashes are retained in research/ranked/source-manifest.json.
 No rates are averaged across ranks, sources, servers, periods or tournaments.
 """
-import csv
 import gzip
 import hashlib
-import io
 import json
 import re
-import zipfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -44,9 +41,6 @@ def identify(row):
 sources = []
 datasets = []
 parts = defaultdict(list)
-csv_out = io.StringIO(newline='')
-writer = csv.writer(csv_out, lineterminator='\n')
-writer.writerow(['dataset_id','server','season','tier','period_kind','period_start','period_end','character_id','character','original_name','side','pick_percent','win_percent','draw_percent','loss_percent','ban_percent','source_id','review_status'])
 total = 0
 seen = set()
 for group in [inputs['cn'], inputs['global']]:
@@ -82,33 +76,27 @@ for group in [inputs['cn'], inputs['global']]:
             if all(r.get(k) is not None for k in ['win','draw','loss']):
                 assert abs(r['win'] + r['draw'] + r['loss'] - 100) <= .21
             rows.append([c['id'], *metrics])
-            writer.writerow([d['id'],d['server'],meta['season'],meta['tier'],meta['periodKind'],meta.get('periodStart',''),meta.get('periodEnd',''),c['id'],c['name'],r.get('nameOriginal',r.get('originalName',r['name'])),c['side'],*['' if x is None else x for x in metrics],d['sourceId'],meta['status']])
             total += 1
         parts[meta['path']].append({'id': d['id'], 'rows': sorted(rows)})
         datasets.append(meta)
 
 source_ids = {sid for d in datasets for sid in [d['sourceId'], *d.get('sourceIds', [])]}
 sources = [s for s in sources if s['id'] in source_ids]
-# Remove the retired public export when rebuilding an existing checkout.
-(OUT / 'global-unknown-s42.json').unlink(missing_ok=True)
+# Retired downloads are no longer part of the public application.
+for retired in ['global-unknown-s42.json', 'records.csv', 'badges.csv', 'statistics.zip', 'manifest.json']:
+    (OUT / retired).unlink(missing_ok=True)
 for path, values in parts.items():
     dump(ROOT / 'dist' / path, {'columns':['id','pick','win','draw','loss','ban'],'datasets':values})
-(OUT / 'records.csv').unlink(missing_ok=True)
 
 badges = inputs['badges']
 badge_count = 0
-badge_csv = io.StringIO(newline='')
-badge_writer = csv.writer(badge_csv, lineterminator='\n')
-badge_writer.writerow(['dataset_id','server','date','character_id','character','side','rank_position','knowledge_score','source_id'])
 for d in badges['datasets']:
     for row in d['rows']:
         c = identify(row)
         row['id'] = c['id']
         assert isinstance(row['score'], (int,float)) and row['score'] >= 0
-        badge_writer.writerow([d['id'],d['server'],d['asOf'],c['id'],c['name'],c['side'],row['rankPosition'],row['score'],d['sourceId']])
         badge_count += 1
 dump(OUT / 'badges.json', badges)
-(OUT / 'badges.csv').write_text('\ufeff' + badge_csv.getvalue())
 
 meta = {
     'collectedAt':'2026-10-17', 'recordCount':total, 'datasetCount':len(datasets),
@@ -127,11 +115,6 @@ meta = {
 }
 catalog = {'schemaVersion':1, 'meta':meta, 'sources':sources, 'datasets':datasets, 'badgesPath':'ranked/badges.json'}
 dump(OUT / 'index.json', catalog)
-with zipfile.ZipFile(OUT / 'statistics.zip', 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-    for name, content in [('ranked-records.csv','\ufeff'+csv_out.getvalue()),('knowledge-scores.csv','\ufeff'+badge_csv.getvalue()),('sources-and-cohorts.json',json.dumps(catalog,ensure_ascii=False,indent=2))]:
-        entry=zipfile.ZipInfo(name,date_time=(2026,10,17,0,0,0))
-        entry.compress_type=zipfile.ZIP_DEFLATED
-        archive.writestr(entry,content.encode('utf-8'))
 source_ids.update(d['sourceId'] for d in badges['datasets'])
 legacy_source_ids = {'global/wiki-asia-s43-hunters.raw.txt':'wiki-discord-asia-s43', 'global/idv-index-s42-default.raw.txt':'idv-index-s42'}
 raw_sources = [{**s, 'sourceId':s.get('sourceId', legacy_source_ids.get(s['path']))} for s in inputs['manifest']]
@@ -140,5 +123,5 @@ for p in sorted(OUT.glob('*')):
     if p.name == 'manifest.json': continue
     b = p.read_bytes()
     manifest['files'].append({'path':'ranked/'+p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
-dump(OUT / 'manifest.json', manifest)
+dump(ROOT / 'research/ranked/build-manifest.json', manifest)
 print(json.dumps(meta,ensure_ascii=False,indent=2))

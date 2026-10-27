@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-27",
+  "sources": [
+    {
+      "url": "https://web.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/form_global",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://api.github.com/repos/DMB-codegang/dwrg-tools/commits?per_page=1",
+      "status": 200,
+      "sha": "5d4237eea5b24d752b86be69ce65ffce24d99512",
+      "date": "2026-06-07T16:47:02Z",
+      "message": " 因技术问题，关闭自动更新"
+    },
+    {
+      "url": "https://api.github.com/repos/wyxAIh/idv-wubang/commits?per_page=1",
+      "status": 200,
+      "sha": "f0588e388136d812ada11399b418eab0d0a54ce1",
+      "date": "2026-08-14T09:27:41Z",
+      "message": "feat: 首页添加 GitHub 求星按钮"
+    }
+  ],
+  "newRows": 0,
+  "decision": "새 집계 원자료를 검증하지 못했으므로 기존 수집일과 원자료 시점을 보존"
+}
