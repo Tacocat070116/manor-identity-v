@@ -48,18 +48,45 @@ test('operator controller preserves a reply draft through a status save and save
 });
 test('feedback and comment templates escape user text and never expose a public status editor',()=>{
  const card=feedbackCard(post,chars);assert(!card.includes('<script>'));assert(!card.includes('<img src=x'));assert(card.includes('&lt;script&gt;'));assert(!card.includes('data-fb-form="status"'));
+ assert(card.startsWith('<a class="fb-card"'));assert.equal((card.match(/<a\b/g)||[]).length,1);assert(!card.includes('<button'));assert(card.includes('aria-labelledby="fb-card-title-'+id+'"'));assert(card.includes('댓글 0'));assert(!card.includes('data-fb="vote"'));
  const comment=feedbackComment({id,author,body:'<svg onload=alert(1)>',createdAt:post.createdAt,isAuthor:true,isMine:false},chars);assert(comment.includes('&lt;svg'));assert(comment.includes('작성자'));assert(!comment.includes('data-fb="delete-comment"'));
 });
-test('actual feedback controller uses the shared API, creates guest identity only on write, and toggles a vote through the server',async()=>{
- const old={fetch:globalThis.fetch,localStorage:globalThis.localStorage};const calls=[],handlers={},values=new Map(),notice={textContent:'',hidden:true,classList:{toggle(){}}},voteNode={outerHTML:''};
+test('whole-card navigation opens once and preserves native modified clicks',async()=>{
+ const previous=globalThis.fetch,handlers={},opened=[];globalThis.fetch=async()=>({ok:true,json:async()=>({posts:[post],counts:{open:1},total:1,nextPage:null})});
+ const root={innerHTML:'',addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],contains:()=>true};
+ const dispose=mountFeedback(root,{navigate:id=>opened.push(id)});await new Promise(resolve=>setImmediate(resolve));
+ const link={dataset:{fb:'open',id}};
+ try{
+  assert(!root.innerHTML.includes('추천순'));assert(!root.innerHTML.includes('fb-vote'));assert(root.innerHTML.includes('댓글순'));
+  for(const modifier of ['ctrlKey','metaKey','shiftKey','altKey'])await handlers.click({target:{closest:()=>link},[modifier]:true,button:0,preventDefault(){assert.fail('modified click must remain native');}});
+  assert.deepEqual(opened,[]);let prevented=0;
+  await handlers.click({target:{closest:()=>link},button:0,preventDefault(){prevented++;}});
+  assert.equal(prevented,1);assert.deepEqual(opened,[id]);
+ }finally{dispose();globalThis.fetch=previous;}
+});
+test('comments still create guest identity only on write and refresh the shared discussion',async()=>{
+ const old={fetch:globalThis.fetch,localStorage:globalThis.localStorage,FormData:globalThis.FormData},calls=[],handlers={},values=new Map(),nodes=new Map();
  globalThis.localStorage={getItem:k=>values.get(k)||null,setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};
- let current={...post};globalThis.fetch=async(url,opts={})=>{calls.push({url,opts});let data;if(url.endsWith('/visitors'))data={token:'a'.repeat(64)};else if(url.endsWith('/vote')){const value=JSON.parse(opts.body).value;current={...current,myVote:value,upvotes:value===1?1:0,downvotes:value===-1?1:0};data={post:current};}else data={posts:[current],counts:{open:1},total:1,nextPage:null};return {ok:true,json:async()=>data};};
- const root={innerHTML:'',addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],contains:()=>true,querySelector:s=>notice,querySelectorAll:()=>[{dataset:{votes:id},set outerHTML(v){voteNode.outerHTML=v;}}]};
- const dispose=mountFeedback(root,{characters:chars});await new Promise(resolve=>setImmediate(resolve));assert(root.innerHTML.includes('더 나은 장원을'));assert.equal(calls.length,1);assert.equal(calls[0].opts.credentials,'omit');assert(!calls[0].opts.headers.Authorization);
- async function click(){const b={dataset:{fb:'vote',id,value:'1'},disabled:false,isConnected:true};await handlers.click({target:{closest:()=>b},preventDefault(){}});}
- await click();assert(calls[1].url.endsWith('/visitors'));assert.equal(calls[2].opts.headers.Authorization,'Bearer '+'a'.repeat(64));assert.equal(JSON.parse(calls[2].opts.body).value,1);assert(voteNode.outerHTML.includes('aria-pressed="true"'));
- await click();assert.equal(JSON.parse(calls[3].opts.body).value,0);assert.equal(calls.filter(c=>c.url.endsWith('/visitors')).length,1);
- dispose();assert.deepEqual(Object.keys(handlers),[]);globalThis.fetch=old.fetch;globalThis.localStorage=old.localStorage;
+ globalThis.FormData=class{constructor(form){this.values=form.values;}get(key){return this.values[key]??null;}};
+ let posted=false;const comment={id:'new-comment',seq:1,author,body:'댓글로 남기는 의견',createdAt:post.createdAt};
+ globalThis.fetch=async(url,opts={})=>{calls.push({url,opts});let data;
+  if(url.endsWith('/visitors'))data={token:'a'.repeat(64)};
+  else if(url.endsWith('/comments')&&opts.method==='POST'){posted=true;data={id:comment.id,comment};}
+  else if(url.endsWith('/comments'))data={comments:[],nextAfter:null};
+  else data={post:{...post,commentCount:posted?1:0},history:[],myAlias:null};
+  return {ok:true,json:async()=>data};
+ };
+ const root={innerHTML:'',addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],contains:()=>true,querySelector(s){if(!nodes.has(s))nodes.set(s,{innerHTML:'',textContent:'',hidden:true,classList:{toggle(){}},scrollIntoView(){}});return nodes.get(s);}};
+ let dispose;
+ try{
+  dispose=mountFeedback(root,{characters:chars,postId:id});await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(calls.length,2);assert(calls.every(c=>c.opts.method==='GET'&&!c.opts.headers.Authorization));assert(root.innerHTML.includes('댓글 등록'));assert(!root.innerHTML.includes('fb-vote'));
+  let reset=false;const form={dataset:{fbForm:'comment'},values:{body:comment.body},reportValidity:()=>true,querySelector:()=>({disabled:false,isConnected:false}),reset(){reset=true;}};
+  await handlers.submit({target:{closest:()=>form},preventDefault(){}});
+  const write=calls.find(c=>c.url.endsWith('/comments')&&c.opts.method==='POST');assert.equal(write.opts.headers.Authorization,'Bearer '+'a'.repeat(64));assert.equal(JSON.parse(write.opts.body).body,comment.body);
+  assert.equal(calls.filter(c=>c.url.endsWith('/visitors')).length,1);assert(reset);assert(root.querySelector('.fb-comments').innerHTML.includes(comment.body));assert.equal(root.querySelector('[data-comment-total]').textContent,1);
+  assert(calls.every(c=>!c.url.endsWith('/vote')));
+ }finally{dispose?.();globalThis.fetch=old.fetch;globalThis.localStorage=old.localStorage;globalThis.FormData=old.FormData;}
 });
 test('failed shared-data loading shows an explicit retry screen rather than fabricated or browser-only feedback',async()=>{
  const old=globalThis.fetch;globalThis.fetch=async()=>{throw Error('연결 실패');};const root={innerHTML:'',addEventListener(){},removeEventListener(){}};const dispose=mountFeedback(root);await new Promise(resolve=>setImmediate(resolve));assert(root.innerHTML.includes('의견을 불러오지 못했습니다.'));assert(root.innerHTML.includes('다시 시도'));assert(!root.innerHTML.includes('첫 번째 의견'));dispose();globalThis.fetch=old;
