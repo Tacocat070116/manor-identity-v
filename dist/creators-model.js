@@ -7,6 +7,18 @@ export const CREATOR_TAG_GROUPS={
  '활동·언어':['프로','프로코치','전프로','한국어','일본어','중국어','영어','다국어자막'],
 };
 export const CREATOR_TAGS=Object.values(CREATOR_TAG_GROUPS).flat();
+// Presentation derives from four exact tags; this is separate from owner recommendations.
+export const CREATOR_TAG_BADGES={
+ '새내기':{id:'newcomer',label:'새내기',icon:'sprout',description:'첫 발을 내딛는 채널이에요.'},
+ '프로':{id:'pro',label:'프로',icon:'trophy',description:'프로 선수의 플레이를 소개하는 채널이에요.'},
+ '프로코치':{id:'coach',label:'프로코치',icon:'coach',description:'프로 코치의 시선과 분석을 만날 수 있어요.'},
+ '캐릭터장인':{id:'specialist',label:'캐릭터장인',icon:'gem',description:'한 캐릭터를 깊이 파고드는 채널이에요.'},
+};
+export function creatorTagBadges(tags){
+ const chosen=new Set(Array.isArray(tags)?tags:[]);
+ return Object.entries(CREATOR_TAG_BADGES).filter(([tag])=>chosen.has(tag)).map(([tag,badge])=>({tag,...badge}));
+}
+
 export const CREATOR_DISCOVERY_TAGS=['캐릭터공략','입문가이드','랭크','생존자','감시자','생방송','쇼츠','예능','시청자참여','새내기','프로','프로코치'];
 export const CREATOR_SERVERS={unspecified:'선택 안 함',asia:'글로벌 · 아시아',cn:'중국'};
 const legacyCountryCodes='AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split(' ');

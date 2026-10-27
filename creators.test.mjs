@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_TIERS,normalizeCreatorTier,CREATOR_SERVERS,normalizeAppearance,CREATOR_APPEARANCE_DEFAULT,CREATOR_TAGS,CREATOR_PRESETS} from './dist/creators-model.js';
+import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_TIERS,normalizeCreatorTier,CREATOR_SERVERS,normalizeAppearance,CREATOR_APPEARANCE_DEFAULT,CREATOR_TAGS,CREATOR_TAG_BADGES,creatorTagBadges,CREATOR_PRESETS} from './dist/creators-model.js';
 import {creatorCard,creatorEditor} from './dist/creators.js';
 const characters={c16:{id:'c16',name:'블러디 퀸',portrait:'assets/portraits/c16.webp'}};
 const roster=new Map(Object.entries(characters));
@@ -110,4 +110,26 @@ test('retired country choices disappear while legacy drafts stay editable',()=>{
   assert(!creatorCard(c,characters).includes('creator-country-tag'));
  }
  assert.throws(()=>normalizeCreator({...base(),country:'ZZ'},roster),/국가/);
+});
+
+
+test('only four exact promotion tags create badges, including tags beyond the compact text limit',()=>{
+ assert.deepEqual(Object.keys(CREATOR_TAG_BADGES),['새내기','프로','프로코치','캐릭터장인']);
+ assert.deepEqual(creatorTagBadges(['전프로','프로코치준비','운영자추천','공략']),[]);
+ assert.deepEqual(creatorTagBadges(['프로','프로']),[{tag:'프로',...CREATOR_TAG_BADGES['프로']}]);
+ const c={...base(),tags:['해설','랭크','쇼츠','새내기','프로코치']};
+ for(const options of [{},{detail:true},{preview:true}]){
+  const html=creatorCard(c,characters,options);assert.match(html,/badge-newcomer/);assert.match(html,/badge-coach/);assert.doesNotMatch(html,/badge-pro"|creator-recommend-badge/);
+ }
+ assert.doesNotMatch(creatorCard({...c,tags:[]},characters),/creator-promotion-badges/);
+});
+
+test('gold cat recommendations depend on a server flag, not user tags or card decoration',()=>{
+ const c={...base(),tags:['프로','운영자추천'],appearance:{...CREATOR_APPEARANCE_DEFAULT,mark:'star'}};
+ for(const recommended of [undefined,false,1,'true'])assert.doesNotMatch(creatorCard({...c,recommended},characters),/creator-recommend-badge/);
+ for(const options of [{},{detail:true},{preview:true}]){
+  const html=creatorCard({...c,recommended:true},characters,options);assert.match(html,/creator-gold-cat/);assert.match(html,/운영자 추천/);assert.match(html,/badge-pro/);
+ }
+ const value=normalizeCreator({...c,recommended:true},roster);assert(!Object.hasOwn(value,'recommended'));
+ const editor=creatorEditor({...c,recommended:true},characters);assert.doesNotMatch(editor,/name="recommended"|data-cr-form="recommendation"/);
 });
