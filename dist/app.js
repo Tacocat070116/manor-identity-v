@@ -152,7 +152,7 @@ function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
  const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['creators','유튜브','play'],['feedback','피드백','message'],['patchnotes','MANOR 업데이트','spark']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view))||['explore','도감','grid'];
- const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span>${label}</span></a>`).join('');
+ const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}${v==='creators'?'<span class="creator-beta-badge">BETA</span>':''}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
@@ -283,7 +283,7 @@ function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 �
 async function render({scroll=false}={}){
  disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeCreators();disposeCreators=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',creators:'유튜브 채널',feedback:'피드백',patchnotes:'MANOR 업데이트'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 분석',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',patchnotes:'MANOR 업데이트'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
@@ -407,7 +407,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=c6b8e6b33cd4'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=c65dbee5f960')]);
+ const responses=await Promise.all([fetch('data.json?v=c6b8e6b33cd4'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=0061a60454f8')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

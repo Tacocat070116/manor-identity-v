@@ -9,10 +9,9 @@ export const CREATOR_TAG_GROUPS={
 export const CREATOR_TAGS=Object.values(CREATOR_TAG_GROUPS).flat();
 export const CREATOR_DISCOVERY_TAGS=['캐릭터공략','입문가이드','랭크','생존자','감시자','생방송','쇼츠','예능','시청자참여','새내기','프로','프로코치'];
 export const CREATOR_SERVERS={unspecified:'선택 안 함',asia:'글로벌 · 아시아',cn:'중국'};
-const countryNames=new Intl.DisplayNames(['ko'],{type:'region'});
-const countryCodes='AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split(' ');
-const countryLabels={KR:'한국',JP:'일본',CN:'중국',TW:'대만',HK:'홍콩',MO:'마카오'};
-export const CREATOR_COUNTRIES={unspecified:'선택 안 함',...countryLabels,...Object.fromEntries(countryCodes.filter(code=>!Object.hasOwn(countryLabels,code)).map(code=>[code,countryNames.of(code)]).sort((a,b)=>a[1].localeCompare(b[1],'ko')))};
+const legacyCountryCodes='AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW'.split(' ');
+// Keep the picker focused; old saved country codes normalize to no selection.
+export const CREATOR_COUNTRIES={unspecified:'선택 안 함',KR:'한국',JP:'일본',CN:'중국',TW:'대만',HK:'홍콩',TH:'태국',VN:'베트남',ID:'인도네시아',MY:'말레이시아',SG:'싱가포르',PH:'필리핀'};
 export const CREATOR_COLORS={mint:'민트',lilac:'라일락',sky:'스카이',rose:'로즈',gold:'샌드',ink:'잉크',peach:'피치',lemon:'레몬',teal:'틸',violet:'바이올렛',coral:'코랄',slate:'슬레이트'};
 export const CREATOR_PATTERNS={glass:'글라스',aurora:'오로라',dots:'도트',grid:'모눈',stripes:'사선',halo:'빛무리'};
 export const CREATOR_FRAMES={soft:'부드럽게',line:'컬러 라인',double:'이중선',dashed:'점선'};
@@ -29,7 +28,14 @@ export const CREATOR_PRESETS={
  letter:{label:'로즈 레터',color:'rose',appearance:{pattern:'dots',frame:'line',layout:'center',corners:'soft',font:'serif',mark:'heart'}},
  midnight:{label:'잉크 오로라',color:'ink',appearance:{pattern:'aurora',frame:'line',layout:'right',corners:'soft',font:'clean',mark:'moon'}},
 };
-export const CREATOR_TIERS={survivor:['일벌','사냥개','엘크','매머드','그리핀','유니콘','용사','헤라클레스'],hunter:['타란툴라','코브라','악어','스밀로돈','만티코어','키클롭스','이블 드래곤','히드라']};
+const legacyTiers={survivor:['일벌','사냥개','엘크','매머드','그리핀','유니콘','용사','헤라클레스'],hunter:['타란툴라','코브라','악어','스밀로돈','만티코어','키클롭스','이블 드래곤','히드라']};
+const tierLabels=['1티어','2티어','3티어','4티어','5티어','6티어','7티어','최고 7티어'];
+export const CREATOR_TIERS={survivor:[...tierLabels],hunter:[...tierLabels]};
+export function normalizeCreatorTier(side,tier){
+ if(!Object.hasOwn(CREATOR_TIERS,side))return '';
+ if(CREATOR_TIERS[side].includes(tier))return tier;
+ return tierLabels[legacyTiers[side].indexOf(tier)]||'';
+}
 export const CREATOR_SIDES={survivor:'생존자',hunter:'감시자'};
 export const CREATOR_REPORTS={spam:'도배·광고',impersonation:'채널 사칭',unrelated:'제5인격과 무관한 내용',inappropriate:'부적절한 내용',correction:'채널 정보 수정·삭제 요청',other:'기타'};
 export const creatorEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -80,7 +86,7 @@ export function normalizeAppearance(input,characters){
 export function normalizeCreator(input,characters){
  const channel=normalizeChannel(input.channelUrl);
  const v={channelUrl:channel.url,channelKey:channel.key,title:clean(input.title,1,50,'채널 이름'),tagline:clean(input.tagline,5,120,'한 줄 소개'),body:clean(input.body||'',0,1800,'자세한 소개'),videoUrl:normalizeVideo(input.videoUrl||''),server:input.server==='naeu'?'unspecified':input.server||'unspecified',color:input.color||'mint',country:input.country||'unspecified'};
- if(!Object.hasOwn(CREATOR_COUNTRIES,v.country))bad('국가·지역을 확인해 주세요.');
+ if(!Object.hasOwn(CREATOR_COUNTRIES,v.country)){if(legacyCountryCodes.includes(v.country))v.country='unspecified';else bad('국가·지역을 확인해 주세요.');}
  if(!Object.hasOwn(CREATOR_SERVERS,v.server)||!Object.hasOwn(CREATOR_COLORS,v.color))bad('서버와 카드 색상을 확인해 주세요.');
  v.appearance=normalizeAppearance(input.appearance,characters);
  if(!Array.isArray(input.tags)||input.tags.length>CREATOR_TAG_LIMIT)bad(`태그는 최대 ${CREATOR_TAG_LIMIT}개까지 선택해 주세요.`);
@@ -90,7 +96,7 @@ export function normalizeCreator(input,characters){
  v.badges=input.badges.map(b=>{if(!b||Object.keys(b).some(k=>!['characterId','grade','season'].includes(k))||!characters.has(b.characterId)||!['S','A','B','C'].includes(b.grade))bad('휘장의 캐릭터와 등급을 확인해 주세요.');return {characterId:b.characterId,grade:b.grade,season:clean(b.season||'',0,24,'휘장 시즌')};});
  if(new Set(v.badges.map(b=>b.characterId+'|'+b.season)).size!==v.badges.length)bad('같은 캐릭터·시즌의 휘장은 하나만 추가해 주세요.');
  if(!Array.isArray(input.tiers)||input.tiers.length>2)bad('최고 티어는 진영별 하나씩 선택해 주세요.');
- v.tiers=input.tiers.map(t=>{if(!t||Object.keys(t).some(k=>!['side','tier','season'].includes(k))||!Object.hasOwn(CREATOR_TIERS,t.side)||!CREATOR_TIERS[t.side].includes(t.tier))bad('최고 티어를 확인해 주세요.');return {side:t.side,tier:t.tier,season:clean(t.season||'',0,24,'티어 시즌')};});
+ v.tiers=input.tiers.map(t=>{if(!t||Object.keys(t).some(k=>!['side','tier','season'].includes(k))||!normalizeCreatorTier(t.side,t.tier))bad('최고 티어를 확인해 주세요.');return {side:t.side,tier:normalizeCreatorTier(t.side,t.tier),season:clean(t.season||'',0,24,'티어 시즌')};});
  if(new Set(v.tiers.map(t=>t.side)).size!==v.tiers.length)bad('최고 티어는 진영별 하나씩 선택해 주세요.');
  return v;
 }

@@ -172,3 +172,13 @@
  .creator-color-picker .creator-color-option{min-width:42px;min-height:62px}
  .creator-preview{max-width:none}
 }
+
+/* Category maturity stays visible without changing the navigation motion. */
+.creator-beta-badge{display:inline-flex;align-items:center;flex-shrink:0;vertical-align:middle;padding:3px 8px;border:1px solid var(--accent-line);border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:750;line-height:1.5;letter-spacing:.08em;white-space:nowrap}
+.creator-heading h1{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+.creator-editor-heading .eyebrow{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.nav-item .creator-beta-badge{margin-left:0;padding:2px 6px;font-size:9px}
+
+.nav-item-label{display:flex;align-items:center;gap:6px;min-width:0}
+@media(max-width:640px){.nav-item[data-view="creators"] .nav-item-label{flex-direction:column;align-items:flex-start;gap:1px}.nav-item .creator-beta-badge{padding:1px 5px;font-size:8px}}
+@media(max-width:380px){.category-panel .nav-item{padding:10px;gap:6px;white-space:normal}.nav-item-label{overflow-wrap:anywhere}}

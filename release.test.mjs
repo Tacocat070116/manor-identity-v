@@ -66,7 +66,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.deepEqual(views,['patchnotes','explore','patchnotes']);
  assert.ok(nodes.get('#page-body').innerHTML.includes('일치하는 업데이트가 없습니다'));
  context.location.hash='#v=creators&channel=11111111-1111-4111-8111-111111111111';context.app.readRoute();await context.app.render();
- assert.equal(context.document.title,'유튜브 채널 · MANOR');assert.equal(creatorMounts.length,1);assert.equal(creatorMounts[0].options.postId,'11111111-1111-4111-8111-111111111111');
+ assert.equal(context.document.title,'유튜브 채널 BETA · MANOR');assert.equal(creatorMounts.length,1);assert.equal(creatorMounts[0].options.postId,'11111111-1111-4111-8111-111111111111');
  creatorMounts[0].options.navigate();assert.equal(context.location.hash,'#v=creators');
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(creatorDisposals,1);
 });

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_SERVERS,normalizeAppearance,CREATOR_APPEARANCE_DEFAULT,CREATOR_TAGS,CREATOR_PRESETS} from './dist/creators-model.js';
+import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_TIERS,normalizeCreatorTier,CREATOR_SERVERS,normalizeAppearance,CREATOR_APPEARANCE_DEFAULT,CREATOR_TAGS,CREATOR_PRESETS} from './dist/creators-model.js';
 import {creatorCard,creatorEditor} from './dist/creators.js';
 const characters={c16:{id:'c16',name:'블러디 퀸',portrait:'assets/portraits/c16.webp'}};
 const roster=new Map(Object.entries(characters));
@@ -41,7 +41,7 @@ test('editor keeps tiers and badges optional and safely restores entered copy',(
 
 
 test('country tags stay distinct from game servers and never imply a curated channel submitted its own post',()=>{
- assert.equal(Object.keys(CREATOR_COUNTRIES).length,250);
+ assert.deepEqual(Object.keys(CREATOR_COUNTRIES),['unspecified','KR','JP','CN','TW','HK','TH','VN','ID','MY','SG','PH']);
  const v=normalizeCreator({...base(),country:'KR',server:'asia'},roster);assert.equal(v.country,'KR');assert.equal(v.server,'asia');
  assert.equal(normalizeCreator(base(),roster).country,'unspecified');assert.throws(()=>normalizeCreator({...base(),country:'ZZ'},roster),/국가/);
  const html=creatorCard({...base(),country:'JP',origin:'curated'},characters,{detail:true});
@@ -82,4 +82,32 @@ test('card studio accepts presets and 12 ordered tags, but rejects CSS, external
  const escaped=creatorCard({...base(),appearance:{label:'<img src=x>'}},characters);assert.match(escaped,/&lt;img src=x&gt;/);assert.doesNotMatch(escaped,/<img src=x/);
  const form=creatorEditor({...base(),appearance:{...CREATOR_APPEARANCE_DEFAULT,frame:'dashed',layout:'right'}},characters);
  assert.match(form,/name="appearance-frame" value="dashed" checked/);assert.match(form,/name="appearance-layout" value="right" checked/);assert.match(form,/최대 12개/);
+});
+
+
+test('numeric tier labels preserve every legacy rank in cards and edit forms',()=>{
+ const labels=['1티어','2티어','3티어','4티어','5티어','6티어','7티어','최고 7티어'];
+ const legacy={survivor:['일벌','사냥개','엘크','매머드','그리핀','유니콘','용사','헤라클레스'],hunter:['타란툴라','코브라','악어','스밀로돈','만티코어','키클롭스','이블 드래곤','히드라']};
+ for(const [side,ranks] of Object.entries(legacy)){
+  assert.deepEqual(CREATOR_TIERS[side],labels);
+  for(const [i,rank] of ranks.entries()){
+   const c={...base(),tiers:[{side,tier:rank,season:'시즌 42'}]};
+   assert.equal(normalizeCreator(c,roster).tiers[0].tier,labels[i]);
+   for(const options of [{},{detail:true},{preview:true}]){const html=creatorCard(c,characters,options);assert(html.includes(labels[i]));assert(!html.includes(rank));}
+   const editor=creatorEditor(c,characters);assert(editor.includes('<option selected>'+labels[i]+'</option>'));assert(!editor.includes(rank));
+   assert.equal(normalizeCreatorTier(side,labels[i]),labels[i]);
+  }
+ }
+ assert.equal(normalizeCreatorTier('hunter','일벌'),'');
+ for(const tier of ['0티어','8티어','최고 8티어','__proto__'])assert.throws(()=>normalizeCreator({...base(),tiers:[{side:'hunter',tier}]},roster),/최고 티어/);
+});
+
+test('retired country choices disappear while legacy drafts stay editable',()=>{
+ for(const country of ['US','AQ','MO','FR']){
+  assert(!Object.hasOwn(CREATOR_COUNTRIES,country));
+  const c={...base(),country};assert.equal(normalizeCreator(c,roster).country,'unspecified');
+  const editor=creatorEditor(c,characters);assert.match(editor,/<option value="unspecified" selected>선택 안 함/);assert(!editor.includes('value="'+country+'"'));
+  assert(!creatorCard(c,characters).includes('creator-country-tag'));
+ }
+ assert.throws(()=>normalizeCreator({...base(),country:'ZZ'},roster),/국가/);
 });
