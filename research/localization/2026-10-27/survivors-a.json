@@ -1,0 +1,1094 @@
+{
+  "reviewedAt": "2026-10-27",
+  "scope": "c37–c64 Korean terminology audit",
+  "charsChecked": [
+    {
+      "id": "c37",
+      "name": "곡예사",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c38",
+      "name": "곤충학자",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c39",
+      "name": "골동품 상인",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c40",
+      "name": "공군",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c41",
+      "name": "교수",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c42",
+      "name": "궁수",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c43",
+      "name": "기계공",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c44",
+      "name": "기사",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c45",
+      "name": "기상학자",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c46",
+      "name": "기자",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c47",
+      "name": "납관사",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c48",
+      "name": "도둑",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c49",
+      "name": "마술사",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c50",
+      "name": "맹인",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c51",
+      "name": "모험가",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c52",
+      "name": "묘지기",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c53",
+      "name": "무언극 아티스트",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c54",
+      "name": "무희",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c55",
+      "name": "바텐더",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c56",
+      "name": "변호사",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c57",
+      "name": "샤먼",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c58",
+      "name": "선지자",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c59",
+      "name": "소설가",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c60",
+      "name": "신동",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c61",
+      "name": "심리학자",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c62",
+      "name": "야만인",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c63",
+      "name": "여자아이",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "reviewed_no_primary_confirmed_replacement",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    },
+    {
+      "id": "c64",
+      "name": "용병",
+      "readFields": [
+        "difficultyReason",
+        "skill",
+        "caution",
+        "use",
+        "hold",
+        "response",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy"
+      ],
+      "status": "correction_or_consistency_found",
+      "note": "문장·명칭 감사 범위이며 모든 스킬의 현행 수치 검증 완료를 뜻하지 않음"
+    }
+  ],
+  "policy": "공식 한국어 직접 자료와 공동편집 툴팁 전사를 구분한다. 옛 공지는 명칭 검증에만 사용하고 현행 수치로 적용하지 않는다. 문자열 치환은 캐릭터 문맥과 조사를 검사한다.",
+  "evidence": [
+    {
+      "id": "SA01",
+      "url": "https://x.com/identity5kr/status/1547799107267284997",
+      "title": "제5인격 한국 공식 계정: 골동품 상인 콘셉트 MV",
+      "official": true,
+      "terms": [
+        "퉁소"
+      ],
+      "shortSupportingExcerpt": "퉁소는 나의 무기이고, 나의 기개는 여전히 한결같다.",
+      "retrieval": "공식 계정 검색 결과 본문; 직접 열기는 403",
+      "sourceRef": "turn30search1"
+    },
+    {
+      "id": "SA02",
+      "url": "https://www.identityvgame.com/kr/character/survivors/20220805/35345_1035460.html",
+      "title": "제5인격 한국 공식 홈페이지: 골동품 상인",
+      "official": true,
+      "terms": [
+        "골동품 상인",
+        "척십일",
+        "퉁소"
+      ],
+      "shortSupportingExcerpt": "관심사: 무술, 퉁소 다루기, 골동품",
+      "retrieval": "공식 character 페이지 role 스크립트가 사용하는 공개 roster API의 해당 인물 레코드",
+      "apiUrl": "https://sixhorse.game.easebar.com/news/outer/newslist.do?contentkind=35345&limit=100&start=1",
+      "apiDiscoveryScript": "https://www.identityvgame.com/m/gw/20210622220618/js/app/role_941c3f6.js"
+    },
+    {
+      "id": "SA03",
+      "url": "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+      "title": "2022년 6월 30일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "직선 통로",
+        "곤충 떼",
+        "도블린 술",
+        "도블린 베이스",
+        "땅속 잠행",
+        "삽"
+      ],
+      "shortSupportingExcerpt": "샤먼의 직선 통로 / 도블린 술 / 도블린 베이스 / 땅속 잠행 상태 / 곤충 떼",
+      "retrieval": "공식 HTML 직접 읽기",
+      "note": "명칭 증거만 사용. 2022년 수치를 현행 밸런스로 덮어쓰지 않는다."
+    },
+    {
+      "id": "SA04",
+      "url": "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html",
+      "title": "2022년 6월 16일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "곤충 떼",
+        "곤충 떼 맴돌기"
+      ],
+      "shortSupportingExcerpt": "곤충학자가 곤충 떼 맴돌기를 사용하여",
+      "retrieval": "공식 HTML 직접 읽기"
+    },
+    {
+      "id": "SA05",
+      "url": "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html",
+      "title": "2022년 6월 23일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "폭탄",
+        "부엉이",
+        "관",
+        "부활"
+      ],
+      "shortSupportingExcerpt": "곡예사가 폭탄을 사용하는 도중 / 부엉이의 순찰 단계 / 납관사가 부활을 선택하여",
+      "retrieval": "공식 HTML 직접 읽기"
+    },
+    {
+      "id": "SA06",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html",
+      "title": "2022년 6월 2일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "기계 인형",
+        "마술봉",
+        "느린 리듬 오르골",
+        "비늘 표피",
+        "은유"
+      ],
+      "shortSupportingExcerpt": "기계 인형 / 마술봉 / 무희의 느린 리듬 오르골 / 비늘 표피 / 은유",
+      "retrieval": "공식 HTML 직접 읽기"
+    },
+    {
+      "id": "SA07",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018903.html",
+      "title": "2022년 5월 12일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "비늘 경화",
+        "사악한 비늘",
+        "곤충 떼",
+        "마술봉"
+      ],
+      "shortSupportingExcerpt": "생존자 교수의 사악한 비늘 / 비늘 경화 / 곤충 떼 맴돌기",
+      "sourceRef": "turn53search0",
+      "note": "효과명 확인용; 현행 재사용 대기시간 증거 아님."
+    },
+    {
+      "id": "SA08",
+      "url": "https://x.com/identity5kr/status/1819524331397173306",
+      "title": "제5인격 한국 공식 계정: 용병의 강철 팔꿈치 보호대",
+      "official": true,
+      "terms": [
+        "강철 팔꿈치 보호대"
+      ],
+      "shortSupportingExcerpt": "강철 팔꿈치 보호대를 사용해 재빠르게 다가가",
+      "sourceRef": "turn94search1",
+      "retrieval": "공식 계정 검색 결과"
+    },
+    {
+      "id": "SA09",
+      "url": "https://x.com/identity5kr/status/2101257376389276113",
+      "title": "제5인격 한국 공식 계정: 신동 스킬 예고",
+      "official": true,
+      "terms": [
+        "신동",
+        "하모니카",
+        "햄스터"
+      ],
+      "shortSupportingExcerpt": "하모니카를 연주하며 햄스터와 협력 플레이?",
+      "sourceRef": "turn65search0",
+      "note": "흙공의 정확한 한국어 툴팁 명칭·효과를 이 한 문장으로 확정할 수 없다."
+    },
+    {
+      "id": "SA10",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html",
+      "title": "2022년 5월 26일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "강력한 손전등",
+        "비늘 표피",
+        "사악한 비늘"
+      ],
+      "shortSupportingExcerpt": "도둑이 소지하고 있는 강력한 손전등 수량",
+      "retrieval": "공식 HTML 직접 읽기",
+      "note": "강력한 손전등은 설치형과 구분. 손에 든 일반 손전등을 전부 강력한 손전등으로 바꾸지 않는다."
+    },
+    {
+      "id": "SAU01",
+      "url": "https://namu.moe/w/샤먼(제5인격)",
+      "title": "샤먼 한국어 툴팁 전사(공동편집 미러)",
+      "official": false,
+      "terms": [
+        "열쇠",
+        "직선 통로",
+        "긴 통로"
+      ],
+      "shortSupportingExcerpt": "직선 통로 또는 긴 통로를 열 수 있습니다.",
+      "sourceRef": "turn88view1",
+      "note": "공식 원문이 아니라 툴팁 전사. 초장거리 통로는 이 자료에서도 확인되지 않음."
+    },
+    {
+      "id": "SAU02",
+      "url": "https://namu.moe/w/모험가(제5인격)",
+      "title": "모험가 한국어 툴팁 전사(공동편집 미러)",
+      "official": false,
+      "terms": [
+        "걸리버 여행기",
+        "암호 페이지"
+      ],
+      "shortSupportingExcerpt": "암호 페이지를 사용하여 암호 장치를 빠르게 해독할 수 있습니다.",
+      "sourceRef": "turn87view1"
+    },
+    {
+      "id": "SAU03",
+      "url": "https://namu.moe/w/'여자아이'",
+      "title": "여자아이 한국어 툴팁 전사(공동편집 미러)",
+      "official": false,
+      "terms": [
+        "추억 조각",
+        "기억 동기화",
+        "연민"
+      ],
+      "shortSupportingExcerpt": "근처의 동료와 기억을 동기화할 수 있습니다.",
+      "sourceRef": "turn87view2"
+    },
+    {
+      "id": "SAU04",
+      "url": "https://namu.moe/w/기상학자(제5인격)",
+      "title": "기상학자 한국어 툴팁 전사(공동편집 미러)",
+      "official": false,
+      "terms": [
+        "강풍",
+        "층운",
+        "따뜻한 비",
+        "평온"
+      ],
+      "shortSupportingExcerpt": "강풍, 층운, 따뜻한 비",
+      "sourceRef": "turn68search1"
+    },
+    {
+      "id": "SAU05",
+      "url": "https://namu.moe/w/궁수(제5인격)",
+      "title": "궁수 한국어 툴팁 전사(공동편집 미러)",
+      "official": false,
+      "terms": [
+        "용골 화살",
+        "중상 파열도"
+      ],
+      "shortSupportingExcerpt": "감시자의 행동이 잠시 중단되며 50의 중상 파열도를 부여합니다.",
+      "sourceRef": "turn68search6",
+      "note": "수치 변경 제안 아님; 명칭만 참고."
+    }
+  ],
+  "corrections": [
+    {
+      "scope": "골동품 상인",
+      "before": "피리",
+      "after": "퉁소",
+      "sourceUrls": [
+        "https://x.com/identity5kr/status/1547799107267284997",
+        "https://www.identityvgame.com/kr/character/survivors/20220805/35345_1035460.html"
+      ],
+      "sourceIds": [
+        "SA01",
+        "SA02"
+      ],
+      "reason": "유저 지적과 공식 한국 계정 및 공식 소개 모두 퉁소. 캐릭터·상성·궁합의 골동품 상인 문맥 전체 적용.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "곤충학자",
+      "before": "벌레 무리",
+      "after": "곤충 떼",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+        "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html"
+      ],
+      "sourceIds": [
+        "SA03",
+        "SA04"
+      ],
+      "reason": "공식 공지에서 곤충 떼로 반복 표기. 벌레 무리→곤충 떼 적용 후 남은 벌레도 문맥별 교정.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "곤충학자",
+      "before": "벌레",
+      "after": "곤충 떼",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+        "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html"
+      ],
+      "sourceIds": [
+        "SA03",
+        "SA04"
+      ],
+      "reason": "곤충학자의 능력 개체를 가리키는 단어에 한정. 벌떼·다른 감시자 스킬명에는 적용 금지.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "곡예사",
+      "before": "공",
+      "after": "폭탄",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html"
+      ],
+      "sourceIds": [
+        "SA05"
+      ],
+      "reason": "곡예사의 보유 자원·투척물 문맥에 한정. 문자열 전체 치환 금지: 공격, 공군 및 다른 캐릭터의 공은 유지.",
+      "kind": "official_name",
+      "automatic": false
+    },
+    {
+      "scope": "샤먼",
+      "before": "짧은 포탈",
+      "after": "직선 통로",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "직선 통로의 공식 한국 명칭. 긴 포탈은 별도 기능이므로 같이 치환하지 않는다.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "샤먼",
+      "before": "일반 포탈",
+      "after": "직선 통로",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "일반 포탈을 직선 통로로 통일.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "샤먼",
+      "before": "포탈",
+      "after": "통로",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "기능 종류가 특정되지 않은 샤먼 통로만 일반명 통로로 정리. 직선·긴 통로를 임의로 단정하지 않는다.",
+      "kind": "official_name",
+      "automatic": false
+    },
+    {
+      "scope": "묘지기",
+      "before": "잠복",
+      "after": "잠행",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "공식 땅속 잠행과 잠복 혼용 제거. 상황에 따라 땅속에 잠복해→땅속 잠행을 사용해처럼 문장 재작성 필요.",
+      "kind": "official_name",
+      "automatic": false
+    },
+    {
+      "scope": "묘지기",
+      "before": "지하 잠복",
+      "after": "땅속 잠행",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "스킬·상태명을 공식 표기로 통일.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "바텐더",
+      "before": "회복용 술",
+      "after": "도블린 술",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "효과 설명을 공식 소지품명으로 대체하되 회복용이라는 해설은 문장에 유지할 수 있음.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "바텐더",
+      "before": "가속용 술",
+      "after": "도블린 베이스",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html"
+      ],
+      "sourceIds": [
+        "SA03"
+      ],
+      "reason": "가속용 소지품의 공식 이름을 명확히 구별.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "기계공",
+      "before": "인형",
+      "after": "기계 인형",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "sourceIds": [
+        "SA06"
+      ],
+      "reason": "기계공 조종 개체에 한정. 공장장 꼭두각시·인형사 루이·기자의 환영과 구별.",
+      "kind": "official_name",
+      "automatic": false
+    },
+    {
+      "scope": "마술사",
+      "before": "환영으로 통로를 막거나",
+      "after": "마술봉으로 환영을 남겨 통로를 막거나",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "sourceIds": [
+        "SA06"
+      ],
+      "reason": "기존 개요에 소지품 공식명 마술봉을 명시. 환영이라는 표현은 별도 스킬 효과로 유지.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "무희",
+      "before": "감속 오르골",
+      "after": "느린 리듬 오르골",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "sourceIds": [
+        "SA06"
+      ],
+      "reason": "공식 공지에 있는 이름. 가속 오르골은 빠른 리듬 오르골이 후보이나 직접 공식 문구 추가 확인 필요.",
+      "kind": "official_name",
+      "automatic": true
+    },
+    {
+      "scope": "용병",
+      "before": "팔꿈치 보호대",
+      "after": "강철 팔꿈치 보호대",
+      "sourceUrls": [
+        "https://x.com/identity5kr/status/1819524331397173306"
+      ],
+      "sourceIds": [
+        "SA08"
+      ],
+      "reason": "공식 한국 계정에서 확인한 전체 이름. 반복 문장에서는 이미 정의한 소지품을 보호대로 지칭하는 것 자체가 오역은 아님.",
+      "kind": "official_name",
+      "automatic": false
+    },
+    {
+      "scope": "모험가",
+      "before": "암호문",
+      "after": "암호 페이지",
+      "sourceUrls": [
+        "https://namu.moe/w/모험가(제5인격)"
+      ],
+      "sourceIds": [
+        "SAU02"
+      ],
+      "reason": "기존 c51.skill에서 이미 사용하는 암호 페이지와 c51.tips의 암호문 혼용을 제거. 공식 직접 확인으로 과장하지 않음.",
+      "kind": "internal_consistency",
+      "automatic": true
+    }
+  ],
+  "candidatesRequiringPrimaryConfirmation": [
+    {
+      "scope": "샤먼",
+      "before": [
+        "장거리 포탈",
+        "긴 포탈",
+        "슈퍼 포탈"
+      ],
+      "after": "긴 통로",
+      "sourceUrls": [
+        "https://namu.moe/w/샤먼(제5인격)"
+      ],
+      "official": false,
+      "note": "한국어 툴팁 전사에서 긴 통로. 초장거리 통로로 변경하면 오히려 새로운 비공식 명칭이 됨."
+    },
+    {
+      "scope": "기상학자",
+      "before": [
+        "구름으로 지형을 넘으며"
+      ],
+      "after": "층운으로 지형을 넘으며",
+      "sourceUrls": [
+        "https://namu.moe/w/기상학자(제5인격)"
+      ],
+      "official": false,
+      "note": "같은 캐릭터의 비 구름까지 전부 층운으로 치환 금지."
+    },
+    {
+      "scope": "궁수",
+      "before": [
+        "중상을 쌓아",
+        "부상 게이지"
+      ],
+      "after": [
+        "중상 파열도를 쌓아",
+        "중상 파열도"
+      ],
+      "sourceUrls": [
+        "https://namu.moe/w/궁수(제5인격)"
+      ],
+      "official": false,
+      "note": "툴팁 전사상 정확한 게이지 이름. 화살도 용골 화살 후보이나 공식 스킬 PV 직접 확인은 못함."
+    },
+    {
+      "scope": "여자아이",
+      "before": [
+        "동기화하면",
+        "동기화 해제"
+      ],
+      "after": [
+        "기억 동기화를 사용하면",
+        "기억 동기화 해제"
+      ],
+      "sourceUrls": [
+        "https://namu.moe/w/'여자아이'"
+      ],
+      "official": false,
+      "note": "기존 정확한 줄임말을 공식 전체 이름으로 풀어 쓰는 후보; 모든 동기화가 틀린 명칭인 것은 아님."
+    }
+  ],
+  "unknowns": [
+    {
+      "scope": "공통",
+      "issue": "공식 한국 사이트 공개 업데이트 목록은 2022년 7월까지 8건만 반환함. 이 자료로 2026년 현행 스킬 수치까지 검증했다고 말할 수 없다."
+    },
+    {
+      "scope": "기사",
+      "issue": "예견·예측 혼용이 있음. 공식 현행 한국어 스킬명 직접 확인 실패; 임의로 전술 예측 등 새 명칭을 만들지 않는다."
+    },
+    {
+      "scope": "기자",
+      "issue": "판자용/구출용 환영 설명이 의미상 명확. 공식 현행 소지품/스킬의 전체 이름은 이번 1차 출처에서 직접 확인하지 못함."
+    },
+    {
+      "scope": "궁수",
+      "issue": "용골 화살·중상 파열도는 툴팁 전사로만 확인. 직접 공식 문구를 확보하면 전사와 대조할 것."
+    },
+    {
+      "scope": "기상학자",
+      "issue": "층운·강풍·따뜻한 비는 한국어 툴팁 전사 확인. 공식 직접 증거는 미확보."
+    },
+    {
+      "scope": "무언극 아티스트",
+      "issue": "기쁨의 공연·불안의 공연·소품 우산 후보는 한국어 공동편집 자료에서만 확인. 공식 직접 확인 전 효과를 추가하거나 모든 우산을 소품 우산으로 단정하지 않는다."
+    },
+    {
+      "scope": "신동",
+      "issue": "흙공/진흙 공 혼용과 공 중심 개요. 공식 예고는 하모니카·햄스터를 명시하지만 흙공의 이름과 세부 효과는 직접 확인하지 못함. 기존 흙공이 틀렸다고 단정할 수 없으며 현재 일본어 공략 기반 설명에 공식 검증 완료 표시를 붙이지 않는다.",
+      "sourceUrls": [
+        "https://x.com/identity5kr/status/2101257376389276113"
+      ]
+    },
+    {
+      "scope": "여자아이",
+      "issue": "현재 팁은 스킬 피해를 넣으면 동기화가 풀린다고 일반화. 한국어 툴팁 전사에는 일정 피해량/다운 등의 조건이 있어 소량 피해까지 항상 해제되는 것으로 읽히지 않도록 조건 재검증 필요.",
+      "sourceUrls": [
+        "https://namu.moe/w/'여자아이'"
+      ]
+    },
+    {
+      "scope": "샤먼",
+      "issue": "긴 통로 잔상은 샤먼 이외 생존자 조건을 설명하는 것이 좋음. 기존 개요는 잔상 일반 설명이라 정면 모순은 아니나 모든 사용자가 동일하다고 읽힐 수 있음.",
+      "sourceUrls": [
+        "https://namu.moe/w/샤먼(제5인격)"
+      ]
+    },
+    {
+      "scope": "납관사",
+      "issue": "재생/부활 혼용 존재. 공식 공지의 부활은 일반 서술일 수 있고 효과명 재생과 동일 취급 가능한지 현행 툴팁 검증 전 자동 치환 금지."
+    },
+    {
+      "scope": "무희",
+      "issue": "미끄러지기 등 운용 설명은 공식 고유명칭으로 확인되지 않음. 행동 설명과 스킬명은 구별하고 단순 묘사 자체를 오역으로 판정하지 않는다."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-27",
+  "baseline": "3fab5cae68a598fdf09faa6156d3fd5e9e7ad719",
+  "charactersReviewed": 89,
+  "matchupsReviewed": 463,
+  "linksReviewed": 275,
+  "changedFields": 1275,
+  "byFile": {
+    "data.json": 1128,
+    "specialties.json": 124,
+    "introductions.json": 23
+  },
+  "gameBalanceRevalidated": false
+}

@@ -1,0 +1,1198 @@
+{
+  "scope": "감시자 c01–c18의 한국어 명칭 및 설명 검토",
+  "checkedAt": "2026-10-27",
+  "method": "공식 한국어 공지의 직접 증거와 한국어 게임 툴팁을 옮긴 2차 자료를 구분한다. 2차 자료만 확인한 명칭은 공식 확인 완료로 표시하지 않는다. 설명 문장 전체를 공식 원문으로 간주하지 않는다.",
+  "charsChecked": [
+    {
+      "id": "c01",
+      "name": "거미",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "고치형"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220706/35364_1029035.html"
+      ],
+      "indirectTerms": [
+        "고치형",
+        "거미줄 속박",
+        "그물 짜기",
+        "실 뱉기",
+        "그물 뱉기"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EA%B1%B0%EB%AF%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c02",
+      "name": "공장장",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "원한의 그림자"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "indirectTerms": [
+        "원한의 지옥불",
+        "발화",
+        "꼭두각시 조종",
+        "다중 조종"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EA%B3%B5%EC%9E%A5%EC%9E%A5(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c03",
+      "name": "광기의 눈",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "격벽"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html"
+      ],
+      "indirectTerms": [
+        "콘솔",
+        "모니터",
+        "격벽"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EA%B8%B0%EC%9D%98%20%EB%88%88"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c04",
+      "name": "광대",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "로켓 돌진"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html"
+      ],
+      "indirectTerms": [
+        "추진기",
+        "바람 날개",
+        "개조 드릴",
+        "로켓 개조",
+        "로켓 돌진"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c05",
+      "name": "꿈의 마녀",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "신도",
+        "기생 신도"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+        "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html"
+      ],
+      "indirectTerms": [
+        "신도",
+        "마녀 표식",
+        "기생",
+        "전도",
+        "동화",
+        "신도 강화"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EA%BF%88%EC%9D%98%20%EB%A7%88%EB%85%80"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c06",
+      "name": "나이아스",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "습기"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "indirectTerms": [
+        "물웅덩이",
+        "회유",
+        "물고기 사냥",
+        "격랑",
+        "물놀이",
+        "끝없는 심연"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%EC%95%84%EC%8A%A4(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c07",
+      "name": "나이트 워치",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "바람의 힘",
+        "풍역",
+        "풍역-독식",
+        "바람불기",
+        "바람불기-습격",
+        "풍역의 지배자",
+        "바람의 권속"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%ED%8A%B8%20%EC%9B%8C%EC%B9%98(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c08",
+      "name": "노란 옷의 왕",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "촉수"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html"
+      ],
+      "indirectTerms": [
+        "공포의 형상",
+        "악몽의 습격",
+        "심연의 촉수",
+        "악몽의 응시"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%85%B8%EB%9E%80%20%EC%98%B7%EC%9D%98%20%EC%99%95(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c09",
+      "name": "당구 선수",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "타격 지점",
+        "메인 볼",
+        "타격 지점-고급",
+        "엔트로피 제어"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/'%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98'"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c10",
+      "name": "리퍼",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "대형 안개 칼날",
+        "소형 안개 칼날",
+        "차가운 안개",
+        "안개 은신",
+        "유령 은신"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%A6%AC%ED%8D%BC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c11",
+      "name": "마음의 짐승",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "추적 표식",
+        "사냥 도약",
+        "요격",
+        "덮치기",
+        "습격",
+        "추적"
+      ],
+      "indirectSourceUrls": [
+        "https://m.namu.moe/w/'%EB%A7%88%EC%9D%8C%EC%9D%98%20%EC%A7%90%EC%8A%B9'"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c12",
+      "name": "밀랍인형사",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "주조",
+        "응고",
+        "멜팅",
+        "파라핀 블록"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+        "https://www.identityvgame.com/kr/news/update/20220706/35364_1029035.html"
+      ],
+      "indirectTerms": [
+        "밀랍옷",
+        "응고와 용해",
+        "주조",
+        "응고",
+        "멜팅"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%B0%80%EB%9E%8D%EC%9D%B8%ED%98%95%EC%82%AC"
+      ],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c13",
+      "name": "바이올리니스트",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "마력의 음색",
+        "전율의 현악",
+        "전율의 선율",
+        "소나타",
+        "랩소디",
+        "페르페투움 모빌레"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c14",
+      "name": "박사",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "에너지 부하",
+        "에너지 폭발 상태",
+        "충전",
+        "배상",
+        "운동에너지 충격",
+        "차징 스트라이크",
+        "에너지 전환"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/'%EB%B0%95%EC%82%AC'"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c15",
+      "name": "붉은 나비",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [
+        "산제비나비",
+        "혼백이탈",
+        "찰나의 생멸"
+      ],
+      "primarySourceUrls": [
+        "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+        "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html"
+      ],
+      "indirectTerms": [],
+      "indirectSourceUrls": [],
+      "status": "일부 명칭/설명을 공식 공지로 확인"
+    },
+    {
+      "id": "c16",
+      "name": "블러디 퀸",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "물거울",
+        "거울상",
+        "거울 그림자",
+        "기울어진 거울",
+        "거울 진입"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EB%B8%94%EB%9F%AC%EB%94%94%20%ED%80%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c17",
+      "name": "사냥터지기",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "갈퀴 사슬",
+        "가시 갈퀴 사슬",
+        "분노의 갈퀴 사슬",
+        "덫"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/%EC%82%AC%EB%83%A5%ED%84%B0%EC%A7%80%EA%B8%B0(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    },
+    {
+      "id": "c18",
+      "name": "사도",
+      "fieldsReviewed": [
+        "skill",
+        "use",
+        "hold",
+        "response",
+        "caution",
+        "tips",
+        "strengths",
+        "weaknesses",
+        "hard",
+        "easy",
+        "matching matchups and links"
+      ],
+      "primaryVerifiedTerms": [],
+      "primarySourceUrls": [],
+      "indirectTerms": [
+        "그림자 밟기",
+        "마비 구역",
+        "경계 범위",
+        "습격",
+        "위협"
+      ],
+      "indirectSourceUrls": [
+        "https://d.namu.moe/w/'%EC%82%AC%EB%8F%84'"
+      ],
+      "status": "한국어 게임 설명의 2차 전재만 확인; 공식 확인 완료로 표기 불가"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "official-2021-09-30",
+      "url": "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+      "title": "제5인격 공식 한국어 2021년 9월 30일 업데이트",
+      "official": true,
+      "terms": [
+        "산제비나비",
+        "혼백이탈",
+        "로켓 돌진",
+        "신도"
+      ],
+      "shortSupportingExcerpt": "산제비나비 / 혼백이탈 / 로켓 돌진 / 신도",
+      "note": "오래된 공지이므로 최신 수치를 확정하는 자료로 사용하지 않는다."
+    },
+    {
+      "id": "official-2022-07-06",
+      "url": "https://www.identityvgame.com/kr/news/update/20220706/35364_1029035.html",
+      "title": "제5인격 공식 한국어 2022년 7월 6일 업데이트",
+      "official": true,
+      "terms": [
+        "고치형",
+        "응고"
+      ],
+      "shortSupportingExcerpt": "고치형에 당한 생존자가 구를 때 다른 생존자에게 구조될 수 있습니다. 구조 상태에서는 구를 수 없습니다.",
+      "note": "현재 c01.tips[1]의 구르는 중 구출 불가 설명과 직접 충돌한다."
+    },
+    {
+      "id": "official-2022-06-23",
+      "url": "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html",
+      "title": "제5인격 공식 한국어 2022년 6월 23일 업데이트",
+      "official": true,
+      "terms": [
+        "찰나의 생멸",
+        "기생 신도"
+      ],
+      "shortSupportingExcerpt": "찰나의 생멸 / 기생 신도",
+      "note": "공식 HTML 직접 열람. 웹 검색 도구의 열기 오류와 달리 HTTP 응답 본문에 해당 명칭이 존재한다."
+    },
+    {
+      "id": "official-2022-06-30",
+      "url": "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+      "title": "제5인격 공식 한국어 2022년 6월 30일 업데이트",
+      "official": true,
+      "terms": [
+        "주조",
+        "응고",
+        "멜팅",
+        "파라핀 블록",
+        "직선 통로"
+      ],
+      "shortSupportingExcerpt": "주조 / 응고 / 멜팅 / 파라핀 블록 / 직선 통로",
+      "note": "당시 공지는 촛농이라는 일반 표현도 사용한다. 이를 근거로 현재 모든 밀랍 표현을 촛농으로 일괄 변경하지 않는다."
+    },
+    {
+      "id": "official-2022-06-02",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html",
+      "title": "제5인격 공식 한국어 2022년 6월 2일 업데이트",
+      "official": true,
+      "terms": [
+        "원한의 그림자",
+        "신도",
+        "습기"
+      ],
+      "shortSupportingExcerpt": "원한의 그림자 / 신도 / 습기",
+      "note": ""
+    },
+    {
+      "id": "official-2022-05-26",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html",
+      "title": "제5인격 공식 한국어 2022년 5월 26일 업데이트",
+      "official": true,
+      "terms": [
+        "격벽",
+        "산제비나비"
+      ],
+      "shortSupportingExcerpt": "격벽 / 산제비나비",
+      "note": "URL 날짜와 공지 본문 업데이트 날짜가 다르다."
+    },
+    {
+      "id": "official-2022-06-16",
+      "url": "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html",
+      "title": "제5인격 공식 한국어 2022년 6월 16일 업데이트",
+      "official": true,
+      "terms": [
+        "촉수"
+      ],
+      "shortSupportingExcerpt": "노란 옷의 왕이 촉수를 선택할 때",
+      "note": ""
+    },
+    {
+      "id": "indirect-c01",
+      "url": "https://d.namu.moe/w/%EA%B1%B0%EB%AF%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "거미 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "고치형",
+        "거미줄 속박",
+        "그물 짜기",
+        "실 뱉기",
+        "그물 뱉기"
+      ],
+      "shortSupportingExcerpt": "고치형 / 거미줄 속박 / 그물 짜기 / 실 뱉기",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c02",
+      "url": "https://d.namu.moe/w/%EA%B3%B5%EC%9E%A5%EC%9E%A5(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "공장장 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "원한의 지옥불",
+        "발화",
+        "꼭두각시 조종",
+        "다중 조종"
+      ],
+      "shortSupportingExcerpt": "원한의 지옥불 / 발화 / 꼭두각시 조종 / 다중 조종",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c03",
+      "url": "https://d.namu.moe/w/%EA%B4%91%EA%B8%B0%EC%9D%98%20%EB%88%88",
+      "title": "광기의 눈 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "콘솔",
+        "모니터",
+        "격벽"
+      ],
+      "shortSupportingExcerpt": "콘솔 / 모니터 / 격벽",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c04",
+      "url": "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "광대 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "추진기",
+        "바람 날개",
+        "개조 드릴",
+        "로켓 개조",
+        "로켓 돌진"
+      ],
+      "shortSupportingExcerpt": "추진기 / 바람 날개 / 개조 드릴 / 로켓 개조",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c05",
+      "url": "https://d.namu.moe/w/%EA%BF%88%EC%9D%98%20%EB%A7%88%EB%85%80",
+      "title": "꿈의 마녀 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "신도",
+        "마녀 표식",
+        "기생",
+        "전도",
+        "동화",
+        "신도 강화"
+      ],
+      "shortSupportingExcerpt": "신도 / 마녀 표식 / 기생 / 전도",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c06",
+      "url": "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%EC%95%84%EC%8A%A4(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "나이아스 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "물웅덩이",
+        "회유",
+        "물고기 사냥",
+        "격랑",
+        "물놀이",
+        "끝없는 심연"
+      ],
+      "shortSupportingExcerpt": "물웅덩이 / 회유 / 물고기 사냥 / 격랑",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c07",
+      "url": "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%ED%8A%B8%20%EC%9B%8C%EC%B9%98(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "나이트 워치 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "바람의 힘",
+        "풍역",
+        "풍역-독식",
+        "바람불기",
+        "바람불기-습격",
+        "풍역의 지배자",
+        "바람의 권속"
+      ],
+      "shortSupportingExcerpt": "바람의 힘 / 풍역 / 풍역-독식 / 바람불기",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c08",
+      "url": "https://d.namu.moe/w/%EB%85%B8%EB%9E%80%20%EC%98%B7%EC%9D%98%20%EC%99%95(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "노란 옷의 왕 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "공포의 형상",
+        "악몽의 습격",
+        "심연의 촉수",
+        "악몽의 응시"
+      ],
+      "shortSupportingExcerpt": "공포의 형상 / 악몽의 습격 / 심연의 촉수 / 악몽의 응시",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c09",
+      "url": "https://d.namu.moe/w/'%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98'",
+      "title": "당구 선수 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "타격 지점",
+        "메인 볼",
+        "타격 지점-고급",
+        "엔트로피 제어"
+      ],
+      "shortSupportingExcerpt": "타격 지점 / 메인 볼 / 타격 지점-고급 / 엔트로피 제어",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c10",
+      "url": "https://d.namu.moe/w/%EB%A6%AC%ED%8D%BC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "리퍼 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "대형 안개 칼날",
+        "소형 안개 칼날",
+        "차가운 안개",
+        "안개 은신",
+        "유령 은신"
+      ],
+      "shortSupportingExcerpt": "대형 안개 칼날 / 소형 안개 칼날 / 차가운 안개 / 안개 은신",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c11",
+      "url": "https://m.namu.moe/w/'%EB%A7%88%EC%9D%8C%EC%9D%98%20%EC%A7%90%EC%8A%B9'",
+      "title": "마음의 짐승 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "추적 표식",
+        "사냥 도약",
+        "요격",
+        "덮치기",
+        "습격",
+        "추적"
+      ],
+      "shortSupportingExcerpt": "추적 표식 / 사냥 도약 / 요격 / 덮치기",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c12",
+      "url": "https://d.namu.moe/w/%EB%B0%80%EB%9E%8D%EC%9D%B8%ED%98%95%EC%82%AC",
+      "title": "밀랍인형사 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "밀랍옷",
+        "응고와 용해",
+        "주조",
+        "응고",
+        "멜팅"
+      ],
+      "shortSupportingExcerpt": "밀랍옷 / 응고와 용해 / 주조 / 응고",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c13",
+      "url": "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "바이올리니스트 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "마력의 음색",
+        "전율의 현악",
+        "전율의 선율",
+        "소나타",
+        "랩소디",
+        "페르페투움 모빌레"
+      ],
+      "shortSupportingExcerpt": "마력의 음색 / 전율의 현악 / 전율의 선율 / 소나타",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c14",
+      "url": "https://d.namu.moe/w/'%EB%B0%95%EC%82%AC'",
+      "title": "박사 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "에너지 부하",
+        "에너지 폭발 상태",
+        "충전",
+        "배상",
+        "운동에너지 충격",
+        "차징 스트라이크",
+        "에너지 전환"
+      ],
+      "shortSupportingExcerpt": "에너지 부하 / 에너지 폭발 상태 / 충전 / 배상",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c16",
+      "url": "https://d.namu.moe/w/%EB%B8%94%EB%9F%AC%EB%94%94%20%ED%80%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "블러디 퀸 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "물거울",
+        "거울상",
+        "거울 그림자",
+        "기울어진 거울",
+        "거울 진입"
+      ],
+      "shortSupportingExcerpt": "물거울 / 거울상 / 거울 그림자 / 기울어진 거울",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c17",
+      "url": "https://d.namu.moe/w/%EC%82%AC%EB%83%A5%ED%84%B0%EC%A7%80%EA%B8%B0(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "사냥터지기 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "갈퀴 사슬",
+        "가시 갈퀴 사슬",
+        "분노의 갈퀴 사슬",
+        "덫"
+      ],
+      "shortSupportingExcerpt": "갈퀴 사슬 / 가시 갈퀴 사슬 / 분노의 갈퀴 사슬 / 덫",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    },
+    {
+      "id": "indirect-c18",
+      "url": "https://d.namu.moe/w/'%EC%82%AC%EB%8F%84'",
+      "title": "사도 한국어 위키의 게임 능력 표",
+      "official": false,
+      "terms": [
+        "그림자 밟기",
+        "마비 구역",
+        "경계 범위",
+        "습격",
+        "위협"
+      ],
+      "shortSupportingExcerpt": "그림자 밟기 / 마비 구역 / 경계 범위 / 습격",
+      "note": "공식 게임 설명을 전재한 형태의 사용자 편집 자료. 공식 운영 채널 또는 한국어 클라이언트 화면에서 직접 재검증하지 못했다."
+    }
+  ],
+  "corrections": [
+    {
+      "scope": "characters.c01.tips[1]",
+      "before": "구출 · 고치에 갇혔다면 팀원이 구하러 왔을 때 굴러다니지 말고 멈춥니다. 고치가 움직이는 동안에는 팀원이 구출할 수 없습니다.",
+      "after": "구출 · 고치에 갇힌 상태에서 굴러가는 중에도 팀원이 구출을 시작할 수 있습니다. 구출이 진행되는 동안에는 구를 수 없습니다.",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220706/35364_1029035.html"
+      ],
+      "reason": "구르는 중 구출 불가라는 현재 문장은 공식 변경 내용과 반대이다. 구출을 시작할 수 있는지와 구출 중 이동할 수 있는지를 구분한다.",
+      "officialVerified": true,
+      "kind": "mechanic-conflict",
+      "priority": "high"
+    },
+    {
+      "scope": "characters.c15 및 hunter=붉은 나비인 matchups의 표시 문장; 해당 설명을 복제한 hard/easy",
+      "before": "생멸",
+      "after": "찰나의 생멸",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html"
+      ],
+      "reason": "공식 한국어 스킬의 전체 명칭을 사용한다. 이미 찰나의 생멸인 문자열에 중복 적용하지 않는다.",
+      "officialVerified": true,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "붉은 나비의 소환물을 가리키는 characters.c15 및 관련 matchups의 표시 문장",
+      "before": "나비",
+      "after": "산제비나비",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html"
+      ],
+      "reason": "붉은 나비라는 캐릭터명은 유지한다. 실제 소환물만 지칭 대상을 확인하여 변경한다. 나비라는 모든 부분 문자열에 일괄 적용하면 캐릭터명이 손상된다.",
+      "officialVerified": true,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c03.skill",
+      "before": "감시 장치",
+      "after": "모니터",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EA%B8%B0%EC%9D%98%20%EB%88%88"
+      ],
+      "reason": "한국어 게임 설명은 콘솔로 모니터를 조작해 격벽을 배치하는 구조로 설명한다. 모니터 명칭은 2차 전재 근거이다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c04.skill",
+      "before": "추진기·날개·드릴",
+      "after": "추진기·바람 날개·개조 드릴",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "세 로켓 개조 부품을 정식 명칭 후보로 구분한다. 일반 문장에서 날개가 다른 캐릭터/장비를 가리키면 변경하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c04.skill의 로켓 부품을 가리키는 두 번째 문장",
+      "before": "날개로",
+      "after": "바람 날개로",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "앞에서 도입한 부품 명칭과 일치시킨다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c04의 드릴 부품 및 광대 matchups M024/M459의 드릴 부품 설명",
+      "before": "드릴",
+      "after": "개조 드릴",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "치료 지연을 주는 로켓 부품이다. 개조 드릴 문자열에 재적용하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c06.strengths[1]",
+      "before": "유영으로 빠른 이동",
+      "after": "회유로 빠른 이동",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%EC%95%84%EC%8A%A4(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "같은 캐릭터 tips에서 이미 회유 상태를 사용한다. 한국어 능력 설명에서도 작살을 던진 뒤의 상태는 회유이다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c06.skill/use/hold/response에서 작살과 본체 이동으로 만드는 물 구역",
+      "before": "물길",
+      "after": "물웅덩이",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%EC%95%84%EC%8A%A4(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "게임 설명에 등장하는 물 구역의 명칭은 물웅덩이이다. 닫힌 도형의 형성 조건과 습기가 쌓이는 조건은 유지한다. 일반적인 동선 설명까지 기계적으로 치환하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "optional-specificity"
+    },
+    {
+      "scope": "characters.c07.difficultyReason/skill/use/weaknesses[2]",
+      "before": "풍력",
+      "after": "바람의 힘",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%ED%8A%B8%20%EC%9B%8C%EC%B9%98(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "한국어 능력 설명에서 저장하고 소비하는 자원의 표현이다. 일반 바람 묘사를 스킬명으로 임의 치환하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c11.skill",
+      "before": "먹잇감 표식",
+      "after": "추적 표식",
+      "sourceUrls": [
+        "https://m.namu.moe/w/'%EB%A7%88%EC%9D%8C%EC%9D%98%20%EC%A7%90%EC%8A%B9'"
+      ],
+      "reason": "한국어 게임 설명의 표식명은 추적 표식이다. 일본어 공략의 사냥감 표현을 직역해 새 명칭으로 만들지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "high"
+    },
+    {
+      "scope": "characters.c13.skill",
+      "before": "마의 음",
+      "after": "마력의 음색",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "한국어 게임 능력 설명의 누적 방해 효과는 마력의 음색이다. 현재 표현은 한국어 공식 명칭으로 확인되지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "high"
+    },
+    {
+      "scope": "characters.c13.strengths[1]",
+      "before": "음색 누적으로 행동 방해",
+      "after": "마력의 음색 누적으로 행동 방해",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "같은 상태 효과의 명칭을 연결한다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c13.skill 첫 문장에서 두 음표를 연결해 형성되는 선",
+      "before": "현",
+      "after": "전율의 현악",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "생성 순간 피해와 남은 현의 상태 효과를 혼동하지 않는다. 일반 설명의 모든 현을 장문의 고유명으로 바꿀 필요는 없다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "optional-specificity"
+    },
+    {
+      "scope": "characters.c14.skill 첫 문장의 자원",
+      "before": "에너지를 쌓으면",
+      "after": "에너지 부하가 쌓이면",
+      "sourceUrls": [
+        "https://d.namu.moe/w/'%EB%B0%95%EC%82%AC'"
+      ],
+      "reason": "게임 설명의 자원 이름은 에너지 부하이다. 에너지 폭발 상태의 정확한 발동 수치는 이 명칭 검토에서 변경하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "optional-specificity"
+    },
+    {
+      "scope": "characters.c16.skill 첫 문장에서 설치하는 거울",
+      "before": "거울을 기준으로",
+      "after": "물거울을 기준으로",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EB%B8%94%EB%9F%AC%EB%94%94%20%ED%80%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "한국어 게임 설명은 물거울을 사용한다. 중국어풍 수경으로 바꾸지 않는다. 공격하는 분신은 거울상으로 구별한다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "optional-specificity"
+    },
+    {
+      "scope": "characters.c17, hunter=사냥터지기인 matchups, character=사냥터지기인 links에서 사냥터지기의 사슬을 가리키는 표현",
+      "before": "갈고리",
+      "after": "갈퀴 사슬",
+      "sourceUrls": [
+        "https://d.namu.moe/w/%EC%82%AC%EB%83%A5%ED%84%B0%EC%A7%80%EA%B8%B0(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)"
+      ],
+      "reason": "사냥터지기의 장비/스킬과 환자의 갈고리를 분리한다. 환자의 갈고리가 등장하는 다른 캐릭터 설명에는 적용하지 않는다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c18.skill/use",
+      "before": "마비 영역",
+      "after": "마비 구역",
+      "sourceUrls": [
+        "https://d.namu.moe/w/'%EC%82%AC%EB%8F%84'"
+      ],
+      "reason": "고양이 주변의 기절 판정 구역은 한국어 게임 설명에서 마비 구역이다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    },
+    {
+      "scope": "characters.c18.strengths[2]",
+      "before": "침묵으로 아이템 사용 방해",
+      "after": "위협으로 소지품 사용 방해",
+      "sourceUrls": [
+        "https://d.namu.moe/w/'%EC%82%AC%EB%8F%84'"
+      ],
+      "reason": "침묵을 별도 공식 효과명처럼 보이게 하지 않고, 실제 발동 능력과 제한되는 행동을 설명한다.",
+      "officialVerified": false,
+      "kind": "terminology",
+      "priority": "recommended"
+    }
+  ],
+  "unknowns": [
+    {
+      "scope": "c01–c18 전체",
+      "issue": "현재 한국어 클라이언트의 2026년 10월 최신 설명 원문 전체와 정확한 수치를 확보하지 못했다. 오래된 공식 공지를 최신 수치 검증으로 표시하면 안 된다."
+    },
+    {
+      "scope": "c07/c09/c10/c11/c13/c14/c16/c17/c18",
+      "issue": "이 보고서의 전용 능력 명칭은 한국어 게임 설명을 전재한 사용자 편집 자료에서만 확인했다. 검색으로 공식 한국어 발표 또는 한국어 클라이언트 화면의 직접 근거를 찾지 못했다."
+    },
+    {
+      "scope": "c03 모니터/콘솔, c04 바람 날개/개조 드릴, c05 마녀 표식, c06 회유/물웅덩이",
+      "issue": "관련 캐릭터의 다른 용어는 공식 공지로 확인했지만, 이 명칭들 자체의 근거는 2차 전재이다."
+    },
+    {
+      "scope": "c01.tips[1]",
+      "issue": "사용자 편집 위키의 고치 이동 중 구출 불가 설명은 공식 2022-07-06 변경과 충돌한다. 그 위키 문장을 그대로 공식 설명으로 채택하면 안 된다."
+    },
+    {
+      "scope": "c10.skill",
+      "issue": "현재 문장이 안개 칼날과 차가운 안개를 별개 공격처럼 읽히지만 한국어 게임 설명에서는 대형/소형 안개 칼날을 구별한다. 최신 1차 근거가 없으므로 피해 수치와 자원 조건을 이 보고서에서 다시 작성하지 않는다."
+    },
+    {
+      "scope": "c11.skill",
+      "issue": "사냥 도약과 요격의 역할은 한국어 전재 자료에서 확인되지만 직접 공식 증거가 부족하다. 확정 명칭 치환은 추적 표식 후보로 제한하고, 일반 추격 용어를 고유 스킬 추적으로 전역 변경하지 않는다."
+    },
+    {
+      "scope": "c12",
+      "issue": "2022년 공지에는 촛농, 현대 한국어 전재에는 밀랍이 사용된다. 이 차이만으로 모든 밀랍 표현을 촛농으로 바꾸지 않는다."
+    },
+    {
+      "scope": "관련 생존자 용어",
+      "issue": "감시자 hard/easy 및 matchups에 피리, 포탈, 벌레, 평타 등이 남아 있다. 담당 생존자/공통 용어 검토와 합쳐 퉁소 등으로 통일해야 하며, 이 보고서에서 다른 담당 범위의 공식 근거를 추정하지 않는다."
+    }
+  ]
+}

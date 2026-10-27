@@ -1,0 +1,518 @@
+{
+  "date": "2026-10-27",
+  "scope": "c19–c36 character display strings, associated matchups and links",
+  "method": "Official Korean announcements establish individual names only. Korean community wiki skill tables are indirect crosschecks and are explicitly marked unverified. No full current in-game description has been certified from primary Korean evidence.",
+  "charsChecked": [
+    {
+      "id": "c19",
+      "name": "사진사"
+    },
+    {
+      "id": "c20",
+      "name": "서기관"
+    },
+    {
+      "id": "c21",
+      "name": "수위 26호"
+    },
+    {
+      "id": "c22",
+      "name": "시공의 그림자"
+    },
+    {
+      "id": "c23",
+      "name": "악몽"
+    },
+    {
+      "id": "c24",
+      "name": "여왕벌"
+    },
+    {
+      "id": "c25",
+      "name": "오페라 가수"
+    },
+    {
+      "id": "c26",
+      "name": "우산의 영혼"
+    },
+    {
+      "id": "c27",
+      "name": "울보"
+    },
+    {
+      "id": "c28",
+      "name": "은둔자"
+    },
+    {
+      "id": "c29",
+      "name": "잡화상"
+    },
+    {
+      "id": "c30",
+      "name": "재앙의 도마뱀"
+    },
+    {
+      "id": "c31",
+      "name": "절름발이 판"
+    },
+    {
+      "id": "c32",
+      "name": "조각가"
+    },
+    {
+      "id": "c33",
+      "name": "치과의사"
+    },
+    {
+      "id": "c34",
+      "name": "파멸의 바퀴"
+    },
+    {
+      "id": "c35",
+      "name": "파이라이트"
+    },
+    {
+      "id": "c36",
+      "name": "훌라발루"
+    }
+  ],
+  "evidence": [
+    {
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html",
+      "title": "8월 19일 업데이트 공지",
+      "official": true,
+      "terms": [
+        "사진 속 세계",
+        "사필안",
+        "범무구"
+      ],
+      "shortSupportingExcerpt": "사진 속 세계 내부 사진사의 시야 / 사필안과 범무구(우산의 영혼)",
+      "scopeNote": "Official Korean names and world terminology. Does not verify current numerical mechanics."
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html",
+      "title": "6월 30일 업데이트 공지",
+      "official": true,
+      "terms": [
+        "진혼산",
+        "제행무상",
+        "무주열반",
+        "체력"
+      ],
+      "shortSupportingExcerpt": "제행무상, 무주열반 스킬을 길게 눌러 진혼산을 던지는 과정",
+      "scopeNote": "Umbrella item and skills confirmed. Reptilian resource is described as 체력 in the same announcement, but generic energy occurrences need contextual review."
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html",
+      "title": "5월 26일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "상형 무덤",
+        "조각상",
+        "낭독"
+      ],
+      "shortSupportingExcerpt": "상형 무덤 / 조각상 / 낭독",
+      "scopeNote": "Existing Sculptor/Clerk terms supported. Ordinary explanatory 재생 need not be mechanically changed to 낭독 everywhere."
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html",
+      "title": "6월 23일 업데이트 공지",
+      "official": true,
+      "terms": [
+        "안식의 길"
+      ],
+      "shortSupportingExcerpt": "안식의 길 스킬 UI",
+      "scopeNote": "Existing Cry Baby term supported."
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018885.html",
+      "title": "5월 19일 업데이트 공지",
+      "official": true,
+      "terms": [
+        "폭탄",
+        "상처 스탯"
+      ],
+      "shortSupportingExcerpt": "상처 스탯",
+      "scopeNote": "폭탄 is supported for Guard 26. 상처 스탯 must not be substituted for every 가시 occurrence; object and state may differ. This source also contains 낙하 가격, an apparent typo/odd legacy string, so that must not replace plain 낙하 공격 without a current in-game check."
+    },
+    {
+      "url": "https://sixhorse.game.easebar.com/news/outer/newslist.do?contentkind=35346&limit=100&start=1",
+      "title": "Official Korean hunter roster API used by the character page",
+      "official": true,
+      "terms": [
+        "사진사",
+        "서기관",
+        "수위 26호",
+        "시공의 그림자",
+        "악몽",
+        "여왕벌",
+        "오페라 가수",
+        "우산의 영혼",
+        "울보",
+        "은둔자",
+        "잡화상",
+        "재앙의 도마뱀",
+        "절름발이 판",
+        "조각가",
+        "치과의사",
+        "파멸의 바퀴",
+        "파이라이트",
+        "훌라발루"
+      ],
+      "shortSupportingExcerpt": "치과의사 / 핀슨 헌트; 우산의 영혼 / 사필안/범무구",
+      "scopeNote": "Character names/bios only. The API supplies no skill descriptions; it cannot establish current skill terminology."
+    },
+    {
+      "url": "https://namu.moe/w/우산의%20영혼",
+      "title": "우산의 영혼 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "사필안(백)",
+        "범무구(흑)",
+        "섭혼",
+        "탕백",
+        "척혼령",
+        "실혼",
+        "낙백"
+      ],
+      "shortSupportingExcerpt": "섭혼탕백 / 섭혼 / 탕백",
+      "scopeNote": "Indirect skill-table evidence. 흡혼 conflicts with both this table and the existing site 섭혼."
+    },
+    {
+      "url": "https://namu.moe/w/시공의%20그림자",
+      "title": "시공의 그림자 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "침식도",
+        "침식의 조각",
+        "이스인",
+        "정신 기생",
+        "공간 전송",
+        "태고의 얼굴"
+      ],
+      "shortSupportingExcerpt": "기생 성공 후 ... 침식의 조각을 생성합니다.",
+      "scopeNote": "Indirect Korean skill-table evidence; no current official Korean skill text was retrieved."
+    },
+    {
+      "url": "https://namu.moe/w/'여왕벌'",
+      "title": "여왕벌 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "벌침",
+        "곤충 떼",
+        "협동 상태",
+        "보답",
+        "자극 벌침",
+        "열살봉구"
+      ],
+      "shortSupportingExcerpt": "벌침 / 곤충 떼 / 협동 상태",
+      "scopeNote": "Skill table uses 벌침 and 곤충 떼; prose also contains casual 독침. Treat as indirect evidence only."
+    },
+    {
+      "url": "https://namu.moe/w/'절름발이%20판'",
+      "title": "절름발이 판 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "케이지",
+        "원한의 힘",
+        "상실의 감옥",
+        "속박된 몸",
+        "케이지 제어",
+        "케이지 포위",
+        "케이지 점프"
+      ],
+      "shortSupportingExcerpt": "케이지 제어 / 케이지 포위 / 케이지 점프",
+      "scopeNote": "Supports existing site 케이지, with one stale 우리 occurrence."
+    },
+    {
+      "url": "https://namu.moe/w/'치과의사'",
+      "title": "치과의사 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "자외선 복사",
+        "구강경",
+        "광선 치료 구역",
+        "광막 요법",
+        "자외선 광막",
+        "늪 출현"
+      ],
+      "shortSupportingExcerpt": "자외선 복사 / 광막 요법 / 늪 출현",
+      "scopeNote": "Names are indirect. Article also uses 조명 구역 and inconsistent timing values; do not propagate numbers or claim verified current description. 렌즈 is used as an ordinary component noun and is not intrinsically wrong."
+    },
+    {
+      "url": "https://www.namu.moe/w/'파이라이트'",
+      "title": "파이라이트 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "불안정 구역",
+        "곡괭이",
+        "자성 전도",
+        "견인",
+        "자성 전환",
+        "일촉즉발"
+      ],
+      "shortSupportingExcerpt": "불안정 구역 / 곡괭이",
+      "scopeNote": "The area is 불안정 구역; 붕괴 is an event. Existing site already uses 불안정 구역 in the core description."
+    },
+    {
+      "url": "https://namu.moe/w/'훌라발루'",
+      "title": "훌라발루 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "깜짝 표식",
+        "마지막 무대",
+        "즐거운 시간",
+        "공중그네 타기",
+        "화염 무대",
+        "드라이아이스 무대",
+        "점토 무대"
+      ],
+      "shortSupportingExcerpt": "깜짝 표식 / 화염 무대 / 드라이아이스 무대 / 점토 무대",
+      "scopeNote": "Indirect names. Generic color explanations are comprehensible paraphrase; do not imply they are official quoted descriptions."
+    },
+    {
+      "url": "https://namu.moe/w/'악몽'",
+      "title": "악몽 - Korean community wiki",
+      "official": false,
+      "terms": [
+        "엿보기",
+        "스쳐 날기",
+        "당까마귀",
+        "흉조",
+        "사냥",
+        "순찰"
+      ],
+      "shortSupportingExcerpt": "엿보기 / 스쳐 날기 / 당까마귀 / 흉조",
+      "scopeNote": "사냥 is an actual skill name according to the skill table; exempt actual skill references from a global 사냥→추격 replacement."
+    }
+  ],
+  "corrections": [
+    {
+      "scope": "c19 and related matchups/links display strings",
+      "before": "사진 세계",
+      "after": "사진 속 세계",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html"
+      ],
+      "reason": "Use the official Korean announcement terminology for the world. Preserve damage/decoding conditions.",
+      "verification": "primary_verified",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c26 and related matchups/display strings; named white form only",
+      "before": "백우산 / 흰 우산",
+      "after": "사필안",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html",
+        "https://namu.moe/w/우산의%20영혼"
+      ],
+      "reason": "Official character name avoids mixing literal umbrella color with the character form.",
+      "verification": "primary_verified",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c26 and related matchups/display strings; named black form only",
+      "before": "흑우산 / 검은 우산",
+      "after": "범무구",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html",
+        "https://namu.moe/w/우산의%20영혼"
+      ],
+      "reason": "Official character name avoids mixing literal umbrella color with the character form.",
+      "verification": "primary_verified",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c26 umbrella item contexts, e.g. 우산으로 이동, 우산 이동, 우산을 던져; not the character name 우산의 영혼",
+      "before": "우산",
+      "after": "진혼산",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html"
+      ],
+      "reason": "Primary official name for the item being thrown. Requires contextual replacement, not a global substring replacement.",
+      "verification": "primary_verified",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c26.tips[1]",
+      "before": "흰 우산의 흡혼",
+      "after": "사필안의 섭혼",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html",
+        "https://namu.moe/w/우산의%20영혼"
+      ],
+      "reason": "Align with existing site 섭혼 and Korean skill table; form name primary, skill name indirectly checked.",
+      "verification": "internal_consistency_indirect",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c31.tips[0]",
+      "before": "우리 반대편",
+      "after": "케이지 반대편",
+      "sourceUrls": [
+        "https://namu.moe/w/'절름발이%20판'"
+      ],
+      "reason": "One stale literal translation; rest of this character already consistently calls the same object 케이지.",
+      "verification": "internal_consistency_indirect",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c35.response, c35.tips, links involving 파이라이트",
+      "before": "붕괴 구역",
+      "after": "불안정 구역",
+      "sourceUrls": [
+        "https://www.namu.moe/w/'파이라이트'"
+      ],
+      "reason": "Align with the existing core skill description. Collapse is the damaging event, not a second name for the zone.",
+      "verification": "internal_consistency_indirect",
+      "applyAutomatically": true
+    },
+    {
+      "scope": "c22 and related matchups, named object contexts",
+      "before": "침식 조각",
+      "after": "침식의 조각",
+      "sourceUrls": [
+        "https://namu.moe/w/시공의%20그림자"
+      ],
+      "reason": "Korean community skill table gives this object name; primary Korean wording still unverified.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c22 numerical accumulation/resource contexts only",
+      "before": "침식",
+      "after": "침식도",
+      "sourceUrls": [
+        "https://namu.moe/w/시공의%20그림자"
+      ],
+      "reason": "Distinguish the accumulated value from generic description of erosion; not a blanket replacement of compound names.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c24 and associated display strings",
+      "before": "독침",
+      "after": "벌침",
+      "sourceUrls": [
+        "https://namu.moe/w/'여왕벌'"
+      ],
+      "reason": "Korean skill table noun; indirect evidence only.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c24 and associated display strings",
+      "before": "벌떼 / 벌 떼",
+      "after": "곤충 떼",
+      "sourceUrls": [
+        "https://namu.moe/w/'여왕벌'"
+      ],
+      "reason": "Korean skill table calls the game object 곤충 떼; indirect evidence only.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c33 and associated matchups: named illuminated ground area",
+      "before": "방사 구역",
+      "after": "광선 치료 구역",
+      "sourceUrls": [
+        "https://namu.moe/w/'치과의사'"
+      ],
+      "reason": "Foreign-language paraphrase differs from Korean skill table; need primary confirmation before labeling official.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c33.tips[1], object noun only",
+      "before": "스크린",
+      "after": "광막",
+      "sourceUrls": [
+        "https://namu.moe/w/'치과의사'"
+      ],
+      "reason": "Korean skill table name; existing matchup also already uses 광막. Mechanics in this entire tip need independent review.",
+      "verification": "internal_consistency_indirect",
+      "applyAutomatically": false
+    },
+    {
+      "scope": "c36 formal mark noun, when introducing the mechanic",
+      "before": "색 표식 / 서로 다른 색의 표식",
+      "after": "깜짝 표식 / 서로 다른 색의 깜짝 표식",
+      "sourceUrls": [
+        "https://namu.moe/w/'훌라발루'"
+      ],
+      "reason": "Candidate canonical object name from Korean skill table; color itself remains relevant explanatory information.",
+      "verification": "indirect_only",
+      "applyAutomatically": false
+    }
+  ],
+  "unknowns": [
+    {
+      "scope": "All c19–c36",
+      "issue": "No full current official Korean in-game ability description was extracted. Primary old official announcements only verify individual names. Do not present existing strategy paraphrases as verbatim official item descriptions."
+    },
+    {
+      "scope": "Official Korean update archive",
+      "issue": "The public Korean update index retrieved here stops at 2022-07-06. The current official roster API has 2026 characters but no skills. Newer skill names above require a current Korean client screenshot or official KR video/article verification."
+    },
+    {
+      "scope": "c20 서기관",
+      "issue": "기록/재생 ordinary descriptive verbs need not all become 낭독; preserve the distinction between record creation and the actual skill. Existing 판결 was not primary-verified here."
+    },
+    {
+      "scope": "c22 시공의 그림자",
+      "issue": "침식도, 침식의 조각, 이스인 skill-table names are indirect. Avoid substituting arbitrary names for the different 기생, 전송, 공포 processes."
+    },
+    {
+      "scope": "c23 악몽",
+      "issue": "당까마귀, 스쳐 날기, 흉조, 사냥, 순찰 found only in Korean community skill table. Do not invent 급강하 or globally replace the actual skill name 사냥."
+    },
+    {
+      "scope": "c24 여왕벌",
+      "issue": "곤충 떼 and 벌침 candidates not confirmed by primary KR ability text. Biography references to 벌 무리 are background prose and not adequate skill-name evidence."
+    },
+    {
+      "scope": "c25 오페라 가수",
+      "issue": "Current 그림자 구역/잔영/잠행 explanatory strings show no immediate internally contradictory noun. Specific canonical abilities not primary-verified."
+    },
+    {
+      "scope": "c26 우산의 영혼",
+      "issue": "섭혼/탕백 are internally consistent and indirectly supported; 척혼령 is the bell item, while 탕백 is the ability. Avoid replacing every 종/방울 with a skill name indiscriminately. Fix the two form names separately."
+    },
+    {
+      "scope": "c27 울보",
+      "issue": "안식의 길 confirmed primary. No primary confirmation found for exact tree noun; do not introduce 안식송 from memory."
+    },
+    {
+      "scope": "c28 은둔자",
+      "issue": "극성/자기장/전극/전하 refer to potentially different objects/states; no blanket normalization without primary descriptions."
+    },
+    {
+      "scope": "c29 잡화상",
+      "issue": "Specific current skill names were not primary-verified. Preserve descriptive metal/vine/transaction wording rather than inventing official names."
+    },
+    {
+      "scope": "c30 재앙의 도마뱀",
+      "issue": "2022 primary announcement calls the jumping resource 체력, while current site sometimes says 에너지. Confirm current KR client before changing the current resource label; do not reproduce apparent legacy typo 낙하 가격."
+    },
+    {
+      "scope": "c31 절름발이 판",
+      "issue": "케이지 normalization is safe internal consistency, but current full Korean ability names are still indirect."
+    },
+    {
+      "scope": "c33 치과의사",
+      "issue": "The treatment tip says screen-adjacent walls can be seen through. Community skill text describes obstacles no longer blocking ultraviolet light near 광막, which may affect attacks rather than merely reveal vision. Do not rewrite mechanics solely from terminology evidence; source this claim separately."
+    },
+    {
+      "scope": "c33 치과의사",
+      "issue": "Article alternates 광선 치료 구역 and 조명 구역 and contains inconsistent timing values. No duration/numerical changes are justified by this research."
+    },
+    {
+      "scope": "c34 파멸의 바퀴",
+      "issue": "Primary 상처 스탯 is not proof that the physical 가시 noun is wrong. Preserve 가시 unless the exact in-game description is checked."
+    },
+    {
+      "scope": "c35 파이라이트 and c36 훌라발루",
+      "issue": "Zone/mark names listed from community skill tables are indirect; official 2026 English changes support mechanics separately but cannot establish Korean translation."
+    }
+  ]
+}

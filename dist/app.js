@@ -108,11 +108,11 @@ function playGuide(c){
 }
 const difficulty=n=>`<span class="difficulty" role="img" aria-label="난이도 ${Number(n)}/5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
 const chip=(t,tone='')=>`<span class="tag ${tone}">${esc(t)}</span>`;
-const specialtyGroups={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
-const specialtyIcons={어그로:'role-kite',커버:'role-cover',구출:'role-rescue',운영:'role-control',해독:'role-decode',사냥:'role-hunt',캠핑:'role-camp'};
+const specialtyGroups={생존자:['추격','커버','구출','운영','해독'],감시자:['추격','캠핑','운영']};
+const specialtyIcons={커버:'role-cover',구출:'role-rescue',운영:'role-control',해독:'role-decode',캠핑:'role-camp'};
 // The reviewed data is ordered per character: main role first, optional supporting role second.
 const specialtyPriority=i=>i?'서브':'메인';
-const primarySpecialtyIcon=c=>icon(specialtyIcons[c.specialties[0]]);
+const primarySpecialtyIcon=c=>icon(c.specialties[0]==='추격'?(c.side==='생존자'?'role-kite':'role-hunt'):specialtyIcons[c.specialties[0]]);
 const specialtyLabels=c=>c.specialties.map((t,i)=>`${specialtyPriority(i)} #${t}`).join(', ');
 const specialtyTags=(c,compact=false)=>c.specialties.map((t,i)=>`<span class="${compact?'card-role':'tag specialty-tag'} is-${i?'secondary':'primary'}" data-specialty="${esc(t)}" data-priority="${i?'secondary':'primary'}" title="${specialtyPriority(i)} 역할: ${esc(t)}"><span class="visually-hidden">${specialtyPriority(i)} </span>#${esc(t)}</span>`).join('');
 const specialtyExplanation=c=>c.specialties.map((t,i)=>`<p><strong>${specialtyPriority(i)} · #${esc(t)}</strong> · ${esc(c.specialtyReasons[t])}</p>`).join('');
@@ -251,7 +251,7 @@ function observationPanel(c,data){
  if(!o.appearances)return `<div class="panel section-gap"><h2 class="panel-title">${icon('spark')}인격·개인 기록</h2><p class="muted">선택한 조건에는 상세 중계 기록이 없습니다. 전체 출전 통계와 공개 인격의 수집 범위는 다릅니다.</p></div>`;
  const build=b=>`<div class="observed-build"><div class="observed-talents">${b.talents.map(name=>`<span>${personaTalents[name]?`<img src="assets/persona/${personaTalents[name].id}.png" alt="" width="32" height="32" loading="lazy">`:''}${esc(name)}</span>`).join('')}</div><strong>${pct(b.share)}<small>${num(b.count)}회${b.talents.length<2?' · 1종 기재':''}</small></strong></div>`;
  const metric=(key,label,format)=>{const m=o.metrics[key];return `<div><span>${label}</span><strong>${m.mean===null?'—':format(m.mean)}</strong><small>기록 ${num(m.count)}건</small></div>`;};
- return `<section class="panel section-gap"><div class="heading-inline"><h2 class="panel-title">${icon('spark')}대회에서 선택한 인격</h2><span>기재 ${num(o.talentSamples)} / 상세 ${num(o.appearances)}경기</span></div><p class="statistics-caption">위 필터와 같은 조건입니다. 공개 원문에 적힌 최종 인격만 집계하며, 미기재를 미선택으로 처리하지 않습니다.</p>${o.builds.length?o.builds.slice(0,5).map(build).join(''):'<p class="muted">이 캐릭터의 인격 선택은 원문에 기재되지 않았습니다.</p>'}${o.builds.length>5?`<details class="insight-more"><summary>다른 인격 조합 ${o.builds.length-5}개</summary>${o.builds.slice(5).map(build).join('')}</details>`:''}${c.side==='생존자'?`<h3 class="small-heading section-gap">함께 공개된 개인 기록</h3><div class="observation-metrics">${metric('kite','평균 견제 시간',n=>Math.round(n)+'초')}${metric('decode','평균 해독 진도',n=>n.toFixed(1)+'%')}${metric('rescues','평균 구출',n=>n.toFixed(2)+'회')}${metric('escaped','개인 탈출률',pct)}</div><p class="statistics-caption">개인 탈출은 원문 탈출 표시와 팀 탈출 수가 일치한 경기만 사용합니다. 100% 해독은 해독기 한 대 분량이며, 역할·선수·경기 길이의 영향을 받습니다.</p>`:''}</section>`;
+ return `<section class="panel section-gap"><div class="heading-inline"><h2 class="panel-title">${icon('spark')}대회에서 선택한 인격</h2><span>기재 ${num(o.talentSamples)} / 상세 ${num(o.appearances)}경기</span></div><p class="statistics-caption">위 필터와 같은 조건입니다. 공개 원문에 적힌 최종 인격만 집계하며, 미기재를 미선택으로 처리하지 않습니다.</p>${o.builds.length?o.builds.slice(0,5).map(build).join(''):'<p class="muted">이 캐릭터의 인격 선택은 원문에 기재되지 않았습니다.</p>'}${o.builds.length>5?`<details class="insight-more"><summary>다른 인격 조합 ${o.builds.length-5}개</summary>${o.builds.slice(5).map(build).join('')}</details>`:''}${c.side==='생존자'?`<h3 class="small-heading section-gap">함께 공개된 개인 기록</h3><div class="observation-metrics">${metric('kite','평균 견제 시간',n=>Math.round(n)+'초')}${metric('decode','평균 해독 진도',n=>n.toFixed(1)+'%')}${metric('rescues','평균 구출',n=>n.toFixed(2)+'회')}${metric('escaped','개인 탈출률',pct)}</div><p class="statistics-caption">개인 탈출은 원문 탈출 표시와 팀 탈출 수가 일치한 경기만 사용합니다. 100% 해독은 암호 장치 한 대 분량이며, 역할·선수·경기 길이의 영향을 받습니다.</p>`:''}</section>`;
 }
 function selectionCard(c,mode,kicker,placeholder='캐릭터 선택'){return `<button class="selection-card" data-action="picker" data-mode="${mode}" aria-label="${esc(kicker)} ${c?esc(c.name):placeholder} 변경">${c?portrait(c):`<span class="placeholder">${icon('plus')}</span>`}<div><p class="kicker">${esc(kicker)}</p><h2>${c?esc(c.name):placeholder}</h2>${c?`<div class="tag-row">${specialtyTags(c)}</div>`:''}</div></button>`;}
 function selectionSwap(mode,disabled=false){
@@ -409,7 +409,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=63a3a14e273f'),fetch('specialties.json?v=7462b1124c8d'),fetch('introductions.json?v=6e2372c994b4'),fetch('releases.json?v=0e6d6d100062')]);
+ const responses=await Promise.all([fetch('data.json?v=512dc61cc4e8'),fetch('specialties.json?v=34dbdf6caad7'),fetch('introductions.json?v=23fff5948f81'),fetch('releases.json?v=63cdf38eb090')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

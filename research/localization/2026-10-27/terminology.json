@@ -1,0 +1,2117 @@
+{
+  "reviewedAt": "2026-10-27",
+  "baseline": "3fab5cae68a598fdf09faa6156d3fd5e9e7ad719",
+  "policy": "공식 한국어 명칭을 우선하며 임의 번역과 이용자 약칭을 사이트 작성 설명에 혼용하지 않는다. 출처 원문·검색 별칭·이용자 게시글·과거 패치 기록은 보존한다. 공식 명칭 확인과 최신 게임 수치 검증은 구분한다. 확인하지 못한 명칭을 공식 표기로 인증하지 않는다.",
+  "roleAliases": {
+    "어그로": "추격",
+    "사냥": "추격"
+  },
+  "rules": [
+    {
+      "before": "평타전",
+      "after": "일반 공격 중심의 추격",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "평타형",
+      "after": "일반 공격 중심",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "평타 후딜",
+      "after": "일반 공격 회복 동작",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "공격 후딜",
+      "after": "공격 회복 동작",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "후딜",
+      "after": "공격 회복 동작",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "평타",
+      "after": "일반 공격",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "해독기",
+      "after": "암호 장치",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "암호기",
+      "after": "암호 장치",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "어그로",
+      "after": "추격",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "넉백",
+      "after": "밀치기",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "대미지",
+      "after": "피해",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "디버프",
+      "after": "불이익",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "통전될",
+      "after": "암호 해독이 완료될",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "통전",
+      "after": "암호 해독 완료",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "재다운 위험",
+      "after": "다시 쓰러질 위험",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운을 땄다면",
+      "after": "상대를 쓰러뜨렸다면",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운을 내기",
+      "after": "상대를 쓰러뜨리기",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운이 필요한",
+      "after": "상대를 쓰러뜨려야 하는",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "팀원의 다운을 막을 수 없는",
+      "after": "팀원이 쓰러지는 것을 막을 수 없는",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "대상의 다운이 가깝다면",
+      "after": "대상을 곧 쓰러뜨릴 수 있다면",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운된다고",
+      "after": "쓰러진다고",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운시킨 채",
+      "after": "쓰러뜨린 채",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운된",
+      "after": "쓰러진",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "첫 다운이",
+      "after": "처음 쓰러지는 시점이",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "첫 다운을",
+      "after": "첫 쓰러뜨리기를",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운 후",
+      "after": "쓰러진 후",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운 직후",
+      "after": "쓰러진 직후",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운 뒤",
+      "after": "쓰러진 뒤",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운과 동시에",
+      "after": "생존자가 쓰러지는 순간",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운으로",
+      "after": "쓰러뜨리기로",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운을",
+      "after": "쓰러뜨리기를",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운 관리",
+      "after": "쓰러진 생존자 관리",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "다운 압박",
+      "after": "생존자를 쓰러뜨리는 압박",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "일반 공격 다운",
+      "after": "일반 공격으로 쓰러뜨리기",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "피리",
+      "after": "퉁소",
+      "sources": [
+        "KANTIQUARIAN"
+      ]
+    },
+    {
+      "before": "짧은 포탈",
+      "after": "직선 통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "일반 포탈",
+      "after": "직선 통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "수평 포탈",
+      "after": "직선 통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "짧은 포털",
+      "after": "직선 통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "장거리 포탈",
+      "after": "긴 통로",
+      "sources": [
+        "R011"
+      ]
+    },
+    {
+      "before": "긴 포탈",
+      "after": "긴 통로",
+      "sources": [
+        "R011"
+      ]
+    },
+    {
+      "before": "장거리 포털",
+      "after": "긴 통로",
+      "sources": [
+        "R011"
+      ]
+    },
+    {
+      "before": "긴 포털",
+      "after": "긴 통로",
+      "sources": [
+        "R011"
+      ]
+    },
+    {
+      "before": "포탈",
+      "after": "통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "포털",
+      "after": "통로",
+      "sources": [
+        "K20220630"
+      ]
+    },
+    {
+      "before": "벌레 무리",
+      "after": "곤충 떼",
+      "sources": [
+        "K20210826"
+      ],
+      "scopes": [
+        "c38"
+      ]
+    },
+    {
+      "before": "벌레",
+      "after": "곤충 떼",
+      "sources": [
+        "K20210826"
+      ],
+      "scopes": [
+        "c38"
+      ]
+    },
+    {
+      "before": "밧줄",
+      "after": "올가미",
+      "sources": [
+        "K20220512"
+      ],
+      "scopes": [
+        "c76"
+      ]
+    },
+    {
+      "before": "미끄러지기",
+      "after": "슬라이드 스텝",
+      "sources": [
+        "K20220512"
+      ],
+      "scopes": [
+        "c54"
+      ]
+    },
+    {
+      "before": "감정 전이",
+      "after": "감정이입",
+      "sources": [
+        "K20210826"
+      ],
+      "scopes": [
+        "c61"
+      ]
+    },
+    {
+      "before": "땅속 잠복",
+      "after": "땅속 잠행",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c52"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "잠복한",
+      "after": "잠행 중인",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c52"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "잠복",
+      "after": "잠행",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c52"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "회복용 술",
+      "after": "도블린 술",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c55"
+      ]
+    },
+    {
+      "before": "가속용 술",
+      "after": "도블린 베이스",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c55"
+      ]
+    },
+    {
+      "before": "생멸",
+      "after": "찰나의 생멸",
+      "sources": [
+        "R007"
+      ],
+      "scopes": [
+        "c15"
+      ],
+      "excludePrefixes": [
+        "찰나의 "
+      ]
+    },
+    {
+      "before": "나비",
+      "after": "산제비나비",
+      "sources": [
+        "R006"
+      ],
+      "scopes": [
+        "c15"
+      ],
+      "token": true,
+      "excludePrefixes": [
+        "붉은 "
+      ]
+    },
+    {
+      "before": "사진 세계",
+      "after": "사진 속 세계",
+      "sources": [
+        "R029"
+      ]
+    },
+    {
+      "before": "백우산",
+      "after": "사필안",
+      "sources": [
+        "R029"
+      ],
+      "scopes": [
+        "c26"
+      ]
+    },
+    {
+      "before": "흰 우산",
+      "after": "사필안",
+      "sources": [
+        "R029"
+      ],
+      "scopes": [
+        "c26"
+      ]
+    },
+    {
+      "before": "흑우산",
+      "after": "범무구",
+      "sources": [
+        "R029"
+      ],
+      "scopes": [
+        "c26"
+      ]
+    },
+    {
+      "before": "검은 우산",
+      "after": "범무구",
+      "sources": [
+        "R029"
+      ],
+      "scopes": [
+        "c26"
+      ]
+    },
+    {
+      "before": "우산으로 이동",
+      "after": "진혼산을 던져 이동",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c26"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "우산 이동",
+      "after": "진혼산으로 이동",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c26"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "우산을 던져",
+      "after": "진혼산을 던져",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c26"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "밀랍",
+      "after": "촛농",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c12"
+      ],
+      "token": true
+    },
+    {
+      "before": "공",
+      "after": "폭탄",
+      "sources": [
+        "K20220512"
+      ],
+      "scopes": [
+        "c37"
+      ],
+      "token": true,
+      "excludeScopes": [
+        "c77",
+        "c09"
+      ]
+    },
+    {
+      "before": "인형",
+      "after": "기계 인형",
+      "sources": [
+        "R009"
+      ],
+      "scopes": [
+        "c43"
+      ],
+      "token": true,
+      "excludePrefixes": [
+        "기계 "
+      ],
+      "excludeScopes": [
+        "c02",
+        "c68"
+      ]
+    },
+    {
+      "before": "가속 오르골",
+      "after": "빠른 리듬 오르골",
+      "sources": [
+        "KOREAN-MUSICBOX"
+      ],
+      "scopes": [
+        "c54"
+      ]
+    },
+    {
+      "before": "감속 오르골",
+      "after": "느린 리듬 오르골",
+      "sources": [
+        "R009"
+      ],
+      "scopes": [
+        "c54"
+      ]
+    },
+    {
+      "before": "팔꿈치 보호대",
+      "after": "강철 팔꿈치 보호대",
+      "sources": [
+        "R041"
+      ],
+      "scopes": [
+        "c64"
+      ],
+      "excludePrefixes": [
+        "강철 "
+      ]
+    },
+    {
+      "before": "배달견",
+      "after": "우편배달견",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c66"
+      ]
+    },
+    {
+      "before": "개 회피",
+      "after": "우편배달견 피하기",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c66"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "개가 나가는",
+      "after": "우편배달견이 나가는",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c66"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "개는 일반 공격",
+      "after": "우편배달견은 일반 공격",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c66"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "날개",
+      "after": "목제 행글라이더",
+      "sources": [
+        "R029"
+      ],
+      "scopes": [
+        "c70"
+      ],
+      "token": true,
+      "excludeScopes": [
+        "c04"
+      ]
+    },
+    {
+      "before": "공",
+      "after": "크리켓볼",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c77"
+      ],
+      "token": true,
+      "excludeScopes": [
+        "c37",
+        "c09"
+      ]
+    },
+    {
+      "before": "묘책",
+      "after": "묘수",
+      "sources": [
+        "R058"
+      ],
+      "scopes": [
+        "c81"
+      ]
+    },
+    {
+      "before": "감시 장치",
+      "after": "모니터",
+      "sources": [
+        "R014"
+      ],
+      "scopes": [
+        "c03"
+      ]
+    },
+    {
+      "before": "날개",
+      "after": "바람 날개",
+      "sources": [
+        "R015"
+      ],
+      "scopes": [
+        "c04"
+      ],
+      "token": true,
+      "excludePrefixes": [
+        "바람 "
+      ],
+      "excludeScopes": [
+        "c70"
+      ]
+    },
+    {
+      "before": "드릴",
+      "after": "개조 드릴",
+      "sources": [
+        "R015"
+      ],
+      "scopes": [
+        "c04"
+      ],
+      "excludePrefixes": [
+        "개조 "
+      ]
+    },
+    {
+      "before": "유영",
+      "after": "회유",
+      "sources": [
+        "R017"
+      ],
+      "scopes": [
+        "c06"
+      ]
+    },
+    {
+      "before": "물길",
+      "after": "물웅덩이",
+      "sources": [
+        "R017"
+      ],
+      "scopes": [
+        "c06"
+      ]
+    },
+    {
+      "before": "풍력",
+      "after": "바람의 힘",
+      "sources": [
+        "R018"
+      ],
+      "scopes": [
+        "c07"
+      ]
+    },
+    {
+      "before": "먹잇감 표식",
+      "after": "추적 표식",
+      "sources": [
+        "R022"
+      ],
+      "scopes": [
+        "c11"
+      ]
+    },
+    {
+      "before": "마의 음",
+      "after": "마력의 음색",
+      "sources": [
+        "R024"
+      ],
+      "scopes": [
+        "c13"
+      ]
+    },
+    {
+      "before": "갈고리",
+      "after": "갈퀴 사슬",
+      "sources": [
+        "R027"
+      ],
+      "scopes": [
+        "c17"
+      ],
+      "excludeScopes": [
+        "c89"
+      ]
+    },
+    {
+      "before": "마비 영역",
+      "after": "마비 구역",
+      "sources": [
+        "R028"
+      ],
+      "scopes": [
+        "c18"
+      ]
+    },
+    {
+      "before": "흡혼",
+      "after": "섭혼",
+      "sources": [
+        "R032"
+      ],
+      "scopes": [
+        "c26"
+      ]
+    },
+    {
+      "before": "우리 반대편",
+      "after": "케이지 반대편",
+      "sources": [
+        "R035"
+      ],
+      "scopes": [
+        "c31"
+      ]
+    },
+    {
+      "before": "붕괴 구역",
+      "after": "불안정 구역",
+      "sources": [
+        "R037"
+      ],
+      "scopes": [
+        "c35"
+      ]
+    },
+    {
+      "before": "침식 조각",
+      "after": "침식의 조각",
+      "sources": [
+        "R033"
+      ],
+      "scopes": [
+        "c22"
+      ]
+    },
+    {
+      "before": "독침",
+      "after": "벌침",
+      "sources": [
+        "R034"
+      ],
+      "scopes": [
+        "c24"
+      ]
+    },
+    {
+      "before": "벌떼",
+      "after": "곤충 떼",
+      "sources": [
+        "R034"
+      ],
+      "scopes": [
+        "c24"
+      ]
+    },
+    {
+      "before": "벌 떼",
+      "after": "곤충 떼",
+      "sources": [
+        "R034"
+      ],
+      "scopes": [
+        "c24"
+      ]
+    },
+    {
+      "before": "방사 구역",
+      "after": "광선 치료 구역",
+      "sources": [
+        "R036"
+      ],
+      "scopes": [
+        "c33"
+      ]
+    },
+    {
+      "before": "스크린",
+      "after": "광막",
+      "sources": [
+        "R036"
+      ],
+      "scopes": [
+        "c33"
+      ]
+    },
+    {
+      "before": "색 표식",
+      "after": "깜짝 표식",
+      "sources": [
+        "R038"
+      ],
+      "scopes": [
+        "c36"
+      ]
+    },
+    {
+      "before": "구름",
+      "after": "층운",
+      "sources": [
+        "R046"
+      ],
+      "scopes": [
+        "c45"
+      ]
+    },
+    {
+      "before": "암호문",
+      "after": "암호 페이지",
+      "sources": [
+        "R044"
+      ],
+      "scopes": [
+        "c51"
+      ]
+    },
+    {
+      "before": "증강제",
+      "after": "약물 증강제",
+      "sources": [
+        "R052"
+      ],
+      "scopes": [
+        "c67"
+      ],
+      "excludePrefixes": [
+        "약물 "
+      ]
+    },
+    {
+      "before": "무감각",
+      "after": "두려움 상실",
+      "sources": [
+        "R023"
+      ],
+      "scopes": [
+        "c68"
+      ]
+    },
+    {
+      "before": "분발",
+      "after": "사기 진작",
+      "sources": [
+        "R050"
+      ],
+      "scopes": [
+        "c75"
+      ]
+    },
+    {
+      "before": "향기 지팡이",
+      "after": "아로마 스틱",
+      "sources": [
+        "R051"
+      ],
+      "scopes": [
+        "c81"
+      ]
+    },
+    {
+      "before": "은폐 진행도",
+      "after": "폭로 진행도",
+      "sources": [
+        "R051"
+      ],
+      "scopes": [
+        "c81"
+      ]
+    },
+    {
+      "before": "꾸러미",
+      "after": "행운보따리",
+      "sources": [
+        "R048"
+      ],
+      "scopes": [
+        "c85"
+      ]
+    },
+    {
+      "before": "지하 잠행",
+      "after": "땅속 잠행",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c52"
+      ]
+    },
+    {
+      "before": "우산의 형태",
+      "after": "우산의 영혼의 형태",
+      "scopes": [
+        "c26"
+      ],
+      "sources": [
+        "K20220630"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "우산의 재사용",
+      "after": "진혼산의 재사용",
+      "scopes": [
+        "c26"
+      ],
+      "sources": [
+        "K20220630"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "우산 탐지",
+      "after": "진혼산으로 탐지",
+      "scopes": [
+        "c26"
+      ],
+      "sources": [
+        "K20220630"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "일반적인 일반 공격 회복 동작",
+      "after": "일반 공격 회복 동작",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "사냥 지연",
+      "after": "추격 지연",
+      "sources": [
+        "editorial"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "쿨타임",
+      "after": "재사용 대기 시간",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "아이템",
+      "after": "소지품",
+      "sources": [
+        "editorial"
+      ]
+    },
+    {
+      "before": "우산 낙하",
+      "after": "진혼산 낙하",
+      "sources": [
+        "K20220630"
+      ],
+      "scopes": [
+        "c26"
+      ],
+      "mode": "phrase"
+    },
+    {
+      "before": "침식",
+      "after": "침식도",
+      "scopes": [
+        "c22"
+      ],
+      "sources": [
+        "R033"
+      ],
+      "token": true,
+      "excludeSuffixes": [
+        "도",
+        "의 조각",
+        " 전송"
+      ]
+    },
+    {
+      "before": "촛농 외피",
+      "after": "밀랍옷",
+      "scopes": [
+        "c12"
+      ],
+      "sources": [
+        "R023"
+      ]
+    },
+    {
+      "before": "벌레",
+      "after": "곤충 떼",
+      "scopes": [
+        "c24"
+      ],
+      "sources": [
+        "R034"
+      ]
+    },
+    {
+      "before": "렌즈",
+      "after": "구강경",
+      "scopes": [
+        "c33"
+      ],
+      "sources": [
+        "R036"
+      ]
+    }
+  ],
+  "fieldEdits": [
+    {
+      "path": "data/characters/0/tips/1",
+      "after": "구출 · 고치형에 당해 구르는 중에도 동료가 구출을 시작할 수 있습니다. 구출이 진행되는 동안에는 구를 수 없으므로, 구출자의 접근 방향과 감시자의 위치를 함께 확인합니다.",
+      "sources": [
+        "K20220706"
+      ],
+      "reason": "구르는 중에는 구출할 수 없다는 기존 설명이 공식 안내와 반대여서 교정."
+    },
+    {
+      "path": "data/characters/48/skill",
+      "after": "마술봉으로 환영을 남겨 통로를 막거나 시선을 분산시키고, 은신과 가속으로 이동 방향을 바꿉니다. 환영이 파괴된 뒤 드러나는 정보도 팀원과 함께 활용합니다.",
+      "sources": [
+        "K20220512"
+      ],
+      "reason": "소지품 이름과 생성된 환영을 구별한다."
+    },
+    {
+      "path": "data/characters/51/skill",
+      "after": "땅속 잠행으로 공격을 받아내고 판자 아래를 지나며 구출 위치에 접근합니다. 필요하면 아래층으로 내려가는 구멍을 만들 수도 있습니다.",
+      "sources": [
+        "K20220630"
+      ],
+      "reason": "공식 스킬명으로 문장을 정리한다."
+    },
+    {
+      "path": "data/characters/54/skill",
+      "after": "도블린 술로 체력을 회복하고, 도블린 베이스로 자신의 이동 속도를 높입니다. 체력은 일정 시간이 지난 뒤 두 차례에 걸쳐 회복되므로, 그동안 버틸 동선을 확보해야 합니다.",
+      "sources": [
+        "K20220630"
+      ],
+      "reason": "두 소지품의 용도를 분리하며 기존 2026년 회복 단계 설명을 유지한다."
+    },
+    {
+      "path": "data/characters/74/skill",
+      "after": "자신의 이동 속도를 높이는 응원과 동료를 위한 격려를 구분해 사용합니다. 사기 진작으로 동료의 주력 소지품에 발생한 재사용 대기 시간을 줄일 수 있습니다.",
+      "sources": [
+        "R050",
+        "R054"
+      ],
+      "reason": "스킬 사용 전만 적용된다는 잘못된 한정을 제거한다. 한국어 명칭은 툴팁 전재본, 사용 후 적용은 공식 업데이트로 대조."
+    },
+    {
+      "path": "data/characters/74/caution",
+      "after": "이미 사용한 소지품에도 적용할 수 있으므로 동료의 남은 재사용 대기 시간과 적용 대상을 확인합니다. 본체의 가속이 끝난 뒤 느려지는 시간도 고려해 멈출 위치를 정합니다.",
+      "sources": [
+        "R053",
+        "R054"
+      ],
+      "reason": "공식 공지가 사용 후 올가미에 Inspire를 적용하는 상황을 명시한다."
+    },
+    {
+      "path": "data/characters/70/skill",
+      "after": "회상으로 보호 효과를 준비해 공격을 막고, 감시자의 운반 경로에 있는 의자를 파괴합니다. 동료가 의자에 묶이거나 탈락하기까지 시간을 벌 수 있습니다.",
+      "sources": [
+        "K20220630"
+      ],
+      "reason": "시작 시 가호와 이후 회상을 통한 보호 효과를 구별한다."
+    },
+    {
+      "path": "data/characters/25/tips/0",
+      "after": "판자 사용 · 사필안은 긴 공격 사거리 때문에 판자에 붙어 기절만 노리기 어렵습니다. 범무구는 탕백으로 기절시킬 수 있으므로, 두 형태 모두 여유 있을 때 판자를 씁니다.",
+      "sources": [
+        "R029",
+        "R032"
+      ],
+      "reason": "형태와 스킬 이름을 구별한다."
+    },
+    {
+      "path": "data/characters/25/tips/1",
+      "after": "구출 · 의자에서 먼 곳에서 먼저 맞지 않도록 일찍 우회해 접근합니다. 사필안의 섭혼에 당하면 구출할 수 없고, 범무구의 탕백은 구출을 끊을 수 있으므로 의자 도착 시간에 여유가 필요합니다.",
+      "sources": [
+        "R029",
+        "R032"
+      ],
+      "reason": "흡혼/섭혼 혼용을 없애고 색상 별칭 대신 형태 이름을 사용한다."
+    },
+    {
+      "path": "data/characters/13/skill",
+      "after": "에너지 부하가 쌓이면 공격 중 방해에 저항하고 강화된 동작을 사용할 수 있습니다. 생존자를 의자에 묶는 대신, 쓰러진 생존자의 회복과 출혈을 관리하며 탈락을 노립니다.",
+      "sources": [
+        "R025"
+      ],
+      "reason": "자원의 이름을 도입한다."
+    },
+    {
+      "path": "data/characters/15/skill",
+      "after": "물거울을 기준으로 본체와 대칭인 거울상을 만들어 지형 너머를 공격합니다. 물거울이 유지되는 동안 위치를 교환해 추격 방향을 바꿀 수 있습니다.",
+      "sources": [
+        "R026"
+      ],
+      "reason": "설치물과 공격하는 거울상을 구별한다."
+    },
+    {
+      "path": "data/characters/12/strengths/1",
+      "after": "마력의 음색 누적으로 행동 방해",
+      "sources": [
+        "R024"
+      ],
+      "reason": "같은 상태 이름으로 통일한다."
+    },
+    {
+      "path": "data/characters/17/strengths/2",
+      "after": "위협으로 소지품 사용 방해",
+      "sources": [
+        "R028"
+      ],
+      "reason": "정의되지 않은 침묵 대신 능력 이름과 효과를 적는다."
+    },
+    {
+      "path": "data/characters/71/skill",
+      "after": "망각의 향을 사용한 순간의 위치와 상태로 되돌아갑니다. 그사이에 받은 피해를 회복하거나 이동 경로를 바꾸는 데 활용합니다.",
+      "sources": [
+        "R048"
+      ],
+      "reason": "설명 첫머리에 소지품의 전체 이름을 적는다."
+    },
+    {
+      "path": "data/characters/83/skill",
+      "after": "해신의 회중시계로 실제 위치와 다르게 보이는 모습을 만들어 구출 위치에 접근합니다. 회중시계를 연속으로 사용할 때마다 효과가 닿는 거리가 달라집니다.",
+      "sources": [
+        "R048"
+      ],
+      "reason": "설명 첫머리에 소지품의 전체 이름을 적는다."
+    },
+    {
+      "path": "data/links/162/reason",
+      "after": "꼭두각시 운영을 시작하기 전 생존자에게 첫 타격을 가하고 쓰러뜨리는 데 도움이 됩니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "다운이라는 약칭을 풀면서 문장의 목적어와 서술어를 맞춘다."
+    },
+    {
+      "path": "data/matchups/133/summary",
+      "after": "해독 중인 본체나 기계 인형이 있는 곳으로 진혼산을 던져 이동해 두 해독 지점의 운영을 흔들 수 있습니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/matchups/183/summary",
+      "after": "시작 위치나 암호 장치로 진혼산을 던져 이동하면 모험가가 숨기 전에 추격을 시작할 수 있습니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/matchups/183/condition",
+      "after": "진혼산으로 축소 상태의 모험가를 탐지할 수 있다는 뜻은 아니며, 미리 숨는 데 성공하면 결과가 달라집니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/matchups/388/summary",
+      "after": "관이 공개되는 순간 진혼산을 던져 이동할 수 있다면 부활한 대상을 다시 추격하기 쉽습니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/matchups/443/condition",
+      "after": "사필안의 섭혼과 진혼산을 이용한 이동으로 다시 접근할 수 있어 지형과 갈고리 잔량을 함께 봐야 합니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/matchups/448/summary",
+      "after": "해독 중인 위치로 진혼산을 던져 이동하면 접근 감지 뒤 가속을 준비할 여유가 줄어듭니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/links/235/reason",
+      "after": "진혼산을 이용해 이동할 지점의 시야와 상대 이동 정보를 확보합니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "introductions/characters/c26",
+      "after": "진혼산으로 위치를 옮기고 사필안과 범무구를 전환합니다. 두 형태의 능력을 나눠 쓰며 넓은 구역을 견제합니다.",
+      "sources": [
+        "K20220630",
+        "R029"
+      ],
+      "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
+    },
+    {
+      "path": "data/links/198/reason",
+      "after": "돌진만으로 넘기 어려운 장애물을 넘어 생존자를 쓰러뜨릴 기회를 만듭니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "이용자 약칭을 풀어 쓴 뒤 목적어와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/links/213/reason",
+      "after": "사진 속 세계에서 만든 체력 우위를 활용해 현실의 생존자를 쓰러뜨립니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "이용자 약칭을 풀어 쓴 뒤 목적어와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/links/217/reason",
+      "after": "기록만으로 쓰러뜨리기 어려운 생존자를 상대할 때 일반 공격을 보완합니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "이용자 약칭을 풀어 쓴 뒤 목적어와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/links/220/reason",
+      "after": "폭탄 피해 뒤에 일반 공격을 한 번 더 맞혀 생존자를 쓰러뜨릴 기회를 노립니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "이용자 약칭을 풀어 쓴 뒤 목적어와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/links/222/reason",
+      "after": "침식도와 위치 압박으로 틈을 만들고, 일반 공격으로 생존자를 쓰러뜨립니다.",
+      "sources": [
+        "editorial"
+      ],
+      "reason": "이용자 약칭을 풀어 쓴 뒤 목적어와 서술어를 자연스럽게 정리한다."
+    }
+  ],
+  "sources": [
+    {
+      "id": "K20220630",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html",
+      "kind": "official-ko",
+      "supports": [
+        "일반 공격",
+        "암호 장치",
+        "직선 통로",
+        "촛농",
+        "진혼산",
+        "땅속 잠행",
+        "도블린 술",
+        "도블린 베이스",
+        "크리켓볼"
+      ],
+      "scope": "명칭 근거. 2022년 수치를 현행 게임 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20220706",
+      "url": "https://www.identityvgame.com/kr/news/update/20220706/35364_1029035.html",
+      "kind": "official-ko",
+      "supports": [
+        "구르는 중인 고치형 생존자를 구출 가능; 구출받는 동안에는 구르기 불가"
+      ]
+    },
+    {
+      "id": "K20220512",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018903.html",
+      "kind": "official-ko",
+      "supports": [
+        "올가미",
+        "폭탄",
+        "산제비나비",
+        "마술봉",
+        "슬라이드 스텝",
+        "원숭이 조각상",
+        "비늘 경화"
+      ],
+      "scope": "명칭 근거. 오래된 밸런스 수치 미적용."
+    },
+    {
+      "id": "K20210826",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html",
+      "kind": "official-ko",
+      "supports": [
+        "감정이입",
+        "곤충 떼",
+        "걸리버 여행기",
+        "올가미",
+        "크리켓볼"
+      ]
+    },
+    {
+      "id": "KANTIQUARIAN",
+      "url": "https://x.com/identity5kr/status/1547799107267284997",
+      "kind": "official-ko",
+      "supports": [
+        "퉁소"
+      ],
+      "note": "사용자가 직접 정정한 명칭과 공식 한국어 채널 게시물 대조."
+    },
+    {
+      "id": "R006",
+      "url": "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+      "kind": "official-ko",
+      "supports": [
+        "산제비나비",
+        "혼백이탈",
+        "로켓 돌진",
+        "신도"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R007",
+      "url": "https://www.identityvgame.com/kr/news/update/20220623/35364_1025583.html",
+      "kind": "official-ko",
+      "supports": [
+        "찰나의 생멸",
+        "기생 신도"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R008",
+      "url": "https://www.identityvgame.com/kr/news/update/20220630/35364_1027380.html",
+      "kind": "official-ko",
+      "supports": [
+        "주조",
+        "응고",
+        "멜팅",
+        "파라핀 블록",
+        "직선 통로"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R009",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html",
+      "kind": "official-ko",
+      "supports": [
+        "원한의 그림자",
+        "신도",
+        "습기"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R010",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html",
+      "kind": "official-ko",
+      "supports": [
+        "격벽",
+        "산제비나비"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R011",
+      "url": "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html",
+      "kind": "official-ko",
+      "supports": [
+        "촉수"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R012",
+      "url": "https://d.namu.moe/w/%EA%B1%B0%EB%AF%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "고치형",
+        "거미줄 속박",
+        "그물 짜기",
+        "실 뱉기",
+        "그물 뱉기"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R013",
+      "url": "https://d.namu.moe/w/%EA%B3%B5%EC%9E%A5%EC%9E%A5(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "원한의 지옥불",
+        "발화",
+        "꼭두각시 조종",
+        "다중 조종"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R014",
+      "url": "https://d.namu.moe/w/%EA%B4%91%EA%B8%B0%EC%9D%98%20%EB%88%88",
+      "kind": "indirect-transcription",
+      "supports": [
+        "콘솔",
+        "모니터",
+        "격벽"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R015",
+      "url": "https://d.namu.moe/w/%EA%B4%91%EB%8C%80(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "추진기",
+        "바람 날개",
+        "개조 드릴",
+        "로켓 개조",
+        "로켓 돌진"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R016",
+      "url": "https://d.namu.moe/w/%EA%BF%88%EC%9D%98%20%EB%A7%88%EB%85%80",
+      "kind": "indirect-transcription",
+      "supports": [
+        "신도",
+        "마녀 표식",
+        "기생",
+        "전도",
+        "동화",
+        "신도 강화"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R017",
+      "url": "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%EC%95%84%EC%8A%A4(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "물웅덩이",
+        "회유",
+        "물고기 사냥",
+        "격랑",
+        "물놀이",
+        "끝없는 심연"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R018",
+      "url": "https://d.namu.moe/w/%EB%82%98%EC%9D%B4%ED%8A%B8%20%EC%9B%8C%EC%B9%98(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "바람의 힘",
+        "풍역",
+        "풍역-독식",
+        "바람불기",
+        "바람불기-습격",
+        "풍역의 지배자",
+        "바람의 권속"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R019",
+      "url": "https://d.namu.moe/w/%EB%85%B8%EB%9E%80%20%EC%98%B7%EC%9D%98%20%EC%99%95(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "공포의 형상",
+        "악몽의 습격",
+        "심연의 촉수",
+        "악몽의 응시"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R020",
+      "url": "https://d.namu.moe/w/'%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "타격 지점",
+        "메인 볼",
+        "타격 지점-고급",
+        "엔트로피 제어"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R021",
+      "url": "https://d.namu.moe/w/%EB%A6%AC%ED%8D%BC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "대형 안개 칼날",
+        "소형 안개 칼날",
+        "차가운 안개",
+        "안개 은신",
+        "유령 은신"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R022",
+      "url": "https://m.namu.moe/w/'%EB%A7%88%EC%9D%8C%EC%9D%98%20%EC%A7%90%EC%8A%B9'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "추적 표식",
+        "사냥 도약",
+        "요격",
+        "덮치기",
+        "습격",
+        "추적"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R023",
+      "url": "https://d.namu.moe/w/%EB%B0%80%EB%9E%8D%EC%9D%B8%ED%98%95%EC%82%AC",
+      "kind": "indirect-transcription",
+      "supports": [
+        "밀랍옷",
+        "응고와 용해",
+        "주조",
+        "응고",
+        "멜팅"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R024",
+      "url": "https://d.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "마력의 음색",
+        "전율의 현악",
+        "전율의 선율",
+        "소나타",
+        "랩소디",
+        "페르페투움 모빌레"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R025",
+      "url": "https://d.namu.moe/w/'%EB%B0%95%EC%82%AC'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "에너지 부하",
+        "에너지 폭발 상태",
+        "충전",
+        "배상",
+        "운동에너지 충격",
+        "차징 스트라이크",
+        "에너지 전환"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R026",
+      "url": "https://d.namu.moe/w/%EB%B8%94%EB%9F%AC%EB%94%94%20%ED%80%B8(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "물거울",
+        "거울상",
+        "거울 그림자",
+        "기울어진 거울",
+        "거울 진입"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R027",
+      "url": "https://d.namu.moe/w/%EC%82%AC%EB%83%A5%ED%84%B0%EC%A7%80%EA%B8%B0(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "갈퀴 사슬",
+        "가시 갈퀴 사슬",
+        "분노의 갈퀴 사슬",
+        "덫"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R028",
+      "url": "https://d.namu.moe/w/'%EC%82%AC%EB%8F%84'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "그림자 밟기",
+        "마비 구역",
+        "경계 범위",
+        "습격",
+        "위협"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R029",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210819/35362_967362.html",
+      "kind": "official-ko",
+      "supports": [
+        "사진 속 세계",
+        "사필안",
+        "범무구"
+      ],
+      "scope": "Official Korean names and world terminology. Does not verify current numerical mechanics."
+    },
+    {
+      "id": "R030",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018885.html",
+      "kind": "official-ko",
+      "supports": [
+        "폭탄",
+        "상처 스탯"
+      ],
+      "scope": "폭탄 is supported for Guard 26. 상처 스탯 must not be substituted for every 가시 occurrence; object and state may differ. This source also contains 낙하 가격, an apparent typo/odd legacy string, so that must not replace plain 낙하 공격 without a current in-game check."
+    },
+    {
+      "id": "R031",
+      "url": "https://sixhorse.game.easebar.com/news/outer/newslist.do?contentkind=35346&limit=100&start=1",
+      "kind": "official-roster",
+      "supports": [
+        "사진사",
+        "서기관",
+        "수위 26호",
+        "시공의 그림자",
+        "악몽",
+        "여왕벌",
+        "오페라 가수",
+        "우산의 영혼",
+        "울보",
+        "은둔자",
+        "잡화상",
+        "재앙의 도마뱀",
+        "절름발이 판",
+        "조각가",
+        "치과의사",
+        "파멸의 바퀴",
+        "파이라이트",
+        "훌라발루"
+      ],
+      "scope": "Character names/bios only. The API supplies no skill descriptions; it cannot establish current skill terminology."
+    },
+    {
+      "id": "R032",
+      "url": "https://namu.moe/w/우산의%20영혼",
+      "kind": "indirect-transcription",
+      "supports": [
+        "사필안(백)",
+        "범무구(흑)",
+        "섭혼",
+        "탕백",
+        "척혼령",
+        "실혼",
+        "낙백"
+      ],
+      "scope": "Indirect skill-table evidence. 흡혼 conflicts with both this table and the existing site 섭혼."
+    },
+    {
+      "id": "R033",
+      "url": "https://namu.moe/w/시공의%20그림자",
+      "kind": "indirect-transcription",
+      "supports": [
+        "침식도",
+        "침식의 조각",
+        "이스인",
+        "정신 기생",
+        "공간 전송",
+        "태고의 얼굴"
+      ],
+      "scope": "Indirect Korean skill-table evidence; no current official Korean skill text was retrieved."
+    },
+    {
+      "id": "R034",
+      "url": "https://namu.moe/w/'여왕벌'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "벌침",
+        "곤충 떼",
+        "협동 상태",
+        "보답",
+        "자극 벌침",
+        "열살봉구"
+      ],
+      "scope": "Skill table uses 벌침 and 곤충 떼; prose also contains casual 독침. Treat as indirect evidence only."
+    },
+    {
+      "id": "R035",
+      "url": "https://namu.moe/w/'절름발이%20판'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "케이지",
+        "원한의 힘",
+        "상실의 감옥",
+        "속박된 몸",
+        "케이지 제어",
+        "케이지 포위",
+        "케이지 점프"
+      ],
+      "scope": "Supports existing site 케이지, with one stale 우리 occurrence."
+    },
+    {
+      "id": "R036",
+      "url": "https://namu.moe/w/'치과의사'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "자외선 복사",
+        "구강경",
+        "광선 치료 구역",
+        "광막 요법",
+        "자외선 광막",
+        "늪 출현"
+      ],
+      "scope": "Names are indirect. Article also uses 조명 구역 and inconsistent timing values; do not propagate numbers or claim verified current description. 렌즈 is used as an ordinary component noun and is not intrinsically wrong."
+    },
+    {
+      "id": "R037",
+      "url": "https://www.namu.moe/w/'파이라이트'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "불안정 구역",
+        "곡괭이",
+        "자성 전도",
+        "견인",
+        "자성 전환",
+        "일촉즉발"
+      ],
+      "scope": "The area is 불안정 구역; 붕괴 is an event. Existing site already uses 불안정 구역 in the core description."
+    },
+    {
+      "id": "R038",
+      "url": "https://namu.moe/w/'훌라발루'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "깜짝 표식",
+        "마지막 무대",
+        "즐거운 시간",
+        "공중그네 타기",
+        "화염 무대",
+        "드라이아이스 무대",
+        "점토 무대"
+      ],
+      "scope": "Indirect names. Generic color explanations are comprehensible paraphrase; do not imply they are official quoted descriptions."
+    },
+    {
+      "id": "R039",
+      "url": "https://namu.moe/w/'악몽'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "엿보기",
+        "스쳐 날기",
+        "당까마귀",
+        "흉조",
+        "사냥",
+        "순찰"
+      ],
+      "scope": "사냥 is an actual skill name according to the skill table; exempt actual skill references from a global 사냥→추격 replacement."
+    },
+    {
+      "id": "R040",
+      "url": "https://www.identityvgame.com/kr/character/survivors/20220805/35345_1035460.html",
+      "kind": "official-ko",
+      "supports": [
+        "골동품 상인",
+        "척십일",
+        "퉁소"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R041",
+      "url": "https://x.com/identity5kr/status/1819524331397173306",
+      "kind": "official-ko",
+      "supports": [
+        "강철 팔꿈치 보호대"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R042",
+      "url": "https://x.com/identity5kr/status/2101257376389276113",
+      "kind": "official-ko",
+      "supports": [
+        "신동",
+        "하모니카",
+        "햄스터"
+      ],
+      "scope": "명칭 근거; 최신 수치 검증과 구분."
+    },
+    {
+      "id": "R043",
+      "url": "https://namu.moe/w/샤먼(제5인격)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "열쇠",
+        "직선 통로",
+        "긴 통로"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R044",
+      "url": "https://namu.moe/w/모험가(제5인격)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "걸리버 여행기",
+        "암호 페이지"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R045",
+      "url": "https://namu.moe/w/'여자아이'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "추억 조각",
+        "기억 동기화",
+        "연민"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R046",
+      "url": "https://namu.moe/w/기상학자(제5인격)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "강풍",
+        "층운",
+        "따뜻한 비",
+        "평온"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R047",
+      "url": "https://namu.moe/w/궁수(제5인격)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "용골 화살",
+        "중상 파열도"
+      ],
+      "scope": "한국어 게임 설명 전재본을 통한 간접 대조. 공식 1차 원문 확인 완료를 뜻하지 않음."
+    },
+    {
+      "id": "R048",
+      "url": "https://www.namu.moe/w/%EC%A0%9C5%EC%9D%B8%EA%B2%A9/%EC%95%84%EC%9D%B4%ED%85%9C",
+      "kind": "indirect-transcription",
+      "supports": [
+        "목제 행글라이더",
+        "망각의 향",
+        "해신의 회중시계",
+        "행운보따리",
+        "소리굽쇠",
+        "응원수술",
+        "십자 막대",
+        "아로마 스틱",
+        "크리켓 배트",
+        "올가미 채찍"
+      ],
+      "scope": "한국어 공동편집 문서의 아이템명/툴팁 재현; 1차 원문 아님"
+    },
+    {
+      "id": "R049",
+      "url": "https://m.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "루이",
+        "두려움 상실",
+        "유연한 부품"
+      ],
+      "scope": "한국어 공동편집 문서의 게임 툴팁 재현"
+    },
+    {
+      "id": "R050",
+      "url": "https://www.namu.moe/w/%EC%B9%98%EC%96%B4%EB%A6%AC%EB%8D%94(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "응원",
+        "사기 진작",
+        "격려",
+        "응원수술"
+      ],
+      "scope": "한국어 공동편집 문서의 게임 툴팁 재현"
+    },
+    {
+      "id": "R051",
+      "url": "https://d.namu.moe/w/'%ED%8C%8C%EB%A1%9C%20%EB%B6%80%EC%9D%B8'",
+      "kind": "indirect-transcription",
+      "supports": [
+        "흔적 감추기",
+        "폭로 진행도",
+        "아로마 스틱",
+        "묘수"
+      ],
+      "scope": "한국어 공동편집 문서의 게임 툴팁 재현"
+    },
+    {
+      "id": "R052",
+      "url": "https://www.namu.moe/w/%EC%9D%98%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "진정제",
+        "약물 증강제"
+      ],
+      "scope": "한국어 공동편집 문서의 게임 툴팁 재현"
+    },
+    {
+      "id": "R053",
+      "url": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
+      "kind": "official-en",
+      "supports": [
+        "Inspire"
+      ],
+      "scope": "공식 영문 공지; 한국어 명칭의 직접 근거 아님"
+    },
+    {
+      "id": "R054",
+      "url": "https://www.identityvgame.com/en/news/announcement/20260910/35288_1313606.html",
+      "kind": "official-en",
+      "supports": [
+        "Inspire",
+        "Lasso"
+      ],
+      "scope": "공식 영문 공지; 한국어 명칭의 직접 근거 아님"
+    },
+    {
+      "id": "R055",
+      "url": "https://wikiwiki.jp/identity5ch/%E5%BF%9C%E6%8F%B4%E5%9B%A3",
+      "kind": "indirect-transcription",
+      "supports": [
+        "奮起"
+      ],
+      "scope": "일본어 공동편집 문서; 기존 사이트의 원문과 재대조"
+    },
+    {
+      "id": "R056",
+      "url": "https://www.youtube.com/watch?v=lpCm2aRhvL8",
+      "kind": "official-ko",
+      "supports": [
+        "루이"
+      ],
+      "scope": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람"
+    },
+    {
+      "id": "R057",
+      "url": "https://www.youtube.com/watch?v=cbYhy_Aevl4",
+      "kind": "official-ko",
+      "supports": [],
+      "scope": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람"
+    },
+    {
+      "id": "R058",
+      "url": "https://www.youtube.com/watch?v=sxfTvVRqgr4",
+      "kind": "official-ko",
+      "supports": [
+        "묘수"
+      ],
+      "scope": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람"
+    },
+    {
+      "id": "KOREAN-MUSICBOX",
+      "url": "https://www.namu.moe/w/무희(제5인격)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "빠른 리듬 오르골",
+        "느린 리듬 오르골"
+      ],
+      "scope": "한국어 게임 툴팁 전재본. 느린 리듬은 별도 공식 공지에서도 대조."
+    }
+  ],
+  "limitations": [
+    "기존 상성의 우위·승률·게임 수치를 전면 재검증한 작업은 아니다.",
+    "공식 한국어 자료를 직접 확인한 명칭과 한국어 게임 설명 전재본에서 대조한 명칭의 근거 수준을 구분해 기록한다."
+  ]
+}

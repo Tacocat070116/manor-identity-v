@@ -32,7 +32,7 @@ assert.equal(Object.keys(specialties.characters).length,db.characters.length);
 Object.assign(db.meta,specialties.meta);
 for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
-const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
+const allowedSpecialties={생존자:['추격','커버','구출','운영','해독'],감시자:['추격','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,16953);assert.equal(bans.length,15516);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
@@ -229,6 +229,7 @@ for(const result of context.audit.roleCards){
  assert.ok(result.card.includes('메인 #'+ch.specialties[0]),ch.name+' accessible main role');
  assert.ok(!/card-game-patch|최근 패치 날짜|<time/.test(result.card),ch.name+' no patch date on catalog card');
  assert.ok(!/icon-hunter|icon-survivor|icon-info/.test(result.card),ch.name+' specialty icon without faction fallback');
+ if(ch.specialties[0]==='추격')assert.ok(result.card.includes(ch.side==='생존자'?'role-kite':'role-hunt'),ch.name+' faction-specific chase icon');
  assert.deepEqual(cardTags,ch.specialties,ch.name+' ordered card tags');
  assert.deepEqual(selectionTags,ch.specialties,ch.name+' ordered compare tags');
 }

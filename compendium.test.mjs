@@ -81,6 +81,12 @@ test('detail source identities and talent side mappings are valid; old and full 
 test('all 89 characters have consistent team totals and source-backed updated core descriptions',()=>{
  const edits=read('research/refresh/2026-10-21/guide-edits.json').records;
  const languageEdits=new Map(read('research/localization/2026-10-22/edits.json').map(e=>[e.path,e]));
+ const terminologyEdits=new Map(read('research/localization/2026-10-27/edits.json').map(e=>[e.path,e]));
+ const latest=(index,field,previous)=>{
+  const edit=terminologyEdits.get(`dist/data.json/characters/${index}/${field}`);
+  if(edit)assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
+  return edit?.after??previous;
+ };
  const guideEdits=new Map(read('research/editorial/2026-10-25/skill-guide-edits.json').records.map(e=>[e.id,e]));
  assert.equal(edits.length,89);
  assert.equal(guideEdits.size,89);
@@ -100,12 +106,12 @@ test('all 89 characters have consistent team totals and source-backed updated co
    const before=field==='caution'?guideEdit.after[field]:previous;
    const change=patch.characters.find(e=>e.id===c.id);
    if(change?.before[field])assert.equal(change.before[field],before,c.name+' patch retains editorial history');
-   assert.equal(c[field],change?.after[field]??before,c.name+' '+field+' matches the recorded revision');
+   assert.equal(c[field],latest(index,field,change?.after[field]??before),c.name+' '+field+' matches the recorded revision');
   }
   for(const field of ['use','hold','caution']){
    const change=patch.characters.find(e=>e.id===c.id);
    if(change?.before[field])assert.equal(change.before[field],guideEdit.after[field],c.name+' patch retains guide history');
-   assert.equal(c[field],change?.after[field]??guideEdit.after[field],c.name+' '+field+' matches the guide revision');
+   assert.equal(c[field],latest(index,field,change?.after[field]??guideEdit.after[field]),c.name+' '+field+' matches the guide revision');
   }
   assert.equal(c.reviewedAt,'2026-10-21');
  }
@@ -134,7 +140,7 @@ test('Grave Keeper chase disadvantage keeps the separate rescue exception reacha
  assert.deepEqual(chase.map(m=>m.advantage),[wu.name]);
  assert.deepEqual(rescue.map(m=>m.advantage),[grave.name]);
  assert.match(chase[0].condition,/돌진/);
- assert.match(rescue[0].condition,/잠복을 마치고 삽이 남아/);
+ assert.match(rescue[0].condition,/잠행을 마치고 삽이 남아/);
  assert.match(rescue[0].condition,/먼저 추격받아/);
  assert.deepEqual(contextEvidence(db.matchups,'M131'),rescue);
  assert.deepEqual(pairEvidence(db.matchups,wu,grave,'구출'),rescue);
@@ -149,7 +155,7 @@ test('situation labels describe activities while legacy detail filters keep work
  for(const [id,phase] of [['M003','구출'],['M209','커버'],['M247','구출'],['M249','추격'],['M265','운영'],['M321','구출']])assert.equal(db.matchups.find(m=>m.id===id).situation,phase,id);
  const professor=db.characters.find(c=>c.name==='교수'),wu=db.characters.find(c=>c.name==='우산의 영혼');
  assert.ok(pairEvidence(db.matchups,professor,wu,'추격').some(m=>m.id==='M315'));
- assert.ok(pairEvidence(db.matchups,professor,wu,'평타 방어').some(m=>m.id==='M315'));
+ assert.ok(pairEvidence(db.matchups,professor,wu,'일반 공격 방어').some(m=>m.id==='M315'));
  assert.equal(pairEvidence(db.matchups,professor,wu,'구출').length,0);
 });
 
