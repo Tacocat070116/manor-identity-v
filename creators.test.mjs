@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_SERVERS} from './dist/creators-model.js';
+import {normalizeChannel,normalizeVideo,normalizeTag,normalizeCreator,videoThumbnail,CREATOR_COUNTRIES,CREATOR_SERVERS,normalizeAppearance,CREATOR_APPEARANCE_DEFAULT,CREATOR_TAGS,CREATOR_PRESETS} from './dist/creators-model.js';
 import {creatorCard,creatorEditor} from './dist/creators.js';
 const characters={c16:{id:'c16',name:'블러디 퀸',portrait:'assets/portraits/c16.webp'}};
 const roster=new Map(Object.entries(characters));
@@ -20,7 +20,7 @@ test('any newcomer can submit, while custom tags and historical achievements sta
  const v=normalizeCreator(base(),roster);assert.deepEqual(v.badges,[]);assert.deepEqual(v.tiers,[]);
  assert.equal(normalizeTag('#차분한해설'),'차분한해설');assert.throws(()=>normalizeTag('공백 태그'));
  assert.throws(()=>normalizeCreator({...base(),tags:['English','english']},roster),/중복/);
- assert.throws(()=>normalizeCreator({...base(),tags:Array.from({length:7},(_,i)=>'태그'+i)},roster),/6개/);
+ assert.throws(()=>normalizeCreator({...base(),tags:Array.from({length:13},(_,i)=>'태그'+i)},roster),/12개/);
  const history={...base(),badges:[{characterId:'c16',grade:'A',season:'시즌 40'},{characterId:'c16',grade:'S',season:'시즌 42'}],tiers:[{side:'hunter',tier:'히드라',season:'시즌 42'}]};
  assert.equal(normalizeCreator(history,roster).badges.length,2);
  for(const bad of [{side:'hunter',tier:'사베르투스'},{side:'constructor',tier:'anything'}])assert.throws(()=>normalizeCreator({...base(),tiers:[bad]},roster),/최고 티어/);
@@ -66,4 +66,20 @@ test('compact cards link to complete tags and self-reported records without disc
  for(const season of ['시즌 40','시즌 42'])assert(detail.includes(season));
  assert(detail.includes(c.body));assert.match(detail,/is-detail/);assert.doesNotMatch(detail,/class="creator-extra-tags"/);
  assert.doesNotMatch(preview,/data-cr="open"/);assert.equal(c.tags.length,6);assert.equal(c.badges.length,2);
+});
+
+
+test('card studio accepts presets and 12 ordered tags, but rejects CSS, external images and unsupported choices',()=>{
+ const tags=Array.from({length:12},(_,i)=>'태그'+i);
+ assert.deepEqual(normalizeCreator({...base(),tags},roster).tags,tags);
+ assert(CREATOR_TAGS.length>=40);assert.equal(new Set(CREATOR_TAGS).size,CREATOR_TAGS.length);
+ assert.deepEqual(normalizeCreator(base(),roster).appearance,CREATOR_APPEARANCE_DEFAULT);
+ for(const preset of Object.values(CREATOR_PRESETS)){
+  const value=normalizeCreator({...base(),color:preset.color,appearance:{...preset.appearance,portrait:'character',characterId:'c16',label:'매일 밤 9시'}},roster);
+  const card=creatorCard(value,characters);assert.match(card,/assets\/portraits\/c16.webp/);assert(card.includes('creator-pattern-'+preset.appearance.pattern));assert(card.includes('매일 밤 9시'));
+ }
+ for(const appearance of [null,[],{pattern:'url(https://evil.invalid)'},{css:'color:red'},{portrait:'external',image:'x'},{portrait:'character',characterId:'unknown'},{layout:'center\" onclick=\"x'},{label:'a'.repeat(25)}])assert.throws(()=>normalizeAppearance(appearance,roster));
+ const escaped=creatorCard({...base(),appearance:{label:'<img src=x>'}},characters);assert.match(escaped,/&lt;img src=x&gt;/);assert.doesNotMatch(escaped,/<img src=x/);
+ const form=creatorEditor({...base(),appearance:{...CREATOR_APPEARANCE_DEFAULT,frame:'dashed',layout:'right'}},characters);
+ assert.match(form,/name="appearance-frame" value="dashed" checked/);assert.match(form,/name="appearance-layout" value="right" checked/);assert.match(form,/최대 12개/);
 });

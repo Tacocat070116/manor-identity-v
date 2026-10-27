@@ -25,6 +25,11 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 .specialty-filter.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:650}
 .card-specialty{display:flex;flex-wrap:wrap;align-items:flex-start;align-content:flex-start;gap:4px 8px;min-height:20px;margin-top:var(--space-1);font-size:10px;line-height:16px}.card-role{position:relative;white-space:nowrap;padding:2px 0;font-weight:600;color:var(--accent)}.character-card .card-specialty,.character-card .card-bottom{margin-top:0;padding-top:0}
 .character-card .card-bottom{min-height:20px;line-height:20px}
+/* Match desktop's 6px row spacing without oversized mobile line boxes. */
+@media(max-width:640px){
+ .character-card .card-info{gap:6px}
+ .character-card .card-name,.character-card .card-specialty,.character-card .card-bottom{min-height:0;line-height:1.4;margin:0}
+}
 .tag.specialty-tag{position:relative;background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line);font-weight:600}
 .specialty-summary{display:flex;align-items:flex-start;gap:var(--space-4);margin-bottom:var(--section-space);padding:var(--space-5);border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-soft)}
 .specialty-summary-icon{display:grid;place-items:center;width:40px;height:40px;flex:0 0 40px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-control);color:var(--accent)}
