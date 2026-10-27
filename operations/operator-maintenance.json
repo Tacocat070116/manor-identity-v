@@ -1,0 +1,9 @@
+{
+  "entries": [
+    {
+      "baseCommit": "faa487c58833387fb05ec6a81fb58d9a995a2628",
+      "scope": "feedback-moderation",
+      "files": ["dist/feedback.js", "dist/feedback.css"]
+    }
+  ]
+}

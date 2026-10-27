@@ -4,7 +4,7 @@ import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './them
 import {statsFor, rankBans, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=e238acfa45e9';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=6e42e7bcdaf6';
-import {mountFeedback} from './feedback.js?v=476cf2cb3cae';
+import {mountFeedback} from './feedback.js?v=f084d6426a1b';
 import {mountMatchupTips} from './matchup-tips.js?v=cf5c74282a6e';
 import {mountCreators} from './creators.js';
 import {selectRanked} from './statistics-model.js?v=e196f7e6398c';

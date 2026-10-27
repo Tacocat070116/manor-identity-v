@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {validateReleaseLog,validateReleaseUpdate,compareVersions} from './release-tools.mjs';
+import {validateReleaseLog,validateReleaseUpdate,validateOperatorMaintenance,compareVersions} from './release-tools.mjs';
 
 const log=JSON.parse(fs.readFileSync('dist/releases.json','utf8'));
 const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
@@ -15,7 +15,15 @@ if(base&&!/^0+$/.test(base)){
  const added=git('ls-files','--others','--exclude-standard','--','dist');
  if(changed||added){
   const priorFiles=git('ls-tree','-r','--name-only',base).split('\n');
-  if(priorFiles.includes('dist/releases.json'))validateReleaseUpdate(log,JSON.parse(git('show',base+':dist/releases.json')));
+  if(priorFiles.includes('dist/releases.json')){
+   const previous=JSON.parse(git('show',base+':dist/releases.json'));
+   const entries=fs.existsSync('operations/operator-maintenance.json')?JSON.parse(fs.readFileSync('operations/operator-maintenance.json','utf8')).entries:[];
+   const entry=entries.find(entry=>entry.baseCommit===git('rev-parse',base));
+   if(entry&&log.version===previous.version){
+    const paths=[...new Set((changed+'\n'+added).split('\n').filter(Boolean))];
+    validateOperatorMaintenance(log,previous,entry,paths.map(path=>({path,before:priorFiles.includes(path)?git('show',base+':'+path):'',after:fs.existsSync(path)?fs.readFileSync(path,'utf8').trim():''})));
+   }else validateReleaseUpdate(log,previous);
+  }
   else assert.ok(compareVersions(log.version,JSON.parse(git('show',base+':package.json')).version)>0,'버전 관리 도입 시 사이트 버전을 올려야 합니다.');
  }
 }

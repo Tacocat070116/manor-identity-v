@@ -3,12 +3,49 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import {feedbackCard,feedbackComment,mountFeedback} from './dist/feedback.js';
+import {feedbackCard,feedbackComment,feedbackHistory,feedbackResponse,feedbackStatusForm,mountFeedback} from './dist/feedback.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
 const id='11111111-1111-4111-8111-111111111111',author={characterId:'c01',number:1,name:'거미 #001'};
 const post={id,title:'<img src=x onerror=alert(1)>',body:'<script>alert(1)</script>',category:'feature',status:'open',createdAt:1800000000000,updatedAt:1800000000000,author,upvotes:0,downvotes:0,myVote:0,commentCount:0};
 const chars={c01:{id:'c01',name:'거미',portrait:'assets/c01.png'}};
+test('response editing is owner-only and the status timeline contains tags and dates without answer text',()=>{
+ const p={...post,reason:'기존 <script>답변</script>',replyRevision:0,statusRevision:0};
+ const publicReply=feedbackResponse(p);assert(publicReply.includes('기존 &lt;script&gt;답변'));assert(!publicReply.includes('data-fb="edit-response"'));assert(!publicReply.includes('<form'));
+ const ownerReply=feedbackResponse(p,true);assert(ownerReply.includes('aria-label="운영자 답변 수정"'));assert(!ownerReply.includes('<textarea'));
+ const editor=feedbackResponse(p,true,true,'오타 수정 </textarea><img src=x>');assert(editor.includes('&lt;/textarea&gt;'));assert(editor.includes('data-fb-form="response"'));assert(!editor.includes('name="status"'));
+ assert(feedbackResponse({...p,reason:''},true).includes('답변 작성'));assert.equal(feedbackResponse({...p,reason:''}), '');
+ const statusForm=feedbackStatusForm(p);assert(statusForm.includes('name="status"'));assert(!statusForm.includes('textarea'));assert(!statusForm.includes('name="reason"'));
+ const history=feedbackHistory([{status:'planned',reason:'과거의 답변은 숨깁니다.',createdAt:1793070978114}]);
+ assert(history.includes('status-planned'));assert(history.includes('2026년 10월 27일 오후 12:16'));assert(!history.includes('과거의 답변'));assert(!history.includes('<p>'));
+});
+test('operator controller preserves a reply draft through a status save and saves replies without another status event',async()=>{
+ const previous={fetch:globalThis.fetch,FormData:globalThis.FormData},handlers={},calls=[];
+ const notice={textContent:'',hidden:true,classList:{toggle(){}}},slot={innerHTML:''},textarea={focus(){}};
+ let current={...post,reason:'기존 답변',replyRevision:0,statusRevision:0},history=[];
+ globalThis.FormData=class{constructor(form){this.values=form.values;}get(key){return this.values[key]??null;}};
+ globalThis.fetch=async(url,opts={})=>{
+  const body=opts.body?JSON.parse(opts.body):null;calls.push({url,opts,body});let data;
+  if(url.endsWith('/comments'))data={comments:[],nextAfter:null};
+  else if(url.endsWith('/reply')){current={...current,reason:body.reason,replyRevision:current.replyRevision+1};data={post:current};}
+  else if(url.endsWith('/status')){current={...current,status:body.status,statusRevision:current.statusRevision+1};history.push({status:body.status,createdAt:post.createdAt});data={post:current};}
+  else data={post:current,history,myAlias:null};
+  return {ok:true,json:async()=>structuredClone(data)};
+ };
+ const root={innerHTML:'',contains:()=>true,addEventListener:(key,fn)=>handlers[key]=fn,removeEventListener:key=>delete handlers[key],querySelector:s=>s==='.fb-notice'?notice:s==='.fb-response-slot'?slot:textarea};
+ const click=async fb=>{const button={dataset:{fb},isConnected:true};await handlers.click({target:{closest:()=>button},preventDefault(){}});};
+ const save=async(kind,values)=>{const form={dataset:{fbForm:kind},values,reportValidity:()=>true,querySelector:()=>({disabled:false,isConnected:false})};await handlers.submit({target:{closest:()=>form},preventDefault(){}});};
+ let dispose;
+ try{
+  dispose=mountFeedback(root,{postId:id,admin:true,origin:'https://feedback.example'});await new Promise(resolve=>setImmediate(resolve));
+  await click('edit-response');assert(slot.innerHTML.includes('기존 답변'));
+  handlers.input({target:{id:'fb-response-body',value:'오타를 고친 답변',closest:()=>null}});
+  await save('status',{status:'hold'});assert(root.innerHTML.includes('오타를 고친 답변'));assert.equal(current.reason,'기존 답변');assert.equal(history.length,1);
+  await save('response',{reason:'오타를 고친 답변'});assert(slot.innerHTML.includes('오타를 고친 답변'));assert(!slot.innerHTML.includes('<textarea'));assert.equal(current.status,'hold');assert.equal(history.length,1);
+  const writes=calls.filter(c=>c.opts.method==='PATCH');assert.deepEqual(writes.map(c=>c.body),[{status:'hold',revision:0},{reason:'오타를 고친 답변',revision:0}]);assert(writes.every(c=>c.opts.headers['X-Manor-Admin']==='1'&&c.opts.credentials==='same-origin'));
+  await click('edit-response');handlers.input({target:{id:'fb-response-body',value:'취소할 내용',closest:()=>null}});await click('cancel-response');assert(!slot.innerHTML.includes('취소할 내용'));assert.equal(calls.filter(c=>c.opts.method==='PATCH').length,2);
+ }finally{dispose?.();globalThis.fetch=previous.fetch;globalThis.FormData=previous.FormData;}
+});
 test('feedback and comment templates escape user text and never expose a public status editor',()=>{
  const card=feedbackCard(post,chars);assert(!card.includes('<script>'));assert(!card.includes('<img src=x'));assert(card.includes('&lt;script&gt;'));assert(!card.includes('data-fb-form="status"'));
  const comment=feedbackComment({id,author,body:'<svg onload=alert(1)>',createdAt:post.createdAt,isAuthor:true,isMine:false},chars);assert(comment.includes('&lt;svg'));assert(comment.includes('작성자'));assert(!comment.includes('data-fb="delete-comment"'));

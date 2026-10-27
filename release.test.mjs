@@ -5,9 +5,19 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import * as releaseUI from './dist/releases.js';
 import * as model from './dist/model.js';
-import {validateReleaseLog,validateReleaseUpdate} from './scripts/release-tools.mjs';
+import {validateReleaseLog,validateReleaseUpdate,validateOperatorMaintenance} from './scripts/release-tools.mjs';
 const read=path=>JSON.parse(fs.readFileSync('dist/'+path,'utf8'));
 const log=read('releases.json');
+
+test('operator maintenance keeps public history unchanged and cannot conceal unrelated assets or loader behavior',()=>{
+ const entry={scope:'feedback-moderation',files:['dist/feedback.js','dist/feedback.css']};
+ const changes=[{path:'dist/feedback.js',before:'old',after:'new'},{path:'dist/feedback.css',before:'old',after:'new'},{path:'dist/app.js',before:"import './feedback.js?v=old';",after:"import './feedback.js?v=new';"}];
+ validateOperatorMaintenance(log,structuredClone(log),entry,changes);
+ assert.throws(()=>validateOperatorMaintenance({...log,version:'9.0.0'},log,entry,changes),/공개 버전/);
+ assert.throws(()=>validateOperatorMaintenance(log,log,entry,[...changes,{path:'dist/data.json',before:'old',after:'new'}]),/공개 파일/);
+ assert.throws(()=>validateOperatorMaintenance(log,log,entry,[...changes,{path:'dist/app.js',before:'safe()',after:'other()'}]),/캐시 키/);
+ assert.throws(()=>validateOperatorMaintenance(log,log,{...entry,files:['dist/data.json']},changes),/범위/);
+});
 
 test('release validation rejects missing BETA, stale versions and lost history',()=>{
  validateReleaseLog(log,JSON.parse(fs.readFileSync('package.json')).version);

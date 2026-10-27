@@ -43,6 +43,19 @@ export function validateReleaseUpdate(current,previous){
  assert.ok(current.releases.some(release=>release.version===previous.version),'이전 버전 기록을 보존하세요.');
  assert.equal(current.openedAt,previous.openedAt,'확인된 사이트 오픈일을 보존하세요.');
 }
+export function validateOperatorMaintenance(current,previous,entry,changes){
+ assert.deepEqual(current,previous,'운영자 시스템 변경은 공개 버전과 패치 기록을 그대로 유지해야 합니다.');
+ assert.equal(entry.scope,'feedback-moderation');
+ const allowed=new Set(['dist/feedback.js','dist/feedback.css']);
+ assert.ok(entry.files?.length&&entry.files.every(file=>allowed.has(file)),'운영자 변경 범위를 확인하세요.');
+ const stripCache=text=>text.replace(/([./\w-]+\.(?:css|js|json))\?v=[\w.-]+/g,'$1?v=CACHE');
+ for(const change of changes){
+  if(entry.files.includes(change.path))continue;
+  assert.ok(['dist/index.html','dist/app.js'].includes(change.path),'운영자 변경 외의 공개 파일에는 새 패치 기록이 필요합니다: '+change.path);
+  assert.equal(stripCache(change.after),stripCache(change.before),'로더에는 캐시 키만 변경할 수 있습니다: '+change.path);
+ }
+ assert.ok(entry.files.every(file=>changes.some(change=>change.path===file)),'기록한 운영자 변경 파일과 실제 변경을 맞춰 주세요.');
+}
 export function refreshPackage(root=process.cwd()){
  const dist=path.join(root,'dist'),done=new Map(),visiting=new Set();
  const hash=buffer=>createHash('sha256').update(buffer).digest('hex');
