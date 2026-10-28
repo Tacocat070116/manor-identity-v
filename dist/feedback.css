@@ -7,6 +7,8 @@
 .fb-guide details{margin-top:var(--space-4);box-shadow:none}
 .fb-card .fb-person{flex-wrap:nowrap;overflow-wrap:anywhere}
 .fb-card .fb-person img{flex:0 0 32px}
+.fb-response-badge{display:inline-flex;align-items:center;gap:6px;margin-right:auto;padding:5px 9px;border:1px solid var(--accent-line);border-radius:var(--radius-small);background:var(--accent-soft);color:var(--fb-green);font-size:12px;font-weight:700;line-height:18px;white-space:nowrap}
+.fb-response-badge .fb-icon{width:16px;height:16px;stroke-width:2}
 
 @media(max-width:720px){.fb-heading h1{font-size:32px}.fb-heading>.btn{min-height:var(--control-height)}.fb-summary button{padding:16px 8px;gap:8px}.fb-summary strong{font-size:24px}.fb-heading{margin-top:0}.fb-card h2{font-size:18px;line-height:26px}.fb-card-meta{gap:8px 12px}.fb-toolbar{gap:8px}.feedback-board input,.feedback-board textarea{font-size:16px}.fb-comment-actions button{min-height:var(--control-height)}}
 /* The shared board uses the same liquid material as character and stats cards. */

@@ -51,6 +51,18 @@ test('feedback and comment templates escape user text and never expose a public 
  assert(card.startsWith('<a class="fb-card"'));assert.equal((card.match(/<a\b/g)||[]).length,1);assert(!card.includes('<button'));assert(card.includes('aria-labelledby="fb-card-title-'+id+'"'));assert(card.includes('댓글 0'));assert(!card.includes('data-fb="vote"'));
  const comment=feedbackComment({id,author,body:'<svg onload=alert(1)>',createdAt:post.createdAt,isAuthor:true,isMine:false},chars);assert(comment.includes('&lt;svg'));assert(comment.includes('작성자'));assert(!comment.includes('data-fb="delete-comment"'));
 });
+test('cards announce an operator reply independently of processing status or visitor comments',()=>{
+ for(const status of ['open','reviewing','planned','completed','hold']){
+  const answered=feedbackCard({...post,status,reason:'  확인했습니다. 검토를 진행할게요.  ',commentCount:0},chars);
+  assert(answered.includes('운영자 답변 완료'));assert(answered.includes('class="fb-response-badge"'));assert(answered.includes('fb-icon-check'));
+  assert(answered.includes(`aria-describedby="fb-card-response-${id}"`));assert(answered.includes(`id="fb-card-response-${id}"`));
+  assert(answered.includes(`status-${status}`));assert(answered.includes('댓글 0'));assert(!answered.includes('확인했습니다.'));
+  for(const reason of [undefined,null,'',' \n\t ']){
+   const unanswered=feedbackCard({...post,status,reason,commentCount:12},chars);
+   assert(!unanswered.includes('fb-response-badge'));assert(!unanswered.includes('aria-describedby'));assert(unanswered.includes('댓글 12'));
+  }
+ }
+});
 test('whole-card navigation opens once and preserves native modified clicks',async()=>{
  const previous=globalThis.fetch,handlers={},opened=[];globalThis.fetch=async()=>({ok:true,json:async()=>({posts:[post],counts:{open:1},total:1,nextPage:null})});
  const root={innerHTML:'',addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],contains:()=>true};
