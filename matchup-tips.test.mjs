@@ -29,7 +29,7 @@ test('controller reads anonymously, sends UID only in the submission body, and s
   assert(root.innerHTML.includes('운영자에게만 전달'));
   await handlers.submit({target:form,preventDefault(){}});
   const submitted=calls.find(c=>c.url.endsWith('/api/tips')&&c.opts.method==='POST');assert(submitted);const body=JSON.parse(submitted.opts.body);assert.equal(body.uid,tip.uid);assert.equal(body.privacyConsent,true);assert.equal(submitted.opts.credentials,'omit');assert.equal(submitted.opts.headers.Authorization,'Bearer '+'b'.repeat(64));
-  assert(!calls.some(c=>c.url.includes(tip.uid)||c.url.includes('PRIVATE-NOTE')));assert.deepEqual([...storage],[['manor-feedback-visitor','b'.repeat(64)]]);assert(!root.innerHTML.includes(tip.uid));assert(root.innerHTML.includes('내 제출 내역'));
+  assert(!calls.some(c=>c.url.includes(tip.uid)||c.url.includes('PRIVATE-NOTE')));assert.equal(storage.get('manor-feedback-visitor'),'b'.repeat(64));assert.deepEqual(JSON.parse(storage.get('manor-participation-profiles')).map(p=>p.token),['b'.repeat(64)]);assert(!JSON.stringify([...storage]).includes(tip.uid));assert(!JSON.stringify([...storage]).includes('PRIVATE-NOTE'));assert(!root.innerHTML.includes(tip.uid));assert(root.innerHTML.includes('내 제출 내역'));
   dispose();assert.deepEqual(Object.keys(handlers),[]);
  }finally{Object.assign(globalThis,original);}
 });

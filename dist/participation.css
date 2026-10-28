@@ -1,0 +1,24 @@
+.participation-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0;padding:16px 20px;border:1px solid var(--line);border-radius:18px;background:var(--surface-soft)}
+.participation-bar p{font-size:12px;line-height:1.8;color:var(--muted);margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.participation-bar .btn{flex-shrink:0;min-height:44px;white-space:nowrap}
+.participation-dialog{width:min(640px,calc(100% - 32px));max-height:calc(100svh - 32px);padding:0;border:1px solid var(--line);border-radius:24px;background:var(--surface-solid);color:var(--ink);box-shadow:var(--shadow);overflow:auto}
+.participation-dialog::backdrop{background:rgba(12,28,23,.45);backdrop-filter:blur(4px)}
+.participation-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.participation-dialog-head h2{font-size:20px;line-height:1.5;letter-spacing:-.025em;margin:0}
+.participation-dialog-body{padding:24px}
+.participation-dialog p{font-size:13px;line-height:1.85;color:var(--muted);word-break:keep-all;overflow-wrap:anywhere;margin:0 0 16px}
+.participation-dialog section{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}
+.participation-dialog h3{font-size:16px;line-height:1.6;margin:0 0 12px}
+.participation-dialog label{display:block;font-size:12px;font-weight:600;line-height:1.8;margin-bottom:14px}
+.participation-dialog input,.participation-dialog textarea{display:block;width:100%;min-height:48px;margin-top:8px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:12px;font-size:14px;line-height:1.7}
+.participation-dialog textarea{font-family:ui-monospace,monospace;overflow-wrap:anywhere;resize:none}
+.participation-actions,.participation-profiles{display:flex;flex-wrap:wrap;gap:10px}
+.participation-dialog .btn{min-height:44px;font-size:12px}
+.participation-dialog .participation-note{font-size:12px;margin-top:12px}
+.participation-dialog .participation-result{margin:24px 0 0;color:var(--accent);font-weight:600}
+.participation-dialog .participation-result:empty{display:none}
+.participation-dialog .is-error{color:var(--danger,#a33333)}
+.participation-tabs{display:flex;gap:8px;margin:16px 0}
+.participation-tabs button{min-height:44px;padding:10px 16px;border:1px solid var(--line);border-radius:14px;font-size:13px;background:var(--surface);color:var(--ink)}
+.participation-tabs button[aria-pressed=true]{background:var(--accent);color:var(--on-accent,#fff);border-color:var(--accent)}
+@media(max-width:640px){.participation-bar{flex-direction:column;align-items:stretch;padding:16px;gap:12px}.participation-bar .btn{align-self:flex-start}.participation-dialog-head,.participation-dialog-body{padding:20px}.participation-dialog-head h2{font-size:18px}.participation-dialog input{font-size:16px}}
