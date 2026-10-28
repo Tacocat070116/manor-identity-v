@@ -43,12 +43,13 @@ test('history lists every entry, searches with type filters and escapes text',()
 });
 
 test('patchnotes deep link, shared version, filters and return navigation work in the app',async()=>{
- const nodes=new Map(),handlers={},fetches=[],views=[],creatorMounts=[];let creatorDisposals=0;
+ const nodes=new Map(),handlers={},fetches=[],views=[],creatorMounts=[],recoveryMounts=[];let creatorDisposals=0,recoveryDisposals=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
  const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
   mountCreators:(root,options)=>{creatorMounts.push({root,options});return ()=>creatorDisposals++;},
+  mountRecoveryPage:root=>{recoveryMounts.push(root);return ()=>recoveryDisposals++;},
   mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
@@ -58,12 +59,13 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
  const header=nodes.get('#header').innerHTML;
- assert.equal((header.match(/class="nav-item /g)||[]).length,8,'desktop and mobile share eight links including the creator board');
+ assert.equal((header.match(/class="nav-item /g)||[]).length,9,'desktop and mobile share nine links including recovery');
+ assert.ok(header.includes('href="#v=recovery"'));
  assert.ok(header.includes('aria-controls="category-panel"'));
  for(const selector of ['#header','#footer','#page-body'])assert.ok(!nodes.get(selector).innerHTML.includes('#v=gamepatches'),'game-patch links are removed from '+selector);
  assert.ok(header.includes('aria-expanded="false"'));
  assert.ok(header.includes('aria-hidden="true" inert'));
- assert.equal((header.match(/tabindex="-1"/g)||[]).length,8);
+ assert.equal((header.match(/tabindex="-1"/g)||[]).length,9);
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
  assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>url.startsWith('patches/')));assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
@@ -79,4 +81,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.equal(context.document.title,'유튜브 채널 BETA · MANOR');assert.equal(creatorMounts.length,1);assert.equal(creatorMounts[0].options.postId,'11111111-1111-4111-8111-111111111111');
  creatorMounts[0].options.navigate();assert.equal(context.location.hash,'#v=creators');
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(creatorDisposals,1);
+ context.location.hash='#v=recovery';context.app.readRoute();await context.app.render();
+ assert.equal(context.document.title,'복구 코드 · MANOR');assert.equal(recoveryMounts.length,1);
+ context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(recoveryDisposals,1);
 });

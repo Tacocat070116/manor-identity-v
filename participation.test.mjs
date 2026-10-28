@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {createParticipationStore,recoveryCode,recoveryToken} from './dist/participation.js';
+import {createParticipationStore,recoveryCode,recoveryToken,issueRecoveryCode,recoveryPanel} from './dist/participation.js';
 const a='a'.repeat(64),b='b'.repeat(64),key='manor-feedback-visitor';
 function storage(initial={}){const values=new Map(Object.entries(initial));return {values,getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,v),removeItem:k=>values.delete(k)};}
 const valid=async()=>new Response(JSON.stringify({connected:true}),{headers:{'Content-Type':'application/json'}});
@@ -10,7 +10,7 @@ const options={origin:'https://feedback.example',fetcher:valid};
 
 test('all public participation features load the same current identity module URL',()=>{
  const digest=createHash('sha256').update(fs.readFileSync('dist/participation.js')).digest('hex').slice(0,12);
- for(const file of ['feedback.js','matchup-tips.js','creators.js']){
+ for(const file of ['app.js','feedback.js','matchup-tips.js','creators.js']){
   const source=fs.readFileSync('dist/'+file,'utf8');
   assert(source.includes("from './participation.js?v="+digest+"'"),file+' must share one module instance');
  }
@@ -72,4 +72,52 @@ test('storage failure does not silently replace a current profile; first-time me
 test('an identity removed by another tab is not resurrected from stale memory',async()=>{
  const target=storage({[key]:a}),one=createParticipationStore({storage:()=>target}),two=createParticipationStore({storage:()=>target});
  assert.equal(one.read(),a);await two.invalidate(a);assert.equal(one.read(),'');
+});
+
+test('issuing before writing creates one server identity; repeated issuance preserves authorship',async()=>{
+ const target=storage(),identity=createParticipationStore({storage:()=>target});let requests=[];
+ const fetcher=async(url,init)=>{requests.push({url,init});await new Promise(r=>setImmediate(r));return new Response(JSON.stringify({token:a}),{headers:{'Content-Type':'application/json'}});};
+ assert.deepEqual(await Promise.all([issueRecoveryCode({store:identity,...options,fetcher}),issueRecoveryCode({store:identity,...options,fetcher})]),[a,a]);
+ assert.equal(requests.length,1);assert.equal(requests[0].url,options.origin+'/api/feedback/visitors');
+ assert.equal(requests[0].init.method,'POST');assert.equal(requests[0].init.credentials,'omit');assert.equal(requests[0].init.redirect,'error');
+ assert.equal(identity.backedUp(),false);
+ const reloaded=createParticipationStore({storage:()=>target});
+ assert.equal(await issueRecoveryCode({store:reloaded,fetcher:()=>{throw Error('must reuse current identity');}}),a);
+ assert.equal(await reloaded.ensure(()=>{throw Error('writing must reuse issued identity');}),a);
+});
+
+test('failed or cancelled issuance never persists an unverified or abandoned code',async()=>{
+ const attempts=[
+  async()=>new Response('{}',{status:429}),async()=>new Response('{}',{status:503}),
+  async()=>new Response('<h1>Login</h1>',{headers:{'Content-Type':'text/html'}}),
+  async()=>new Response('{',{headers:{'Content-Type':'application/json'}}),
+  async()=>new Response('{"token":"invalid"}',{headers:{'Content-Type':'application/json'}}),
+  async()=>{throw new TypeError('offline');},
+  async()=>({ok:true,redirected:true,headers:new Headers({'Content-Type':'application/json'}),json:async()=>({token:a})}),
+ ];
+ for(const fetcher of attempts){const target=storage(),identity=createParticipationStore({storage:()=>target});await assert.rejects(issueRecoveryCode({store:identity,...options,fetcher}));assert.equal(identity.read(),'');assert.equal(target.values.size,0);}
+ const target=storage(),identity=createParticipationStore({storage:()=>target}),controller=new AbortController();
+ await assert.rejects(issueRecoveryCode({store:identity,...options,signal:controller.signal,fetcher:async()=>{controller.abort();return new Response(JSON.stringify({token:a}),{headers:{'Content-Type':'application/json'}});}}),{name:'AbortError'});
+ assert.equal(identity.read(),'');assert.equal(target.values.size,0);
+});
+
+test('a new code restores in another browser before the first post; backup acknowledgment belongs to the displayed identity',async()=>{
+ const target=storage(),identity=createParticipationStore({storage:()=>target});
+ await issueRecoveryCode({store:identity,fetcher:async()=>new Response(JSON.stringify({token:a}),{headers:{'Content-Type':'application/json'}})});
+ const otherStorage=storage(),other=createParticipationStore({storage:()=>otherStorage});await other.connect(recoveryCode(identity.read()),options);assert.equal(other.read(),a);
+ assert.equal(other.backedUp(),false);assert.equal(other.markBackedUp(a),true);assert.equal(other.backedUp(),true);
+ await other.connect(recoveryCode(b),options);assert.equal(other.markBackedUp(a),false);assert.equal(other.backedUp(),false);
+ assert.equal(other.profiles().find(p=>p.token===a).backedUp,true);
+});
+
+test('recovery screens keep secrets out of markup and require explicit backup confirmation',()=>{
+ const initial=recoveryPanel();assert.match(initial,/복구 코드 발급받기/);assert.doesNotMatch(initial,/data-recovery-code/);
+ for(const revealed of [false,true]){
+  const html=recoveryPanel({current:a,revealed,profiles:[{token:a,createdAt:Date.now()},{token:b,createdAt:Date.now()}]});
+  assert(!html.includes(a));assert(!html.includes(recoveryCode(a)));
+  if(revealed){assert.match(html,/data-recovery-confirm/);assert.match(html,/data-recovery="saved" disabled/);}
+ }
+ const restored=recoveryPanel({current:a,mode:'connect',profiles:[{token:a,createdAt:Date.now()},{token:b,createdAt:Date.now()}]});
+ assert(!restored.includes(a));assert(!restored.includes(b));assert.match(restored,/type="password"/);
+ assert.match(recoveryPanel({persistent:false}),/role="alert"/);
 });
