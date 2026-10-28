@@ -602,7 +602,7 @@
       "before": "가속 오르골",
       "after": "빠른 리듬 오르골",
       "sources": [
-        "KOREAN-MUSICBOX"
+        "FOLLOWUP-F022"
       ],
       "scopes": [
         "c54"
@@ -717,7 +717,7 @@
       "before": "감시 장치",
       "after": "모니터",
       "sources": [
-        "R014"
+        "FOLLOWUP-F013"
       ],
       "scopes": [
         "c03"
@@ -727,7 +727,7 @@
       "before": "날개",
       "after": "바람 날개",
       "sources": [
-        "R015"
+        "FOLLOWUP-F014"
       ],
       "scopes": [
         "c04"
@@ -757,7 +757,7 @@
       "before": "유영",
       "after": "회유",
       "sources": [
-        "R017"
+        "FOLLOWUP-K20210628"
       ],
       "scopes": [
         "c06"
@@ -767,7 +767,7 @@
       "before": "물길",
       "after": "물웅덩이",
       "sources": [
-        "R017"
+        "FOLLOWUP-K20210628"
       ],
       "scopes": [
         "c06"
@@ -797,7 +797,7 @@
       "before": "마의 음",
       "after": "마력의 음색",
       "sources": [
-        "R024"
+        "FOLLOWUP-F015"
       ],
       "scopes": [
         "c13"
@@ -807,7 +807,7 @@
       "before": "갈고리",
       "after": "갈퀴 사슬",
       "sources": [
-        "R027"
+        "FOLLOWUP-K20210916"
       ],
       "scopes": [
         "c17"
@@ -820,7 +820,7 @@
       "before": "마비 영역",
       "after": "마비 구역",
       "sources": [
-        "R028"
+        "FOLLOWUP-F017"
       ],
       "scopes": [
         "c18"
@@ -830,7 +830,7 @@
       "before": "흡혼",
       "after": "섭혼",
       "sources": [
-        "R032"
+        "FOLLOWUP-K20210628"
       ],
       "scopes": [
         "c26"
@@ -840,7 +840,7 @@
       "before": "우리 반대편",
       "after": "케이지 반대편",
       "sources": [
-        "R035"
+        "FOLLOWUP-F019"
       ],
       "scopes": [
         "c31"
@@ -850,7 +850,7 @@
       "before": "붕괴 구역",
       "after": "불안정 구역",
       "sources": [
-        "R037"
+        "FOLLOWUP-F020"
       ],
       "scopes": [
         "c35"
@@ -870,7 +870,7 @@
       "before": "독침",
       "after": "벌침",
       "sources": [
-        "R034"
+        "FOLLOWUP-F021"
       ],
       "scopes": [
         "c24"
@@ -880,7 +880,7 @@
       "before": "벌떼",
       "after": "곤충 떼",
       "sources": [
-        "R034"
+        "FOLLOWUP-F021"
       ],
       "scopes": [
         "c24"
@@ -890,7 +890,7 @@
       "before": "벌 떼",
       "after": "곤충 떼",
       "sources": [
-        "R034"
+        "FOLLOWUP-F021"
       ],
       "scopes": [
         "c24"
@@ -940,7 +940,7 @@
       "before": "암호문",
       "after": "암호 페이지",
       "sources": [
-        "R044"
+        "FOLLOWUP-K20210916"
       ],
       "scopes": [
         "c51"
@@ -963,7 +963,7 @@
       "before": "무감각",
       "after": "두려움 상실",
       "sources": [
-        "R023"
+        "R049"
       ],
       "scopes": [
         "c68"
@@ -1003,7 +1003,7 @@
       "before": "꾸러미",
       "after": "행운보따리",
       "sources": [
-        "R048"
+        "FOLLOWUP-K20210916"
       ],
       "scopes": [
         "c85"
@@ -1126,7 +1126,7 @@
         "c24"
       ],
       "sources": [
-        "R034"
+        "FOLLOWUP-F021"
       ]
     },
     {
@@ -1204,7 +1204,8 @@
       "after": "판자 사용 · 사필안은 긴 공격 사거리 때문에 판자에 붙어 기절만 노리기 어렵습니다. 범무구는 탕백으로 기절시킬 수 있으므로, 두 형태 모두 여유 있을 때 판자를 씁니다.",
       "sources": [
         "R029",
-        "R032"
+        "R032",
+        "R006"
       ],
       "reason": "형태와 스킬 이름을 구별한다."
     },
@@ -1213,7 +1214,9 @@
       "after": "구출 · 의자에서 먼 곳에서 먼저 맞지 않도록 일찍 우회해 접근합니다. 사필안의 섭혼에 당하면 구출할 수 없고, 범무구의 탕백은 구출을 끊을 수 있으므로 의자 도착 시간에 여유가 필요합니다.",
       "sources": [
         "R029",
-        "R032"
+        "R032",
+        "FOLLOWUP-K20210628",
+        "R006"
       ],
       "reason": "흡혼/섭혼 혼용을 없애고 색상 별칭 대신 형태 이름을 사용한다."
     },
@@ -1229,7 +1232,8 @@
       "path": "data/characters/15/skill",
       "after": "물거울을 기준으로 본체와 대칭인 거울상을 만들어 지형 너머를 공격합니다. 물거울이 유지되는 동안 위치를 교환해 추격 방향을 바꿀 수 있습니다.",
       "sources": [
-        "R026"
+        "R026",
+        "FOLLOWUP-F016"
       ],
       "reason": "설치물과 공격하는 거울상을 구별한다."
     },
@@ -1237,7 +1241,8 @@
       "path": "data/characters/12/strengths/1",
       "after": "마력의 음색 누적으로 행동 방해",
       "sources": [
-        "R024"
+        "R024",
+        "FOLLOWUP-F015"
       ],
       "reason": "같은 상태 이름으로 통일한다."
     },
@@ -1245,7 +1250,8 @@
       "path": "data/characters/17/strengths/2",
       "after": "위협으로 소지품 사용 방해",
       "sources": [
-        "R028"
+        "R028",
+        "FOLLOWUP-F018"
       ],
       "reason": "정의되지 않은 침묵 대신 능력 이름과 효과를 적는다."
     },
@@ -1253,7 +1259,8 @@
       "path": "data/characters/71/skill",
       "after": "망각의 향을 사용한 순간의 위치와 상태로 되돌아갑니다. 그사이에 받은 피해를 회복하거나 이동 경로를 바꾸는 데 활용합니다.",
       "sources": [
-        "R048"
+        "R048",
+        "FOLLOWUP-K20210916"
       ],
       "reason": "설명 첫머리에 소지품의 전체 이름을 적는다."
     },
@@ -1261,7 +1268,8 @@
       "path": "data/characters/83/skill",
       "after": "해신의 회중시계로 실제 위치와 다르게 보이는 모습을 만들어 구출 위치에 접근합니다. 회중시계를 연속으로 사용할 때마다 효과가 닿는 거리가 달라집니다.",
       "sources": [
-        "R048"
+        "R048",
+        "FOLLOWUP-K20210916"
       ],
       "reason": "설명 첫머리에 소지품의 전체 이름을 적는다."
     },
@@ -1314,7 +1322,8 @@
       "after": "사필안의 섭혼과 진혼산을 이용한 이동으로 다시 접근할 수 있어 지형과 갈고리 잔량을 함께 봐야 합니다.",
       "sources": [
         "K20220630",
-        "R029"
+        "R029",
+        "FOLLOWUP-K20210628"
       ],
       "reason": "진혼산이라는 소지품과 이동 행동을 구분하고 목적지와 조사를 자연스럽게 연결한다."
     },
@@ -2108,10 +2117,198 @@
         "느린 리듬 오르골"
       ],
       "scope": "한국어 게임 툴팁 전재본. 느린 리듬은 별도 공식 공지에서도 대조."
+    },
+    {
+      "id": "FOLLOWUP-K20210628",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210628/35362_956486.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "회유",
+        "물웅덩이",
+        "갈퀴 사슬",
+        "섭혼"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "FOLLOWUP-K20210805",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210805/35362_964195.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "맹인용 지팡이"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "FOLLOWUP-K20210916",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "진정제",
+        "망각의 향",
+        "해신의 회중시계",
+        "행운보따리",
+        "암호 페이지",
+        "갈퀴 사슬"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "FOLLOWUP-K20220616",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220616/35362_1024405.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "기억 동기화",
+        "비늘 표피"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "FOLLOWUP-F013",
+      "url": "https://www.facebook.com/identity5kr/posts/358624821372354/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "모니터"
+      ],
+      "scope": "공식 계정 게시물의 검색 색인 문구를 확인했으며 전체 본문 직접 열람으로 표기하지 않는다.",
+      "report": "hunters-a/fb-madeyes-launch"
+    },
+    {
+      "id": "FOLLOWUP-F014",
+      "url": "https://www.facebook.com/identity5kr/posts/375528859681950/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "바람 날개"
+      ],
+      "scope": "바람 날개만 명시적으로 확인. 이 출처가 개조 드릴까지 입증한다고 확장하지 않는다. 직접 열기는 fetch throttled로 실패했다.",
+      "report": "hunters-a/fb-clown-wings"
+    },
+    {
+      "id": "FOLLOWUP-F015",
+      "url": "https://www.facebook.com/identity5kr/videos/552979998975268/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "마력의 음색"
+      ],
+      "scope": "영상 게시물의 검색 색인 본문에서 용어를 확인. 영상 자체의 한국어 프레임을 판독한 것은 아니다.",
+      "report": "hunters-a/fb-violinist-launch"
+    },
+    {
+      "id": "FOLLOWUP-F016",
+      "url": "https://x.com/identity5kr/status/1751930688948064354",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "물거울"
+      ],
+      "scope": "스킨 소개에서도 물거울이라는 한국어 명칭을 사용한다는 증거. 본문 open은 내용 없는 0행 결과였고, 검색 색인의 문구를 확인했다.",
+      "report": "hunters-a/x-bloodyqueen-mirror"
+    },
+    {
+      "id": "FOLLOWUP-F017",
+      "url": "https://www.facebook.com/identity5kr/posts/599744180593749/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "마비 구역"
+      ],
+      "scope": "검색 색인에서 대괄호로 구분된 명칭을 직접 확인. 최신 범위·지속시간은 검증하지 않았다.",
+      "report": "hunters-a/fb-ann-zone-launch"
+    },
+    {
+      "id": "FOLLOWUP-F018",
+      "url": "https://www.facebook.com/identity5kr/posts/822236531677845/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "위협"
+      ],
+      "scope": "위협이라는 행동/효과 표현의 공식 사용을 확인한다. 독립된 스킬 제목이 위협이라는 주장은 이 근거만으로 확정하지 않는다. 과거의 제한 시간과 현재 수치는 구별한다.",
+      "report": "hunters-a/fb-ann-threat-update"
+    },
+    {
+      "id": "FOLLOWUP-F019",
+      "url": "https://x.com/identity5kr/status/1821745133097824690",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "케이지"
+      ],
+      "scope": "Confirms object name and broad opposite-side movement wording. Do not derive extra cooldown/boundary rules from the short promotional text.",
+      "report": "hunters-b/HB-F04"
+    },
+    {
+      "id": "FOLLOWUP-F020",
+      "url": "https://www.youtube.com/watch?v=hun9-Sn1wgE",
+      "kind": "official-ko",
+      "verification": "video-description",
+      "supports": [
+        "불안정 구역"
+      ],
+      "scope": "Preview title uses the earlier character label 사기꾼 같은 놈; do not change the current character name 파이라이트. The name 불안정 구역 itself is directly present in the official description.",
+      "report": "hunters-b/HB-F05"
+    },
+    {
+      "id": "FOLLOWUP-F021",
+      "url": "https://x.com/identity5kr/status/1989571305604293028",
+      "kind": "official-ko",
+      "verification": "video-frame",
+      "supports": [
+        "곤충 떼",
+        "벌침"
+      ],
+      "scope": "The post explicitly treats final game implementation as authoritative. This confirms names in the official Korean preview, not all current resource numbers/timings.",
+      "report": "hunters-b/HB-F01"
+    },
+    {
+      "id": "FOLLOWUP-F022",
+      "url": "https://www.facebook.com/identity5kr/videos/7%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EC%99%84%EB%A3%8C-%EA%B3%B5%EC%A7%80%EC%9D%BC%EB%B6%80-%EB%82%B4%EC%9A%A9-%EC%B6%94%EA%B0%80%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%847%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-/894664374270409/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "빠른 리듬 오르골",
+        "빠른 리듬의 오르골"
+      ],
+      "scope": "Primary indexed wording supports current 빠른 리듬 오르골 naming. The presence of 조사 '의' is a prose variation, not proof of a distinct item.",
+      "report": "survivors-a/FA06"
+    },
+    {
+      "id": "FOLLOWUP-F023",
+      "url": "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-31%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-12%EC%9B%94-31%EC%9D%BC-%EC%A0%90%EA%B2%80-%EB%82%B4%EC%9A%A9%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%BA%90%EB%A6%AD/402268734432056/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "크리켓 배트"
+      ],
+      "scope": "공식 계정 게시물의 색인 확인 수준. 현재 인게임 화면 직접 판독이나 전문 열람으로 표시하면 안 됨.",
+      "report": "survivors-b/ko-facebook-batter"
+    },
+    {
+      "id": "FOLLOWUP-F024",
+      "url": "https://x.com/identity5kr/status/2043177290197094642",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "렌즈"
+      ],
+      "scope": "The fetched post/description does not state 광선 치료 구역, 광막 or 구강경 and says nothing about seeing through walls. 렌즈 is used in official ordinary explanatory prose, so it should not automatically be replaced with a different item noun.",
+      "report": "hunters-b/HB-F07"
     }
   ],
   "limitations": [
     "기존 상성의 우위·승률·게임 수치를 전면 재검증한 작업은 아니다.",
     "공식 한국어 자료를 직접 확인한 명칭과 한국어 게임 설명 전재본에서 대조한 명칭의 근거 수준을 구분해 기록한다."
-  ]
+  ],
+  "sourceReview": {
+    "reviewedAt": "2026-10-27",
+    "record": "research/localization/2026-10-27-followup/source-amendments.json",
+    "note": "명칭별 출처만 후속 보강. 최초 문장 변경 이력은 그대로 유지."
+  }
 }

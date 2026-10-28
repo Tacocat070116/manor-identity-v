@@ -1,0 +1,376 @@
+{
+  "scope": "c03/c04/c06/c07/c11/c12/c13/c14/c16/c17/c18의 공식 한국어 용어 후속 근거 조사",
+  "checkedAt": "2026-10-27",
+  "previousReport": "research/localization/2026-10-27/hunters-a.json",
+  "changesToSite": false,
+  "verificationLevels": {
+    "official-web-body": "공식 홈페이지의 한국어 본문을 실제로 읽고 정확한 캐릭터와 용어가 함께 등장하는지 확인",
+    "official-post-search-index": "공식 계정 원게시물의 검색 색인에서 정확한 문구 확인. 원문 전체 열람/영상 프레임 판독과 구분",
+    "official-term-not-verified": "정확한 명칭의 공식 1차 근거를 이번 조사에서 확보하지 못함. 이전 2차 근거를 공식으로 격상하지 않음"
+  },
+  "summary": {
+    "termsChecked": 14,
+    "officialWebBodyTerms": 3,
+    "officialPostIndexTerms": 6,
+    "unverifiedTerms": 5,
+    "currentNumericChangesProposed": 0
+  },
+  "terms": [
+    {
+      "characterId": "c03",
+      "characterName": "광기의 눈",
+      "term": "모니터",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "fb-madeyes-launch"
+      ],
+      "assessment": "공식 능력 소개의 검색 색인에서 명칭 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c04",
+      "characterName": "광대",
+      "term": "바람 날개",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "fb-clown-wings"
+      ],
+      "assessment": "공식 업데이트 문구에서 광대의 부품명 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c04",
+      "characterName": "광대",
+      "term": "개조 드릴",
+      "verificationLevel": "official-term-not-verified",
+      "evidenceIds": [],
+      "assessment": "공식 광대 소개 게시물을 찾았지만 해당 용어가 드러난 1차 문구/이미지는 확인하지 못함",
+      "officialTermObserved": false,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c06",
+      "characterName": "나이아스",
+      "term": "회유",
+      "verificationLevel": "official-web-body",
+      "evidenceIds": [
+        "ko-naiad-launch"
+      ],
+      "assessment": "공식 신규 감시자 능력 설명에서 상태명을 대괄호와 함께 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c06",
+      "characterName": "나이아스",
+      "term": "물웅덩이",
+      "verificationLevel": "official-web-body",
+      "evidenceIds": [
+        "ko-naiad-launch"
+      ],
+      "assessment": "공식 능력 설명에서 경로에 생기는 물 구역의 명칭 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c07",
+      "characterName": "나이트 워치",
+      "term": "바람의 힘",
+      "verificationLevel": "official-term-not-verified",
+      "evidenceIds": [],
+      "assessment": "공식 캐릭터 페이지는 인물 배경만 제공. 정확한 자원명의 1차 근거 미확보",
+      "officialTermObserved": false,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c11",
+      "characterName": "마음의 짐승",
+      "term": "추적 표식",
+      "verificationLevel": "official-term-not-verified",
+      "evidenceIds": [],
+      "assessment": "공식 X의 스킬 소개 게시물 존재는 확인했으나 표식명 자체가 보이는 문구/프레임은 확인하지 못함",
+      "officialTermObserved": false,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c12",
+      "characterName": "밀랍인형사",
+      "term": "밀랍옷",
+      "verificationLevel": "official-term-not-verified",
+      "evidenceIds": [],
+      "assessment": "밀랍인형사라는 정확한 캐릭터 범위로 조사. 인형사와의 부분 문자열 일치는 배제. 공식 능력 제목 근거는 미확보",
+      "officialTermObserved": false,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c13",
+      "characterName": "바이올리니스트",
+      "term": "마력의 음색",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "fb-violinist-launch",
+        "fb-violinist-description"
+      ],
+      "assessment": "공식 신규 능력 소개와 스킬 설명 수정 공지의 색인에서 같은 명칭 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c14",
+      "characterName": "박사",
+      "term": "에너지 부하",
+      "verificationLevel": "official-term-not-verified",
+      "evidenceIds": [],
+      "assessment": "공식 공지에는 에너지·에너지 전환·에너지 폭발 상태가 등장하지만 에너지 부하 전체 표현은 확인하지 못함",
+      "officialTermObserved": false,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c16",
+      "characterName": "블러디 퀸",
+      "term": "물거울",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "x-bloodyqueen-mirror"
+      ],
+      "assessment": "공식 X에서 블러디 퀸의 물거울로 명시",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c17",
+      "characterName": "사냥터지기",
+      "term": "갈퀴 사슬",
+      "verificationLevel": "official-web-body",
+      "evidenceIds": [
+        "ko-naiad-launch",
+        "ko-gamekeeper-2021"
+      ],
+      "assessment": "공식 웹 공지 두 건에서 사냥터지기의 장비명 직접 확인. 환자의 갈고리와 구분",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c18",
+      "characterName": "사도",
+      "term": "마비 구역",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "fb-ann-zone-launch"
+      ],
+      "assessment": "공식 사도 능력 소개의 대괄호 명칭 확인",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    },
+    {
+      "characterId": "c18",
+      "characterName": "사도",
+      "term": "위협",
+      "verificationLevel": "official-post-search-index",
+      "evidenceIds": [
+        "fb-ann-threat-update"
+      ],
+      "assessment": "공식 효과 설명에 사용됨. 독립 스킬명으로의 확정은 보류",
+      "officialTermObserved": true,
+      "currentMechanicsVerified": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ko-naiad-launch",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210628/35362_956486.html",
+      "title": "점검 공지사항 — 신규 감시자 나이아스 능력 소개",
+      "official": true,
+      "verificationLevel": "official-web-body",
+      "terms": [
+        "회유",
+        "물웅덩이",
+        "갈퀴 사슬"
+      ],
+      "shortSupportingExcerpt": "작살을 던진 후 그레이스는 회유 상태에 진입합니다. [물웅덩이] / 사냥터지기의 갈퀴 사슬",
+      "readMethod": "부모가 수집한 공식 HTML 본문 텍스트와 공개 공지 API의 code=956486 URL을 함께 대조",
+      "localSource": "/workspace/scratch/manor-official-ko-archive/956486.txt",
+      "sourceDate": "2021-06-28",
+      "limitations": "2021년의 명칭과 당시 기전만 확인. 수치 및 현행 효과를 최신 정보로 승격하지 않는다."
+    },
+    {
+      "id": "ko-gamekeeper-2021",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+      "title": "2021년 9월 16일 업데이트 내용",
+      "official": true,
+      "verificationLevel": "official-web-body",
+      "terms": [
+        "갈퀴 사슬"
+      ],
+      "shortSupportingExcerpt": "사냥터지기의 갈퀴 사슬이 벽에 명중한 뒤",
+      "readMethod": "공식 HTML 본문 텍스트 및 공개 공지 API의 code=972616 URL 대조",
+      "localSource": "/workspace/scratch/manor-official-ko-archive/972616.txt",
+      "sourceDate": "2021-09-16",
+      "limitations": "명칭을 확인하는 보강 자료. 해당 버그의 현행 재현 여부는 검증하지 않았다."
+    },
+    {
+      "id": "fb-madeyes-launch",
+      "url": "https://www.facebook.com/identity5kr/posts/358624821372354/",
+      "title": "11월 29일 업데이트 완료 공지 — 광기의 눈(발크) 합류",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "모니터"
+      ],
+      "shortSupportingExcerpt": "스틱을 움직여 구역 내의 모니터를 빠르게 움직일 수 있으며",
+      "searchRef": "turn124search0",
+      "searchQuery": "site:facebook.com/identity5kr \"모니터\" \"광기의\"",
+      "characterMatch": "게시물 제목에서 광기의 눈(발크)을 명시. 일반 컴퓨터 모니터를 말하는 X 게시물과 구별했다.",
+      "urlNormalization": "검색 결과의 긴 제목 슬러그만 제거하고 같은 게시물 ID를 보존",
+      "limitations": "공식 계정 게시물의 검색 색인 문구를 확인했으며 전체 본문 직접 열람으로 표기하지 않는다."
+    },
+    {
+      "id": "fb-clown-wings",
+      "url": "https://www.facebook.com/identity5kr/posts/375528859681950/",
+      "title": "2019년 첫 업데이트 완료 공지",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "바람 날개"
+      ],
+      "shortSupportingExcerpt": "조커 바람 날개 부품 사용 시 공격 속도 증가 버프를 감소",
+      "searchRef": "turn110search7",
+      "searchQuery": "\"제5인격\" \"바람 날개\" 공식",
+      "characterMatch": "조커의 부품 설명. 우는 광대의 캐릭터명이 아니라 기존 감시자 광대의 부품 문맥이다.",
+      "urlNormalization": "검색 결과의 제목 슬러그만 제거하고 같은 게시물 ID를 보존",
+      "limitations": "바람 날개만 명시적으로 확인. 이 출처가 개조 드릴까지 입증한다고 확장하지 않는다. 직접 열기는 fetch throttled로 실패했다."
+    },
+    {
+      "id": "fb-violinist-launch",
+      "url": "https://www.facebook.com/identity5kr/videos/552979998975268/",
+      "title": "5월 14일 업데이트 완료 공지 — 안토니오 스킬 설명",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "마력의 음색"
+      ],
+      "shortSupportingExcerpt": "안토니오의 스킬에 명중된 생존자는 마력의 음색에 중첩 감염됩니다.",
+      "searchRef": "turn120search0",
+      "searchQuery": "site:facebook.com/identity5kr \"마력\"",
+      "characterMatch": "안토니오 및 바이올린으로 캐릭터 일치 확인",
+      "urlNormalization": "검색 결과의 제목 슬러그와 locale 쿼리만 제거하고 같은 동영상 ID를 보존",
+      "limitations": "영상 게시물의 검색 색인 본문에서 용어를 확인. 영상 자체의 한국어 프레임을 판독한 것은 아니다."
+    },
+    {
+      "id": "fb-violinist-description",
+      "url": "https://it-it.facebook.com/identity5kr/posts/681478055753694",
+      "title": "5월 28일 점검 내용 — 바이올리니스트 스킬 설명 최적화",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "마력의 음색"
+      ],
+      "shortSupportingExcerpt": "바이올리니스트의 스킬 설명을 최적화하였습니다: [마력의 음색이 대문을 여는 속도에 영향을 미칩니다]",
+      "searchRef": "turn120search6",
+      "characterMatch": "바이올리니스트를 명시",
+      "limitations": "같은 공식 계정의 지역화 호스트. 검색 색인에 문구가 있으나 열린 본문은 접근 제한 안내였다. 최신 효과/수치의 근거로 사용하지 않는다."
+    },
+    {
+      "id": "x-bloodyqueen-mirror",
+      "url": "https://x.com/identity5kr/status/1751930688948064354",
+      "title": "블러디 퀸 희망의 잔상 스킨 소개",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "물거울"
+      ],
+      "shortSupportingExcerpt": "단두대를 연상시키는 물거울을 보니",
+      "searchRef": "turn112search1",
+      "searchQuery": "site:x.com/identity5kr \"물거울\"",
+      "characterMatch": "제목과 문구에 블러디 퀸을 명시",
+      "limitations": "스킨 소개에서도 물거울이라는 한국어 명칭을 사용한다는 증거. 본문 open은 내용 없는 0행 결과였고, 검색 색인의 문구를 확인했다."
+    },
+    {
+      "id": "fb-ann-zone-launch",
+      "url": "https://www.facebook.com/identity5kr/posts/599744180593749/",
+      "title": "1월 20일 업데이트 완료 공지 — 사도 능력 설명",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "마비 구역"
+      ],
+      "shortSupportingExcerpt": "[마비 구역]: 안이 범위에 들어오면 고양이의 힘이 폭발적으로 증가해",
+      "searchRef": "turn129search5",
+      "searchQuery": "site:facebook.com/identity5kr \"마비 구역\"",
+      "characterMatch": "안과 고양이의 능력 설명. 다른 캐릭터의 일반 마비 효과와 혼동하지 않는다.",
+      "urlNormalization": "검색 결과의 제목 슬러그만 제거하고 같은 게시물 ID를 보존",
+      "limitations": "검색 색인에서 대괄호로 구분된 명칭을 직접 확인. 최신 범위·지속시간은 검증하지 않았다."
+    },
+    {
+      "id": "fb-ann-threat-update",
+      "url": "https://www.facebook.com/identity5kr/posts/822236531677845/",
+      "title": "12월 10일 업데이트 완료 공지 — 사도 습격 조정",
+      "official": true,
+      "verificationLevel": "official-post-search-index",
+      "terms": [
+        "위협"
+      ],
+      "shortSupportingExcerpt": "사도 조정 / 0단계 스킬 [습격] 조정 / 위협합니다. 영향을 받은 생존자는",
+      "searchRef": "turn129search0",
+      "searchQuery": "site:facebook.com/identity5kr \"위협\" \"사도\"",
+      "characterMatch": "사도의 0단계 스킬 습격 조정 문맥에서 확인",
+      "urlNormalization": "검색 결과의 제목 슬러그만 제거하고 같은 게시물 ID를 보존",
+      "limitations": "위협이라는 행동/효과 표현의 공식 사용을 확인한다. 독립된 스킬 제목이 위협이라는 주장은 이 근거만으로 확정하지 않는다. 과거의 제한 시간과 현재 수치는 구별한다."
+    }
+  ],
+  "candidateSourcesNotTermProof": [
+    {
+      "url": "https://www.facebook.com/identity5kr/posts/325309174703919/",
+      "title": "감시자 소개 - 광대",
+      "searchRef": "turn124search1",
+      "officialSource": true,
+      "termVerified": false,
+      "reason": "개조 드릴 검색으로 반환되었지만 결과의 실제 문구는 제목/댓글뿐. 명칭 증거로 사용하지 않음"
+    },
+    {
+      "url": "https://x.com/identity5kr/status/2083764732532515071",
+      "title": "신규 감시자 마음의 짐승 스킬 소개",
+      "searchRef": "turn158search1",
+      "officialSource": true,
+      "termVerified": false,
+      "reason": "캐릭터 출시와 스킬 소개 게시물이라는 사실만 확인. 추적 표식이라는 문구는 미확인"
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/character/hunters/20260921/35346_1314526.html",
+      "title": "마음의 짐승 인물 소개",
+      "officialSource": true,
+      "termVerified": false,
+      "reason": "직접 읽은 본문은 배경 이야기이며 추적 표식의 근거가 없음"
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/character/hunters/20230621/35346_1094506.html",
+      "title": "나이트 워치 인물 소개",
+      "officialSource": true,
+      "termVerified": false,
+      "reason": "직접 읽은 본문은 배경 이야기이며 바람의 힘이라는 자원명의 근거가 없음"
+    },
+    {
+      "url": "https://www.identityvgame.com/kr/character/hunters/20211012/35346_978012.html",
+      "title": "밀랍인형사 인물 소개",
+      "officialSource": true,
+      "termVerified": false,
+      "reason": "직접 읽은 본문은 배경 이야기이며 밀랍옷 능력명의 근거가 없음"
+    }
+  ],
+  "researchLimits": [
+    "공식 홈페이지, identity5kr X 및 공식 Facebook 계정의 공개 검색 결과를 조사했다. 공식 YouTube와 공식 카페 관련 검색에서도 미확인 다섯 용어의 1차 문구/프레임을 확보하지 못했다.",
+    "Facebook와 X의 검색 색인 증거는 해당 공식 게시물의 원문 URL과 연결되지만 원문 전체를 읽었다고 주장하지 않는다. 접근 제한을 우회하거나 로그인하지 않았다.",
+    "일반 컴퓨터 모니터를 언급하는 X 게시물, 소개해 드릴 등의 일반 동사, 기상학자 바람 문구, 인형사/밀랍인형사 부분 문자열, 외부 추천 콘텐츠를 명칭 증거에서 제외했다.",
+    "현재 수치와 지속시간을 수정할 만한 현행 1차 증거는 확보하지 않았다. 오래된 공지의 수치를 현재 사이트 설명에 복사하지 않는다.",
+    "위키 및 팬사이트의 번역은 여전히 간접 근거이다. 검색에 다시 나타났다는 이유로 공식 확인 상태로 변경하지 않았다.",
+    "공식 카페 cafe.naver.com/identity5의 개조 드릴·바람의 힘·추적 표식·밀랍옷·에너지 부하 검색은 robots.txt 차단으로 거절되었다. 재시도하거나 다른 경로로 우회하지 않았다."
+  ],
+  "suggestedReviewActions": [
+    "회유·물웅덩이·갈퀴 사슬을 공식 웹 본문 직접 확인으로 보강할 수 있다.",
+    "모니터·바람 날개·마력의 음색·물거울·마비 구역·위협은 공식 게시물의 검색 색인에서 확인한 명칭/표현으로 기록한다.",
+    "개조 드릴·바람의 힘·추적 표식·밀랍옷·에너지 부하는 확인 대기 상태를 유지한다.",
+    "사도의 위협은 효과를 설명하는 표현으로 사용 가능하지만 독립 스킬 제목이라는 주장을 추가하지 않는다."
+  ]
+}

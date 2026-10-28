@@ -1,0 +1,461 @@
+{
+  "baseline": "1f9411266a926b255d3bb21fdd71cff78e8c5cd6",
+  "reviewedAt": "2026-10-27",
+  "policy": "BETA v1.14.4 이후 공식 한국어 명칭 확인 및 문맥별 후속 정비. 명칭 확인을 최신 밸런스 재검증으로 취급하지 않는다.",
+  "roleAliases": {},
+  "rules": [
+    {
+      "before": "동기화",
+      "after": "기억 동기화",
+      "scopes": [
+        "c63"
+      ],
+      "sources": [
+        "K20220616"
+      ],
+      "excludePrefixes": [
+        "기억 "
+      ]
+    },
+    {
+      "before": "파편",
+      "after": "추억 조각",
+      "scopes": [
+        "c63"
+      ],
+      "sources": [
+        "W-C63"
+      ]
+    },
+    {
+      "before": "파란 오르골",
+      "after": "느린 리듬 오르골",
+      "scopes": [
+        "c54"
+      ],
+      "sources": [
+        "K20220602",
+        "W-C54"
+      ]
+    },
+    {
+      "before": "빨간 오르골",
+      "after": "빠른 리듬 오르골",
+      "scopes": [
+        "c54"
+      ],
+      "sources": [
+        "F022"
+      ]
+    },
+    {
+      "before": "배트",
+      "after": "크리켓 배트",
+      "scopes": [
+        "c77"
+      ],
+      "sources": [
+        "F023"
+      ],
+      "excludePrefixes": [
+        "크리켓 "
+      ]
+    }
+  ],
+  "fieldEdits": [
+    {
+      "path": "data/characters/44/tips/1",
+      "after": "재정비 추적 · 따뜻한 비가 만드는 구름은 벽 너머에서도 표시됩니다. 기상학자의 자원 변화가 보이면 주변에 생긴 구름도 확인해, 팀원이 재정비하는 위치를 찾는 단서로 활용합니다.",
+      "sources": [
+        "W-C45"
+      ],
+      "reason": "이동 기술 층운과 따뜻한 비의 구름을 구분한다. 기존 효과 설명의 밸런스 조건은 변경하지 않는다."
+    },
+    {
+      "path": "data/characters/44/use",
+      "after": "감시자가 본체나 동료에게 붙으려는 순간에는 빠져나갈 방향의 반대로 밀어냅니다. 지형을 넘어야 할 때는 층운을, 안전하게 회복할 여유가 생겼을 때는 따뜻한 비를 선택합니다.",
+      "sources": [
+        "W-C45"
+      ],
+      "reason": "본문에서 도입한 기술 명칭으로 선택지를 구분한다."
+    },
+    {
+      "path": "data/characters/49/skill",
+      "after": "맹인용 지팡이로 감시자의 위치를 확인하고 팀원에게 공유합니다. 걷다가 달리기로 전환할 때 얻는 가속과 행동 속도 보너스로 위험한 구역을 벗어납니다.",
+      "sources": [
+        "K20210805"
+      ],
+      "reason": "공식 한국어 공지의 소지품 이름을 설명 첫머리에 명시한다."
+    },
+    {
+      "path": "data/characters/50/skill",
+      "after": "걸리버 여행기를 읽어 몸을 작게 만들고 감시자와의 거리를 확인합니다. 보물에서 모은 암호 페이지를 필요한 암호 장치에 사용해 해독을 진행합니다.",
+      "sources": [
+        "K20210826",
+        "K20210916"
+      ],
+      "reason": "공식 소지품 이름과 결과물을 구분한다."
+    },
+    {
+      "path": "data/characters/62/skill",
+      "after": "추억 조각으로 주변 캐릭터를 밀어냅니다. 기억 동기화를 사용하면 동료의 이동과 판자·창틀 이용, 구출을 도울 수 있습니다.",
+      "sources": [
+        "K20220616",
+        "W-C63"
+      ],
+      "reason": "기억 동기화의 전체 이름을 쓰고 조사를 정리한다."
+    },
+    {
+      "path": "data/characters/73/skill",
+      "after": "감시자 근처에서 원숭이 조각상에 저주를 모아 기절시킵니다. 저주를 적게 쓰는 짧은 기절과 여러 겹을 소모하는 긴 기절을 상황에 맞게 선택합니다.",
+      "sources": [
+        "K20220512"
+      ],
+      "reason": "소지품 이름을 설명 첫머리에 명시하며 충전과 사용 조건은 기존 설명을 유지한다."
+    },
+    {
+      "path": "data/matchups/313/condition",
+      "after": "자동으로 발동하는 비늘 표피는 첫 소수점 피해를 막을 수 있으므로 잔여 방어를 확인합니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "자동 방어와 직접 사용하는 비늘 경화를 구분하며 기존 상호작용 설명을 보존한다."
+    },
+    {
+      "path": "introductions/characters/c33",
+      "after": "렌즈를 이용해 떨어진 구역을 공격하고 해당 구역으로 이동합니다. 원거리 견제와 추격을 연결하는 감시자입니다.",
+      "sources": [
+        "F024"
+      ],
+      "reason": "공식 한국어 소개의 렌즈 표현을 사용한다. 소개문 렌즈와 간접 확인된 스킬 제목 구강경을 임의로 같은 명칭으로 치환하지 않는다."
+    },
+    {
+      "path": "data/characters/66/skill",
+      "after": "진정제로 소수점 피해까지 치료할 수 있고, 자가 치료 진행도가 유지되어 짧은 틈에도 회복을 이어 갈 수 있습니다. 약물 증강제를 사용하면 치료 진행도를 즉시 높입니다.",
+      "sources": [
+        "K20210916",
+        "W-C67"
+      ],
+      "reason": "진정제 소지품 이름을 소개한다. 약물 증강제는 이전의 간접 확인 수준과 효과를 유지한다."
+    },
+    {
+      "path": "data/characters/62/caution",
+      "after": "밀치기는 동료에게도 적용돼 준비한 판자나 창틀에서 벗어나게 할 수 있습니다. 기억 동기화 상태로 함께 해독하는 효율은 각자 해독할 때와 다르므로 지원을 끝낼 위치를 미리 정합니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "기술 이름을 명시한 뒤 조사와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/characters/62/response",
+      "after": "추억 조각에 밀릴 방향을 예상하며 위치를 잡습니다. 기억 동기화로 연결된 두 사람을 계속 쫓을지 다른 암호 장치를 견제할지 판단합니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "기술 이름을 명시한 뒤 조사와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/matchups/182/summary",
+      "after": "표식 없는 동료에게 기억 동기화를 사용하면 동료에게 새 표식을 쌓아야 합니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "기술 이름을 명시한 뒤 조사와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "data/matchups/182/condition",
+      "after": "동료가 이미 표식을 지녔거나 기억 동기화를 사용할 수 없는 상태라면 이점이 줄어듭니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "기술 이름을 명시한 뒤 조사와 서술어를 자연스럽게 정리한다."
+    },
+    {
+      "path": "introductions/characters/c63",
+      "after": "추억 조각으로 감시자를 밀어내고 동료에게 기억 동기화를 사용해 이동을 돕습니다. 지원할 때와 분리해서 해독할 때를 판단해야 하는 생존자입니다.",
+      "sources": [
+        "K20220616"
+      ],
+      "reason": "기술 이름을 명시한 뒤 조사와 서술어를 자연스럽게 정리한다."
+    }
+  ],
+  "sources": [
+    {
+      "id": "K20210628",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210628/35362_956486.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "회유",
+        "물웅덩이",
+        "갈퀴 사슬",
+        "섭혼"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20210805",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210805/35362_964195.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "맹인용 지팡이"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20210826",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "걸리버 여행기",
+        "폭발 상태"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20210916",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "진정제",
+        "망각의 향",
+        "해신의 회중시계",
+        "행운보따리",
+        "암호 페이지",
+        "갈퀴 사슬"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20210930",
+      "url": "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "탕백"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20220616",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220616/35362_1024405.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "기억 동기화",
+        "비늘 표피"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20220512",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018903.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "원숭이 조각상"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "K20220602",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "느린 리듬 오르골"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "W-C54",
+      "url": "https://www.namu.moe/w/무희(제5인격)",
+      "kind": "indirect-transcription",
+      "verification": "korean-tooltip-transcription",
+      "supports": [
+        "빠른 리듬 오르골",
+        "느린 리듬 오르골"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "W-C45",
+      "url": "https://namu.moe/w/기상학자(제5인격)",
+      "kind": "indirect-transcription",
+      "verification": "korean-tooltip-transcription",
+      "supports": [
+        "층운",
+        "따뜻한 비"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "W-C63",
+      "url": "https://namu.moe/w/'여자아이'",
+      "kind": "indirect-transcription",
+      "verification": "korean-tooltip-transcription",
+      "supports": [
+        "추억 조각"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "W-C68",
+      "url": "https://m.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "verification": "korean-tooltip-transcription",
+      "supports": [
+        "루이",
+        "두려움 상실"
+      ],
+      "scope": "한국어 명칭 확인. 과거 공지의 수치를 현행 수치로 적용하지 않음."
+    },
+    {
+      "id": "F013",
+      "url": "https://www.facebook.com/identity5kr/posts/358624821372354/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "모니터"
+      ],
+      "scope": "공식 계정 게시물의 검색 색인 문구를 확인했으며 전체 본문 직접 열람으로 표기하지 않는다.",
+      "report": "hunters-a/fb-madeyes-launch"
+    },
+    {
+      "id": "F014",
+      "url": "https://www.facebook.com/identity5kr/posts/375528859681950/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "바람 날개"
+      ],
+      "scope": "바람 날개만 명시적으로 확인. 이 출처가 개조 드릴까지 입증한다고 확장하지 않는다. 직접 열기는 fetch throttled로 실패했다.",
+      "report": "hunters-a/fb-clown-wings"
+    },
+    {
+      "id": "F015",
+      "url": "https://www.facebook.com/identity5kr/videos/552979998975268/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "마력의 음색"
+      ],
+      "scope": "영상 게시물의 검색 색인 본문에서 용어를 확인. 영상 자체의 한국어 프레임을 판독한 것은 아니다.",
+      "report": "hunters-a/fb-violinist-launch"
+    },
+    {
+      "id": "F016",
+      "url": "https://x.com/identity5kr/status/1751930688948064354",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "물거울"
+      ],
+      "scope": "스킨 소개에서도 물거울이라는 한국어 명칭을 사용한다는 증거. 본문 open은 내용 없는 0행 결과였고, 검색 색인의 문구를 확인했다.",
+      "report": "hunters-a/x-bloodyqueen-mirror"
+    },
+    {
+      "id": "F017",
+      "url": "https://www.facebook.com/identity5kr/posts/599744180593749/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "마비 구역"
+      ],
+      "scope": "검색 색인에서 대괄호로 구분된 명칭을 직접 확인. 최신 범위·지속시간은 검증하지 않았다.",
+      "report": "hunters-a/fb-ann-zone-launch"
+    },
+    {
+      "id": "F018",
+      "url": "https://www.facebook.com/identity5kr/posts/822236531677845/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "위협"
+      ],
+      "scope": "위협이라는 행동/효과 표현의 공식 사용을 확인한다. 독립된 스킬 제목이 위협이라는 주장은 이 근거만으로 확정하지 않는다. 과거의 제한 시간과 현재 수치는 구별한다.",
+      "report": "hunters-a/fb-ann-threat-update"
+    },
+    {
+      "id": "F019",
+      "url": "https://x.com/identity5kr/status/1821745133097824690",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "케이지"
+      ],
+      "scope": "Confirms object name and broad opposite-side movement wording. Do not derive extra cooldown/boundary rules from the short promotional text.",
+      "report": "hunters-b/HB-F04"
+    },
+    {
+      "id": "F020",
+      "url": "https://www.youtube.com/watch?v=hun9-Sn1wgE",
+      "kind": "official-ko",
+      "verification": "video-description",
+      "supports": [
+        "불안정 구역"
+      ],
+      "scope": "Preview title uses the earlier character label 사기꾼 같은 놈; do not change the current character name 파이라이트. The name 불안정 구역 itself is directly present in the official description.",
+      "report": "hunters-b/HB-F05"
+    },
+    {
+      "id": "F021",
+      "url": "https://x.com/identity5kr/status/1989571305604293028",
+      "kind": "official-ko",
+      "verification": "video-frame",
+      "supports": [
+        "곤충 떼",
+        "벌침"
+      ],
+      "scope": "The post explicitly treats final game implementation as authoritative. This confirms names in the official Korean preview, not all current resource numbers/timings.",
+      "report": "hunters-b/HB-F01"
+    },
+    {
+      "id": "F022",
+      "url": "https://www.facebook.com/identity5kr/videos/7%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EC%99%84%EB%A3%8C-%EA%B3%B5%EC%A7%80%EC%9D%BC%EB%B6%80-%EB%82%B4%EC%9A%A9-%EC%B6%94%EA%B0%80%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%847%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-/894664374270409/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "빠른 리듬 오르골",
+        "빠른 리듬의 오르골"
+      ],
+      "scope": "Primary indexed wording supports current 빠른 리듬 오르골 naming. The presence of 조사 '의' is a prose variation, not proof of a distinct item.",
+      "report": "survivors-a/FA06"
+    },
+    {
+      "id": "F023",
+      "url": "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-31%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-12%EC%9B%94-31%EC%9D%BC-%EC%A0%90%EA%B2%80-%EB%82%B4%EC%9A%A9%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%BA%90%EB%A6%AD/402268734432056/",
+      "kind": "official-ko",
+      "verification": "search-index",
+      "supports": [
+        "크리켓 배트"
+      ],
+      "scope": "공식 계정 게시물의 색인 확인 수준. 현재 인게임 화면 직접 판독이나 전문 열람으로 표시하면 안 됨.",
+      "report": "survivors-b/ko-facebook-batter"
+    },
+    {
+      "id": "F024",
+      "url": "https://x.com/identity5kr/status/2043177290197094642",
+      "kind": "official-ko",
+      "verification": "full-text",
+      "supports": [
+        "렌즈"
+      ],
+      "scope": "The fetched post/description does not state 광선 치료 구역, 광막 or 구강경 and says nothing about seeing through walls. 렌즈 is used in official ordinary explanatory prose, so it should not automatically be replaced with a different item noun.",
+      "report": "hunters-b/HB-F07"
+    },
+    {
+      "id": "W-C67",
+      "url": "https://www.namu.moe/w/%EC%9D%98%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "kind": "indirect-transcription",
+      "supports": [
+        "진정제",
+        "약물 증강제"
+      ],
+      "scope": "한국어 공동편집 문서의 게임 툴팁 재현"
+    }
+  ]
+}

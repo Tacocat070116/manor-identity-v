@@ -1,0 +1,530 @@
+{
+  "reviewedAt": "2026-10-27",
+  "scope": "Follow-up bounded terminology audit after v1.14.4: c37–c64 overview fields, with targeted contextual checks for c39/c41/c42/c45/c50/c51/c54/c63. No dist or earlier audit file edited.",
+  "charsChecked": [
+    {
+      "id": "c37",
+      "name": "곡예사"
+    },
+    {
+      "id": "c38",
+      "name": "곤충학자"
+    },
+    {
+      "id": "c39",
+      "name": "골동품 상인"
+    },
+    {
+      "id": "c40",
+      "name": "공군"
+    },
+    {
+      "id": "c41",
+      "name": "교수"
+    },
+    {
+      "id": "c42",
+      "name": "궁수"
+    },
+    {
+      "id": "c43",
+      "name": "기계공"
+    },
+    {
+      "id": "c44",
+      "name": "기사"
+    },
+    {
+      "id": "c45",
+      "name": "기상학자"
+    },
+    {
+      "id": "c46",
+      "name": "기자"
+    },
+    {
+      "id": "c47",
+      "name": "납관사"
+    },
+    {
+      "id": "c48",
+      "name": "도둑"
+    },
+    {
+      "id": "c49",
+      "name": "마술사"
+    },
+    {
+      "id": "c50",
+      "name": "맹인"
+    },
+    {
+      "id": "c51",
+      "name": "모험가"
+    },
+    {
+      "id": "c52",
+      "name": "묘지기"
+    },
+    {
+      "id": "c53",
+      "name": "무언극 아티스트"
+    },
+    {
+      "id": "c54",
+      "name": "무희"
+    },
+    {
+      "id": "c55",
+      "name": "바텐더"
+    },
+    {
+      "id": "c56",
+      "name": "변호사"
+    },
+    {
+      "id": "c57",
+      "name": "샤먼"
+    },
+    {
+      "id": "c58",
+      "name": "선지자"
+    },
+    {
+      "id": "c59",
+      "name": "소설가"
+    },
+    {
+      "id": "c60",
+      "name": "신동"
+    },
+    {
+      "id": "c61",
+      "name": "심리학자"
+    },
+    {
+      "id": "c62",
+      "name": "야만인"
+    },
+    {
+      "id": "c63",
+      "name": "여자아이"
+    },
+    {
+      "id": "c64",
+      "name": "용병"
+    }
+  ],
+  "limits": [
+    "This is terminology research, not certification of all current game balance or all Korean tooltips.",
+    "Official web archive is primarily 2021–2022; a historical official name does not verify current numerical effects.",
+    "Search-index excerpts from the official Facebook account are explicitly distinguished from directly read official pages.",
+    "Wiki transcriptions remain indirect; no candidate was upgraded merely because a wiki labels its text an in-game tooltip."
+  ],
+  "evidence": [
+    {
+      "id": "FA01",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html",
+      "title": "2021년 8월 26일 업데이트 내용",
+      "official": true,
+      "retrieval": "official page full text, web open and official archive",
+      "terms": [
+        "걸리버 여행기",
+        "슬라이드 스텝"
+      ],
+      "shortSupportingExcerpt": "걸리버 여행기를 사용할 때 표현 오류가 발생하는 문제",
+      "notes": "Item name attested in a bug fix. Does not establish current numerical effects."
+    },
+    {
+      "id": "FA02",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+      "title": "2021년 9월 16일 업데이트 내용",
+      "official": true,
+      "retrieval": "official page full text in shared fetched archive 972616.txt",
+      "terms": [
+        "암호 페이지"
+      ],
+      "shortSupportingExcerpt": "암호 페이지를 발굴할 때",
+      "notes": "Use terminology only; 2021 excavation durations must not be copied as current balance."
+    },
+    {
+      "id": "FA03",
+      "url": "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html",
+      "title": "2022년 6월 16일 업데이트 내용",
+      "official": true,
+      "retrieval": "official full text in archive 1024405.txt; primary search-index excerpt independently found",
+      "terms": [
+        "기억 동기화",
+        "긴 통로"
+      ],
+      "shortSupportingExcerpt": "'여자 아이'가 생존자들이 긴 통로 잔영을 통과하기 전 순간에 기억 동기화 시",
+      "notes": "Confirms both names. Does not define latest damage thresholds or synchronization-break conditions."
+    },
+    {
+      "id": "FA04",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html",
+      "title": "2022년 5월 26일 업데이트 내용 (official page published in 20220602 path)",
+      "official": true,
+      "retrieval": "official full text in archive 1020548.txt",
+      "terms": [
+        "비늘 표피",
+        "사악한 비늘"
+      ],
+      "shortSupportingExcerpt": "교수 외적 특성-비늘 표피의 아이콘 표시를 추가하였습니다.",
+      "notes": "비늘 표피 is an external trait name. Do not use as a universal replacement for the activated 비늘 경화 or dropped 비늘."
+    },
+    {
+      "id": "FA05",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20220519/35362_1018903.html",
+      "title": "2022년 5월 12일 업데이트 내용 (official page published in 20220519 path)",
+      "official": true,
+      "retrieval": "official full text in archive 1018903.txt",
+      "terms": [
+        "비늘 경화",
+        "사악한 비늘"
+      ],
+      "shortSupportingExcerpt": "다른 생존자가 비늘 경화를 사용한 후",
+      "notes": "Confirms activated defense can also be used by another survivor. Distinct from 비늘 표피. Old timings are out of scope."
+    },
+    {
+      "id": "FA06",
+      "url": "https://www.facebook.com/identity5kr/videos/7%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EC%99%84%EB%A3%8C-%EA%B3%B5%EC%A7%80%EC%9D%BC%EB%B6%80-%EB%82%B4%EC%9A%A9-%EC%B6%94%EA%B0%80%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%847%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-/894664374270409/",
+      "title": "7월 16일 점검 내용: 2주년 이벤트 정식 오픈",
+      "official": true,
+      "retrieval": "official identity5kr Facebook post text exposed by search index; full post unavailable",
+      "terms": [
+        "빠른 리듬의 오르골"
+      ],
+      "shortSupportingExcerpt": "무희의 빠른 리듬의 오르골",
+      "notes": "Primary indexed wording supports current 빠른 리듬 오르골 naming. The presence of 조사 '의' is a prose variation, not proof of a distinct item."
+    },
+    {
+      "id": "FA07",
+      "url": "https://www.facebook.com/identity5kr/posts/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%84-3%EC%9B%94-28%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C%EC%BA%90%EB%A6%AD%ED%84%B0-%EC%A1%B0%EC%A0%95%EA%B3%B5%EC%9E%A5%EC%9E%A5-%EC%8A%A4%ED%82%AC-%EC%A1%B0%EC%A0%95-%EC%9B%90%ED%95%9C%EC%9D%98-/413775162523986/",
+      "title": "3월 28일 캐릭터 조정 공지",
+      "official": true,
+      "retrieval": "official identity5kr Facebook post text exposed by search index; full post unavailable",
+      "terms": [
+        "걸리버의 여행기",
+        "탐험 환상"
+      ],
+      "shortSupportingExcerpt": "탐험 환상 : 걸리버의 여행기를 소지하며",
+      "notes": "Older official prose uses '의'. Prefer the more recent directly accessible Korean official web spelling 걸리버 여행기; do not assert the other historical official wording never existed."
+    },
+    {
+      "id": "FA08",
+      "url": "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-19%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%9D%BC%EB%B6%80-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%B4-%EC%98%88%EA%B3%A0-%EB%82%B4%EC%9A%A9%EA%B3%BC-%EB%8B%A4%EB%A5%B4%EA%B2%8C-%EB%B3%80%EA%B2%BD%EB%90%98%EC%97%88%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-%EB%98%90%ED%95%9C-%EB%AC%B4%ED%9D%AC-/580950899364123/",
+      "title": "12월 19일 업데이트 완료 공지",
+      "official": true,
+      "retrieval": "official identity5kr Facebook search-index excerpt; direct page returned temporary-block text",
+      "terms": [
+        "암호 페이지"
+      ],
+      "shortSupportingExcerpt": "모험가의 암호 페이지가 지난번에 암호 페이지를 발굴한 지역에 리셋되는 문제",
+      "notes": "Supplemental confirmation only; FA02 is a stronger direct official web source."
+    },
+    {
+      "id": "FA09",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210805/35362_964195.html",
+      "title": "2021년 8월 5일 업데이트 내용",
+      "official": true,
+      "retrieval": "official full text in archive 964195.txt; source URL from official list metadata",
+      "terms": [
+        "맹인용 지팡이"
+      ],
+      "shortSupportingExcerpt": "맹인용 지팡이로 강하게 내리쳐",
+      "notes": "Supports naming the cane explicitly at first mention. Current ability effects or numbers are not revalidated by an older achievement bug fix."
+    },
+    {
+      "id": "FA10",
+      "url": "https://www.identityvgame.com/kr/character/survivors/20220805/35345_1035460.html",
+      "title": "골동품 상인 공식 캐릭터 소개",
+      "official": true,
+      "retrieval": "previous audit: official roster API biography from Korean character page",
+      "terms": [
+        "퉁소"
+      ],
+      "shortSupportingExcerpt": "무술, 퉁소 다루기, 골동품",
+      "notes": "Confirms 퉁소. This biography does not confirm the longer tooltip phrase 기계 퉁소."
+    },
+    {
+      "id": "FA11",
+      "url": "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html",
+      "title": "2022년 6월 2일 업데이트 내용",
+      "official": true,
+      "retrieval": "official full text in archive 1022238.txt",
+      "terms": [
+        "느린 리듬 오르골"
+      ],
+      "shortSupportingExcerpt": "꿈의 마녀 본체가 무희의 느린 리듬 오르골에 영향을 받는 문제",
+      "notes": "Already confirmed in the initial audit. Retained here to support matching fast/slow naming."
+    }
+  ],
+  "confirmedFindings": [
+    {
+      "character": "c51",
+      "terms": [
+        "암호 페이지",
+        "걸리버 여행기"
+      ],
+      "evidenceIds": [
+        "FA01",
+        "FA02",
+        "FA07",
+        "FA08"
+      ],
+      "decision": "암호 페이지 already adopted is now supported by direct official text. Add 걸리버 여행기 to the first description of shrinking. Preserve the historical spelling variant only in research."
+    },
+    {
+      "character": "c63",
+      "terms": [
+        "기억 동기화"
+      ],
+      "evidenceIds": [
+        "FA03"
+      ],
+      "decision": "Use the full official skill name for synchronization when naming the ability."
+    },
+    {
+      "character": "c54",
+      "terms": [
+        "빠른 리듬 오르골",
+        "느린 리듬 오르골"
+      ],
+      "evidenceIds": [
+        "FA06",
+        "FA11"
+      ],
+      "decision": "Current paired terminology is supported. Use these names instead of only red/blue in advice, when color references identify these modes."
+    },
+    {
+      "character": "c41",
+      "terms": [
+        "비늘 표피",
+        "비늘 경화",
+        "사악한 비늘"
+      ],
+      "evidenceIds": [
+        "FA04",
+        "FA05"
+      ],
+      "decision": "Keep separate. Do not globally expand generic 비늘 into any one skill name."
+    },
+    {
+      "character": "c50",
+      "terms": [
+        "맹인용 지팡이"
+      ],
+      "evidenceIds": [
+        "FA09"
+      ],
+      "decision": "Use the explicit item name on first mention; later generic 지팡이 is ordinary prose."
+    },
+    {
+      "character": "c39",
+      "terms": [
+        "퉁소"
+      ],
+      "evidenceIds": [
+        "FA10"
+      ],
+      "decision": "Keep 퉁소. 기계 퉁소 remains a tooltip candidate without new primary confirmation."
+    }
+  ],
+  "proposedChanges": [
+    {
+      "scope": "characters.c51.skill",
+      "before": "몸을 작게 만들어 숨고 감시자와의 거리를 확인합니다.",
+      "after": "걸리버 여행기로 몸을 작게 만들어 숨고 감시자와의 거리를 확인합니다.",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html"
+      ],
+      "reason": "Names the official item while preserving existing guide mechanics."
+    },
+    {
+      "scope": "characters.c63 ability references and corresponding matchups/links",
+      "before": "동기화",
+      "after": "기억 동기화",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220616/35364_1024405.html"
+      ],
+      "reason": "Use the full verified skill name in ability labels and first/clear mentions. Do not touch unrelated account/device synchronization."
+    },
+    {
+      "scope": "characters.c50.skill first item mention",
+      "before": "지팡이",
+      "after": "맹인용 지팡이",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210805/35362_964195.html"
+      ],
+      "reason": "Official item wording found in the Korean website. Context-specific naming; not a global word replacement."
+    },
+    {
+      "scope": "characters.c54.tips[0] and corresponding guide text",
+      "before": "판자 밑 파란 오르골",
+      "after": "판자 밑 느린 리듬 오르골",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1022238.html"
+      ],
+      "reason": "Matches the already named slow music box; this is a terminology edit, not a new mechanics claim."
+    },
+    {
+      "scope": "characters.c54.tips[1] and corresponding guide text",
+      "before": "빨간 오르골",
+      "after": "빠른 리듬 오르골",
+      "sourceUrls": [
+        "https://www.facebook.com/identity5kr/videos/7%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EC%99%84%EB%A3%8C-%EA%B3%B5%EC%A7%80%EC%9D%BC%EB%B6%80-%EB%82%B4%EC%9A%A9-%EC%B6%94%EA%B0%80%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%847%EC%9B%94-16%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-/894664374270409/"
+      ],
+      "reason": "Matches the already named fast music box; the separate claim about rocket-chair progress still depends on its existing guide source."
+    },
+    {
+      "scope": "characters.c41.hard 조각가 / M314 and mirrors",
+      "before": "자동으로 발동하는 비늘",
+      "after": "비늘 표피",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/update/20220602/35364_1020548.html"
+      ],
+      "reason": "Candidate contextual naming for the passive external trait. The old official note verifies the name, not the full modern damage behavior; preserve/recheck existing mechanics independently.",
+      "qualification": "Do not apply to the activated defense or dropped scales."
+    },
+    {
+      "scope": "characters.c45.tips[1]",
+      "before": "치료 비를 만드는 층운은 벽 너머에서도 표시됩니다. 기상학자의 자원 변화가 보이면 주변 층운도 확인해, 팀원이 재정비하는 위치를 찾는 단서로 활용합니다.",
+      "after": "따뜻한 비의 구름은 벽 너머에서도 표시됩니다. 기상학자의 자원 변화가 보이면 주변에 생긴 구름도 확인해, 팀원이 재정비하는 위치를 찾는 단서로 활용합니다.",
+      "sourceUrls": [
+        "https://wikiwiki.jp/identity5ch/気象学者の対策"
+      ],
+      "reason": "Fix overbroad 구름→층운 substitution. 따뜻한 비 visual cloud is not necessarily the separate movement ability 층운.",
+      "qualification": "Editorial disambiguation retaining the current Japanese community guide's behavior claim. Not a newly primary-verified Korean tooltip."
+    },
+    {
+      "scope": "characters.c63.hard 파멸의 바퀴 / M319 condition and mirrors",
+      "before": "파편을 활용할 수 있습니다.",
+      "after": "추억 조각을 활용할 수 있습니다.",
+      "sourceUrls": [
+        "https://wikiwiki.jp/identity5ch/少女"
+      ],
+      "reason": "In this sentence the generic fragment clearly refers to the site's already adopted item name 추억 조각. Retain existing mechanics; do not claim new primary terminology verification from this guide."
+    }
+  ],
+  "unknowns": [
+    {
+      "character": "c45",
+      "terms": [
+        "층운",
+        "스톰 글라스",
+        "강풍",
+        "따뜻한 비"
+      ],
+      "indirectUrls": [
+        "https://www.namu.moe/w/기상학자(제5인격)"
+      ],
+      "status": "Korean wiki tooltip transcription, not newly primary-confirmed",
+      "action": "Keep source provenance honest. No official-text assertion for these terms until official Korean skill presentation or current in-game UI is directly inspected."
+    },
+    {
+      "character": "c42",
+      "terms": [
+        "용골 활",
+        "용골 화살",
+        "중상 파열도",
+        "손목 쇠뇌"
+      ],
+      "indirectUrls": [
+        "https://www.namu.moe/w/궁수(제5인격)"
+      ],
+      "status": "Korean wiki and community patch reposts only",
+      "action": "Do not introduce these as certified official replacements for generic 활/화살 on this research alone. Full official Korean Archer skill source still needed."
+    },
+    {
+      "character": "c39",
+      "terms": [
+        "기계 퉁소"
+      ],
+      "indirectUrls": [
+        "https://m.namu.moe/w/골동품 상인"
+      ],
+      "status": "Longer item phrase appears in community tooltip transcription; official sources found say 퉁소",
+      "action": "Current 퉁소 has primary support. Do not assume every occurrence must become 기계 퉁소."
+    },
+    {
+      "character": "c41",
+      "terms": [
+        "비늘 표피 exact current damage prevention conditions"
+      ],
+      "status": "Name directly official; mechanics not resolved by icon bug-fix notice",
+      "action": "Avoid changing numerical behavior from a name-only source."
+    },
+    {
+      "character": "c63",
+      "terms": [
+        "기억 동기화 exact current break conditions"
+      ],
+      "status": "Current tip says any skill damage breaks it; primary name source does not establish that broad condition",
+      "action": "Do not use name verification as proof of this mechanics statement; review separately or remove the unqualified claim."
+    },
+    {
+      "character": "c44",
+      "terms": [
+        "예측",
+        "예견",
+        "전술"
+      ],
+      "status": "Overview contains varying generic/skill language; no new Korean primary tooltip located",
+      "action": "Do not guess a canonical full name."
+    },
+    {
+      "character": "c46",
+      "terms": [
+        "카메라",
+        "판자용 환영",
+        "구출용 환영"
+      ],
+      "status": "Potential item/skill specificity gap; no new Korean primary tooltip located",
+      "action": "Keep these as explanatory prose, not labeled verbatim official skill descriptions."
+    },
+    {
+      "character": "c53",
+      "terms": [
+        "공연",
+        "임시 벽·판자",
+        "우산"
+      ],
+      "status": "No new Korean primary item/skill inventory located",
+      "action": "Do not invent a specialized prop name."
+    },
+    {
+      "character": "c60",
+      "terms": [
+        "흙공",
+        "하모니카",
+        "햄스터"
+      ],
+      "status": "Official promo mentions harmonica/hamster, but not enough to disprove current guide's 흙공 mechanics",
+      "action": "Do not replace one object with another based only on a short character introduction."
+    }
+  ],
+  "noChangeNeeded": [
+    {
+      "characters": [
+        "c37",
+        "c38",
+        "c40",
+        "c43",
+        "c48",
+        "c49",
+        "c52",
+        "c55",
+        "c56",
+        "c57",
+        "c58",
+        "c59",
+        "c61",
+        "c62",
+        "c64"
+      ],
+      "note": "No new name-changing evidence found in this follow-up. Existing confirmed names and ordinary descriptive nouns remain. This is not a claim every current description matches an official tooltip verbatim."
+    }
+  ],
+  "filePolicy": "Only this new research artifact created. dist/data.json and research/localization/2026-10-27 untouched."
+}

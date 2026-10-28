@@ -1,0 +1,464 @@
+{
+  "baseline": "1f9411266a926b255d3bb21fdd71cff78e8c5cd6",
+  "changes": [
+    {
+      "path": "rules/68/sources",
+      "before": [
+        "KOREAN-MUSICBOX"
+      ],
+      "after": [
+        "FOLLOWUP-F022"
+      ],
+      "terms": [
+        "빠른 리듬 오르골"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/78/sources",
+      "before": [
+        "R014"
+      ],
+      "after": [
+        "FOLLOWUP-F013"
+      ],
+      "terms": [
+        "모니터"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/79/sources",
+      "before": [
+        "R015"
+      ],
+      "after": [
+        "FOLLOWUP-F014"
+      ],
+      "terms": [
+        "바람 날개"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/81/sources",
+      "before": [
+        "R017"
+      ],
+      "after": [
+        "FOLLOWUP-K20210628"
+      ],
+      "terms": [
+        "회유"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/82/sources",
+      "before": [
+        "R017"
+      ],
+      "after": [
+        "FOLLOWUP-K20210628"
+      ],
+      "terms": [
+        "물웅덩이"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/85/sources",
+      "before": [
+        "R024"
+      ],
+      "after": [
+        "FOLLOWUP-F015"
+      ],
+      "terms": [
+        "마력의 음색"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/86/sources",
+      "before": [
+        "R027"
+      ],
+      "after": [
+        "FOLLOWUP-K20210916"
+      ],
+      "terms": [
+        "갈퀴 사슬"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/87/sources",
+      "before": [
+        "R028"
+      ],
+      "after": [
+        "FOLLOWUP-F017"
+      ],
+      "terms": [
+        "마비 구역"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/88/sources",
+      "before": [
+        "R032"
+      ],
+      "after": [
+        "FOLLOWUP-K20210628"
+      ],
+      "terms": [
+        "섭혼"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/89/sources",
+      "before": [
+        "R035"
+      ],
+      "after": [
+        "FOLLOWUP-F019"
+      ],
+      "terms": [
+        "케이지"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/90/sources",
+      "before": [
+        "R037"
+      ],
+      "after": [
+        "FOLLOWUP-F020"
+      ],
+      "terms": [
+        "불안정 구역"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/92/sources",
+      "before": [
+        "R034"
+      ],
+      "after": [
+        "FOLLOWUP-F021"
+      ],
+      "terms": [
+        "벌침"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/93/sources",
+      "before": [
+        "R034"
+      ],
+      "after": [
+        "FOLLOWUP-F021"
+      ],
+      "terms": [
+        "곤충 떼"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/94/sources",
+      "before": [
+        "R034"
+      ],
+      "after": [
+        "FOLLOWUP-F021"
+      ],
+      "terms": [
+        "곤충 떼"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/99/sources",
+      "before": [
+        "R044"
+      ],
+      "after": [
+        "FOLLOWUP-K20210916"
+      ],
+      "terms": [
+        "암호 페이지"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/101/sources",
+      "before": [
+        "R023"
+      ],
+      "after": [
+        "R049"
+      ],
+      "terms": [],
+      "reason": "인형사에 잘못 연결된 밀랍인형사 출처 정정"
+    },
+    {
+      "path": "rules/105/sources",
+      "before": [
+        "R048"
+      ],
+      "after": [
+        "FOLLOWUP-K20210916"
+      ],
+      "terms": [
+        "행운보따리"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "rules/117/sources",
+      "before": [
+        "R034"
+      ],
+      "after": [
+        "FOLLOWUP-F021"
+      ],
+      "terms": [
+        "곤충 떼"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/7/sources",
+      "before": [
+        "R029",
+        "R032"
+      ],
+      "after": [
+        "R029",
+        "R032",
+        "R006"
+      ],
+      "terms": [
+        "탕백"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/8/sources",
+      "before": [
+        "R029",
+        "R032"
+      ],
+      "after": [
+        "R029",
+        "R032",
+        "FOLLOWUP-K20210628",
+        "R006"
+      ],
+      "terms": [
+        "섭혼",
+        "탕백"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/10/sources",
+      "before": [
+        "R026"
+      ],
+      "after": [
+        "R026",
+        "FOLLOWUP-F016"
+      ],
+      "terms": [
+        "물거울"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/11/sources",
+      "before": [
+        "R024"
+      ],
+      "after": [
+        "R024",
+        "FOLLOWUP-F015"
+      ],
+      "terms": [
+        "마력의 음색"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/12/sources",
+      "before": [
+        "R028"
+      ],
+      "after": [
+        "R028",
+        "FOLLOWUP-F018"
+      ],
+      "terms": [
+        "위협"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/13/sources",
+      "before": [
+        "R048"
+      ],
+      "after": [
+        "R048",
+        "FOLLOWUP-K20210916"
+      ],
+      "terms": [
+        "망각의 향"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/14/sources",
+      "before": [
+        "R048"
+      ],
+      "after": [
+        "R048",
+        "FOLLOWUP-K20210916"
+      ],
+      "terms": [
+        "해신의 회중시계"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    },
+    {
+      "path": "fieldEdits/20/sources",
+      "before": [
+        "K20220630",
+        "R029"
+      ],
+      "after": [
+        "K20220630",
+        "R029",
+        "FOLLOWUP-K20210628"
+      ],
+      "terms": [
+        "섭혼"
+      ],
+      "reason": "공식 한국어 근거 보강"
+    }
+  ],
+  "confirmedTerms": [
+    {
+      "term": "모니터",
+      "source": "F013",
+      "verification": "search-index"
+    },
+    {
+      "term": "바람 날개",
+      "source": "F014",
+      "verification": "search-index"
+    },
+    {
+      "term": "회유",
+      "source": "K20210628",
+      "verification": "full-text"
+    },
+    {
+      "term": "물웅덩이",
+      "source": "K20210628",
+      "verification": "full-text"
+    },
+    {
+      "term": "갈퀴 사슬",
+      "source": "K20210916",
+      "verification": "full-text"
+    },
+    {
+      "term": "마력의 음색",
+      "source": "F015",
+      "verification": "search-index"
+    },
+    {
+      "term": "물거울",
+      "source": "F016",
+      "verification": "search-index"
+    },
+    {
+      "term": "마비 구역",
+      "source": "F017",
+      "verification": "search-index"
+    },
+    {
+      "term": "위협",
+      "source": "F018",
+      "verification": "search-index"
+    },
+    {
+      "term": "섭혼",
+      "source": "K20210628",
+      "verification": "full-text"
+    },
+    {
+      "term": "탕백",
+      "source": "K20210930",
+      "verification": "full-text"
+    },
+    {
+      "term": "케이지",
+      "source": "F019",
+      "verification": "full-text"
+    },
+    {
+      "term": "불안정 구역",
+      "source": "F020",
+      "verification": "video-description"
+    },
+    {
+      "term": "벌침",
+      "source": "F021",
+      "verification": "video-frame"
+    },
+    {
+      "term": "곤충 떼",
+      "source": "F021",
+      "verification": "video-frame"
+    },
+    {
+      "term": "암호 페이지",
+      "source": "K20210916",
+      "verification": "full-text"
+    },
+    {
+      "term": "빠른 리듬 오르골",
+      "source": "F022",
+      "verification": "search-index"
+    },
+    {
+      "term": "망각의 향",
+      "source": "K20210916",
+      "verification": "full-text"
+    },
+    {
+      "term": "해신의 회중시계",
+      "source": "K20210916",
+      "verification": "full-text"
+    },
+    {
+      "term": "행운보따리",
+      "source": "K20210916",
+      "verification": "full-text"
+    },
+    {
+      "term": "크리켓 배트",
+      "source": "F023",
+      "verification": "search-index"
+    }
+  ]
+}

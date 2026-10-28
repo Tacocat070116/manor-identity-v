@@ -1,0 +1,340 @@
+{
+  "date": "2026-10-27",
+  "scope": [
+    "c22",
+    "c24",
+    "c26",
+    "c31",
+    "c33",
+    "c35",
+    "c36"
+  ],
+  "method": "Bounded primary Korean follow-up. Official account ownership and linked YouTube metadata checked; Korean on-screen skill text was visually read only for the X-hosted Queen Bee video. Official archival patch text for Wu Chang was supplied by the parent researcher and inspected locally with exact official URL mappings. A located official video is not itself evidence that an unseen term occurs in it.",
+  "summary": {
+    "newPrimaryVerifiedTerms": [
+      "곤충 떼",
+      "벌침",
+      "섭혼",
+      "탕백",
+      "케이지",
+      "불안정 구역"
+    ],
+    "stillUnverifiedTerms": [
+      "침식도",
+      "침식의 조각",
+      "광선 치료 구역",
+      "광막",
+      "구강경",
+      "깜짝 표식"
+    ],
+    "mechanicsChangesSupported": []
+  },
+  "charsChecked": [
+    {
+      "id": "c22",
+      "name": "시공의 그림자",
+      "requestedTerms": [
+        "침식도",
+        "침식의 조각"
+      ],
+      "verifiedTerms": [],
+      "status": "official_source_located_terms_not_observed"
+    },
+    {
+      "id": "c24",
+      "name": "여왕벌",
+      "requestedTerms": [
+        "벌침",
+        "곤충 떼"
+      ],
+      "verifiedTerms": [
+        "벌침",
+        "곤충 떼"
+      ],
+      "status": "official_video_visual_primary"
+    },
+    {
+      "id": "c26",
+      "name": "우산의 영혼",
+      "requestedTerms": [
+        "섭혼",
+        "탕백"
+      ],
+      "verifiedTerms": [
+        "섭혼",
+        "탕백"
+      ],
+      "status": "official_korean_patch_body_primary"
+    },
+    {
+      "id": "c31",
+      "name": "절름발이 판",
+      "requestedTerms": [
+        "케이지"
+      ],
+      "verifiedTerms": [
+        "케이지"
+      ],
+      "status": "official_korean_social_post_primary"
+    },
+    {
+      "id": "c33",
+      "name": "치과의사",
+      "requestedTerms": [
+        "광선 치료 구역",
+        "광막",
+        "구강경"
+      ],
+      "verifiedTerms": [],
+      "status": "official_source_located_terms_and_wall_vision_unverified"
+    },
+    {
+      "id": "c35",
+      "name": "파이라이트",
+      "requestedTerms": [
+        "불안정 구역"
+      ],
+      "verifiedTerms": [
+        "불안정 구역"
+      ],
+      "status": "official_youtube_description_primary"
+    },
+    {
+      "id": "c36",
+      "name": "훌라발루",
+      "requestedTerms": [
+        "깜짝 표식"
+      ],
+      "verifiedTerms": [],
+      "status": "official_source_located_term_not_observed"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "HB-F01",
+      "url": "https://x.com/identity5kr/status/1989571305604293028",
+      "title": "신규 감시자 여왕벌 스킬 소개 영상",
+      "official": true,
+      "terms": [
+        "곤충 떼",
+        "벌침"
+      ],
+      "verification": "official_video_visual_primary",
+      "publishedAt": "2025-11-15",
+      "retrieval": "Official X public syndication JSON supplied the original video.twimg.com MP4; downloaded and visually inspected actual frames.",
+      "shortSupportingExcerpt": "외적 특성: 곤충 떼 / 지연 없는 벌침을 발사해",
+      "observations": [
+        {
+          "timestamp": "00:30",
+          "term": "곤충 떼",
+          "observation": "Lower-left heading reads 외적 특성: 곤충 떼. The body also repeatedly uses 곤충 떼."
+        },
+        {
+          "timestamp": "01:40",
+          "term": "벌침",
+          "observation": "The 열살봉구 description names the projectile 벌침."
+        }
+      ],
+      "videoUrl": "https://video.twimg.com/amplify_video/1989571181729779712/vid/avc1/1280x720/dGBR8zT_3Jr7-DZn.mp4",
+      "reviewFramePaths": [
+        "/tmp/manor-official-hunters-followup/bee-30.png",
+        "/tmp/manor-official-hunters-followup/bee-100.png"
+      ],
+      "limit": "The post explicitly treats final game implementation as authoritative. This confirms names in the official Korean preview, not all current resource numbers/timings."
+    },
+    {
+      "id": "HB-F02",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210628/35362_956486.html",
+      "canonicalApiUrl": "https://idv.163.com/kr/news/announcement/20210628/35362_956486.html",
+      "title": "점검 공지사항 — 2021년 6월 24일 점검 내용",
+      "official": true,
+      "terms": [
+        "섭혼"
+      ],
+      "verification": "official_korean_patch_body_primary",
+      "shortSupportingExcerpt": "우산의 영혼의 섭혼을 받을 경우",
+      "retrieval": "Inspected parent-retrieved official text /workspace/scratch/manor-official-ko-archive/956486.txt; official roster/news API record code 956486 maps its exact URL."
+    },
+    {
+      "id": "HB-F03",
+      "url": "https://www.identityvgame.com/kr/news/official/20210930/35363_976189.html",
+      "canonicalApiUrl": "https://idv.163.com/kr/news/official/20210930/35363_976189.html",
+      "title": "2021년 9월 30일 업데이트 내용",
+      "official": true,
+      "terms": [
+        "탕백"
+      ],
+      "verification": "official_korean_patch_body_primary",
+      "shortSupportingExcerpt": "탕백의 교정 판정이 끝나기 전",
+      "retrieval": "Inspected parent-retrieved official text /workspace/scratch/manor-official-ko-archive/976189.txt; official news API record code 976189 maps its exact URL."
+    },
+    {
+      "id": "HB-F04",
+      "url": "https://x.com/identity5kr/status/1821745133097824690",
+      "title": "새로운 감시자 절름발이 판 스킬 PV 감상",
+      "official": true,
+      "terms": [
+        "케이지"
+      ],
+      "verification": "official_korean_social_post_primary",
+      "publishedAt": "2024-08-09",
+      "shortSupportingExcerpt": "케이지에 들어가면 반대편으로 이동된다?",
+      "retrieval": "Read official X post text via public cdn.syndication.twimg.com tweet-result JSON, also independently indexed by web search.",
+      "linkedOfficialVideo": "https://www.youtube.com/watch?v=xV5-v1oQK_Y",
+      "limit": "Confirms object name and broad opposite-side movement wording. Do not derive extra cooldown/boundary rules from the short promotional text."
+    },
+    {
+      "id": "HB-F05",
+      "url": "https://www.youtube.com/watch?v=hun9-Sn1wgE",
+      "title": "새로운 감시자-사기꾼 같은 놈 스킬 PV 감상",
+      "official": true,
+      "terms": [
+        "불안정 구역"
+      ],
+      "verification": "official_youtube_description_primary",
+      "shortSupportingExcerpt": "곡괭이를 던져 불안정 구역을 생성시키고 붕괴를 일으켜 대미지를 준다네",
+      "retrieval": "Fetched the public YouTube watch HTML and read ytInitialPlayerResponse.videoDetails.shortDescription. author=제5인격, channelId=UCKcYqk0hDDbgHpmZVQWjDcQ.",
+      "limit": "Preview title uses the earlier character label 사기꾼 같은 놈; do not change the current character name 파이라이트. The name 불안정 구역 itself is directly present in the official description."
+    },
+    {
+      "id": "HB-F06",
+      "url": "https://x.com/identity5kr/status/1766284016922292533",
+      "title": "새로운 감시자 시공의 그림자 능력 소개",
+      "official": true,
+      "terms": [],
+      "verification": "official_source_located_terms_not_observed",
+      "publishedAt": "2024-03-09",
+      "shortSupportingExcerpt": "특별한 능력을 통해 생존자를 강제로 이동시킬 수 있다네",
+      "linkedOfficialVideo": "https://www.youtube.com/watch?v=HZ8lhV7Mw9Y",
+      "retrieval": "Official X post links this video; YouTube watch metadata author and channel ID also match the official channel.",
+      "limit": "Neither requested Korean term occurs in the fetched post/video description. Video frames were not available for inspection, so no upgrade of 침식도 or 침식의 조각 to direct official verification."
+    },
+    {
+      "id": "HB-F07",
+      "url": "https://x.com/identity5kr/status/2043177290197094642",
+      "title": "신규 감시자 치과의사 스킬 PV 감상",
+      "official": true,
+      "terms": [
+        "렌즈"
+      ],
+      "verification": "official_source_located_requested_terms_not_observed",
+      "publishedAt": "2026-04-12",
+      "shortSupportingExcerpt": "렌즈를 통해 영역 공격과 이동까지 가능",
+      "linkedOfficialVideo": "https://www.youtube.com/watch?v=t92V5_hwqJE",
+      "retrieval": "Official X post links this video; YouTube watch metadata author=제5인격 and channelId=UCKcYqk0hDDbgHpmZVQWjDcQ.",
+      "limit": "The fetched post/description does not state 광선 치료 구역, 광막 or 구강경 and says nothing about seeing through walls. 렌즈 is used in official ordinary explanatory prose, so it should not automatically be replaced with a different item noun."
+    },
+    {
+      "id": "HB-F08",
+      "url": "https://x.com/identity5kr/status/1852191180181901638",
+      "title": "새로운 감시자 훌라발루 스킬 PV 감상",
+      "official": true,
+      "terms": [],
+      "verification": "official_source_located_term_not_observed",
+      "shortSupportingExcerpt": "세 개의 폭탄 효과",
+      "linkedOfficialVideo": "https://www.youtube.com/watch?v=vEr0sKnX6ks",
+      "retrieval": "Official X post links this video; public YouTube metadata confirmed the official channel and skill-PV title.",
+      "limit": "깜짝 표식 is not in the retrieved post/video description; no readable official frame inspected."
+    }
+  ],
+  "corrections": [],
+  "verificationUpgrades": [
+    {
+      "scope": "c24 canonical nouns",
+      "terms": [
+        "곤충 떼",
+        "벌침"
+      ],
+      "from": "indirect Korean wiki table",
+      "to": "official Korean skill-video visual evidence",
+      "sourceIds": [
+        "HB-F01"
+      ],
+      "action": "Retain current spelling; update evidence level only. Do not use the preview to update numeric mechanics."
+    },
+    {
+      "scope": "c26 skill names",
+      "terms": [
+        "섭혼",
+        "탕백"
+      ],
+      "from": "internal consistency and indirect Korean wiki table",
+      "to": "official Korean patch-body evidence",
+      "sourceIds": [
+        "HB-F02",
+        "HB-F03"
+      ],
+      "action": "Retain the current skill names; attach official references."
+    },
+    {
+      "scope": "c31 cage object",
+      "terms": [
+        "케이지"
+      ],
+      "from": "internal consistency and indirect Korean wiki table",
+      "to": "official Korean post text",
+      "sourceIds": [
+        "HB-F04"
+      ],
+      "action": "Retain current spelling; update evidence level."
+    },
+    {
+      "scope": "c35 zone",
+      "terms": [
+        "불안정 구역"
+      ],
+      "from": "internal consistency and indirect Korean wiki table",
+      "to": "official Korean YouTube description",
+      "sourceIds": [
+        "HB-F05"
+      ],
+      "action": "Retain current spelling; update evidence level. Preserve 붕괴 as the event/action rather than treating it as another zone name."
+    }
+  ],
+  "dentistMechanicsReview": {
+    "currentText": "광막 주변 벽은 치과의사가 들여다볼 수 있습니다.",
+    "status": "not_verified_or_disproved_by_primary_evidence_in_this_pass",
+    "officialObservation": "The official Korean preview post states area attack and movement through a lens; it does not mention wall visibility or ultraviolet penetration.",
+    "conclusion": "Do not claim this sentence has been verified from official text. The previous community skill-table description about obstacles not blocking ultraviolet is insufficient by itself to prove a wall-vision effect, or to prove that wall vision is absent.",
+    "implementationGuidance": "Keep this isolated as an unresolved mechanics sentence, or remove the specific wall-vision assertion while retaining a generic caution already supported by the existing guide. Do not replace it with a different detailed effect until an official Korean frame/current in-game description is inspected.",
+    "neededEvidence": "Readable Korean 광막 요법 ability frame in the official linked PV or current Korean client tooltip, with a visual example if the tooltip concerns light blocking rather than visibility."
+  },
+  "unknowns": [
+    {
+      "scope": "c22",
+      "terms": [
+        "침식도",
+        "침식의 조각"
+      ],
+      "reason": "Official Korean PV located, but no readable frames; public post/description lacks these terms."
+    },
+    {
+      "scope": "c33",
+      "terms": [
+        "광선 치료 구역",
+        "광막",
+        "구강경"
+      ],
+      "reason": "Official Korean PV located, but no readable frames; direct primary verification remains incomplete."
+    },
+    {
+      "scope": "c36",
+      "terms": [
+        "깜짝 표식"
+      ],
+      "reason": "Official Korean PV located, but no readable frames; public description lacks this term."
+    },
+    {
+      "scope": "Media access",
+      "reason": "YouTube watch HTML and metadata were readable. Requested YouTube media/storyboard files returned a Site Unavailable HTML response instead of images/video, so they were not treated as inspected footage. Queen Bee X-hosted video was successfully inspected."
+    },
+    {
+      "scope": "Official cafe",
+      "reason": "Web retrieval reported cafe.naver.com blocked by robots.txt; no cafe-only claim was promoted to verified."
+    },
+    {
+      "scope": "Currentness",
+      "reason": "Name verification from older official announcements/previews does not revalidate 2026 numeric balance, timing, damage or current complete official ability descriptions."
+    }
+  ]
+}

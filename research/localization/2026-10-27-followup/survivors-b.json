@@ -1,0 +1,427 @@
+{
+  "reviewedAt": "2026-10-27",
+  "scope": "v1.14.4 후속: c67, c68, c72, c75, c77, c81, c84, c85 한국어 명칭의 공식 1차 근거 보강",
+  "charsChecked": [
+    {
+      "id": "c67",
+      "name": "의사"
+    },
+    {
+      "id": "c68",
+      "name": "인형사"
+    },
+    {
+      "id": "c72",
+      "name": "조향사"
+    },
+    {
+      "id": "c75",
+      "name": "치어리더"
+    },
+    {
+      "id": "c77",
+      "name": "타자"
+    },
+    {
+      "id": "c81",
+      "name": "파로 부인"
+    },
+    {
+      "id": "c84",
+      "name": "항해사"
+    },
+    {
+      "id": "c85",
+      "name": "행운아"
+    }
+  ],
+  "summary": {
+    "termsChecked": 10,
+    "officialKoreanFullText": 4,
+    "officialKoreanSearchIndexOnly": 1,
+    "indirectKoreanTooltip": 5,
+    "numericGameChangesProposed": 0
+  },
+  "evidence": [
+    {
+      "id": "ko-20210916",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+      "title": "2021년 9월 16일 업데이트 내용",
+      "official": true,
+      "verification": "official-korean-full-text",
+      "terms": [
+        "망각의 향",
+        "해신의 회중시계",
+        "행운보따리"
+      ],
+      "shortSupportingExcerpt": "외적 특성 행운보따리를 추가하였습니다. / 진정제, 마술봉, 망각의 향, 강철 팔굽 보호대, 해신의 회중시계",
+      "retrieval": "메인 에이전트가 공개 공식 URL에서 수집한 /workspace/scratch/manor-official-ko-archive/972616.txt 본문 직접 판독. 이번 web open은 오류였으므로 web 렌더 성공으로 주장하지 않음.",
+      "limitations": "2021년 명칭 증거. 당시 횟수·확률·사거리·소지품 구성은 2026년 현행 값으로 적용하지 않음."
+    },
+    {
+      "id": "ko-20210826",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html",
+      "title": "2021년 8월 26일 업데이트 내용",
+      "official": true,
+      "verification": "official-korean-full-text",
+      "terms": [
+        "폭발 상태"
+      ],
+      "shortSupportingExcerpt": "타로 모드에서 타자가 폭발 상태일 때",
+      "retrieval": "메인 에이전트의 공식 URL 수집본 /workspace/scratch/manor-official-ko-archive/968429.txt 직접 판독.",
+      "limitations": "타자의 상태 명칭 증거로만 사용."
+    },
+    {
+      "id": "ko-20210812",
+      "url": "https://www.identityvgame.com/kr/news/announcement/20210812/35362_965837.html",
+      "title": "2021년 8월 12일 업데이트 내용",
+      "official": true,
+      "verification": "official-korean-full-text",
+      "terms": [
+        "폭발 상태"
+      ],
+      "shortSupportingExcerpt": "PC 버전에서 타자가 폭발 상태일 때",
+      "retrieval": "메인 에이전트의 공식 URL 수집본 /workspace/scratch/manor-official-ko-archive/965837.txt 직접 판독.",
+      "limitations": "타자의 상태 명칭 증거로만 사용."
+    },
+    {
+      "id": "ko-facebook-batter",
+      "url": "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-31%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-12%EC%9B%94-31%EC%9D%BC-%EC%A0%90%EA%B2%80-%EB%82%B4%EC%9A%A9%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%BA%90%EB%A6%AD/402268734432056/",
+      "canonicalPostUrl": "https://www.facebook.com/identity5kr/videos/402268734432056/",
+      "title": "공식 제5인격 Facebook 2020년 12월 31일 점검 내용",
+      "official": true,
+      "verification": "official-korean-search-index-only",
+      "sourceRef": "turn128search1",
+      "terms": [
+        "크리켓 배트"
+      ],
+      "shortSupportingExcerpt": "외적 특성: [크리켓 배트] 크리켓 배트를 소지하고 있습니다.",
+      "retrieval": "공식 Facebook identity5kr 게시물의 검색 색인에서 문구 확인. 직접 본문 열람은 throttled/DisabledError로 불가하여 중단.",
+      "limitations": "공식 계정 게시물의 색인 확인 수준. 현재 인게임 화면 직접 판독이나 전문 열람으로 표시하면 안 됨."
+    },
+    {
+      "id": "ko-facebook-channel",
+      "url": "https://www.facebook.com/identity5kr/?locale=en_GB",
+      "title": "제5인격 (@identity5kr)",
+      "official": true,
+      "verification": "official-channel-search-index-only",
+      "sourceRef": "turn137search0",
+      "terms": [],
+      "shortSupportingExcerpt": "페이스북의 제5인격 공식 채널의 업데이트를 중단하게 되었습니다.",
+      "limitations": "공식 계정 확인 및 최근 신규 용어가 없는 이유를 뒷받침. 현행 게임 수치 증거 아님."
+    },
+    {
+      "id": "ko-chuseok-perfumer",
+      "url": "https://www.identityv.jp/zqj/kr/",
+      "title": "제5인격 한가위 사전 이벤트",
+      "official": true,
+      "verification": "official-korean-page-plus-quiz-answer-data",
+      "sourceRef": "turn121view0",
+      "terms": [
+        "망각의 향"
+      ],
+      "shortSupportingExcerpt": "망각의 향",
+      "retrieval": "공식 한국어 행사 페이지의 조향사 퀴즈 문구와 정답 데이터 직접 확인. HTML role data-id=9의 세 번째 선택지가 망각의 향이며 pageData.ansQue id9 ans2; index.js는 선택지 index를 ans와 비교.",
+      "supportingUrls": [
+        "https://www.identityv.jp/m/h5/20200924232014/js/app/data_c475b4c.js",
+        "https://www.identityv.jp/m/h5/20200924232014/js/app/index_809d6c2.js"
+      ],
+      "limitations": "능력명 보조 근거. 최신 스킬 조건 근거로 사용하지 않음."
+    },
+    {
+      "url": "https://www.namu.moe/w/%EC%A0%9C5%EC%9D%B8%EA%B2%A9/%EC%95%84%EC%9D%B4%ED%85%9C",
+      "title": "제5인격/아이템",
+      "official": false,
+      "kind": "한국어 공동편집 문서의 아이템명/툴팁 재현; 1차 원문 아님",
+      "terms": [
+        "목제 행글라이더",
+        "망각의 향",
+        "해신의 회중시계",
+        "행운보따리",
+        "소리굽쇠",
+        "응원수술",
+        "십자 막대",
+        "아로마 스틱",
+        "크리켓 배트",
+        "올가미 채찍"
+      ],
+      "shortSupportingExcerpt": "발사기와 목제 행글라이더 / 망각의 향 / 해신의 회중시계 / 행운보따리 / 아로마 스틱",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://m.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "인형사 외적 특성",
+      "official": false,
+      "kind": "한국어 공동편집 문서의 게임 툴팁 재현",
+      "terms": [
+        "루이",
+        "두려움 상실",
+        "유연한 부품"
+      ],
+      "shortSupportingExcerpt": "두려움 상실 중에는 이동할 수 없지만, 피해와 제어 효과를 받지 않습니다.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.namu.moe/w/%EC%B9%98%EC%96%B4%EB%A6%AC%EB%8D%94(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "치어리더 외적 특성",
+      "official": false,
+      "kind": "한국어 공동편집 문서의 게임 툴팁 재현",
+      "terms": [
+        "응원",
+        "사기 진작",
+        "격려",
+        "응원수술"
+      ],
+      "shortSupportingExcerpt": "동료의 메인 소지품이 쿨타임 상태이면 쿨타임이 20초 감소합니다.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://d.namu.moe/w/'%ED%8C%8C%EB%A1%9C%20%EB%B6%80%EC%9D%B8'",
+      "title": "파로 부인 외적 특성",
+      "official": false,
+      "kind": "한국어 공동편집 문서의 게임 툴팁 재현",
+      "terms": [
+        "흔적 감추기",
+        "폭로 진행도",
+        "아로마 스틱",
+        "묘수"
+      ],
+      "shortSupportingExcerpt": "아이템으로 아로마 스틱 / 폭로 진행도 / 묘수",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.namu.moe/w/%EC%9D%98%EC%82%AC(%EC%A0%9C5%EC%9D%B8%EA%B2%A9)",
+      "title": "의사 외적 특성",
+      "official": false,
+      "kind": "한국어 공동편집 문서의 게임 툴팁 재현",
+      "terms": [
+        "진정제",
+        "약물 증강제"
+      ],
+      "shortSupportingExcerpt": "약물 증강제 수량: 2",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
+      "title": "Maintenance Update on January 29 2026",
+      "official": true,
+      "kind": "공식 영문 공지; 한국어 명칭의 직접 근거 아님",
+      "terms": [
+        "Inspire"
+      ],
+      "shortSupportingExcerpt": "When charging Inspire, teammates' item cooldowns can now be viewed.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20260910/35288_1313606.html",
+      "title": "Maintenance Update on September 10 2026",
+      "official": true,
+      "kind": "공식 영문 공지; 한국어 명칭의 직접 근거 아님",
+      "terms": [
+        "Inspire",
+        "Lasso"
+      ],
+      "shortSupportingExcerpt": "Fixed an issue where the Cheerleader's Inspire could not be triggered in certain situations after the Cowboy used his Lasso.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=lpCm2aRhvL8",
+      "title": "새로운 생존자-인형사 스킬 PV 감상~!",
+      "official": true,
+      "kind": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람",
+      "channelId": "UCKcYqk0hDDbgHpmZVQWjDcQ",
+      "author": "제5인격",
+      "terms": [
+        "루이"
+      ],
+      "shortSupportingExcerpt": "‘루이’가 되는 동안 공포치를 상쇄할 수 있다네~",
+      "note": "동영상 설명과 공식 채널만 확인. 자막 트랙 없음; 영상 내부의 구체적 툴팁 이름은 직접 판독하지 못했으므로 해당 명칭을 이 영상이 확인했다고 주장하지 않음.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=cbYhy_Aevl4",
+      "title": "치어리더 스킬 소개",
+      "official": true,
+      "kind": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람",
+      "channelId": "UCKcYqk0hDDbgHpmZVQWjDcQ",
+      "author": "제5인격",
+      "terms": [],
+      "shortSupportingExcerpt": "톡톡 친구들을 응원하여 버프 효과를 준다네~",
+      "note": "동영상 설명과 공식 채널만 확인. 자막 트랙 없음; 영상 내부의 구체적 툴팁 이름은 직접 판독하지 못했으므로 해당 명칭을 이 영상이 확인했다고 주장하지 않음.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sxfTvVRqgr4",
+      "title": "새로운 생존자 ‘파로 부인’ 스킬 PV",
+      "official": true,
+      "kind": "공식 한국어 YouTube 설명; HTML videoDetails 직접 열람",
+      "channelId": "UCKcYqk0hDDbgHpmZVQWjDcQ",
+      "author": "제5인격",
+      "terms": [
+        "묘수"
+      ],
+      "shortSupportingExcerpt": "묘수를 통해 자신의 암호 장치 해독 속도를 증가시킬 수 있다네~",
+      "note": "동영상 설명과 공식 채널만 확인. 자막 트랙 없음; 영상 내부의 구체적 툴팁 이름은 직접 판독하지 못했으므로 해당 명칭을 이 영상이 확인했다고 주장하지 않음.",
+      "retrievalPass": "2026-10-27 earlier bounded pass, retained with original verification limits"
+    }
+  ],
+  "findings": [
+    {
+      "characterId": "c67",
+      "name": "의사",
+      "term": "약물 증강제",
+      "status": "indirect-korean-tooltip",
+      "sourceUrls": [
+        "https://www.namu.moe/w/%EC%9D%98%EC%82%AC%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29"
+      ],
+      "decision": "현재 표기 유지 가능하나 공식 한국어 직접 확인 완료로 표시하지 않음. 공식 영문/일문 치료 변경 공지는 메커니즘의 근거일 뿐 한국어 명칭의 근거가 아님."
+    },
+    {
+      "characterId": "c68",
+      "name": "인형사",
+      "term": "두려움 상실",
+      "status": "indirect-korean-tooltip",
+      "sourceUrls": [
+        "https://www.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29"
+      ],
+      "decision": "인형사 문서의 루이 관련 동작명으로 연결. 밀랍인형사 문서 연결은 잘못된 provenance이며 제거해야 함."
+    },
+    {
+      "characterId": "c72",
+      "name": "조향사",
+      "term": "망각의 향",
+      "status": "official-korean-full-text",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+        "https://www.identityv.jp/zqj/kr/"
+      ],
+      "decision": "명칭 근거를 한국어 공동편집 문서에서 공식 한국어 공지로 승격."
+    },
+    {
+      "characterId": "c75",
+      "name": "치어리더",
+      "term": "사기 진작",
+      "status": "indirect-korean-tooltip",
+      "sourceUrls": [
+        "https://www.namu.moe/w/%EC%B9%98%EC%96%B4%EB%A6%AC%EB%8D%94%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29"
+      ],
+      "decision": "명칭은 한국어 툴팁 간접 근거 유지. 이미 사용한 소지품에도 적용한다는 현재 조건 설명은 공식 2026-09-10 영문 공지로 별도 뒷받침됨."
+    },
+    {
+      "characterId": "c77",
+      "name": "타자",
+      "term": "크리켓 배트",
+      "status": "official-korean-search-index-only",
+      "sourceUrls": [
+        "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-31%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-12%EC%9B%94-31%EC%9D%BC-%EC%A0%90%EA%B2%80-%EB%82%B4%EC%9A%A9%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%BA%90%EB%A6%AD/402268734432056/"
+      ],
+      "decision": "tips의 배트를 크리켓 배트로 표기할 근거 확보. 공식 게시물 색인 확인 단계임을 기록."
+    },
+    {
+      "characterId": "c77",
+      "name": "타자",
+      "term": "폭발 상태",
+      "status": "official-korean-full-text",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html",
+        "https://www.identityvgame.com/kr/news/announcement/20210812/35362_965837.html"
+      ],
+      "decision": "현재 폭발 상태 표기 유지. 공식 한국어 공지의 직접 명칭 근거 추가."
+    },
+    {
+      "characterId": "c81",
+      "name": "파로 부인",
+      "term": "아로마 스틱",
+      "status": "indirect-korean-tooltip",
+      "sourceUrls": [
+        "https://d.namu.moe/w/'%ED%8C%8C%EB%A1%9C%20%EB%B6%80%EC%9D%B8'"
+      ],
+      "decision": "한국어 툴팁 재현에 따른 간접 확인 유지. 공식 PV 설명은 묘수만 직접 확인하며 아로마 스틱을 증명하지 않음."
+    },
+    {
+      "characterId": "c81",
+      "name": "파로 부인",
+      "term": "폭로 진행도",
+      "status": "indirect-korean-tooltip",
+      "sourceUrls": [
+        "https://d.namu.moe/w/'%ED%8C%8C%EB%A1%9C%20%EB%B6%80%EC%9D%B8'"
+      ],
+      "decision": "한국어 툴팁 재현에 따른 간접 확인 유지. 게이지 명칭을 공식 영상에서 판독했다고 주장하지 않음."
+    },
+    {
+      "characterId": "c84",
+      "name": "항해사",
+      "term": "해신의 회중시계",
+      "status": "official-korean-full-text",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html"
+      ],
+      "decision": "명칭 근거를 공식 한국어 공지로 승격. 일반 문맥의 회중시계 축약 자체는 오류가 아님."
+    },
+    {
+      "characterId": "c85",
+      "name": "행운아",
+      "term": "행운보따리",
+      "status": "official-korean-full-text",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html"
+      ],
+      "decision": "명칭 근거를 공식 한국어 공지로 승격. 획득 제한 및 확률의 현행 검증과 구분."
+    }
+  ],
+  "corrections": [
+    {
+      "scope": "c68 terminology rule provenance",
+      "before": "무감각 → 두려움 상실 규칙이 밀랍인형사 문서에 연결됨",
+      "after": {
+        "characterId": "c68",
+        "characterName": "인형사",
+        "sourceUrl": "https://www.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "confidence": "indirect-korean-tooltip"
+      },
+      "sourceUrls": [
+        "https://www.namu.moe/w/%EC%9D%B8%ED%98%95%EC%82%AC%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29"
+      ],
+      "reason": "인형사와 밀랍인형사는 별도 캐릭터. 이름 부분 문자열 대신 characterId 또는 정확히 일치하는 캐릭터명으로 출처 선택. 용어를 바꾸는 변경이 아니라 잘못 연결된 근거 수정."
+    },
+    {
+      "scope": "c77 tips[0]",
+      "before": "일반 상태에서 배트를 겨누면",
+      "after": "일반 상태에서 크리켓 배트를 겨누면",
+      "sourceUrls": [
+        "https://www.facebook.com/identity5kr/videos/%EC%95%88%EB%85%95%ED%95%98%EC%8B%A0%EA%B0%80-%ED%83%90%EC%A0%95-%EC%97%AC%EB%9F%AC%EB%B6%8412%EC%9B%94-31%EC%9D%BC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EC%97%88%EB%8B%A4%EB%84%A4%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%82%B4%EC%9A%A9%EC%9D%80-%EC%95%84%EB%9E%98%EC%99%80-%EA%B0%99%EC%9C%BC%EB%8B%88-%ED%95%9C-%EB%B2%88-%ED%99%95%EC%9D%B8-%ED%95%B4%EC%A3%BC%EC%8B%9C%EA%B2%8C-12%EC%9B%94-31%EC%9D%BC-%EC%A0%90%EA%B2%80-%EB%82%B4%EC%9A%A9%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%BA%90%EB%A6%AD/402268734432056/"
+      ],
+      "reason": "공식 한국어 게시물 검색 색인에서 소지품명 크리켓 배트 확인. 기절·회수 조건 및 수치는 변경하지 않음.",
+      "confidence": "official-korean-search-index-only"
+    },
+    {
+      "scope": "c72 / c77 / c84 / c85 terminology provenance",
+      "before": "한국어 툴팁 간접 확인 또는 공식 명칭 출처 없음",
+      "after": "망각의 향, 폭발 상태, 해신의 회중시계, 행운보따리에 해당 공식 한국어 본문 근거 연결",
+      "sourceUrls": [
+        "https://www.identityvgame.com/kr/news/announcement/20210916/35362_972616.html",
+        "https://www.identityvgame.com/kr/news/announcement/20210826/35362_968429.html"
+      ],
+      "reason": "명칭은 직접 확인했지만 2021년 공지를 2026년 수치 근거로 사용하지 않음.",
+      "confidence": "official-korean-full-text"
+    }
+  ],
+  "unknowns": [
+    {
+      "scope": "약물 증강제 / 두려움 상실 / 사기 진작 / 아로마 스틱 / 폭로 진행도",
+      "detail": "공식 한국어 홈페이지·공식 계정 대상 검색과 이전 공식 PV 확인에서 명칭의 직접 1차 증거를 확보하지 못함. wiki 툴팁을 공식 원문으로 승격하지 않음."
+    },
+    {
+      "scope": "공식 한국어 영상",
+      "detail": "기존 확인한 공식 PV는 채널 및 설명만 직접 확인. captions 없음, storyboard 이미지는 Site Unavailable로 판독 불가. 두려움 상실·사기 진작·아로마 스틱·폭로 진행도를 영상에서 읽었다고 주장하지 않음."
+    },
+    {
+      "scope": "공식 카페",
+      "detail": "검색 도구에서 cafe.naver.com robots 차단. 차단을 우회하지 않았으며 공식 카페 전체 검증 완료라고 표시하지 않음."
+    },
+    {
+      "scope": "현재 수치",
+      "detail": "이번 작업은 한국어 명칭 근거 보강이며 새로운 게임 수치 변경은 제안하지 않음. 치어리더의 이미 사용한 소지품 적용 설명은 이전 공식 2026-09-10 근거에 따라 현행 문구 유지."
+    }
+  ]
+}

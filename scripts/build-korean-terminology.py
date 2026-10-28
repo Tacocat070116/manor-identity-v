@@ -2,9 +2,11 @@
 
 The fixed baseline and per-field audit preserve editorial history. Source quotes,
 URLs, player submissions, historical releases and game balance dates are untouched.
-Run this only for this release; future edits use the same register and validation.
+The default is the latest reviewed register. Future releases add a register with
+their own baseline and audit; do not regenerate old releases over newer content.
 """
 import collections
+import argparse
 import copy
 import json
 import re
@@ -13,8 +15,13 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'research/localization/2026-10-27'
-RULES = json.loads((OUT / 'terminology.json').read_text())
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--register', default='research/localization/2026-10-27-followup/terminology.json')
+parser.add_argument('--check', action='store_true')
+args = parser.parse_args()
+register = ROOT / args.register
+OUT = register.parent
+RULES = json.loads(register.read_text())
 BASE = RULES['baseline']
 DATE = RULES['reviewedAt']
 
@@ -122,12 +129,12 @@ def diff(before, after, path):
 
 for name, data in all_files.items():
     diff(original[name], data, 'dist/' + name + '.json')
-    if '--check' in sys.argv:
+    if args.check:
         assert data == json.loads((ROOT / 'dist' / (name + '.json')).read_text()), f'{name}: generated terminology differs'
     else:
         formatting = {'separators': (',', ':')} if name == 'data' else {'indent': 2}
         (ROOT / 'dist' / (name + '.json')).write_text(json.dumps(data, ensure_ascii=False, **formatting) + '\n')
-if '--check' in sys.argv:
+if args.check:
     assert edits == json.loads((OUT / 'edits.json').read_text()), 'audit differs'
     print('Terminology generation and per-field audit match.')
     sys.exit(0)

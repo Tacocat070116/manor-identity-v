@@ -6,6 +6,8 @@ const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const root='research/localization/2026-10-27/';
 const db=read('dist/data.json'),roles=read('dist/specialties.json'),intros=read('dist/introductions.json');
 const policy=read(root+'terminology.json'),edits=read(root+'edits.json');
+const followRoot='research/localization/2026-10-27-followup/';
+const followPolicy=read(followRoot+'terminology.json'),followEdits=read(followRoot+'edits.json');
 const characterFields=['difficultyReason','persona','alternative','personaReason','caution','skill','use','hold','response','adjustment','tips','strengths','weaknesses'];
 const fields=(row,keys)=>keys.flatMap(k=>row[k]??[]);
 const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
@@ -46,18 +48,22 @@ test('source-conflicting usage conditions are corrected without discarding cavea
 });
 
 test('every replacement has provenance and the audit only touches editorial fields',()=>{
- const sources=new Map(policy.sources.map(s=>[s.id,s]));
- for(const rule of [...policy.rules,...policy.fieldEdits]){
-  assert.ok(rule.sources.length);
-  for(const id of rule.sources)assert.ok(id==='editorial'||sources.has(id),id);
+ for(const register of [policy,followPolicy]){
+  const sources=new Map(register.sources.map(s=>[s.id,s]));
+  for(const rule of [...register.rules,...register.fieldEdits]){
+   assert.ok(rule.sources.length);
+   for(const id of rule.sources)assert.ok(id==='editorial'||sources.has(id),id);
+  }
+  assert.ok([...sources.values()].some(s=>s.kind==='official-ko'));
+  assert.ok([...sources.values()].some(s=>s.kind==='indirect-transcription'));
  }
- assert.ok([...sources.values()].some(s=>s.kind==='official-ko'));
- assert.ok([...sources.values()].some(s=>s.kind==='indirect-transcription'));
- const files={'data.json':db,'specialties.json':roles,'introductions.json':intros};
- for(const edit of edits){
+ // Reverse newer edits first, including descendants of older object-level edits.
+ const files=structuredClone({'data.json':db,'specialties.json':roles,'introductions.json':intros});
+ for(const edit of [...followEdits,...edits]){
   const [dist,file,...parts]=edit.path.split('/');assert.equal(dist,'dist');
-  let actual=files[file];for(const part of parts)actual=actual[part];
-  assert.deepEqual(actual,edit.after,edit.path);
+  let parent=files[file];for(const part of parts.slice(0,-1))parent=parent[part];
+  assert.deepEqual(parent[parts.at(-1)],edit.after,edit.path);
+  parent[parts.at(-1)]=structuredClone(edit.before);
   if(file!=='data.json')continue;
   const [group,index,field,...rest]=parts;
   if(group==='meta'){assert.equal(index,'languageReviewedAt');continue;}
@@ -68,4 +74,40 @@ test('every replacement has provenance and the audit only touches editorial fiel
  }
  assert.equal(db.characters.length,89);assert.equal(db.matchups.length,463);assert.equal(db.links.length,275);
  assert.equal(db.meta.recordLatest,'2026-10-26');
+});
+
+test('official item introductions and contextual weather terms stay distinct',()=>{
+ assert.match(byId.c50.skill,/맹인용 지팡이/);
+ assert.match(byId.c51.skill,/걸리버 여행기/);
+ assert.match(byId.c63.skill,/기억 동기화/);
+ assert.match(byId.c67.skill,/진정제/);
+ assert.match(byId.c74.skill,/원숭이 조각상/);
+ assert.match(byId.c77.tips[0],/크리켓 배트/);
+ assert.match(byId.c45.skill,/층운/);
+ assert.match(byId.c45.tips[1],/따뜻한 비가 만드는 구름/);
+ assert.doesNotMatch(byId.c45.tips[1],/층운/);
+ assert.match(byId.c54.tips[0],/느린 리듬 오르골/);
+ assert.match(byId.c54.tips[1],/빠른 리듬 오르골/);
+ assert.match(db.matchups.find(m=>m.id==='M314').condition,/비늘 표피/);
+ assert.match(db.matchups.find(m=>m.id==='M314').summary,/비늘 경화/);
+ assert.match(db.matchups.find(m=>m.id==='M319').condition,/추억 조각/);
+});
+
+test('follow-up evidence distinguishes direct observation from indexed posts and indirect text',()=>{
+ const sourceById=new Map(policy.sources.map(s=>[s.id,s]));
+ const puppeteer=policy.rules.find(r=>r.before==='무감각');
+ for(const id of puppeteer.sources){
+  const name=decodeURIComponent(sourceById.get(id).url);
+  assert.ok(name.includes('/인형사('));assert.ok(!name.includes('밀랍인형사'));
+ }
+ const followSources=new Map(followPolicy.sources.map(s=>[s.id,s]));
+ const amendments=read(followRoot+'source-amendments.json');
+ assert.ok(amendments.confirmedTerms.some(t=>t.verification==='search-index'));
+ assert.ok(amendments.confirmedTerms.some(t=>t.verification==='video-frame'));
+ for(const term of amendments.confirmedTerms){
+  const source=followSources.get(term.source);assert.equal(source.kind,'official-ko');
+  assert.ok(source.supports.includes(term.term),term.term);
+  assert.equal(source.verification,term.verification);
+ }
+ for(const term of ['약물 증강제','두려움 상실','사기 진작','아로마 스틱','폭로 진행도'])assert.ok(!amendments.confirmedTerms.some(t=>t.term===term),term+' remains unverified from primary Korean text');
 });

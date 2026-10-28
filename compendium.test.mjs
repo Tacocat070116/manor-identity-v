@@ -82,10 +82,14 @@ test('all 89 characters have consistent team totals and source-backed updated co
  const edits=read('research/refresh/2026-10-21/guide-edits.json').records;
  const languageEdits=new Map(read('research/localization/2026-10-22/edits.json').map(e=>[e.path,e]));
  const terminologyEdits=new Map(read('research/localization/2026-10-27/edits.json').map(e=>[e.path,e]));
+ const terminologyFollowup=new Map(read('research/localization/2026-10-27-followup/edits.json').map(e=>[e.path,e]));
  const latest=(index,field,previous)=>{
-  const edit=terminologyEdits.get(`dist/data.json/characters/${index}/${field}`);
-  if(edit)assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
-  return edit?.after??previous;
+  for(const revisions of [terminologyEdits,terminologyFollowup]){
+   const edit=revisions.get(`dist/data.json/characters/${index}/${field}`);
+   if(edit)assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
+   previous=edit?.after??previous;
+  }
+  return previous;
  };
  const guideEdits=new Map(read('research/editorial/2026-10-25/skill-guide-edits.json').records.map(e=>[e.id,e]));
  assert.equal(edits.length,89);
