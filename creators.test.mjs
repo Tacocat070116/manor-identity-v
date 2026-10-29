@@ -133,3 +133,24 @@ test('gold cat recommendations depend on a server flag, not user tags or card de
  const value=normalizeCreator({...c,recommended:true},roster);assert(!Object.hasOwn(value,'recommended'));
  const editor=creatorEditor({...c,recommended:true},characters);assert.doesNotMatch(editor,/name="recommended"|data-cr-form="recommendation"/);
 });
+
+test('registration has exactly three required fields and four closed optional groups',()=>{
+ const html=creatorEditor(base(),characters,{mobile:true});
+ assert.deepEqual([...html.matchAll(/<input name="([^"]+)"[^>]* required/g)].map(m=>m[1]),['title','channelUrl','tagline']);
+ assert.equal((html.match(/<details class="creator-optional"/g)||[]).length,4);
+ assert.doesNotMatch(html,/<details class="creator-optional"[^>]*\bopen\b/);
+ assert.doesNotMatch(html,/<aside class="creator-preview"><details open/);
+ assert.ok(html.indexOf('name="tagline"')<html.indexOf('data-cr-optional='));
+});
+
+test('collecting a folded edit retains tags, characters, history and every appearance field',async()=>{
+ const {collectCreatorForm}=await import('./dist/creators.js');
+ const saved={...base(),country:'KR',server:'asia',tags:['프로','해설'],characterIds:['c16'],body:'기존 소개',videoUrl:'youtu.be/abcdefghijk',color:'gold',appearance:{...CREATOR_APPEARANCE_DEFAULT,frame:'dashed',label:'기존 장식'},tiers:[{side:'hunter',tier:'최고 7티어',season:'시즌 42'}],badges:[{characterId:'c16',grade:'S',season:'시즌 41'}]};
+ const data=new FormData();
+ for(const key of ['title','channelUrl','tagline','body','videoUrl','server','color','country'])data.set(key,saved[key]);
+ for(const [key,value] of Object.entries(saved.appearance))data.set('appearance-'+key,value);
+ data.set('tier-hunter','최고 7티어');data.set('season-hunter','시즌 42');
+ const before=structuredClone(saved);data.set('title','수정한 이름');
+ const next=collectCreatorForm(data,saved);assert.deepEqual(next,{...saved,title:'수정한 이름'});assert.deepEqual(saved,before);
+ assert.deepEqual(normalizeCreator(next,roster).badges,saved.badges);
+});

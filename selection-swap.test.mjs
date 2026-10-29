@@ -1,3 +1,4 @@
+import * as compendium from './dist/compendium-model.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -17,7 +18,7 @@ const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'
 async function harness(hash){
  const nodes=new Map(),handlers={},history=[],scrolls=[],tipMounts=[];let tipsDisposed=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},focus(options){this.focusOptions=options;}});
- const context={...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
+ const context={...compendium,...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
   URL,URLSearchParams,Intl,setTimeout:()=>0,clearTimeout(){},location:{hash},
   mountMatchupTips:(root,options)=>{tipMounts.push(options);return ()=>tipsDisposed++;},
   localStorage:{getItem:()=>null},matchMedia:()=>({matches:false}),

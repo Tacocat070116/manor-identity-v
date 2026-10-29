@@ -1,4 +1,4 @@
-import {SERVER_LABELS,TIER_LABELS,METRIC_LABELS,selectRanked,sortStatistics,tournamentStatistics,rankedCharacter,cohortLabel,snapshotLabel,resultPercentages} from './statistics-model.js?v=45f34accabdb';
+import {SERVER_LABELS,TIER_LABELS,METRIC_LABELS,selectRanked,sortStatistics,tournamentStatistics,rankedCharacter,cohortLabel,snapshotLabel,resultPercentages} from './statistics-model.js?v=f7a052d6be7b';
 
 export function createStatisticsUI({characters,esc,num,portrait,icon,commonFilters}){
  const byId=Object.fromEntries(characters.map(c=>[c.id,c]));

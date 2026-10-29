@@ -29,7 +29,7 @@ function harness({reduced=false,animationSupport=false}={}){
   return node;
  }
  const nav=element(),toggle=element(nav),panel=element(nav),currentIcon=element(toggle),currentLabel=element(toggle),themeButton=element(),outside=element();
- const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='밴 분석'?184:150;
+ const naturalWidth=()=>currentLabel.textContent==='MANOR 업데이트'?248:currentLabel.textContent==='통계'?184:150;
  toggle.getBoundingClientRect=()=>({width:toggle.activeAnimation?.sampleWidth??naturalWidth()});
  currentLabel.getBoundingClientRect=()=>({width:Math.max(0,toggle.getBoundingClientRect().width-124)});
  if(animationSupport)for(const target of [toggle,currentLabel])target.animate=(frames,options)=>{
@@ -39,7 +39,7 @@ function harness({reduced=false,animationSupport=false}={}){
   };
   target.activeAnimation=animation;animations.push(animation);return animation;
  };
- const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['bans','밴 분석','shield'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','MANOR 업데이트','spark']];
+ const entries=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['feedback','피드백','message'],['patchnotes','MANOR 업데이트','spark']];
  const links=entries.map(([view,navLabel,navIcon])=>Object.assign(element(panel),{dataset:{view,navLabel,navIcon}}));
  nav.querySelector=s=>s==='[data-nav-toggle]'?toggle:panel;
  panel.querySelectorAll=()=>links;
@@ -91,7 +91,7 @@ test('normal link selection closes the menu without intercepting native navigati
  h.update('statistics');assert.equal(h.currentLabel.textContent,'통계');h.controller.destroy();
 });
 test('keyboard opening, Escape and tabbing away preserve a useful focus position',()=>{
- const h=harness();h.update('bans');h.toggle.focus();
+ const h=harness();h.update('statistics');h.toggle.focus();
  const down=h.toggle.emit('keydown',{key:'ArrowDown'});assert.ok(down.defaultPrevented);
  assert.equal(h.isOpen(),true);assert.equal(h.doc.activeElement,h.links[3]);
  const escape=h.doc.emit('keydown',{key:'Escape'});assert.ok(escape.defaultPrevented);
@@ -151,15 +151,15 @@ test('old text retracts completely before the new label expands, for longer, sho
 test('interrupted retraction and reveal keep their visible text and ignore stale finish callbacks',()=>{
  const h=harness({animationSupport:true});h.update('explore');h.update('patchnotes');
  const first=h.toggle.activeAnimation;first.sampleWidth=140;
- h.update('bans');const second=h.toggle.activeAnimation;
+ h.update('statistics');const second=h.toggle.activeAnimation;
  assert.equal(first.cancelled,true);assert.equal(parseFloat(second.frames[0].width),140);
  assert.equal(h.currentLabel.textContent,'도감');
  first.finish();assert.equal(h.toggle.activeAnimation,second);assert.equal(h.currentLabel.textContent,'도감');
  second.finish();const reveal=h.toggle.activeAnimation;
- assert.equal(h.currentLabel.textContent,'밴 분석');reveal.sampleWidth=160;
+ assert.equal(h.currentLabel.textContent,'통계');reveal.sampleWidth=160;
  h.update('feedback');const third=h.toggle.activeAnimation;
  assert.equal(reveal.cancelled,true);assert.equal(parseFloat(third.frames[0].width),160);
- assert.equal(h.currentLabel.textContent,'밴 분석');
+ assert.equal(h.currentLabel.textContent,'통계');
  reveal.finish();assert.equal(h.toggle.activeAnimation,third);
  h.update('feedback','dark');assert.equal(h.toggle.activeAnimation,third);
  h.controller.destroy();assert.equal(h.toggle.activeAnimation,null);
@@ -178,7 +178,13 @@ test('reduced motion, unsupported animation and viewport changes retain natural 
  h.reducedMotion.matches=false;h.update('patchnotes');const previous=h.toggle.activeAnimation;
  h.win.emit('resize');assert.equal(previous.cancelled,true);assert.equal(h.toggle.getBoundingClientRect().width,248);
  assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
- h.update('bans');h.toggle.activeAnimation.finish();
- h.win.emit('resize');assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'밴 분석');
+ h.update('statistics');h.toggle.activeAnimation.finish();
+ h.win.emit('resize');assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'통계');
  h.controller.destroy();
+});
+
+test('legacy ban links are part of Statistics with one selected menu item',()=>{
+ const h=harness();h.update('bans');assert.equal(h.currentLabel.textContent,'통계');
+ assert.equal(h.links.filter(link=>link.attrs['aria-current']==='page').length,1);
+ assert.equal(h.links.find(link=>link.attrs['aria-current']==='page').dataset.view,'statistics');h.controller.destroy();
 });

@@ -80,7 +80,7 @@ export function mountNavigation(root,{icon}){
    routeView=next.view;
    setOpen(false,{restoreFocus:true});
   }
-  const view=next.view==='character'?'explore':next.view;
+  const view=next.view==='character'?'explore':next.view==='bans'?'statistics':next.view;
   if(view!==selected){
    const current=links.find(link=>link.dataset.view===view);
    for(const link of links){

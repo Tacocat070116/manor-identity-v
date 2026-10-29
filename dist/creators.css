@@ -358,3 +358,27 @@
  .creator-badge-inputs .btn{margin-top:var(--space-2)}
  .creator-dialog-head,.creator-dialog-body{padding:var(--space-4)}
 }
+
+/* Registration starts with three fields; all existing optional values stay mounted. */
+.creator-optional-intro{margin:24px 0 12px}
+.creator-optional-intro h2{font-size:16px;line-height:24px;margin:0 0 4px}
+.creator-optional-intro p{font-size:12px;line-height:20px;color:var(--muted)}
+.creator-optional{padding:0;box-shadow:none;border:1px solid var(--line);border-radius:16px;margin-bottom:12px;background:var(--surface);min-width:0}
+.creator-optional>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;min-height:72px;cursor:pointer;list-style:none}
+.creator-optional>summary::-webkit-details-marker{display:none}
+.creator-optional>summary>span:first-child{min-width:0;display:grid;gap:4px}
+.creator-optional>summary strong{font-size:14px;line-height:24px}
+.creator-optional>summary small{font-size:12px;line-height:20px;color:var(--muted)}
+.creator-optional>summary::after{content:'+';font-size:20px;line-height:24px;color:var(--accent);flex:none;width:16px;text-align:center}
+.creator-optional[open]>summary::after{content:'−'}
+.creator-optional-state{font-size:11px;line-height:20px;color:var(--accent);margin-left:auto;max-width:112px;text-align:right;flex-shrink:0}
+.creator-optional-body{padding:20px;border-top:1px solid var(--line);min-width:0}
+.creator-optional-body>.creator-studio{padding:0;margin:0;border:0;background:transparent;box-shadow:none}
+.creator-optional-body>.creator-field-help{margin-bottom:20px}
+.creator-form .creator-editor-actions{margin-top:24px}
+@media(max-width:800px){
+ .creator-editor-layout .creator-preview{order:0}
+ .creator-optional-body{padding:16px}
+ .creator-optional-state{max-width:88px}
+ .creator-required-fields{margin-bottom:0}
+}

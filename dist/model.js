@@ -26,21 +26,27 @@ export function statsFor(rows, character, filters = {}) {
   totals.smallSample = totals.results > 0 && totals.results < 50;
   return totals;
 }
-export function rankBans(rows, selections, filters = {}) {
+// These are observed tournament records, never a prediction or a smoothed score.
+export function queryBanRecords(rows, selections, filters = {}) {
   const selected = selections.filter(Boolean);
-  if (!selected.length) return { error:'밴한 생존자를 1명 이상 선택하세요.', base:0, matched:0, ranks:[] };
-  if (new Set(selected).size !== selected.length) return { error:'동일한 생존자를 중복 선택할 수 없습니다.',base:0,matched:0,ranks:[] };
+  const empty = {base:0,matched:0,groups:[],rows:[],firstDate:'',lastDate:''};
+  if (!selected.length) return {...empty,error:'밴한 생존자를 1명 이상 선택하세요.'};
+  if (new Set(selected).size !== selected.length) return {...empty,error:'동일한 생존자를 중복 선택할 수 없습니다.'};
   const excluded = new Set((filters.excluded || []).filter(Boolean));
   const base = filterRows(rows, filters).filter(r => !excluded.has(r[2]));
-  const matched = base.filter(r => selected.every(id => r[3].includes(id)));
-  const all = {}, hits = {};
-  base.forEach(r => all[r[2]] = (all[r[2]] || 0) + 1);
-  matched.forEach(r => hits[r[2]] = (hits[r[2]] || 0) + 1);
-  const ranks = matched.length ? Object.entries(all).map(([id,n]) => ({
-    id, base:n, count:hits[id] || 0, share:(hits[id] || 0)/matched.length, baseline:n/base.length,
-    score:((hits[id] || 0) + 20*n/base.length)/(matched.length+20)
-  })).sort((a,b) => b.score-a.score || b.count-a.count || a.id.localeCompare(b.id)) : [];
-  return { base:base.length,matched:matched.length,ranks:ranks.slice(0,5),error:null };
+  // A subset match: a record may contain additional survivor bans.
+  const matched = base.filter(r => selected.every(id => r[3].includes(id))).sort((a,b)=>b[0].localeCompare(a[0]));
+  const counts = new Map();
+  for (const row of matched) counts.set(row[2],(counts.get(row[2])||0)+1);
+  const groups = [...counts].map(([id,count])=>({id,count,share:count/matched.length}))
+    .sort((a,b)=>b.count-a.count||a.id.localeCompare(b.id));
+  return {base:base.length,matched:matched.length,groups,rows:matched,
+    firstDate:matched.at(-1)?.[0]||'',lastDate:matched[0]?.[0]||'',error:null};
+}
+export function banRecordPage(rows, page=1, size=20) {
+  const pages=Math.max(1,Math.ceil(rows.length/size));
+  const current=Math.min(pages,Math.max(1,Math.trunc(Number(page))||1));
+  return {page:current,pages,total:rows.length,rows:rows.slice((current-1)*size,current*size)};
 }
 export function pairEvidence(data, own, opponent, situation = '') {
   const seen = new Set();

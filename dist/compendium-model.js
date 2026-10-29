@@ -1,4 +1,4 @@
-import {filterRows,cutoff} from './model.js?v=4af73c4d1266';
+import {filterRows,cutoff} from './model.js?v=7daffcd45847';
 
 export function contextEvidence(records,id){
  const primary=records.find(m=>m.id===id&&m.status==='반영');
@@ -63,4 +63,21 @@ export function characterEvidence(records,character,kind){
   const key=JSON.stringify([m.hunter,m.survivor,m.advantage,m.situation,m.situationDetail,m.summary,m.condition]);
   if(seen.has(key))return false;seen.add(key);return true;
  }).sort((a,b)=>(b.listPriority||3)-(a.listPriority||3)||a.id.localeCompare(b.id));
+}
+
+// Compact surfaces use the same approved evidence as the full matchup page.
+// Copied reasons or a name alone must never become a matchup conclusion.
+export function summaryEvidence(records,character,item,kind){
+ const primary=records.find(m=>m.id===item.evidence&&m.status==='반영'&&m.listEligible&&
+  [m.hunter,m.survivor].includes(character.name)&&[m.hunter,m.survivor].includes(item.name)&&
+  character.name!==item.name&&(m.advantage===character.name)===(kind==='easy'));
+ return primary?{primary,contexts:contextEvidence(records,primary.id)}:null;
+}
+
+// Retain legacy detail strings for old URL filters, but do not display an older,
+// broader activity label beside the current reviewed situation.
+export function evidenceDetail(record){
+ const detail=record.situationDetail||'';
+ const broad=new Set(['추격','구출','커버','운영','견제','지원']);
+ return detail===record.situation||detail.split('·').every(part=>broad.has(part))?'':detail;
 }

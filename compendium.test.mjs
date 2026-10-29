@@ -84,7 +84,7 @@ test('all 89 characters have consistent team totals and source-backed updated co
  const terminologyEdits=new Map(read('research/localization/2026-10-27/edits.json').map(e=>[e.path,e]));
  const terminologyFollowup=new Map(read('research/localization/2026-10-27-followup/edits.json').map(e=>[e.path,e]));
  const latest=(index,field,previous)=>{
-  for(const revisions of [terminologyEdits,terminologyFollowup]){
+  for(const revisions of [terminologyEdits,terminologyFollowup,new Map(read('research/editorial/2026-10-29/consistency-edits.json').edits.map(e=>[e.path,e]))]){
    const edit=revisions.get(`dist/data.json/characters/${index}/${field}`);
    if(edit)assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
    previous=edit?.after??previous;
