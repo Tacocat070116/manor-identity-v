@@ -412,7 +412,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=e5f1594eafaa'),fetch('specialties.json?v=e208be4a70ff'),fetch('introductions.json?v=6a5ab2a1154c'),fetch('releases.json?v=49e48e49ccfc')]);
+ const responses=await Promise.all([fetch('data.json?v=e5f1594eafaa'),fetch('specialties.json?v=e208be4a70ff'),fetch('introductions.json?v=6a5ab2a1154c'),fetch('releases.json?v=f0e4cd749d80')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
