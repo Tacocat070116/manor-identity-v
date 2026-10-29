@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.15.5",
+  "version": "1.15.6",
   "openedAt": "2026-10-16",
   "historyNote": "버전 관리 도입 전의 변경은 날짜별 기록으로 정리했습니다. 날짜는 모두 한국 시간 기준이며, 제5인격 게임 패치가 아닌 MANOR 사이트의 업데이트 내역입니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-15-6",
+      "version": "1.15.6",
+      "date": "2026-10-29",
+      "title": "유튜브 화면 간격 정리",
+      "changes": [
+        {
+          "type": "개선",
+          "text": "유튜브 목록과 채널 소개의 줄간격·여백·아이콘 크기를 통일하고 티어·휘장 박스를 가지런히 정렬했습니다."
+        },
+        {
+          "type": "개선",
+          "text": "채널 등록 화면의 입력창 높이와 항목 사이 간격을 맞췄습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-15-5",
       "version": "1.15.5",
