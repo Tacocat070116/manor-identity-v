@@ -1,0 +1,55 @@
+{
+  "reviews": [
+    {
+      "date": "2026-10-29",
+      "characterId": "c24",
+      "baselineCommit": "249d4badfbbaa61173fe1c30ebe42677ad8f6e0b",
+      "scope": "여왕벌의 대표 역할 태그와 역할 설명. 추격 성능의 우열, 인격, 상성 전체를 재평가한 기록은 아닙니다.",
+      "decision": "구출 전후의 연속 피해 압박을 메인 캠핑으로, 에너지와 풀존재 기동력을 활용한 견제·복귀를 보조 운영으로 표시합니다. 임계점이나 에너지 흡수량 감소만으로 역할 우선순위를 정하지 않습니다.",
+      "evidence": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/女王蜂の対策",
+          "kind": "community-guide",
+          "supports": "구출 동선에서의 에너지 확보·연속 피해, 의자에서 암호 장치로 이동한 뒤 복귀하는 견제, 충분한 에너지가 필요한 풀존재 출구 순회"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+          "kind": "official-patch",
+          "supports": "에너지 흡수량 감소와 풀존재 이동 중 에너지 소비 증가. 임계점의 통전 후 지속 시간과 재사용 조건"
+        },
+        {
+          "url": "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html",
+          "kind": "official-patch",
+          "supports": "벌침 계열은 구출 동작 자체를 취소하지 않으므로 캠핑 근거를 피해와 다운 압박으로 설명"
+        }
+      ],
+      "before": {
+        "specialtySources": [
+          "https://wikiwiki.jp/identity5ch/女王蜂"
+        ],
+        "specialties": [
+          "추격"
+        ],
+        "specialtyReasons": {
+          "추격": "곤충 떼로 확보한 에너지와 벌침을 본체 공격에 연결해 추격합니다."
+        }
+      },
+      "after": {
+        "specialtySources": [
+          "https://wikiwiki.jp/identity5ch/女王蜂",
+          "https://wikiwiki.jp/identity5ch/女王蜂の対策",
+          "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+          "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html"
+        ],
+        "specialties": [
+          "캠핑",
+          "운영"
+        ],
+        "specialtyReasons": {
+          "캠핑": "곤충 떼로 에너지를 확보하고 벌침과 일반 공격을 연결해 구출자와 구출된 생존자를 압박합니다.",
+          "운영": "확보한 에너지와 풀존재 기동력을 활용해 의자·암호 장치·출구를 오가며 견제합니다."
+        }
+      }
+    }
+  ]
+}

@@ -4,6 +4,8 @@ The fixed baseline and per-field audit preserve editorial history. Source quotes
 URLs, player submissions, historical releases and game balance dates are untouched.
 The default is the latest reviewed register. Future releases add a register with
 their own baseline and audit; do not regenerate old releases over newer content.
+Later role reviews are replayed after the terminology audit so regeneration keeps
+approved role changes without rewriting the historical terminology edits.
 """
 import collections
 import argparse
@@ -22,6 +24,7 @@ args = parser.parse_args()
 register = ROOT / args.register
 OUT = register.parent
 RULES = json.loads(register.read_text())
+ROLE_REVIEWS = json.loads((ROOT / 'research/roles/reviews.json').read_text())['reviews']
 BASE = RULES['baseline']
 DATE = RULES['reviewedAt']
 
@@ -129,6 +132,11 @@ def diff(before, after, path):
 
 for name, data in all_files.items():
     diff(original[name], data, 'dist/' + name + '.json')
+    if name == 'specialties':
+        for review in ROLE_REVIEWS:
+            cid = review['characterId']
+            assert data['characters'][cid] == review['before'], f'{cid}: role review baseline differs'
+            data['characters'][cid] = copy.deepcopy(review['after'])
     if args.check:
         assert data == json.loads((ROOT / 'dist' / (name + '.json')).read_text()), f'{name}: generated terminology differs'
     else:

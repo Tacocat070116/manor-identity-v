@@ -8,6 +8,7 @@ const db=read('dist/data.json'),roles=read('dist/specialties.json'),intros=read(
 const policy=read(root+'terminology.json'),edits=read(root+'edits.json');
 const followRoot='research/localization/2026-10-27-followup/';
 const followPolicy=read(followRoot+'terminology.json'),followEdits=read(followRoot+'edits.json');
+const roleReviews=read('research/roles/reviews.json').reviews;
 const characterFields=['difficultyReason','persona','alternative','personaReason','caution','skill','use','hold','response','adjustment','tips','strengths','weaknesses'];
 const fields=(row,keys)=>keys.flatMap(k=>row[k]??[]);
 const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
@@ -59,6 +60,10 @@ test('every replacement has provenance and the audit only touches editorial fiel
  }
  // Reverse newer edits first, including descendants of older object-level edits.
  const files=structuredClone({'data.json':db,'specialties.json':roles,'introductions.json':intros});
+ for(const review of [...roleReviews].reverse()){
+  assert.deepEqual(files['specialties.json'].characters[review.characterId],review.after,review.characterId+' reviewed roles');
+  files['specialties.json'].characters[review.characterId]=structuredClone(review.before);
+ }
  for(const edit of [...followEdits,...edits]){
   const [dist,file,...parts]=edit.path.split('/');assert.equal(dist,'dist');
   let parent=files[file];for(const part of parts.slice(0,-1))parent=parent[part];

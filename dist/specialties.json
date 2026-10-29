@@ -232,13 +232,18 @@
     },
     "c24": {
       "specialtySources": [
-        "https://wikiwiki.jp/identity5ch/女王蜂"
+        "https://wikiwiki.jp/identity5ch/女王蜂",
+        "https://wikiwiki.jp/identity5ch/女王蜂の対策",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+        "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html"
       ],
       "specialties": [
-        "추격"
+        "캠핑",
+        "운영"
       ],
       "specialtyReasons": {
-        "추격": "곤충 떼로 확보한 에너지와 벌침을 본체 공격에 연결해 추격합니다."
+        "캠핑": "곤충 떼로 에너지를 확보하고 벌침과 일반 공격을 연결해 구출자와 구출된 생존자를 압박합니다.",
+        "운영": "확보한 에너지와 풀존재 기동력을 활용해 의자·암호 장치·출구를 오가며 견제합니다."
       }
     },
     "c25": {
