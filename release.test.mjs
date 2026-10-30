@@ -33,13 +33,20 @@ test('release validation rejects missing BETA, stale versions and lost history',
 test('history lists every entry, searches with type filters and escapes text',()=>{
  const all=releaseUI.releaseNotesList(log);
  assert.equal((all.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
- assert.ok(all.includes('MANOR 베타 오픈'));assert.ok(all.includes('BETA v'+log.version));
+ assert.ok(all.includes('BETA 오픈'));assert.ok(all.includes('BETA v'+log.version));
+ assert.ok(!all.includes('<h3'));
+ assert.equal((all.match(/class="release-kind"/g)||[]).length,log.releases.reduce((sum,release)=>sum+release.changes.length,0),'every patch item keeps its change-type badge');
+ const removals=releaseUI.selectReleases(log,{type:'삭제'});assert.ok(removals.length>0);
+ assert.ok(removals.every(release=>release.changes.some(change=>change.type==='삭제')));
+ assert.ok(releaseUI.releaseNotesList(log,{type:'삭제'}).includes('data-kind="삭제"'));
+ assert.ok(releaseUI.releaseNotesPage(log,{query:'',type:'삭제'},{icon:()=>''}).includes('<option value="삭제" selected>삭제</option>'));
  assert.equal(releaseUI.selectReleases(log,{query:'BETA v'+log.version}).length,1);
  const matches=releaseUI.selectReleases(log,{query:'상성',type:'데이터'});assert.ok(matches.length>0);
  assert.ok(matches.every(release=>release.changes.some(change=>change.type==='데이터')));
  assert.ok(releaseUI.releaseNotesList(log,{query:'존재하지않는검색어12345'}).includes('일치하는 업데이트가 없습니다'));
- const dirty=structuredClone(log);dirty.releases[0].title='<script>oops</script>';dirty.releases[0].changes[0].text='<img onerror="oops">';
- const html=releaseUI.releaseNotesList(dirty);assert.ok(!html.includes('<script>'));assert.ok(!html.includes('<img onerror'));assert.ok(html.includes('&lt;script&gt;'));
+ const dirty=structuredClone(log);dirty.releases[0].title='<script>hidden-title-probe</script>';dirty.releases[0].changes[0].text='<img onerror="oops">';
+ const html=releaseUI.releaseNotesList(dirty);assert.ok(!html.includes('<script>'));assert.ok(!html.includes('<img onerror'));assert.ok(!html.includes('hidden-title-probe'));assert.ok(html.includes('&lt;img onerror='));
+ assert.equal(releaseUI.selectReleases(dirty,{query:'hidden-title-probe'}).length,0,'hidden titles must not produce results absent from displayed content');
 });
 
 test('patchnotes deep link, shared version, filters and return navigation work in the app',async()=>{
@@ -69,8 +76,8 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
  assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>url.startsWith('patches/')));assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
- handlers.input({target:{id:'release-search',value:'임의 닉네임'}});
- assert.ok(nodes.get('#release-results').innerHTML.includes('함께 만드는 피드백 게시판'));
+ handlers.input({target:{id:'release-search',value:'닉네임'}});
+ assert.ok(nodes.get('#release-results').innerHTML.includes('닉네임'));
  handlers.change({target:{id:'release-type',value:'데이터',dataset:{}}});
  assert.ok(nodes.get('#release-results').innerHTML.includes('일치하는 업데이트가 없습니다'));
  context.location.hash='#v=explore';context.app.readRoute();await context.app.render();

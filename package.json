@@ -1,6 +1,6 @@
 {
   "name": "manor-identity-v",
-  "version": "1.15.9",
+  "version": "1.15.10",
   "private": true,
   "type": "module",
   "description": "Independently deployable MANOR Identity V guide",

@@ -1,0 +1,528 @@
+{
+  "date": "2026-10-30",
+  "baseCommit": "9021457729bee64c67a677ac4cff643fe15687a8",
+  "scope": "MANOR 업데이트의 소제목 표시 제거, 본문 정리, 변경 유형 재검토",
+  "classification": {
+    "추가": "새로운 기능·화면·사용자 조작을 제공한 변경. 기존 기능의 일부로 함께 제공된 안내·제약도 포함한다.",
+    "개선": "기존 화면·문구·사용 흐름·성능을 조정한 변경. 단순 정렬·간격·표현 조정을 오류 수정으로 분류하지 않는다.",
+    "수정": "오작동·잘못된 정보·표시 오류를 고치거나 문제가 된 변경을 이전 상태로 복구한 변경.",
+    "데이터": "공략·상성·통계·이미지·소개 채널 등 수록 정보의 추가·검토·갱신. 기존 정보의 명백한 오류를 바로잡은 경우는 수정.",
+    "삭제": "이용자가 사용하던 기능·화면·메뉴·선택 항목을 제거한 변경. 자료 목록 정리는 데이터, 내부 코드 정리만 있는 경우는 개선."
+  },
+  "reviewedReleases": 87,
+  "originalItems": 237,
+  "revisedItems": 245,
+  "counts": {
+    "개선": 105,
+    "추가": 57,
+    "수정": 47,
+    "데이터": 24,
+    "삭제": 12
+  },
+  "reviewedIds": [
+    "beta-1-15-9",
+    "beta-1-15-8",
+    "beta-1-15-7",
+    "beta-1-15-6",
+    "beta-1-15-5",
+    "beta-1-15-4",
+    "beta-1-15-3",
+    "beta-1-15-2",
+    "beta-1-15-1",
+    "beta-1-15-0",
+    "beta-1-14-4",
+    "beta-1-14-3",
+    "beta-1-14-2",
+    "beta-1-14-1",
+    "beta-1-14-0",
+    "beta-1-13-1",
+    "beta-1-13-0",
+    "beta-1-12-2",
+    "beta-1-12-1",
+    "beta-1-12-0",
+    "beta-1-11-0",
+    "beta-1-10-9",
+    "beta-1-10-8",
+    "beta-1-10-7",
+    "beta-1-10-6",
+    "beta-1-10-5",
+    "beta-1-10-4",
+    "beta-1-10-3",
+    "beta-1-10-2",
+    "beta-1-10-1",
+    "beta-1-10-0",
+    "beta-1-9-2",
+    "beta-1-9-1",
+    "beta-1-9-0",
+    "beta-1-8-2",
+    "beta-1-8-1",
+    "beta-1-8-0",
+    "beta-1-7-6",
+    "beta-1-7-5",
+    "beta-1-7-4",
+    "beta-1-7-3",
+    "beta-1-7-2",
+    "beta-1-7-1",
+    "beta-1-7-0",
+    "beta-1-6-0",
+    "beta-1-5-5",
+    "beta-1-5-4",
+    "beta-1-5-3",
+    "beta-1-5-2",
+    "beta-1-5-1",
+    "beta-1-5-0",
+    "beta-1-4-6",
+    "beta-1-4-5",
+    "beta-1-4-4",
+    "beta-1-4-3",
+    "beta-1-4-2",
+    "beta-1-4-1",
+    "beta-1-4-0",
+    "beta-1-3-1",
+    "beta-1-3-0",
+    "beta-1-2-0",
+    "beta-1-1-2",
+    "beta-1-1-1",
+    "beta-1-1-0",
+    "update-314e9df",
+    "update-99e8f18",
+    "update-927ebc1",
+    "update-fcdd456",
+    "update-03854e1",
+    "update-8b65254",
+    "update-11af4f0",
+    "update-674d38d",
+    "update-5dc05b8",
+    "update-5376c62",
+    "update-be7aaa9",
+    "update-17e5ea8",
+    "update-a0c4025",
+    "update-b8bcbbb",
+    "update-e0a8a69",
+    "update-7a02bcd",
+    "update-d9f08c8",
+    "update-b3c48e9",
+    "update-e7cd59d",
+    "update-13a537a",
+    "update-3e7359f",
+    "update-34e1b5a",
+    "opening"
+  ],
+  "typeChanges": [
+    {
+      "id": "beta-1-15-9",
+      "item": 1,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-15-5",
+      "item": 0,
+      "before": "개선",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-15-4",
+      "item": 0,
+      "before": "개선",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-15-3",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-15-3",
+      "item": 2,
+      "before": "개선",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-15-2",
+      "item": 0,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-15-2",
+      "item": 1,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-15-1",
+      "item": 0,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-14-4",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-14-3",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-14-2",
+      "item": 1,
+      "before": "개선",
+      "after": "수정"
+    },
+    {
+      "id": "beta-1-14-2",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-14-0",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-14-0",
+      "item": 3,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-13-1",
+      "item": 2,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-13-0",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-13-0",
+      "item": 3,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-12-1",
+      "item": 0,
+      "before": "수정",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-12-1",
+      "item": 1,
+      "before": "추가",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-12-1",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-12-1",
+      "item": 3,
+      "before": "수정",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-12-0",
+      "item": 0,
+      "before": "추가",
+      "after": "데이터"
+    },
+    {
+      "id": "beta-1-12-0",
+      "item": 3,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-10-7",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-10-5",
+      "item": 0,
+      "before": "개선",
+      "after": "수정"
+    },
+    {
+      "id": "beta-1-10-5",
+      "item": 1,
+      "before": "개선",
+      "after": "수정"
+    },
+    {
+      "id": "beta-1-10-4",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-10-3",
+      "item": 0,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-10-3",
+      "item": 1,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-10-2",
+      "item": 0,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-10-2",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-10-1",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-8-2",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-7-3",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-7-2",
+      "item": 1,
+      "before": "개선",
+      "after": "수정"
+    },
+    {
+      "id": "beta-1-7-1",
+      "item": 2,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-7-0",
+      "item": 1,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-6-0",
+      "item": 1,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-5-4",
+      "item": 2,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-5-2",
+      "item": 0,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-5-2",
+      "item": 3,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-5-1",
+      "item": 0,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-4-6",
+      "item": 1,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-4-0",
+      "item": 3,
+      "before": "수정",
+      "after": "개선"
+    },
+    {
+      "id": "beta-1-3-0",
+      "item": 5,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "beta-1-2-0",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "beta-1-1-0",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "update-927ebc1",
+      "item": 0,
+      "before": "추가",
+      "after": "개선"
+    },
+    {
+      "id": "update-03854e1",
+      "item": 0,
+      "before": "추가",
+      "after": "데이터"
+    },
+    {
+      "id": "update-5376c62",
+      "item": 1,
+      "before": "개선",
+      "after": "삭제"
+    },
+    {
+      "id": "update-be7aaa9",
+      "item": 2,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "update-b8bcbbb",
+      "item": 1,
+      "before": "개선",
+      "after": "추가"
+    },
+    {
+      "id": "update-b3c48e9",
+      "item": 0,
+      "before": "데이터",
+      "after": "개선"
+    },
+    {
+      "id": "update-13a537a",
+      "item": 1,
+      "before": "수정",
+      "after": "개선"
+    }
+  ],
+  "splitItems": [
+    {
+      "id": "beta-1-15-0",
+      "item": 1,
+      "types": [
+        "추가",
+        "수정"
+      ]
+    },
+    {
+      "id": "beta-1-10-4",
+      "item": 0,
+      "types": [
+        "삭제",
+        "개선"
+      ]
+    },
+    {
+      "id": "beta-1-10-1",
+      "item": 2,
+      "types": [
+        "수정",
+        "개선"
+      ]
+    },
+    {
+      "id": "beta-1-9-0",
+      "item": 3,
+      "types": [
+        "추가",
+        "개선"
+      ]
+    },
+    {
+      "id": "beta-1-8-0",
+      "item": 2,
+      "types": [
+        "데이터",
+        "개선"
+      ]
+    },
+    {
+      "id": "beta-1-8-0",
+      "item": 4,
+      "types": [
+        "데이터",
+        "추가"
+      ]
+    },
+    {
+      "id": "beta-1-6-0",
+      "item": 2,
+      "types": [
+        "추가",
+        "개선"
+      ]
+    },
+    {
+      "id": "beta-1-3-0",
+      "item": 0,
+      "types": [
+        "추가",
+        "데이터"
+      ]
+    },
+    {
+      "id": "update-d9f08c8",
+      "item": 1,
+      "types": [
+        "데이터",
+        "추가"
+      ]
+    }
+  ],
+  "mergedItems": [
+    {
+      "id": "update-314e9df",
+      "items": [
+        0,
+        1
+      ],
+      "reason": "유지된 동작의 설명을 복구 항목에 합쳤다."
+    }
+  ],
+  "preserved": [
+    "87개 이력의 ID·버전·날짜·커밋·제목 메타데이터",
+    "과거 변경 사실과 수치",
+    "이미 삭제된 기능의 역사적 기록"
+  ],
+  "copyReview": "87개 이력, 기존 237개 항목의 전체 본문을 읽고 정리했다. 숫자 표기 차이 3건은 여섯→6, 여덟→8, 다섯→5로 의미가 같다. 역사적 기록의 당시 데이터 기준을 현재 검증 결과로 바꾸지 않았다.",
+  "releaseDataSha256": "d02745bc09688abf574846fb47766903a96c8634e94c07d993ff2de17b74d2ee"
+}

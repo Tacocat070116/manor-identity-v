@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {releaseTypes} from '../dist/releases.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
@@ -25,7 +26,7 @@ export function validateReleaseLog(log,packageVersion){
   assert.ok(validDate(release.date)&&release.date>=log.openedAt&&release.date<=previousDate,'패치노트는 최신 날짜부터 정렬해야 합니다.');previousDate=release.date;
   assert.ok(typeof release.title==='string'&&release.title.trim(),'업데이트 제목이 필요합니다.');
   assert.ok(release.changes?.length>0,'변경 내용이 필요합니다.');
-  for(const change of release.changes){assert.ok(['추가','개선','수정','데이터'].includes(change.type));assert.ok(typeof change.text==='string'&&change.text.trim());}
+  for(const change of release.changes){assert.ok(releaseTypes.includes(change.type));assert.ok(typeof change.text==='string'&&change.text.trim());}
   if(release.version!==null){
    assert.match(release.version,versionPattern);assert.ok(!versions.has(release.version),'중복 버전');versions.add(release.version);
    if(previousVersion)assert.ok(compareVersions(previousVersion,release.version)>0,'버전은 최신 순이어야 합니다.');previousVersion=release.version;
