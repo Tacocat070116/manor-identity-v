@@ -1,3 +1,4 @@
+import * as synergyModel from './dist/synergy-model.js';
 import * as compendium from './dist/compendium-model.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,19 +17,20 @@ for(const c of db.characters)Object.assign(c,specialties.characters[c.id]);
 const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
 const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 async function harness(hash){
- const nodes=new Map(),handlers={},history=[],scrolls=[],tipMounts=[];let tipsDisposed=0;
+ const nodes=new Map(),handlers={},history=[],scrolls=[],tipMounts=[],synergyMounts=[];let tipsDisposed=0,synergyDisposed=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},focus(options){this.focusOptions=options;}});
  const context={...compendium,...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
   URL,URLSearchParams,Intl,setTimeout:()=>0,clearTimeout(){},location:{hash},
+  mountSynergy:(root,options)=>{synergyMounts.push(options);return ()=>synergyDisposed++;},
   mountMatchupTips:(root,options)=>{tipMounts.push(options);return ()=>tipsDisposed++;},
   localStorage:{getItem:()=>null},matchMedia:()=>({matches:false}),
   document:{documentElement:{dataset:{}},addEventListener(type,handler){handlers[type]=handler;},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);}},
   fetch:async path=>({ok:true,json:async()=>read('dist/'+path.split('?')[0])})
  };
  context.window={scrollY:180,scrollTo:options=>scrolls.push(options),addEventListener(){},history:{pushState(_state,_unused,hash){history.push(hash);context.location.hash=hash;}}};
- vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
+ Object.assign(context,synergyModel);vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
  context.app.readRoute();await context.app.render();
- return {...context.app,nodes,handlers,history,scrolls,context,tipMounts,tipsDisposed:()=>tipsDisposed,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
+ return {...context.app,nodes,handlers,history,scrolls,context,tipMounts,synergyMounts,synergyDisposed:()=>synergyDisposed,tipsDisposed:()=>tipsDisposed,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
 }
 
 test('matchup swap reverses perspective, retains situation and focus, and can be reversed again',async()=>{
@@ -57,6 +59,15 @@ test('character tips deep link restores the player section and clears it when le
  const h=await harness('#v=character&c=c37&tab=tips');
  assert.equal(h.state.tab,'tips');assert.equal(h.tipMounts[0].ownId,'c37');assert(h.html().includes('유저 상대법'));
  h.context.location.hash='#v=character&c=c37&tab=overview';h.readRoute();await h.render();assert.equal(h.tipsDisposed(),1);
+});
+
+test('synergy links restore pair and post, dispose on exit, and do not create a hunter-only board',async()=>{
+ const id='90000000-0000-4000-8000-000000000001';
+ const h=await harness('#v=character&c=c58&tab=synergy&partner=c55&post='+id);
+ assert.equal(h.state.tab,'synergy');assert.equal(h.synergyMounts[0].postId,id);assert.equal(h.synergyMounts[0].partnerId,'c55');
+ h.context.location.hash='#v=character&c=c58';h.readRoute();await h.render();assert.equal(h.synergyDisposed(),1);
+ assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('조합 제안·이야기 보기'));
+ h.context.location.hash='#v=character&c=c01&tab=synergy';h.readRoute();await h.render();assert.equal(h.state.tab,'overview');assert.ok(!h.html().includes('data-tab="synergy"'));
 });
 
 test('comparison swap retains active statistics filters and changes both rendered columns',async()=>{

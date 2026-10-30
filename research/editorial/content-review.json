@@ -3,9 +3,9 @@
   "gameBalanceRevalidated": false,
   "characters": {
     "c01": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "e99592e52340ccc730857593269de4cddb5122ea2660e54ff78e0612d7696477",
-      "fingerprint": "e99592e52340ccc730857593269de4cddb5122ea2660e54ff78e0612d7696477",
+      "fingerprint": "e771026b1e34f4eb77c22092c7ac38f65f99871532f15076c3f309eabec73c61",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -15,12 +15,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c02": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a4394379004325acfc05c795efac65f29c9e8a7899efe803ce5afeee70345220",
-      "fingerprint": "a4394379004325acfc05c795efac65f29c9e8a7899efe803ce5afeee70345220",
+      "fingerprint": "03439f9b3dd63b4b4b303be9ed3e1f679a09cdf3203ff53153b5baeed0ca3c88",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -30,12 +30,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c03": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "1e4b69d882f4249db87658a04f22f76aa207c961530e917145b8114406cbd6dc",
-      "fingerprint": "1e4b69d882f4249db87658a04f22f76aa207c961530e917145b8114406cbd6dc",
+      "fingerprint": "e43c422683d9786b082de2c98ec5e3966b2b43db17ad0242a1b0e10c52a16424",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -45,12 +45,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c04": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "6f0e90a67c99e8db223dfb099c0ac1e7a3d948d5907514c626ac6bacd63c5d6c",
-      "fingerprint": "6f0e90a67c99e8db223dfb099c0ac1e7a3d948d5907514c626ac6bacd63c5d6c",
+      "fingerprint": "97ca3627be46d898b8e21016490bad17dc47259c141548dd2a5c993bdc946a2f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -60,12 +60,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c05": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "66ebc7958cc62d710c159ff97d360735fd43d284fcadfd03cee778a3f3b015f3",
-      "fingerprint": "66ebc7958cc62d710c159ff97d360735fd43d284fcadfd03cee778a3f3b015f3",
+      "fingerprint": "5feac087bd51703fe48dad5705f7b5e3cd700df210c38cca5e0e2715426a58e9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -75,12 +75,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c06": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "bbe35a19c9257ab1c3ec84e7c8d0f6ce9768bc8e5af79c4bac2764bdf73cddf4",
-      "fingerprint": "bbe35a19c9257ab1c3ec84e7c8d0f6ce9768bc8e5af79c4bac2764bdf73cddf4",
+      "fingerprint": "083270b14ef3201360b909edb4f47856483f1e04299d2ca94525a91b12d0e826",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -90,12 +90,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c07": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "19e3d5f50fa12f8bc32d69dd713d94c31d41241a2548fa187e46d770d3b276dc",
-      "fingerprint": "19e3d5f50fa12f8bc32d69dd713d94c31d41241a2548fa187e46d770d3b276dc",
+      "fingerprint": "ed0533d068fc1aea6a70984d49cfcf47f6078ba30af47d071143124af5f51f8e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -105,10 +105,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c08": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "3f4658bb8f67c5e2a9341fb4106fb03adabbf6be8adb7144107354be2602fe63",
       "fingerprint": "3f4658bb8f67c5e2a9341fb4106fb03adabbf6be8adb7144107354be2602fe63",
       "reviewedFields": [
@@ -120,12 +120,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c09": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a61d4e2832400fa9423091c708027288a21e797721130b9f4feac5681a9d490c",
-      "fingerprint": "a61d4e2832400fa9423091c708027288a21e797721130b9f4feac5681a9d490c",
+      "fingerprint": "ff26aa59adcacc7412407b343c5c24e4938a919a4331b84ddcacbbaa57972fd9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -135,12 +135,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c10": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "de3bf17b6a233386c075cd8851c38374080d1a394c56ede2b6c5e2333e1601e2",
-      "fingerprint": "de3bf17b6a233386c075cd8851c38374080d1a394c56ede2b6c5e2333e1601e2",
+      "fingerprint": "820d606c06bbab7b5a41436ca20d2dffe05131af2f0a97bde08eb41028784984",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -150,12 +150,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c11": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "740f11f3dc4550872a7894d99f8ef45ba30ecdcb67c8ac58c7f606f5597270c5",
-      "fingerprint": "740f11f3dc4550872a7894d99f8ef45ba30ecdcb67c8ac58c7f606f5597270c5",
+      "fingerprint": "2e2658bf5d96633c38f3add22597b6242102f49d727682895c124c6242821439",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -165,10 +165,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c12": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "8b0f65a18879b150914fa3a5dd06aa3defdd5dc6723fde56209313c899099cb7",
       "fingerprint": "8b0f65a18879b150914fa3a5dd06aa3defdd5dc6723fde56209313c899099cb7",
       "reviewedFields": [
@@ -180,12 +180,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c13": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "ffb6cd8fafb98f413b68033fd9435bb327499f996cf73c2d051d110dcfc4032b",
-      "fingerprint": "8844bb535544674a287be5e432f2213649f4de242a4e107b661c1db821d8628e",
+      "date": "2026-10-30",
+      "baselineFingerprint": "8844bb535544674a287be5e432f2213649f4de242a4e107b661c1db821d8628e",
+      "fingerprint": "b21f8345a0196723e6fff057e2f3b261850d9a02ce4610e1c6ea7af8bc93ee4a",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -195,12 +195,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "구출 진입에 맞춘 현·일반 공격 연계와 음표 보존을 추가."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c14": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "1c349cf19301e1459398c56b901f9df567de329b43b5b3d115fd66b43cf78246",
-      "fingerprint": "1c349cf19301e1459398c56b901f9df567de329b43b5b3d115fd66b43cf78246",
+      "fingerprint": "cb44d6936bc1cfbd12b1d80339fdbd98602edc3f0802898e1cc2537195d22a43",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -210,10 +210,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c15": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "dc1651914d290b2c9b569d2b29936d58730f6d3102239e92f34370a8b3a84204",
       "fingerprint": "dc1651914d290b2c9b569d2b29936d58730f6d3102239e92f34370a8b3a84204",
       "reviewedFields": [
@@ -225,12 +225,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c16": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "00f90334d5659f2e479c75a9234b0d178c31cd912b5fb084dc56636d0028fa69",
-      "fingerprint": "00f90334d5659f2e479c75a9234b0d178c31cd912b5fb084dc56636d0028fa69",
+      "fingerprint": "aeb5f849891b50068979cd75a1ee2d298b323a33a44e34d2dcf1e1abc7ce4722",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -240,12 +240,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c17": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "ab9fc70f5d3ae5b98ec2a726f6c52905b39933fde27a9b297ba7fb2106f2d7bd",
-      "fingerprint": "ab9fc70f5d3ae5b98ec2a726f6c52905b39933fde27a9b297ba7fb2106f2d7bd",
+      "fingerprint": "853a3b9ee3129adfb6e21883844ec159dc295b839e60da84ce871bd15213efef",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -255,12 +255,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c18": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "2d2486681e134c6ae41e9ca9328f0f10cb75bb9379c6dcfd4413b9fdcb142b9d",
-      "fingerprint": "2d2486681e134c6ae41e9ca9328f0f10cb75bb9379c6dcfd4413b9fdcb142b9d",
+      "fingerprint": "8a8a61a1f187da5a2ba2d606ab8320a684cc4642a167eef8ce448b8766e65401",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -270,12 +270,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c19": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "75024421313150e4a5754a090197209196c7a262e3646ca833452842d53279b1",
-      "fingerprint": "75024421313150e4a5754a090197209196c7a262e3646ca833452842d53279b1",
+      "fingerprint": "ad7f948300d24ebe34a339038f819836a650361866b9ec7696a8377b3084443b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -285,12 +285,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c20": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "969082e78dfe92fcca20576ac545f3b9dde098cdd523b2ad60971b48fc0acd53",
-      "fingerprint": "969082e78dfe92fcca20576ac545f3b9dde098cdd523b2ad60971b48fc0acd53",
+      "fingerprint": "9a4d82bdc3f0893eedbc646a7ba773aec6413755727da37af1f6a03ab483c335",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -300,12 +300,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c21": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "dab25754e894d4e39739168e3d7562fd78b59521b7b9a7522d8299f10465680d",
-      "fingerprint": "dab25754e894d4e39739168e3d7562fd78b59521b7b9a7522d8299f10465680d",
+      "fingerprint": "373733ffe93deae9eb857d6bedc3f25f250b30d3f47d8d662b04d61bfbf74bb6",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -315,12 +315,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c22": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "075de1c6af12609740ac4a77a4190f4e2dc7b29f879eaa03a35f563cb3e36c3e",
-      "fingerprint": "075de1c6af12609740ac4a77a4190f4e2dc7b29f879eaa03a35f563cb3e36c3e",
+      "fingerprint": "6010a0c45fd1a8a93cd0552708535944082e0518fe0a29ef4232863c898d0814",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -330,12 +330,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c23": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "cdb3625ed4a7047fbdb7e1501fc43fdb49fa0d9efd49362774be5c25340dd419",
-      "fingerprint": "cdb3625ed4a7047fbdb7e1501fc43fdb49fa0d9efd49362774be5c25340dd419",
+      "fingerprint": "f066052db267d29e65a42dd6657768cec5897faa888492977dad4e94428cfb8a",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -345,12 +345,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c24": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "ea3a71be59bdc6c6eaa4123af7ef7bbf1eae7fe61d9a18f4d91c9a233c606b63",
-      "fingerprint": "45d05135e14265095eb5372977b73fe17da95d7d02c0f8453b5cf8292f9a0dc9",
+      "date": "2026-10-30",
+      "baselineFingerprint": "45d05135e14265095eb5372977b73fe17da95d7d02c0f8453b5cf8292f9a0dc9",
+      "fingerprint": "abb9c14375a7b6fb0b492b62fe844a98a91d925201087e413803705fee3842a3",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -360,12 +360,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "태그에 맞춰 캠핑·운영을 설명. 벌침이 구출 동작을 취소하지 않는 조건과 에너지 비자동 회복을 명시."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c25": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "71bdcbd13f78d423e700ba5570811ce43d56dcab5ffc3e713ae7a5fc4047ece5",
-      "fingerprint": "71bdcbd13f78d423e700ba5570811ce43d56dcab5ffc3e713ae7a5fc4047ece5",
+      "fingerprint": "e784901632b055ac70520cf0c5e62478415ccb2bb25337cdc85898e430ed3a6e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -375,10 +375,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c26": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "b0636188140103f0fe4286cd5a9aacb2072f5431ea71429e829312019fa3f0c4",
       "fingerprint": "b0636188140103f0fe4286cd5a9aacb2072f5431ea71429e829312019fa3f0c4",
       "reviewedFields": [
@@ -390,12 +390,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c27": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "4005eaa72fb86ba2ba72f6aff2bcd3c02d79ef26cf1df2b26bd2afa2d1befe4b",
-      "fingerprint": "93d9fbdacd3042913fa5a5bcc38455d7bb55e93729961d60e6f1bec0587ac161",
+      "date": "2026-10-30",
+      "baselineFingerprint": "93d9fbdacd3042913fa5a5bcc38455d7bb55e93729961d60e6f1bec0587ac161",
+      "fingerprint": "226720f437aef45a46d0301f20429f2be1936bb47e415bf69e4aa46fcdc7229e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -405,12 +405,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "의자 앞 원령과 본체 공격의 연결을 소개·사용·보존에 반영."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c28": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "dbe24a56d34c36f308e196bdf535d11ab65cc312ac60a6ea314ceea054c45c17",
-      "fingerprint": "dbe24a56d34c36f308e196bdf535d11ab65cc312ac60a6ea314ceea054c45c17",
+      "fingerprint": "2e312a1a4c62c89327d8b5ff4a9ae5e5731384e597f7bcc406c0996370200c9b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -420,12 +420,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c29": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "ccaefb7a49137ac7920f1115278f4901c24bf3772bd4b723c7f49001b93ad3e0",
-      "fingerprint": "ccaefb7a49137ac7920f1115278f4901c24bf3772bd4b723c7f49001b93ad3e0",
+      "fingerprint": "c8cbfef3e1d7673555bb10ce2cebd92ed943259a29c16c6f83ef9ceebbb2b34b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -435,12 +435,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c30": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "9b9b05315b70999791b97a66e227f7065e7b6abe371a2e1d2e2754269bee7c16",
-      "fingerprint": "9b9b05315b70999791b97a66e227f7065e7b6abe371a2e1d2e2754269bee7c16",
+      "fingerprint": "66aa54ab53dfb4b7ff48980734ff36ff97a2908a2d34a24bd035327366c6ba17",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -450,10 +450,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c31": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "8fba78e2dcf13c14b702fb670574a5bc393be1e4e56db4c32d78f44a4ed3b90f",
       "fingerprint": "8fba78e2dcf13c14b702fb670574a5bc393be1e4e56db4c32d78f44a4ed3b90f",
       "reviewedFields": [
@@ -465,12 +465,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c32": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "dee5f1a51a9dd770c5c967f84a41636d0a38f2636570a1ed1cd0bb75206848f4",
-      "fingerprint": "598d2d8298cbd7da5514f43297e12d9ddfca3a6a35f5b2938870360b68f9a375",
+      "date": "2026-10-30",
+      "baselineFingerprint": "598d2d8298cbd7da5514f43297e12d9ddfca3a6a35f5b2938870360b68f9a375",
+      "fingerprint": "92f05f6800f39b1637f8d0deb9a7b3b42d225a88d038af52ea30653bcc83c95b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -480,12 +480,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "캠핑과 원격 견제의 전환, 조각상 보존과 본체 보호를 설명. 상형 무덤의 조사 수정."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c33": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "1523d21ac050d33b09bdc362489ef2fd4fa6568b41755d69dc0f87b5b1af9dbc",
-      "fingerprint": "1523d21ac050d33b09bdc362489ef2fd4fa6568b41755d69dc0f87b5b1af9dbc",
+      "fingerprint": "5b177c5839daf231a42a03ea45624cc82c369db03c98e05bf053f68c4ff80dd0",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -495,12 +495,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c34": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "a6ea68b1e0a155df0512363a7a6cb3f3b1cd7238b6dc611fe4aaa3c5610050fe",
-      "fingerprint": "3147cbad3f5044a0de7f393b2f189217c200919b6a57992a26b01ca9b8e83fa4",
+      "date": "2026-10-30",
+      "baselineFingerprint": "3147cbad3f5044a0de7f393b2f189217c200919b6a57992a26b01ca9b8e83fa4",
+      "fingerprint": "f883ee035d9d3f143a470c32b5e681601446037b6775b2256a5f9942dfde0f0a",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -510,12 +510,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "단일 추격 설명에 암호 장치 순회와 목표 마무리의 관계를 보완."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c35": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "7e0161e79bfdce84216764fa1bf2515c41b717a86311c7f09ce799b348ab5fb4",
-      "fingerprint": "7e0161e79bfdce84216764fa1bf2515c41b717a86311c7f09ce799b348ab5fb4",
+      "fingerprint": "eeae640fe86255949ef236b987fa9d943c4b0245202bb5b6579389bb5e3296d8",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -525,12 +525,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c36": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "c6a0a89d705e2a5ec6fdf540ec3c836ede0872dcab8a55e07353589ec1a32d05",
-      "fingerprint": "c6a0a89d705e2a5ec6fdf540ec3c836ede0872dcab8a55e07353589ec1a32d05",
+      "fingerprint": "ee93c39a0392f95e4185c7deeeb24c870fb38052e6fc14f2a5fd41f3b86292a5",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -540,10 +540,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c37": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "d3e39219cb5926c6033ef1380280f85d29073ce565ea89475c5890d574c41349",
       "fingerprint": "d3e39219cb5926c6033ef1380280f85d29073ce565ea89475c5890d574c41349",
       "reviewedFields": [
@@ -555,10 +555,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c38": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "386b65f753b1ad3d47ff649071ec3a4d06d8c5f9889b0ce067f14129a5bf37bd",
       "fingerprint": "386b65f753b1ad3d47ff649071ec3a4d06d8c5f9889b0ce067f14129a5bf37bd",
       "reviewedFields": [
@@ -570,10 +570,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c39": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "e8fc468319612f5b0704a4d61d179be12fb5087f7aa4f9fcd932f980c4b0e979",
       "fingerprint": "e8fc468319612f5b0704a4d61d179be12fb5087f7aa4f9fcd932f980c4b0e979",
       "reviewedFields": [
@@ -585,12 +585,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c40": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "e87eea5ac36390179c0308cc9a5a537f5b126c5a3dfcd2542281465a50a6510d",
-      "fingerprint": "e87eea5ac36390179c0308cc9a5a537f5b126c5a3dfcd2542281465a50a6510d",
+      "fingerprint": "cefedce78f042910a6baf661bd2e808d7fd7cbc0be613cb6d9f5fd87c889057a",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -600,12 +600,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c41": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "79c43d9ec0d4c70e2d4057e8c48d40641c911d36d315d4c32af2679da4503c60",
-      "fingerprint": "79c43d9ec0d4c70e2d4057e8c48d40641c911d36d315d4c32af2679da4503c60",
+      "fingerprint": "7da1b6d27eb7869c6d7406767475fd17b604539fe3c0a181fd02366372ddc67e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -615,10 +615,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c42": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "d466ef8a0304a7caafd62e9e0e022dead7ac3eadffbbb15e5f4a5f24fc3a93ce",
       "fingerprint": "d466ef8a0304a7caafd62e9e0e022dead7ac3eadffbbb15e5f4a5f24fc3a93ce",
       "reviewedFields": [
@@ -630,12 +630,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c43": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "f57bc5b1c961bf3ab8ff6517779abff12cfd626762e1e56a8e7031cb0e0e31d0",
-      "fingerprint": "f57bc5b1c961bf3ab8ff6517779abff12cfd626762e1e56a8e7031cb0e0e31d0",
+      "fingerprint": "f197d28271cab0ffc6fbb725f682b95e3a0f4736b0fadee8a4620d79c19df0b6",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -645,12 +645,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c44": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "ba0a17860b2ebd191ec99a029f3ca8f209ecd5434cbc0a7cb0d9dad29aabb88d",
-      "fingerprint": "ba0a17860b2ebd191ec99a029f3ca8f209ecd5434cbc0a7cb0d9dad29aabb88d",
+      "fingerprint": "2537ad6ec865e07a1e359076f76fb408254fc0e5525f08ee6995176c3ae7b3d9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -660,12 +660,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c45": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a96d0c209396b0d972977bbbd7826bd5d9cf180020778ba93f55e6cf269db877",
-      "fingerprint": "a96d0c209396b0d972977bbbd7826bd5d9cf180020778ba93f55e6cf269db877",
+      "fingerprint": "35089486a13dc4d9eb37367ab4659dd5502095fb33195d715ef39dd4de337f0d",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -675,12 +675,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c46": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a0fd365f6b810f5c6371004f465cdf20ac27a87955c133884067cc455b17922c",
-      "fingerprint": "a0fd365f6b810f5c6371004f465cdf20ac27a87955c133884067cc455b17922c",
+      "fingerprint": "fdee0d93b0ad34cd6f8a082fa3287323e492978e96a3c440d6b4a0620f4d82d3",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -690,12 +690,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c47": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "e9654aef9e5c49a43b70ac3a0909cbfe1f5ee492980496f50dd7a727559afe36",
-      "fingerprint": "e9654aef9e5c49a43b70ac3a0909cbfe1f5ee492980496f50dd7a727559afe36",
+      "fingerprint": "a717e3905a4f3bfeed22953261e5bc81d603ddc2d32a01a06715e303fe371baf",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -705,12 +705,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c48": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "f8f50fbd141818f313b624b8601091f1422aa26270889718d793734e0a54d793",
-      "fingerprint": "f8f50fbd141818f313b624b8601091f1422aa26270889718d793734e0a54d793",
+      "fingerprint": "77bb57c3ca8fd143e329ccd4224d4484b16053b1d7996bb11fa2d4a7e0dca27d",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -720,12 +720,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c49": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "bf10a1080e740764ad1dbbd02875c200e2abe2c42fead0b5c448d63cba784b2d",
-      "fingerprint": "bf10a1080e740764ad1dbbd02875c200e2abe2c42fead0b5c448d63cba784b2d",
+      "fingerprint": "d44334398890e23a7fadeb4077fb30f008dfd3debe4bca1bc66113c8b753149f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -735,10 +735,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c50": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "88ecd9add59aebc20b1d8ea19955bea9e19637f19e97abdf643ce04e09c0bf23",
       "fingerprint": "88ecd9add59aebc20b1d8ea19955bea9e19637f19e97abdf643ce04e09c0bf23",
       "reviewedFields": [
@@ -750,12 +750,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c51": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "ccfe7dc382fbec4ea55128e19ab5b968945c71c8cb82ed02f7d694559e444305",
-      "fingerprint": "ccfe7dc382fbec4ea55128e19ab5b968945c71c8cb82ed02f7d694559e444305",
+      "fingerprint": "61433c2bc96f3d5e4b76c6c83d498ee3d5b8d730bdb5566189bba6fa272b62b7",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -765,10 +765,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c52": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "febc60f99694afd95c5955b1c4bd1a3a3f995cbff79760eaf842a5bf82ff201a",
       "fingerprint": "febc60f99694afd95c5955b1c4bd1a3a3f995cbff79760eaf842a5bf82ff201a",
       "reviewedFields": [
@@ -780,10 +780,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c53": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a79ad3dc39875f71f895c9cd4cf27331e2da5f8f49466d79c242bee874e0c1a2",
       "fingerprint": "a79ad3dc39875f71f895c9cd4cf27331e2da5f8f49466d79c242bee874e0c1a2",
       "reviewedFields": [
@@ -795,12 +795,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c54": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "0d945d0cb999e3d06c8e4dc869a2139444cdf5c32cab7853b930a3b452b86f7b",
-      "fingerprint": "0d945d0cb999e3d06c8e4dc869a2139444cdf5c32cab7853b930a3b452b86f7b",
+      "fingerprint": "e7cfaad7be6cda53174308d9cf0872838c1031eef10ca41b9a853b732600bcd8",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -810,12 +810,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c55": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "d3d4400cbfd16e10a37956b6e6c92ac3cba2fcffd4f137d194fb0c61fcb6da96",
-      "fingerprint": "d3d4400cbfd16e10a37956b6e6c92ac3cba2fcffd4f137d194fb0c61fcb6da96",
+      "fingerprint": "8566b4cc75103f5f3bf744d8746ed92c921d0e11f1035fa06190ce48c8c80593",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -825,12 +825,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c56": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "705b9993d08209e76340b8635ef0e28819bee5b4589507b7c79ba0252f864a6d",
-      "fingerprint": "705b9993d08209e76340b8635ef0e28819bee5b4589507b7c79ba0252f864a6d",
+      "fingerprint": "4f90980c5f83696359e6624302447a066f15e9a34379a2b5905748cbab4da0f9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -840,12 +840,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c57": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "aa30825f2a561460ecbbba9a51b399c9737bc34a3f6514ae52dd4387c397445d",
-      "fingerprint": "aa30825f2a561460ecbbba9a51b399c9737bc34a3f6514ae52dd4387c397445d",
+      "fingerprint": "0dbca4d04318baa59bdc83a8470d878cdfa9b71d89a5641143faff419cfd505f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -855,10 +855,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c58": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "2d7b37e159f139f40b4bf5621cbcf55a0737b8f2e56e87b1bb4b67dc8955f9dc",
       "fingerprint": "2d7b37e159f139f40b4bf5621cbcf55a0737b8f2e56e87b1bb4b67dc8955f9dc",
       "reviewedFields": [
@@ -870,10 +870,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c59": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "2269e2bfdb7666846019f148d40c2921899ae305b848375bcd6a5ae2719b17ae",
       "fingerprint": "2269e2bfdb7666846019f148d40c2921899ae305b848375bcd6a5ae2719b17ae",
       "reviewedFields": [
@@ -885,11 +885,11 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c60": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "f9b11ab24aa7640cb7e3d46563f614cd423619934d4dd3c69860859840df53cf",
+      "date": "2026-10-30",
+      "baselineFingerprint": "cb96280ddbec0c623af35a17f549eddb0361b1c474c75dd8172360f091d24b86",
       "fingerprint": "cb96280ddbec0c623af35a17f549eddb0361b1c474c75dd8172360f091d24b86",
       "reviewedFields": [
         "specialties",
@@ -900,12 +900,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개에만 남은 진흙 공을 기존 공식 한국어 명칭 기준 흙공으로 통일."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c61": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "1c2a2ab426c9ee2881fca5eb50cba888785742e6d55e74e9234c17032a9a7ecb",
-      "fingerprint": "1c2a2ab426c9ee2881fca5eb50cba888785742e6d55e74e9234c17032a9a7ecb",
+      "fingerprint": "b2aec2943764985993b3c44e4206f3630e634e26d618ebe46069b35767de3ed5",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -915,10 +915,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c62": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "01af510f4a96d56e2bf71344f066581dff901102dfedc9e7028e2a667a3015cf",
       "fingerprint": "01af510f4a96d56e2bf71344f066581dff901102dfedc9e7028e2a667a3015cf",
       "reviewedFields": [
@@ -930,12 +930,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c63": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "75ec2b888036fe117940482f26076c00224f7b6e8da27f5d3943cbd539ecbea2",
-      "fingerprint": "75ec2b888036fe117940482f26076c00224f7b6e8da27f5d3943cbd539ecbea2",
+      "fingerprint": "b51fb992117d1949850dff91e05351e795c88df67b1717e830ed52e23b081712",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -945,12 +945,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c64": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "678d3d3ba0d920bddb6e91a03de8c613d8f708ec873d169ead0ade21ab4bde1d",
-      "fingerprint": "678d3d3ba0d920bddb6e91a03de8c613d8f708ec873d169ead0ade21ab4bde1d",
+      "fingerprint": "f6e8430750804ccd08a37197b0ab38a1c72386729313b082b74f87fdb796008f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -960,10 +960,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c65": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "f68ab9a85be5cf41ebbb9854055defe284f83029318ca2970a50625ad014e60d",
       "fingerprint": "f68ab9a85be5cf41ebbb9854055defe284f83029318ca2970a50625ad014e60d",
       "reviewedFields": [
@@ -975,10 +975,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c66": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "de5c511f4fd2fd1fb147cc41df7da1cd09a5f568d1e1be3c874c627a8cdf9f61",
       "fingerprint": "de5c511f4fd2fd1fb147cc41df7da1cd09a5f568d1e1be3c874c627a8cdf9f61",
       "reviewedFields": [
@@ -990,11 +990,11 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c67": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "751621ffaa9d8a09bb1961a0c177e9fc4a97b7b15c7091e880525f1bba28869f",
+      "date": "2026-10-30",
+      "baselineFingerprint": "5242c0b6b9625f34e699cac5bce1a8b6e4b1717706c041786515230356bb4a02",
       "fingerprint": "5242c0b6b9625f34e699cac5bce1a8b6e4b1717706c041786515230356bb4a02",
       "reviewedFields": [
         "specialties",
@@ -1005,12 +1005,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "자가 치료 위주의 사용 설명에 동료 치료와 해독 복귀 판단을 보완."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c68": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "0eeee5435b83bc78ece802c396ba8bc6300c312296d4e140419559c213d8c4d5",
-      "fingerprint": "0eeee5435b83bc78ece802c396ba8bc6300c312296d4e140419559c213d8c4d5",
+      "fingerprint": "d6a8fc9b614bf3fe4527fb48b2c80debc4e2eb672775ce04281bbceec0cb4356",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1020,12 +1020,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c69": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "b2f21456b7234f74b2132f41dcf224aa4b01f67d8106a5dc9ce27bb1a13d5e5b",
-      "fingerprint": "aaf835bf4ac091055146c6fd6b212393e9cd567ebdd8345d2d53a41725778ac8",
+      "date": "2026-10-30",
+      "baselineFingerprint": "aaf835bf4ac091055146c6fd6b212393e9cd567ebdd8345d2d53a41725778ac8",
+      "fingerprint": "0b38f0ee5481a7b1016d366b1114169f3d363b749c02472859c33bd66cfbf2c4",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1035,10 +1035,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "조율 가속만 설명하던 사용 항목에 본래 역할인 리듬 해독을 먼저 배치."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c70": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "d3ca86d0d350c34101f1a74dfdbcb1d5979aa454a7d9b3a93012423d67bb4262",
       "fingerprint": "d3ca86d0d350c34101f1a74dfdbcb1d5979aa454a7d9b3a93012423d67bb4262",
       "reviewedFields": [
@@ -1050,12 +1050,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c71": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "f364685d21a50877c0486942b45f7e1d589848a70a5af9b4ee9b482d3d284331",
-      "fingerprint": "f364685d21a50877c0486942b45f7e1d589848a70a5af9b4ee9b482d3d284331",
+      "fingerprint": "c83e4cc30edc3290d54318a36aef2a68caeaa1509273fcc8d4413b7a354a0440",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1065,12 +1065,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c72": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "cea54c8c114ba1a671901cee864aff2b1494e32df998c5dc5e447aad8f601ee2",
-      "fingerprint": "cea54c8c114ba1a671901cee864aff2b1494e32df998c5dc5e447aad8f601ee2",
+      "fingerprint": "0190400e5f44057da476d94fe82da7a1289f315baff4d2b2ec9b41f36146dfbd",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1080,10 +1080,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c73": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "c354ca079a98c4cd715ea547463130bc0d8d4808854b3a2e958d21f4c6e363e5",
       "fingerprint": "c354ca079a98c4cd715ea547463130bc0d8d4808854b3a2e958d21f4c6e363e5",
       "reviewedFields": [
@@ -1095,12 +1095,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c74": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "8e523ed6f8e2e05d356827d6174d718e60c233f15b8fde8b899e685a711f5135",
-      "fingerprint": "8e523ed6f8e2e05d356827d6174d718e60c233f15b8fde8b899e685a711f5135",
+      "fingerprint": "194202865f0eb0340ea8cbbb608cc5cce76beb9aaf03af4ee07f2066554d266a",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1110,12 +1110,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c75": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "6b9608e217ebcf633190aa5afcfbb8dca6e9e64d42607da9671bdb9058313760",
-      "fingerprint": "6b9608e217ebcf633190aa5afcfbb8dca6e9e64d42607da9671bdb9058313760",
+      "fingerprint": "03a8d5e448c0c5860746ca15e0eb0d78a67d71db45bea1f4d548e1269a3301bf",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1125,12 +1125,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c76": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "b49529d52dcad513aa1c48c71b22156523a21584d12543250cd2102fe9e62fb8",
-      "fingerprint": "b49529d52dcad513aa1c48c71b22156523a21584d12543250cd2102fe9e62fb8",
+      "fingerprint": "252da323f8a1bf0ef3f9991712f82c2132aef588aeabbc138d33c9f72b9af8af",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1140,12 +1140,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c77": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "63d9685684d9f27fcde077d1e84c9ca916f7052b7ab3b440e0bde3a017543e1b",
-      "fingerprint": "63d9685684d9f27fcde077d1e84c9ca916f7052b7ab3b440e0bde3a017543e1b",
+      "fingerprint": "3bca4a3076af69b821917fd8756ee4982d6530b376cce46795d3f5442da3e439",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1155,12 +1155,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c78": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a4535dbe72dbd26420cfab8b42055d6ca6a2c4dc9d596b5a3338d36d457f29a8",
-      "fingerprint": "a4535dbe72dbd26420cfab8b42055d6ca6a2c4dc9d596b5a3338d36d457f29a8",
+      "fingerprint": "c2df73f28b1ae762f17abf04cd34dad432401bc32b5e36e3c6694d24c33b02ae",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1170,12 +1170,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c79": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a04cecb966f035f4fce5a5a327eed9659efc7ad33bee310eb9e034ee110b29d8",
-      "fingerprint": "a04cecb966f035f4fce5a5a327eed9659efc7ad33bee310eb9e034ee110b29d8",
+      "fingerprint": "9b596b22f33466920fce07969c9d242c11e4228274ce57aededf3d5b6a11a5a2",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1185,10 +1185,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c80": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "31d82d5b5a2e59601c52c1ce5a74280d32c5a38ebb1b7944610fda50018dd56e",
       "fingerprint": "31d82d5b5a2e59601c52c1ce5a74280d32c5a38ebb1b7944610fda50018dd56e",
       "reviewedFields": [
@@ -1200,12 +1200,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c81": {
-      "date": "2026-10-29",
-      "baselineFingerprint": "c2894e34ee459734d656dac1dfb4d8ef9217f7b0d5a64dad2c5413240713e060",
-      "fingerprint": "1970f3ca119273f4389b5ec322752c390f67cdd32c26f4e565c0a69f7874644d",
+      "date": "2026-10-30",
+      "baselineFingerprint": "1970f3ca119273f4389b5ec322752c390f67cdd32c26f4e565c0a69f7874644d",
+      "fingerprint": "7e8b86333eaba4b4b11fcb6abbbcf49ec8981d775d035654835c1f6fdb0b9ebe",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1215,10 +1215,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "해독 시작·진도 활용을 먼저 설명하고 동료의 해독·통전 계획을 해치지 않는 조건을 추가."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c82": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "e533079761e30d0e31c210ab6a383629e2d485f4e07eeb1e2d15883962bafb9d",
       "fingerprint": "e533079761e30d0e31c210ab6a383629e2d485f4e07eeb1e2d15883962bafb9d",
       "reviewedFields": [
@@ -1230,12 +1230,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c83": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a3f033f1a7ce8b34bc85a6e2c22e0e3a9af98eea157206f24f506112be4a1ea8",
-      "fingerprint": "a3f033f1a7ce8b34bc85a6e2c22e0e3a9af98eea157206f24f506112be4a1ea8",
+      "fingerprint": "e0e662051a181847ac64dbad8d36e6b64ec09c351ad70cddec5dfecf737a8490",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1245,10 +1245,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c84": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "5b62c22c3edfd849fbe617ab7640cf20ed51149882b0e20df641eb5457c37056",
       "fingerprint": "5b62c22c3edfd849fbe617ab7640cf20ed51149882b0e20df641eb5457c37056",
       "reviewedFields": [
@@ -1260,10 +1260,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c85": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "a3caaf2f5d3d14846d11079b5ba19fec18df2a007fde3aff9558c5d86fc9fbce",
       "fingerprint": "a3caaf2f5d3d14846d11079b5ba19fec18df2a007fde3aff9558c5d86fc9fbce",
       "reviewedFields": [
@@ -1275,12 +1275,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c86": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "36122be073c52ab7d062dbcf7ffa245efda03ee0addd079136887f2a61379103",
-      "fingerprint": "36122be073c52ab7d062dbcf7ffa245efda03ee0addd079136887f2a61379103",
+      "fingerprint": "c761dacb50d1e3b449f7725eafee25e4212a1be1296d36bb852786e79d293dbf",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1290,10 +1290,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c87": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "7093441eec7762f3be5cc72a888726f6f80ea36a83c1b1a1936676206dab8b95",
       "fingerprint": "7093441eec7762f3be5cc72a888726f6f80ea36a83c1b1a1936676206dab8b95",
       "reviewedFields": [
@@ -1305,12 +1305,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c88": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "af61c1df49487c601363c7cafda6dcefcaba1b791956c0e42068a21b083c8214",
-      "fingerprint": "af61c1df49487c601363c7cafda6dcefcaba1b791956c0e42068a21b083c8214",
+      "fingerprint": "c2a681f9c0bb90062789f4f0c1461b6c1d81e1db37a587bf830d6866f85c9901",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1320,10 +1320,10 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     },
     "c89": {
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "baselineFingerprint": "904fd9268ea4d45870b98e39aa0e67b5c1e0b50a94e5df34f732f218a513c9f8",
       "fingerprint": "904fd9268ea4d45870b98e39aa0e67b5c1e0b50a94e5df34f732f218a513c9f8",
       "reviewedFields": [
@@ -1335,7 +1335,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "대표 역할은 소개·장점·운용 중에 설명되어 있으며, 사용·보존·주의 설명과 충돌하는 문장을 찾지 않아 유지합니다. 수치와 상성의 최신성을 재검증한 것은 아닙니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 검토했습니다. 추상적인 표현을 실제 행동으로 풀고 관련 상성 문장을 맞췄습니다. 기존 수치·태그·대진 우열은 유지하며 전체 게임 밸런스의 재검증은 아닙니다."
     }
   }
 }

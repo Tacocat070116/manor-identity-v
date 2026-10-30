@@ -1,5 +1,5 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=594fa5eadc10';
-export const FEEDBACK_ORIGIN='https://manor-feedback.just-bean-5735.chatgpt.site';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=163b4350cff0';
+export const FEEDBACK_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const FEEDBACK_STATUSES={open:'의견 수렴',reviewing:'검토 중',planned:'반영 예정',completed:'반영 완료',hold:'보류'};
 export const FEEDBACK_STATUS_HELP={
  open:'접수된 의견에 대해 추가 의견을 받는 상태입니다. 반영 여부는 아직 정해지지 않았습니다.',

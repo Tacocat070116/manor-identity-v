@@ -60,9 +60,9 @@ test('every replacement has provenance and the audit only touches editorial fiel
  }
  // Reverse newer edits first, including descendants of older object-level edits.
  const files=structuredClone({'data.json':db,'specialties.json':roles,'introductions.json':intros});
- for(const edit of read('research/editorial/2026-10-29/consistency-edits.json').edits.toReversed()){
+ for(const edit of ['2026-10-30','2026-10-29'].flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits.toReversed())){
   const [,file,...parts]=edit.path.split('/');let parent=files[file];for(const part of parts.slice(0,-1))parent=parent[part];
-  assert.deepEqual(parent[parts.at(-1)],edit.after);parent[parts.at(-1)]=structuredClone(edit.before);
+  assert.deepEqual(parent[parts.at(-1)],edit.after);if(edit.beforeMissing)delete parent[parts.at(-1)];else parent[parts.at(-1)]=structuredClone(edit.before);
  }
  for(const review of [...roleReviews].reverse()){
   assert.deepEqual(files['specialties.json'].characters[review.characterId],review.after,review.characterId+' reviewed roles');

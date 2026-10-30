@@ -26,6 +26,7 @@ OUT = register.parent
 RULES = json.loads(register.read_text())
 ROLE_REVIEWS = json.loads((ROOT / 'research/roles/reviews.json').read_text())['reviews']
 EDITORIAL_EDITS = json.loads((ROOT / 'research/editorial/2026-10-29/consistency-edits.json').read_text())['edits']
+EDITORIAL_EDITS += json.loads((ROOT / 'research/editorial/2026-10-30/consistency-edits.json').read_text())['edits']
 BASE = RULES['baseline']
 DATE = RULES['reviewedAt']
 
@@ -146,7 +147,10 @@ for name, data in all_files.items():
         for part in parts[:-1]:
             parent = parent[int(part)] if isinstance(parent, list) else parent[part]
         key = int(parts[-1]) if isinstance(parent, list) else parts[-1]
-        assert parent[key] == edit['before'], f"{edit['path']}: editorial baseline differs"
+        if edit.get('beforeMissing'):
+            assert key not in parent, f"{edit['path']}: editorial addition already exists"
+        else:
+            assert parent[key] == edit['before'], f"{edit['path']}: editorial baseline differs"
         parent[key] = copy.deepcopy(edit['after'])
     if args.check:
         assert data == json.loads((ROOT / 'dist' / (name + '.json')).read_text()), f'{name}: generated terminology differs'

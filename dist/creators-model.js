@@ -1,4 +1,4 @@
-export const CREATOR_ORIGIN='https://manor-feedback.just-bean-5735.chatgpt.site';
+export const CREATOR_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const CREATOR_TAG_LIMIT=12;
 export const CREATOR_TAG_GROUPS={
  '플레이':['생존자','감시자','랭크','일반대전','연합사냥','블랙잭','타로','듀오','4인팟','솔로랭크'],

@@ -1,3 +1,4 @@
+import * as synergyModel from './dist/synergy-model.js';
 import * as compendium from './dist/compendium-model.js';
 import * as themeUI from './dist/themes.js';
 import test from 'node:test';
@@ -96,7 +97,7 @@ function runtime(){
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
+ Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
  return {context,nodes,handlers,fetches,app:context.app};
 }
 

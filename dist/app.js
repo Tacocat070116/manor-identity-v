@@ -1,13 +1,15 @@
-import {mountRecoveryPage} from './participation.js?v=594fa5eadc10';
+import {mountRecoveryPage} from './participation.js?v=163b4350cff0';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=94a6d9dd4a33';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=d15eac7698d5';
-import {mountFeedback} from './feedback.js?v=df82e4a62f5d';
-import {mountMatchupTips} from './matchup-tips.js?v=1eb866c45538';
-import {mountCreators} from './creators.js?v=a48a6ab30837';
+import {mountFeedback} from './feedback.js?v=d7bf41cdf0ac';
+import {mountSynergy} from './synergy.js?v=30af94fbf459';
+import {SYNERGY_SITUATIONS,synergyGroups} from './synergy-model.js?v=c4a394898b4e';
+import {mountMatchupTips} from './matchup-tips.js?v=992fa20261c4';
+import {mountCreators} from './creators.js?v=0017d3e6f44a';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=663caae007fa';
 const $=(s,r=document)=>r.querySelector(s);
@@ -60,6 +62,7 @@ applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let disposeMatchupTips=()=>{};
+let disposeSynergy=()=>{};
 let disposeCreators=()=>{},disposeRecovery=()=>{};
 let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController,detailsPromise,observedBansPromise;
@@ -131,7 +134,11 @@ function readRoute(){
  state.view=['explore','character','matchup','compare','bans','statistics','creators','feedback','recovery','patchnotes'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
- state.tab=['overview','matchups','tips','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
+ state.tab=['overview','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
+ if(state.tab==='synergy'&&byId[state.character]?.side!=='생존자')state.tab='overview';
+ state.synergyPartner=byId[p.get('partner')]?.side==='생존자'&&p.get('partner')!==state.character?p.get('partner'):'';
+ state.synergyMine=p.get('mine')==='1';
+ state.synergySituation=SYNERGY_SITUATIONS.includes(p.get('ss'))?p.get('ss'):'';
  if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
@@ -201,16 +208,27 @@ function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 c
 function characterPage(){
  const c=char(state.character);state.character=c.id;
  return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}공략 검토 ${esc(c.reviewedAt)}</span>${c.gamePatchDate?`<span class="date-pill">${icon('check')}게임 반영 ${esc(c.gamePatchDate)}</span>`:''}</div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
- <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],...(c.side==='생존자'?[['synergy','조합 이야기']]:[]),['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
+ <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':state.tab==='synergy'?'<div id="synergy-board"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
+function synergyDetails(l){
+ return `<dl><div><dt>활용법</dt><dd>${esc(l.use)}</dd></div><div><dt>활용 조건</dt><dd>${esc(l.when)}</dd></div><div><dt>주의할 점</dt><dd>${esc(l.caution)}</dd></div></dl>`;
+}
 function synergyCard(l){
- return `<div class="panel relation-card">${byName[l.target]?characterHeading(byName[l.target]):`<h3 class="panel-title">${esc(l.target)}</h3>`}<p>${esc(l.reason)}</p><div class="divider"></div><div class="small-heading">활용 조건</div><p class="muted">${esc(l.when)}</p><p class="muted section-gap">${esc(l.caution)}</p></div>`;
+ return `<div class="panel relation-card synergy-card">${byName[l.target]?characterHeading(byName[l.target]):`<h3 class="panel-title">${esc(l.target)}</h3>`}<p>${esc(l.reason)}</p>${synergyDetails(l)}</div>`;
+}
+function survivorSynergyCard(group,c){
+ const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${esc(l.reason)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명을 바탕으로 한 조합 후보입니다. 실제 경기에서의 연계 효과는 아직 확인하지 못했습니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략을 바탕으로 작성한 조합입니다. 마지막 검토일 ${esc(l.reviewedAt)} 이후 변경된 스킬 조건을 확인해 주세요.</p>`:''}`;
+ return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(s)).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'character',c:c.id,tab:'synergy',partner:group.partner.id})}">이 조합의 경험 나누기 →</a></article>`;
+}
+function survivorSynergies(c){
+ const groups=synergyGroups(db.links,c.name,byId,state.synergySituation);
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2><span>활용 상황별 추천</span></div><p class="synergy-guidance">서로의 역할을 보완하는 조합입니다. 모든 상대에게 유리하다는 뜻은 아니니, 활용 조건과 주의점을 함께 읽어주세요.</p><div class="synergy-toolbar"><label class="filter-label">활용 상황<select id="synergy-situation"><option value="">모든 상황</option>${SYNERGY_SITUATIONS.map(s=>`<option value="${s}" ${s===state.synergySituation?'selected':''}>${s}</option>`).join('')}</select></label><a class="btn" href="${route({v:'character',c:c.id,tab:'synergy'})}">조합 제안·이야기 보기</a></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">이 상황으로 분류된 추천 조합이 없습니다. 조합 이야기에서 경험을 나눠주세요.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 동반 출전과 팀 결과 보기 →</a><p class="sy-caption">동반 출전 횟수는 같은 팀으로 나온 경기 수입니다. 두 캐릭터의 연계 효과만을 측정한 수치는 아닙니다.</p></section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
- return `<div class="specialty-summary"><span class="specialty-summary-icon">${primarySpecialtyIcon(c)}</span><div><h2>역할 태그</h2>${specialtyExplanation(c)}<small>메인 역할을 먼저, 서브 역할을 다음에 표시합니다.</small></div></div><div class="two-col">${listPanel('장점',c.strengths,'green','plus')}${listPanel('주의할 점',c.weaknesses,'warm','info')}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${esc(c.personaReason)}</p><div class="divider"></div><div class="small-heading">이런 상황에서는 다른 선택</div><p>${esc(c.alternative)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회에서 실제 선택한 인격 보기 →</a></div>${playGuide(c)}</div><section class="section-gap"><div class="heading-inline"><h2>${c.side==='생존자'?'함께하면 좋은 생존자':'보조 특성 선택'}</h2><span>역할과 상황에 따른 편집 추천</span></div><div class="three-col">${links.slice(0,3).map(synergyCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(synergyCard).join('')}</div></details>`:''}${c.side==='생존자'?`<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">실제 동반 출전 빈도와 팀 결과 보기 →</a>`:''}</section>`;
+ return `<div class="specialty-summary"><span class="specialty-summary-icon">${primarySpecialtyIcon(c)}</span><div><h2>역할 태그</h2>${specialtyExplanation(c)}<small>메인 역할을 먼저, 서브 역할을 다음에 표시합니다.</small></div></div><div class="two-col">${listPanel('장점',c.strengths,'green','plus')}${listPanel('주의할 점',c.weaknesses,'warm','info')}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${esc(c.personaReason)}</p><div class="divider"></div><div class="small-heading">이런 상황에서는 다른 선택</div><p>${esc(c.alternative)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회에서 실제 선택한 인격 보기 →</a></div>${playGuide(c)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2><span>활용법과 선택 조건</span></div><div class="three-col">${links.slice(0,3).map(synergyCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(synergyCard).join('')}</div></details>`:''}</section>`}`;
 }
 function matchupItem(i){
  const c=byName[i.name];if(!c)return '';
@@ -310,12 +328,12 @@ function refreshBanRecords({focusRecords=false}={}){
 }
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
+ disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
  document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
- else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
+ else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='synergy')disposeSynergy=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.character,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,navigate:(post,{partnerId,mine})=>navigate({v:'character',c:state.character,tab:'synergy',...(partnerId?{partner:partnerId}:{}),...(post?{post}:{}),...(mine?{mine:'1'}:{})})});if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
   rankedError=r.status==='rejected'?r.reason.message:'';
   $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
@@ -433,13 +451,13 @@ document.addEventListener('click',e=>{
  if(a==='retry')render();
 });
 document.addEventListener('input',e=>{if(!db)return;if(e.target.id==='release-search'){releaseFilters.query=e.target.value;updateReleaseNotes();}if(e.target.id==='statistics-search'){state.statistics.search=e.target.value;clearTimeout(statisticsSearchTimer);statisticsSearchTimer=setTimeout(refreshStatistics,220);}if(e.target.id==='character-search'){state.search=e.target.value;updateExplorer();}if(e.target.id==='picker-search')updatePicker(e.target.value);});
-document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='ban-source'){state.banSource=el.value==='legacy'?'legacy':'observed';state.banPage=1;state.banRecordHunter='';refreshBanRecords();return;}if(el.id==='ban-record-hunter'){state.banRecordHunter=el.value;state.banPage=1;refreshBanRecords({focusRecords:true});return;}if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans'){state.banPage=1;state.banRecordHunter='';refreshBanRecords();}else refreshStatistics();}});
+document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='synergy-situation'){state.synergySituation=SYNERGY_SITUATIONS.includes(el.value)?el.value:'';$('#survivor-synergies').outerHTML=survivorSynergies(char(state.character));$('#synergy-situation')?.focus({preventScroll:true});return;}if(el.id==='ban-source'){state.banSource=el.value==='legacy'?'legacy':'observed';state.banPage=1;state.banRecordHunter='';refreshBanRecords();return;}if(el.id==='ban-record-hunter'){state.banRecordHunter=el.value;state.banPage=1;refreshBanRecords({focusRecords:true});return;}if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans'){state.banPage=1;state.banRecordHunter='';refreshBanRecords();}else refreshStatistics();}});
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
 for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=c7399132735d'),fetch('specialties.json?v=c053ea547052'),fetch('introductions.json?v=42e8597356e5'),fetch('releases.json?v=d02745bc0968')]);
+ const responses=await Promise.all([fetch('data.json?v=c15b889ab197'),fetch('specialties.json?v=b6ee503406c4'),fetch('introductions.json?v=1be712436032'),fetch('releases.json?v=9da252f60194')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

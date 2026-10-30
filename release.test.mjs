@@ -1,3 +1,4 @@
+import * as synergyModel from './dist/synergy-model.js';
 import * as themeUI from './dist/themes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -61,7 +62,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
+ Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
  await context.app.boot();
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);

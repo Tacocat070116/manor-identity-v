@@ -1,5 +1,5 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=594fa5eadc10';
-export const TIPS_ORIGIN='https://manor-feedback.just-bean-5735.chatgpt.site';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=163b4350cff0';
+export const TIPS_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const TIP_STATUSES={pending:'검토 대기',approved:'공개 중',needs_changes:'보완 요청',rejected:'반려',hidden:'비공개'};
 export const tipEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=tipEscape;
@@ -33,7 +33,7 @@ export function mountMatchupTips(root,{characters,ownId,opponentId='',origin=TIP
  async function ensureVisitor(){if(authorAtOpen&&authorAtOpen!==token())throw Error('다른 창에서 연결된 기록이 바뀌었습니다. 입력한 내용은 유지됩니다. 원래 기록으로 다시 연결하거나 내용을 보관한 뒤 새로고침해 주세요.');const identity=await participation.ensure(()=>api('/api/feedback/visitors',{method:'POST',body:{}}));authorAtOpen=identity;refreshParticipationBanners();return identity;}
  function listView(data,append){
   items=append?[...items,...data.tips.filter(t=>!items.some(x=>x.id===t.id))]:data.tips;nextPage=data.nextPage;
-  frame(`${header()}${participationBar()}<p class="tip-list-caption">${mode==='mine'?'이 브라우저에서 제출한 상대법':e(characters[ownId].name)+' 관점'} · ${data.total}개</p><div class="tip-list">${items.length?items.map(t=>tipCard(t,characters,{mine:mode==='mine'})).join(''):`<div class="tip-empty"><h3>${mode==='mine'?'아직 제출한 상대법이 없습니다.':'아직 검토를 마친 상대법이 없습니다.'}</h3><p>${mode==='mine'?'이 브라우저로 작성한 글의 상태와 보완 요청이 여기에 표시됩니다.':'직접 겪은 대응법을 남겨주세요. 검토가 끝나면 이곳에서 함께 볼 수 있습니다.'}</p><button class="btn small" type="button" data-tip="compose">상대법 남기기</button></div>`}</div>${nextPage!==null?'<button class="btn tip-more" type="button" data-tip="more">더 보기</button>':''}<div class="tip-guide"><p>${lock}서버와 UID는 운영자만 확인합니다. 티어 표시는 검토한 시즌·확인일 기준이며, 상대법의 적용 조건을 함께 살펴보세요.</p>${mode==='mine'?'<p>작성 기록은 서버에 보관됩니다. 개인 복구 코드를 따로 저장하면 다른 브라우저에서도 내 글과 운영자 검토 의견을 확인할 수 있습니다.</p>':''}</div>`);
+  frame(`${header()}${participationBar()}<p class="tip-list-caption">${mode==='mine'?'연결된 기록으로 제출한 상대법':e(characters[ownId].name)+' 관점'} · ${data.total}개</p><div class="tip-list">${items.length?items.map(t=>tipCard(t,characters,{mine:mode==='mine'})).join(''):`<div class="tip-empty"><h3>${mode==='mine'?'아직 제출한 상대법이 없습니다.':'아직 검토를 마친 상대법이 없습니다.'}</h3><p>${mode==='mine'?'내가 제출한 글의 상태와 보완 요청이 여기에 표시됩니다. 다른 브라우저에서 쓴 글은 개인 복구 코드로 연결해 주세요.':'직접 겪은 대응법을 남겨주세요. 검토가 끝나면 이곳에서 함께 볼 수 있습니다.'}</p><button class="btn small" type="button" data-tip="compose">상대법 남기기</button></div>`}</div>${nextPage!==null?'<button class="btn tip-more" type="button" data-tip="more">더 보기</button>':''}<div class="tip-guide"><p>${lock}서버와 UID는 운영자만 확인합니다. 티어 표시는 검토한 시즌·확인일 기준이며, 상대법의 적용 조건을 함께 살펴보세요.</p>${mode==='mine'?'<p>작성 기록은 서버에 보관됩니다. 개인 복구 코드를 따로 저장하면 다른 브라우저에서도 내 글과 운영자 검토 의견을 확인할 수 있습니다.</p>':''}</div>`);
  }
  async function load(append=false){
   const current=++version;if(!append)frame(`${header()}<div class="tip-empty" role="status"><span class="loading-orbit" aria-hidden="true"></span><p>상대법을 불러오고 있습니다.</p></div>`);
