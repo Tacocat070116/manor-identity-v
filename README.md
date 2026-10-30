@@ -49,7 +49,7 @@
 | `dist/ranked/` | 서버·시즌별 공개 집계값, 전체 CSV 묶음(ZIP), 출처 목록 |
 | `research/ranked/` | 정규화 입력 스냅샷과 원본 해시·수집 기록 |
 | `scripts/build-ranked.py` | 보존한 입력 스냅샷에서 배포 자료 재생성 |
-| `dist/data.json` | 캐릭터, 상성, 출처, 커뮤니티 근거 |
+| `dist/data.json` | 화면·검색·상성 계산에 사용하는 캐릭터와 조합 자료 |
 | `research/matchups/2026-10-19/` | 상성 전수 재검토 기록, 사용한 문서·예외·패치 범위 |
 | `scripts/build-matchup-review.mjs` | 검토 기록에서 상성·대표 목록·출처와 요약 재생성 |
 | `dist/introductions.json` | 캐릭터 상세 상단에 표시하는 89명의 간편 소개 |

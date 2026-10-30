@@ -9,6 +9,12 @@
 - Run `npm test`, `node scripts/check-release.mjs --base <previous deployed commit>`, and `sha256sum --check --status SHA256SUMS.txt` before publishing. The deployment workflow rejects public-file changes without a newer BETA version and a new history entry.
 - The confirmed opening date is 2026-10-16. Guide review dates and game patch dates are separate from website releases. `dist/data.json`'s legacy version describes its imported data baseline; never use it as the visible site version.
 
+## 공개 화면과 데이터 용량
+
+- 큰 제목 위의 작은 영어 포인트 문구를 유지합니다. MANOR 업데이트의 개별 패치 항목 소제목을 다시 표시하라는 뜻은 아닙니다.
+- 사이트에서 사용하지 않는 필드는 `scripts/public_payload.py`로 공개 JSON에서 제외하고 `research/payload/retired-fields.json`에 로컬로 보관합니다. 이 보관 파일은 Git 추적과 외부 업로드에서 제외합니다. `npm run release`가 이를 적용하며 `npm test`는 기존 공개 Git 이력으로 표시 내용 유지와 재유입을 검사합니다.
+- 실제 공략·경기·랭킹전 기록, 검토 보류 자료, 진행을 잠시 중단한 통계 확장 작업본은 미사용 더미 자료로 간주하지 않습니다. 화면·계산에 쓰이는지 확인하지 않은 자료는 용량 정리 목적으로 삭제하지 않습니다.
+
 ## MANOR 업데이트 문체
 
 - 2026-10-27 용어 기준: 사이트 작성 설명과 역할 태그의 추격 상황은 `추격`으로 통일한다. `어그로`와 역할명 `사냥`을 혼용하지 않는다. `평타` 대신 `일반 공격`, `해독기` 대신 `암호 장치`, 골동품 상인의 `피리` 대신 `퉁소`를 쓴다. 아이템·스킬 명칭은 공식 한국어 자료를 우선하고 근거는 `research/localization/2026-10-27/terminology.json`에 기록한다. 기존 2026-10-22 약칭 유지 지침은 더 이상 적용하지 않는다.

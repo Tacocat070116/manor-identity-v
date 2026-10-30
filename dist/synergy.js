@@ -1,4 +1,4 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=163b4350cff0';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 import {SYNERGY_SITUATIONS,SYNERGY_REPORTS,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=c4a394898b4e';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const uuid=()=>{if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;const s=Array.from(b,n=>n.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;};

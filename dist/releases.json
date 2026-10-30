@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "openedAt": "2026-10-16",
   "historyNote": "MANOR 사이트의 업데이트 내역입니다. 날짜는 한국 시간 기준이며, 버전 도입 전 변경은 날짜별로 표시합니다.",
   "historySource": {
@@ -8,6 +8,23 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-16-1",
+      "version": "1.16.1",
+      "date": "2026-10-31",
+      "title": "영문 포인트 문구 복원과 데이터 경량화",
+      "changes": [
+        {
+          "type": "개선",
+          "text": "홈과 주요 화면의 큰 제목 위에 작은 영어 문구를 다시 표시합니다. 장원의 작은 포인트가 돌아왔습니다."
+        },
+        {
+          "type": "개선",
+          "text": "화면에서 사용하지 않는 내부 메모와 중복 출처 정보를 공개 데이터에서 정리해 원본 JSON 용량을 줄였습니다. 공략 내용과 경기·랭킹전 기록은 그대로 유지합니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-16-0",
       "version": "1.16.0",

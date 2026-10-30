@@ -1,17 +1,17 @@
-import {mountRecoveryPage} from './participation.js?v=163b4350cff0';
+import {mountRecoveryPage} from './participation.js?v=1c030d58e4db';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=94a6d9dd4a33';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=d15eac7698d5';
-import {mountFeedback} from './feedback.js?v=d7bf41cdf0ac';
-import {mountSynergy} from './synergy.js?v=30af94fbf459';
+import {createStatisticsUI} from './statistics.js?v=ea4b96f7e79e';
+import {mountFeedback} from './feedback.js?v=30797ad31c54';
+import {mountSynergy} from './synergy.js?v=5766c21ab4ce';
 import {SYNERGY_SITUATIONS,synergyGroups} from './synergy-model.js?v=c4a394898b4e';
-import {mountMatchupTips} from './matchup-tips.js?v=992fa20261c4';
-import {mountCreators} from './creators.js?v=0017d3e6f44a';
+import {mountMatchupTips} from './matchup-tips.js?v=95a0f291fd7f';
+import {mountCreators} from './creators.js?v=c399808129b8';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=663caae007fa';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=c84473689ea6';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
@@ -70,7 +70,7 @@ let releaseLog;
 const releaseFilters={query:'',type:'전체'};
 const rankedFiles=new Map();
 const loadRanked=async()=>{
- const data=await(rankedPromise||=fetch('ranked/index.json?v=e2c666f8f5df').then(r=>{if(!r.ok)throw Error('랭킹전 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedPromise=null;throw e;}));
+ const data=await(rankedPromise||=fetch('ranked/index.json?v=aaa21a1a2a0b').then(r=>{if(!r.ok)throw Error('랭킹전 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedPromise=null;throw e;}));
  const s=selectRanked(data,state.statistics);Object.assign(state.statistics,s.filters);
  if(s.dataset&&!s.dataset.rows){
   const path=s.dataset.path;
@@ -170,14 +170,14 @@ function header(){
 function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">복구 코드</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
-function title(e,h,d){return `<div class="page-title"><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
+function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot" title="메인 역할: ${esc(c.specialties[0])}">${primarySpecialtyIcon(c)}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${specialtyTags(c,true)}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div></div></button>`;}
 function heroCarousel(){
  heroSession??=createCarouselSession(db.characters);
  return `<div class="hero-art hero-carousel" id="hero-carousel" role="region" aria-roledescription="캐러셀" aria-label="장원의 캐릭터" aria-describedby="hero-carousel-hint"><div class="hero-stage"><div class="art-orbit" aria-hidden="true"></div>${carouselItems(heroSession).map(({index,character:c})=>`<button class="art-card" type="button" data-id="${c.id}" data-index="${index}" aria-label="${esc(c.name)} 공략 보기" tabindex="${index===heroSession.index?0:-1}">${portrait(c,index===heroSession.index)}<span>${esc(c.name)}</span></button>`).join('')}</div><div class="hero-carousel-footer"><span id="hero-carousel-hint">드래그해서 둘러보기</span><div class="carousel-controls"><button type="button" class="carousel-control" data-carousel="previous" aria-label="이전 캐릭터">${icon('back')}</button><button type="button" class="carousel-control" data-carousel="toggle" aria-label="자동 넘김" aria-pressed="${heroSession.paused!==true}">${icon(heroSession.paused?'play':'pause')}</button><button type="button" class="carousel-control" data-carousel="next" aria-label="다음 캐릭터">${icon('arrow')}</button></div></div><span class="visually-hidden carousel-status" role="status" aria-live="polite" aria-atomic="true"></span></div>`;
 }
 function explore(){
- return `<section class="hero"><div><div class="eyebrow">제5인격 비공식 가이드</div><h1>캐릭터 공략과<br><span>대회·랭킹전 통계</span></h1><p>캐릭터별 스킬과 운영법, 상대별 상성과 대응 방법을 확인하세요.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
+ return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>캐릭터 공략과<br><span>대회·랭킹전 통계</span></h1><p>캐릭터별 스킬과 운영법, 상대별 상성과 대응 방법을 확인하세요.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
  <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>36</strong>감시자</span><span><strong>53</strong>생존자</span><a class="text-link push-right" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></div>
  <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>캐릭터 도감</h2><p>진영과 역할로 캐릭터를 찾고, 스킬·장단점·운영법을 확인하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판으로도 검색할 수 있습니다. <span>출시순은 글로벌 서버 기준입니다.</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
  <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대별 상성과 대응법</strong><p>대진별 상성과 적용 조건</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴 조합별 대회 기록</strong><p>선택한 생존자 밴 조합의 감시자 출전 기록</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>캐릭터 비교</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
@@ -457,7 +457,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=c15b889ab197'),fetch('specialties.json?v=b6ee503406c4'),fetch('introductions.json?v=1be712436032'),fetch('releases.json?v=9da252f60194')]);
+ const responses=await Promise.all([fetch('data.json?v=337c473c7b64'),fetch('specialties.json?v=b6ee503406c4'),fetch('introductions.json?v=1be712436032'),fetch('releases.json?v=d760def26a81')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

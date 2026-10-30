@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
 import {validateReleaseLog,refreshPackage} from './release-tools.mjs';
 
 const log=JSON.parse(fs.readFileSync('dist/releases.json','utf8'));
@@ -19,4 +20,5 @@ if(bump!=='--refresh'){
  fs.writeFileSync('dist/releases.json',JSON.stringify(log,null,2)+'\n');
  fs.writeFileSync('package.json',JSON.stringify(pkg,null,2)+'\n');
 }
+execFileSync('python3',['scripts/public_payload.py','--write'],{stdio:'inherit'});
 console.log(`BETA v${log.version} · 캐시와 ${refreshPackage()}개 파일의 검증 해시를 갱신했습니다.`);

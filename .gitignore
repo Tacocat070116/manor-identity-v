@@ -10,3 +10,4 @@ qa-summary.json
 *.zip
 *.tar
 *.tar.gz
+research/payload/retired-fields.json
