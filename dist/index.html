@@ -8,9 +8,9 @@
 try{const saved=localStorage.getItem('manor-theme');document.documentElement.dataset.theme=/^(light|dark|ocean|lavender|rose|sand|midnight|plum)$/.test(saved)?saved:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
 catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
 </script>
-<meta name="description" content="89명의 캐릭터 공략과 유저 상대법, 유튜브 채널 홍보, 상황별 상성·통계와 밴 조합별 대회 기록. 제5인격의 다음 한 수를 더 선명하게.">
+<meta name="description" content="제5인격 캐릭터별 스킬·운영법, 상대별 상성과 대응 방법, 대회·랭킹전 통계를 확인하세요. 유저 상대법과 유튜브 채널도 찾아볼 수 있습니다.">
 <meta property="og:title" content="MANOR · 제5인격 플레이 가이드">
-<meta property="og:description" content="캐릭터 탐색부터 상대 대응까지, 공략과 통계를 한눈에 보는 제5인격 가이드.">
+<meta property="og:description" content="제5인격 캐릭터 공략, 상대별 상성과 대응 방법, 대회·랭킹전 통계를 제공합니다.">
 <meta property="og:url" content="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="canonical" href="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -18,7 +18,7 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <title>MANOR · 제5인격 가이드</title>
 <link rel="stylesheet" href="navigation.css?v=e90b35d669e1">
 <link rel="stylesheet" href="participation.css?v=9fef87d4f8b5">
-<link rel="stylesheet" href="feedback.css?v=b7bafc450038">
+<link rel="stylesheet" href="feedback.css?v=d177e6aa1edf">
 <link rel="stylesheet" href="matchup-tips.css?v=57b23fab55b8">
 <link rel="stylesheet" href="creators.css?v=91583a9ca06a">
 <link rel="stylesheet" href="releases.css?v=6bf62f9a38cf">
@@ -28,12 +28,12 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
 <header id="header" class="site-header"></header>
-<main id="main" tabindex="-1"><div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><h1>MANOR</h1><p>장원의 기록을 불러오고 있습니다.</p></div></main>
+<main id="main" tabindex="-1"><div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><h1>MANOR</h1><p>사이트 자료를 불러오고 있습니다.</p></div></main>
 <footer id="footer"></footer>
 <dialog id="picker" class="picker-dialog" aria-label="캐릭터 선택"></dialog>
 <dialog id="share-dialog" class="share-dialog" aria-label="공유"></dialog>
 <dialog id="theme-picker" class="theme-dialog" aria-labelledby="theme-title"></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script type="module" src="app.js?v=70b076c86e59"></script>
+<script type="module" src="app.js?v=a4e23d30c680"></script>
 </body>
 </html>

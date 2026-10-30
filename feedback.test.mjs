@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import {feedbackCard,feedbackComment,feedbackHistory,feedbackResponse,feedbackStatusForm,mountFeedback} from './dist/feedback.js';
+import {feedbackCard,feedbackComment,feedbackHistory,feedbackResponse,feedbackStatusForm,feedbackProgress,feedbackStatusGuide,FEEDBACK_STATUSES,FEEDBACK_STATUS_HELP,mountFeedback} from './dist/feedback.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
 const id='11111111-1111-4111-8111-111111111111',author={characterId:'c01',number:1,name:'거미 #001'};
@@ -54,14 +54,32 @@ test('feedback and comment templates escape user text and never expose a public 
 test('cards announce an operator reply independently of processing status or visitor comments',()=>{
  for(const status of ['open','reviewing','planned','completed','hold']){
   const answered=feedbackCard({...post,status,reason:'  확인했습니다. 검토를 진행할게요.  ',commentCount:0},chars);
-  assert(answered.includes('운영자 답변 완료'));assert(answered.includes('class="fb-response-badge"'));assert(answered.includes('fb-icon-check'));
+  assert(answered.includes('운영자 답변'));assert(!answered.includes('답변 완료'));assert(answered.includes('class="fb-response-badge"'));assert(answered.includes('fb-icon-check'));
   assert(answered.includes(`aria-describedby="fb-card-response-${id}"`));assert(answered.includes(`id="fb-card-response-${id}"`));
-  assert(answered.includes(`status-${status}`));assert(answered.includes('댓글 0'));assert(!answered.includes('확인했습니다.'));
+  assert(answered.includes(`status-${status}`));assert(answered.includes('댓글 0'));assert(answered.includes('확인했습니다.'));
   for(const reason of [undefined,null,'',' \n\t ']){
    const unanswered=feedbackCard({...post,status,reason,commentCount:12},chars);
-   assert(!unanswered.includes('fb-response-badge'));assert(!unanswered.includes('aria-describedby'));assert(unanswered.includes('댓글 12'));
+   assert(!unanswered.includes('fb-response-badge'));assert(unanswered.includes('fb-answer-pending'));assert(unanswered.includes('댓글 12'));
   }
  }
+});
+test('status definitions distinguish commitment, progress and missing individual reasons',()=>{
+ const guide=feedbackStatusGuide();
+ for(const status of Object.keys(FEEDBACK_STATUSES)){
+  assert(guide.includes(FEEDBACK_STATUS_HELP[status]));
+  const progress=feedbackProgress({...post,status});
+  assert(progress.includes(FEEDBACK_STATUS_HELP[status]));
+  assert(progress.includes('fb-answer-pending'));
+  assert(!feedbackProgress({...post,status,reason:'공개된 실제 답변'}).includes('fb-answer-pending'));
+ }
+ assert(feedbackProgress({...post,status:'hold',reason:'  '}).includes('보류 사유는 아직 등록되지 않았습니다.'));
+ assert(feedbackProgress({...post,status:'reviewing'}).includes('검토 내용은 아직 등록되지 않았습니다.'));
+ assert(guide.includes('적용 일정이 확정된 것은 아닙니다.'));
+ assert(guide.includes('운영자 답변이 있어도 반영이 완료된 것은 아닙니다.'));
+ const unknown=feedbackProgress({...post,status:'<svg onload=alert(1)>'});
+ assert(unknown.includes('상태 확인 필요'));assert(!unknown.includes('<svg onload'));assert(!unknown.includes('status-open'));
+ const card=feedbackCard({...post,status:'hold',reason:'<script>사유</script>\n내용'},chars);
+ assert(card.includes('&lt;script&gt;사유'));assert(!card.includes('<script>'));
 });
 test('whole-card navigation opens once and preserves native modified clicks',async()=>{
  const previous=globalThis.fetch,handlers={},opened=[];globalThis.fetch=async()=>({ok:true,json:async()=>({posts:[post],counts:{open:1},total:1,nextPage:null})});
@@ -70,6 +88,8 @@ test('whole-card navigation opens once and preserves native modified clicks',asy
  const link={dataset:{fb:'open',id}};
  try{
   assert(!root.innerHTML.includes('추천순'));assert(!root.innerHTML.includes('fb-vote'));assert(root.innerHTML.includes('댓글순'));
+  for(const status of Object.keys(FEEDBACK_STATUSES))assert(root.innerHTML.includes(`data-status="${status}" aria-pressed="false"`));
+  assert(root.innerHTML.includes('처리 상태는 어떤 뜻인가요?'));
   for(const modifier of ['ctrlKey','metaKey','shiftKey','altKey'])await handlers.click({target:{closest:()=>link},[modifier]:true,button:0,preventDefault(){assert.fail('modified click must remain native');}});
   assert.deepEqual(opened,[]);let prevented=0;
   await handlers.click({target:{closest:()=>link},button:0,preventDefault(){prevented++;}});
