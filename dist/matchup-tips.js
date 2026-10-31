@@ -1,12 +1,12 @@
 import {requestId as requestUUID} from './request-id.js?v=58ef88b53202';
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=686d68a3aae1';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=a5cb7f44886e';
 export const TIPS_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const TIP_STATUSES={pending:'검토 대기',approved:'공개 중',needs_changes:'보완 요청',rejected:'반려',hidden:'비공개'};
 export const tipEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=tipEscape;
 const date=value=>value?new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(value)):'';
-const lock='<svg class="tip-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>';
-const check='<svg class="tip-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
+const lock='<svg class="tip-icon ui-icon" data-icon="lock" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>';
+const check='<svg class="tip-icon ui-icon" data-icon="check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
 function pair(t,characters){return `<div class="tip-pair">${[t.ownId,t.opponentId].map((id,i)=>{const c=characters[id];return `${i?'<span class="tip-pair-arrow" aria-hidden="true">→</span>':''}<a href="#v=character&c=${e(id)}&tab=tips">${c?.portrait?`<img src="${e(c.portrait)}" alt="" width="32" height="32" loading="lazy">`:''}<span>${e(c?.name||'캐릭터')}</span></a>`;}).join('')}</div>`;}
 export function tipCard(t,characters,{mine=false}={}){
  return `<article class="tip-card">${pair(t,characters)}<div class="tip-author"><strong>${e(t.displayName)}</strong>${t.verifiedAt?`<span class="tip-verified">${check}티어 확인</span>`:''}${mine?`<span class="tip-status tip-status-${e(t.status)}">${e(TIP_STATUSES[t.status])}</span>`:''}</div>${t.verifiedAt?`<p class="tip-rank">${e(t.verifiedTier)} · ${e(t.verifiedSeason)} <span>${e(date(t.verifiedAt))} 확인</span></p>`:mine?`<p class="tip-rank">신청 ${e(t.claimedTier)} · ${e(t.season)}</p>`:''}<p class="tip-copy">${e(t.body)}</p>${t.context?`<div class="tip-context"><span>적용 조건</span><p>${e(t.context)}</p></div>`:''}<div class="tip-card-footer"><time datetime="${new Date(t.updatedAt).toISOString()}">${e(date(t.updatedAt))} ${mine?'제출·수정':'갱신'}</time>${mine?`<div><button type="button" class="tip-text-button" data-tip="edit" data-id="${e(t.id)}">수정</button><button type="button" class="tip-text-button" data-tip="delete" data-id="${e(t.id)}">삭제</button></div>`:''}</div>${mine&&t.reviewMessage?`<div class="tip-review-message"><strong>운영자 검토 의견</strong><p>${e(t.reviewMessage)}</p></div>`:''}</article>`;

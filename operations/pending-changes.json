@@ -34,6 +34,17 @@
       "announcement": "announced",
       "announcedVersion": "1.17.0",
       "announcedAt": "2026-10-31"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "typography-icons-release-order",
+      "summary": [
+        "텍스트 구분점을 동일한 가운뎃점으로 통일하고 모바일 검색 안내의 줄바꿈 충돌 수정",
+        "공지 항목을 추가·개선·수정·데이터·삭제 순서로 표시",
+        "짝이 있는 따옴표 강조를 표시 단계에서 굵은 글씨로 전환",
+        "아이콘의 곡선·직선 끝처리를 구분하고 같은 역할의 크기·정렬 통일"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

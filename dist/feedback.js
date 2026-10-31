@@ -1,5 +1,5 @@
 import {requestId} from './request-id.js?v=58ef88b53202';
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=686d68a3aae1';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=a5cb7f44886e';
 export const FEEDBACK_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const FEEDBACK_STATUSES={open:'의견 수렴',reviewing:'검토 중',planned:'반영 예정',completed:'반영 완료',hold:'보류'};
 export const FEEDBACK_STATUS_HELP={
@@ -16,8 +16,8 @@ export const FEEDBACK_CATEGORIES={feature:'기능 제안',correction:'정보 수
 export const feedbackEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=feedbackEscape;
 const date=t=>new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(t));
-const glyph={message:'<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/>',plus:'<path d="M12 4v16M4 12h16"/>',back:'<path d="M20 12H4m6-6-6 6 6 6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',reply:'<path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7v4"/>',check:'<path d="m4 12 5 5L20 6"/>'};
-const icon=n=>`<svg class="fb-icon fb-icon-${n}" aria-hidden="true" viewBox="0 0 24 24">${glyph[n]||glyph.message}</svg>`;
+const glyph={message:'<path d="M6 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2Z"/><path data-stroke="soft" d="M8 8h8M8 12h5"/>',plus:'<path d="M12 4v16M4 12h16"/>',back:'<path d="M20 12H4m6-6-6 6 6 6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',reply:'<path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7v4"/>',check:'<path d="m5 12 4 4L19 6"/>'};
+const icon=n=>`<svg class="fb-icon fb-icon-${n} ui-icon" data-icon="${n}" aria-hidden="true" viewBox="0 0 24 24">${glyph[n]||glyph.message}</svg>`;
 const badge=p=>`<span class="fb-status status-${statusKey(p)||'unknown'}">${e(FEEDBACK_STATUSES[statusKey(p)]||'상태 확인 필요')}</span>`;
 const options=(dict,value,first='')=>(first?`<option value="">${e(first)}</option>`:'')+Object.entries(dict).map(([k,v])=>`<option value="${k}" ${value===k?'selected':''}>${e(v)}</option>`).join('');
 const who=(a,chars,author=false)=>`<span class="fb-person">${chars[a?.characterId]?`<img src="${e(chars[a.characterId].portrait)}" alt="" width="30" height="30" loading="lazy">`:''}<span>${e(a?.name||'장원의 손님')}</span>${author?'<span class="fb-author-label">작성자</span>':''}</span>`;

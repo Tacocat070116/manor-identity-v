@@ -63,7 +63,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
 export const participation=createParticipationStore();
 export const PARTICIPATION_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const keyIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/></svg>';
+const keyIcon='<svg class="recovery-icon ui-icon" data-icon="key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/></svg>';
 
 // Explicit issuance uses the same server identity as writing. Reopening or
 // repeating it must never replace the visitor who owns the existing records.

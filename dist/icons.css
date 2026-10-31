@@ -1,0 +1,31 @@
+/* Shared stroke rules; explicit path curves keep their shape. */
+.ui-icon[data-icon]{
+ display:inline-block;vertical-align:middle;flex-shrink:0;
+ stroke-width:1.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;
+}
+.ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="clock"],[data-icon="sun"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
+ stroke-linecap:round;stroke-linejoin:round;
+}
+.ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="pause"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="external"],[data-icon="swap"],[data-icon="role-hunt"]){
+ stroke-linecap:square;
+}
+.ui-icon [data-stroke="soft"]{stroke-linecap:round;stroke-linejoin:round}
+.ui-icon [data-stroke="square"]{stroke-linecap:square;stroke-linejoin:miter}
+/* Match the icon box to its UI role, independent of category or theme. */
+:is(.btn,.text-link,.creator-channel-link)>.ui-icon,
+:is(.creator-edit-chips,.creator-style-options,.creator-selected-tag,.tag,.fb-response-badge,.fb-comment-count,.fb-reply-to) .ui-icon{
+ width:16px;height:16px;flex-basis:16px;
+}
+:is(.icon-btn,.carousel-control,.search-box,.creator-search,.category-current-icon,.nav-item)>.ui-icon{
+ width:20px;height:20px;flex-basis:20px;
+}
+:is(.empty,.fb-empty,.creator-empty)>.ui-icon{
+ display:block;width:32px;height:32px;flex-basis:32px;margin-inline:auto;
+}
+.ui-icon[data-icon="role-decode"]{stroke-linejoin:round}
+.ui-icon[data-icon="role-decode"] path{stroke-linecap:square;stroke-linejoin:miter}
+.ui-icon[data-icon="key"] circle{stroke-linecap:round;stroke-linejoin:round}
+.category-current-icon{width:20px;height:20px;flex-basis:20px}
+.category-chevron{width:16px;height:16px;flex:0 0 16px}
+.panel-title>.ui-icon{align-self:flex-start}
+.tip-guide>.ui-icon{vertical-align:-3px}

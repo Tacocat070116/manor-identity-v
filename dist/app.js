@@ -1,25 +1,25 @@
-import './typography.js?v=debc54124e83';
+import './typography.js?v=df793a0e96f6';
 import {mountResearchHighlights} from './research-highlights.js?v=97029ecf685d';
-import {mountRecoveryPage} from './participation.js?v=686d68a3aae1';
+import {mountRecoveryPage} from './participation.js?v=a5cb7f44886e';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=ea4b96f7e79e';
-import {mountFeedback} from './feedback.js?v=e934cd2a006f';
-import {mountSynergy} from './synergy.js?v=cbe7f50dc6f5';
+import {mountFeedback} from './feedback.js?v=125423d96ea6';
+import {mountSynergy} from './synergy.js?v=c4fcb01d2be7';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=29eb430cab7a';
-import {mountMatchupTips} from './matchup-tips.js?v=4307e32718d9';
-import {mountCreators} from './creators.js?v=d7038626eced';
+import {mountMatchupTips} from './matchup-tips.js?v=4dff11fcea15';
+import {mountCreators} from './creators.js?v=4dcb5a90f754';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=81cedfeaf2bd';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=e46d44cddb04';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
-flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3M7 14h10"/><circle cx="10" cy="17.5" r=".6"/><circle cx="14" cy="18" r=".6"/>',
+flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3"/><path data-stroke="soft" d="M7 14c2-1 3 1 5 0s3-1 5 0"/><circle cx="10" cy="17.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r=".7" fill="currentColor" stroke="none"/>',
 megaphone:'<path d="M4 9h4l11-5v16L8 15H4V9Zm4 6 2 6h4l-2-4M8 9v6M22 9v6"/>',
 palette:'<path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.3 1.3 0 0 1 .9-2.2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-8.9Z"/><circle cx="7" cy="11" r=".9"/><circle cx="10" cy="7" r=".9"/><circle cx="15" cy="7.5" r=".9"/>',
 key:'<circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/>',
@@ -30,14 +30,14 @@ swords:'<path d="m13.5 7.5 3.5-3.5 4-1-1 4-3.5 3.5"/><path d="M14 17 4 7 3 3l4 1
 compare:'<path d="M8 4H4v16h4m8-16h4v16h-4M12 3v18"/>',
 swap:'<path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/>',
 shield:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/>',
-message:'<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/>',
+message:'<path d="M6 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2Z"/><path data-stroke="soft" d="M8 8h8M8 12h5"/>',
 book:'<path d="M12 6v15M3 3c3.5 0 6.5 1 9 3 2.5-2 5.5-3 9-3v15c-3.5 0-6.5 1-9 3-2.5-2-5.5-3-9-3V3Z"/>',
 star:'<path d="m12 3.4 2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.75 6.38 20.7l1.07-6.25L2.9 10l6.3-.9L12 3.4Z"/>',
 sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.75m0 13.5v2.75M2.5 12h2.75m13.5 0h2.75M5.3 5.3l1.95 1.95m9.5 9.5 1.95 1.95M5.3 18.7l1.95-1.95m9.5-9.5 1.95-1.95"/>',
 moon:'<path d="M20.45 13.65A8.5 8.5 0 0 1 10.35 3.55 8.5 8.5 0 1 0 20.45 13.65Z"/>',
-arrow:'<path d="M3.4 12h16m-6-6 6 6-6 6"/>',
-back:'<path d="M20.6 12h-16m6-6-6 6 6 6"/>',
-down:'<path d="m6 8.7 6 6 6-6"/>',
+arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
+back:'<path d="M20 12H4m6-6-6 6 6 6"/>',
+down:'<path d="m6 9 6 6 6-6"/>',
 close:'<path d="m6 6 12 12M6 18 18 6"/>',
 plus:'<path d="M12 4v16M4 12h16"/>',
 info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/>',
@@ -49,15 +49,15 @@ globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><p
 external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
 play:'<path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none"/>',
 pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
-'role-kite':'<path d="M8 4h4l1 5 7 4a3 3 0 0 1 1 2.2V19H5v-6l3-9ZM5 16h16M12 9l-2 2m5 0-2 2M2 7h3m-3 3h2"/>',
+'role-kite':'<path d="M8 4h4l1 5 7 4a3 3 0 0 1 1 2.2V19H5v-6l3-9ZM5 16h16M12 9l-2 2m5 0-2 2"/><path data-stroke="square" d="M2 7h3m-3 3h2"/>',
 'role-cover':'<path d="M12 2 3 6v5c0 5 4 8 9 11 5-3 9-6 9-11V6zM8 15a4 4 0 0 1 8 0"/><circle cx="12" cy="9" r="2.5"/>',
-'role-rescue':'<path d="M2 13h4v8H2zM6 14l3-3h4a2 2 0 0 1 0 4h-3m3 0 5-3a2 2 0 0 1 2 3l-5 5H6M16 2v6m-3-3h6"/>',
+'role-rescue':'<path data-stroke="square" d="M2 13h4v8H2zM16 2v6m-3-3h6"/><path data-stroke="soft" d="M6 14l3-3h4a2 2 0 0 1 0 4h-3m3 0 5-3a2 2 0 0 1 2 3l-5 5H6"/>',
 'role-control':'<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6h10M5 8v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8M12 14v3"/>',
 'role-decode':'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M6 9V3h12v6M9 6h6M7 13h1m3 0h2m3 0h1M7 17h1m3 0h2m3 0h1"/>',
 'role-hunt':'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>',
 'role-camp':'<path d="M7 14V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9M3 10v7h18v-7M3 14h18M6 17v4m12-4v4M10 7h4"/>'
 };
-const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
+const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name} ui-icon" data-icon="${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24">${paths[name]}</svg>`;};
 const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'release',favoriteOnly:false,stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banSource:'observed',banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],banPage:1,banRecordHunter:'',situation:'',favorites:new Set(),theme:'light'};
 let themeStorage;
 try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));}catch{}
@@ -213,7 +213,7 @@ function heroCarousel(){
 function explore(){
  return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>캐릭터 공략과<br><span>대회·랭킹전 통계</span></h1><p>캐릭터별 스킬과 운영법, 상대별 상성과 대응 방법을 확인하세요.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
  <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>36</strong>감시자</span><span><strong>53</strong>생존자</span><a class="text-link push-right" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></div>
- <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>캐릭터 도감</h2><p>진영과 역할로 캐릭터를 찾고, 스킬·장단점·운영법을 확인하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판으로도 검색할 수 있습니다. <span>출시순은 글로벌 서버 기준입니다.</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
+ <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>캐릭터 도감</h2><p>진영과 역할로 캐릭터를 찾고, 스킬·장단점·운영법을 확인하세요.</p></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판으로도 검색할 수 있습니다. <span class="search-help-secondary">출시순은 글로벌 서버 기준입니다.</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
  <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대별 상성과 대응법</strong><p>대진별 상성과 적용 조건</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴 조합별 대회 기록</strong><p>선택한 생존자 밴 조합의 감시자 출전 기록</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>캐릭터 비교</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
 }
 function updateExplorer(){

@@ -159,3 +159,19 @@ test('the megaphone shows only the latest announced update and links to the comp
  const probe={...log,releases:[{...log.releases[0],changes:[{type:'수정',text:'<script>bad()</script>'}]},{...log.releases[1],changes:[{type:'수정',text:'old-entry-must-stay-in-history'}]}]};
  const latest=releaseUI.latestReleaseContent(probe);assert.ok(latest.includes('&lt;script&gt;'));assert.ok(!latest.includes('<script>'));assert.ok(!latest.includes('old-entry-must-stay-in-history'));
 });
+
+test('release categories use one stable order in history and the latest dialog without changing saved records',()=>{
+ const changes=[
+  {type:'수정',text:'fix-one'},{type:'추가',text:'add-one'},{type:'삭제',text:'remove-one'},
+  {type:'개선',text:'improve-one'},{type:'데이터',text:'data-one'},{type:'추가',text:'add-two'},
+ ];
+ const original=structuredClone(changes);
+ const expected=['add-one','add-two','improve-one','fix-one','data-one','remove-one'];
+ assert.deepEqual(releaseUI.orderedReleaseChanges(changes).map(c=>c.text),expected);
+ const probe={...log,releases:[{...log.releases[0],changes}]};
+ for(const html of [releaseUI.releaseNotesList(probe),releaseUI.latestReleaseContent(probe)]){
+  const positions=expected.map(text=>html.indexOf(text));
+  assert.ok(positions.every((position,i)=>position>=0&&(!i||position>positions[i-1])));
+ }
+ assert.deepEqual(changes,original);
+});
