@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-31",
+  "baseline": "bf18387a690047e3be0994a976b9503387877b1c",
+  "scope": "사이트 작성 공략·화면 안내 문장의 후속 전수 검수",
+  "gameBalanceRevalidated": false,
+  "coverage": {
+    "characters": 89,
+    "characterFields": [
+      "difficultyReason",
+      "persona",
+      "alternative",
+      "personaReason",
+      "caution",
+      "skill",
+      "use",
+      "hold",
+      "response",
+      "adjustment",
+      "tips",
+      "strengths",
+      "weaknesses",
+      "introduction",
+      "specialtyReasons"
+    ],
+    "matchups": 463,
+    "uniqueMatchupTexts": 901,
+    "matchupFields": [
+      "summary",
+      "condition",
+      "situation",
+      "situationDetail"
+    ],
+    "links": 275,
+    "uniqueLinkTexts": 378,
+    "linkFields": [
+      "reason",
+      "use",
+      "when",
+      "caution",
+      "basis",
+      "situations"
+    ],
+    "uiFiles": [
+      "dist/app.js",
+      "dist/carousel.js",
+      "dist/character-search.js",
+      "dist/compendium-model.js",
+      "dist/creators-model.js",
+      "dist/creators.js",
+      "dist/feedback.js",
+      "dist/index.html",
+      "dist/matchup-tips.js",
+      "dist/model.js",
+      "dist/navigation.js",
+      "dist/participation.js",
+      "dist/releases.css",
+      "dist/releases.js",
+      "dist/research-highlights.js",
+      "dist/statistics-model.js",
+      "dist/statistics.js",
+      "dist/synergy-model.js",
+      "dist/synergy.js",
+      "dist/themes.js"
+    ],
+    "uiAttributes": [
+      "aria-label",
+      "title",
+      "alt",
+      "placeholder",
+      "content"
+    ],
+    "existingAnnouncements": 94
+  },
+  "decisions": [
+    "89명의 소개·스킬·운용·장단점·대응·인격 이유·역할 이유를 캐릭터별로 함께 읽었습니다.",
+    "상성과 조합의 중복 문장은 묶어 읽고 적용 조건·예외·불확실성을 유지했습니다.",
+    "주체·목적어·조사·문장 연결을 다듬고 장단점의 간결한 어구체와 공략 안내체를 유지했습니다.",
+    "화면 본문·오류 메시지·입력 안내·접근성 문구와 기존 공지 94건을 확인했습니다.",
+    "출처 인용·검색 별칭·이용자 작성 원문·수치·상성 판단·기존 공지·버전은 변경하지 않습니다."
+  ],
+  "changedDataFields": 314,
+  "uiEdits": 27,
+  "dataChangesByFile": {
+    "data.json": 306,
+    "introductions.json": 3,
+    "specialties.json": 5
+  },
+  "reviewedFileSha256": {
+    "dist/data.json": "3db0ce16caf6e4270ae3e07873117f4fe1aa1321098472a638c1049085281a15",
+    "dist/introductions.json": "6103572238d9a944e97905c7fbf55ad9323274e9eba225f44b3577437aba0073",
+    "dist/specialties.json": "f2ef2e854151f84effaea99dbab6c5ae0cb07ed6278c3259542426b8a2945d66",
+    "dist/app.js": "a15b704326cc7c89c2914319ae8c20c171e669cbac5dcc7aafaf9084f34bb08b",
+    "dist/carousel.js": "98b4e768f28efbaac8c1f45ea1ffaf7d7e15d84cd4b0df8a373c9034ce410fe7",
+    "dist/character-search.js": "bb16060d15abad6ac83c110ba30f551adb69b1ef1f04bcf6679ef907d29cbb6e",
+    "dist/compendium-model.js": "6abcdba2235d835192e462626cee1895c651b54ebc5ad5e8408b348ae632486b",
+    "dist/creators-model.js": "f88a989118966e5b1174b0d13b9347d09a62aae4da54c83b589493b6fdb28722",
+    "dist/creators.js": "d74010346d760b61f7acadc029d8553b79af813abbaa5b495ab99ab775580908",
+    "dist/feedback.js": "8dccb067520805e06c33044d36adfad70aee8bd975aa60a34ee8afec912de383",
+    "dist/index.html": "9e4ecb2321c5f59d5d497f47b81f879ecdf5f5eb7be490df6c6d30e7c54cc23e",
+    "dist/matchup-tips.js": "eb8424f7732b9c0b105b1a996837db851e4d8ffd78eebe152a828ca1e84fc094",
+    "dist/model.js": "7daffcd458473bccb953cb196ae9434359419d8fec1a09441b5f284a37bfa591",
+    "dist/navigation.js": "d2f36fe32cec1f6f93169d4a9ebe468bdfabecf0e121dd0b8cb4b15ddf890fb7",
+    "dist/participation.js": "1e240856280c514270d3c9323c9c29faac81ad02610d6a8c9b2b4e59bd90ac22",
+    "dist/releases.css": "383f67400bcb0cb7c4198a33497575f3d5059cd51b9aac3c73745212c0430b3e",
+    "dist/releases.js": "e46d44cddb04ef88b3852ba6e3c7effaa1970f63c8eab5d0435cbcf328096a52",
+    "dist/research-highlights.js": "750dd720622e9ea94cab8c84586c054113a2e77ddacdf2ebf230098fcabc8c4c",
+    "dist/statistics-model.js": "f7a052d6be7b4f5f55874f445b8aae724b512ef9f6ac46f30271b44986ff989c",
+    "dist/statistics.js": "673ca8c7ec8465832c7a3143815e585d8ce43bedd180ff86d877101ac1216ab7",
+    "dist/synergy-model.js": "29eb430cab7ab2b390a342d46ff0459909827332898bf57c3e8256d0d34fc9eb",
+    "dist/synergy.js": "0b98c3382f41f91fc1960091393ecb4628e5069d350cd0a933623821f843ecd4",
+    "dist/themes.js": "20b623b7cbb2232dd9b15e6a4278e94c467f45f699e396a442004b9823387e40",
+    "dist/releases.json": "c25da2a7675f7350ec28ff1939006d5c944526717513ce89607d21c7e191ff0c"
+  },
+  "validation": {
+    "tests": {
+      "passed": 137,
+      "failed": 0
+    },
+    "terminologyReplay": "passed",
+    "contentReviewFingerprints": "passed for 89 characters",
+    "numbersAndStatistics": "unchanged",
+    "announcementVersion": "BETA v1.17.1; existing 94 entries unchanged",
+    "browser": [
+      "포워드 공략의 수정 문구 렌더링 확인",
+      "375px·320px iframe의 가로 넘침 없음",
+      "묘지기·우산의 영혼 상성에서 잠행 시작 조건과 예외 표시 확인"
+    ],
+    "previewLimitation": "로컬 미리보기에서는 연구실 API의 반영 내역이 로드되지 않아, 연결 상태는 공개 배포 화면에서 확인합니다."
+  }
+}

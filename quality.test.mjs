@@ -53,6 +53,7 @@ test('content gate catches isolated role, introduction and guide edits until a w
   else bundle[field]+=' 다른 설명';
   assert.throws(()=>validateContentReviews(changed,register),/c24/);
   const reviewed=structuredClone(register);reviewed.characters.c24.fingerprint=contentFingerprint(bundle);
+  delete reviewed.characters.c24.baselineFingerprint;
   assert.throws(()=>validateContentReviews(changed,reviewed,original),/변경 전/);
   reviewed.characters.c24.baselineFingerprint=contentFingerprint(original.get('c24'));
   assert.equal(validateContentReviews(changed,reviewed,original),89);

@@ -1,17 +1,17 @@
 import './typography.js?v=d3e23c8c5a2d';
 import {mountResearchHighlights} from './research-highlights.js?v=750dd720622e';
-import {mountRecoveryPage} from './participation.js?v=bc7e73774353';
+import {mountRecoveryPage} from './participation.js?v=1e240856280c';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=13209227e7b8';
-import {mountFeedback} from './feedback.js?v=ce7335069460';
-import {mountSynergy} from './synergy.js?v=a42eae532328';
+import {createStatisticsUI} from './statistics.js?v=673ca8c7ec84';
+import {mountFeedback} from './feedback.js?v=8dccb0675208';
+import {mountSynergy} from './synergy.js?v=0b98c3382f41';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=29eb430cab7a';
-import {mountMatchupTips} from './matchup-tips.js?v=ce02553d326f';
-import {mountCreators} from './creators.js?v=589271647082';
+import {mountMatchupTips} from './matchup-tips.js?v=eb8424f7732b';
+import {mountCreators} from './creators.js?v=d74010346d76';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=e46d44cddb04';
 const $=(s,r=document)=>r.querySelector(s);
@@ -308,7 +308,7 @@ function statsPanel(c,rows,details=null,detailError=''){
 function relationTable(rows,label){
  if(!rows.length)return '<p class="muted">선택한 조건의 기록이 없습니다. 기간·맵·대회를 넓혀 보세요.</p>';
  const table=items=>`<div class="insight-table-wrap" tabindex="0" role="region" aria-label="${esc(label)}별 기록 표 · 가로로 스크롤"><table class="insight-table"><thead><tr><th scope="col">${esc(label)}</th><th scope="col">출전</th><th scope="col">승·무·패</th><th scope="col">팀 승률</th></tr></thead><tbody>${items.map(r=>{const c=byId[r.id];return `<tr><th scope="row">${c?`<a class="insight-character" href="${route({v:'character',c:c.id})}">${portrait(c)}<span>${esc(c.name)}</span></a>`:esc(r.id)}</th><td>${num(r.appearances)}<small>${pct(r.share)}</small></td><td>${r.win}·${r.draw}·${r.loss}<small>결과 ${num(r.results)}</small></td><td>${r.winRate===null?'—':pct(r.winRate)}${r.results>0&&r.results<50?'<small>적은 표본</small>':''}</td></tr>`;}).join('')}</tbody></table></div>`;
- return `${table(rows.slice(0,8))}${rows.length>8?`<details class="insight-more"><summary>나머지 ${rows.length-8}개 기록 보기</summary>${table(rows.slice(8))}</details>`:''}<p class="statistics-caption">출전 아래 비율은 이 캐릭터의 조건 내 출전 중 비중입니다.</p>`;
+ return `${table(rows.slice(0,8))}${rows.length>8?`<details class="insight-more"><summary>나머지 ${rows.length-8}개 기록 보기</summary>${table(rows.slice(8))}</details>`:''}<p class="statistics-caption">출전 수 아래의 비율은 선택한 조건에서 이 캐릭터가 출전한 경기 중 해당 항목의 비중입니다.</p>`;
 }
 function observationPanel(c,data){
  const o=observedDetails(data.rows,c,state.stats);
@@ -386,7 +386,7 @@ async function render({scroll=false}={}){
   body.innerHTML=matchupPage();
   const own=char(state.own),opp=byId[state.opponent];
   if(opp){
-   body.innerHTML+='<div id="matchup-tips"></div><section class="panel section-gap" id="pair-observations"><p class="muted">대회의 같은 대진을 불러오고 있습니다.</p></section>';
+   body.innerHTML+='<div id="matchup-tips"></div><section class="panel section-gap" id="pair-observations"><p class="muted">두 캐릭터가 만난 대회 기록을 불러오고 있습니다.</p></section>';
    disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:own.id,opponentId:opp.id});
    try{const rows=await loadMatches();if(token!==renderToken)return;const s=statsFor(rows,own,{...state.stats,opponent:opp.id});
     $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 추격 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
@@ -475,7 +475,7 @@ async function swapSelections(mode){
  if(location.hash!==next)return;
  window.scrollTo({top:scrollY,behavior:'instant'});
  $('[data-action="swap-selection"]')?.focus({preventScroll:true});
- toast(`${right.name} · ${left.name} 순서로 맞바꿨어요.`);
+ toast(`${right.name} · ${left.name} 순서로 맞바꿨습니다.`);
 }
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-action]');if(!b||!db)return;const a=b.dataset.action;
@@ -511,7 +511,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=bb7565fc5245'),fetch('specialties.json?v=2c9cbe4061e4'),fetch('introductions.json?v=4d441429dd98'),fetch('releases.json?v=c25da2a7675f')]);
+ const responses=await Promise.all([fetch('data.json?v=3db0ce16caf6'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c25da2a7675f')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

@@ -53,9 +53,9 @@ export const CREATOR_REPORTS={spam:'도배·광고',impersonation:'채널 사칭
 export const creatorEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bad=message=>{throw new Error(message);};
 function clean(value,min,max,label){
- if(typeof value!=='string')bad(`${label}을 확인해 주세요.`);
+ if(typeof value!=='string')bad(`${label} 항목을 확인해 주세요.`);
  const v=value.normalize('NFC').trim();
- if(v.length<min||v.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u202a-\u202e\u2066-\u2069]/u.test(v))bad(`${label}은 ${min}~${max}자로 입력해 주세요.`);
+ if(v.length<min||v.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u202a-\u202e\u2066-\u2069]/u.test(v))bad(`${label}: ${min}~${max}자로 입력해 주세요.`);
  return v;
 }
 function youtubeURL(value){

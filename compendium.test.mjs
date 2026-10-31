@@ -84,10 +84,10 @@ test('all 89 characters have consistent team totals and source-backed updated co
  const terminologyEdits=new Map(read('research/localization/2026-10-27/edits.json').map(e=>[e.path,e]));
  const terminologyFollowup=new Map(read('research/localization/2026-10-27-followup/edits.json').map(e=>[e.path,e]));
  const latest=(index,field,previous)=>{
-  for(const revisions of [terminologyEdits,terminologyFollowup,...['2026-10-29','2026-10-30','2026-10-31'].map(date=>new Map(read('research/editorial/'+date+'/consistency-edits.json').edits.map(e=>[e.path,e])))]){
-   const edit=revisions.get(`dist/data.json/characters/${index}/${field}`);
-   if(edit)assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
-   previous=edit?.after??previous;
+  const history=[...terminologyEdits.values(),...terminologyFollowup.values(),...['2026-10-29','2026-10-30','2026-10-31'].flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits)];
+  for(const edit of history.filter(e=>e.path===`dist/data.json/characters/${index}/${field}`)){
+   assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
+   previous=edit.after;
   }
   return previous;
  };
@@ -144,7 +144,8 @@ test('Grave Keeper chase disadvantage keeps the separate rescue exception reacha
  assert.deepEqual(chase.map(m=>m.advantage),[wu.name]);
  assert.deepEqual(rescue.map(m=>m.advantage),[grave.name]);
  assert.match(chase[0].condition,/돌진/);
- assert.match(rescue[0].condition,/잠행을 마치고 삽이 남아/);
+ assert.match(rescue[0].condition,/잠행 시작 동작을 마쳐야/);
+ assert.match(rescue[0].condition,/삽이 남아/);
  assert.match(rescue[0].condition,/먼저 추격받아/);
  assert.deepEqual(contextEvidence(db.matchups,'M131'),rescue);
  assert.deepEqual(pairEvidence(db.matchups,wu,grave,'구출'),rescue);

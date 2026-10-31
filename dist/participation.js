@@ -141,7 +141,7 @@ export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onC
   if(action==='issue'){await run(async signal=>{
    const token=await issueRecoveryCode({origin,signal});if(!alive)return;
    revealedToken=token===participation.read()?token:'';render(true);refreshParticipationBanners();
-   result(revealedToken?'복구 코드를 확인했습니다. 따로 저장한 뒤 보관 완료를 눌러주세요.':'연결된 기록이 바뀌었습니다. 현재 기록의 코드를 다시 확인해 주세요.');
+   result(revealedToken?'복구 코드를 확인했습니다. 따로 저장한 뒤 보관 완료를 눌러 주세요.':'연결된 기록이 바뀌었습니다. 현재 기록의 코드를 다시 확인해 주세요.');
   },'복구 코드를 준비하고 있습니다.');return;}
   if(action==='switch'){const profile=participation.profiles()[Number(button.dataset.profile)];if(profile)await connect(recoveryCode(profile.token));return;}
   if(action==='hide'){revealedToken='';render(true);return;}
@@ -154,8 +154,8 @@ export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onC
    },'복구 코드를 복사하고 있습니다.');return;
   }
   if(action==='download'){
-   try{const url=URL.createObjectURL(new Blob(['MANOR 개인 복구 코드\n\n'+recoveryCode(token)+'\n\nMANOR > 복구 코드 > 기존 기록 연결에서 입력하세요.\n이 코드는 작성 권한을 연결합니다. 비밀번호처럼 보관하고 다른 사람에게 공유하지 마세요.\n'],{type:'text/plain;charset=utf-8'}));
-    const link=document.createElement('a');link.href=url;link.download='MANOR-개인-복구-코드.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);result('파일 다운로드를 시작했습니다. 저장된 파일을 확인한 뒤 보관 완료를 눌러주세요.');
+   try{const url=URL.createObjectURL(new Blob(['MANOR 개인 복구 코드\n\n'+recoveryCode(token)+'\n\nMANOR > 복구 코드 > 기존 기록 연결에서 입력하세요.\n이 코드를 입력하면 작성 기록을 다시 관리할 수 있습니다. 비밀번호처럼 보관하고 다른 사람에게 공유하지 마세요.\n'],{type:'text/plain;charset=utf-8'}));
+    const link=document.createElement('a');link.href=url;link.download='MANOR-개인-복구-코드.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);result('파일 다운로드를 시작했습니다. 저장된 파일을 확인한 뒤 보관 완료를 눌러 주세요.');
    }catch{result('파일을 저장하지 못했습니다. 코드 복사를 이용해 따로 보관해 주세요.',true);}return;
   }
   if(action==='saved'&&root.querySelector('[data-recovery-confirm]')?.checked){

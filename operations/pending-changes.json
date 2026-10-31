@@ -58,6 +58,16 @@
         "중복 안내와 빈 연구 영역을 줄이고 핵심 조건·예외 유지"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "full-korean-copy-review",
+      "summary": [
+        "도감 89명·상성 463건·조합 및 보조 특성 275건의 문장 검수와 표현 정리",
+        "화면 안내·입력·오류 문구의 말투·조사·목적어 통일",
+        "공략의 적용 조건과 예외, 장단점의 어구체 유지"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

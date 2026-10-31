@@ -114,7 +114,7 @@ test('live app routes load only selected season files and render all three scope
  assert.doesNotMatch(html,/id="ranked-title"/);assert.match(html,/id="tournament-title"/);
  Object.assign(app.state.statistics,{server:'cn',season:'S44',tier:'all',snapshot:'',scope:'ranked'});await app.render();html=nodes.get('#page-body').innerHTML;
  assert.match(html,/정정 확인이 필요한 과거 통계/);assert.match(html,/인지 점수/);assert.match(html,/2026-08-04/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
- app.state.statistics.search='거미';await app.render();assert.match(nodes.get('#page-body').innerHTML,/1개 캐릭터/);
+ app.state.statistics.search='거미';await app.render();assert.match(nodes.get('#page-body').innerHTML,/1명의 캐릭터/);
  app.syncStatisticsRoute();assert.match(context.location.hash,/season=S44/);
  app.readRoute();assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.search,'거미');
  context.location.hash='#v=character&c=c01&tab=stats&scope=all&server=cn&season=S43&tier=all';app.readRoute();await app.render();
