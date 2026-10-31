@@ -1,0 +1,15 @@
+{
+  "edits": [
+    {
+      "requestedBy": "owner",
+      "requestedAt": "2026-10-31",
+      "version": "1.17.0",
+      "noAnnouncement": true,
+      "reason": "모든 공지에서 유머·군더더기를 제거하고 변경 내용 중심으로 간결하게 교정. 버전과 새 공지 항목은 추가하지 않음.",
+      "beforeSha256": "4c721918f1e898825cdab6be14ae94a4ddcdab6b96234053bfb9f4f5b0fa06d7",
+      "afterSha256": "87ac22860a15d06d3edc377fcc0b8d84dccac4ccd55379a97465590e9e30321b",
+      "reviewedReleases": 93,
+      "reviewedChanges": 270
+    }
+  ]
+}

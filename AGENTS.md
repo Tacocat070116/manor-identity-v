@@ -3,10 +3,10 @@
 - The public site is https://tacocat070116.github.io/manor-identity-v/ and is deployed from `main` via GitHub Pages.
 - Owner instruction on 2026-10-31 supersedes the private-source migration: keep this GitHub repository public and restore the existing GitHub Pages URL. Preserve the English title accents, reduced public payloads, participation records and paused statistics work. Do not move the public site to another host or change its address without a new explicit request.
 - **Latest owner instruction, 2026-10-31: publish MANOR patch/version announcements only when the owner explicitly says to announce them. Batch all completed changes at that time. This supersedes every older per-deployment version/patch-note rule.** A request to fix, clean up, update or deploy the site is not a request to announce a version.
-- Ordinary changes ship with the existing `BETA` version and unchanged `dist/releases.json` / `package.json` version. Use `npm run release -- --refresh` (or `npm run release`) to refresh cache keys and checksums only. Record unannounced work in `operations/pending-changes.json`, outside `dist/`.
+- Ordinary changes ship with the existing `BETA` version and unchanged `dist/releases.json` / `package.json` version. Use `npm run release -- --refresh` (or `npm run release`) to refresh cache keys and checksums only. Record unannounced work in `operations/pending-changes.json`, outside `dist/`. An explicit request to edit existing announcement wording permits text-only corrections without a version bump or a new announcement. Record the exact before/after log hashes and owner request in `operations/release-copy-edits.json`; do not add these corrections to pending announcements.
 - Only after an explicit announcement request, consolidate completed work and use `npm run release -- --announce patch "제목" "수정: 내용"` (or `minor` for a new feature). Do not announce staged or incomplete work. Operator-system changes remain excluded from public patch notes.
 - `dist/releases.json` is the authority for the announced version, opening date and complete update history. Keep the visible version prefixed with `BETA` until the owner ends beta. Preserve historical entries and use Asia/Seoul dates and clear Korean descriptions.
-- Run `npm test`, `node scripts/check-release.mjs --base <previous deployed commit>`, and `sha256sum --check --status SHA256SUMS.txt` before publishing. The validator accepts unchanged announcements; changing an existing announcement without a new version or losing historical entries still fails.
+- Run `npm test`, `node scripts/check-release.mjs --base <previous deployed commit>`, and `sha256sum --check --status SHA256SUMS.txt` before publishing. The validator accepts unchanged announcements and exact owner-requested copy edits recorded above. Copy edits must preserve release count, order, versions, dates, types, commits and opening metadata; unrecorded edits still fail.
 - The confirmed opening date is 2026-10-16. Guide review dates and game patch dates are separate from website releases. `dist/data.json`'s legacy version describes its imported data baseline; never use it as the visible site version.
 
 ## 공개 화면과 데이터 용량
@@ -22,9 +22,10 @@
 - 공개 데이터 갱신 뒤 `node --test terminology.test.mjs`를 포함한 필수 검사를 실행한다. 기존 용어가 되살아나면 데이터 생성 단계부터 수정한다.
 - 후속 용어 기준과 출처 확인 수준은 `research/localization/2026-10-27-followup/terminology.json`에 기록한다. `python scripts/build-korean-terminology.py --check`는 이 최신 기준을 기본값으로 사용한다. 과거 기준을 현재 데이터에 재적용하지 않는다. 기상학자의 이동 기술 `층운`과 `따뜻한 비`가 만드는 구름, 교수의 `비늘 표피`와 `비늘 경화`는 문맥별로 구분한다.
 
-- 사용자는 업데이트 내용을 읽는 재미를 원합니다. 변경 사실을 먼저 명확하게 설명하고, 가끔 이스터에그처럼 가벼운 드립이나 제5인격에 어울리는 농담을 한 줄 자연스럽게 넣으세요. 이번 요청 이후에도 계속 적용합니다.
-- 모든 항목을 개그로 만들거나 기능·제약을 모호하게 표현하지 마세요. 사용자를 놀리는 말, 특정 국가·티어·유저를 깎아내리는 농담은 피합니다. 실제로 하지 않은 변경을 농담 때문에 만들어 쓰지 않습니다.
-- 예: 국가 목록을 줄인 항목 끝에 “국가 선택창의 세계 일주 코스를 단축했습니다.” 정도로 짧게 덧붙입니다. 같은 문구를 다음 업데이트마다 반복하지 않습니다.
+- **최신 사용자 지시(2026-10-31): 공지에 유머·개그·농담·드립·이스터에그를 절대 넣지 않습니다. 이전의 유머 요청은 폐기합니다.**
+- 변경 대상과 결과를 먼저 적고, 불필요한 수식·비유·인사·감상·반복 설명을 제거합니다. 짧고 구체적인 문장으로 사용자가 무엇이 달라졌는지 바로 알 수 있게 씁니다.
+- 수치·조건·제약처럼 변경을 이해하는 데 필요한 정보는 유지합니다. 과거 기록은 당시 변경 사실을 보존하고, 현재 기능으로 오해하게 바꾸지 않습니다. 변경 유형 배지와 날짜·버전도 유지합니다.
+- 사용자가 공지 문구만 정리하도록 요청한 경우 그 교정 작업을 새 패치 항목으로 알리거나 다음 공지에 다시 포함하지 않습니다.
 
 ## 캐릭터 설명을 함께 검토하기
 

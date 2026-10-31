@@ -9,7 +9,7 @@ import path from 'node:path';
 import {execFileSync,spawnSync} from 'node:child_process';
 import * as releaseUI from './dist/releases.js';
 import * as model from './dist/model.js';
-import {validateReleaseLog,validateReleaseUpdate,refreshPackage} from './scripts/release-tools.mjs';
+import {validateReleaseLog,validateReleaseUpdate,refreshPackage,releaseDigest} from './scripts/release-tools.mjs';
 const read=path=>JSON.parse(fs.readFileSync('dist/'+path,'utf8'));
 const log=read('releases.json');
 
@@ -30,6 +30,32 @@ test('release validation rejects missing BETA, stale versions and lost history',
  next.version=parts.join('.');next.releases.unshift({id:'test-update',version:next.version,date:log.releases[0].date,title:'새 업데이트',changes:[{type:'수정',text:'오류 수정'}],commits:[]});
  validateReleaseLog(next,next.version);validateReleaseUpdate(next,log);
  next.releases.pop();assert.throws(()=>validateReleaseUpdate(next,log),/삭제/);
+});
+
+test('owner-requested copy edits apply only to the exact recorded text revision',()=>{
+ const edited=structuredClone(log);
+ edited.historyNote='한국 시간 기준 변경 기록입니다.';
+ edited.releases[0].title='공지 문구 정리';
+ edited.releases[0].changes[0].text='변경 대상과 결과를 간결하게 표시했습니다.';
+ const record=current=>({requestedBy:'owner',reason:'공지 문구 교정 요청',noAnnouncement:true,version:log.version,beforeSha256:releaseDigest(log),afterSha256:releaseDigest(current)});
+ const copyEdits=[record(edited)];
+ assert.throws(()=>validateReleaseUpdate(edited,log),/공지 대기/);
+ validateReleaseUpdate(edited,log,{copyEdits});
+ const later=structuredClone(edited);later.releases[0].changes[0].text+=' 기록되지 않은 수정';
+ assert.throws(()=>validateReleaseUpdate(later,log,{copyEdits}),/공지 대기/);
+ assert.throws(()=>validateReleaseUpdate(edited,log,{copyEdits:[{...record(edited),noAnnouncement:false}]}),/공지 대기/);
+ for(const mutate of [
+  current=>current.releases.pop(),
+  current=>current.releases.reverse(),
+  current=>current.releases[0].changes.pop(),
+  current=>current.releases[0].changes[0].type='삭제',
+  current=>current.releases[0].date='2026-10-01',
+  current=>current.openedAt='2026-10-01',
+  current=>current.releases[0].commits.push('a'.repeat(40)),
+ ]){
+  const invalid=structuredClone(edited);mutate(invalid);
+  assert.throws(()=>validateReleaseUpdate(invalid,log,{copyEdits:[record(invalid)]}),/문구 교정/);
+ }
 });
 
 test('history lists every entry, searches with type filters and escapes text',()=>{

@@ -36,8 +36,15 @@ export function validateReleaseLog(log,packageVersion){
  }
  assert.equal(log.releases.find(release=>release.id==='opening')?.date,log.openedAt,'오픈 기록을 보존하세요.');
 }
-export function validateReleaseUpdate(current,previous){
+export const releaseDigest=log=>createHash('sha256').update(JSON.stringify(log)).digest('hex');
+export function validateReleaseUpdate(current,previous,{copyEdits=[]}={}){
  if(current.version===previous.version){
+  const edit=copyEdits.find(entry=>entry.requestedBy==='owner'&&entry.reason?.trim()&&entry.noAnnouncement===true&&entry.version===current.version&&entry.beforeSha256===releaseDigest(previous)&&entry.afterSha256===releaseDigest(current));
+  if(edit){
+   const metadata=({historyNote,...rest})=>({...rest,releases:rest.releases.map(({title,changes,...release})=>({...release,changes:changes.map(({text,...change})=>change)}))});
+   assert.deepEqual(metadata(current),metadata(previous),'문구 교정은 기존 기록·순서·버전·날짜·변경 유형을 보존해야 합니다.');
+   return;
+  }
   assert.deepEqual(current,previous,'공지 대기 중에는 공개 버전과 기존 패치 기록을 그대로 유지하세요.');
   return;
  }
