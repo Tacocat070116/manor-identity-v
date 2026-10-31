@@ -1,0 +1,1565 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-31",
+  "request": "업데이트 설명을 간결하게 제한하지 않고 모든 기존 내역의 누락을 검토해 해당 버전의 설명을 재작성·수정",
+  "baseline": "e74d3d090f84fd35fbd326d19258e1b84796ee2c",
+  "version": "1.17.3",
+  "reviewedReleases": 96,
+  "reviewedChanges": 293,
+  "correctedReleases": 20,
+  "correctedChanges": 42,
+  "method": [
+    "전체 공지의 최초 수록 문구와 현재 293개 항목을 읽고 대조",
+    "버전별 도입 커밋과 공지 사이의 완료 작업·정책상 제외 작업 확인",
+    "수정 항목은 관련 구현·편집 기록·자료 메타데이터와 대조; 과거 게임 사실의 신규 검증은 수행하지 않음"
+  ],
+  "evidence": [
+    "operations/pending-changes.json",
+    "operations/operator-maintenance.json",
+    "operations/statistics-expansion.json",
+    "operations/statistics-input-review.json",
+    "research/refresh/2026-10-31/integration.json",
+    "research/refresh/2026-10-31/numeric-audit.json",
+    "research/editorial/2026-10-31/full-copy-review.json",
+    "research/auxiliary-trait-icons.json",
+    "dist/app.js",
+    "dist/statistics.js",
+    "dist/style.css",
+    "dist/ranked/index.json",
+    "dist/ranked/badges.json"
+  ],
+  "intentionalExclusions": [
+    {
+      "commit": "dab28e6eca03a20511c0b1c8deac4c068cf4d1a0",
+      "reason": "운영자 시스템 변경은 공개 공지에서 제외하라는 기존 명시적 지시; operations/operator-maintenance.json에 별도 기록"
+    },
+    {
+      "commits": [
+        "cb99d8821f688150ed611aab0a3017335e96d246",
+        "c4d2e8aba5d086cb36d878c677ff879b11d41949"
+      ],
+      "reason": "중앙 검색 홈은 사용자 요청으로 롤백되어 완료된 신규 기능으로 공지하지 않음"
+    },
+    {
+      "branch": "codex/home-card-fan-review-20261031",
+      "reason": "부채꼴 회전 카드와 보조 특성 크기 확대 시안은 승인·병합되지 않음"
+    },
+    {
+      "reason": "유머·농담 및 폐기된 자동 공지 정책은 되살리지 않음; 현재 요청은 설명 길이 제한만 해제"
+    }
+  ],
+  "preserved": [
+    "version",
+    "stage",
+    "openedAt",
+    "release order and count",
+    "per-release date/version/id/commits",
+    "change order/count/type",
+    "all game and UI behavior"
+  ],
+  "reviews": [
+    {
+      "id": "beta-1-17-3",
+      "version": "1.17.3",
+      "date": "2026-10-31",
+      "reviewedChanges": 7,
+      "firstRecordedCommit": "e74d3d090f84fd35fbd326d19258e1b84796ee2c",
+      "implementationCommits": [
+        "aa04ebaba78746f2e201b9fbba4b1f0af992d569",
+        "8a0db02dd4423e7d965a191eb760caeebcaa10a6",
+        "d7111784327a25e7ab58a5ccc6631baef4e00514",
+        "cb99d8821f688150ed611aab0a3017335e96d246",
+        "c4d2e8aba5d086cb36d878c677ff879b11d41949",
+        "e74d3d090f84fd35fbd326d19258e1b84796ee2c"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "개선",
+          "before": "보조 특성 7종의 아이콘을 하얀색 실루엣으로 변경했습니다.",
+          "after": "비정상·흥분·순찰자·텔레포트·정탐자·플래시·형상 이동의 보조 특성 아이콘을 하얀색 실루엣으로 변경했습니다. 이미지에 포함된 배지 배경과 테두리를 제거해 인격 아이콘처럼 특성의 모양이 드러나도록 했습니다.",
+          "reason": "적용 대상 7종과 이미지 배경 제거 범위 명시"
+        },
+        {
+          "changeIndex": 1,
+          "type": "수정",
+          "before": "모바일 캐릭터 상세의 탭 4개를 한 줄로 정렬했습니다.",
+          "after": "모바일 캐릭터 상세의 한눈에 보기·상성·유저 상대법·통계 탭을 한 줄로 정렬했습니다. 통계 탭만 다음 줄로 내려가 탭 영역이 불필요하게 커지던 문제를 수정하고, 좁은 화면에서도 네 탭의 너비와 글자 크기가 맞도록 조정했습니다.",
+          "reason": "모바일 오류의 발생 모습과 수정 범위 보완"
+        },
+        {
+          "changeIndex": 2,
+          "type": "데이터",
+          "before": "아시아·중국 랭킹전의 시즌·기간별 통계 자료를 확장했습니다.",
+          "after": "아시아·중국 랭킹전의 공개 통계를 32,667개에서 96,505개 항목으로 확장했습니다. 아시아 S36~S38 보관본과 S43의 양 진영 자료, 중국 S24·S26·S40~S45에서 확보한 기간별 자료를 반영했습니다. 서버·시즌·티어·집계 기간별 1,181개 자료를 구분해 조회할 수 있습니다. 항목 수는 캐릭터별 집계 행의 수이며 실제 경기 수가 아닙니다. 아시아 S39~S42의 완전한 보관본과 S44 자료는 확보하지 못해 포함하지 않았습니다.",
+          "reason": "랭킹전 증가량·시즌·조회 범위·수치 단위·미확보 범위 누락 보완"
+        },
+        {
+          "changeIndex": 3,
+          "type": "데이터",
+          "before": "중국 인지 점수 기록을 402개 날짜, 274,016건으로 확장했습니다.",
+          "after": "중국 캐릭터 인지 점수를 기존 1,384건에서 274,016건으로 확장했습니다. 2025년 9월 18일부터 2026년 10월 29일 사이에 확인된 402개 날짜의 캐릭터별 순위 기준 점수를 조회할 수 있습니다. 총 14개월분의 기록을 월별로 나누어 보관하고 선택한 날짜가 속한 달만 불러오도록 했습니다. 시즌·월별 자료가 갱신되면 새 내용을 불러오도록 캐시 처리를 보완하고, 인지 점수만 불러오지 못한 경우에도 다시 시도할 수 있게 했습니다.",
+          "reason": "인지 점수 기준·기간·월별 선택 로딩·갱신 및 재시도 동작 보완"
+        },
+        {
+          "changeIndex": 4,
+          "type": "데이터",
+          "before": "대회 기록을 반경기 기준 17,056건으로 늘리고 상세 기록과 생존자 밴 자료를 보강했습니다.",
+          "after": "대회 기록을 16,953건에서 17,056건으로 늘렸습니다. 진영을 바꾸기 전후를 각각 세는 반경기 기준이며, 상세 기록은 1,650건에서 16,930건으로, 관측된 전체 생존자 밴 기록은 1,634건에서 16,842건으로 확장했습니다. 맵·인격·해독·구출·추격 시간 등 확인된 개인 기록을 보강하고, 날짜가 잘못 연결된 반경기 20건과 상세 기록 3건을 정정했습니다. 최신 추가분은 10월 30일 DOU5–ASC의 2세트 두 반경기로, 해당 날짜나 대회 전체를 수집한 것은 아닙니다. 기존 선밴 통계와 전체 밴 기록은 구분하며, 확인하지 못한 결과와 개인 기록을 임의의 수치로 채우지 않았습니다.",
+          "reason": "대회 상세·밴 증가량·정정 내역·반경기 단위·최신 부분 수집 범위 보완"
+        },
+        {
+          "changeIndex": 5,
+          "type": "데이터",
+          "before": "정정 여부가 확인되지 않은 S44 집계와 중복 자료를 제외했습니다.",
+          "after": "정정 여부가 확인되지 않은 중국 S44 누적 집계 1,575개 항목과 중복 자료 556개 항목을 제외했습니다. 확인 가능한 S44 주별 자료는 유지했습니다. 서로 다른 서버·기간·티어의 수치와 기간이 겹치는 일별·주별·시즌 누적 자료는 합산하지 않습니다. 이번 랭킹전 확장은 공개 전사·보관본을 기준으로 하며, 공식 원본 이미지 전체를 대조하거나 실제 경기 수를 확보한 자료는 아닙니다.",
+          "reason": "제외 대상과 유지 자료 구분 및 통계 확인 수준 명시"
+        },
+        {
+          "changeIndex": 6,
+          "type": "삭제",
+          "before": "함께하면 좋은 생존자의 상황 선택칸을 제거했습니다.",
+          "after": "함께하면 좋은 생존자에서 활용 상황을 고르는 선택칸과 그에 연결된 필터를 제거했습니다. 상황을 선택하지 않아도 추천 조합을 볼 수 있으며, 조합별 상황 태그·활용 조건과 다른 조합 더 보기는 유지했습니다. 이전 주소에 상황 선택값이 남아 있어도 추천 목록이 숨겨지지 않습니다.",
+          "reason": "필터 제거와 추천 자료 유지 범위 명확화"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-17-2",
+      "version": "1.17.2",
+      "date": "2026-10-31",
+      "reviewedChanges": 10,
+      "firstRecordedCommit": "b313c585b7b1957c6313754adc1fd4914c6c2895",
+      "implementationCommits": [
+        "bf18387a690047e3be0994a976b9503387877b1c",
+        "78fd5f78d896eb004e5c0b2243af4bd6d3976e77",
+        "e44620bd4b9a877b5103a63cefbf1a1f2444c0f3",
+        "b313c585b7b1957c6313754adc1fd4914c6c2895"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "추가",
+          "before": "피드백 카드에 댓글 입력칸으로 이동하는 댓글 작성 버튼을 추가했습니다.",
+          "after": "피드백 카드에 댓글 작성 버튼을 추가했습니다. 버튼을 누르면 해당 글의 댓글 입력칸으로 이동해 바로 작성할 수 있습니다. 기존 댓글 수 표시와 카드 전체를 눌러 상세 내용을 여는 동작도 유지했습니다.",
+          "reason": "버튼 동작과 기존 카드 탐색 보존 범위 보완"
+        },
+        {
+          "changeIndex": 1,
+          "type": "추가",
+          "before": "보조 특성 7종에 해당 특성의 아이콘을 표시합니다.",
+          "after": "보조 특성 설명에 비정상·흥분·순찰자·텔레포트·정탐자·플래시·형상 이동의 아이콘을 이름과 함께 표시했습니다. 캐릭터별 추천 보조 특성을 이미지로도 구분할 수 있습니다.",
+          "reason": "아이콘 추가 대상 명시; 이후 실루엣 전환과 구분"
+        },
+        {
+          "changeIndex": 2,
+          "type": "개선",
+          "before": "공략에 나오는 캐릭터 스킬명을 굵게 표시합니다.",
+          "after": "도감 공략·상성·생존자 조합 설명에 나오는 캐릭터별 스킬명을 굵게 표시했습니다. 따옴표가 없는 스킬명도 강조하며, 스킬명과 글자 일부가 겹치는 일반 단어는 구분합니다. 이용자가 작성한 글과 입력값은 변경하지 않았습니다.",
+          "reason": "따옴표 없는 스킬명 강조와 적용 영역·예외 보완"
+        },
+        {
+          "changeIndex": 3,
+          "type": "개선",
+          "before": "아이콘의 시각적 중심을 맞추고 확성기 모양을 부드럽게 다듬었습니다.",
+          "after": "메뉴·버튼·본문 아이콘의 내부 도형을 점검해 눈으로 보았을 때도 중앙에 놓이도록 위치를 보정했습니다. 같은 역할의 아이콘 규격을 유지하면서 도형의 여백과 시각적 무게를 맞췄으며, 상단 확성기는 테마 아이콘과 어울리도록 모서리를 곡선으로 다듬었습니다.",
+          "reason": "좌표 중심과 시각적 중심 보정의 차이·확성기 대상 명시"
+        },
+        {
+          "changeIndex": 4,
+          "type": "개선",
+          "before": "도감·상성·조합 설명과 화면 안내의 문장·용어를 정리했습니다.",
+          "after": "89명의 도감 설명, 상성 463건, 조합·보조 특성 275건을 검토해 주체·목적어·조사와 문장 연결을 다듬고 혼용된 용어를 통일했습니다. 화면 안내·입력 도움말·오류 메시지의 표현도 정리했습니다. 공략의 안내체와 장단점의 어구체, 활용 조건·예외는 유지했으며 게임 수치나 상성 판단을 새로 검증한 작업은 아닙니다.",
+          "reason": "전수 검수의 대상·범위와 문장 검토/게임 사실 검증 구분 보완"
+        },
+        {
+          "changeIndex": 6,
+          "type": "개선",
+          "before": "장단점 영역의 제목을 장점·단점으로 맞추고 단점 설명을 정리했습니다.",
+          "after": "캐릭터 장단점 영역의 주의할 점을 단점으로 바꾸어 장점과 제목을 맞췄습니다. 해당 내용도 주의사항 나열에서 캐릭터의 약점·제약을 설명하는 어구로 다듬었습니다. 실전 운용 가이드의 주의할 점은 별도 항목으로 유지했습니다.",
+          "reason": "장단점 제목 변경의 정확한 범위와 단점 본문 수정 보완"
+        },
+        {
+          "changeIndex": 8,
+          "type": "삭제",
+          "before": "피드백 상태 집계판·중복 상태 안내·운영자 답변 미리보기를 제거했습니다.",
+          "after": "피드백 목록의 상태별 건수 집계판과 상세 글의 운영자 답변 위에 중복 표시되던 현재 처리 상태 안내를 제거했습니다. 카드의 운영자 답변 미리보기도 없앴습니다. 처리 상태 태그·필터·처리 이력과 상세 글의 운영자 답변 본문은 유지했습니다.",
+          "reason": "삭제한 상태 집계판/중복 안내와 유지한 상태 기능 구분"
+        },
+        {
+          "changeIndex": 9,
+          "type": "삭제",
+          "before": "보조 특성의 활용법·주의할 점, 도감의 중복 안내와 반영된 연구가 없는 영역을 제거했습니다.",
+          "after": "보조 특성 카드의 활용법·주의할 점 항목을 제거하고 핵심 설명과 활용 조건을 남겼습니다. 도감에서는 중복된 안내와 토론 유도 문구를 줄였으며, 도감에 반영된 연구가 없을 때는 빈 연구 영역을 표시하지 않도록 했습니다. 승인된 연구가 있는 경우의 표시와 원문 연결은 유지했습니다.",
+          "reason": "정보 축소 대상과 남긴 설명·조건·연구 표시 범위 보완"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-17-1",
+      "version": "1.17.1",
+      "date": "2026-10-31",
+      "reviewedChanges": 6,
+      "firstRecordedCommit": "3c671e06d9a73f73062712d21275880c15ad7677",
+      "implementationCommits": [
+        "80957425d600efea7c06cdaf45f04bc039b3256f",
+        "9392539cb1f777d59cba1ff6241c0f7e0417c6ff",
+        "3c671e06d9a73f73062712d21275880c15ad7677"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "개선",
+          "before": "텍스트 구분점을 가운뎃점으로 통일하고 간격을 조정했습니다.",
+          "after": "사이트의 텍스트 구분점인 ㆍ·• 등을 가운뎃점 ·로 통일하고 좌우 간격을 조정했습니다. 구분점 주변의 간격 때문에 단어나 문장 조각이 별도 줄로 갈라지지 않도록 표시 방식을 정리했습니다.",
+          "reason": "통일한 문자와 간격 처리의 범위 보완"
+        },
+        {
+          "changeIndex": 1,
+          "type": "개선",
+          "before": "공지 태그를 추가 → 개선 → 수정 → 데이터 → 삭제 순서로 표시합니다.",
+          "after": "최신 공지와 전체 업데이트 내역의 변경 유형을 추가 → 개선 → 수정 → 데이터 → 삭제 순서로 표시하도록 통일했습니다. 같은 유형에 속하는 항목은 기존 순서를 유지합니다.",
+          "reason": "최신/전체 공지 적용 및 동종 항목 순서 유지 보완"
+        },
+        {
+          "changeIndex": 2,
+          "type": "개선",
+          "before": "따옴표로 강조하던 명칭과 스킬명을 굵은 글씨로 표시합니다.",
+          "after": "짝이 있는 따옴표로 강조하던 명칭·스킬명·강조 문구를 화면에서 굵은 글씨로 표시하도록 바꿨습니다. URL·코드·입력값·저장된 원문은 그대로 유지했습니다.",
+          "reason": "따옴표 강조의 표시 단계 적용과 원문 보존 범위 보완"
+        },
+        {
+          "changeIndex": 5,
+          "type": "수정",
+          "before": "모바일 도감의 검색 안내가 구분점마다 줄바꿈되던 문제를 수정했습니다.",
+          "after": "모바일 도감의 검색 안내에서 본명·별명·초성 등이 구분점마다 한 줄씩 떨어지던 문제를 수정했습니다. 검색 가능한 표현을 자연스럽게 이어 표시하고, 출시순 기준 안내만 별도 줄로 구분했습니다.",
+          "reason": "첨부 사진에서 발생한 줄바꿈 오류와 수정 결과 명시"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-17-0",
+      "version": "1.17.0",
+      "date": "2026-10-31",
+      "reviewedChanges": 9,
+      "firstRecordedCommit": "9d3831fe719aaa0e4b3676078a76c3648e6a15d9",
+      "implementationCommits": [
+        "27df12974d5cd4a1ee8018edf57b3873b16ce486",
+        "0964824d1ff513f24489b3a819e271384c91dfad",
+        "9d3831fe719aaa0e4b3676078a76c3648e6a15d9"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "추가",
+          "before": "연구실에 생존자 조합·생존자 인격·감시자 인격·자유 전략 게시판을 추가했습니다. 글과 댓글로 토론할 수 있습니다.",
+          "after": "삼각 플라스크 아이콘의 연구실을 추가했습니다. 생존자 조합·생존자 인격·감시자 인격·자유 전략을 주제로 글과 댓글을 작성하고 토론할 수 있습니다.",
+          "reason": "연구실 아이콘과 토론 주제 명시"
+        },
+        {
+          "changeIndex": 2,
+          "type": "추가",
+          "before": "연구 글에서 도감 반영을 제안할 수 있습니다. 승인된 글은 해당 캐릭터 도감에 원문 링크와 함께 표시하며, 수정 시 다시 검토합니다.",
+          "after": "연구 글에서 근거와 함께 도감 반영을 제안할 수 있습니다. 운영자가 승인한 공개 글은 해당 캐릭터 도감에 원문 토론 링크와 함께 표시합니다. 승인 후 내용을 수정하면 다시 검토하며, 숨기거나 삭제한 글이 도감에 남지 않도록 했습니다.",
+          "reason": "제안 근거·승인 주체·수정 및 비공개/삭제 처리 보완"
+        },
+        {
+          "changeIndex": 3,
+          "type": "개선",
+          "before": "복구 코드 연결·보관 확인·브라우저 저장 가능 여부에 따라 안내를 구분합니다. 완료 안내는 접고 코드 관리 기능은 유지합니다.",
+          "after": "현재 브라우저의 복구 코드 연결 여부, 외부 보관 확인 여부, 저장 가능 여부에 따라 안내와 버튼을 구분했습니다. 연결과 보관을 마친 브라우저에서는 완료 안내를 접고 코드 관리 기능은 유지합니다. 코드 조회나 복사만으로 외부 보관이 완료된 것으로 처리하지 않습니다.",
+          "reason": "복구 코드 상태별 UI와 외부 보관 확인 조건 보완"
+        },
+        {
+          "changeIndex": 5,
+          "type": "개선",
+          "before": "업데이트를 카테고리에서 분리하고 상단 빠른 검색 버튼을 확성기로 바꿨습니다. 확성기에서 최신 공지와 ‘이전 내역 살펴보기’를 열 수 있습니다. 검색 단축키는 유지합니다.",
+          "after": "MANOR 업데이트를 카테고리 메뉴에서 분리하고 상단 빠른 검색 버튼을 확성기로 바꿨습니다. 확성기를 누르면 최신 공지 한 건을 보여주며, 이전 내역 살펴보기에서 전체 이력을 확인할 수 있습니다. 자동으로 공지를 띄우지 않으며 키보드 빠른 검색 단축키는 유지했습니다.",
+          "reason": "최신 한 건/사용자 클릭/전체 내역 동선 명확화"
+        },
+        {
+          "changeIndex": 7,
+          "type": "수정",
+          "before": "인지 점수를 다시 불러온 뒤에도 오류 안내가 남던 문제를 수정했습니다. 랭킹전 자료와 화면이 최신 내용으로 갱신되도록 보완했습니다.",
+          "after": "인지 점수 자료를 다시 불러오는 데 성공한 뒤에도 이전 오류 안내가 남던 문제를 수정했습니다. 랭킹전 자료와 연결된 화면 모듈의 캐시 처리를 보완해 갱신된 자료와 화면이 함께 반영되도록 했습니다.",
+          "reason": "재시도 성공 조건과 자료/모듈 갱신 범위 보완"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-16-3",
+      "version": "1.16.3",
+      "date": "2026-10-31",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "a1a49bda82880585a095e8e5982ff402d0a26fba",
+      "implementationCommits": [
+        "a1a49bda82880585a095e8e5982ff402d0a26fba"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-16-2",
+      "version": "1.16.2",
+      "date": "2026-10-31",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "f8ac50168d04ecd07f44e5b571367c12dc46effb",
+      "implementationCommits": [
+        "f8ac50168d04ecd07f44e5b571367c12dc46effb"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-16-1",
+      "version": "1.16.1",
+      "date": "2026-10-31",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "83de98d2da8704351da88a9240b73974f0d76588",
+      "implementationCommits": [
+        "83de98d2da8704351da88a9240b73974f0d76588"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-16-0",
+      "version": "1.16.0",
+      "date": "2026-10-30",
+      "reviewedChanges": 7,
+      "firstRecordedCommit": "18c5b835e4359bf6b932da3395c79e8374aa0f65",
+      "implementationCommits": [
+        "18c5b835e4359bf6b932da3395c79e8374aa0f65"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 5,
+          "type": "수정",
+          "before": "바텐더의 회복 중단 조건과 선지자의 보호 효과 설명에서 잘못된 피해 대상을 수정했습니다.",
+          "after": "바텐더 설명에서 서로 다르게 적힌 회복 중단 조건을 통일했습니다. 선지자의 보호 효과 설명에서는 피해를 받는 대상이 잘못 적힌 문장을 수정했습니다.",
+          "reason": "서로 다른 두 캐릭터 수정이 모두 피해 대상 오류처럼 읽히던 문장 정정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-15-10",
+      "version": "1.15.10",
+      "date": "2026-10-30",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "4c2e392d9012a09a50e0853419828989f1c032c7",
+      "implementationCommits": [
+        "4c2e392d9012a09a50e0853419828989f1c032c7"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-9",
+      "version": "1.15.9",
+      "date": "2026-10-30",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "9021457729bee64c67a677ac4cff643fe15687a8",
+      "implementationCommits": [
+        "9021457729bee64c67a677ac4cff643fe15687a8"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "추가",
+          "before": "피드백 처리 상태 5종의 설명을 추가했습니다. 목록에 운영자 답변을 표시하고, 답변이 없으면 미등록으로 표시합니다.",
+          "after": "피드백의 의견 수렴·검토 중·반영 예정·반영 완료·보류 상태가 뜻하는 내용을 안내하고, 목록에서 운영자 답변을 미리 볼 수 있게 했습니다. 구체적인 검토 내용·반영 일정·적용 내용·보류 사유가 등록되지 않은 경우에는 해당 정보가 아직 없음을 구분해 표시했습니다.",
+          "reason": "미등록 대상이 답변 전체로 축약된 의미 오류 수정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-15-8",
+      "version": "1.15.8",
+      "date": "2026-10-29",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "9e26f7d1b14645f6a0d8ef7df4ce7eae01b6135d",
+      "implementationCommits": [
+        "9e26f7d1b14645f6a0d8ef7df4ce7eae01b6135d"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-7",
+      "version": "1.15.7",
+      "date": "2026-10-29",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "7fe755a2bc63d0e30dc3abfee6d5675963e93b1d",
+      "implementationCommits": [
+        "7fe755a2bc63d0e30dc3abfee6d5675963e93b1d"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-6",
+      "version": "1.15.6",
+      "date": "2026-10-29",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "312d73b9a09054fa35b1533201c2a1fc221cb588",
+      "implementationCommits": [
+        "312d73b9a09054fa35b1533201c2a1fc221cb588"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-5",
+      "version": "1.15.5",
+      "date": "2026-10-29",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "0c31a48f75d679cdb41069e8a6715c635078a319",
+      "implementationCommits": [
+        "0c31a48f75d679cdb41069e8a6715c635078a319"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-4",
+      "version": "1.15.4",
+      "date": "2026-10-29",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "249d4badfbbaa61173fe1c30ebe42677ad8f6e0b",
+      "implementationCommits": [
+        "249d4badfbbaa61173fe1c30ebe42677ad8f6e0b"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-3",
+      "version": "1.15.3",
+      "date": "2026-10-29",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "cb47fb55f73600eae82fb3d7a2413f2c6a428649",
+      "implementationCommits": [
+        "cb47fb55f73600eae82fb3d7a2413f2c6a428649"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-2",
+      "version": "1.15.2",
+      "date": "2026-10-28",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "c104255532e0454f344d822574bcc1d8533de888",
+      "implementationCommits": [
+        "c104255532e0454f344d822574bcc1d8533de888"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-15-1",
+      "version": "1.15.1",
+      "date": "2026-10-28",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "da89de71e886d3769ea55e207e361f5e5283f814",
+      "implementationCommits": [
+        "da89de71e886d3769ea55e207e361f5e5283f814"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 2,
+          "type": "개선",
+          "before": "코드 복사·파일 저장 후 보관 여부를 별도로 확인하도록 변경했습니다.",
+          "after": "코드 복사·파일 저장과 실제 외부 보관 확인을 구분했습니다. 별도로 보관한 뒤 보관 완료를 눌러야 완료 상태로 표시되도록 바꿨습니다.",
+          "reason": "사용자의 실제 보관 완료 동작 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-15-0",
+      "version": "1.15.0",
+      "date": "2026-10-28",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "44d2a8f800cc6b53f7ffdb2082f1fbf888cb7343",
+      "implementationCommits": [
+        "44d2a8f800cc6b53f7ffdb2082f1fbf888cb7343"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "추가",
+          "before": "다른 브라우저에서 피드백·댓글·유저 상대법·검토 의견을 다시 확인할 수 있는 개인 복구 코드를 추가했습니다.",
+          "after": "개인 복구 코드를 보관하면 다른 브라우저에서도 본인이 작성한 피드백·댓글·유저 상대법과 운영자 검토 의견을 다시 연결할 수 있습니다. 단순히 글을 조회하는 기능과 구분해 본인의 작성 기록을 이어 관리할 수 있도록 했습니다.",
+          "reason": "조회로 축약된 작성자 연결·관리 의미 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-14-4",
+      "version": "1.14.4",
+      "date": "2026-10-27",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "1f9411266a926b255d3bb21fdd71cff78e8c5cd6",
+      "implementationCommits": [
+        "1f9411266a926b255d3bb21fdd71cff78e8c5cd6"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-14-3",
+      "version": "1.14.3",
+      "date": "2026-10-27",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "3fab5cae68a598fdf09faa6156d3fd5e9e7ad719",
+      "implementationCommits": [
+        "3fab5cae68a598fdf09faa6156d3fd5e9e7ad719"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-14-2",
+      "version": "1.14.2",
+      "date": "2026-10-27",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "3d529209d295afc0739d7cf4a0cb8360f0d724be",
+      "implementationCommits": [
+        "dab28e6eca03a20511c0b1c8deac4c068cf4d1a0",
+        "3d529209d295afc0739d7cf4a0cb8360f0d724be"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-14-1",
+      "version": "1.14.1",
+      "date": "2026-10-27",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "faa487c58833387fb05ec6a81fb58d9a995a2628",
+      "implementationCommits": [
+        "faa487c58833387fb05ec6a81fb58d9a995a2628"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "데이터",
+          "before": "가을 IJL·IVL 102경기를 추가해 총 16,953경기를 수록했습니다. 최신 경기일은 10월 26일입니다. 전체 생존자 밴 100건을 추가하고 확인이 필요한 2건은 집계에서 제외했습니다.",
+          "after": "가을 IJL·IVL의 반경기 102건을 추가해 총 16,953건을 수록했습니다. 진영을 바꾸기 전후를 각각 한 건으로 세며, 당시 원자료의 최신 경기일은 10월 26일입니다. 전체 생존자 밴 기록 100건을 추가하고 확인이 필요한 2건은 집계에서 제외했습니다.",
+          "reason": "대회 기록을 세트/전체 경기로 오해하지 않도록 반경기 단위 정정"
+        },
+        {
+          "changeIndex": 4,
+          "type": "데이터",
+          "before": "새 랭킹전 원자료를 확보하지 못해 기존 수치·수집일을 유지했습니다. 대회 최신 경기일과 랭킹전 수집일을 구분해 표시했습니다.",
+          "after": "새 랭킹전 원자료의 검증을 마치지 못해 기존 수치와 수집일을 유지했습니다. 대회 최신 경기일과 랭킹전 자료 수집일은 구분해 표시했습니다.",
+          "reason": "원자료 미검증이 미확보로 바뀐 설명 정정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-14-0",
+      "version": "1.14.0",
+      "date": "2026-10-27",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "bc3011122fac5c9fd798fbe97f57dbbdd5c7c594",
+      "implementationCommits": [
+        "bc3011122fac5c9fd798fbe97f57dbbdd5c7c594"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-13-1",
+      "version": "1.13.1",
+      "date": "2026-10-27",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "4f1fb1e15db9ca92e11c156479c81dbff7dc195f",
+      "implementationCommits": [
+        "4f1fb1e15db9ca92e11c156479c81dbff7dc195f"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "개선",
+          "before": "생존자·감시자 티어를 1~7티어로 통일하고, 이전 명칭의 저장 기록도 해당 단계의 숫자로 표시했습니다.",
+          "after": "생존자·감시자 티어 표기를 1티어~7티어와 최고 7티어로 통일했습니다. 이전 티어 명칭으로 저장된 이력도 같은 단계의 숫자 표기로 보여줍니다.",
+          "reason": "누락된 최고 7티어 구분 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-13-0",
+      "version": "1.13.0",
+      "date": "2026-10-27",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "021fde93dfdca4490b8e58a1fa07922a5a6887d9",
+      "implementationCommits": [
+        "021fde93dfdca4490b8e58a1fa07922a5a6887d9"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-12-2",
+      "version": "1.12.2",
+      "date": "2026-10-25",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "0b7a0c561137ed418ef31663899337b619ae5d44",
+      "implementationCommits": [
+        "0b7a0c561137ed418ef31663899337b619ae5d44"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-12-1",
+      "version": "1.12.1",
+      "date": "2026-10-25",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "59e95d05c5c1a484a45a3a38f5ff822bb66473f7",
+      "implementationCommits": [
+        "59e95d05c5c1a484a45a3a38f5ff822bb66473f7"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-12-0",
+      "version": "1.12.0",
+      "date": "2026-10-25",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "2e9ac0a78fc86cf8e86d90580365edcab25e06f6",
+      "implementationCommits": [
+        "1301e4e056543bf55d509068d38bea4fddccd6b3",
+        "2e9ac0a78fc86cf8e86d90580365edcab25e06f6"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-11-0",
+      "version": "1.11.0",
+      "date": "2026-10-25",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "2fb5e8271f14f91230c52f2a3b9d7f02dd78bb96",
+      "implementationCommits": [
+        "2fb5e8271f14f91230c52f2a3b9d7f02dd78bb96"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "추가",
+          "before": "채널에 태그·주력 캐릭터·휘장·최고 티어·대표 영상·카드 색상을 설정할 수 있습니다.",
+          "after": "채널에 직접 만드는 태그·주력 캐릭터·역대 휘장·최고 티어·대표 영상·카드 색상을 설정할 수 있도록 했습니다.",
+          "reason": "직접 태그 입력과 역대 휘장 범위 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-10-9",
+      "version": "1.10.9",
+      "date": "2026-10-25",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "129c5c3c44d0b897a7b788f38cf9000402e3c2a3",
+      "implementationCommits": [
+        "129c5c3c44d0b897a7b788f38cf9000402e3c2a3"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-8",
+      "version": "1.10.8",
+      "date": "2026-10-25",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "881a4dd792d387f6c9f2bfcae04ed2c50948a4ff",
+      "implementationCommits": [
+        "881a4dd792d387f6c9f2bfcae04ed2c50948a4ff"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-7",
+      "version": "1.10.7",
+      "date": "2026-10-25",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "bc2547e6ccdd87729971da3b5e63bc9c87027949",
+      "implementationCommits": [
+        "bc2547e6ccdd87729971da3b5e63bc9c87027949"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-6",
+      "version": "1.10.6",
+      "date": "2026-10-25",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "7eb65c7605588c93e7b97439b51b1512a9a18e87",
+      "implementationCommits": [
+        "7eb65c7605588c93e7b97439b51b1512a9a18e87"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-5",
+      "version": "1.10.5",
+      "date": "2026-10-25",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "327a062270f74b7c2a0b62dfc08acb823aed60db",
+      "implementationCommits": [
+        "327a062270f74b7c2a0b62dfc08acb823aed60db"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-4",
+      "version": "1.10.4",
+      "date": "2026-10-23",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "4bbdd00faa11c9276d6167283c71526a1ecbd235",
+      "implementationCommits": [
+        "4bbdd00faa11c9276d6167283c71526a1ecbd235"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-3",
+      "version": "1.10.3",
+      "date": "2026-10-23",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "0173e9887301362d156551132bfba10e7c605f7b",
+      "implementationCommits": [
+        "0173e9887301362d156551132bfba10e7c605f7b"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-2",
+      "version": "1.10.2",
+      "date": "2026-10-23",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "6acdde4676653a79d7346e73a4026a1ea8b02be7",
+      "implementationCommits": [
+        "6acdde4676653a79d7346e73a4026a1ea8b02be7"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-1",
+      "version": "1.10.1",
+      "date": "2026-10-23",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "fdd71080119b95a9b10ddfb05f83e8619929697b",
+      "implementationCommits": [
+        "fdd71080119b95a9b10ddfb05f83e8619929697b"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-10-0",
+      "version": "1.10.0",
+      "date": "2026-10-23",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "0f3a55d65991b21474ac03d0bce26b02d8790a67",
+      "implementationCommits": [
+        "0f3a55d65991b21474ac03d0bce26b02d8790a67"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "추가",
+          "before": "제출 시 글로벌 아시아·NA/EU 서버와 UID를 입력하도록 했습니다. 서버·UID·참고사항은 운영자만 열람합니다.",
+          "after": "상대법 제출 시 글로벌 아시아·NA/EU 서버와 UID를 비공개 검토정보로 입력하도록 했습니다. 서버·UID·참고사항은 운영자만 열람하며 공개 조회 응답에는 포함하지 않았습니다.",
+          "reason": "비공개 검토정보와 공개 응답 제외 범위 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-9-2",
+      "version": "1.9.2",
+      "date": "2026-10-23",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "724847eebf0ab9d7cc4dce43845ca7d2fcd51891",
+      "implementationCommits": [
+        "724847eebf0ab9d7cc4dce43845ca7d2fcd51891"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-9-1",
+      "version": "1.9.1",
+      "date": "2026-10-23",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "33c0ff4abcf56b6739937106d5adcd08d269859d",
+      "implementationCommits": [
+        "33c0ff4abcf56b6739937106d5adcd08d269859d"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-9-0",
+      "version": "1.9.0",
+      "date": "2026-10-22",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "22642e595660173e54063dde1e31a700be133611",
+      "implementationCommits": [
+        "22642e595660173e54063dde1e31a700be133611"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-8-2",
+      "version": "1.8.2",
+      "date": "2026-10-22",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "10eebe4d3957e5255fcd3837b6e64e3a60cea7df",
+      "implementationCommits": [
+        "10eebe4d3957e5255fcd3837b6e64e3a60cea7df"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-8-1",
+      "version": "1.8.1",
+      "date": "2026-10-21",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "3496f220e28d2bdbd2364817d32556855763e231",
+      "implementationCommits": [
+        "3496f220e28d2bdbd2364817d32556855763e231"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-8-0",
+      "version": "1.8.0",
+      "date": "2026-10-21",
+      "reviewedChanges": 8,
+      "firstRecordedCommit": "f35b8be84e7890f38f6e59a659973a528f129322",
+      "implementationCommits": [
+        "f35b8be84e7890f38f6e59a659973a528f129322"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "데이터",
+          "before": "10월 18일까지의 대회 94세트를 추가해 총 16,851세트를 수록했습니다. 미확인 결과 12건을 보완하고 불일치 1건은 비율 계산에서 제외했습니다.",
+          "after": "10월 18일까지의 대회 반경기 94건을 추가해 총 16,851건을 수록했습니다. 진영을 바꾸기 전후를 각각 한 건으로 세는 기준입니다. 미확인 결과 12건을 보완하고, 출처 간 결과가 일치하지 않은 1건은 비율 계산에서 제외했습니다.",
+          "reason": "원본부터 사용된 세트 단위를 실제 저장 단위인 반경기로 정정"
+        },
+        {
+          "changeIndex": 5,
+          "type": "데이터",
+          "before": "전체 생존자 밴 기록 1,534세트를 수록했습니다.",
+          "after": "반경기별 전체 생존자 밴 기록 1,534건을 수록했습니다.",
+          "reason": "전체 세트 수처럼 적힌 생존자 밴 기록 단위 정정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-7-6",
+      "version": "1.7.6",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "6af35a7499eba82fd4daa4d1dc9a5cf187e32357",
+      "implementationCommits": [
+        "6af35a7499eba82fd4daa4d1dc9a5cf187e32357"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-7-5",
+      "version": "1.7.5",
+      "date": "2026-10-21",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "27f1c5c1b30077ebf4c36bb7636977306a658694",
+      "implementationCommits": [
+        "27f1c5c1b30077ebf4c36bb7636977306a658694"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-7-4",
+      "version": "1.7.4",
+      "date": "2026-10-21",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "d001e2c166b7e1ec7fc1a49f75c603f60fc07076",
+      "implementationCommits": [
+        "d001e2c166b7e1ec7fc1a49f75c603f60fc07076"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-7-3",
+      "version": "1.7.3",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "c9a0b26e97e4c49e5b70efe088483b6bdc42e3b0",
+      "implementationCommits": [
+        "c9a0b26e97e4c49e5b70efe088483b6bdc42e3b0"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 2,
+          "type": "개선",
+          "before": "큰 곡선 배경을 제거하고 이전 색상으로 복원했습니다. 스크롤 경계를 없애고 동작 줄이기 설정 시 배경을 고정합니다.",
+          "after": "큰 곡선 배경을 제거하고 이전의 은은한 색상으로 복원했습니다. 불규칙한 그라데이션 무늬가 스크롤을 따라 경계 없이 반복되도록 했으며, 동작 줄이기 설정에서는 배경을 고정했습니다.",
+          "reason": "배경 패턴과 스크롤 동작 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-7-2",
+      "version": "1.7.2",
+      "date": "2026-10-21",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "7d0321e3b537ce17bcf7b69dd5cdf23cba308a14",
+      "implementationCommits": [
+        "7d0321e3b537ce17bcf7b69dd5cdf23cba308a14"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-7-1",
+      "version": "1.7.1",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "90ce0d8296a0b68a37545a8192e79c63a37587a5",
+      "implementationCommits": [
+        "90ce0d8296a0b68a37545a8192e79c63a37587a5"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-7-0",
+      "version": "1.7.0",
+      "date": "2026-10-21",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "e7c32dc1173edeb5321c6905be70fa423d25bb2c",
+      "implementationCommits": [
+        "e7c32dc1173edeb5321c6905be70fa423d25bb2c"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-6-0",
+      "version": "1.6.0",
+      "date": "2026-10-21",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "0e5a273b1923194c40d348233cf8822c866c35c6",
+      "implementationCommits": [
+        "0e5a273b1923194c40d348233cf8822c866c35c6"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-5",
+      "version": "1.5.5",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "3faa8cc953790c2224ce6750397c880bbaf77f6d",
+      "implementationCommits": [
+        "3faa8cc953790c2224ce6750397c880bbaf77f6d"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-4",
+      "version": "1.5.4",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "f34351676d02d043198e8cd120c99c3f56fdfcfb",
+      "implementationCommits": [
+        "f34351676d02d043198e8cd120c99c3f56fdfcfb"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-3",
+      "version": "1.5.3",
+      "date": "2026-10-21",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "b13a88a7325ed966d5181dbdbb43800f162ffb3f",
+      "implementationCommits": [
+        "b13a88a7325ed966d5181dbdbb43800f162ffb3f"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-2",
+      "version": "1.5.2",
+      "date": "2026-10-21",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "e3b756601cf871516a193dc7f2f187359c0c8119",
+      "implementationCommits": [
+        "e3b756601cf871516a193dc7f2f187359c0c8119"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-1",
+      "version": "1.5.1",
+      "date": "2026-10-21",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "828b35a94e6b281419fb5853b26bd249d7bc972b",
+      "implementationCommits": [
+        "828b35a94e6b281419fb5853b26bd249d7bc972b"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-5-0",
+      "version": "1.5.0",
+      "date": "2026-10-21",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "4f511a9ff6f85e1f0d331c6d43626b2b4b841427",
+      "implementationCommits": [
+        "4f511a9ff6f85e1f0d331c6d43626b2b4b841427"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-4-6",
+      "version": "1.4.6",
+      "date": "2026-10-21",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "c2f5be8c4a2e969e11d634ab2c3ecd3ea1335cfc",
+      "implementationCommits": [
+        "c2f5be8c4a2e969e11d634ab2c3ecd3ea1335cfc"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-4-5",
+      "version": "1.4.5",
+      "date": "2026-10-19",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "03e845bbe1effda734398309bb546eb8b078754e",
+      "implementationCommits": [
+        "03e845bbe1effda734398309bb546eb8b078754e"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-4-4",
+      "version": "1.4.4",
+      "date": "2026-10-19",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "aac99e27b5d3d5939104ddc0879fb2bc9ab415ff",
+      "implementationCommits": [
+        "aac99e27b5d3d5939104ddc0879fb2bc9ab415ff"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 2,
+          "type": "개선",
+          "before": "이전 호스팅 설정과 미사용 스타일을 제거하고 운영 안내를 갱신했습니다.",
+          "after": "이전 호스팅의 미사용 설정과 화면에서 쓰이지 않는 스타일을 제거하고 운영 안내를 당시 구조에 맞게 갱신했습니다.",
+          "reason": "이전 호스팅 설정 전체를 삭제한 것처럼 읽히던 범위 정정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-4-3",
+      "version": "1.4.3",
+      "date": "2026-10-19",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "9e89f794539e88369d738c6c3c244f98adcf4b3f",
+      "implementationCommits": [
+        "9e89f794539e88369d738c6c3c244f98adcf4b3f"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-4-2",
+      "version": "1.4.2",
+      "date": "2026-10-19",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "6c6573e9ab262b8d89291359880f7947cdcf4d43",
+      "implementationCommits": [
+        "6c6573e9ab262b8d89291359880f7947cdcf4d43"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "개선",
+          "before": "패치 상태 배지를 32px, 아이콘을 20px로 통일하고 이름·본문 간격을 조정했습니다.",
+          "after": "패치 상태 배지를 32px, 아이콘을 20px로 통일했습니다. 아이콘의 중심을 맞추고 상태 이름·본문 사이 간격을 정렬했습니다.",
+          "reason": "아이콘 중심 정렬 누락 복원"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-4-1",
+      "version": "1.4.1",
+      "date": "2026-10-19",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "ddbb2ba6bf49c9eec499b54691314aa2e8e47e17",
+      "implementationCommits": [
+        "ddbb2ba6bf49c9eec499b54691314aa2e8e47e17"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-4-0",
+      "version": "1.4.0",
+      "date": "2026-10-19",
+      "reviewedChanges": 5,
+      "firstRecordedCommit": "cd654b18aa5646c02265558c5ec4df1cd7fdfb27",
+      "implementationCommits": [
+        "cd654b18aa5646c02265558c5ec4df1cd7fdfb27"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-3-1",
+      "version": "1.3.1",
+      "date": "2026-10-19",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "d0633c7a3e103b9cbc7a373b516deb8a54aa8613",
+      "implementationCommits": [
+        "d0633c7a3e103b9cbc7a373b516deb8a54aa8613"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-3-0",
+      "version": "1.3.0",
+      "date": "2026-10-19",
+      "reviewedChanges": 7,
+      "firstRecordedCommit": "7138d754c03136347387796608265077fa84cbf1",
+      "implementationCommits": [
+        "7138d754c03136347387796608265077fa84cbf1"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-2-0",
+      "version": "1.2.0",
+      "date": "2026-10-19",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "ae966cf822ac05e0ed4cfead8352574ed870f50b",
+      "implementationCommits": [
+        "ae966cf822ac05e0ed4cfead8352574ed870f50b"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 2,
+          "type": "추가",
+          "before": "해설의 적용 범위·근거·예외와 게임 내 미검증 여부를 표시했습니다. 미지원 캐릭터·미공개 장면은 해설에서 제외했습니다.",
+          "after": "해설의 적용 범위·근거·예외와 게임 내 재현 검증을 하지 않았다는 점을 표시했습니다. 미지원 캐릭터와 공개하지 않은 장면에는 해설을 제공하지 않았습니다.",
+          "reason": "재현 미실시 사실이 검증 여부 표시로 모호해진 설명 정정"
+        }
+      ]
+    },
+    {
+      "id": "beta-1-1-2",
+      "version": "1.1.2",
+      "date": "2026-10-19",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "48401e1aee92a29aa96ee1cb4bfce33b7e9f2aeb",
+      "implementationCommits": [
+        "48401e1aee92a29aa96ee1cb4bfce33b7e9f2aeb"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-1-1",
+      "version": "1.1.1",
+      "date": "2026-10-19",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "90bd5388d42f0f433ef68cc154b4f13ba90695ba",
+      "implementationCommits": [
+        "90bd5388d42f0f433ef68cc154b4f13ba90695ba"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "beta-1-1-0",
+      "version": "1.1.0",
+      "date": "2026-10-19",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-314e9df",
+      "version": null,
+      "date": "2026-10-19",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "314e9df48100974fa6829c1af5e46a31d2070b51"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-99e8f18",
+      "version": null,
+      "date": "2026-10-19",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "99e8f18674621fdb4c127a153753a04cec569821"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-927ebc1",
+      "version": null,
+      "date": "2026-10-19",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "927ebc1b322b0ad52e0998c200a70ab0df05896b"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-fcdd456",
+      "version": null,
+      "date": "2026-10-19",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "fcdd456ba51522de9ec64ed7c38935d38b3868a0"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-03854e1",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "03854e1eb4727532e5f4c2f5ca881359d5abc353"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-8b65254",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "8b652545c97e748a459b25cc491f67e7cbb9b81e"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-11af4f0",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 4,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "11af4f005f2e8aac8d9dfaff694a15c04aadd1b8"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-674d38d",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "674d38d103aa6fee0e89041d5c9b8ee6dde4a921"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-5dc05b8",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "5dc05b8029e91cb5de446440923d5ec1976ed7fc"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-5376c62",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "5376c62c41d74aa94827ad5e9ab9f406ee1b87ef"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-be7aaa9",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "be7aaa9d6d794668439576c15340248fcbcf4819"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-17e5ea8",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "17e5ea8ecd2f21f1bd3b3fa1f983f2c2ac5c90d8"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 1,
+          "type": "데이터",
+          "before": "공개 랭킹전·인지 점수 자료를 추가하고 서버·기간·티어별 수치를 분리했습니다.",
+          "after": "공개 랭킹전 집계와 인지 점수 자료를 추가했습니다. 서버·기간·티어가 다른 수치는 구분해 표시하고 하나의 비율로 합치지 않도록 했습니다.",
+          "reason": "상이한 모집단 비율을 합산하지 않는 기준 복원"
+        }
+      ]
+    },
+    {
+      "id": "update-a0c4025",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "a0c402532a1e0529db5505126d8d720c9419aea9"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-b8bcbbb",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "b8bcbbb25db1e5425e2d148d4b31af239162bf18"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-e0a8a69",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "e0a8a6918a65d6f0767eff5444c6fb7bb85cbcf8"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-7a02bcd",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "7a02bcdd69b8eda2a79fef2f5d8a0f8ad0246c03"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-d9f08c8",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 3,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "d9f08c86fadeaae17cdc81e9b4beaa7b83ded235"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 2,
+          "type": "추가",
+          "before": "두 번째 역할 태그로도 검색할 수 있도록 변경했습니다.",
+          "after": "첫 번째 역할뿐 아니라 두 번째 역할 태그를 선택한 필터에서도 해당 캐릭터가 표시되도록 변경했습니다.",
+          "reason": "역할 필터 지원이 텍스트 검색처럼 읽히던 설명 정정"
+        }
+      ]
+    },
+    {
+      "id": "update-b3c48e9",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "b3c48e98570dee97c4a5bcee63e3a2b8ef9f7ca4"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-e7cd59d",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "e7cd59d6ddfb384a780dccf223bfcbf409443391"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-13a537a",
+      "version": null,
+      "date": "2026-10-17",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "13a537a9df2a7d8fca3cf46e0ecdc8a30d3908ce"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-3e7359f",
+      "version": null,
+      "date": "2026-10-16",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "3e7359f8209dee28c1546667061d906a2ce227a7"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "update-34e1b5a",
+      "version": null,
+      "date": "2026-10-16",
+      "reviewedChanges": 1,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "34e1b5a8e72650bb6c4bbd31843a83d5654a35a1"
+      ],
+      "result": "retained",
+      "corrections": []
+    },
+    {
+      "id": "opening",
+      "version": null,
+      "date": "2026-10-16",
+      "reviewedChanges": 2,
+      "firstRecordedCommit": "22d69cf7c6c7b0bd7e511c3eb841fcceb4e6216a",
+      "implementationCommits": [
+        "766c11419df86b44871b6453b37bf85592271436",
+        "eee39f241401b446679e0c2e12c948a817c6977b",
+        "9a34ec5c36ff5287baf1caf8d52f054b2c2093cf",
+        "a7290967345bffbcc5df6dfd7f89eec17c558cb9"
+      ],
+      "result": "corrected",
+      "corrections": [
+        {
+          "changeIndex": 0,
+          "type": "추가",
+          "before": "MANOR 베타를 공개했습니다. 89명의 도감과 상성 분석·캐릭터 비교·밴 분석을 제공합니다.",
+          "after": "MANOR 베타를 독립 웹사이트로 공개했습니다. 당시 89명의 캐릭터 도감과 상성 분석·캐릭터 비교·밴 분석을 제공했습니다.",
+          "reason": "독립 공개 범위 복원 및 현재 기능과 구분되는 과거 시점 표현"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "automatedTests": {
+      "passed": 146,
+      "failed": 0
+    },
+    "releaseMetadata": "BETA v1.17.3; 96 releases, 293 changes; original dates, versions, types and order preserved",
+    "contentConsistency": "unchanged game content; 89 character review fingerprints passed",
+    "browserPreview": {
+      "widths": [
+        320,
+        375
+      ],
+      "historyCards": 96,
+      "latestChanges": 7,
+      "horizontalOverflow": false,
+      "modalScrollable": true,
+      "historyLink": "passed"
+    },
+    "publicBehaviorChanges": "none; only release text and dependent cache keys changed"
+  }
+}

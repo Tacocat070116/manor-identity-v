@@ -10,6 +10,20 @@
       "afterSha256": "87ac22860a15d06d3edc377fcc0b8d84dccac4ccd55379a97465590e9e30321b",
       "reviewedReleases": 93,
       "reviewedChanges": 270
+    },
+    {
+      "requestedBy": "owner",
+      "requestedAt": "2026-10-31",
+      "version": "1.17.3",
+      "noAnnouncement": true,
+      "reason": "설명 길이를 간결하게 제한하지 말라는 최신 요청에 따라 전체 96개 업데이트·293개 항목을 최초 기록과 대조하고, 누락된 적용 범위·조건·수치 및 의미가 달라진 설명을 기존 버전 안에서 보완. 유머 금지 유지; 새 버전·새 공지 없음.",
+      "beforeSha256": "afecac3b9fd6211e64f24f1947586325dbe26f15cfe8508c3b4ffd9ff9b7c712",
+      "afterSha256": "6ca9de6e4f1a32912801e860b1d51cb81421729113eb911150a01a927a4e91a3",
+      "reviewedReleases": 96,
+      "reviewedChanges": 293,
+      "correctedReleases": 20,
+      "correctedChanges": 42,
+      "reviewFile": "operations/release-history-review-2026-10-31.json"
     }
   ]
 }
