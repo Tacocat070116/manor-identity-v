@@ -5,7 +5,6 @@ import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvi
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=14e893932898';
-import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=ac92cf58d4f1';
 import {mountFeedback} from './feedback.js?v=edf87fe575c6';
 import {mountSynergy} from './synergy.js?v=cc7006c95875';
@@ -50,7 +49,6 @@ chart:'<path d="M3.5 3.5v17h17M8 16v-5m5 5V7m5 9V9"/>',
 globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/>',
 external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
 play:'<path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none"/>',
-pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
 'role-kite':'<path d="M8 4h4l1 5 7 4a3 3 0 0 1 1 2.2V19H5v-6l3-9ZM5 16h16M12 9l-2 2m5 0-2 2"/><path data-stroke="square" d="M2 7h3m-3 3h2"/>',
 'role-cover':'<path d="M12 2 3 6v5c0 5 4 8 9 11 5-3 9-6 9-11V6zM8 15a4 4 0 0 1 8 0"/><circle cx="12" cy="9" r="2.5"/>',
 'role-rescue':'<path data-stroke="square" d="M2 13h4v8H2zM16 2v6m-3-3h6"/><path data-stroke="soft" d="M6 14l3-3h4a2 2 0 0 1 0 4h-3m3 0 5-3a2 2 0 0 1 2 3l-5 5H6"/>',
@@ -60,13 +58,13 @@ pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
 'role-camp':'<path d="M7 14V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9M3 10v7h18v-7M3 14h18M6 17v4m12-4v4M10 7h4"/>'
 };
 const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name} ui-icon" data-icon="${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><g class="icon-art">${paths[name]}</g></svg>`;};
-const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'release',favoriteOnly:false,stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banSource:'observed',banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],banPage:1,banRecordHunter:'',situation:'',favorites:new Set(),theme:'light'};
+const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',homeBrowse:false,side:'전체',specialty:'',sort:'release',favoriteOnly:false,stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banSource:'observed',banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],banPage:1,banRecordHunter:'',situation:'',favorites:new Set(),theme:'light'};
 let themeStorage;
 try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));}catch{}
 state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').matches).id;
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
-let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
+let disposeFeedback=()=>{};
 let disposeMatchupTips=()=>{};
 let disposeSynergy=()=>{},disposeResearchHighlights=()=>{};
 let disposeCreators=()=>{},disposeRecovery=()=>{};
@@ -185,6 +183,7 @@ function readRoute(){
  state.view=['explore','character','matchup','compare','bans','statistics','creators','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
+ if(location.hash==='#characters')state.homeBrowse=true;
  state.tab=['overview','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
  const legacySynergy=state.view==='character'&&state.tab==='synergy'&&byId[state.character]?.side==='생존자';
  if(state.tab==='synergy'){state.tab='overview';if(legacySynergy)state.view='laboratory';}
@@ -224,26 +223,70 @@ function header(){
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
-function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">복구 코드</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
+function footer(){
+ if(state.view==='explore'){$('#footer').innerHTML='<div class="home-footer"><span>제5인격 비공식 팬 가이드</span><span>게임 저작권 © NetEase</span></div>';return;}
+ $('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">복구 코드</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot" title="메인 역할: ${esc(c.specialties[0])}">${primarySpecialtyIcon(c)}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${specialtyTags(c,true)}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div></div></button>`;}
-function heroCarousel(){
- heroSession??=createCarouselSession(db.characters);
- return `<div class="hero-art hero-carousel" id="hero-carousel" role="region" aria-roledescription="캐러셀" aria-label="장원의 캐릭터" aria-describedby="hero-carousel-hint"><div class="hero-stage"><div class="art-orbit" aria-hidden="true"></div>${carouselItems(heroSession).map(({index,character:c})=>`<button class="art-card" type="button" data-id="${c.id}" data-index="${index}" aria-label="${esc(c.name)} 공략 보기" tabindex="${index===heroSession.index?0:-1}">${portrait(c,index===heroSession.index)}<span>${esc(c.name)}</span></button>`).join('')}</div><div class="hero-carousel-footer"><span id="hero-carousel-hint">드래그해서 둘러보기</span><div class="carousel-controls"><button type="button" class="carousel-control" data-carousel="previous" aria-label="이전 캐릭터">${icon('back')}</button><button type="button" class="carousel-control" data-carousel="toggle" aria-label="자동 넘김" aria-pressed="${heroSession.paused!==true}">${icon(heroSession.paused?'play':'pause')}</button><button type="button" class="carousel-control" data-carousel="next" aria-label="다음 캐릭터">${icon('arrow')}</button></div></div><span class="visually-hidden carousel-status" role="status" aria-live="polite" aria-atomic="true"></span></div>`;
-}
 function explore(){
- return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>캐릭터 공략과<br><span>대회·랭킹전 통계</span></h1><p>캐릭터별 스킬과 운영법, 상대별 상성과 대응 방법을 확인하세요.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
- <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>36</strong>감시자</span><span><strong>53</strong>생존자</span><a class="text-link push-right" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></div>
- <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>캐릭터 도감</h2></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판 검색 <span class="search-help-secondary">글로벌 서버 출시순</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
- <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대별 상성과 대응법</strong><p>대진별 상성과 적용 조건</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴 조합별 대회 기록</strong><p>선택한 생존자 밴 조합의 감시자 출전 기록</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>캐릭터 비교</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
+ return `<section class="search-home" aria-labelledby="home-title">
+  <div class="home-search-content">
+   <div class="eyebrow">A CLEARER WAY TO PLAY</div>
+   <h1 id="home-title">캐릭터 공략을 찾아보세요</h1>
+   <form class="home-search-form" id="home-search-form" role="search">
+    <label class="visually-hidden" for="character-search">캐릭터 이름·별명 검색</label>
+    ${icon('search')}
+    <input id="character-search" type="search" placeholder="캐릭터 이름·별명" aria-controls="explorer-results" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off" enterkeyhint="search">
+    <button class="home-clear" type="button" data-action="home-clear" aria-label="검색어 지우기" ${state.search?'':'hidden'}>${icon('close')}</button>
+    <button class="home-submit" type="submit" aria-label="캐릭터 검색">${icon('arrow')}</button>
+   </form>
+   <button id="home-browse" class="home-browse" type="button" data-action="home-all">전체 캐릭터 보기 ${icon('arrow')}</button>
+  </div>
+  <section id="characters" class="home-results" aria-label="캐릭터 검색 결과" hidden>
+   <div class="home-browse-tools" hidden>
+    <div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button type="button" data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button type="button" data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div>
+    ${specialtyFilters()}
+   </div>
+   <p id="home-search-status" class="visually-hidden" role="status" aria-atomic="true"></p>
+   <div id="explorer-results"></div>
+  </section>
+ </section>`;
 }
+
+function homeResult(c){
+ return `<button type="button" class="home-result" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기"><span class="home-result-portrait">${portrait(c)}</span><span class="home-result-copy"><strong>${esc(c.name)}</strong><span>${esc(c.side)} · ${esc(c.specialties.join(' · '))}</span></span>${icon('arrow')}</button>`;
+}
+
 function updateExplorer(){
- const list=sortCharacters(db.characters.filter(c=>(state.side==='전체'||c.side===state.side)&&(!state.specialty||c.specialties.includes(state.specialty))&&(!state.favoriteOnly||state.favorites.has(c.id))&&matchesCharacter(c,state.search)),state.sort);
  const root=$('#explorer-results');if(!root)return;
- root.innerHTML=`<p class="result-count" role="status">${list.length}명의 캐릭터${state.specialty?' · #'+esc(state.specialty):''}${state.favoriteOnly?' · 이 기기에 저장한 즐겨찾기':''}</p>${favoriteInsight(list)}${list.length?`<div class="character-grid">${list.map(card).join('')}</div>`:`<div class="empty">${icon(state.favoriteOnly?'star':'search')}<h3>${state.favoriteOnly?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${state.favoriteOnly?'캐릭터 상세에서 별을 눌러 자주 찾는 캐릭터를 모아 보세요.':'이름이나 필터를 바꿔 다시 찾아보세요.'}</p><button class="btn small" data-action="reset-explore">전체 캐릭터 보기</button></div>`}`;
+ const query=state.search.trim(),browsing=!!state.homeBrowse,active=!!query||browsing;
+ $('.search-home').classList.toggle('has-results',active);
+ $('.search-home').classList.toggle('is-browsing',browsing);
+ $('#characters').hidden=!active;
+ $('#home-browse').hidden=active;
+ $('.home-browse-tools').hidden=!browsing;
+ $('.home-clear').hidden=!state.search;
+ if(!active){root.innerHTML='';$('#home-search-status').textContent='';return;}
+ const list=sortCharacters(db.characters.filter(c=>(!browsing||state.side==='전체'||c.side===state.side)&&(!browsing||!state.specialty||c.specialties.includes(state.specialty))&&(!browsing||!state.favoriteOnly||state.favorites.has(c.id))&&matchesCharacter(c,query)),state.sort);
+ const emptyFavorites=browsing&&state.favoriteOnly&&!state.favorites.size;
+ $('#home-search-status').textContent=`${query?'검색 결과':'캐릭터'} ${list.length}명`;
+ root.innerHTML=`<div class="home-result-heading"><h2 id="home-results-title" tabindex="-1">${browsing?'캐릭터 도감':'검색 결과'} <span>${list.length}</span></h2><button type="button" class="home-text-button" data-action="${browsing?'home-search':'home-all'}">${browsing?'검색으로 돌아가기':'전체 보기'}</button></div>${browsing?favoriteInsight(list):''}${list.length?`<div class="${browsing?'character-grid':'home-result-grid'}">${list.map(browsing?card:homeResult).join('')}</div>`:`<div class="empty">${icon(emptyFavorites?'star':'search')}<h3>${emptyFavorites?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${emptyFavorites?'캐릭터 공략에서 즐겨찾기를 눌러 저장하세요.':browsing?'이름이나 필터를 바꿔 다시 찾아보세요.':'이름이나 별명을 다시 확인해 주세요.'}</p><button class="btn small" type="button" data-action="home-all">전체 캐릭터 보기</button></div>`}`;
 }
+
+function homeMode(browse){
+ state.homeBrowse=browse;state.search='';state.side='전체';state.specialty='';state.favoriteOnly=false;
+ return render({scroll:true}).then(()=>{
+  if(state.view==='explore'&&state.homeBrowse===browse)$(browse?'#home-results-title':'#character-search')?.focus({preventScroll:true});
+ });
+}
+
+function clearHomeSearch(){
+ state.search='';const input=$('#character-search');if(!input)return;
+ input.value='';updateExplorer();input.focus({preventScroll:true});
+}
+
 function matchupSummary(c,item,kind,{label=''}={}){
  const resolved=summaryEvidence(db.matchups,c,item,kind),opponent=byName[item.name];
  if(!resolved||!opponent)return '';
@@ -390,11 +433,11 @@ function refreshBanRecords({focusRecords=false}={}){
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeResearchHighlights();disposeResearchHighlights=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
+ disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeResearchHighlights();disposeResearchHighlights=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
  document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
- if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
+ if(state.view==='explore'){body.innerHTML=explore();updateExplorer();}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeResearchHighlights=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
   rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
@@ -502,7 +545,6 @@ async function swapSelections(mode){
 }
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-action]');if(!b||!db)return;const a=b.dataset.action;
- if(a==='scroll-characters'){e.preventDefault();$('#characters')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});return;}
  if(a==='character')navigate({v:'character',c:b.dataset.id});
  if(a==='theme')openThemePicker();
  if(a==='global-search')openPicker();
@@ -510,7 +552,9 @@ document.addEventListener('click',e=>{
  if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}
  if(a==='favorites'){state.favoriteOnly=!state.favoriteOnly;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
- if(a==='reset-explore'){state.side='전체';state.specialty='';state.favoriteOnly=false;state.search='';render();}
+ if(a==='home-all'||a==='reset-explore'){e.preventDefault();homeMode(true);}
+ if(a==='home-search'){e.preventDefault();homeMode(false);}
+ if(a==='home-clear'){e.preventDefault();clearHomeSearch();}
  if(a==='favorite'){const id=b.dataset.id;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);try{localStorage.setItem('manor-favorites',JSON.stringify([...state.favorites]));}catch{toast('이 브라우저에서는 즐겨찾기를 저장할 수 없습니다.');}render();}
  if(a==='character-tab'){state.tab=b.dataset.tab;navigate({v:'character',c:state.character,tab:state.tab});}
  if(a==='own-matchup'){state.own=b.dataset.id;state.opponent='';state.situation='';navigate({v:'matchup',own:state.own});}
@@ -527,11 +571,22 @@ document.addEventListener('click',e=>{
  if(a==='ban-page'){state.banPage=Number(b.dataset.page);refreshBanRecords({focusRecords:true});}
  if(a==='retry')render();
 });
+document.addEventListener('submit',e=>{
+ if(e.target.id!=='home-search-form'||!db)return;
+ e.preventDefault();state.search=$('#character-search').value;
+ if(!state.search.trim()&&!state.homeBrowse){homeMode(true);return;}
+ updateExplorer();$('#home-results-title')?.focus({preventScroll:true});
+});
 document.addEventListener('input',e=>{if(!db)return;if(e.target.id==='release-search'){releaseFilters.query=e.target.value;updateReleaseNotes();}if(e.target.id==='statistics-search'){state.statistics.search=e.target.value;clearTimeout(statisticsSearchTimer);statisticsSearchTimer=setTimeout(refreshStatistics,220);}if(e.target.id==='character-search'){state.search=e.target.value;updateExplorer();}if(e.target.id==='picker-search')updatePicker(e.target.value);});
 document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='ban-source'){state.banSource=el.value==='legacy'?'legacy':'observed';state.banPage=1;state.banRecordHunter='';refreshBanRecords();return;}if(el.id==='ban-record-hunter'){state.banRecordHunter=el.value;state.banPage=1;refreshBanRecords({focusRecords:true});return;}if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans'){state.banPage=1;state.banRecordHunter='';refreshBanRecords();}else refreshStatistics();}});
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
+document.addEventListener('keydown',e=>{
+ if(e.target.id==='character-search'&&!e.isComposing){
+  if(e.key==='ArrowDown'){const result=$('#explorer-results [data-action="character"]');if(result){e.preventDefault();result.focus();}}
+  if(e.key==='Escape'&&state.search){e.preventDefault();clearHomeSearch();}
+ }
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
 for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
-window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
+window.addEventListener('hashchange',()=>{if(!db)return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  const responses=await Promise.all([fetch('data.json?v=48f821cc3126'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=43225fc5cc25')]);

@@ -113,6 +113,16 @@
         "기존 통계 화면에 자료를 연결하고 최신 비동기 요청·캐시·한국어 교정 유지"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "centered-home-search",
+      "summary": [
+        "홈의 회전 카드를 제거하고 중앙 타이틀·검색창으로 변경",
+        "검색 결과를 간단한 목록으로 표시하고 전체 도감의 필터·정렬·즐겨찾기 유지",
+        "모바일 검색 배치와 버튼 크기, 키보드 조작 개선"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

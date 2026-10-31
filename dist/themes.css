@@ -248,8 +248,8 @@ html[data-theme="plum"]{
 
 /* Every reflection fills the rounded border box once. No overlay, rim or mask
    can cross an icon, and nested materials do not repeat a small highlight tile. */
-:where(.nav-shell,.category-toggle,.category-panel,.art-card,.hero-carousel-footer,
- .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
+:where(.nav-shell,.category-toggle,.category-panel,
+ .character-card,.character-hero,.panel,.selection-card,.brief-card,
  .evidence-card,.stat-box,.ban-slot,details,
  .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,
  .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form){

@@ -5,7 +5,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
-import {createCarouselSession,carouselItems} from './dist/carousel.js';
 import {createStatisticsUI} from './dist/statistics.js';
 import {selectRanked} from './dist/statistics-model.js';
 import * as releaseUI from './dist/releases.js';
@@ -131,8 +130,8 @@ assert.ok(new Set(contextualPair.map(m=>m.advantage)).size>1,'opposite situation
 assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,contextualPair.length,'opposite situational findings remain readable');
 const nodes=new Map();
 const handlers={};
-function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
+const context={...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,mountNavigation:()=>({update(){}}),console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -158,16 +157,16 @@ audit.condition=cleanCondition('추가 공개 자료 1문서: 오른쪽 P:S 및 
 audit.escape=esc('<img src=x onerror=alert(1)>');
 location.hash='#v=compare&a='+byName['의사'].id+'&b='+byName['거미'].id;readRoute();audit.sameSide=byId[state.a].side===byId[state.b].side;
 location.hash='#v=bans&bans='+byName['의사'].id+','+byName['의사'].id+','+byName['거미'].id;readRoute();audit.cleanBans=state.bans.filter(Boolean);
-state.view='explore';state.favoriteOnly=false;state.search='';state.sort='name';
+state.view='explore';state.homeBrowse=true;state.favoriteOnly=false;state.search='';state.sort='name';
 audit.specialtyResults=[];
 for(const [side,roles] of Object.entries(specialtyGroups)){for(const role of roles){state.side=side;state.specialty=role;updateExplorer();audit.specialtyResults.push({side,role,html:$('#explorer-results').innerHTML});}}
 state.side='생존자';state.specialty='커버';state.search='선 지자';state.favoriteOnly=true;state.favorites=new Set([byName['선지자'].id,byName['용병'].id]);updateExplorer();audit.combinedFilter=$('#explorer-results').innerHTML;
 state.search='교수';state.favorites=new Set([byName['교수'].id,byName['용병'].id]);updateExplorer();audit.secondaryCombinedFilter=$('#explorer-results').innerHTML;
 state.specialty='구출';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetInvalidSpecialty=state.specialty;
 state.specialty='운영';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
-__handlers.click({target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
+__handlers.click({preventDefault(){},target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
 audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버','구출']},{specialties:['커버','커버']},{specialties:['사냥']},{specialties:['어그로'],specialtyReasons:{}}].map(role=>validSpecialties('생존자',role));
-footer();audit.footer=$('#footer').innerHTML;
+state.view='character';footer();audit.footer=$('#footer').innerHTML;
 location.hash='#v=sources';readRoute();audit.retiredSourceRoute=state.view;
 location.hash='#v=character&c=c01&tab=sources';readRoute();audit.retiredSourceTab=state.tab;
 location.hash='#v=gamepatches&c=c16&since=2020-01-01&note=retired';readRoute();audit.retiredGameRoute=state.view;

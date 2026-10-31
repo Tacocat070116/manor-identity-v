@@ -85,7 +85,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
   mountCreators:(root,options)=>{creatorMounts.push({root,options});return ()=>creatorDisposals++;},
   mountRecoveryPage:root=>{recoveryMounts.push(root);return ()=>recoveryDisposals++;},
-  mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
+  mountNavigation:()=>({update:({view})=>views.push(view)}),
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');

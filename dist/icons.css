@@ -6,7 +6,7 @@
 .ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="megaphone"],[data-icon="clock"],[data-icon="sun"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
  stroke-linecap:round;stroke-linejoin:round;
 }
-.ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="pause"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="external"],[data-icon="swap"],[data-icon="role-hunt"]){
+.ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="external"],[data-icon="swap"],[data-icon="role-hunt"]){
  stroke-linecap:square;
 }
 .ui-icon [data-stroke="soft"]{stroke-linecap:round;stroke-linejoin:round}
@@ -16,7 +16,7 @@
 :is(.creator-edit-chips,.creator-style-options,.creator-selected-tag,.tag,.fb-response-badge,.fb-comment-count,.fb-reply-to) .ui-icon{
  width:16px;height:16px;flex-basis:16px;
 }
-:is(.icon-btn,.carousel-control,.search-box,.creator-search,.category-current-icon,.nav-item)>.ui-icon{
+:is(.icon-btn,.search-box,.creator-search,.category-current-icon,.nav-item)>.ui-icon{
  width:20px;height:20px;flex-basis:20px;
 }
 :is(.empty,.fb-empty,.creator-empty)>.ui-icon{

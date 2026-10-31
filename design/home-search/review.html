@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MANOR · 중앙 검색 홈 검토 시안</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#edf2ee;color:#213c31;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif}header{display:flex;gap:18px;align-items:baseline;max-width:1200px;margin:0 auto 22px}h1{font-size:18px;margin:0}header p{font-size:12px;color:#617469;margin:0}.views{display:flex;gap:24px;justify-content:center;align-items:start}.label{font-size:13px;font-weight:650;margin:0 0 12px}.desktop{width:792px}.desktop-window{width:792px;height:634px;border:1px solid #c0cfc5;border-radius:20px;overflow:hidden}.desktop iframe{width:1200px;height:960px;transform:scale(.66);transform-origin:top left;border:0}.mobile iframe{width:375px;height:800px;border:1px solid #c0cfc5;border-radius:22px}.help{font-size:12px;color:#617469;line-height:1.8;margin:18px 8px}.widths{display:flex;gap:10px;margin-left:auto;font-size:12px}.widths a{color:inherit;text-decoration:none}
+</style>
+<header><h1>MANOR · 중앙 검색 홈</h1><p>중앙 검색 홈 · PC / 모바일</p><nav class="widths"><a href="?w=320">320</a><a href="?w=375">375</a><a href="?w=430">430px</a></nav></header>
+<main class="views">
+ <section class="desktop"><p class="label">PC</p><div class="desktop-window"><iframe title="PC 검색 홈" src="index.html#v=explore"></iframe></div><p class="help">이름·별명·초성으로 검색해 보세요.<br>전체 캐릭터 보기에서 기존 도감과 필터를 사용할 수 있습니다.</p></section>
+ <section class="mobile"><p class="label">모바일</p><iframe title="모바일 검색 홈" src="index.html#v=explore"></iframe></section>
+</main>
+<script>const width=Number(new URLSearchParams(location.search).get('w'))||375;document.querySelector('.mobile iframe').style.width=width+'px';</script>
+</html>

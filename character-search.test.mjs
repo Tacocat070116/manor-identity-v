@@ -75,10 +75,17 @@ test('live app input/change handlers apply search and sorting in catalogue, comp
   mountNavigation:()=>({update(){}}),fetch:async url=>({ok:true,json:async()=>read('dist/'+url.split('?')[0])})
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,state,openPicker,updateExplorer};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,state,openPicker,updateExplorer,homeMode,clearHomeSearch,readRoute};',context);
  const app=context.app;await app.boot();assert.equal(app.state.sort,'release');
  const ids=selector=>[...nodes.get(selector).innerHTML.matchAll(/data-id="(c\d+)"/g)].map(m=>m[1]);
- app.updateExplorer();assert.equal(ids('#explorer-results')[0],'c60');
+ app.updateExplorer();assert.equal(nodes.get('#characters').hidden,true,'home stays clear until searching or browsing');
+ app.state.side='생존자';app.state.favoriteOnly=true;app.state.favorites.add('c79');
+ handlers.input({target:{id:'character-search',value:'마리'}});assert.deepEqual(ids('#explorer-results'),['c16'],'quick search is not limited by old catalogue filters');
+ handlers.input({target:{id:'character-search',value:'   '}});assert.equal(nodes.get('#characters').hidden,true);
+ app.state.view='explore';await app.homeMode(true);assert.equal(ids('#explorer-results').length,89);assert.equal(ids('#explorer-results')[0],'c60');
+ app.state.side='감시자';handlers.input({target:{id:'character-search',value:'노튼'}});assert.deepEqual(ids('#explorer-results'),['c35'],'catalogue search keeps faction filters');
+ app.clearHomeSearch();assert.equal(ids('#explorer-results').length,36,'clearing a catalogue search keeps its filters');
+ app.state.side='전체';
  handlers.input({target:{id:'character-search',value:'qnfrdmsskql'}});assert.deepEqual(ids('#explorer-results'),['c15']);
  handlers.input({target:{id:'character-search',value:''}});
  handlers.change({target:{id:'character-sort',value:'name',dataset:{}}});assert.equal(ids('#explorer-results')[0],'c01');
@@ -94,4 +101,6 @@ test('live app input/change handlers apply search and sorting in catalogue, comp
  handlers.input({target:{id:'picker-search',value:'노튼'}});assert.deepEqual(ids('#picker-results'),[],'ban picker excludes duplicate survivor and hunter');
  app.state.bans=['','',''];app.openPicker('ban-1');
  handlers.input({target:{id:'picker-search',value:'노튼'}});assert.deepEqual(ids('#picker-results'),['c79']);
+ await app.homeMode(false);assert.equal(nodes.get('#characters').hidden,true);
+ context.location.hash='#characters';app.readRoute();app.updateExplorer();assert.equal(ids('#explorer-results').length,89,'old catalogue anchors still open the full list');
 });
