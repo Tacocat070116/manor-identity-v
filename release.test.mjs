@@ -4,27 +4,28 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import os from 'node:os';
+import path from 'node:path';
+import {execFileSync,spawnSync} from 'node:child_process';
 import * as releaseUI from './dist/releases.js';
 import * as model from './dist/model.js';
-import {validateReleaseLog,validateReleaseUpdate,validateOperatorMaintenance} from './scripts/release-tools.mjs';
+import {validateReleaseLog,validateReleaseUpdate,refreshPackage} from './scripts/release-tools.mjs';
 const read=path=>JSON.parse(fs.readFileSync('dist/'+path,'utf8'));
 const log=read('releases.json');
 
-test('operator maintenance keeps public history unchanged and cannot conceal unrelated assets or loader behavior',()=>{
- const entry={scope:'feedback-moderation',files:['dist/feedback.js','dist/feedback.css']};
- const changes=[{path:'dist/feedback.js',before:'old',after:'new'},{path:'dist/feedback.css',before:'old',after:'new'},{path:'dist/app.js',before:"import './feedback.js?v=old';",after:"import './feedback.js?v=new';"}];
- validateOperatorMaintenance(log,structuredClone(log),entry,changes);
- assert.throws(()=>validateOperatorMaintenance({...log,version:'9.0.0'},log,entry,changes),/공개 버전/);
- assert.throws(()=>validateOperatorMaintenance(log,log,entry,[...changes,{path:'dist/data.json',before:'old',after:'new'}]),/공개 파일/);
- assert.throws(()=>validateOperatorMaintenance(log,log,entry,[...changes,{path:'dist/app.js',before:'safe()',after:'other()'}]),/캐시 키/);
- assert.throws(()=>validateOperatorMaintenance(log,log,{...entry,files:['dist/data.json']},changes),/범위/);
+test('unannounced deployments preserve the complete public history',()=>{
+ validateReleaseUpdate(log,structuredClone(log));
+ const edited=structuredClone(log);edited.releases[0].changes[0].text+=' changed';
+ assert.throws(()=>validateReleaseUpdate(edited,log),/공지 대기/);
+ const removed=structuredClone(log);removed.releases.pop();
+ assert.throws(()=>validateReleaseUpdate(removed,log),/공지 대기/);
 });
 
 test('release validation rejects missing BETA, stale versions and lost history',()=>{
  validateReleaseLog(log,JSON.parse(fs.readFileSync('package.json')).version);
  assert.throws(()=>validateReleaseLog({...log,stage:'stable'},log.version),/BETA/);
  assert.throws(()=>validateReleaseLog(log,'0.0.0'),/버전/);
- assert.throws(()=>validateReleaseUpdate(log,log),/버전/);
+ const older={...log,version:'0.0.0'};assert.throws(()=>validateReleaseUpdate(older,log),/버전/);
  const next=structuredClone(log),parts=next.version.split('.').map(Number);parts[2]++;
  next.version=parts.join('.');next.releases.unshift({id:'test-update',version:next.version,date:log.releases[0].date,title:'새 업데이트',changes:[{type:'수정',text:'오류 수정'}],commits:[]});
  validateReleaseLog(next,next.version);validateReleaseUpdate(next,log);
@@ -92,4 +93,31 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  context.location.hash='#v=recovery';context.app.readRoute();await context.app.render();
  assert.equal(context.document.title,'복구 코드 · MANOR');assert.equal(recoveryMounts.length,1);
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(recoveryDisposals,1);
+});
+
+
+test('normal release commands cannot create an announcement implicitly',()=>{
+ const before=fs.readFileSync('dist/releases.json','utf8');
+ const result=spawnSync(process.execPath,['scripts/release.mjs','patch','자동 공지 금지','수정: 테스트'],{encoding:'utf8'});
+ assert.notEqual(result.status,0);
+ assert.match(result.stderr,/운영자가 공개를 요청한 때만/);
+ assert.equal(fs.readFileSync('dist/releases.json','utf8'),before);
+});
+
+test('cache refresh fingerprints transitive module imports and propagates changes',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'manor-cache-'));
+ try{
+  execFileSync('git',['init','-q',root]);fs.mkdirSync(path.join(root,'dist'));
+  const write=(file,body)=>fs.writeFileSync(path.join(root,'dist',file),body);
+  write('index.html','<script type="module" src="app.js?v=old"></script>');
+  write('app.js',"import {value} from './model.js'; console.log(value);");
+  write('model.js','export const value=1;');
+  refreshPackage(root);
+  const first=fs.readFileSync(path.join(root,'dist','index.html'),'utf8');
+  assert.match(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),/model\.js\?v=[a-f0-9]{12}/);
+  write('model.js','export const value=2;');refreshPackage(root);
+  assert.notEqual(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),first);
+  const stable=fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8');refreshPackage(root);
+  assert.equal(fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8'),stable);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
 });

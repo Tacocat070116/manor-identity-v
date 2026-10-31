@@ -6,9 +6,12 @@ import {validateReleaseLog,refreshPackage} from './release-tools.mjs';
 const log=JSON.parse(fs.readFileSync('dist/releases.json','utf8'));
 const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
 validateReleaseLog(log,pkg.version);
-const [bump,title,...notes]=process.argv.slice(2);
-if(bump!=='--refresh'){
- assert.ok(['patch','minor','major'].includes(bump)&&title?.trim()&&notes.length,'사용법: npm run release -- patch "제목" "수정: 변경 내용"');
+const args=process.argv.slice(2);
+const announce=args[0]==='--announce';
+const [bump,title,...notes]=announce?args.slice(1):args;
+if(!announce)assert.ok(!args.length||(args.length===1&&bump==='--refresh'),'패치 공지는 운영자가 공개를 요청한 때만 작성합니다. 일반 수정은 npm run release -- --refresh를 사용하세요.');
+if(announce){
+ assert.ok(['patch','minor','major'].includes(bump)&&title?.trim()&&notes.length,'사용법: npm run release -- --announce patch "제목" "수정: 변경 내용"');
  const parts=log.version.split('.').map(Number),index={major:0,minor:1,patch:2}[bump];
  parts[index]++;for(let i=index+1;i<3;i++)parts[i]=0;
  const version=parts.join('.');

@@ -1,6 +1,6 @@
 # MANOR · 제5인격 가이드 (BETA)
 
-현재 사이트 버전과 전체 변경 내역은 [MANOR 업데이트](https://tacocat070116.github.io/manor-identity-v/#v=patchnotes)에서 확인합니다. 사이트 버전의 기준 파일은 `dist/releases.json`이며, 공개 업데이트마다 `BETA` 표기를 유지하고 버전과 업데이트 기록을 함께 갱신합니다.
+현재 사이트 버전과 전체 변경 내역은 [MANOR 업데이트](https://tacocat070116.github.io/manor-identity-v/#v=patchnotes)에서 확인합니다. 사이트 버전의 기준 파일은 `dist/releases.json`이며, `BETA` 표기를 유지하며, 운영자가 공지를 요청했을 때만 완료된 변경을 모아 버전과 업데이트 기록을 갱신합니다. 일반 수정 배포는 공지 버전을 유지합니다.
 
 타코캣이 직접 소유하고 운영하는 비상업적 제5인격 가이드입니다. 이 저장소에는 독립 호스팅에 필요한 전체 소스와 자료가 포함돼 있습니다.
 
@@ -11,7 +11,7 @@
 
 ## 사이트 갱신하기
 
-자료와 화면을 수정한 뒤 `npm run release`로 버전·업데이트 기록·캐시를 함께 갱신하고 `npm test`를 실행합니다. 검증한 변경을 `main`에 반영하면 `.github/workflows/pages.yml`이 다시 검증한 뒤 `dist`를 GitHub Pages에 배포합니다. 호스팅을 새로 설정하거나 옮기는 절차는 [DEPLOY.md](DEPLOY.md)를 참고하세요.
+자료와 화면을 수정한 뒤 `npm run release -- --refresh`로 캐시·검증 해시를 갱신하고 `npm test`를 실행합니다. 공지 대기 변경은 `operations/pending-changes.json`에 기록하고, 명시적인 공지 요청이 있을 때만 `--announce`로 버전과 업데이트 기록을 갱신합니다. 검증한 변경을 `main`에 반영하면 `.github/workflows/pages.yml`이 다시 검증한 뒤 `dist`를 GitHub Pages에 배포합니다. 호스팅을 새로 설정하거나 옮기는 절차는 [DEPLOY.md](DEPLOY.md)를 참고하세요.
 
 가이드 본체는 HTML, CSS, JavaScript와 JSON으로 구성되며 ChatGPT API, Google Sheets API, 유료 AI 호출을 사용하지 않습니다. 피드백 게시판은 별도 서버의 공용 D1 저장소를 사용합니다. 나중에 호스팅을 바꾸어도 `dist` 전체를 일반 정적 웹 호스팅으로 옮길 수 있으며, 게시판 서버 주소와 허용 출처는 별도로 확인합니다.
 

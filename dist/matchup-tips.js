@@ -1,9 +1,9 @@
+import {requestId as requestUUID} from './request-id.js?v=58ef88b53202';
 import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 export const TIPS_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const TIP_STATUSES={pending:'검토 대기',approved:'공개 중',needs_changes:'보완 요청',rejected:'반려',hidden:'비공개'};
 export const tipEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=tipEscape;
-const requestUUID=()=>{if(crypto.randomUUID)return crypto.randomUUID();const bytes=crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const h=Array.from(bytes,v=>v.toString(16).padStart(2,'0')).join('');return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);};
 const date=value=>value?new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(value)):'';
 const lock='<svg class="tip-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>';
 const check='<svg class="tip-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';

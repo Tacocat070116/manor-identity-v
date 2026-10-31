@@ -22,7 +22,6 @@
 .recovery-heading>p{color:var(--muted);font-size:14px;line-height:1.8;margin:0;word-break:keep-all}
 .recovery-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;gap:48px}
 .recovery-intro{padding:30px 0}
-.recovery-intro-label{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--accent)}
 .recovery-intro h2{font-size:24px;line-height:1.6;letter-spacing:-.04em;margin:16px 0}
 .recovery-intro p{font-size:13px;line-height:1.9;color:var(--muted);word-break:keep-all;overflow-wrap:anywhere}
 .recovery-intro ul{list-style:none;padding:0;margin:28px 0;border-top:1px solid var(--line)}

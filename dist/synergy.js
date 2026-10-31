@@ -1,7 +1,7 @@
+import {requestId as uuid} from './request-id.js?v=58ef88b53202';
 import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 import {SYNERGY_SITUATIONS,SYNERGY_REPORTS,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=c4a394898b4e';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
-const uuid=()=>{if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;const s=Array.from(b,n=>n.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;};
 const date=time=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(time));
 const option=(value,label,selected)=>`<option value="${e(value)}" ${value===selected?'selected':''}>${e(label)}</option>`;
 const person=(author,characters)=>`<span class="sy-person">${characters[author?.characterId]?`<img src="${e(characters[author.characterId].portrait)}" alt="" width="28" height="28" loading="lazy">`:''}<span>${e(author?.name||'장원의 손님')}</span></span>`;

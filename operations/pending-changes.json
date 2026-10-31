@@ -1,0 +1,22 @@
+{
+  "policy": "manual-batch",
+  "instructionDate": "2026-10-31",
+  "lastAnnouncedVersion": "1.16.3",
+  "entries": [
+    {
+      "date": "2026-10-31",
+      "scope": "code-cleanup",
+      "summary": [
+        "미사용 스타일 88개 선택자 및 미사용 가져오기 제거",
+        "요청 ID 생성 중복 제거 및 구형 브라우저 호환 처리 통일",
+        "정적 자료 요청·실패 재시도 처리 공통화",
+        "통계 필터·화면 이동 비동기 충돌 및 검색 타이머 정리",
+        "랭킹전 동적 자료 캐시 재검증과 모듈 의존성 캐시 갱신",
+        "인지 점수 요청 재시도 후 이전 오류 표시 해제",
+        "채널 작성 화면 진입 시 지연된 검색 취소",
+        "배포와 공개 공지 분리 및 필수 검증 명령 정리"
+      ],
+      "announcement": "pending-explicit-owner-request"
+    }
+  ]
+}

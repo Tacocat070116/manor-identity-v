@@ -250,7 +250,7 @@ html[data-theme="plum"]{
    can cross an icon, and nested materials do not repeat a small highlight tile. */
 :where(.nav-shell,.category-toggle,.category-panel,.art-card,.hero-carousel-footer,
  .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
- .evidence-card,.stat-box,.ban-slot,.rank-card,details,.source-card,.health-card,
+ .evidence-card,.stat-box,.ban-slot,details,
  .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,
  .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form){
  background-origin:border-box;

@@ -5,11 +5,11 @@ import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './them
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=ea4b96f7e79e';
-import {mountFeedback} from './feedback.js?v=30797ad31c54';
-import {mountSynergy} from './synergy.js?v=5766c21ab4ce';
+import {mountFeedback} from './feedback.js?v=5c0c08bc13c6';
+import {mountSynergy} from './synergy.js?v=b508a2d8b49c';
 import {SYNERGY_SITUATIONS,synergyGroups} from './synergy-model.js?v=c4a394898b4e';
-import {mountMatchupTips} from './matchup-tips.js?v=95a0f291fd7f';
-import {mountCreators} from './creators.js?v=c399808129b8';
+import {mountMatchupTips} from './matchup-tips.js?v=b925c656f76f';
+import {mountCreators} from './creators.js?v=6b074ef038f6';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=c84473689ea6';
 const $=(s,r=document)=>r.querySelector(s);
@@ -59,38 +59,62 @@ let themeStorage;
 try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));}catch{}
 state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').matches).id;
 applyTheme(state.theme,{document,remember:false});
-let db,byId,byName,renderToken=0,pickerContext,toastTimer,matchesPromise,bansPromise;
+let db,byId,byName,renderToken=0,pickerContext,toastTimer;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let disposeMatchupTips=()=>{};
 let disposeSynergy=()=>{};
 let disposeCreators=()=>{},disposeRecovery=()=>{};
-let statisticsUI,rankedPromise,rankedData,rankedError='',statisticsSearchTimer;
-let navigationController,detailsPromise,observedBansPromise;
+let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
+let navigationController;
 let releaseLog;
 const releaseFilters={query:'',type:'전체'};
+// Static requests share retryable promises; dynamic ranked files revalidate on a new visit.
+async function loadJSON(url,message,options={}){
+ try{
+  const response=await fetch(url,{...options,signal:globalThis.AbortSignal?.timeout?.(15000)});
+  if(!response.ok)throw Error(message);
+  return await response.json();
+ }catch(error){
+  if(error.name==='TimeoutError'||error.name==='AbortError')throw Error(message+' 연결이 지연되고 있습니다. 다시 시도해 주세요.');
+  throw error;
+ }
+}
+function cachedJSON(url,message){
+ let pending;
+ return ()=>pending||=loadJSON(url,message).catch(error=>{pending=null;throw error;});
+}
+const loadRankedIndex=cachedJSON('ranked/index.json?v=aaa21a1a2a0b','랭킹전 자료를 불러오지 못했습니다.');
 const rankedFiles=new Map();
-const loadRanked=async()=>{
- const data=await(rankedPromise||=fetch('ranked/index.json?v=aaa21a1a2a0b').then(r=>{if(!r.ok)throw Error('랭킹전 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedPromise=null;throw e;}));
- const s=selectRanked(data,state.statistics);Object.assign(state.statistics,s.filters);
+function loadRankedFile(path,message){
+ if(!/^ranked\/[a-z0-9-]+\.json$/.test(path||''))throw Error('랭킹전 자료 경로를 확인하지 못했습니다.');
+ if(!rankedFiles.has(path))rankedFiles.set(path,loadJSON(path,message,{cache:'no-cache'}).catch(error=>{rankedFiles.delete(path);throw error;}));
+ return rankedFiles.get(path);
+}
+const loadRanked=async(filters={...state.statistics})=>{
+ const data=await loadRankedIndex();
+ const s=selectRanked(data,filters);
  if(s.dataset&&!s.dataset.rows){
-  const path=s.dataset.path;
-  if(!/^ranked\/[a-z0-9-]+\.json$/.test(path||''))throw Error('랭킹전 자료 경로를 확인하지 못했습니다.');
-  if(!rankedFiles.has(path))rankedFiles.set(path,fetch(path+'?v=20261017').then(r=>{if(!r.ok)throw Error('선택한 시즌 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedFiles.delete(path);throw e;}));
-  const part=await rankedFiles.get(path);
-  for(const entry of part.datasets){const target=data.datasets.find(d=>d.id===entry.id);if(target)target.rows=entry.rows.map(r=>{const c=byId[r[0]];if(!c)throw Error('통계 캐릭터 정보를 확인하지 못했습니다.');return {id:c.id,name:c.name,side:c.side,pick:r[1],win:r[2],draw:r[3],loss:r[4],ban:r[5]};});}
+  const part=await loadRankedFile(s.dataset.path,'선택한 시즌 자료를 불러오지 못했습니다.');
+  // Validate the complete response before updating the shared cache.
+  const hydrated=part.datasets.map(entry=>{
+   const target=data.datasets.find(d=>d.id===entry.id);
+   if(!target)return null;
+   const rows=entry.rows.map(r=>{const c=byId[r[0]];if(!c)throw Error('통계 캐릭터 정보를 확인하지 못했습니다.');return {id:c.id,name:c.name,side:c.side,pick:r[1],win:r[2],draw:r[3],loss:r[4],ban:r[5]};});
+   return {target,rows};
+  });
+  for(const entry of hydrated)if(entry)entry.target.rows=entry.rows;
   if(!s.dataset.rows)throw Error('선택한 통계 항목을 확인하지 못했습니다.');
  }
  if(s.filters.server==='cn'&&!data.badges){
-  const path='ranked/badges.json';
-  if(!rankedFiles.has(path))rankedFiles.set(path,fetch(path+'?v=20261017').then(r=>{if(!r.ok)throw Error('인지 점수 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{rankedFiles.delete(path);throw e;}));
-  try{data.badges=(await rankedFiles.get(path)).datasets;}catch(e){data.badgesError=e.message;}
+  try{data.badges=(await loadRankedFile('ranked/badges.json','인지 점수 자료를 불러오지 못했습니다.')).datasets;delete data.badgesError;}
+  catch(error){data.badgesError=error.message;}
  }
- rankedData=data;rankedError='';return data;
+ return data;
 };
-const loadMatches=()=>matchesPromise||=fetch('matches.json?v=e9e58d54f975').then(r=>{if(!r.ok)throw Error('경기 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{matchesPromise=null;throw e;});
-const loadBans=()=>bansPromise||=fetch('bans.json?v=ea94c7967200').then(r=>{if(!r.ok)throw Error('밴 자료를 불러오지 못했습니다.');return r.json();}).catch(e=>{bansPromise=null;throw e;});
-const loadDetails=()=>detailsPromise||=fetch('tournament-details.json?v=1d033d96cda4').then(r=>{if(!r.ok)throw Error('세부 대회 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{detailsPromise=null;throw e;});
-const loadObservedBans=()=>observedBansPromise||=fetch('bans-observed.json?v=e41c726e4ddb').then(r=>{if(!r.ok)throw Error('공개 밴 기록을 불러오지 못했습니다.');return r.json();}).catch(e=>{observedBansPromise=null;throw e;});
+const loadMatches=cachedJSON('matches.json?v=e9e58d54f975','경기 자료를 불러오지 못했습니다.');
+const loadBans=cachedJSON('bans.json?v=ea94c7967200','밴 자료를 불러오지 못했습니다.');
+const loadDetails=cachedJSON('tournament-details.json?v=1d033d96cda4','세부 대회 기록을 불러오지 못했습니다.');
+const loadObservedBans=cachedJSON('bans-observed.json?v=e41c726e4ddb','공개 밴 기록을 불러오지 못했습니다.');
 const portrait=(c,priority=false)=>`<img src="${esc(c.portrait)}" alt="${esc(c.name)}" width="200" height="200" ${priority?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const personaTalents={
  '히든카드':{id:'trump-card',side:'감시자'},
@@ -262,7 +286,8 @@ function syncStatisticsRoute(){
 }
 function refreshStatistics(){
  const focused=document.activeElement,id=focused?.id,start=focused?.selectionStart,end=focused?.selectionEnd,y=window.scrollY;
- return render().then(()=>{syncStatisticsRoute();window.scrollTo(0,y);const input=id?document.getElementById?.(id):null;if(input){input.focus({preventScroll:true});if(typeof start==='number')input.setSelectionRange?.(start,end);}});
+ const pending=render(),token=renderToken;
+ return pending.then(()=>{if(token!==renderToken)return;syncStatisticsRoute();window.scrollTo(0,y);const input=id?document.getElementById?.(id):null;if(input){input.focus({preventScroll:true});if(typeof start==='number')input.setSelectionRange?.(start,end);}});
 }
 function statsPanel(c,rows,details=null,detailError=''){
  const s=statsFor(rows,c,state.stats),relations=tournamentRelations(rows,c,state.stats);
@@ -320,14 +345,16 @@ function refreshBanRecords({focusRecords=false}={}){
  const active=document.activeElement,scrollY=window.scrollY;
  const focus=active?.id==='ban-source'?'#ban-source':active?.dataset?.scope==='bans'?`[data-filter="${active.dataset.filter}"][data-scope="bans"]`:'';
  const hash=route(currentViewParams());window.history.replaceState(null,'',hash);
- return render().then(()=>{
-  if(state.view!=='bans')return;
+ const pending=render(),token=renderToken;
+ return pending.then(()=>{
+  if(token!==renderToken||state.view!=='bans')return;
   if(focusRecords){$('#ban-records')?.scrollIntoView({block:'start',behavior:'instant'});$('#ban-record-hunter')?.focus({preventScroll:true});}
   else{window.scrollTo({top:scrollY,behavior:'instant'});if(focus)$(focus)?.focus({preventScroll:true});}
  });
 }
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
+ clearTimeout(statisticsSearchTimer);
  disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
  document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트'}[state.view])} · MANOR`;
@@ -335,7 +362,7 @@ async function render({scroll=false}={}){
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='synergy')disposeSynergy=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.character,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,navigate:(post,{partnerId,mine})=>navigate({v:'character',c:state.character,tab:'synergy',...(partnerId?{partner:partnerId}:{}),...(post?{post}:{}),...(mine?{mine:'1'}:{})})});if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
-  rankedError=r.status==='rejected'?r.reason.message:'';
+  rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
   $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
  }}
  else if(state.view==='statistics'){
@@ -358,7 +385,17 @@ async function render({scroll=false}={}){
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
  else if(state.view==='creators'){disposeCreators=mountCreators(body,{characters:byId,postId:state.creatorPost,navigate:id=>navigate({v:'creators',...(id?{channel:id}:{})})});}
  else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,navigate:id=>navigate({v:'feedback',...(id?{post:id}:{})})});}
- else{body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';try{const rows=await(state.view==='bans'?(state.banSource==='legacy'?loadBans():loadObservedBans()):loadMatches());if(state.view==='compare'){try{await loadRanked();}catch(e){rankedError=e.message;}}if(token!==renderToken)return;body.innerHTML=state.view==='bans'?banPage(rows):comparePage(rows);}catch(e){if(token===renderToken)body.innerHTML=loadError(e);}}
+ else{
+  const view=state.view;
+  body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';
+  try{
+   const [records,ranked]=await Promise.allSettled([view==='bans'?(state.banSource==='legacy'?loadBans():loadObservedBans()):loadMatches(),view==='compare'?loadRanked():Promise.resolve(null)]);
+   if(token!==renderToken)return;
+   if(records.status==='rejected')throw records.reason;
+   if(view==='compare'){rankedData=ranked.status==='fulfilled'?ranked.value:null;rankedError=ranked.status==='rejected'?ranked.reason.message:'';}
+   body.innerHTML=view==='bans'?banPage(records.value):comparePage(records.value);
+  }catch(error){if(token===renderToken)body.innerHTML=loadError(error);}
+ }
 }
 function openPicker(mode='jump'){
  let side='',excluded=[],heading='캐릭터 빠른 검색';

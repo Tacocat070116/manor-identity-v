@@ -97,7 +97,7 @@ function runtime(){
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
+ Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
  return {context,nodes,handlers,fetches,app:context.app};
 }
 
@@ -137,4 +137,50 @@ test('ranked import survives partial network failure without hiding tournament r
  context.fetch=async url=>url.startsWith('ranked/')?{ok:false}:fetch(url);
  await app.boot();const html=nodes.get('#page-body').innerHTML;
  assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,953/);
+});
+
+
+test('overlapping ranked loads retain the latest filters and revalidate dynamic files',async()=>{
+ const {context,app}=runtime();context.location.hash='#v=explore';await app.boot();
+ const fetch=context.fetch,requests=[];let finishIndex;
+ context.fetch=async(url,options)=>{
+  requests.push({url,options});
+  if(url.startsWith('ranked/index.json'))await new Promise(resolve=>{finishIndex=resolve;});
+  return fetch(url);
+ };
+ const asia=app.loadRanked();
+ Object.assign(app.state.statistics,{server:'cn',season:'S43',tier:'all',snapshot:''});
+ const china=app.loadRanked();finishIndex();
+ const [a,b]=await Promise.all([asia,china]);
+ assert.equal(a,b);assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.season,'S43');
+ assert.ok(a.datasets.some(d=>d.server==='asia'&&d.rows));assert.ok(b.datasets.some(d=>d.server==='cn'&&d.rows));
+ const dynamic=requests.filter(r=>/^ranked\/(?!index)/.test(r.url));
+ assert.ok(dynamic.length>=3);assert.ok(dynamic.every(r=>r.options.cache==='no-cache'&&!r.url.includes('20261017')));
+});
+
+test('retrying a failed badge request removes the stale error after recovery',async()=>{
+ const {context,app}=runtime();context.location.hash='#v=explore';await app.boot();
+ Object.assign(app.state.statistics,{server:'cn',season:'S43',tier:'all'});
+ const fetch=context.fetch;let fail=true;
+ context.fetch=async url=>url.startsWith('ranked/badges.json')&&fail?{ok:false}:fetch(url);
+ const first=await app.loadRanked();assert.match(first.badgesError,/인지 점수/);assert.equal(first.badges,undefined);
+ fail=false;const second=await app.loadRanked();assert.ok(second.badges.length);assert.equal(second.badgesError,undefined);
+});
+
+test('a slow statistics refresh cannot restore its old URL or scroll after navigation',async()=>{
+ const {context,app,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
+ const fetch=context.fetch;let finishMatches;
+ context.fetch=async url=>{if(url.startsWith('matches.json'))await new Promise(resolve=>{finishMatches=resolve;});return fetch(url);};
+ context.location.hash='#v=statistics';app.readRoute();const pending=app.refreshStatistics();
+ context.location.hash='#v=explore';app.readRoute();await app.render();
+ let scrolls=0;context.window.scrollTo=()=>{scrolls++;};finishMatches();await pending;
+ assert.equal(context.location.hash,'#v=explore');assert.equal(scrolls,0);assert.match(nodes.get('#page-body').innerHTML,/A CLEARER WAY TO PLAY/);
+});
+
+test('navigation cancels a pending statistics search before another screen is rendered',async()=>{
+ const {context,app,handlers}=runtime();await app.boot();
+ const timers=new Map();let id=0;
+ context.setTimeout=fn=>{timers.set(++id,fn);return id;};context.clearTimeout=id=>timers.delete(id);
+ handlers.input({target:{id:'statistics-search',value:'마리'}});assert.equal(timers.size,1);
+ context.location.hash='#v=explore';app.readRoute();await app.render();assert.equal(timers.size,0);
 });

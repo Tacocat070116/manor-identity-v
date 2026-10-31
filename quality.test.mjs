@@ -65,3 +65,14 @@ test('legacy broad situation details cannot contradict the current reviewed acti
  assert.equal(evidenceDetail({situation:'추격',situationDetail:'첫 추격·삽 소모'}),'첫 추격·삽 소모');
  assert.equal(evidenceDetail({situation:'커버',situationDetail:'태클·풍선 구출 제한'}),'태클·풍선 구출 제한');
 });
+
+
+test('request IDs work without randomUUID and preserve UUID version and variant',async()=>{
+ const {requestId}=await import('./dist/request-id.js');
+ assert.equal(requestId({randomUUID:()=> 'native-id'}),'native-id');
+ let seed=0;
+ const crypto={getRandomValues(bytes){return bytes.fill(++seed);}};
+ const first=requestId(crypto),second=requestId(crypto);
+ assert.match(first,/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/);
+ assert.notEqual(first,second);
+});

@@ -37,25 +37,16 @@ export function validateReleaseLog(log,packageVersion){
  assert.equal(log.releases.find(release=>release.id==='opening')?.date,log.openedAt,'오픈 기록을 보존하세요.');
 }
 export function validateReleaseUpdate(current,previous){
- assert.ok(compareVersions(current.version,previous.version)>0,'사이트 변경 시 BETA 버전을 올리고 패치노트를 추가하세요.');
+ if(current.version===previous.version){
+  assert.deepEqual(current,previous,'공지 대기 중에는 공개 버전과 기존 패치 기록을 그대로 유지하세요.');
+  return;
+ }
+ assert.ok(compareVersions(current.version,previous.version)>0,'공개 공지의 BETA 버전을 이전보다 높게 지정하세요.');
  assert.ok(!previous.releases.some(release=>release.id===current.releases[0].id),'새 업데이트 기록을 추가하세요.');
  const currentIds=new Set(current.releases.map(release=>release.id));
  for(const release of previous.releases)assert.ok(currentIds.has(release.id),'기존 패치노트를 삭제할 수 없습니다: '+release.id);
  assert.ok(current.releases.some(release=>release.version===previous.version),'이전 버전 기록을 보존하세요.');
  assert.equal(current.openedAt,previous.openedAt,'확인된 사이트 오픈일을 보존하세요.');
-}
-export function validateOperatorMaintenance(current,previous,entry,changes){
- assert.deepEqual(current,previous,'운영자 시스템 변경은 공개 버전과 패치 기록을 그대로 유지해야 합니다.');
- assert.equal(entry.scope,'feedback-moderation');
- const allowed=new Set(['dist/feedback.js','dist/feedback.css']);
- assert.ok(entry.files?.length&&entry.files.every(file=>allowed.has(file)),'운영자 변경 범위를 확인하세요.');
- const stripCache=text=>text.replace(/([./\w-]+\.(?:css|js|json))\?v=[\w.-]+/g,'$1?v=CACHE');
- for(const change of changes){
-  if(entry.files.includes(change.path))continue;
-  assert.ok(['dist/index.html','dist/app.js'].includes(change.path),'운영자 변경 외의 공개 파일에는 새 패치 기록이 필요합니다: '+change.path);
-  assert.equal(stripCache(change.after),stripCache(change.before),'로더에는 캐시 키만 변경할 수 있습니다: '+change.path);
- }
- assert.ok(entry.files.every(file=>changes.some(change=>change.path===file)),'기록한 운영자 변경 파일과 실제 변경을 맞춰 주세요.');
 }
 export function refreshPackage(root=process.cwd()){
  const dist=path.join(root,'dist'),done=new Map(),visiting=new Set();
@@ -66,7 +57,8 @@ export function refreshPackage(root=process.cwd()){
   let contents=fs.readFileSync(file);
   if(/\.(?:html|js)$/.test(file)){
    const before=contents.toString();
-   const after=before.replace(/(['"])([./\w-]+\.(?:css|js|json))\?v=[\w.-]+\1/g,(match,quote,url)=>{
+   const withModuleKeys=before.replace(/(\bfrom\s*|\bimport\s*)(['"])(\.\/[\w./-]+\.js)\2/g,'$1$2$3?v=pending$2');
+   const after=withModuleKeys.replace(/(['"])([./\w-]+\.(?:css|js|json))\?v=[\w.-]+\1/g,(match,quote,url)=>{
     const target=path.resolve(path.dirname(file),url);
     assert.ok(target.startsWith(dist+path.sep)&&fs.existsSync(target),'잘못된 캐시 참조: '+url);
     return quote+url+'?v='+visit(target).slice(0,12)+quote;
