@@ -93,6 +93,15 @@
         "시너지 화면의 중복 탭 배치 규칙을 제거해 모바일 캐릭터 상세의 네 탭을 한 줄로 정렬"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "auxiliary-silhouettes-survivor-recommendations",
+      "summary": [
+        "보조 특성 7종을 배경 없는 하얀 실루엣 아이콘으로 변경",
+        "함께하면 좋은 생존자의 상황 선택칸과 연결된 필터 제거"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

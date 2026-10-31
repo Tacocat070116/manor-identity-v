@@ -14,13 +14,12 @@ export function validateResearchCharacters(topic,ids,characters){
  return '';
 }
 
-export function synergyGroups(links,character,characters,situation=''){
+export function synergyGroups(links,character,characters){
  const byName=Object.fromEntries(Object.values(characters).map(c=>[c.name,c]));
  const groups=new Map();
  for(const link of links){
   if(link.character!==character&&link.target!==character)continue;
   if(byName[link.character]?.side!=='생존자'||byName[link.target]?.side!=='생존자')continue;
-  if(situation&&!link.situations?.includes(situation))continue;
   const partner=byName[link.character===character?link.target:link.character];
   if(!groups.has(partner.id))groups.set(partner.id,{partner,entries:[],order:1000+(link.order||0)});
   const group=groups.get(partner.id);group.entries.push(link);

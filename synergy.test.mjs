@@ -5,7 +5,7 @@ import {synergyGroups,synergyRoute,validateSynergyDraft,SYNERGY_SITUATIONS} from
 import {synergyPostCard,synergyEditor,mountSynergy} from './dist/synergy.js';
 const db=JSON.parse(fs.readFileSync('dist/data.json','utf8'));
 const characters=Object.fromEntries(db.characters.map(c=>[c.id,c]));
-test('all survivor pairs are reachable from either character, grouped without duplicate partners and filtered by situation',()=>{
+test('all survivor pairs remain reachable from either character, grouped without duplicate partners',()=>{
  for(const c of db.characters.filter(c=>c.side==='생존자')){
   const groups=synergyGroups(db.links,c.name,characters);
   assert.equal(new Set(groups.map(g=>g.partner.id)).size,groups.length);
@@ -15,7 +15,6 @@ test('all survivor pairs are reachable from either character, grouped without du
    assert.equal(reverse.entries.length,g.entries.length);
    for(const entry of g.entries){assert.ok(entry.use&&entry.when&&entry.caution);assert.ok(entry.situations.length);assert.ok(entry.situations.every(s=>SYNERGY_SITUATIONS.includes(s)));}
   }
-  for(const s of SYNERGY_SITUATIONS)assert.ok(synergyGroups(db.links,c.name,characters,s).every(g=>g.entries.every(e=>e.situations.includes(s))));
  }
  const seer=synergyGroups(db.links,characters.c58.name,characters);assert.ok(seer.find(g=>g.partner.id==='c55'),'barmaid → seer is discoverable from seer too');
 });

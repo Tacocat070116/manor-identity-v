@@ -1,5 +1,5 @@
 import './typography.js?v=d3e23c8c5a2d';
-import {mountResearchHighlights} from './research-highlights.js?v=750dd720622e';
+import {mountResearchHighlights} from './research-highlights.js?v=4872eeee7907';
 import {mountRecoveryPage} from './participation.js?v=1e240856280c';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -8,8 +8,8 @@ import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, 
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=673ca8c7ec84';
 import {mountFeedback} from './feedback.js?v=edf87fe575c6';
-import {mountSynergy} from './synergy.js?v=0b98c3382f41';
-import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=29eb430cab7a';
+import {mountSynergy} from './synergy.js?v=cc7006c95875';
+import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=07aa8169749c';
 import {mountMatchupTips} from './matchup-tips.js?v=eb8424f7732b';
 import {mountCreators} from './creators.js?v=d74010346d76';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
@@ -174,7 +174,6 @@ function readRoute(){
  state.researchSituation=SYNERGY_SITUATIONS.includes(p.get('situation'))?p.get('situation'):'';
  state.researchQuery=(p.get('q')||'').slice(0,100);
  state.researchSort=p.get('sort')==='discussed'?'discussed':'new';
- state.synergySituation=SYNERGY_SITUATIONS.includes(p.get('ss'))?p.get('ss'):'';
  if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
  if(!['생존자','감시자'].includes(state.statistics.side))state.statistics.side='생존자';
@@ -255,15 +254,15 @@ function synergyDetails(l){
 const auxiliaryTraits={'비정상':'abnormal','흥분':'excitement','순찰자':'patroller','텔레포트':'teleport','정탐자':'peeper','플래시':'blink','형상 이동':'warp'};
 function auxiliaryTraitCard(l){
  const art=auxiliaryTraits[l.target];
- return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></div></dl></div>`;
+ return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></div></dl></div>`;
 }
 function survivorSynergyCard(group,c){
  const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명에 따른 조합 후보로, 실전 연계 효과는 미확인입니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략 기준입니다. 검토일 ${esc(l.reviewedAt)} 이후의 스킬 변경을 확인하세요.</p>`:''}`;
  return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(s)).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">이 조합 토론 →</a></article>`;
 }
 function survivorSynergies(c){
- const groups=synergyGroups(db.links,c.name,byId,state.synergySituation);
- return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><div class="synergy-toolbar"><label class="filter-label">활용 상황<select id="synergy-situation"><option value="">모든 상황</option>${SYNERGY_SITUATIONS.map(s=>`<option value="${s}" ${s===state.synergySituation?'selected':''}>${s}</option>`).join('')}</select></label></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">이 상황의 추천 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
+ const groups=synergyGroups(db.links,c.name,byId);
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">추천 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
@@ -508,7 +507,7 @@ document.addEventListener('click',e=>{
  if(a==='retry')render();
 });
 document.addEventListener('input',e=>{if(!db)return;if(e.target.id==='release-search'){releaseFilters.query=e.target.value;updateReleaseNotes();}if(e.target.id==='statistics-search'){state.statistics.search=e.target.value;clearTimeout(statisticsSearchTimer);statisticsSearchTimer=setTimeout(refreshStatistics,220);}if(e.target.id==='character-search'){state.search=e.target.value;updateExplorer();}if(e.target.id==='picker-search')updatePicker(e.target.value);});
-document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='synergy-situation'){state.synergySituation=SYNERGY_SITUATIONS.includes(el.value)?el.value:'';$('#survivor-synergies').outerHTML=survivorSynergies(char(state.character));$('#synergy-situation')?.focus({preventScroll:true});return;}if(el.id==='ban-source'){state.banSource=el.value==='legacy'?'legacy':'observed';state.banPage=1;state.banRecordHunter='';refreshBanRecords();return;}if(el.id==='ban-record-hunter'){state.banRecordHunter=el.value;state.banPage=1;refreshBanRecords({focusRecords:true});return;}if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans'){state.banPage=1;state.banRecordHunter='';refreshBanRecords();}else refreshStatistics();}});
+document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id==='ban-source'){state.banSource=el.value==='legacy'?'legacy':'observed';state.banPage=1;state.banRecordHunter='';refreshBanRecords();return;}if(el.id==='ban-record-hunter'){state.banRecordHunter=el.value;state.banPage=1;refreshBanRecords({focusRecords:true});return;}if(el.name==='color-theme'){selectColorTheme(el.value);return;}if(el.id==='release-type'){releaseFilters.type=releaseTypes.includes(el.value)?el.value:'전체';updateReleaseNotes();return;}if(el.dataset.statFilter){const k=el.dataset.statFilter;if(['server','season','tier','snapshot','sort','badgeSnapshot'].includes(k)){state.statistics[k]=el.value;if(k==='server'){state.statistics.season='';state.statistics.snapshot='';}if(['season','tier'].includes(k))state.statistics.snapshot='';if(k==='sort')state.statistics.direction=el.value==='name'?'asc':'desc';refreshStatistics();}return;}if(el.id==='character-sort'){state.sort=el.value;updateExplorer();}if(el.id==='picker-sort'){pickerContext.sort=el.value;updatePicker($('#picker-search').value);}if(el.id==='situation-filter'){state.situation=el.value;render();}if(el.dataset.filter){const f=el.dataset.scope==='bans'?state.banFilters:state.stats,n=el.dataset.filter;if(n.startsWith('excluded-'))f.excluded[Number(n.split('-')[1])]=byName[el.value]?.id||'';else f[n]=n==='days'?Number(el.value):el.value;if(el.dataset.scope==='bans'){state.banPage=1;state.banRecordHunter='';refreshBanRecords();}else refreshStatistics();}});
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
 for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});

@@ -9,71 +9,72 @@
       "id": "abnormal",
       "name": "비정상",
       "sourceName": "失常",
-      "image": "assets/traits/abnormal.png",
-      "width": 148,
-      "height": 140,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/b/b0/rg1ymnj8delhrzy7r6yu6wnxmuy4ojc.png",
-      "sha256": "6bc8693bd2a593f097cc3572c64f88c9ac60a6d14d2640cefd48101df7c3eca6"
+      "image": "assets/traits/abnormal-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/d/d2/piv0htrn7il01b3egjeperc9d4s7td3.png",
+      "sha256": "7b6e1febb7721b7b67b37f31c9e8b3401f904795c93fe14c587f024ee523df05"
     },
     {
       "id": "excitement",
       "name": "흥분",
       "sourceName": "兴奋",
-      "image": "assets/traits/excitement.png",
-      "width": 148,
-      "height": 140,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/d/d8/ca67buan0y28ov17v8iisvk5idhmkch.png",
-      "sha256": "c4ad537775ca0191ae877924b33b106b83d9520aac0deceec79bc06c3fabbe15"
+      "image": "assets/traits/excitement-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/d/d9/9vlw3opxe521jiwh27lfuld8q92ctxa.png",
+      "sha256": "4669abef1b963d9bcbb0df58fbad61ad7f262bdbaad658340e85d3e73e3f348d"
     },
     {
       "id": "patroller",
       "name": "순찰자",
       "sourceName": "巡视者",
-      "image": "assets/traits/patroller.png",
-      "width": 148,
-      "height": 153,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/3/37/2e6dov3xz1lsfr46pgxq0wyiafy0wp2.png",
-      "sha256": "9f2e2e644a582fc86f2f95a11b5257fcd2956aff1353cf2f372acc61a7f04f12"
+      "image": "assets/traits/patroller-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/a/aa/rb5j6n9m9gumvpy0jhhnrrhmt5riifi.png",
+      "sha256": "6f2be30ec8fa0d880102549658df877b2ce59ac14db7f9d3abf87546c7512ad6"
     },
     {
       "id": "teleport",
       "name": "텔레포트",
       "sourceName": "传送",
-      "image": "assets/traits/teleport.png",
-      "width": 147,
-      "height": 140,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/6/6b/r970o0sdinw3i0jpdrwbpzn93ism6p8.png",
-      "sha256": "5c0ea3e1cab16f060637c88a192bf2dcb6e7eb85eda71dda9f0dd0cdcc56eed3"
+      "image": "assets/traits/teleport-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/0/04/6rs6gkhobw3hqwjpylsryrl3eq5jdtv.png",
+      "sha256": "b8805f0c2fa0cd481e9197bd1415dd9646ec9911203c292e9b245322f30c472b"
     },
     {
       "id": "peeper",
       "name": "정탐자",
       "sourceName": "窥视者",
-      "image": "assets/traits/peeper.png",
-      "width": 147,
-      "height": 141,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/7/75/34e83tzuvhwkoifqke47fkoula1fg0k.png",
-      "sha256": "5e06cbe422cf3294bd0d41392d8d69ee25e2d6312147b156a97ce83ba3cd60cb"
+      "image": "assets/traits/peeper-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/b/ba/4sgjzcxl8526632orcqqgwkt5pv9s4f.png",
+      "sha256": "197cf82c0c89f2728540844db3c29f54d67f74d4cbbc5c9cd61d4c1e2eb67fb7"
     },
     {
       "id": "blink",
       "name": "플래시",
       "sourceName": "闪现",
-      "image": "assets/traits/blink.png",
-      "width": 148,
-      "height": 140,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/2/28/7a5afuasyclnk6ai7u3hnajl98xvson.png",
-      "sha256": "5dbc84089a06e8bea87efedc93ac61625ab0a3fc18bd35519233d1f57e702e33"
+      "image": "assets/traits/blink-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/5/5e/8ivnan4wru8d5lrbacu4oz1vsixnpjc.png",
+      "sha256": "50f195d78ee6d052007f258d07a3108686c714ff28e242d6c7201adf8161174f"
     },
     {
       "id": "warp",
       "name": "형상 이동",
       "sourceName": "移形",
-      "image": "assets/traits/warp.png",
-      "width": 148,
-      "height": 140,
-      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/a/a5/defubcu0komj51meysmj3l5mauaja5c.png",
-      "sha256": "d9bc582f2f3f06c0b07596dfb470c28fd4080d0e26f3b5fbba4d119cb953d4f5"
+      "image": "assets/traits/warp-silhouette.png",
+      "width": 119,
+      "height": 119,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/f/f5/lqbsf4hruktmy7b6m454ya5efebmmg7.png",
+      "sha256": "fdb1a97b299c8fb3b8c51e7f18366cd0ee45c2ef5f91ae1853ef4d7b653afd63"
     }
-  ]
+  ],
+  "variant": "Transparent glyph originals displayed as white silhouettes using CSS; no badge background."
 }
