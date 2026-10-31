@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.17.1",
+  "lastAnnouncedVersion": "1.17.2",
   "entries": [
     {
       "date": "2026-10-31",
@@ -57,7 +57,9 @@
         "암호 장치를 해독기로 복원하고 표현·문장 통일",
         "중복 안내와 빈 연구 영역을 줄이고 핵심 조건·예외 유지"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.2",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
@@ -67,7 +69,9 @@
         "화면 안내·입력·오류 문구의 말투·조사·목적어 통일",
         "공략의 적용 조건과 예외, 장단점의 어구체 유지"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.2",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
@@ -78,7 +82,9 @@
         "장점·단점 제목을 맞추고 캐릭터별 단점 문구 정리",
         "보조 특성 7종 아이콘 표시 및 활용법·주의할 점 항목 제거"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.2",
+      "announcedAt": "2026-10-31"
     }
   ]
 }
