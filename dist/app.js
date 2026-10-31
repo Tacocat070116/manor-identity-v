@@ -534,7 +534,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=48f821cc3126'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=43225fc5cc25')]);
+ const responses=await Promise.all([fetch('data.json?v=48f821cc3126'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=d661efe32446')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

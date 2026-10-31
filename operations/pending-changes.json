@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.17.2",
+  "lastAnnouncedVersion": "1.17.3",
   "entries": [
     {
       "date": "2026-10-31",
@@ -92,7 +92,9 @@
       "summary": [
         "시너지 화면의 중복 탭 배치 규칙을 제거해 모바일 캐릭터 상세의 네 탭을 한 줄로 정렬"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.3",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
@@ -101,7 +103,9 @@
         "보조 특성 7종을 배경 없는 하얀 실루엣 아이콘으로 변경",
         "함께하면 좋은 생존자의 상황 선택칸과 연결된 필터 제거"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.3",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
@@ -112,7 +116,9 @@
         "대회 반경기 17,056건·상세 16,930건·전체 생존자 밴 16,842건으로 확장",
         "기존 통계 화면에 자료를 연결하고 최신 비동기 요청·캐시·한국어 교정 유지"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.3",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
