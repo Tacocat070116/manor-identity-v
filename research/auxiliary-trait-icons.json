@@ -1,0 +1,79 @@
+{
+  "retrievedAt": "2026-10-31",
+  "copyright": "Game artwork © NetEase",
+  "attribution": "Identity V BWIKI (community wiki); original game images, unmodified.",
+  "sourcePage": "https://wiki.biligame.com/dwrg/%E8%BE%85%E5%8A%A9%E7%89%B9%E8%B4%A8",
+  "scope": "Icon artwork only; gameplay values and guide recommendations are unchanged.",
+  "traits": [
+    {
+      "id": "abnormal",
+      "name": "비정상",
+      "sourceName": "失常",
+      "image": "assets/traits/abnormal.png",
+      "width": 148,
+      "height": 140,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/b/b0/rg1ymnj8delhrzy7r6yu6wnxmuy4ojc.png",
+      "sha256": "6bc8693bd2a593f097cc3572c64f88c9ac60a6d14d2640cefd48101df7c3eca6"
+    },
+    {
+      "id": "excitement",
+      "name": "흥분",
+      "sourceName": "兴奋",
+      "image": "assets/traits/excitement.png",
+      "width": 148,
+      "height": 140,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/d/d8/ca67buan0y28ov17v8iisvk5idhmkch.png",
+      "sha256": "c4ad537775ca0191ae877924b33b106b83d9520aac0deceec79bc06c3fabbe15"
+    },
+    {
+      "id": "patroller",
+      "name": "순찰자",
+      "sourceName": "巡视者",
+      "image": "assets/traits/patroller.png",
+      "width": 148,
+      "height": 153,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/3/37/2e6dov3xz1lsfr46pgxq0wyiafy0wp2.png",
+      "sha256": "9f2e2e644a582fc86f2f95a11b5257fcd2956aff1353cf2f372acc61a7f04f12"
+    },
+    {
+      "id": "teleport",
+      "name": "텔레포트",
+      "sourceName": "传送",
+      "image": "assets/traits/teleport.png",
+      "width": 147,
+      "height": 140,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/6/6b/r970o0sdinw3i0jpdrwbpzn93ism6p8.png",
+      "sha256": "5c0ea3e1cab16f060637c88a192bf2dcb6e7eb85eda71dda9f0dd0cdcc56eed3"
+    },
+    {
+      "id": "peeper",
+      "name": "정탐자",
+      "sourceName": "窥视者",
+      "image": "assets/traits/peeper.png",
+      "width": 147,
+      "height": 141,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/7/75/34e83tzuvhwkoifqke47fkoula1fg0k.png",
+      "sha256": "5e06cbe422cf3294bd0d41392d8d69ee25e2d6312147b156a97ce83ba3cd60cb"
+    },
+    {
+      "id": "blink",
+      "name": "플래시",
+      "sourceName": "闪现",
+      "image": "assets/traits/blink.png",
+      "width": 148,
+      "height": 140,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/2/28/7a5afuasyclnk6ai7u3hnajl98xvson.png",
+      "sha256": "5dbc84089a06e8bea87efedc93ac61625ab0a3fc18bd35519233d1f57e702e33"
+    },
+    {
+      "id": "warp",
+      "name": "형상 이동",
+      "sourceName": "移形",
+      "image": "assets/traits/warp.png",
+      "width": 148,
+      "height": 140,
+      "sourceImage": "https://patchwiki.biligame.com/images/dwrg/a/a5/defubcu0komj51meysmj3l5mauaja5c.png",
+      "sha256": "d9bc582f2f3f06c0b07596dfb470c28fd4080d0e26f3b5fbba4d119cb953d4f5"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import {feedbackCard,feedbackComment,feedbackHistory,feedbackResponse,feedbackStatusForm,feedbackProgress,feedbackStatusGuide,FEEDBACK_STATUSES,FEEDBACK_STATUS_HELP,mountFeedback} from './dist/feedback.js';
+import {feedbackCard,feedbackComment,feedbackHistory,feedbackResponse,feedbackStatusForm,feedbackStatusGuide,FEEDBACK_STATUSES,FEEDBACK_STATUS_HELP,mountFeedback} from './dist/feedback.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
 const id='11111111-1111-4111-8111-111111111111',author={characterId:'c01',number:1,name:'거미 #001'};
@@ -49,52 +49,50 @@ test('operator controller preserves a reply draft through a status save and save
 });
 test('feedback and comment templates escape user text and never expose a public status editor',()=>{
  const card=feedbackCard(post,chars);assert(!card.includes('<script>'));assert(!card.includes('<img src=x'));assert(card.includes('&lt;script&gt;'));assert(!card.includes('data-fb-form="status"'));
- assert(card.startsWith('<a class="fb-card"'));assert.equal((card.match(/<a\b/g)||[]).length,1);assert(!card.includes('<button'));assert(card.includes('aria-labelledby="fb-card-title-'+id+'"'));assert(card.includes('댓글 0'));assert(!card.includes('data-fb="vote"'));
+ assert(card.startsWith('<article class="fb-card"'));assert.equal((card.match(/<a\b/g)||[]).length,2);assert(!/<a\b[^>]*>[\s\S]*<a\b[^>]*>[\s\S]*<\/a>[\s\S]*<\/a>/.test(card));assert(card.includes('aria-describedby="fb-card-labels-'+id+'"'));assert(card.includes('&comment=1'));assert(card.includes('댓글 0'));assert(!card.includes('data-fb="vote"'));
  const comment=feedbackComment({id,author,body:'<svg onload=alert(1)>',createdAt:post.createdAt,isAuthor:true,isMine:false},chars);assert(comment.includes('&lt;svg'));assert(comment.includes('작성자'));assert(!comment.includes('data-fb="delete-comment"'));
 });
 test('cards announce an operator reply independently of processing status or visitor comments',()=>{
  for(const status of ['open','reviewing','planned','completed','hold']){
   const answered=feedbackCard({...post,status,reason:'  확인했습니다. 검토를 진행할게요.  ',commentCount:0},chars);
   assert(answered.includes('운영자 답변'));assert(!answered.includes('답변 완료'));assert(answered.includes('class="fb-response-badge"'));assert(answered.includes('fb-icon-check'));
-  assert(answered.includes(`aria-describedby="fb-card-response-${id}"`));assert(answered.includes(`id="fb-card-response-${id}"`));
-  assert(answered.includes(`status-${status}`));assert(answered.includes('댓글 0'));assert(answered.includes('확인했습니다.'));
+  assert(answered.includes(`aria-describedby="fb-card-labels-${id}"`));assert(answered.indexOf('fb-response-badge')<answered.indexOf('<h2>'));
+  assert(answered.includes(`status-${status}`));assert(answered.includes('댓글 0'));assert(!answered.includes('확인했습니다.'));assert(!answered.includes('fb-card-answer'));assert(answered.includes('댓글 작성'));
   for(const reason of [undefined,null,'',' \n\t ']){
    const unanswered=feedbackCard({...post,status,reason,commentCount:12},chars);
-   assert(!unanswered.includes('fb-response-badge'));assert(unanswered.includes('fb-answer-pending'));assert(unanswered.includes('댓글 12'));
+   assert(!unanswered.includes('fb-response-badge'));assert(!unanswered.includes('fb-answer-pending'));assert(!unanswered.includes('아직 등록'));assert(unanswered.includes('댓글 12'));
   }
  }
 });
-test('status definitions distinguish commitment, progress and missing individual reasons',()=>{
+test('the status dictionary remains available without repeating status panels or answer previews',()=>{
  const guide=feedbackStatusGuide();
- for(const status of Object.keys(FEEDBACK_STATUSES)){
-  assert(guide.includes(FEEDBACK_STATUS_HELP[status]));
-  const progress=feedbackProgress({...post,status});
-  assert(progress.includes(FEEDBACK_STATUS_HELP[status]));
-  assert(progress.includes('fb-answer-pending'));
-  assert(!feedbackProgress({...post,status,reason:'공개된 실제 답변'}).includes('fb-answer-pending'));
- }
- assert(feedbackProgress({...post,status:'hold',reason:'  '}).includes('보류 사유는 아직 등록되지 않았습니다.'));
- assert(feedbackProgress({...post,status:'reviewing'}).includes('검토 내용은 아직 등록되지 않았습니다.'));
+ for(const status of Object.keys(FEEDBACK_STATUSES))assert(guide.includes(FEEDBACK_STATUS_HELP[status]));
  assert(guide.includes('적용 일정은 별도로 안내합니다.'));
  assert(guide.includes('운영자 답변과 반영 완료는 별개입니다.'));
- const unknown=feedbackProgress({...post,status:'<svg onload=alert(1)>'});
+ const unknown=feedbackCard({...post,status:'<svg onload=alert(1)>'},chars);
  assert(unknown.includes('상태 확인 필요'));assert(!unknown.includes('<svg onload'));assert(!unknown.includes('status-open'));
  const card=feedbackCard({...post,status:'hold',reason:'<script>사유</script>\n내용'},chars);
- assert(card.includes('&lt;script&gt;사유'));assert(!card.includes('<script>'));
+ assert(!card.includes('사유'));assert(!card.includes('<script>'));
+ assert(!feedbackCard(post,chars,{admin:true}).includes('data-fb="comment"'));
 });
 test('whole-card navigation opens once and preserves native modified clicks',async()=>{
  const previous=globalThis.fetch,handlers={},opened=[];globalThis.fetch=async()=>({ok:true,json:async()=>({posts:[post],counts:{open:1},total:1,nextPage:null})});
  const root={innerHTML:'',addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],contains:()=>true};
- const dispose=mountFeedback(root,{navigate:id=>opened.push(id)});await new Promise(resolve=>setImmediate(resolve));
+ const dispose=mountFeedback(root,{navigate:(id,comment)=>opened.push({id,comment})});await new Promise(resolve=>setImmediate(resolve));
  const link={dataset:{fb:'open',id}};
  try{
   assert(!root.innerHTML.includes('추천순'));assert(!root.innerHTML.includes('fb-vote'));assert(root.innerHTML.includes('댓글순'));
-  for(const status of Object.keys(FEEDBACK_STATUSES))assert(root.innerHTML.includes(`data-status="${status}" aria-pressed="false"`));
+  assert(!root.innerHTML.includes('fb-summary'));assert(root.innerHTML.includes('data-fb-filter="status"'));
   assert(root.innerHTML.includes('처리 상태는 어떤 뜻인가요?'));
   for(const modifier of ['ctrlKey','metaKey','shiftKey','altKey'])await handlers.click({target:{closest:()=>link},[modifier]:true,button:0,preventDefault(){assert.fail('modified click must remain native');}});
   assert.deepEqual(opened,[]);let prevented=0;
   await handlers.click({target:{closest:()=>link},button:0,preventDefault(){prevented++;}});
-  assert.equal(prevented,1);assert.deepEqual(opened,[id]);
+  assert.equal(prevented,1);assert.deepEqual(opened,[{id,comment:false}]);
+  const commentLink={dataset:{fb:'comment',id}};
+  for(const modifier of ['ctrlKey','metaKey','shiftKey','altKey'])await handlers.click({target:{closest:()=>commentLink},[modifier]:true,button:0,preventDefault(){assert.fail('modified comment click must remain native');}});
+  assert.equal(opened.length,1);
+  await handlers.click({target:{closest:()=>commentLink},button:0,preventDefault(){prevented++;}});
+  assert.deepEqual(opened,[{id,comment:false},{id,comment:true}]);
  }finally{dispose();globalThis.fetch=previous;}
 });
 test('comments still create guest identity only on write and refresh the shared discussion',async()=>{
@@ -113,7 +111,7 @@ test('comments still create guest identity only on write and refresh the shared 
  let dispose;
  try{
   dispose=mountFeedback(root,{characters:chars,postId:id});await new Promise(resolve=>setImmediate(resolve));
-  assert.equal(calls.length,2);assert(calls.every(c=>c.opts.method==='GET'&&!c.opts.headers.Authorization));assert(root.innerHTML.includes('댓글 등록'));assert(!root.innerHTML.includes('fb-vote'));
+  assert.equal(calls.length,2);assert(calls.every(c=>c.opts.method==='GET'&&!c.opts.headers.Authorization));assert(root.innerHTML.includes('댓글 등록'));assert(!root.innerHTML.includes('현재 처리 상태'));assert(!root.innerHTML.includes('fb-progress'));assert(!root.innerHTML.includes('fb-vote'));
   let reset=false;const form={dataset:{fbForm:'comment'},values:{body:comment.body},reportValidity:()=>true,querySelector:()=>({disabled:false,isConnected:false}),reset(){reset=true;}};
   await handlers.submit({target:{closest:()=>form},preventDefault(){}});
   const write=calls.find(c=>c.url.endsWith('/comments')&&c.opts.method==='POST');assert.equal(write.opts.headers.Authorization,'Bearer '+'a'.repeat(64));assert.equal(JSON.parse(write.opts.body).body,comment.body);
@@ -128,8 +126,23 @@ test('live navigation restores feedback posts and retires the old source route',
  const db=JSON.parse(fs.readFileSync('dist/data.json')),specialties=JSON.parse(fs.readFileSync('dist/specialties.json')),introductions=JSON.parse(fs.readFileSync('dist/introductions.json')),releases=JSON.parse(fs.readFileSync('dist/releases.json'));const nodes=new Map(),mounts=[];let disposed=0,navMounts=0;const navUpdates=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
  const context={...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
- document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(){}},window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=feedback&post='+id},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
+ document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(){}},window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=feedback&post='+id+'&comment=1'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
  mountFeedback:(root,opts)=>{mounts.push(opts);root.innerHTML='shared feedback';return ()=>disposed++;},createCarouselSession:()=>({}),carouselItems:()=>[],mountNavigation:()=>{navMounts++;return {update(next){navUpdates.push({...next});}};},mountHeroCarousel:()=>()=>{},fetch:async url=>({ok:true,json:async()=>url.startsWith('specialties')?specialties:url.startsWith('introductions')?introductions:url.startsWith('releases')?releases:db})};
- let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state};',context);await context.app.boot();assert.equal(mounts[0].postId,id);assert(nodes.get('#header').innerHTML.includes('피드백'));assert(!nodes.get('#header').innerHTML.includes('>근거<'));assert(!nodes.get('#footer').innerHTML.includes('#v=sources'));
+ let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state};',context);await context.app.boot();assert.equal(mounts[0].postId,id);assert.equal(mounts[0].focusComment,true);context.location.hash='#v=feedback';mounts[0].navigate(id,true);assert.equal(context.location.hash,'#v=feedback&post='+id+'&comment=1');assert(nodes.get('#header').innerHTML.includes('피드백'));assert(!nodes.get('#header').innerHTML.includes('>근거<'));assert(!nodes.get('#footer').innerHTML.includes('#v=sources'));
  context.location.hash='#v=sources';context.app.readRoute();await context.app.render();assert.equal(disposed,1);assert(nodes.get('#page-body').innerHTML.includes('id="characters"'));assert.equal(context.app.state.view,'explore');assert.equal(navMounts,1);assert.deepEqual(navUpdates.map(x=>x.view),['feedback','explore']);
+});
+
+test('comment entry focuses only the matching loaded form, without registering an identity or stealing focus on reload',async()=>{
+ const old=globalThis.fetch,handlers={},calls=[];let focus=0,scroll=0,dispose;
+ const root={innerHTML:'',contains:()=>true,addEventListener:(k,v)=>handlers[k]=v,removeEventListener:k=>delete handlers[k],querySelector:s=>s==='#fb-comment-body'?{focus(){focus++;},scrollIntoView(){scroll++;}}:null};
+ globalThis.fetch=async(url,opts)=>{calls.push({url,opts});return {ok:true,json:async()=>url.endsWith('/comments')?{comments:[],nextAfter:null}:{post,history:[],myAlias:null}};};
+ try{
+  dispose=mountFeedback(root,{postId:id,focusComment:true});await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(focus,1);assert.equal(scroll,1);assert(calls.every(c=>c.opts.method==='GET'));
+  await handlers.click({target:{closest:()=>({dataset:{fb:'reload'}})},preventDefault(){}});await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(focus,1);assert.equal(scroll,1);
+  dispose();focus=0;scroll=0;
+  dispose=mountFeedback(root,{postId:id,focusComment:true});dispose();await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(focus,0);assert.equal(scroll,0);
+ }finally{dispose?.();globalThis.fetch=old;}
 });

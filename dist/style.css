@@ -433,3 +433,7 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 /* Keep inline emphasis in the original text flow, including flex/grid labels. */
 .inline-copy{display:inline;min-width:0;font:inherit;color:inherit;letter-spacing:inherit}
 .text-emphasis{font-size:inherit;font-weight:700;line-height:inherit;color:inherit}
+
+.auxiliary-trait-card .panel-title{gap:12px;align-items:center}
+.auxiliary-trait-art{display:grid;place-items:center;flex:0 0 60px;width:60px;height:60px;border:1px solid var(--persona-line);border-radius:16px;background:var(--persona-bg)}
+.auxiliary-trait-art img{display:block;width:48px;height:48px;object-fit:contain}

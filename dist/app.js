@@ -7,7 +7,7 @@ import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './them
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=673ca8c7ec84';
-import {mountFeedback} from './feedback.js?v=8dccb0675208';
+import {mountFeedback} from './feedback.js?v=edf87fe575c6';
 import {mountSynergy} from './synergy.js?v=0b98c3382f41';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=29eb430cab7a';
 import {mountMatchupTips} from './matchup-tips.js?v=eb8424f7732b';
@@ -181,6 +181,7 @@ function readRoute(){
  if(!['pick','win','draw','loss','ban','appearances','name'].includes(state.statistics.sort))state.statistics.sort='pick';
  if(!['asc','desc'].includes(state.statistics.direction))state.statistics.direction='desc';
  state.feedbackPost=/^[0-9a-f-]{36}$/.test(p.get('post')||'')?p.get('post'):'';
+ state.feedbackComment=state.view==='feedback'&&p.get('comment')==='1';
  state.creatorPost=/^[0-9a-f-]{36}$/.test(p.get('channel')||'')?p.get('channel'):'';
  const f=state.view==='bans'?state.banFilters:state.stats;
  if(p.has('days')&&[0,30,90,365].includes(Number(p.get('days'))))f.days=Number(p.get('days'));
@@ -251,8 +252,10 @@ function characterHeading(c){return `<div class="character-heading"><button clas
 function synergyDetails(l){
  return `<dl><div><dt>활용법</dt><dd>${guide(l.use,byName[l.character]?.id,byName[l.target]?.id)}</dd></div><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id,byName[l.target]?.id)}</dd></div><div><dt>주의할 점</dt><dd>${guide(l.caution,byName[l.character]?.id,byName[l.target]?.id)}</dd></div></dl>`;
 }
-function synergyCard(l){
- return `<div class="panel relation-card synergy-card">${byName[l.target]?characterHeading(byName[l.target]):`<h3 class="panel-title">${esc(l.target)}</h3>`}<p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}</div>`;
+const auxiliaryTraits={'비정상':'abnormal','흥분':'excitement','순찰자':'patroller','텔레포트':'teleport','정탐자':'peeper','플래시':'blink','형상 이동':'warp'};
+function auxiliaryTraitCard(l){
+ const art=auxiliaryTraits[l.target];
+ return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></div></dl></div>`;
 }
 function survivorSynergyCard(group,c){
  const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명에 따른 조합 후보로, 실전 연계 효과는 미확인입니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략 기준입니다. 검토일 ${esc(l.reviewedAt)} 이후의 스킬 변경을 확인하세요.</p>`:''}`;
@@ -264,7 +267,7 @@ function survivorSynergies(c){
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
- return `<div class="specialty-summary"><span class="specialty-summary-icon">${primarySpecialtyIcon(c)}</span><div><h2>역할 태그</h2>${specialtyExplanation(c)}</div></div><div class="two-col">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('주의할 점',c.weaknesses,'warm','info',c.id)}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div>${playGuide(c)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(synergyCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(synergyCard).join('')}</div></details>`:''}</section>`}`;
+ return `<div class="specialty-summary"><span class="specialty-summary-icon">${primarySpecialtyIcon(c)}</span><div><h2>역할 태그</h2>${specialtyExplanation(c)}</div></div><div class="two-col">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div>${playGuide(c)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(auxiliaryTraitCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(auxiliaryTraitCard).join('')}</div></details>`:''}</section>`}`;
 }
 function matchupItem(i){
  const c=byName[i.name];if(!c)return '';
@@ -400,7 +403,7 @@ async function render({scroll=false}={}){
  else if(state.view==='recovery'){disposeRecovery=mountRecoveryPage(body);}
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
  else if(state.view==='creators'){disposeCreators=mountCreators(body,{characters:byId,postId:state.creatorPost,navigate:id=>navigate({v:'creators',...(id?{channel:id}:{})})});}
- else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,navigate:id=>navigate({v:'feedback',...(id?{post:id}:{})})});}
+ else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,focusComment:state.feedbackComment,navigate:(id,comment)=>navigate({v:'feedback',...(id?{post:id}:{}),...(id&&comment?{comment:'1'}:{})})});}
  else{
   const view=state.view;
   body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';
@@ -511,7 +514,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=3db0ce16caf6'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c25da2a7675f')]);
+ const responses=await Promise.all([fetch('data.json?v=513704592262'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c25da2a7675f')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

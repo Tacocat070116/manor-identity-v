@@ -3078,6 +3078,381 @@
       "path": "dist/specialties.json/characters/c74/specialtyReasons/커버",
       "before": "모아 둔 주술로 동료를 쫓거나 운반하는 감시자를 기절시킵니다. 짧은 기절만으로는 구출된 동료가 다시 쓰러지는 것을 막기 어렵습니다.",
       "after": "모아 둔 저주로 동료를 쫓거나 운반하는 감시자를 기절시킵니다. 짧은 기절만으로는 구출된 동료가 다시 쓰러지는 것을 막기 어렵습니다."
+    },
+    {
+      "path": "dist/data.json/characters/0/weaknesses/1",
+      "before": "낮은 시점과 큰 몸체에 적응 필요",
+      "after": "낮은 시점과 큰 몸체로 시야 확보가 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/1/weaknesses/0",
+      "before": "초반부터 꼭두각시·원한의 그림자의 배치 판단 필요",
+      "after": "초반 꼭두각시·원한의 그림자 배치가 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/1/weaknesses/2",
+      "before": "빠른 이동형 상대에게 시간 소모",
+      "after": "이동이 빠른 상대를 추격하는 데 시간 소모"
+    },
+    {
+      "path": "dist/data.json/characters/2/weaknesses/2",
+      "before": "맵별 콘솔 위치 숙지가 필수",
+      "after": "맵별 콘솔 위치에 대한 높은 숙련도 요구"
+    },
+    {
+      "path": "dist/data.json/characters/4/weaknesses/0",
+      "before": "조작 대상 전환이 매우 복잡",
+      "after": "조작 대상 전환이 복잡함"
+    },
+    {
+      "path": "dist/data.json/characters/4/weaknesses/1",
+      "before": "기생 제거와 신도 범위 이탈에 대응 필요",
+      "after": "기생 제거와 신도 활동 범위 이탈에 취약"
+    },
+    {
+      "path": "dist/data.json/characters/5/weaknesses/1",
+      "before": "구역 형성에 이동 시간 필요",
+      "after": "구역을 형성하는 데 이동 시간 소모"
+    },
+    {
+      "path": "dist/data.json/characters/7/weaknesses/1",
+      "before": "촉수를 잘 피하는 상대에게 추격 지연",
+      "after": "촉수를 피하는 상대에게 추격이 지연됨"
+    },
+    {
+      "path": "dist/data.json/characters/9/weaknesses/2",
+      "before": "짧은 일반 공격 사거리·판자 대응 부담",
+      "after": "일반 공격 사거리가 짧고 판자 대응이 어려움"
+    },
+    {
+      "path": "dist/data.json/characters/12/weaknesses/2",
+      "before": "일반 공격 범위와 탐지력이 아쉬움",
+      "after": "일반 공격 범위와 탐지 능력이 제한적"
+    },
+    {
+      "path": "dist/data.json/characters/13/weaknesses/0",
+      "before": "에너지와 과부하 관리가 필요함",
+      "after": "에너지·과부하 관리가 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/13/weaknesses/2",
+      "before": "의자를 쓰는 감시자와 운영 방식이 다름",
+      "after": "쓰러진 생존자의 회복·출혈까지 관리해야 함"
+    },
+    {
+      "path": "dist/data.json/characters/14/weaknesses/2",
+      "before": "산제비나비 차단과 짧은 공격 사거리에 취약",
+      "after": "산제비나비 차단에 취약하고 공격 사거리가 짧음"
+    },
+    {
+      "path": "dist/data.json/characters/15/weaknesses/1",
+      "before": "거리·고저차 오판에 큰 손실",
+      "after": "거리·고저차를 잘못 판단하면 손실이 큼"
+    },
+    {
+      "path": "dist/data.json/characters/17/weaknesses/2",
+      "before": "공격 회복 동작과 장거리 이동에 부담",
+      "after": "공격 회복 동작과 장거리 이동이 부담됨"
+    },
+    {
+      "path": "dist/data.json/characters/19/weaknesses/0",
+      "before": "조작 버튼과 관리 대상이 많음",
+      "after": "조작 버튼과 관리 대상이 많아 조작 부담이 큼"
+    },
+    {
+      "path": "dist/data.json/characters/19/weaknesses/1",
+      "before": "빠른 거리 벌리기에 취약",
+      "after": "빠르게 거리를 벌리는 상대에게 취약"
+    },
+    {
+      "path": "dist/data.json/characters/19/weaknesses/2",
+      "before": "상대 행동을 잘못 읽으면 손실",
+      "after": "상대 행동 예측에 실패하면 기록 활용 효율 저하"
+    },
+    {
+      "path": "dist/data.json/characters/21/weaknesses/0",
+      "before": "본체와 이스인 동시 관리",
+      "after": "본체와 이스인을 함께 관리하는 조작 부담"
+    },
+    {
+      "path": "dist/data.json/characters/23/weaknesses/0",
+      "before": "정밀한 벌침 조준이 필요",
+      "after": "벌침 조준 난도가 높음"
+    },
+    {
+      "path": "dist/data.json/characters/24/weaknesses/0",
+      "before": "그림자 경로 숙지가 필수",
+      "after": "그림자 경로에 대한 높은 숙련도 요구"
+    },
+    {
+      "path": "dist/data.json/characters/27/weaknesses/0",
+      "before": "치료 조합이 피해 누적을 지움",
+      "after": "치료 중심 조합을 상대로 피해 누적이 어려움"
+    },
+    {
+      "path": "dist/data.json/characters/28/weaknesses/0",
+      "before": "이동기 방향 전환이 불편",
+      "after": "이동기의 방향 전환이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/29/weaknesses/0",
+      "before": "실내와 천장 지형에 제한",
+      "after": "실내와 천장이 있는 지형에서 도약이 제한됨"
+    },
+    {
+      "path": "dist/data.json/characters/29/weaknesses/1",
+      "before": "착지 조준 실패의 손실",
+      "after": "착지 조준에 실패하면 손실이 큼"
+    },
+    {
+      "path": "dist/data.json/characters/29/weaknesses/2",
+      "before": "도약 에너지 관리 필요",
+      "after": "도약 에너지 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/31/weaknesses/0",
+      "before": "조각상 충전량과 사용 횟수 관리 필요",
+      "after": "조각상 충전량과 사용 횟수 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/33/weaknesses/0",
+      "before": "고속 조향이 매우 어려움",
+      "after": "고속 주행 중 방향 조작이 어려움"
+    },
+    {
+      "path": "dist/data.json/characters/36/weaknesses/1",
+      "before": "도약 지형과 착지 실수 부담",
+      "after": "도약 지형과 착지를 잘못 판단하면 위험"
+    },
+    {
+      "path": "dist/data.json/characters/38/weaknesses/0",
+      "before": "퉁소를 소모하면 능력 감소",
+      "after": "퉁소를 소모하면 대응 능력 감소"
+    },
+    {
+      "path": "dist/data.json/characters/39/weaknesses/1",
+      "before": "흥분·장애물에 총이 무효화됨",
+      "after": "흥분·장애물에 신호총이 무효화됨"
+    },
+    {
+      "path": "dist/data.json/characters/40/weaknesses/1",
+      "before": "방어 실패 후 공백",
+      "after": "방어 실패 후 대응 공백"
+    },
+    {
+      "path": "dist/data.json/characters/41/weaknesses/0",
+      "before": "화살 명중과 수량 관리 필요",
+      "after": "화살 조준과 수량 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/41/weaknesses/1",
+      "before": "지원하러 이동하는 동안 해독을 쉬게 됨",
+      "after": "지원을 위해 이동하는 동안 해독 중단"
+    },
+    {
+      "path": "dist/data.json/characters/43/weaknesses/1",
+      "before": "구출 전후 해독 효율이 달라짐",
+      "after": "구출 전후로 해독 효율이 달라져 운영이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/43/weaknesses/2",
+      "before": "피해 감소가 무적을 뜻하지 않음",
+      "after": "피해 감소 중에도 공격 피해를 받음"
+    },
+    {
+      "path": "dist/data.json/characters/44/weaknesses/0",
+      "before": "정밀한 경로 조작 필요",
+      "after": "이동 경로 조작이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/44/weaknesses/1",
+      "before": "자원·효과 지속 시간 관리",
+      "after": "자원과 효과 지속 시간 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/44/weaknesses/2",
+      "before": "회복 중 정지로 노출 가능",
+      "after": "회복 중 정지해 공격에 노출될 위험"
+    },
+    {
+      "path": "dist/data.json/characters/45/weaknesses/2",
+      "before": "환영을 쉽게 제거하는 상대 주의",
+      "after": "환영을 쉽게 제거하는 감시자에게 취약"
+    },
+    {
+      "path": "dist/data.json/characters/46/weaknesses/2",
+      "before": "팀원 상태와 구출 판단이 복잡",
+      "after": "팀원 상태에 따른 구출 판단이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/48/weaknesses/0",
+      "before": "사용 횟수 제한",
+      "after": "소지품 사용 횟수가 제한적"
+    },
+    {
+      "path": "dist/data.json/characters/49/weaknesses/2",
+      "before": "맵 숙지와 안전 동선 의존",
+      "after": "맵 숙련도와 안전한 이동 경로에 대한 의존도가 높음"
+    },
+    {
+      "path": "dist/data.json/characters/50/weaknesses/2",
+      "before": "페이지를 잘못 쓰면 팀 효율 감소",
+      "after": "페이지 사용을 잘못 판단하면 팀 효율 감소"
+    },
+    {
+      "path": "dist/data.json/characters/51/weaknesses/2",
+      "before": "잠행만으로 구출 성공이 보장되지 않음",
+      "after": "잠행 해제 후 구출 과정에서 공격에 노출"
+    },
+    {
+      "path": "dist/data.json/characters/54/weaknesses/2",
+      "before": "위기 모면 상태 등 사용 조건 주의",
+      "after": "위기 모면 중 술 사용·조합 불가"
+    },
+    {
+      "path": "dist/data.json/characters/55/weaknesses/2",
+      "before": "지도에서 확인한 위치에 맞춰 미리 이동해야 함",
+      "after": "지도 확인 후 미리 이동하지 못하면 추격에 취약"
+    },
+    {
+      "path": "dist/data.json/characters/56/weaknesses/0",
+      "before": "통로를 설치할 지형 숙지 필요",
+      "after": "통로 설치에 지형 숙련도가 필요함"
+    },
+    {
+      "path": "dist/data.json/characters/56/weaknesses/2",
+      "before": "통로 출구 추격·잔상 피해 주의",
+      "after": "통로 출구에서의 재추격과 잔상 피해에 취약"
+    },
+    {
+      "path": "dist/data.json/characters/57/weaknesses/2",
+      "before": "부엉이 재충전·창틀 이용 불이익 관리",
+      "after": "부엉이 재충전 부담과 창틀 이용 불이익"
+    },
+    {
+      "path": "dist/data.json/characters/61/weaknesses/2",
+      "before": "돌진 각도·탑승 시간 관리",
+      "after": "돌진 각도와 탑승 시간 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/63/weaknesses/1",
+      "before": "보호대 수량과 방향 조작",
+      "after": "보호대 수량이 제한적이고 방향 조작이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/63/weaknesses/2",
+      "before": "지연 피해와 마지막 희망 충돌 주의",
+      "after": "지연 피해와 마지막 희망의 적용 시점 관리 부담"
+    },
+    {
+      "path": "dist/data.json/characters/64/weaknesses/2",
+      "before": "로켓 수량 관리 필요",
+      "after": "로켓 수량이 제한적"
+    },
+    {
+      "path": "dist/data.json/characters/67/weaknesses/2",
+      "before": "팀의 회복 수단과 협조 필요",
+      "after": "회복 수단에 따라 동료와의 협조가 필요함"
+    },
+    {
+      "path": "dist/data.json/characters/68/weaknesses/0",
+      "before": "추격 중 수동 박자 입력",
+      "after": "추격 중 박자를 직접 입력해야 하는 조작 부담"
+    },
+    {
+      "path": "dist/data.json/characters/68/weaknesses/2",
+      "before": "긴 가속 대기 시간의 빈틈",
+      "after": "가속 재사용 대기 시간이 길어 대응 공백 발생"
+    },
+    {
+      "path": "dist/data.json/characters/69/weaknesses/0",
+      "before": "설치와 착지 위치가 중요",
+      "after": "설치·착지 위치에 따른 활용 편차가 큼"
+    },
+    {
+      "path": "dist/data.json/characters/69/weaknesses/1",
+      "before": "감시자가 발사기를 파괴 가능",
+      "after": "감시자에게 발사기를 파괴당할 수 있음"
+    },
+    {
+      "path": "dist/data.json/characters/72/weaknesses/0",
+      "before": "전송 손실과 연결 파괴",
+      "after": "전송 손실과 연결 파괴로 해독 효율 저하"
+    },
+    {
+      "path": "dist/data.json/characters/72/weaknesses/2",
+      "before": "팀 해독 상황을 읽어야 함",
+      "after": "팀의 해독 진행도에 맞춘 전송 판단이 까다로움"
+    },
+    {
+      "path": "dist/data.json/characters/74/weaknesses/1",
+      "before": "동료와 지원 방식 공유 필요",
+      "after": "동료와 지원 방식을 맞추지 못하면 효과 감소"
+    },
+    {
+      "path": "dist/data.json/characters/75/weaknesses/2",
+      "before": "운반 중 동료와 함께 위험",
+      "after": "운반 중 동료와 함께 공격에 노출될 위험"
+    },
+    {
+      "path": "dist/data.json/characters/76/weaknesses/1",
+      "before": "크리켓볼 파괴와 수량 관리",
+      "after": "크리켓볼 파괴로 자원 소진 위험"
+    },
+    {
+      "path": "dist/data.json/characters/76/weaknesses/2",
+      "before": "해독 손실을 보완할 지원 필요",
+      "after": "지원 성과가 부족하면 해독 손실을 보완하기 어려움"
+    },
+    {
+      "path": "dist/data.json/characters/77/weaknesses/0",
+      "before": "동료의 스킬 이해와 협조 필요",
+      "after": "동료의 스킬 이해와 협조에 대한 의존도가 높음"
+    },
+    {
+      "path": "dist/data.json/characters/77/weaknesses/1",
+      "before": "설치 위치가 나쁘면 손실",
+      "after": "설치 위치가 나쁘면 활용 효율 저하"
+    },
+    {
+      "path": "dist/data.json/characters/79/weaknesses/0",
+      "before": "돌진 중 항상 무적은 아님",
+      "after": "돌진 중 피해를 피할 수 있는 시간이 제한적"
+    },
+    {
+      "path": "dist/data.json/characters/79/weaknesses/1",
+      "before": "방어 실패의 위험",
+      "after": "방어에 실패하면 공격에 노출"
+    },
+    {
+      "path": "dist/data.json/characters/81/weaknesses/1",
+      "before": "잘못된 돌진으로 피해 누적",
+      "after": "돌진 판단에 실패하면 피해 누적"
+    },
+    {
+      "path": "dist/data.json/characters/83/weaknesses/0",
+      "before": "느린 해독",
+      "after": "해독 속도가 느림"
+    },
+    {
+      "path": "dist/data.json/characters/85/weaknesses/0",
+      "before": "첫 대면에 준비 시간이 필요",
+      "after": "첫 대면에서 그림 준비에 시간 소모"
+    },
+    {
+      "path": "dist/data.json/characters/85/weaknesses/1",
+      "before": "그림을 그리는 중 빈틈",
+      "after": "그림을 그리는 동안 대응 공백"
+    },
+    {
+      "path": "dist/data.json/characters/87/weaknesses/2",
+      "before": "동료의 보호 효과·통로와 함께 쓸 때 주의",
+      "after": "동료의 보호 효과·통로와 연계할 때 제약"
+    },
+    {
+      "path": "dist/data.json/characters/88/weaknesses/1",
+      "before": "조준·착지 실수 부담",
+      "after": "조준·착지에 실패하면 공격에 노출"
     }
   ],
   "followupReview": {
@@ -3086,5 +3461,12 @@
     "scope": "사이트 작성 공략·화면 안내 문장의 후속 전수 검수",
     "startIndex": 300,
     "changedFields": 314
+  },
+  "weaknessReview": {
+    "baseline": "78fd5f78d896eb004e5c0b2243af4bd6d3976e77",
+    "startIndex": 614,
+    "changedFields": 75,
+    "reviewedCharacters": 89,
+    "gameBalanceRevalidated": false
   }
 }

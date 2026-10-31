@@ -68,6 +68,17 @@
         "공략의 적용 조건과 예외, 장단점의 어구체 유지"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "feedback-cards-weaknesses-trait-icons",
+      "summary": [
+        "피드백 상태 집계판과 상세 글의 중복 처리 상태 안내 제거",
+        "카드 상단으로 운영자 답변 태그 이동, 답변 미리보기 제거 및 댓글 작성 버튼 추가",
+        "장점·단점 제목을 맞추고 캐릭터별 단점 문구 정리",
+        "보조 특성 7종 아이콘 표시 및 활용법·주의할 점 항목 제거"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }
