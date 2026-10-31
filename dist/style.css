@@ -303,6 +303,8 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 }
 
 /* Keep all four character sections visible on narrow screens. */
+.character-tabs{display:flex;flex-wrap:wrap;overflow:visible}
+.character-tabs button{flex:1 1 auto;min-width:0}
 @media(max-width:640px){
  .character-tabs{display:grid;grid-template-columns:1.3fr .7fr 1.3fr .7fr}
  .character-tabs button{min-width:0;padding:10px 4px}

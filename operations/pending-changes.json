@@ -85,6 +85,14 @@
       "announcement": "announced",
       "announcedVersion": "1.17.2",
       "announcedAt": "2026-10-31"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "mobile-character-tabs",
+      "summary": [
+        "시너지 화면의 중복 탭 배치 규칙을 제거해 모바일 캐릭터 상세의 네 탭을 한 줄로 정렬"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }
