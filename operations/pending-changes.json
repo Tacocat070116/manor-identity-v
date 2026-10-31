@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.16.3",
+  "lastAnnouncedVersion": "1.17.0",
   "entries": [
     {
       "date": "2026-10-31",
@@ -16,7 +16,9 @@
         "채널 작성 화면 진입 시 지연된 검색 취소",
         "배포와 공개 공지 분리 및 필수 검증 명령 정리"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.0",
+      "announcedAt": "2026-10-31"
     },
     {
       "date": "2026-10-31",
@@ -29,7 +31,9 @@
         "연구 글의 도감 반영 제안·운영자 검토·원문 연결 구현",
         "상단 확성기에서 최신 공지를 열고 이전 내역으로 연결"
       ],
-      "announcement": "pending-explicit-owner-request"
+      "announcement": "announced",
+      "announcedVersion": "1.17.0",
+      "announcedAt": "2026-10-31"
     }
   ]
 }
