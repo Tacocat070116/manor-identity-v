@@ -1,10 +1,11 @@
+import {skillNamesFor,skillTextParts} from './skill-names.js?v=42deca43e1bd';
 // Presentation only: keep saved text, URLs, editable values and code unchanged.
 const excluded='script,style,textarea,input,select,code,pre,kbd,samp,math,svg,[contenteditable],.inline-copy';
 const separators=/[ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*[·•ㆍ∙‧][ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*/g;
 export function normalizeSeparators(value){
  return String(value).split(/(https?:\/\/[^\s]+)/g).map(part=>/^https?:\/\//.test(part)?part:part.replace(separators,'\u202f·\u202f')).join('');
 }
-export function inlineTextParts(value){
+export function inlineTextParts(value,skillNames=[]){
  const text=normalizeSeparators(value),parts=[];
  const quoted=/https?:\/\/[^\s]+|‘([^‘’\n]+)’|“([^“”\n]+)”|(?<![A-Za-z0-9/@])'([^'\n]+)'(?![A-Za-z0-9])|"([^"\n]+)"/g;
  let offset=0;
@@ -15,15 +16,16 @@ export function inlineTextParts(value){
   offset=match.index+match[0].length;
  }
  if(offset<text.length)parts.push({text:text.slice(offset),strong:false});
- return parts;
+ return parts.flatMap(part=>part.strong?[part]:skillTextParts(part.text,skillNames));
 }
 export function formatTypography(root){
  const doc=root.ownerDocument||root,walker=doc.createTreeWalker(root,4),nodes=[];
  for(let node=walker.nextNode();node;node=walker.nextNode()){
-  if(/[·•ㆍ∙‧‘’“”'"]/.test(node.data)&&!node.parentElement?.closest(excluded))nodes.push(node);
+  if(!node.parentElement?.closest(excluded)&&(/[·•ㆍ∙‧‘’“”'"]/.test(node.data)||node.parentElement?.closest('[data-skill-characters]')))nodes.push(node);
  }
  for(const node of nodes){
-  const parts=inlineTextParts(node.data);
+  const scope=node.parentElement?.closest('[data-skill-characters]');
+  const parts=inlineTextParts(node.data,node.parentElement?.closest('strong,b')?[]:skillNamesFor(scope?.dataset.skillCharacters));
   if(!parts.some(part=>part.strong)){
    const text=parts.map(part=>part.text).join('');
    if(text!==node.data)node.data=text;

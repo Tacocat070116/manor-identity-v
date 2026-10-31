@@ -3,7 +3,7 @@
  display:inline-block;vertical-align:middle;flex-shrink:0;
  stroke-width:1.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;
 }
-.ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="clock"],[data-icon="sun"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
+.ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="megaphone"],[data-icon="clock"],[data-icon="sun"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
  stroke-linecap:round;stroke-linejoin:round;
 }
 .ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="pause"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="external"],[data-icon="swap"],[data-icon="role-hunt"]){
@@ -29,3 +29,36 @@
 .category-chevron{width:16px;height:16px;flex:0 0 16px}
 .panel-title>.ui-icon{align-self:flex-start}
 .tip-guide>.ui-icon{vertical-align:-3px}
+
+/* Move the artwork inside the fixed box, never the button or its hit target.
+   Values are SVG viewBox units: silhouette bounds plus visual weight at 16/20px. */
+.ui-icon>.icon-art{transform:translate(var(--icon-optical-x,0px),var(--icon-optical-y,0px))}
+.ui-icon[data-icon="flask"]{--icon-optical-y:-.75px}
+.ui-icon[data-icon="megaphone"]{--icon-optical-x:-.8px;--icon-optical-y:-.65px}
+.ui-icon[data-icon="palette"]{--icon-optical-x:.2px;--icon-optical-y:.3px}
+.ui-icon[data-icon="key"]{--icon-optical-y:.3px}
+.ui-icon[data-icon="check"]{--icon-optical-y:.6px}
+.ui-icon[data-icon="search"]{--icon-optical-x:.25px;--icon-optical-y:.25px}
+.ui-icon[data-icon="shield"]{--icon-optical-y:.2px}
+.ui-icon[data-icon="message"]{--icon-optical-x:.3px;--icon-optical-y:.5px}
+.ui-icon[data-icon="book"]{--icon-optical-y:.2px}
+.ui-icon[data-icon="star"]{--icon-optical-y:-.4px}
+.ui-icon[data-icon="moon"]{--icon-optical-x:.4px;--icon-optical-y:-.4px}
+.ui-icon[data-icon="arrow"]{--icon-optical-x:-.75px}
+.ui-icon[data-icon="back"]{--icon-optical-x:.75px}
+.ui-icon[data-icon="share"]{--icon-optical-y:-.6px}
+.ui-icon[data-icon="chart"]{--icon-optical-x:.7px;--icon-optical-y:-1px}
+.ui-icon[data-icon="role-kite"]{--icon-optical-x:.5px;--icon-optical-y:-.1px}
+.ui-icon[data-icon="role-cover"]{--icon-optical-y:.35px}
+.ui-icon[data-icon="role-rescue"]{--icon-optical-x:.85px;--icon-optical-y:-.5px}
+.ui-icon[data-icon="role-control"]{--icon-optical-y:.2px}
+.ui-icon[data-icon="heart"]{--icon-optical-y:-.4px}
+.ui-icon[data-icon="music"]{--icon-optical-x:-.2px;--icon-optical-y:.5px}
+.ui-icon[data-icon="game"]{--icon-optical-x:.2px;--icon-optical-y:-1.5px}
+.ui-icon[data-icon="sprout"]{--icon-optical-y:.75px}
+.ui-icon[data-icon="trophy"]{--icon-optical-y:.4px}
+.ui-icon[data-icon="coach"]{--icon-optical-x:-.2px;--icon-optical-y:-.5px}
+.ui-icon[data-icon="gem"]{--icon-optical-y:.25px}
+.ui-icon[data-icon="lock"]{--icon-optical-y:-.4px}
+.ui-icon[data-icon="reply"]{--icon-optical-x:.55px;--icon-optical-y:.5px}
+.creator-gold-cat path{transform:translateY(-1px)}

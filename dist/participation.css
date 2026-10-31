@@ -44,7 +44,6 @@
 .recovery-steps li[aria-current=step]{font-weight:700}
 .recovery-emblem{display:grid;place-items:center;width:58px;height:58px;border:1px solid var(--line);border-radius:18px;background:var(--surface-soft);color:var(--accent);margin-bottom:20px}
 .recovery-emblem svg{width:32px;height:32px}
-.recovery-emblem.is-saved{font-size:28px}
 .recovery-panel h2{font-size:22px;line-height:1.6;letter-spacing:-.04em;margin:18px 0 10px;word-break:keep-all}
 .recovery-panel h3{font-size:14px;margin:0 0 14px}
 .recovery-panel p{font-size:13px;line-height:1.9;color:var(--muted);word-break:keep-all;overflow-wrap:anywhere;margin:0 0 20px}

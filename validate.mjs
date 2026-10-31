@@ -193,7 +193,11 @@ for(const result of context.audit.personaGuides){
  assert.equal((result.overview.match(/class="panel play-guide"/g)||[]).length,1,ch.name+' one combined guide');
  const sections=[...result.guide.matchAll(/<section class="play-guide-section[^\"]*">([\s\S]*?)<\/section>/g)].map(m=>m[1]);
  assert.equal(sections.length,3,ch.name+' use, hold and caution sections');
- result.copy.forEach((copy,i)=>assert.ok(copy&&sections[i].includes('<p>'+copy+'</p>'),ch.name+' preserved guide section '+i));
+ result.copy.forEach((copy,i)=>{
+  const paragraph=sections[i].match(/<p>([\s\S]*?)<\/p>/)?.[1]||'';
+  assert.equal(paragraph.replace(/<[^>]*>/g,''),copy,ch.name+' preserved guide section '+i);
+  assert.ok(paragraph.includes(`data-skill-characters="${ch.id}"`),ch.name+' contextual skill emphasis');
+ });
  assert.equal(result.overview.split(result.copy[2]).length-1,1,ch.name+' caution appears once');
 }
 assert.ok(context.audit.unmappedPersona.includes('새 인격 + 확인 중')&&!context.audit.unmappedPersona.includes('<img'),'unknown builds preserve readable text');

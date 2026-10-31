@@ -9,10 +9,10 @@ export const CREATOR_TAG_GROUPS={
 export const CREATOR_TAGS=Object.values(CREATOR_TAG_GROUPS).flat();
 // Presentation derives from four exact tags; this is separate from owner recommendations.
 export const CREATOR_TAG_BADGES={
- '새내기':{id:'newcomer',label:'새내기',icon:'sprout',description:'첫 발을 내딛는 채널이에요.'},
- '프로':{id:'pro',label:'프로',icon:'trophy',description:'프로 선수의 플레이를 소개하는 채널이에요.'},
- '프로코치':{id:'coach',label:'프로코치',icon:'coach',description:'프로 코치의 시선과 분석을 만날 수 있어요.'},
- '캐릭터장인':{id:'specialist',label:'캐릭터장인',icon:'gem',description:'한 캐릭터를 깊이 파고드는 채널이에요.'},
+ '새내기':{id:'newcomer',label:'새내기',icon:'sprout',description:'활동을 시작한 채널입니다.'},
+ '프로':{id:'pro',label:'프로',icon:'trophy',description:'프로 선수의 플레이를 소개하는 채널입니다.'},
+ '프로코치':{id:'coach',label:'프로코치',icon:'coach',description:'프로 코치의 분석을 제공하는 채널입니다.'},
+ '캐릭터장인':{id:'specialist',label:'캐릭터장인',icon:'gem',description:'한 캐릭터를 집중적으로 다루는 채널입니다.'},
 };
 export function creatorTagBadges(tags){
  const chosen=new Set(Array.isArray(tags)?tags:[]);

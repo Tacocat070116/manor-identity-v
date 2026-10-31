@@ -28,6 +28,7 @@ RULES = json.loads(register.read_text())
 ROLE_REVIEWS = json.loads((ROOT / 'research/roles/reviews.json').read_text())['reviews']
 EDITORIAL_EDITS = json.loads((ROOT / 'research/editorial/2026-10-29/consistency-edits.json').read_text())['edits']
 EDITORIAL_EDITS += json.loads((ROOT / 'research/editorial/2026-10-30/consistency-edits.json').read_text())['edits']
+EDITORIAL_EDITS += json.loads((ROOT / 'research/editorial/2026-10-31/consistency-edits.json').read_text())['edits']
 BASE = RULES['baseline']
 DATE = RULES['reviewedAt']
 

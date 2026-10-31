@@ -47,6 +47,17 @@
       "announcement": "announced",
       "announcedVersion": "1.17.1",
       "announcedAt": "2026-10-31"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "skills-optical-alignment-editorial",
+      "summary": [
+        "캐릭터별 스킬명을 공략·상성·조합 설명에서 굵게 표시",
+        "아이콘의 내부 도형 중심 보정 및 확성기 곡선 처리",
+        "암호 장치를 해독기로 복원하고 표현·문장 통일",
+        "중복 안내와 빈 연구 영역을 줄이고 핵심 조건·예외 유지"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

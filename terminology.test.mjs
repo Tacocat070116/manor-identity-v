@@ -16,7 +16,8 @@ const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
 const managed=[...db.characters.flatMap(c=>fields(c,characterFields)),...db.matchups.flatMap(m=>fields(m,['summary','condition','situation','situationDetail'])),...db.links.flatMap(l=>fields(l,['reason','use','when','caution'])),...Object.values(roles.characters).flatMap(r=>[...r.specialties,...Object.values(r.specialtyReasons)]),...Object.values(intros.characters)];
 
 test('authored guide, matchup, synergy and role copy share the Korean glossary',()=>{
- for(const value of managed)assert.doesNotMatch(value,/어그로|피리|평타|해독기|암호기|포탈|포털|쿨타임|아이템|백우산|흑우산|흰 우산|검은 우산|사진 세계|감정 전이|분발|향기 지팡이|은폐 진행도/);
+ for(const value of managed)assert.doesNotMatch(value,/어그로|피리|평타|암호 장치|암호장치|암호기|포탈|포털|쿨타임|아이템|백우산|흑우산|흰 우산|검은 우산|사진 세계|감정 전이|분발|향기 지팡이|은폐 진행도/);
+ for(const value of managed)assert.doesNotMatch(value,/해독 진도|재사용 시간|재사용 대기시간|플라이휠(?! 효과)|플라이휠 효과(?:을|은|과|으로|이\s)/,'unified terms keep the correct Korean particle');
  for(const side of ['생존자','감시자']){
   const members=db.characters.filter(c=>c.side===side);
   assert.ok(members.some(c=>roles.characters[c.id].specialties.includes('추격')));
@@ -63,7 +64,7 @@ test('every replacement has provenance and the audit only touches editorial fiel
  const files=structuredClone({'data.json':db,'specialties.json':roles,'introductions.json':intros});
  // Audit complete editorial history from the previously published Git blobs.
  files['data.json']=withRetiredFields('data.json',files['data.json']);
- for(const edit of ['2026-10-30','2026-10-29'].flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits.toReversed())){
+ for(const edit of ['2026-10-31','2026-10-30','2026-10-29'].flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits.toReversed())){
   const [,file,...parts]=edit.path.split('/');let parent=files[file];for(const part of parts.slice(0,-1))parent=parent[part];
   assert.deepEqual(parent[parts.at(-1)],edit.after);if(edit.beforeMissing)delete parent[parts.at(-1)];else parent[parts.at(-1)]=structuredClone(edit.before);
  }

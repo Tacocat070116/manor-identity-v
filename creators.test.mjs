@@ -35,7 +35,7 @@ test('rendered cards escape user copy, reject external links and label achieveme
 test('editor keeps tiers and badges optional and safely restores entered copy',()=>{
  const html=creatorEditor({...base(),title:'" autofocus onfocus="alert(1)'},characters);
  assert.match(html,/value="&quot; autofocus onfocus=&quot;alert\(1\)"/);
- assert.match(html,/없어도 등록할 수 있어요/);assert.doesNotMatch(html,/<select name="tier-[^"]+"[^>]*required/);
+ assert.match(html,/휘장과 최고 티어<\/strong><small>선택 사항입니다\./);assert.doesNotMatch(html,/<select name="tier-[^"]+"[^>]*required/);
  assert.match(html,/name="customTag"/);assert.match(html,/name="color"/);assert.match(html,/data-cr-preview/);assert.doesNotMatch(html,/name="uid"|구독자 수.*required/);
 });
 

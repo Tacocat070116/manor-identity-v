@@ -42,8 +42,11 @@ test('matchup swap reverses perspective, retains situation and focus, and can be
  assert.equal(h.tipMounts.at(-1).ownId,'c37');assert.equal(h.tipMounts.at(-1).opponentId,'c16');assert.equal(h.tipsDisposed(),1);
  assert.equal(h.params().get('own'),'c37');assert.equal(h.params().get('opp'),'c16');
  assert.equal(h.state.situation,'추격');assert.equal(h.params().get('situation'),'추격');
- assert.ok(h.html().includes('경계할 핵심 스킬</h3><p>'+byId.c16.skill));
- assert.ok(h.html().includes('내 스킬을 아낄 때</h3><p>'+byId.c37.hold));
+ for(const [heading,character,field] of [['경계할 핵심 스킬','c16','skill'],['내 스킬을 아낄 때','c37','hold']]){
+  const paragraph=h.html().split(heading+'</h3><p>')[1]?.split('</p>')[0]||'';
+  assert.equal(paragraph.replace(/<[^>]*>/g,''),byId[character][field]);
+  assert.ok(paragraph.includes(`data-skill-characters="${character}"`),'emphasis follows the selected perspective');
+ }
  assert.equal(h.scrolls.at(-1).top,180);
  assert.equal(h.nodes.get('[data-action="swap-selection"]').focusOptions.preventScroll,true);
  await h.swapSelections('matchup');
@@ -66,7 +69,8 @@ test('synergy links restore pair and post, dispose on exit, and do not create a 
  const h=await harness('#v=character&c=c58&tab=synergy&partner=c55&post='+id);
  assert.equal(h.state.view,'laboratory');assert.equal(h.state.tab,'overview');assert.equal(h.synergyMounts[0].postId,id);assert.equal(h.synergyMounts[0].partnerId,'c55');
  h.context.location.hash='#v=character&c=c58';h.readRoute();await h.render();assert.equal(h.synergyDisposed(),1);
- assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('연구실에서 조합 연구'));
+ assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('이 조합 토론'));
+ assert.match(h.html(),/href="#v=laboratory&c=c58&topic=combination&partner=c\d+"/);
  h.context.location.hash='#v=character&c=c01&tab=synergy';h.readRoute();await h.render();assert.equal(h.state.tab,'overview');assert.ok(!h.html().includes('data-tab="synergy"'));
 });
 

@@ -75,8 +75,8 @@ test('status definitions distinguish commitment, progress and missing individual
  }
  assert(feedbackProgress({...post,status:'hold',reason:'  '}).includes('보류 사유는 아직 등록되지 않았습니다.'));
  assert(feedbackProgress({...post,status:'reviewing'}).includes('검토 내용은 아직 등록되지 않았습니다.'));
- assert(guide.includes('적용 일정이 확정된 것은 아닙니다.'));
- assert(guide.includes('운영자 답변이 있어도 반영이 완료된 것은 아닙니다.'));
+ assert(guide.includes('적용 일정은 별도로 안내합니다.'));
+ assert(guide.includes('운영자 답변과 반영 완료는 별개입니다.'));
  const unknown=feedbackProgress({...post,status:'<svg onload=alert(1)>'});
  assert(unknown.includes('상태 확인 필요'));assert(!unknown.includes('<svg onload'));assert(!unknown.includes('status-open'));
  const card=feedbackCard({...post,status:'hold',reason:'<script>사유</script>\n내용'},chars);
