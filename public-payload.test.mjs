@@ -24,7 +24,7 @@ function guideScreens(payload){
   document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(){}},
   window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},
   location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
-  mountNavigation:()=>({update(){}}),
+  mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
   __data:db,__releases:read('dist/releases.json'),
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
