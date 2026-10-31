@@ -1,4 +1,4 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=df3296656ea9';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 export const FEEDBACK_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const FEEDBACK_STATUSES={open:'의견 수렴',reviewing:'검토 중',planned:'반영 예정',completed:'반영 완료',hold:'보류'};
 export const FEEDBACK_STATUS_HELP={
@@ -90,7 +90,7 @@ export function mountFeedback(root,{characters={},postId='',navigate,admin=false
   try{
    if(a==='more-posts')await loadList(true);
    if(a==='more-comments'){const data=await api(prefix+'/posts/'+postId+'/comments?after='+nextAfter);if(alive){comments=[...comments,...data.comments.filter(c=>!comments.some(x=>x.id===c.id))].sort((a,b)=>a.seq-b.seq);nextAfter=data.nextAfter;root.querySelector('.fb-comments').innerHTML=comments.map(c=>feedbackComment(c,characters,admin)).join('');if(nextAfter===null)button.remove();}}
-   if(a==='share'){const url=new URL('#v=feedback&post='+postId,location.href).href;if(navigator.share)try{await navigator.share({title:currentPost.title,url});}catch(err){if(err.name!=='AbortError')throw err;}else{try{await navigator.clipboard.writeText(url);notice('공유 링크를 복사했습니다.');}catch{notice('공유 링크: '+url);}}}
+   if(a==='share'){const url='https://tacocat070116.github.io/manor-identity-v/#v=feedback&post='+postId;if(navigator.share)try{await navigator.share({title:currentPost.title,url});}catch(err){if(err.name!=='AbortError')throw err;}else{try{await navigator.clipboard.writeText(url);notice('공유 링크를 복사했습니다.');}catch{notice('공유 링크: '+url);}}}
    if(a==='delete-post'&&confirm('이 피드백을 삭제할까요? 목록과 본문에서 더 이상 표시되지 않습니다.')){await api(prefix+'/posts/'+postId,{method:'DELETE'});if(alive)move('');}
    if(a==='delete-comment'&&confirm('이 댓글을 삭제할까요? 답글은 유지됩니다.')){await api(prefix+'/comments/'+button.dataset.id,{method:'DELETE'});await loadDetail();}
    if(a==='hide-post'&&confirm(currentPost.hidden?'이 피드백을 다시 공개할까요?':'이 피드백과 댓글을 일반 사용자에게 숨길까요?')){await api(prefix+'/posts/'+postId+'/visibility',{method:'PATCH',body:{hidden:!currentPost.hidden}});await loadDetail();}

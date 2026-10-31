@@ -1,4 +1,4 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=df3296656ea9';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 export const TIPS_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const TIP_STATUSES={pending:'검토 대기',approved:'공개 중',needs_changes:'보완 요청',rejected:'반려',hidden:'비공개'};
 export const tipEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

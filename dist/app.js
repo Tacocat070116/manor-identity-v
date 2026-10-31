@@ -1,15 +1,15 @@
-import {mountRecoveryPage} from './participation.js?v=df3296656ea9';
+import {mountRecoveryPage} from './participation.js?v=1c030d58e4db';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
 import {mountNavigation} from './navigation.js?v=94a6d9dd4a33';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=ea4b96f7e79e';
-import {mountFeedback} from './feedback.js?v=47080b46146e';
-import {mountSynergy} from './synergy.js?v=1a8c24415e42';
+import {mountFeedback} from './feedback.js?v=30797ad31c54';
+import {mountSynergy} from './synergy.js?v=5766c21ab4ce';
 import {SYNERGY_SITUATIONS,synergyGroups} from './synergy-model.js?v=c4a394898b4e';
-import {mountMatchupTips} from './matchup-tips.js?v=7ec711296495';
-import {mountCreators} from './creators.js?v=0c44743ee8dc';
+import {mountMatchupTips} from './matchup-tips.js?v=95a0f291fd7f';
+import {mountCreators} from './creators.js?v=c399808129b8';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=c84473689ea6';
 const $=(s,r=document)=>r.querySelector(s);
@@ -457,7 +457,7 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=337c473c7b64'),fetch('specialties.json?v=b6ee503406c4'),fetch('introductions.json?v=1be712436032'),fetch('releases.json?v=0f8418c05fc6')]);
+ const responses=await Promise.all([fetch('data.json?v=337c473c7b64'),fetch('specialties.json?v=b6ee503406c4'),fetch('introductions.json?v=1be712436032'),fetch('releases.json?v=bdc557dca6b3')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

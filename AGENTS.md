@@ -1,7 +1,7 @@
 # MANOR site updates
 
-- The public site is https://manor-identity-v.tacocat070116.chatgpt.site/ and is deployed with Sites project `appgprj_6ad18630c40c8191949e1acbcf5f457d`.
-- Owner instruction on 2026-10-31: keep GitHub source and development history private while keeping the website public. Do not enable public GitHub Pages or change site audience to private. Preserve the feedback service and its existing records.
+- The public site is https://tacocat070116.github.io/manor-identity-v/ and is deployed from `main` via GitHub Pages.
+- Owner instruction on 2026-10-31 supersedes the private-source migration: keep this GitHub repository public and restore the existing GitHub Pages URL. Preserve the English title accents, reduced public payloads, participation records and paused statistics work. Do not move the public site to another host or change its address without a new explicit request.
 - The owner requires a new site version and a public patch note for every shipped change to `dist/`. Keep the visible version prefixed with `BETA` until the owner explicitly ends beta.
 - Owner instruction on 2026-10-27: operator-system changes must not appear in MANOR patch notes. For a scoped feedback moderation update, preserve the public version and release history, record its base commit and edited feedback assets in `operations/operator-maintenance.json`, and use `npm run release -- --refresh`. The release validator permits only those feedback assets and cache-key-only changes to their loaders; unrelated public changes still require a normal release.
 - `dist/releases.json` is the authority for the site version, opening date and complete update history. Do not invent retroactive version numbers or remove historical entries. Use Korean dates in Asia/Seoul and describe changes in clear Korean.

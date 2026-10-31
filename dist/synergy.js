@@ -1,4 +1,4 @@
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=df3296656ea9';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=1c030d58e4db';
 import {SYNERGY_SITUATIONS,SYNERGY_REPORTS,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=c4a394898b4e';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const uuid=()=>{if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;const s=Array.from(b,n=>n.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;};
@@ -76,7 +76,7 @@ export function mountSynergy(root,{characters={},ownId='',partnerId='',postId=''
   if(action==='reply'){reply=comments.find(c=>c.id===button.dataset.id);if(!reply)return;const node=root.querySelector('.sy-reply-target');node.innerHTML=`${e(reply.author.name)}에게 답글 <button type="button" data-sy="cancel-reply">취소</button>`;node.hidden=false;requestId=uuid();root.querySelector('[data-sy-form="comment"] textarea').focus();return;}
   if(action==='cancel-reply'){reply=null;requestId=uuid();root.querySelector('.sy-reply-target').hidden=true;return;}
   if(action==='report'){report();return;}if(action==='cancel-report'){root.querySelector('.sy-report-slot').innerHTML='';return;}
-  if(action==='share'){const url=new URL(synergyRoute(current.characterIds[0],current.characterIds[1],current.id),location.href).href;try{if(navigator.share)await navigator.share({title:current.title,url});else{await navigator.clipboard.writeText(url);notice('공유 링크를 복사했습니다.');}}catch(error){if(error.name!=='AbortError')notice('공유 링크: '+url);}return;}
+  if(action==='share'){const url='https://tacocat070116.github.io/manor-identity-v/'+synergyRoute(current.characterIds[0],current.characterIds[1],current.id);try{if(navigator.share)await navigator.share({title:current.title,url});else{await navigator.clipboard.writeText(url);notice('공유 링크를 복사했습니다.');}}catch(error){if(error.name!=='AbortError')notice('공유 링크: '+url);}return;}
   if(action==='delete'&&!confirm('이 조합 글을 삭제할까요? 삭제하면 다시 볼 수 없습니다.'))return;
   if(action==='delete-comment'&&!confirm('직접 작성한 댓글을 삭제할까요?'))return;
   busy=true;button.disabled=true;

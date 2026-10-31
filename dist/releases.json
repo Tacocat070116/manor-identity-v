@@ -1,6 +1,6 @@
 {
   "stage": "BETA",
-  "version": "1.16.2",
+  "version": "1.16.3",
   "openedAt": "2026-10-16",
   "historyNote": "MANOR 사이트의 업데이트 내역입니다. 날짜는 한국 시간 기준이며, 버전 도입 전 변경은 날짜별로 표시합니다.",
   "historySource": {
@@ -8,6 +8,19 @@
     "openingDeployment": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/38885680922"
   },
   "releases": [
+    {
+      "id": "beta-1-16-3",
+      "version": "1.16.3",
+      "date": "2026-10-31",
+      "title": "기존 MANOR 주소 복원",
+      "changes": [
+        {
+          "type": "수정",
+          "text": "사이트와 공유 링크를 기존 GitHub Pages 주소로 복원했습니다. 원래 주소의 브라우저에 남아 있는 작성자 연결·즐겨찾기·테마 설정을 다시 사용할 수 있습니다."
+        }
+      ],
+      "commits": []
+    },
     {
       "id": "beta-1-16-2",
       "version": "1.16.2",
