@@ -27,12 +27,12 @@ class Element extends Target{
  getBoundingClientRect(){return {width:335};}
  focus(){this.ownerDocument.activeElement=this;}
 }
-function harness({reduced=false,index=0}={}){
+function harness({reduced=false,index=0,compact=true}={}){
  let time=0,serial=0;const tasks=new Map(),observers=[];
- const win=new Target(),doc=new Target(),media=new Target();
- media.matches=reduced;doc.hidden=false;doc.defaultView=win;
+ const win=new Target(),doc=new Target(),media=new Target(),layoutMedia=new Target();
+ media.matches=reduced;layoutMedia.matches=compact;doc.hidden=false;doc.defaultView=win;
  const enqueue=(fn,delay,raf=false)=>{const id=++serial;tasks.set(id,{fn,at:time+delay,raf});return id;};
- Object.assign(win,{performance:{now:()=>time},setTimeout:(fn,delay)=>enqueue(fn,delay),clearTimeout:id=>tasks.delete(id),requestAnimationFrame:fn=>enqueue(fn,16,true),cancelAnimationFrame:id=>tasks.delete(id),matchMedia:()=>media,Image:class{}});
+ Object.assign(win,{performance:{now:()=>time},setTimeout:(fn,delay)=>enqueue(fn,delay),clearTimeout:id=>tasks.delete(id),requestAnimationFrame:fn=>enqueue(fn,16,true),cancelAnimationFrame:id=>tasks.delete(id),matchMedia:query=>query.includes('reduced-motion')?media:layoutMedia,Image:class{}});
  for(const name of ['ResizeObserver','IntersectionObserver'])win[name]=class{constructor(callback){this.callback=callback;this.name=name;this.connected=false;observers.push(this);}observe(){this.connected=true;}disconnect(){this.connected=false;}};
  function advance(ms){
   const end=time+ms;let count=0;
@@ -81,7 +81,7 @@ function harness({reduced=false,index=0}={}){
   return event;
  };
  const visibleIds=()=>stage.children.map(el=>el.dataset.id);
- return {win,doc,media,root,stage,session,controls,status,selected,tasks,observers,advance,click,pointer,current,visibleIds,dispose:()=>dispose(),remount:()=>{dispose=mount();}};
+ return {win,doc,media,layoutMedia,root,stage,session,controls,status,selected,tasks,observers,advance,click,pointer,current,visibleIds,dispose:()=>dispose(),remount:()=>{dispose=mount();}};
 }
 
 test('all 89 characters appear once per shuffled loop, including reverse wrap',()=>{
@@ -93,7 +93,7 @@ test('all 89 characters appear once per shuffled loop, including reverse wrap',(
  for(const index of [-1000,-1,0,88,89,1000])assert.equal(new Set(carouselItems(a,index).map(item=>item.character.id)).size,5);
 });
 
-test('card poses stay finite and within narrow mobile and desktop stages during a turn',()=>{
+test('desktop card fans stay inside their stage throughout a turn',()=>{
  for(const [width,cw,ch] of [[280,140,178],[335,140,178],[420,162,204],[520,184,224]]){
   for(let offset=-2.5;offset<=2.5;offset+=.05){
    const p=carouselPose(offset,width,cw,ch);assert.ok(Object.values(p).every(Number.isFinite));assert.ok(p.opacity>=0&&p.opacity<=1);
@@ -106,6 +106,32 @@ test('card poses stay finite and within narrow mobile and desktop stages during 
    }
   }
  }
+});
+
+test('mobile cards follow a symmetric sunrise arc and recycle only while invisible',()=>{
+ for(const width of [250,280,335,390]){
+  const center=carouselPose(0,width,140,178,true);
+  assert.equal(center.x,0);assert.equal(center.y,0);assert.equal(center.rotation,0);assert.equal(center.opacity,1);
+  let previousY=0;
+  for(let offset=.05;offset<=2.5;offset+=.05){
+   const left=carouselPose(-offset,width,140,178,true),right=carouselPose(offset,width,140,178,true);
+   assert.ok(Object.values(right).every(Number.isFinite));
+   assert.equal(left.x,-right.x);assert.equal(left.y,right.y);assert.equal(left.rotation,-right.rotation);
+   assert.ok(right.y>=previousY,'cards descend as they move away from the center');previousY=right.y;
+   assert.ok(right.x<width/2,'each card center stays in the stage');
+  }
+  const entering=carouselPose(2.5,width,140,178,true),leaving=carouselPose(-2.5,width,140,178,true);
+  assert.equal(entering.opacity,0);assert.equal(leaving.opacity,0);assert.equal(entering.rotation,90);
+  assert.equal(carouselPose(2.5,width,140,178).opacity,0);
+ }
+});
+
+test('switching between desktop fan and mobile arc preserves the current character and autoplay state',()=>{
+ const h=harness({compact:false,index:12});h.click(h.controls.toggle);
+ const id=h.current().dataset.id,side=h.stage.children.find(el=>Number(el.dataset.index)===13),before=side.style.transform;
+ h.layoutMedia.matches=true;h.layoutMedia.emit('change');
+ assert.notEqual(side.style.transform,before);assert.equal(h.current().dataset.id,id);assert.equal(h.session.index,12);assert.equal(h.session.paused,true);
+ h.layoutMedia.matches=false;h.layoutMedia.emit('change');assert.equal(side.style.transform,before);h.dispose();
 });
 
 test('autoplay starts each turn three seconds apart including animation, and crosses the deck boundary',()=>{
@@ -186,7 +212,7 @@ test('cancellation and cleanup remove gesture capture, listeners, observers, tim
  const h=harness();h.pointer('pointerdown',200,80);h.advance(16);h.pointer('pointermove',120,80);h.advance(16);h.pointer('pointercancel',120,80);h.advance(900);
  assert.equal(h.stage.hasPointerCapture(1),false);assert.equal(h.root.classes.has('is-dragging'),false);assert.ok(Number.isInteger(h.session.index));
  h.click(h.controls.next);h.advance(100);h.dispose();const index=h.session.index;
- assert.equal(h.tasks.size,0);for(const target of [h.root,h.stage,h.win,h.doc,h.media])assert.equal(target.listenerCount(),0);
+ assert.equal(h.tasks.size,0);for(const target of [h.root,h.stage,h.win,h.doc,h.media,h.layoutMedia])assert.equal(target.listenerCount(),0);
  assert.ok(h.observers.every(o=>!o.connected));h.advance(50000);assert.equal(h.session.index,index);
  h.remount();assert.equal(h.tasks.size,1);h.advance(5500);assert.equal(h.session.index,index+1);h.dispose();
 });

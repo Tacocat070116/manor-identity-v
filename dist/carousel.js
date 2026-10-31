@@ -12,11 +12,14 @@ export function carouselItems(session,center=session.index){
  return Array.from({length:5},(_,i)=>{const index=center+i-2;return {index,character:session.roster[wrap(index,session.roster.length)]};});
 }
 
-export function carouselPose(offset,width,cardWidth,cardHeight){
- const angle=clamp(offset,-2.5,2.5)*Math.PI/3;
- const depth=Math.cos(angle),side=Math.sin(angle);
- const radius=Math.max(38,Math.min(width*.34,(width-cardWidth*.9-cardHeight*.22)/1.8));
- return {x:side*radius,y:(1-depth)*25-8,z:(depth-1)*48,scale:.78+.22*depth,tilt:-side*16,rotation:side*11,opacity:clamp((1.95-Math.abs(offset))/.9,0,1),layer:Math.round(100+depth*50)};
+export function carouselPose(offset,width,cardWidth,cardHeight,compact=false){
+ const turn=clamp(offset,-2.5,2.5),step=(compact?36:22)*Math.PI/180,angle=turn*step;
+ // Desktop cards fan around their lower half. Mobile cards rise from and
+ // descend toward the stage's lower edge along a full semicircle.
+ const edge=2.5*step;
+ const room=(width/2-12-cardWidth/2*Math.cos(edge)-cardHeight/2*Math.sin(edge))/Math.sin(edge);
+ const radius=compact?Math.min(cardHeight*.64,width*.38):Math.max(0,Math.min(cardHeight*.48,room));
+ return {x:Math.sin(angle)*radius,y:(1-Math.cos(angle))*radius,z:0,scale:1,tilt:0,rotation:turn*(compact?36:22),opacity:clamp((2.5-Math.abs(offset))/.55,0,1),layer:Math.round(150-Math.abs(offset)*20)};
 }
 
 export function mountHeroCarousel(root,session,{onSelect,icon}){
@@ -27,6 +30,7 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
  const toggle=root.querySelector('[data-carousel="toggle"]');
  const status=root.querySelector('.carousel-status');
  const media=win.matchMedia('(prefers-reduced-motion: reduce)');
+ const compact=win.matchMedia('(max-width: 640px)');
  if(media.matches||session.paused===null)session.paused=media.matches;
  let position=session.index,width=0,cardWidth=0,cardHeight=0,paintFrame=0,motionFrame=0,autoTimer=0;
  let destroyed=false,inView=true,hovered=false,keyboardFocus=false,drag=null,blockedClickUntil=0,resumeAt=0;
@@ -63,7 +67,7 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
    delete card.image.dataset.fallback;card.image.src=c.portrait;card.image.alt=c.name;card.label.textContent=c.name;
   });
   for(const card of cards){
-   const offset=card.index-position,p=carouselPose(offset,width,cardWidth,cardHeight);
+   const offset=card.index-position,p=carouselPose(offset,width,cardWidth,cardHeight,compact.matches);
    card.element.style.transform=`translate3d(calc(-50% + ${p.x.toFixed(2)}px),calc(-50% + ${p.y.toFixed(2)}px),${p.z.toFixed(2)}px) rotateY(${p.tilt.toFixed(2)}deg) rotateZ(${p.rotation.toFixed(2)}deg) scale(${p.scale.toFixed(4)})`;
    card.element.style.opacity=String(p.opacity);card.element.style.zIndex=String(p.layer);
    card.element.style.pointerEvents=p.opacity>.5?'auto':'none';
@@ -169,6 +173,7 @@ export function mountHeroCarousel(root,session,{onSelect,icon}){
  listen(doc,'visibilitychange',visibility);
  listen(win,'blur',()=>pointerEnd({},true));
  listen(media,'change',()=>{if(media.matches){session.paused=true;releasePointer();pauseMotion();updateToggle();}});
+ listen(compact,'change',measure);
  if(win.ResizeObserver){const observer=new win.ResizeObserver(measure);observer.observe(stage);removers.push(()=>observer.disconnect());}
  else listen(win,'resize',measure);
  if(win.IntersectionObserver){

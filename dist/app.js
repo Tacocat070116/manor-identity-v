@@ -5,7 +5,7 @@ import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,su
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
-import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
+import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=247191ad6c2e';
 import {createStatisticsUI} from './statistics.js?v=673ca8c7ec84';
 import {mountFeedback} from './feedback.js?v=edf87fe575c6';
 import {mountSynergy} from './synergy.js?v=cc7006c95875';
@@ -254,7 +254,7 @@ function synergyDetails(l){
 const auxiliaryTraits={'비정상':'abnormal','흥분':'excitement','순찰자':'patroller','텔레포트':'teleport','정탐자':'peeper','플래시':'blink','형상 이동':'warp'};
 function auxiliaryTraitCard(l){
  const art=auxiliaryTraits[l.target];
- return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></div></dl></div>`;
+ return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art" data-trait="${art}"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl><div><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></div></dl></div>`;
 }
 function survivorSynergyCard(group,c){
  const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명에 따른 조합 후보로, 실전 연계 효과는 미확인입니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략 기준입니다. 검토일 ${esc(l.reviewedAt)} 이후의 스킬 변경을 확인하세요.</p>`:''}`;

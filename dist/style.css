@@ -41,11 +41,11 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 @media(prefers-reduced-motion:reduce){.specialty-filter{transition:none;min-height:var(--control-height);padding:10px 12px;border-radius:var(--radius-control);font-size:12px;line-height:20px}}
 
 /* The hero uses five recycled cards; transforms are driven by the drag position. */
-.hero-art.hero-carousel{--hero-card-width:184px;--hero-card-height:224px;height:330px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:stretch;justify-content:stretch;gap:8px;min-width:0}
+.hero-art.hero-carousel{--hero-card-width:184px;--hero-card-height:224px;height:372px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:stretch;justify-content:stretch;gap:8px;min-width:0}
 .hero-stage{position:relative;width:100%;min-width:0;height:100%;overflow:hidden;perspective:900px;cursor:grab;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
 .hero-stage .art-orbit{pointer-events:none;inset:14px}
 /* Resolve gesture directions on the untransformed stage, not the rotated cards. */
-.hero-stage .art-card{left:50%;top:50%;width:var(--hero-card-width);height:var(--hero-card-height);margin:0;opacity:0;cursor:inherit;touch-action:auto;transform-origin:center;backface-visibility:hidden;will-change:transform,opacity;transition:none}
+.hero-stage .art-card{left:50%;top:42%;width:var(--hero-card-width);height:var(--hero-card-height);margin:0;opacity:0;cursor:inherit;touch-action:auto;transform-origin:center;backface-visibility:hidden;will-change:transform,opacity;transition:none}
 .hero-stage .art-card img{pointer-events:none;-webkit-user-drag:none}
 .hero-stage .art-card span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none}
 .hero-carousel.is-dragging .hero-stage{cursor:grabbing}
@@ -56,8 +56,8 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 .carousel-control:hover{background:var(--accent-soft)}
 .carousel-control:focus-visible,.hero-stage .art-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
-@media(max-width:1000px){.hero-art.hero-carousel{--hero-card-width:162px;--hero-card-height:204px;height:310px}}
-@media(max-width:640px){.hero-art.hero-carousel{--hero-card-width:140px;--hero-card-height:178px;height:272px;margin:1px 0 5px;gap:5px}.hero-stage .art-orbit{inset:5px 10px}.hero-carousel-footer{gap:10px;padding-left:13px;font-size:10px;border-radius:24px}}
+@media(max-width:1000px){.hero-art.hero-carousel{--hero-card-width:162px;--hero-card-height:204px;height:344px}}
+@media(max-width:640px){.hero-stage{-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}.hero-art.hero-carousel{--hero-card-width:140px;--hero-card-height:178px;height:300px;margin:1px 0 5px;gap:5px}.hero-stage .art-orbit{inset:36% -10% auto;height:100%;transform:none}.hero-carousel-footer{gap:10px;padding-left:13px;font-size:10px;border-radius:24px}}
 @media(prefers-reduced-motion:reduce){.hero-stage .art-card{will-change:auto}.carousel-control{transition:none}}
 
 /* Published ranked cohorts and tournament match records remain separate. */
@@ -437,5 +437,15 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 .text-emphasis{font-size:inherit;font-weight:700;line-height:inherit;color:inherit}
 
 .auxiliary-trait-card .panel-title{gap:12px;align-items:center}
-.auxiliary-trait-art{display:grid;place-items:center;flex:0 0 60px;width:60px;height:60px;border:1px solid var(--persona-line);border-radius:16px;background:var(--persona-bg)}
-.auxiliary-trait-art img{display:block;width:48px;height:48px;object-fit:contain;filter:brightness(0) invert(1)}
+.auxiliary-trait-art{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);place-items:center;flex:0 0 64px;width:64px;height:64px;overflow:hidden;border:1px solid var(--persona-line);border-radius:16px;background:var(--persona-bg)}
+.auxiliary-trait-art img{display:block;width:var(--trait-size);height:var(--trait-size);max-width:none;object-fit:contain;filter:brightness(0) invert(1);transform:translate(var(--trait-x),var(--trait-y))}
+
+/* Normalize the opaque glyphs to the persona icons' ~45px visible extent.
+   Source PNGs retain their original transparent padding. */
+.auxiliary-trait-art[data-trait="abnormal"]{--trait-size:77.61px;--trait-x:0.33px;--trait-y:0.00px}
+.auxiliary-trait-art[data-trait="blink"]{--trait-size:68.65px;--trait-x:-1.15px;--trait-y:1.44px}
+.auxiliary-trait-art[data-trait="excitement"]{--trait-size:78.75px;--trait-x:-0.66px;--trait-y:1.65px}
+.auxiliary-trait-art[data-trait="patroller"]{--trait-size:71.40px;--trait-x:1.20px;--trait-y:-2.40px}
+.auxiliary-trait-art[data-trait="peeper"]{--trait-size:78.75px;--trait-x:0.99px;--trait-y:-1.65px}
+.auxiliary-trait-art[data-trait="teleport"]{--trait-size:72.36px;--trait-x:-1.52px;--trait-y:-1.82px}
+.auxiliary-trait-art[data-trait="warp"]{--trait-size:63.75px;--trait-x:-1.34px;--trait-y:-0.80px}

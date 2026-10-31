@@ -102,6 +102,17 @@
         "함께하면 좋은 생존자의 상황 선택칸과 연결된 필터 제거"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "home-fan-carousel-trait-scale",
+      "summary": [
+        "보조 특성의 실제 실루엣 크기와 중앙 정렬을 인격 아이콘에 맞춤",
+        "홈 카드를 PC 부채꼴·모바일 반원 경로로 순환하도록 변경"
+      ],
+      "announcement": "not-ready-owner-review",
+      "deployment": "not-published",
+      "ownerInstruction": "검토와 수정 의견을 받은 뒤 명시적 승인 전까지 실제 사이트에 적용하지 않음"
     }
   ]
 }
