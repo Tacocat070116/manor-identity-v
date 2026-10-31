@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-31",
+  "stage": "2026 IVL秋季赛常规赛",
+  "sourceFacts": {
+    "path": "research/refresh/2026-10-31/tournament/source-observations.json",
+    "sha256": "50c78bc9758d843fabc154568f015c06cab2be497f2b04b31f06e1b1fa830942"
+  },
+  "sources": [
+    "https://sina.cn/news/detail/5359738789298458.html",
+    "https://sina.cn/news/detail/5359673491849831.html"
+  ],
+  "coverage": "10월 30일 DOU5–ASC의 2세트 두 반경기만 확인했습니다. 해당 대회나 날짜 전체 수집이 아닙니다.",
+  "addedMatches": [
+    {
+      "id": "weibo-5359738789298458-s2-upper",
+      "row": [
+        "2026-10-30",
+        "차이나타운",
+        "c25",
+        [
+          "c61",
+          "c89",
+          "c87",
+          "c64"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html"
+    },
+    {
+      "id": "weibo-5359738789298458-s2-lower",
+      "row": [
+        "2026-10-30",
+        "차이나타운",
+        "c09",
+        [
+          "c61",
+          "c45",
+          "c74",
+          "c84"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html"
+    }
+  ],
+  "addedDetails": [
+    {
+      "id": "weibo-5359738789298458-s2-upper",
+      "date": "2026-10-30",
+      "map": "차이나타운",
+      "tournament": "IVL",
+      "hunter": "c25",
+      "survivors": [
+        "c61",
+        "c89",
+        "c87",
+        "c64"
+      ],
+      "hunterTalents": [],
+      "players": [
+        {
+          "id": "c61",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c89",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c87",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c64",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        }
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html",
+      "result": "무"
+    },
+    {
+      "id": "weibo-5359738789298458-s2-lower",
+      "date": "2026-10-30",
+      "map": "차이나타운",
+      "tournament": "IVL",
+      "hunter": "c09",
+      "survivors": [
+        "c61",
+        "c45",
+        "c74",
+        "c84"
+      ],
+      "hunterTalents": [],
+      "players": [
+        {
+          "id": "c61",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c45",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c74",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        },
+        {
+          "id": "c84",
+          "talents": [],
+          "decode": null,
+          "rescues": null,
+          "kite": null,
+          "escaped": null
+        }
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html",
+      "result": "무"
+    }
+  ],
+  "addedObservedBans": [
+    {
+      "id": "weibo-5359738789298458-s2-upper",
+      "row": [
+        "2026-10-30",
+        "차이나타운",
+        "c25",
+        [
+          "c78",
+          "c39",
+          "c45",
+          "c69"
+        ],
+        "IVL"
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html"
+    },
+    {
+      "id": "weibo-5359738789298458-s2-lower",
+      "row": [
+        "2026-10-30",
+        "차이나타운",
+        "c09",
+        [
+          "c39",
+          "c80",
+          "c52",
+          "c85"
+        ],
+        "IVL"
+      ],
+      "source": "https://sina.cn/news/detail/5359738789298458.html"
+    }
+  ],
+  "legacyOpeningBansAdded": 0,
+  "individualMetricValuesAdded": 0,
+  "hunterBanFacts": [
+    {
+      "id": "weibo-5359738789298458-s2-upper",
+      "bans": [
+        "c33"
+      ]
+    },
+    {
+      "id": "weibo-5359738789298458-s2-lower",
+      "bans": [
+        "c33"
+      ]
+    }
+  ],
+  "notes": [
+    "선밴 순서와 전체 감시자 밴 분모를 모르므로 기존 선밴 통계·감시자 밴율에 편입하지 않습니다.",
+    "승무패는 감시자 관점입니다. 개인 탈출 여부는 팀 탈출 인원으로 추정하지 않습니다."
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "checkedAt": "2026-10-31",
+  "inputs": [
+    {
+      "path": "research/refresh/2026-10-29/china/ranked-additions.json.gz",
+      "sha256": "4f2151a1dba8bafcffeb6e9095b927e0b448b46da74c10815227d8515e34702e",
+      "datasets": 1110,
+      "rows": 90709,
+      "rowSchemas": [
+        [
+          "ban",
+          "characterId",
+          "draw",
+          "heroId",
+          "loss",
+          "name",
+          "nameOriginal",
+          "pick",
+          "side",
+          "win"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-29/asia/asia-s43-merged-datasets.json",
+      "sha256": "12eb963094776b36d7b63a4293e1640c754ded783f4a72d02afaaed38847b057",
+      "datasets": 9,
+      "rows": 783,
+      "rowSchemas": [
+        [
+          "ban",
+          "characterId",
+          "draw",
+          "loss",
+          "lossDerived",
+          "name",
+          "pick",
+          "side",
+          "sourceAdjustedWin",
+          "sourceLine",
+          "sourceUrl",
+          "win"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-29/asia/homework-asia-historical-datasets.json",
+      "sha256": "4761895d97cd2a42b24338e5781c74ecf3e8fd8e0da738419c8d186d2c7a4ee3",
+      "datasets": 6,
+      "rows": 484,
+      "rowSchemas": [
+        [
+          "ban",
+          "characterId",
+          "draw",
+          "loss",
+          "lossDerived",
+          "name",
+          "nameOriginal",
+          "pick",
+          "side",
+          "sourceArea",
+          "sourceHeroId",
+          "sourceRow",
+          "win"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-31/china/ranked-additions.json.gz",
+      "sha256": "68a945695e977dfa4de9d3772904dbe2ec7f5bc76cbffd7ac956bb6e9841e09b",
+      "datasets": 9,
+      "rows": 801,
+      "rowSchemas": [
+        [
+          "ban",
+          "characterId",
+          "draw",
+          "heroId",
+          "loss",
+          "name",
+          "nameOriginal",
+          "pick",
+          "side",
+          "win"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-29/china/badge-additions.json.gz",
+      "sha256": "a185ecda377a6ca552464096c4469613a0cf1e7d9917ac63fe1a31dbb06ebd45",
+      "datasets": 401,
+      "rows": 273304,
+      "rowSchemas": [
+        [
+          "characterId",
+          "name",
+          "nameOriginal",
+          "rankPosition",
+          "score",
+          "side"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-31/china/badge-additions.json.gz",
+      "sha256": "95a6f29769ab3fa509928c536bbeba44fa023928ed63623af2af18f60344504b",
+      "datasets": 1,
+      "rows": 712,
+      "rowSchemas": [
+        [
+          "characterId",
+          "name",
+          "nameOriginal",
+          "rankPosition",
+          "score",
+          "side"
+        ]
+      ],
+      "content": "Public character-level rates or anonymous rank-boundary scores; no account identifiers or forum content."
+    },
+    {
+      "path": "research/refresh/2026-10-29/tournament/update-delta.json.gz",
+      "sha256": "c854f45632db973f85b2577f060da4a18e86a3ce5980a5105a0c2e3c3db3506b",
+      "halfGamesAdded": 101,
+      "detailsAdded": 15278,
+      "content": "Public tournament character picks, bans and numeric performance; player entries contain character IDs, not accounts."
+    }
+  ],
+  "excluded": {
+    "unusedMapInput": "research/refresh/2026-10-29/china/map-additions.json.gz",
+    "mapInputPresent": false,
+    "mapBuildDependency": false,
+    "sourceErrorDatasets": [
+      {
+        "id": "cn-s44-20260702-20260804-peak7",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-7",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-6",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-5",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-4",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-3",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-2",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-1",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260804-all",
+        "rows": 87,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": []
+      },
+      {
+        "id": "cn-s44-20260702-20260909-peak7",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-all",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-7",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-6",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-5",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-4",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-3",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-2",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      },
+      {
+        "id": "cn-s44-20260702-20260909-1",
+        "rows": 88,
+        "reason": "unconfirmed-source-correction",
+        "sourceWarnings": [
+          "cn-s44-source-warning"
+        ]
+      }
+    ],
+    "sourceErrorRows": 1575,
+    "duplicateRows": 556,
+    "communityRawContentPublished": false,
+    "blockedOrIndexedOnlySourcesUsedForNumbers": false
+  },
+  "sourceWarningRechecked": "https://web.homeworkkun.top/胜率数据/form",
+  "newInterface": false
+}

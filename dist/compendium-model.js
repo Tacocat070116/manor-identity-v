@@ -1,4 +1,4 @@
-import {filterRows,cutoff} from './model.js?v=7daffcd45847';
+import {filterRows,cutoff} from './model.js?v=14e893932898';
 
 export function contextEvidence(records,id){
  const primary=records.find(m=>m.id===id&&m.status==='반영');
@@ -30,6 +30,16 @@ export function tournamentRelations(rows,character,filters={}){
   add(maps,r[1],r);
  }
  return {appearances:games.length,opponents:finish(opponents,games.length),companions:finish(companions,games.length),maps:finish(maps,games.length)};
+}
+
+// Version 2 stores repeated source URLs once and keeps player nulls distinct from zero.
+export function expandTournamentDetails(data){
+ if(data.schemaVersion!==2)return data;
+ const rows=data.rows.map(([id,date,map,tournament,hunter,survivors,hunterTalents,players,sourceIndex,result])=>{
+  const source=data.meta.sources[sourceIndex];if(typeof source!=='string')throw Error('대회 기록의 출처 정보를 확인하지 못했습니다.');
+  return {id,date,map,tournament,hunter,survivors,hunterTalents,players:players.map(([id,talents,decode,rescues,kite,escaped])=>({id,talents,decode,rescues,kite,escaped})),source,result};
+ });
+ return {meta:data.meta,rows};
 }
 
 export function observedDetails(rows,character,filters={}){

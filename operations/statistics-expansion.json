@@ -1,0 +1,81 @@
+{
+  "updatedAt": "2026-10-31",
+  "baseCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe",
+  "branch": "codex/statistics-upload-20261031",
+  "publicUrl": "https://tacocat070116.github.io/manor-identity-v/",
+  "state": "validated-for-deployment",
+  "instructions": {
+    "statisticsOnly": true,
+    "newInterface": false,
+    "patchNotesOnlyAfterAllWork": true,
+    "intermediatePublication": false,
+    "announcements": "Only on explicit owner announcement request; preserve BETA v1.17.2."
+  },
+  "batches": [
+    {
+      "id": "ranked",
+      "status": "verified",
+      "beforeRows": 32667,
+      "afterRows": 96505,
+      "addedRows": 63838,
+      "datasets": 1181,
+      "chinaRows": 95238,
+      "asiaRows": 1267,
+      "validation": "research/ranked/stage-validation.json",
+      "excludedSourceErrorRows": 1575
+    },
+    {
+      "id": "knowledge-scores",
+      "status": "verified",
+      "preparedTargetRows": 274016,
+      "preparedTargetDates": 402,
+      "currentlyIncludedRows": 1384,
+      "afterRows": 274016,
+      "dates": 402,
+      "monthlyPartitions": 14
+    },
+    {
+      "id": "tournament-and-bans",
+      "status": "verified",
+      "preparedTargetHalfGames": 17056,
+      "preparedTargetDetails": 16930,
+      "preparedTargetObservedBans": 16842,
+      "afterHalfGames": 17056,
+      "afterDetails": 16930,
+      "afterObservedBans": 16842
+    },
+    {
+      "id": "community-evidence-review",
+      "status": "verified",
+      "policy": "기존 조사 자료의 포함·제외 기준을 점검합니다. 의견을 경기 수·승률로 합산하거나 새 화면을 만들지 않습니다.",
+      "review": "operations/statistics-community-review.json"
+    },
+    {
+      "id": "final-integration-and-release",
+      "status": "verified",
+      "policy": "통합 검증 후 기존 main에 반영합니다. 공지와 공개 버전 변경은 운영자의 별도 요청을 따릅니다."
+    }
+  ],
+  "coverageLimits": [
+    "아시아 S44 및 S39~S42 전체 보관본은 미확보입니다.",
+    "한국 유저만의 랭킹전 통계나 실제 경기 수는 확인되지 않았습니다.",
+    "공식 통계의 공개 전사·보관본이며 모든 공식 원본 이미지의 전수 대조는 아닙니다."
+  ],
+  "resume": {
+    "nextStep": "Validate the integrated latest public source, upload the remaining objects, and deploy the existing GitHub Pages site.",
+    "publicationAuthorized": true,
+    "retiredUnpublishedAnnouncement": "1.16.4"
+  },
+  "cleanupReview": "operations/statistics-input-review.json",
+  "announcedVersion": "1.17.2",
+  "verification": {
+    "testsPassed": 146,
+    "testsFailed": 0,
+    "releaseCheck": true,
+    "contentConsistencyCheck": true,
+    "terminologyCheck": true,
+    "guideDataPreserved": true,
+    "announcementsPreserved": true,
+    "publicBaseCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe"
+  }
+}

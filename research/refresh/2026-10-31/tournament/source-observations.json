@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-31",
+  "matchDate": "2026-10-30",
+  "dateBasis": "동일 공식 계정의 당일 경기 예고와 2세트 결과 공지를 대조했습니다.",
+  "tournament": "IVL",
+  "seasonLabel": "2026 IVL 가을 정규시즌",
+  "fixture": [
+    "DOU5",
+    "ASC"
+  ],
+  "set": 2,
+  "mapOriginal": "唐人街",
+  "resultSource": {
+    "url": "https://sina.cn/news/detail/5359738789298458.html",
+    "publisher": "第五人格赛事",
+    "verifiedAccountLabel": "第五人格赛事官方微博",
+    "publishedAtLocal": "2026-10-30 15:19",
+    "timezone": "Asia/Shanghai",
+    "retrievalRef": "turn59view0"
+  },
+  "scheduleSource": {
+    "url": "https://sina.cn/news/detail/5359673491849831.html",
+    "publisher": "第五人格赛事",
+    "publishedAtLocal": "2026-10-30 11:00",
+    "timezone": "Asia/Shanghai",
+    "fixtureStartLocal": "14:00",
+    "retrievalRef": "turn61view0"
+  },
+  "coverage": "10월 30일 DOU5–ASC의 2세트 두 반경기만 확인했습니다. 해당 대회나 날짜 전체 수집이 아닙니다.",
+  "unknown": [
+    "개인 해독량",
+    "개인 구출 횟수",
+    "개인 추격 시간",
+    "개인 탈출 여부",
+    "인격 선택",
+    "밴 단계별 순서"
+  ],
+  "halves": [
+    {
+      "half": "upper",
+      "hunter": "歌剧演员",
+      "survivors": [
+        "心理学家",
+        "病患",
+        "火灾调查员",
+        "佣兵"
+      ],
+      "survivorBans": [
+        "逃脱大师",
+        "古董商",
+        "气象学家",
+        "作曲家"
+      ],
+      "hunterBans": [
+        "牙医"
+      ],
+      "hunterScore": 2,
+      "survivorScore": 2,
+      "reportedOutcome": "draw"
+    },
+    {
+      "half": "lower",
+      "hunter": "台球手",
+      "survivors": [
+        "心理学家",
+        "气象学家",
+        "咒术师",
+        "大副"
+      ],
+      "survivorBans": [
+        "古董商",
+        "斗牛士",
+        "守墓人",
+        "幸运儿"
+      ],
+      "hunterBans": [
+        "牙医"
+      ],
+      "hunterScore": 2,
+      "survivorScore": 2,
+      "reportedOutcome": "draw"
+    }
+  ]
+}

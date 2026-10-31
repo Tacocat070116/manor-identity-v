@@ -1,0 +1,138 @@
+{
+  "checkedAt": "2026-10-29",
+  "scope": "Public Identity V tournament half-game records and personal/all-ban details. No access-restricted pages were bypassed.",
+  "sources": [
+    {
+      "id": "identityv-match-log",
+      "url": "https://identityv-match-log.vercel.app/",
+      "role": "Fan-maintained match and personal-record collection",
+      "status": "freshly-fetched",
+      "linkedLeagues": 9,
+      "matchPages": 283,
+      "fetchedPagesIncludingIndexAndLeagues": 293,
+      "parsedHalfGames": 1652,
+      "existingValidatedHalfGames": 1650,
+      "newCompletedHalfGames": 0,
+      "newEmptyScheduledMatchPages": 10,
+      "correctedPersonalHalfGames": 3,
+      "reportedLatestMatchDate": "2026-10-26",
+      "verifiedLatestMatchDate": "2026-10-25",
+      "note": "All linked pages fetched again; no old parsed snapshot substituted for a fresh request. Dates on matches285-287 contradicted the official schedule and were corrected in delta, with original source snapshot preserved.",
+      "manifest": "page-manifest.json"
+    },
+    {
+      "id": "bwiki-tournament-original",
+      "url": "https://website.homeworkkun.top/赛事数据展示/data/filelist.json",
+      "publicPage": "https://web.homeworkkun.top/赛事数据展示/player",
+      "author": "第五人格BWIKI赛事数据记录组 / 夜莺小姐档案馆; interface by 摸鱼达人作业君",
+      "role": "Original community manual tournament data",
+      "status": "freshly-fetched-public-data-files",
+      "sourceUpdatedAt": "2026-10-22",
+      "downloadedFiles": 5,
+      "rawHalfGames": 16626,
+      "validCompositionHalfGames": 16512,
+      "coreOverlaps": 16411,
+      "addedCoreHalfGames": 101,
+      "sourceRecordLatest": "2026-08-09",
+      "sourceRecordEarliest": "2020-06-25",
+      "discovery": "Maintainer-published koishi-plugin-dwrgbwiki@2.4.1 package/match.js documents the data/filelist.json and data/{filename} paths. No private endpoint guessing.",
+      "package": "https://registry.npmjs.org/koishi-plugin-dwrgbwiki/-/koishi-plugin-dwrgbwiki-2.4.1.tgz",
+      "manifest": "bwiki-manifest.json",
+      "declaredMissing": [
+        "COA I",
+        "2018 cross-platform IVC",
+        "COA II",
+        "2019 IVC summer/winter",
+        "2019 Japan IVC",
+        "COA III",
+        "2023 and 2024 Japan IVT",
+        "2025 regional IVT pending",
+        "some match omissions; provider estimates 100–150 matches"
+      ],
+      "scopeOfGapNotice": "These are the provider's declared gaps, not a certified inventory of all gaps in MANOR. Existing MANOR records from other sources are retained.",
+      "accessNote": "web.homeworkkun.top player HTML returned403 to direct fetch. Public data host explicitly documented by the maintainer, website.homeworkkun.top, served the files with200. No challenge/session bypass used."
+    },
+    {
+      "id": "official-weibo-oct25",
+      "url": "https://www.sina.cn/news/detail/5357861552783602.html",
+      "author": "第五人格赛事官方微博",
+      "publishedAt": "2026-10-25 11:00 UTC+08:00",
+      "role": "Primary official schedule confirmation",
+      "status": "text-and-raw-html-retrieved",
+      "confirmedDate": "2026-10-25",
+      "confirmedMatches": [
+        "WBG vs MRC",
+        "ASC vs FPX.ZQ",
+        "DOU5 vs Wolves"
+      ],
+      "use": "Correct dates only; does not add duplicate half-games."
+    },
+    {
+      "id": "official-netease-reports",
+      "urls": [
+        "https://news.17173.com/content/10262026/103134548.shtml",
+        "https://news.17173.com/content/10262026/103111442.shtml",
+        "https://news.17173.com/content/10262026/103125990.shtml"
+      ],
+      "author": "网易游戏 / 《第五人格》官方",
+      "publishedAt": "2026-10-26",
+      "eventDate": "2026-10-25",
+      "status": "retrieved-by-web-search; direct HTTP fetch returned567",
+      "role": "Official game reports syndicated by17173, corroborating official schedule and same teams/final scores",
+      "confirmedScores": {
+        "WBG-MRC": "16:16",
+        "ASC-FPX.ZQ": "9:16",
+        "DOU5-Wolves": "12:13"
+      }
+    },
+    {
+      "id": "bwiki-2026-autumn-overview",
+      "url": "https://wiki.biligame.com/dwrg/2026_IVL_秋季赛",
+      "role": "Community event schedule cross-check",
+      "status": "html-retrieved",
+      "use": "Date corroboration, not another statistical sample; placeholder0:0 results not imported."
+    },
+    {
+      "id": "bwiki-weibo-week4",
+      "urls": [
+        "https://www.sina.cn/news/detail/5357623324186243.html",
+        "https://www.sina.cn/news/detail/5357284626268495.html"
+      ],
+      "author": "夜莺小姐档案馆",
+      "role": "BWIKI publisher's Weibo summaries",
+      "publishedDates": [
+        "2026-10-24",
+        "2026-10-23"
+      ],
+      "status": "public text found; no image values imported",
+      "use": "Same originating BWIKI collection. Reposts are not independent samples."
+    },
+    {
+      "id": "official-weibo-weekly-leaders",
+      "url": "https://3g.sina.com.cn/news/detail/5358701353632570.html",
+      "author": "第五人格赛事官方微博",
+      "publishedAt": "2026-10-27",
+      "role": "Official week4 aggregate leader statistics",
+      "status": "public text found",
+      "use": "Aggregate summary only. Not merged into per-round statistics because denominator/round mapping is not a second independent dataset."
+    },
+    {
+      "id": "liquipedia",
+      "urls": [
+        "https://liquipedia.net/identityv/IVL/2026/Autumn/Regular_Season",
+        "https://liquipedia.net/identityv/Statistics/2026"
+      ],
+      "role": "Event/source discovery and schedule cross-check",
+      "status": "public search results available; direct fetch403",
+      "use": "No records imported. No bypass attempted."
+    },
+    {
+      "id": "bwiki-kdocs-archive",
+      "url": "https://wiki.biligame.com/dwrg/赛事数据",
+      "role": "Older original2022–2023 data-file previews",
+      "status": "public archive index read",
+      "use": "Index last updated2023-07-28. Download instruction requests contacting administrators; no account/contact used. Old previews not counted as additional observations."
+    }
+  ],
+  "coverageConclusion": "Major expansion comes from re-acquiring BWIKI original files and recovering detailed personal/all-ban records, not pretending that the same source copied to Weibo, BWIKI and data viewer is three samples. Complete coverage of every tournament is not certified."
+}

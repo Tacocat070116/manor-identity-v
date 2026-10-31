@@ -35,7 +35,7 @@ for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
 const allowedSpecialties={생존자:['추격','커버','구출','운영','해독'],감시자:['추격','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
-assert.equal(matches.length,16953);assert.equal(bans.length,15516);
+assert.equal(matches.length,17056);assert.equal(bans.length,15516);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
 const situationReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-27/situation-review.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
@@ -95,7 +95,7 @@ for(const ch of db.characters){
 for(const row of matches){assert.ok(ids.has(row[2]));assert.equal(row[3].length,4);assert.equal(new Set(row[3]).size,4);row[3].forEach(id=>assert.ok(ids.has(id)));}
 for(const row of bans){assert.ok(ids.has(row[2]));row[3].forEach(id=>assert.ok(ids.has(id)));assert.ok(row[3].length>=1);}
 const hull=statsFor(matches,c('훌라발루'),{days:0});
-assert.equal(hull.appearances,717);assert.equal(hull.results,717);assert.equal(hull.win,304);assert.equal(hull.draw,301);assert.equal(hull.loss,112);assert.equal(hull.unknown,0);
+assert.equal(hull.appearances,722);assert.equal(hull.results,722);assert.equal(hull.win,306);assert.equal(hull.draw,304);assert.equal(hull.loss,112);assert.equal(hull.unknown,0);
 const prediction=queryBanRecords(bans,[c('의사').id,c('샤먼').id],{days:0});
 assert.equal(prediction.base,15516);assert.equal(prediction.matched,5);
 assert.equal(prediction.groups[0].id,c('광기의 눈').id);

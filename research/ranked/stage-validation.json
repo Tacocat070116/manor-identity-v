@@ -1,0 +1,203 @@
+{
+  "checkedAt": "2026-10-31",
+  "stage": "final-statistics-integration",
+  "rankedRows": 96505,
+  "rankedDatasets": 1181,
+  "scoreRows": 274016,
+  "scoreDates": 402,
+  "removedSourceErrorRows": 1575,
+  "removedEquivalentRows": 556,
+  "deterministicRebuild": true,
+  "files": [
+    {
+      "path": "dist/ranked/cn-s40.json",
+      "sha256": "8eafa8143f0211e2322895c604b012ba76ea73b9ccc7fa586ae3b5ec45cba5af"
+    },
+    {
+      "path": "dist/ranked/badges.json",
+      "sha256": "113a013f98491940b6e56f5321735ba6b8667bd7085dd9ee76fb3565cb0980f7"
+    },
+    {
+      "path": "dist/ranked/cn-s24.json",
+      "sha256": "9be44907940ab29dcb7b7d8f1e9ba6edb1d30a5cdcaf6df1f075e3541f4482d6"
+    },
+    {
+      "path": "dist/ranked/cn-s43.json",
+      "sha256": "92078c8dba3acfbc2bfbad64c12b27aa71b1bb70eee617cfb8db2aef03146dc0"
+    },
+    {
+      "path": "dist/ranked/badges-202608.json",
+      "sha256": "00f913d8651e47b6a0b347de05fb4ddefd70c724b3958d983ccbc36713063b96"
+    },
+    {
+      "path": "dist/ranked/cn-s34.json",
+      "sha256": "32fe778dbfb06ebca807f608c20b6f3cb128bda86af5eaddebb25891b58058b7"
+    },
+    {
+      "path": "dist/ranked/badges-202602.json",
+      "sha256": "c11eeed755de0990ae66590caf288bd030d67187fce13968c3a5456f72b813a1"
+    },
+    {
+      "path": "dist/ranked/badges-202512.json",
+      "sha256": "1d1219cda24ac1cd98f0785f1096db01d91894ef4de5ebc3adbc3da1480e7d55"
+    },
+    {
+      "path": "dist/ranked/badges-202603.json",
+      "sha256": "8b57cec0e8bd4fe4ecf484e71f7acf133f21179321e5109d0d69872dd90d3ef0"
+    },
+    {
+      "path": "dist/ranked/badges-202606.json",
+      "sha256": "0ce305061143cb3e3082e4bacab4c255d818feb5951ebdc82250b367db2ff55d"
+    },
+    {
+      "path": "dist/ranked/cn-s26.json",
+      "sha256": "193d8e3dc4855f3be28a926c4901715659c5636bd9d59cfeabd93bd3181a4433"
+    },
+    {
+      "path": "dist/ranked/cn-s33.json",
+      "sha256": "ac8b24b1dc06b655a873c911053b3bc3a5b9f413b35c86081c8c733357389e43"
+    },
+    {
+      "path": "dist/ranked/cn-s39.json",
+      "sha256": "025f769e2b1927bb35e93a55514ba29e737ed3f8e79fadfd66329b629370e685"
+    },
+    {
+      "path": "dist/ranked/asia-s36.json",
+      "sha256": "7ca7130c3331a29f11cdebf7be122840afac7a9b2e0535ed9837702a301b8d72"
+    },
+    {
+      "path": "dist/ranked/badges-202510.json",
+      "sha256": "9c092c54290abba08a879b6dc32abb47e2861837adccc2ea60dfa343314d0c72"
+    },
+    {
+      "path": "dist/ranked/index.json",
+      "sha256": "5b04497f6a255c98cde17acf285c352217a7d54c4ad15489e50a54268375dd4e"
+    },
+    {
+      "path": "dist/ranked/badges-202601.json",
+      "sha256": "881067a1016e6d522cd56143b1ca9ed358334aaf858de247ce62625eb0326dcd"
+    },
+    {
+      "path": "dist/ranked/badges-202609.json",
+      "sha256": "7d9c4ab669dc38d5e41fe7cb5b9b6c369458471bf0de53da39ec0035478d25b9"
+    },
+    {
+      "path": "dist/ranked/cn-s37.json",
+      "sha256": "ad3f17fd2faa258b37ffd7a580ea10c90fd37a862d41a880ba5c3c0f1319c4bc"
+    },
+    {
+      "path": "dist/ranked/cn-s35.json",
+      "sha256": "6bb90b1770efcd721358dd1a412e72afdc72a908c1fabb3a73b762c3450261d3"
+    },
+    {
+      "path": "dist/ranked/cn-s41.json",
+      "sha256": "a0f36a0ccdddbe05700facd039359dde51e2cecb50f0f6808f9d0e4902903bd5"
+    },
+    {
+      "path": "dist/ranked/badges-202511.json",
+      "sha256": "70ebee63b58c215833ec56194951b5798095c6f47227dc75350dc4ac35efb1a0"
+    },
+    {
+      "path": "dist/ranked/badges-202605.json",
+      "sha256": "1026133e2c7c3b41938a715779be843b875225083b300de69d415052cef00e03"
+    },
+    {
+      "path": "dist/ranked/cn-s45.json",
+      "sha256": "6b32ca591597c2a7da76fc781356d5ff52718370c21da95f56deefe8929a7921"
+    },
+    {
+      "path": "dist/ranked/asia-s37.json",
+      "sha256": "45fd7f7dcf70e133b6fb9451968e2c12ff6462f53603afb68a7c90313b208aa0"
+    },
+    {
+      "path": "dist/ranked/cn-s38.json",
+      "sha256": "7a3d72adae79365cebc4b1816305c25565dec9a21646176461c8c11d68099768"
+    },
+    {
+      "path": "dist/ranked/badges-202509.json",
+      "sha256": "920dbc5c833b45090f9684bac6194a0d892be517c927fc84ac4e0285f905f0fd"
+    },
+    {
+      "path": "dist/ranked/badges-202610.json",
+      "sha256": "c33dd33e9048f357f8ce3c58324edd94372f545e868cbbf654699047a6e64515"
+    },
+    {
+      "path": "dist/ranked/cn-s44.json",
+      "sha256": "5aa9bade150541f0e4c90cae84c9c60cc22704ccdbc566c1f0cf08b683d29bdc"
+    },
+    {
+      "path": "dist/ranked/cn-s42.json",
+      "sha256": "ef9ea2fe3f6fa9e4aaa74c44576a47ca7aac2b9f3aefda97893a3237dd729a8f"
+    },
+    {
+      "path": "dist/ranked/badges-202607.json",
+      "sha256": "745ea691d73c6f5a668946dd0d2470579b0cd20434d57ff4a4f9aac733a41341"
+    },
+    {
+      "path": "dist/ranked/cn-s36.json",
+      "sha256": "90c8357759f81d08435133e4ae911b25a9676bc282e9cf75a187def4c6bc3d1c"
+    },
+    {
+      "path": "dist/ranked/asia-s38.json",
+      "sha256": "946829c36fc27dd3c3dbe712621d44f29004a9e1d9819033083c8d144cae6da1"
+    },
+    {
+      "path": "dist/ranked/cn-s28.json",
+      "sha256": "2a4d47be3d0ef9ba66fa9e845645b4bd2963e6a4b67ec1ad8bbc109b01f199e4"
+    },
+    {
+      "path": "dist/ranked/asia-s43.json",
+      "sha256": "f4ca03903f9dc2b5651d723b5714ff12fb8ef608639d8e96816f2e75fabeea43"
+    },
+    {
+      "path": "dist/ranked/badges-202604.json",
+      "sha256": "3d43bd2ff831a1e789e0515a862a54d1023c7b42dde83c6169b6531bbfb48cb1"
+    },
+    {
+      "path": "dist/ranked/cn-s32.json",
+      "sha256": "5048d9dc8cd7ce1998d775a1e4fd56a648153fff68a71aea76af0202ca71093d"
+    },
+    {
+      "path": "dist/data.json",
+      "sha256": "48f821cc31267d49b8ed13e650ad7c71418bc1f647b5696c2d03ffa9e4ce1375"
+    },
+    {
+      "path": "dist/matches.json",
+      "sha256": "001b77da9d24501f641e67d35b02d624179a7853a796f21ba19e5c3ebb778952"
+    },
+    {
+      "path": "dist/bans.json",
+      "sha256": "ea94c79672008f4bfbfba0e18bed4e890d45346b2fdf1c2e51f414cb8bb706b4"
+    },
+    {
+      "path": "dist/bans-observed.json",
+      "sha256": "19fa9595e613a9ef450bbceb0ead7643b9e84646098e8cd3ded29ee36553763e"
+    },
+    {
+      "path": "dist/tournament-details.json",
+      "sha256": "2cbe7b449344692d70b3b1c4bc04601e9b58c0dcbdef47bf9a0d4f4bda9be80f"
+    }
+  ],
+  "testSummary": {
+    "command": "npm test",
+    "passed": 146,
+    "failed": 0
+  },
+  "numericAudit": "research/refresh/2026-10-31/numeric-audit.json",
+  "unmodifiedGuideContent": true,
+  "newInterface": false,
+  "priorTestSummary": {
+    "command": "npm test",
+    "passed": 126,
+    "failed": 0
+  },
+  "priorBrowserChecks": [
+    "China latest season renders 96,505 aggregate rows",
+    "Excluded S44 cumulative snapshots absent; weekly/daily choices remain",
+    "402 score dates available; 2025-09-18 loads 33 hunter rows",
+    "Character tournament details load without site console errors",
+    "Mobile iframe viewport 375px: no page horizontal overflow, rendered 96,505 rows total"
+  ],
+  "integratedWithPublicCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe",
+  "announcedVersionPreserved": "1.17.2"
+}

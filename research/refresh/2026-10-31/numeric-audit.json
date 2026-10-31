@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-31",
+  "method": "보존 원본 수치와 현재 배포용 분할 JSON을 별도 경로로 대조. 수집 사이트의 통계 자체 정확성을 보증하는 검사는 아닙니다.",
+  "checks": [
+    {
+      "name": "China latest cumulative, all 9 rank groups",
+      "status": "pass",
+      "cohorts": 9,
+      "rows": 801,
+      "metricComparisons": 4005,
+      "zeroValuesPreserved": 0,
+      "nullValuesPreserved": 0,
+      "decimalTolerance": 0.0001,
+      "samples": [
+        {
+          "cohort": "cn-s45-20260910-20261029-1",
+          "character": "c60",
+          "sourceName": "神童",
+          "rawWin": 0.361242,
+          "shippedWin": 36.1242,
+          "rawBan": 0.007602,
+          "shippedBan": 0.7602
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-1",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.465231,
+          "shippedWin": 46.5231,
+          "rawBan": 0.001179,
+          "shippedBan": 0.1179
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-1",
+          "character": "c11",
+          "sourceName": "心兽",
+          "rawWin": 0.502984,
+          "shippedWin": 50.2984,
+          "rawBan": 0.320369,
+          "shippedBan": 32.0369
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-2",
+          "character": "c60",
+          "sourceName": "神童",
+          "rawWin": 0.370898,
+          "shippedWin": 37.0898,
+          "rawBan": 0.004731,
+          "shippedBan": 0.4731
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-2",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.408924,
+          "shippedWin": 40.8924,
+          "rawBan": 0.000992,
+          "shippedBan": 0.0992
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-2",
+          "character": "c11",
+          "sourceName": "心兽",
+          "rawWin": 0.43498,
+          "shippedWin": 43.498,
+          "rawBan": 0.321559,
+          "shippedBan": 32.1559
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-3",
+          "character": "c60",
+          "sourceName": "神童",
+          "rawWin": 0.368944,
+          "shippedWin": 36.8944,
+          "rawBan": 0.004815,
+          "shippedBan": 0.4815
+        },
+        {
+          "cohort": "cn-s45-20260910-20261029-3",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.428181,
+          "shippedWin": 42.8181,
+          "rawBan": 0.000827,
+          "shippedBan": 0.0827
+        }
+      ]
+    },
+    {
+      "name": "China historical and retained weekly source tables",
+      "status": "pass",
+      "cohorts": 13,
+      "rows": 1034,
+      "metricComparisons": 5170,
+      "zeroValuesPreserved": 1,
+      "nullValuesPreserved": 239,
+      "decimalTolerance": 0.0001,
+      "samples": [
+        {
+          "cohort": "cn-s24-20221017-20221030-1",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.625,
+          "shippedWin": 62.5,
+          "rawBan": null,
+          "shippedBan": null
+        },
+        {
+          "cohort": "cn-s24-20221017-20221030-peak7",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.41,
+          "shippedWin": 41.0,
+          "rawBan": null,
+          "shippedBan": null
+        },
+        {
+          "cohort": "cn-s26-20230220-20230305-1",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.539,
+          "shippedWin": 53.9,
+          "rawBan": null,
+          "shippedBan": null
+        },
+        {
+          "cohort": "cn-s26-20230220-20230305-peak7",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.5,
+          "shippedWin": 50.0,
+          "rawBan": null,
+          "shippedBan": null
+        },
+        {
+          "cohort": "cn-s40-20250917-20251126-all",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.482426,
+          "shippedWin": 48.2426,
+          "rawBan": 0.000376,
+          "shippedBan": 0.0376
+        },
+        {
+          "cohort": "cn-s40-20250917-20251126-1",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.438362,
+          "shippedWin": 43.8362,
+          "rawBan": 0.00137,
+          "shippedBan": 0.137
+        },
+        {
+          "cohort": "cn-s40-20250917-20251126-peak7",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.504467,
+          "shippedWin": 50.4467,
+          "rawBan": 2e-05,
+          "shippedBan": 0.002
+        },
+        {
+          "cohort": "cn-s44-20260903-20260909-all",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "rawWin": 0.482878,
+          "shippedWin": 48.2878,
+          "rawBan": 0.00033,
+          "shippedBan": 0.033
+        }
+      ]
+    },
+    {
+      "name": "Asia S36-S38 region/date/name joins",
+      "status": "pass",
+      "cohorts": 6,
+      "rows": 484,
+      "excludedNonAsiaRawRows": 484,
+      "samples": [
+        {
+          "cohort": "homeworkkun-asia-s36-20250220-20250429-all",
+          "sourceRow": 66,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 46.0,
+          "ban": 0.0
+        },
+        {
+          "cohort": "homeworkkun-asia-s36-20250220-20250429-peak7",
+          "sourceRow": 97,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 43.8,
+          "ban": 0.0
+        },
+        {
+          "cohort": "homeworkkun-asia-s37-20250430-20250709-all",
+          "sourceRow": 122,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 47.6,
+          "ban": 0.0
+        },
+        {
+          "cohort": "homeworkkun-asia-s37-20250430-20250709-peak7",
+          "sourceRow": 89,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 46.0,
+          "ban": 0.0
+        },
+        {
+          "cohort": "homeworkkun-asia-s38-20250710-20250917-all",
+          "sourceRow": 124,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 48.6,
+          "ban": 0.0
+        },
+        {
+          "cohort": "homeworkkun-asia-s38-20250710-20250917-peak7",
+          "sourceRow": 77,
+          "sourceArea": "asia",
+          "character": "c01",
+          "sourceName": "蜘蛛",
+          "win": 49.2,
+          "ban": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Japan-hosted S43 transcription raw win versus adjusted win",
+      "status": "pass",
+      "cohorts": 9,
+      "rows": 783,
+      "rowsDistinguishingAdjustedWin": 783,
+      "missingRosterNotZeroFilled": [
+        "c60",
+        "c80"
+      ],
+      "samples": [
+        {
+          "cohort": "wiki-asia-s43-all-hunters",
+          "sourceLine": 12,
+          "character": "c01",
+          "sourceWin": "50.9%",
+          "excludedAdjustedWin": "68.97%",
+          "shippedWin": 50.9
+        },
+        {
+          "cohort": "wiki-asia-s43-all-hunters",
+          "sourceLine": 7,
+          "character": "c67",
+          "sourceWin": "23.8%",
+          "excludedAdjustedWin": "31.19%",
+          "shippedWin": 23.8
+        },
+        {
+          "cohort": "wiki-asia-s43-peak7-hunters",
+          "sourceLine": 340,
+          "character": "c01",
+          "sourceWin": "44.6%",
+          "excludedAdjustedWin": "65.20%",
+          "shippedWin": 44.6
+        },
+        {
+          "cohort": "wiki-asia-s43-peak7-hunters",
+          "sourceLine": 468,
+          "character": "c67",
+          "sourceWin": "23.6%",
+          "excludedAdjustedWin": "34.55%",
+          "shippedWin": 23.6
+        }
+      ]
+    },
+    {
+      "name": "New China score units and exact rank boundaries",
+      "status": "pass",
+      "rows": 712,
+      "positions": [
+        1,
+        10,
+        11,
+        100,
+        101,
+        300,
+        301,
+        500
+      ],
+      "samples": [
+        {
+          "character": "c01",
+          "rankPosition": 1,
+          "rawAndShippedScore": 16293
+        },
+        {
+          "character": "c60",
+          "rankPosition": 500,
+          "rawAndShippedScore": 6488
+        }
+      ]
+    },
+    {
+      "name": "Tournament direct game-object sample across leagues and outcomes",
+      "status": "pass",
+      "halfGames": 22,
+      "leagues": [
+        "COA",
+        "IJL",
+        "IVC",
+        "IVL",
+        "IVS",
+        "IVT"
+      ],
+      "personalComparisons": 264,
+      "nulls": 44,
+      "zeros": 34,
+      "escapeBooleans": 44,
+      "samples": [
+        {
+          "id": "bwiki-3fcf1bea13c145939061",
+          "pointer": "/0/games/6",
+          "sourceFile": "IVL_COA_2020to2024.json",
+          "rawDecode1": 0.0,
+          "shippedDecode1": 0,
+          "hunterHomeOrAway": "主",
+          "rawHomeScore": 5,
+          "rawAwayScore": 0,
+          "shippedHunterResult": "승"
+        },
+        {
+          "id": "bwiki-160c53efc754fddfd3d5",
+          "pointer": "/211/games/9",
+          "sourceFile": "IVL_COA_2020to2024.json",
+          "rawDecode1": -999.0,
+          "shippedDecode1": null,
+          "hunterHomeOrAway": "客",
+          "rawHomeScore": 2,
+          "rawAwayScore": 2,
+          "shippedHunterResult": "무"
+        }
+      ]
+    },
+    {
+      "name": "Official 10/30 partial set results",
+      "status": "pass",
+      "halfGames": 2,
+      "personalNullValues": 32,
+      "fullBanRows": 2,
+      "legacyOpeningBanRowsAdded": 0,
+      "sources": [
+        "https://sina.cn/news/detail/5359738789298458.html",
+        "https://sina.cn/news/detail/5359673491849831.html"
+      ],
+      "coverage": "10월 30일 DOU5–ASC의 2세트 두 반경기만 확인했습니다. 해당 대회나 날짜 전체 수집이 아닙니다."
+    }
+  ],
+  "inputHashes": {
+    "dist/ranked/index.json": "5b04497f6a255c98cde17acf285c352217a7d54c4ad15489e50a54268375dd4e",
+    "dist/data.json": "42bc37cb0ea335465a8f23509db824d14239ce85b46b5108274bde894beef0f0",
+    "research/ranked/character-map-cn.json": "85c9b0e1e6917eb06d70740f7e378a1bd73f74fbd7af2d0f4e68644f80be483d",
+    "research/refresh/2026-10-31/china/ranked-additions.json.gz": "68a945695e977dfa4de9d3772904dbe2ec7f5bc76cbffd7ac956bb6e9841e09b",
+    "research/refresh/2026-10-31/china/raw/S45-261029.json.gz": "e6b4573888d32a9490c9963f0165cebaef4788d210a56cb6db34c35f827fc3cb",
+    "dist/ranked/cn-s45.json": "6b32ca591597c2a7da76fc781356d5ff52718370c21da95f56deefe8929a7921",
+    "research/refresh/2026-10-29/china/ranked-additions.json.gz": "4f2151a1dba8bafcffeb6e9095b927e0b448b46da74c10815227d8515e34702e",
+    "research/refresh/2026-10-29/china/raw-sources.tar.gz": "4a0384ac39bad30192d1f1ef400397463691210627dc370d38f041b6f70ec36c",
+    "dist/ranked/cn-s24.json": "9be44907940ab29dcb7b7d8f1e9ba6edb1d30a5cdcaf6df1f075e3541f4482d6",
+    "dist/ranked/cn-s26.json": "193d8e3dc4855f3be28a926c4901715659c5636bd9d59cfeabd93bd3181a4433",
+    "dist/ranked/cn-s40.json": "8eafa8143f0211e2322895c604b012ba76ea73b9ccc7fa586ae3b5ec45cba5af",
+    "dist/ranked/cn-s44.json": "5aa9bade150541f0e4c90cae84c9c60cc22704ccdbc566c1f0cf08b683d29bdc",
+    "research/refresh/2026-10-29/asia/homework-asia-historical-datasets.json": "4761895d97cd2a42b24338e5781c74ecf3e8fd8e0da738419c8d186d2c7a4ee3",
+    "research/refresh/2026-10-29/asia/Global-S36-250429.json": "519c80b5c849e2383cd471cb31e459100c072afc81470f0278d41dd006c91854",
+    "dist/ranked/asia-s36.json": "7ca7130c3331a29f11cdebf7be122840afac7a9b2e0535ed9837702a301b8d72",
+    "research/refresh/2026-10-29/asia/Global-S37-250709.json": "099514b90fecf0ec1868db31c6e4c68a1824df431592625769d240ac75c75315",
+    "dist/ranked/asia-s37.json": "45fd7f7dcf70e133b6fb9451968e2c12ff6462f53603afb68a7c90313b208aa0",
+    "research/refresh/2026-10-29/asia/Global-S38-250917.json": "c5055420b98ab023889b9ba13d6329f8f778ebcb29111ca9720ab1a2489bec5a",
+    "dist/ranked/asia-s38.json": "946829c36fc27dd3c3dbe712621d44f29004a9e1d9819033083c8d144cae6da1",
+    "research/refresh/2026-10-29/asia/asia-s43-merged-datasets.json": "12eb963094776b36d7b63a4293e1640c754ded783f4a72d02afaaed38847b057",
+    "research/refresh/2026-10-29/asia/wiki-s43-hunters.raw.txt": "0b1b61e9aa394fb14cb91b6e93bab839ea9815a608871031a7d789c0aeda1bb2",
+    "research/refresh/2026-10-29/asia/wiki-s43-survivors.raw.txt": "c44bfcfb9be6013e2f58c401b8eaba111b67c53984dc98375efcfdcf4eea4454",
+    "dist/ranked/asia-s43.json": "f4ca03903f9dc2b5651d723b5714ff12fb8ef608639d8e96816f2e75fabeea43",
+    "research/refresh/2026-10-31/china/raw/Badge_20261029.json.gz": "ff11dc66392c20e694e768f843ccd2f13c5a1dca2957571b149026f986cbbec4",
+    "dist/ranked/badges.json": "113a013f98491940b6e56f5321735ba6b8667bd7085dd9ee76fb3565cb0980f7",
+    "dist/ranked/badges-202610.json": "c33dd33e9048f357f8ce3c58324edd94372f545e868cbbf654699047a6e64515",
+    "research/refresh/2026-10-29/tournament/bwiki-normalized.json.gz": "fcee3405629ce9f14b703b1ef6c2e8445f65f69f71cf17e7985156dc8402c02c",
+    "dist/tournament-details.json": "2cbe7b449344692d70b3b1c4bc04601e9b58c0dcbdef47bf9a0d4f4bda9be80f",
+    "research/refresh/2026-10-29/tournament/raw/bwiki-IVL_COA_2020to2024.json.gz": "2bb5d9804e91e2ef890eaa264ef936436d52c16ef3aa9830e27951e41b094db5",
+    "research/refresh/2026-10-29/tournament/raw/bwiki-oversea_2020to2024.json.gz": "93d5d52627d9266f65688ff66ad2d3bd96c828418a2bfea09186bde9d16c091a",
+    "research/refresh/2026-10-31/tournament/verified-additions.json": "a6dd2cdf0fca1edcd48f4edbf3194309563624478776d9a104d9469e62ff40ad",
+    "research/refresh/2026-10-31/tournament/source-observations.json": "50c78bc9758d843fabc154568f015c06cab2be497f2b04b31f06e1b1fa830942"
+  },
+  "status": "pass",
+  "limitation": "원본 통계 산출의 정확성·전체 인터넷 수집·실제 브라우저 표시를 보증하지 않습니다. 일본 자료는 일본 이용자만의 표본이 아니라 아시아 서버 자료입니다."
+}

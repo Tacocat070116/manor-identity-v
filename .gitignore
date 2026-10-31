@@ -11,3 +11,12 @@ qa-summary.json
 *.tar
 *.tar.gz
 research/payload/retired-fields.json
+
+# Keep unused or access-limited research out of this statistics release.
+/research/refresh/**/raw/
+/research/refresh/**/map-additions*
+/research/refresh/**/naver/
+/research/refresh/**/community*
+/research/refresh/**/*.png
+/research/refresh/**/*.jpg
+/.openai/

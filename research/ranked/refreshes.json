@@ -1,0 +1,39 @@
+{
+  "collectedAt": "2026-10-31",
+  "ranked": [
+    {
+      "path": "research/refresh/2026-10-29/china/ranked-additions.json.gz"
+    },
+    {
+      "path": "research/refresh/2026-10-29/asia/asia-s43-merged-datasets.json",
+      "replaceDatasetIds": [
+        "wiki-asia-s43-all-hunters",
+        "wiki-asia-s43-1-hunters",
+        "wiki-asia-s43-2-hunters",
+        "wiki-asia-s43-3-hunters",
+        "wiki-asia-s43-4-hunters",
+        "wiki-asia-s43-5-hunters",
+        "wiki-asia-s43-6-hunters",
+        "wiki-asia-s43-7-hunters",
+        "wiki-asia-s43-peak7-hunters"
+      ]
+    },
+    {
+      "path": "research/refresh/2026-10-29/asia/homework-asia-historical-datasets.json"
+    },
+    {
+      "path": "research/refresh/2026-10-31/china/ranked-additions.json.gz"
+    }
+  ],
+  "badges": [
+    {
+      "path": "research/refresh/2026-10-29/china/badge-additions.json.gz"
+    },
+    {
+      "path": "research/refresh/2026-10-31/china/badge-additions.json.gz"
+    }
+  ],
+  "excludedStatuses": [
+    "needs-review"
+  ]
+}

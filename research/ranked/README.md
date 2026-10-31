@@ -1,27 +1,73 @@
-# Public ranked statistics collection · 2026-10-17
+# 통계 자료 정리와 확장 · 2026-10-31
 
-This import adds published aggregates, not individual ranked match histories.
+전체 작업 상태는 `operations/statistics-expansion.json`, 입력 검토와 제외 사유는
+`operations/statistics-input-review.json`에 기록합니다. 기존 화면을 유지하며,
+검증을 마친 자료를 기존 사이트에 반영합니다. 공개 버전과 MANOR 업데이트는
+운영자가 별도로 공지를 요청할 때만 갱신합니다.
 
-| Collection | Rows | Cohorts | Coverage |
-| --- | ---: | ---: | --- |
-| Chinese server archives | 32,343 | 412 | S24, S26, S28, S32–40, S43, S44; available daily, weekly and cumulative periods |
-| Asia S43 hunter transcription | 324 | 9 | 36 hunters, all ranks / tiers 1–7 / peak tier 7 |
-| Chinese knowledge-score snapshots | 1,384 | 2 | 2026-06-13 and 2026-08-04; rank positions and scores, no player identities |
+| 자료 | 기존 | 검증 후 |
+| --- | ---: | ---: |
+| 중국 랭킹 비율 항목 | 32,343 | 95,238 |
+| 아시아 랭킹 비율 항목 | 324 | 1,267 |
+| 랭킹 비율 합계 | 32,667 | 96,505 |
+| 중국 인지 점수 | 1,384 | 274,016 |
+| 인지 점수 날짜 | 2 | 402 |
+| 대회 반경기 | 16,953 | 17,056 |
+| 대회 세부 기록 | 1,650 | 16,930 |
+| 관측 생존자 밴 기록 | 1,634 | 16,842 |
 
-44,939 candidate Asia/China ranked rows yielded 32,667 distinct published rows after removing 12,272 duplicate records. The 50 server-unspecified Global S42 rows remain in the research snapshot for provenance but are excluded from the published index, seasonal files, manifest, CSV and ZIP. Different periods are retained as separate cohorts even when their underlying matches overlap. Do not sum or average them.
+랭킹 항목은 캐릭터·랭크·기간별 비율이며 실제 경기 수나 플레이어 수가
+아닙니다. 인지 점수는 캐릭터별 1·10·11·100·101·300·301·500위 점수이며
+계정이나 선수 이름을 포함하지 않습니다. 인지 점수는 2025-09-18부터
+2026-10-29까지 공개된 402일분이며, 없는 날짜는 생성하지 않습니다.
 
-`normalized-inputs.json.gz` preserves the normalized research input, original metric precision, source names, original URLs and metadata. `source-manifest.json` records retrieved archive URLs, fixed Git commit IDs and raw-file hashes. `character-map-cn.json` maps Chinese names and game IDs to existing MANOR IDs. `validation-cn.json` records the independent collection checks.
+## 제거·제외
 
-Run `python scripts/build-ranked.py` to reproduce `dist/ranked/`. The published index contains cohort metadata; the app loads a server/season payload only when selected. `statistics.zip` contains the complete ranked CSV, knowledge-score CSV and source/cohort metadata. Unknown values remain empty/null, not zero.
+- 이번 화면에 쓰이지 않는 맵 압축 입력을 빌드·테스트·배포 입력에서
+  완전히 분리했습니다. 새 맵 패널이나 별도 여론 화면을 추가하지 않습니다.
+- 정정이 확인되지 않은 중국 S44 누적 18개 집계, 1,575행은 모든 조회와
+  계산에서 제외합니다. 과거 링크로도 해당 항목을 다시 불러오지 않습니다.
+  정상 주간·일간 자료와 다른 시즌은 유지합니다.
+- 같은 관측을 반복한 일간·주간 556행은 한 번만 사용합니다. 서로 다른
+  기간의 자료는 겹치더라도 합산하거나 평균하지 않습니다.
+- 회원 전용 원문, 접근 차단 자료, 검색 요약만 확인한 자료와 여론은 이번
+  수치 입력·공개 업로드에 넣지 않습니다. 의견 수를 승률로 바꾸지 않습니다.
 
-## Definitions and limitations
+## 입력과 검증
 
-- Chinese pick and ban values are within-faction selection shares; they are not directly comparable with the tournament per-match appearance or ban percentages.
-- Chinese loss percentages are calculated as 100 − win − draw. No sample size or confidence interval is inferred.
-- The Asia transcription contains both wins over all results and a draw-excluded adjusted win rate. Only the former is used as `win`; the latter is retained in the input snapshot only.
-- Source archives were accessed; current official service responses and every original image were not independently verified.
-- Chinese S44 2026-08-04 snapshots are outside the date interval named in the source's error notice, but correction status could not be confirmed. They remain accessible as `needs-review` and are excluded from automatic default selection. This is not a claim that the snapshots are definitely incorrect.
-- Missing characters in specific source snapshots remain absent. The latest Chinese snapshots do not contain Prodigy or Beast of the Mind. Some earlier cohorts have additional documented omissions.
-- Latest Asia survivor data, NA/EU raw tables, Korean-only statistics, ranked match histories, and map/persona aggregates could not be obtained through the available public retrieval paths. Dynamic public interfaces advertised some of these views but did not expose their numeric contents to the available retrieval tools. They were not fabricated.
+`normalized-inputs.json.gz`는 기존 통계의 보존 입력이고 `refreshes.json`은
+검토한 수치 입력의 명시적 목록입니다. 중국·아시아 통계와 인지 점수만
+읽습니다. 빌더는 오류 검토 상태의 집계를 제거한 뒤 캐릭터·진영·서버·
+비율 범위·승무패 합·중복·기간을 검사합니다. 신규 압축 입력은 풀어서
+JSON 전체 구조와 필드를 검토했으며, 출처는 공개 캐릭터 통계와 공개 대회
+기록입니다. 일반 게시글이나 인증 정보를 압축해 올리지 않습니다.
 
-The original character prose and the user's Google text-editing sheet are unchanged.
+```sh
+python3 scripts/build-ranked.py
+python3 scripts/build-statistics-expansion.py
+npm run release -- --refresh
+npm test
+sha256sum --check --status SHA256SUMS.txt
+```
+
+랭킹 96,505행과 인지 점수 274,016행은 정규화한 입력과 전수 대조합니다.
+대회 세부 기록은 정규화한 추가분과 전수 대조하고, 별도 원자료 감사에서는
+중국·아시아의 기간·단위·지역 구분, 일본어 표의 승률과 보정 승률 구분,
+대회의 승패 관점 및 0·미기재 구분을 점검합니다. 감사 기록은
+`research/refresh/2026-10-31/numeric-audit.json`에 있습니다.
+
+인지 점수는 선택한 월만 불러옵니다. 파일 일부를 불러오지 못해도 다른
+통계는 유지하고 기존 다시 불러오기 동작으로 재시도할 수 있습니다.
+모든 분할 파일은 내용 해시로 캐시를 갱신합니다.
+
+## 범위와 한계
+
+중국 S24·S26·S28·S32~S45, 아시아 S36~S38·S43의 공개된 자료를 수록합니다.
+중국 최신 누적 자료의 마지막 날짜는 2026-10-29입니다. 아시아 S43의
+집계일은 원문에 없어 수집일을 대신 넣지 않습니다. 아시아 S44와 S39~S42
+전체 보관본, 한국 이용자만의 통계, 실제 랭킹전 경기 수는 미확보입니다.
+
+일본어 사이트의 아시아 서버 자료를 일본 이용자만의 표본으로 보지 않으며,
+같은 공식 통계의 미러·전사본을 독립 표본으로 더하지 않습니다. 공식 원본
+이미지를 모두 전수 대조한 것은 아닙니다. 대회 최신 추가분은 10월 30일
+DOU5–ASC 2세트의 두 반경기만으로 해당 날짜 전체 수집을 뜻하지 않습니다.

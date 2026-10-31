@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-31",
+  "sourcesReviewed": 84,
+  "observationsReviewed": 58,
+  "sourceAccessCounts": {
+    "read": 67,
+    "indexed-only": 9,
+    "blocked": 8
+  },
+  "numericRowsAddedFromOpinions": 0,
+  "rawPostsOrMemberContentPublished": false,
+  "newPublicOpinionInterface": false,
+  "decision": "여론은 승률·픽률·경기 수의 수치 입력으로 사용하지 않습니다. 접근 차단·검색 요약만 확인한 자료 및 회원 전용 원문은 이번 빌드·업로드에서 제외합니다. 3국 의견 조사 작업은 수치 통계와 구분하여 검토했습니다."
+}

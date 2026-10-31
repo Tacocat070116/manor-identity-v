@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {gunzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
 import {createStatisticsUI} from './dist/statistics.js';
 import {selectRanked,tournamentStatistics,sortStatistics,rankedCharacter} from './dist/statistics-model.js';
 import * as model from './dist/model.js';
@@ -20,16 +21,21 @@ for(const d of catalog.datasets){
  d.rows=parts.get(d.path).datasets.find(x=>x.id===d.id).rows.map(([id,pick,win,draw,loss,ban])=>({id,name:byId[id].name,side:byId[id].side,pick,win,draw,loss,ban}));
 }
 catalog.badges=read('ranked/badges.json').datasets;
+const badgeParts=new Map();
+for(const d of catalog.badges){if(!badgeParts.has(d.path))badgeParts.set(d.path,read(d.path));d.rows=badgeParts.get(d.path).datasets.find(x=>x.id===d.id).rows.map(([id,rankPosition,score])=>({id,name:byId[id].name,side:byId[id].side,rankPosition,score}));}
+const refresh=JSON.parse(fs.readFileSync('research/ranked/refreshes.json','utf8'));
+const input=p=>JSON.parse(p.endsWith('.gz')?gunzipSync(fs.readFileSync(p)):fs.readFileSync(p,'utf8'));
 
 test('all imported rows retain their source rates, characters and distinct cohorts',()=>{
  const inputs=JSON.parse(gunzipSync(fs.readFileSync('research/ranked/normalized-inputs.json.gz')));
- const original=[...inputs.cn.datasets,...inputs.global.datasets];
- assert.equal(catalog.datasets.length,421);
- assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),32667);
+ const original=new Map([...inputs.cn.datasets,...inputs.global.datasets].map(d=>[d.id,d]));
+ for(const spec of refresh.ranked)for(const d of input(spec.path).datasets)original.set(d.id,d);
+ assert.equal(catalog.datasets.length,1181);
+ assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),96505);
  assert.ok(catalog.datasets.every(d=>['asia','cn'].includes(d.server)));
  assert.equal(new Set(catalog.datasets.map(d=>d.id)).size,catalog.datasets.length);
  for(const d of catalog.datasets){
-  const source=original.find(x=>x.id===d.id);
+  const source=original.get(d.id);
   assert.ok(source,d.id);assert.equal(d.rows.length,source.rows.length);
   assert.equal(new Set(d.rows.map(r=>r.id)).size,d.rows.length);
   for(const r of d.rows){
@@ -41,22 +47,23 @@ test('all imported rows retain their source rates, characters and distinct cohor
    if(r.loss!==null)assert.ok(Math.abs(r.win+r.draw+r.loss-100)<.21);
   }
  }
- assert.equal(catalog.badges.reduce((n,d)=>n+d.rows.length,0),1384);
+ assert.equal(catalog.badges.reduce((n,d)=>n+d.rows.length,0),274016);
 });
 
-test('rank selection does not pool sources, periods, ranks or servers; review-needed seasons are opt-in',()=>{
+test('rank selection keeps sources distinct and old excluded snapshot links fall back safely',()=>{
  const asia=selectRanked(catalog,{server:'asia',tier:'all'});
- assert.equal(asia.dataset.season,'S43');assert.equal(asia.dataset.rows.length,36);
- assert.ok(asia.dataset.rows.every(r=>r.side==='감시자'));
+ assert.equal(asia.dataset.season,'S43');assert.equal(asia.dataset.rows.length,87);
+ assert.equal(asia.dataset.rows.filter(r=>r.side==='생존자').length,51);
  const cn=selectRanked(catalog,{server:'cn',tier:'all'});
- assert.equal(cn.dataset.season,'S43');assert.equal(cn.dataset.excludeFromDefault,false);
- const review=selectRanked(catalog,{server:'cn',season:'S44',tier:'all'});
- assert.equal(review.dataset.status,'needs-review');assert.equal(review.dataset.excludeFromDefault,true);
+ assert.equal(cn.dataset.season,'S45');assert.equal(cn.dataset.excludeFromDefault,false);
+ const reviewId='cn-s44-20260702-20260804-all';
+ const review=selectRanked(catalog,{server:'cn',season:'S44',tier:'all',snapshot:reviewId});
+ assert.notEqual(review.dataset.id,reviewId);assert.notEqual(review.dataset.status,'needs-review');assert.equal(review.dataset.excludeFromDefault,false);
  const period=selectRanked(catalog,{server:'cn',season:'S40',tier:'all'});
  assert.ok(period.snapshots.length>1);
  const chosen=selectRanked(catalog,{...period.filters,snapshot:period.snapshots.at(-1).id});
  assert.equal(chosen.dataset.id,period.snapshots.at(-1).id);
- assert.ok(!cn.dataset.rows.some(r=>r.id==='c60'));assert.equal(rankedCharacter(cn.dataset,'c60'),null);
+ assert.ok(cn.dataset.rows.some(r=>r.id==='c60'));assert.ok(rankedCharacter(cn.dataset,'c60'));assert.equal(rankedCharacter(asia.dataset,'c60'),null);
  const unsupported={id:'retired-global',server:'global-unknown',season:'S42',tier:'peak7',rows:[]};
  const stale={...catalog,datasets:[...catalog.datasets,unsupported]};
  for(const server of ['global-unknown','naeu','unrecognized']){
@@ -112,8 +119,8 @@ test('live app routes load only selected season files and render all three scope
  assert.match(html,/id="ranked-title"/);assert.doesNotMatch(html,/id="tournament-title"/);
  app.state.statistics.scope='tournament';await app.render();html=nodes.get('#page-body').innerHTML;
  assert.doesNotMatch(html,/id="ranked-title"/);assert.match(html,/id="tournament-title"/);
- Object.assign(app.state.statistics,{server:'cn',season:'S44',tier:'all',snapshot:'',scope:'ranked'});await app.render();html=nodes.get('#page-body').innerHTML;
- assert.match(html,/정정 확인이 필요한 과거 통계/);assert.match(html,/인지 점수/);assert.match(html,/2026-08-04/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
+ Object.assign(app.state.statistics,{server:'cn',season:'S44',tier:'all',snapshot:'cn-s44-20260702-20260804-all',scope:'ranked'});await app.render();html=nodes.get('#page-body').innerHTML;
+ assert.doesNotMatch(html,/정정 확인이 필요한 과거 통계/);assert.match(html,/인지 점수/);assert.match(html,/2026-10-29/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
  app.state.statistics.search='거미';await app.render();assert.match(nodes.get('#page-body').innerHTML,/1명의 캐릭터/);
  app.syncStatisticsRoute();assert.match(context.location.hash,/season=S44/);
  app.readRoute();assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.search,'거미');
@@ -136,7 +143,94 @@ test('ranked import survives partial network failure without hiding tournament r
  const {context,nodes,app}=runtime();const fetch=context.fetch;
  context.fetch=async url=>url.startsWith('ranked/')?{ok:false}:fetch(url);
  await app.boot();const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/16,953/);
+ assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/17,056/);
+});
+
+test('ranked cohorts deduplicate equivalent daily/weekly observations without pooling periods',()=>{
+ const keys=catalog.datasets.map(d=>JSON.stringify([d.server,d.season,d.tier,d.periodStart,d.periodEnd,d.periodKind]));
+ assert.equal(new Set(keys).size,keys.length);
+ const equivalents=input(refresh.ranked[0].path).datasets.filter(d=>d.sameObservationAs);
+ assert.equal(equivalents.length,7);assert.equal(catalog.meta.equivalentRowsRemoved,556);
+ for(const alias of equivalents){
+  assert.ok(!catalog.datasets.some(d=>d.id===alias.id));
+  const canonical=catalog.datasets.find(d=>d.id===alias.sameObservationAs);assert.ok(canonical);
+  assert.ok(canonical.alsoPublishedAs.includes('weekly'));
+  const sourceRows=new Map(alias.rows.map(r=>[r.characterId,['pick','win','draw','loss','ban'].map(k=>r[k])]));
+  assert.equal(sourceRows.size,canonical.rows.length);
+  for(const row of canonical.rows)assert.deepEqual(['pick','win','draw','loss','ban'].map(k=>row[k]),sourceRows.get(row.id));
+ }
+ const review=catalog.datasets.filter(d=>d.status==='needs-review');
+ assert.equal(review.length,0);assert.equal(catalog.meta.excludedSourceErrorRows,1575);
+ const excluded=input('research/ranked/build-manifest.json').excludedDatasets;assert.equal(excluded.length,18);assert.equal(excluded.reduce((n,d)=>n+d.rows,0),1575);
+ for(const d of excluded)assert.ok(!catalog.datasets.some(c=>c.id===d.id));
+ assert.notEqual(selectRanked(catalog,{server:'cn',season:'S44',tier:'all'}).dataset.status,'needs-review');
+});
+
+test('new ranked coverage preserves source dates, unknown denominators and missing characters',()=>{
+ for(const [server,rows,cohorts] of [['asia',1267,15],['cn',95238,1166]]){
+  const datasets=catalog.datasets.filter(d=>d.server===server);
+  assert.equal(datasets.length,cohorts);assert.equal(datasets.reduce((n,d)=>n+d.rows.length,0),rows);
+ }
+ const latest=catalog.datasets.filter(d=>d.server==='cn'&&d.season==='S45'&&d.periodEnd==='2026-10-29');
+ assert.equal(latest.length,9);
+ for(const d of latest){
+  assert.equal(d.rows.length,89);assert.equal(d.periodKind,'season-cumulative');assert.equal(d.asOf,'2026-10-29');
+  assert.equal(d.sourceCollectedAt,'2026-10-31');assert.equal(d.sampleSize,null);
+  assert.equal(d.pickBasis,'selection-share');assert.equal(d.banBasis,'ban-selection-share');
+  assert.ok(catalog.datasets.some(p=>p.server===d.server&&p.season===d.season&&p.tier===d.tier&&p.periodEnd==='2026-10-28'&&p.periodKind===d.periodKind));
+ }
+ const asia=catalog.datasets.filter(d=>d.server==='asia');
+ assert.deepEqual([...new Set(asia.map(d=>d.season))].sort(),['S36','S37','S38','S43']);
+ assert.ok(asia.filter(d=>d.season==='S43').every(d=>!d.asOf&&!d.periodEnd&&d.rows.length===87&&!d.rows.some(r=>r.id==='c60'||r.id==='c80')));
+ assert.ok(catalog.datasets.every(d=>(!d.periodEnd||d.periodEnd<='2026-10-31')&&(!d.asOf||d.asOf<='2026-10-31')));
+});
+
+test('season loads use content hashes and the existing controls display the expanded ranked archive',async()=>{
+ for(const [path,hash] of Object.entries(catalog.assetVersions)){
+  assert.equal(createHash('sha256').update(fs.readFileSync('dist/'+path)).digest('hex').slice(0,12),hash,path);
+ }
+ const {context,nodes,fetches,app}=runtime();
+ context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';await app.boot();
+ const html=nodes.get('#page-body').innerHTML;
+ assert.match(html,/96,505/);assert.match(html,/2026-10-29/);assert.doesNotMatch(html,/undefined|NaN|community-evidence/);
+ assert.ok(fetches.some(url=>url.startsWith('ranked/cn-s45.json?v=')));
+ assert.ok(!fetches.some(url=>url.includes('map-cn-')));
+ for(const url of fetches.filter(url=>url.startsWith('ranked/')&&!url.startsWith('ranked/index.json'))){
+  const [path,query]=url.split('?');assert.equal(query,'v='+catalog.assetVersions[path]);
+ }
+});
+
+test('expanded China archives use existing controls and fetch only one score month with current hashes',async()=>{
+ const {nodes,fetches,app,context}=runtime();context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';await app.boot();
+ const html=nodes.get('#page-body').innerHTML;
+ assert.match(html,/2026-10-29/);assert.match(html,/인지 점수 기록/);assert.doesNotMatch(html,/맵별 진영 성적|community-evidence|VOICES & SOURCES/);
+ assert.ok(!fetches.some(url=>url.includes('map-cn-')||url.includes('community-evidence')));
+ const months=fetches.filter(url=>/^ranked\/badges-\d{6}\.json/.test(url));assert.equal(months.length,1);assert.match(months[0],/badges-202610/);
+ for(const url of fetches.filter(url=>url.startsWith('ranked/')&&!url.startsWith('ranked/index.json'))){const [path,query]=url.split('?');assert.equal(query,'v='+catalog.assetVersions[path]);}
+ Object.assign(app.state.statistics,{badgeSnapshot:catalog.badges.find(d=>d.asOf==='2025-09-18').id});await app.render();
+ assert.equal(fetches.filter(url=>url.startsWith('ranked/badges-202509')).length,1);assert.match(nodes.get('#page-body').innerHTML,/2025-09-18/);
+ app.syncStatisticsRoute();assert.match(context.location.hash,/badge=cn-badge-20250918/);app.readRoute();assert.equal(app.state.statistics.badgeSnapshot,'cn-badge-20250918');
+});
+
+test('optional score archive failures preserve character statistics and can be retried',async()=>{
+ const {context,nodes,app}=runtime();const fetch=context.fetch;
+ context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';
+ context.fetch=async url=>/ranked\/badges-/.test(url)?{ok:false}:fetch(url);await app.boot();
+ let html=nodes.get('#page-body').innerHTML;assert.match(html,/36명의 캐릭터/);assert.match(html,/인지 점수 자료를 불러오지 못했습니다/);assert.match(html,/자료 다시 불러오기/);
+ context.fetch=fetch;await app.render();html=nodes.get('#page-body').innerHTML;assert.doesNotMatch(html,/자료를 불러오지 못했습니다/);assert.match(html,/인지 점수 기록/);
+});
+
+test('all score partitions preserve source values and excluded map inputs are absent',()=>{
+ assert.ok(!refresh.maps);assert.ok(!fs.existsSync('research/refresh/2026-10-29/china/map-additions.json.gz'));
+ assert.ok(!catalog.mapDatasets);assert.ok(!Object.keys(catalog.assetVersions).some(p=>p.includes('/map-')));
+ const badgeSources=new Map(refresh.badges.flatMap(spec=>input(spec.path).datasets).map(d=>[d.id,d]));
+ assert.equal(catalog.badges.length,402);assert.equal(catalog.badges[0].asOf,'2026-10-29');
+ for(const d of catalog.badges){assert.ok(d.asOf<='2026-10-29');const src=badgeSources.get(d.id);assert.ok(src);const rows=new Map(src.rows.map(r=>[(r.characterId||r.id)+'|'+r.rankPosition,r.score]));assert.equal(rows.size,d.rows.length);for(const r of d.rows)assert.equal(r.score,rows.get(r.id+'|'+r.rankPosition));}
+ const cn=selectRanked(catalog,{server:'cn',season:'S45',tier:'all'});assert.equal(cn.dataset.periodEnd,'2026-10-29');assert.equal(cn.dataset.periodKind,'season-cumulative');assert.equal(cn.dataset.rows.length,89);
+ const s44=selectRanked(catalog,{server:'cn',season:'S44',tier:'all'});assert.notEqual(s44.dataset.status,'needs-review');
+ const keys=catalog.datasets.map(d=>JSON.stringify([d.server,d.season,d.tier,d.periodStart,d.periodEnd,d.periodKind]));assert.equal(new Set(keys).size,keys.length);
+ assert.equal(catalog.meta.equivalentRowsRemoved,556);
+ const equivalent=input(refresh.ranked[0].path).datasets.filter(d=>d.sameObservationAs);assert.equal(equivalent.length,7);for(const d of equivalent){assert.ok(!catalog.datasets.some(x=>x.id===d.id));assert.ok(catalog.datasets.find(x=>x.id===d.sameObservationAs).alsoPublishedAs.includes('weekly'));}
 });
 
 

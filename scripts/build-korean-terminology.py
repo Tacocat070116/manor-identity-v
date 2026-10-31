@@ -154,6 +154,14 @@ for name, data in all_files.items():
         else:
             assert parent[key] == edit['before'], f"{edit['path']}: editorial baseline differs"
         parent[key] = copy.deepcopy(edit['after'])
+    # Statistics refreshes have their own before/after audit; they are not language edits.
+    if name == 'data':
+        for metadata_path in sorted((ROOT / 'research/refresh').glob('????-??-??/metadata-edits.json')):
+            for edit in json.loads(metadata_path.read_text()):
+                key = edit['path'].removeprefix('dist/data.json/meta/')
+                assert (key in data['meta']) == edit['beforeExists']
+                assert data['meta'].get(key) == edit['before'], f'{key}: statistics metadata baseline differs'
+                data['meta'][key] = copy.deepcopy(edit['after'])
     # Preserve the original editorial audit while omitting retired browser fields.
     compact_payload(name + '.json', data)
     if args.check:

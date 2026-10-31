@@ -86,7 +86,7 @@ test('every replacement has provenance and the audit only touches editorial fiel
   else assert.fail(edit.path);
  }
  assert.equal(db.characters.length,89);assert.equal(db.matchups.length,463);assert.equal(db.links.length,275);
- assert.equal(db.meta.recordLatest,'2026-10-26');
+ assert.equal(db.meta.recordLatest,'2026-10-30');
 });
 
 test('official item introductions and contextual weather terms stay distinct',()=>{
