@@ -24,9 +24,10 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
  function save(token){
   if(token&&!validToken(token))throw Error('작성 정보가 올바르지 않습니다.');
   const previous=read();remember(previous);remember(token);
-  if(!persistProfiles()&&previous&&token&&previous!==token)throw Error('현재 기록의 코드를 보관하지 못해 전환하지 않았습니다. 현재 복구 코드를 먼저 파일로 보관하고, 저장 가능한 브라우저에서 연결해 주세요.');
+  const profilesStored=persistProfiles();
+  if(!profilesStored&&previous&&token&&previous!==token)throw Error('현재 기록의 코드를 보관하지 못해 전환하지 않았습니다. 현재 복구 코드를 먼저 파일로 보관하고, 저장 가능한 브라우저에서 연결해 주세요.');
   memory=token;memoryOnly=false;
-  try{const target=storage();if(!target)throw Error();if(token)target.setItem(TOKEN_KEY,token);else target.removeItem(TOKEN_KEY);persistent=true;}catch{persistent=false;memoryOnly=true;if(previous&&token&&previous!==token){memory=previous;throw Error('이 브라우저에 기록을 저장하지 못해 기존 연결을 유지했습니다. 복구 코드는 계속 보관해 주세요.');}}
+  try{const target=storage();if(!target)throw Error();if(token)target.setItem(TOKEN_KEY,token);else target.removeItem(TOKEN_KEY);persistent=profilesStored;}catch{persistent=false;memoryOnly=true;if(previous&&token&&previous!==token){memory=previous;throw Error('이 브라우저에 기록을 저장하지 못해 기존 연결을 유지했습니다. 복구 코드는 계속 보관해 주세요.');}}
   return token;
  }
  function serial(work){
@@ -79,35 +80,42 @@ export async function issueRecoveryCode({store=participation,origin=PARTICIPATIO
  });
 }
 
-export function participationBar(){
- const current=participation.read(),saved=!!current&&participation.backedUp();
- const title=saved?'복구 코드 보관을 확인했어요':current?'내 기록을 잃지 않도록, 코드 보관':'작성 전에 복구 코드를 받아두세요';
- const text=!participation.persistent()?'이 브라우저에서는 작성 정보가 유지되지 않을 수 있어요. 코드를 꼭 따로 보관하세요.':saved?'다른 브라우저에서도 내 글과 운영자 답변을 이어서 볼 수 있어요.':'다른 브라우저에서 내 피드백·상대법·조합 글·채널을 관리할 때 필요합니다. 코드를 따로 저장해 주세요.';
- return `<aside class="participation-bar ${saved?'is-saved':'is-important'}" data-participation-banner aria-label="복구 코드 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${title}</strong><p>${e(text)}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${saved?'':'primary'} small" data-participation="open" data-participation-view="issue">${current?'복구 코드 확인·보관':'복구 코드 발급받기'}</button><button type="button" class="participation-text-button" data-participation="open" data-participation-view="connect">기존 코드로 연결</button></div></aside>`;
+export function recoveryState({current='',saved=false,persistent=true}={}){
+ return !current?'unconnected':!persistent?'temporary':saved?'ready':'needs-backup';
+}
+export function participationBar({store=participation}={}){
+ const current=store.read(),saved=!!current&&store.backedUp(),state=recoveryState({current,saved,persistent:store.persistent()});
+ if(state==='ready')return `<aside class="participation-bar is-saved" data-participation-banner data-recovery-state="ready" aria-label="복구 코드 상태"><span class="participation-key">${keyIcon}</span><strong>이 브라우저는 연결·보관 완료</strong><button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">코드 관리</button></aside>`;
+ const title=state==='temporary'?'이 브라우저에서는 연결을 저장하지 못해요':current?'연결된 기록의 복구 코드를 보관하세요':'이 브라우저에는 연결된 기록이 없어요';
+ const text=state==='temporary'?'창을 닫기 전에 복구 코드를 따로 저장해 주세요.':current?'외부 보관을 확인하면 이 안내는 접힙니다. 파일이나 개인 메모에 저장해 주세요.':'보관한 코드가 있으면 연결하세요. 처음 이용한다면 코드를 발급받을 수 있습니다.';
+ return `<aside class="participation-bar is-important" data-participation-banner data-recovery-state="${state}" aria-label="복구 코드 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${title}</strong><p>${e(text)}</p></div><div class="participation-bar-actions"><button type="button" class="btn primary small" data-participation="open" data-participation-view="${current?'issue':'connect'}">${current?'코드 확인·보관':'기존 코드로 연결'}</button>${!current?'<button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">처음 이용해요 · 코드 발급</button>':''}</div></aside>`;
 }
 export function refreshParticipationBanners(){
  globalThis.document?.querySelectorAll('[data-participation-banner]').forEach(node=>{node.outerHTML=participationBar();});
 }
 
 export function recoveryPanel({current='',saved=false,persistent=true,revealed=false,mode='issue',profiles=[]}={}){
- const status=!current?'발급 전':saved?'보관 확인 완료':'보관 필요';
+ const state=recoveryState({current,saved,persistent}),ready=state==='ready';
+ const status=!current?'미연결':!persistent?'이 창에서만 연결':ready?'연결·보관 완료':'연결됨 · 보관 필요';
  const steps=['코드 발급·확인','따로 보관','보관 확인'];
- const active=saved&&!revealed?2:revealed?1:0;
- const issue=`<div class="recovery-card-heading"><span class="recovery-state ${saved?'is-saved':''}">${status}</span><span class="recovery-private">나만 보관하는 코드</span></div>
- <ol class="recovery-steps" aria-label="복구 코드 보관 순서">${steps.map((label,i)=>`<li ${active===i?'aria-current="step"':''} class="${i<=active?'is-active':''}"><span>0${i+1}</span>${label}</li>`).join('')}</ol>
- ${revealed?`<h2 tabindex="-1" data-recovery-heading>이 코드를 따로 보관해 주세요.</h2><p>개인 메모나 비밀번호 관리자에 저장하거나 파일로 내려받으세요.</p><label class="recovery-code-label">내 복구 코드<textarea readonly rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="내 복구 코드" data-recovery-code></textarea></label><div class="participation-actions"><button type="button" class="btn primary" data-recovery="copy">코드 복사</button><button type="button" class="btn" data-recovery="download">파일로 저장</button><button type="button" class="participation-text-button" data-recovery="hide">코드 숨기기</button></div><div class="recovery-confirm"><label><input type="checkbox" data-recovery-confirm><span>이 브라우저 밖에 복구 코드를 따로 보관했어요.</span></label><button type="button" class="btn primary" data-recovery="saved" disabled>보관 완료</button></div>`:
- saved?`<div class="recovery-emblem is-saved" aria-hidden="true">✓</div><h2 tabindex="-1" data-recovery-heading>복구 코드 보관을 확인했습니다.</h2><p>다른 기기나 브라우저에서는 <strong>기존 기록 연결</strong>에 보관한 코드를 입력하세요. 코드는 계속 보관해 주세요.</p><button type="button" class="btn" data-recovery="issue">내 복구 코드 다시 확인</button>`:
+ const active=ready&&!revealed?2:revealed?1:0;
+ const issue=`<div class="recovery-card-heading"><span class="recovery-state ${ready?'is-saved':''}">${status}</span><span class="recovery-private">나만 보관하는 코드</span></div>
+ ${ready?'':`<ol class="recovery-steps" aria-label="복구 코드 보관 순서">${steps.map((label,i)=>`<li ${active===i?'aria-current="step"':''} class="${i<=active?'is-active':''}"><span>0${i+1}</span>${label}</li>`).join('')}</ol>`}
+ ${revealed?`<h2 tabindex="-1" data-recovery-heading>이 코드를 따로 보관해 주세요.</h2><p>개인 메모나 비밀번호 관리자에 저장하거나 파일로 내려받으세요.</p><label class="recovery-code-label">내 복구 코드<textarea readonly rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="내 복구 코드" data-recovery-code></textarea></label><div class="participation-actions"><button type="button" class="btn primary" data-recovery="copy">코드 복사</button><button type="button" class="btn" data-recovery="download">파일로 저장</button><button type="button" class="participation-text-button" data-recovery="hide">코드 숨기기</button></div>${ready?'<p class="recovery-note">외부 보관 확인이 완료된 코드입니다.</p>':`<div class="recovery-confirm"><label><input type="checkbox" data-recovery-confirm><span>이 브라우저 밖에 복구 코드를 따로 보관했어요.</span></label><button type="button" class="btn primary" data-recovery="saved" disabled>보관 완료</button></div>`}`:
+ ready?`<div class="recovery-emblem is-saved" aria-hidden="true">✓</div><h2 tabindex="-1" data-recovery-heading>이 브라우저는 준비됐어요.</h2><p>작성 기록이 연결되어 있고, 코드의 외부 보관도 확인했습니다. 다른 기기나 브라우저에서는 <strong>기존 기록 연결</strong>에 보관한 코드를 입력하세요. 코드는 계속 보관해 주세요.</p><button type="button" class="btn recovery-completed" disabled>연결·보관 완료</button><button type="button" class="btn" data-recovery="issue">내 복구 코드 다시 확인</button>`:
  `<div class="recovery-emblem">${keyIcon}</div><h2 tabindex="-1" data-recovery-heading>${current?'복구 코드를 따로 저장하세요.':'복구 코드 발급'}</h2><p>${current?'이미 작성한 글과 연결된 복구 코드입니다. 코드를 확인해도 기존 기록은 그대로 유지돼요.':'로그인 없이 글을 남길 수 있어요. 먼저 복구 코드를 받아두면 다른 브라우저에서도 작성 기록을 이어갈 수 있습니다.'}</p><button type="button" class="btn primary recovery-issue" data-recovery="issue">${keyIcon}${current?'내 복구 코드 확인':'복구 코드 발급받기'}</button><p class="recovery-note">${current?'코드를 확인하는 것으로 보관이 완료되지는 않아요. 꼭 따로 저장해 주세요.':'전에 남긴 기록이 있다면 먼저 ‘기존 기록 연결’에서 보관한 코드를 입력하세요.'}</p>`}
  <div class="recovery-caution"><strong>복구 코드는 비밀번호처럼 보관하세요.</strong><p>코드를 아는 사람은 내 작성 권한을 사용할 수 있습니다. 게시글·댓글에 올리거나 다른 사람에게 보내지 마세요.</p></div>`;
- const connect=`<span class="recovery-state">다른 브라우저에서 이어보기</span><h2 tabindex="-1" data-recovery-heading>보관한 코드로 내 기록 연결</h2><p>피드백·상대법·조합 이야기·채널을 같은 작성 기록으로 이어서 볼 수 있어요.</p><form data-recovery-form><label>보관한 복구 코드<input name="recoveryCode" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="MANOR-R1-…" maxlength="160" required aria-describedby="recovery-connect-note"></label><p id="recovery-connect-note" class="recovery-note">${current?'지금 연결된 기록도 이 브라우저에 보관합니다. 서로 다른 기록은 합쳐지지 않아요.':'전에 쓰던 브라우저의 ‘복구 코드’ 메뉴에서 코드를 확인할 수 있어요.'}</p><button class="btn primary" type="submit">내 기록 연결</button></form>${profiles.length>1?`<div class="recovery-profiles"><h3>이 브라우저에 보관한 기록</h3><div class="participation-profiles">${profiles.map((p,index)=>`<button type="button" class="btn" data-recovery="switch" data-profile="${index}" ${p.token===current?'disabled':''}>기록 ${index+1} · ${e(new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric'}).format(new Date(p.createdAt)))}${p.token===current?' · 연결 중':''}</button>`).join('')}</div></div>`:''}<p class="recovery-note">복구 코드와 원래 브라우저 정보가 모두 없으면 작성자임을 자동으로 확인할 수 없습니다.</p>`;
- return `<div class="recovery-mode" role="group" aria-label="복구 코드 메뉴"><button type="button" data-recovery="mode" data-mode="issue" aria-pressed="${mode==='issue'}">발급·보관</button><button type="button" data-recovery="mode" data-mode="connect" aria-pressed="${mode==='connect'}">기존 기록 연결</button></div>${!persistent?'<div class="recovery-storage-warning" role="alert">이 브라우저에서는 작성 정보가 유지되지 않을 수 있어요. 창을 닫기 전에 코드를 꼭 따로 보관해 주세요.</div>':''}<div class="recovery-panel">${mode==='connect'?connect:issue}</div><p class="participation-result" role="status" aria-live="polite" aria-atomic="true"></p>`;
+ const connect=`<span class="recovery-state">다른 브라우저에서 이어보기</span><h2 tabindex="-1" data-recovery-heading>보관한 코드로 내 기록 연결</h2><p>피드백·상대법·연구실·채널을 같은 작성 기록으로 이어서 볼 수 있어요.</p><form data-recovery-form><label>보관한 복구 코드<input name="recoveryCode" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="MANOR-R1-…" maxlength="160" required aria-describedby="recovery-connect-note"></label><p id="recovery-connect-note" class="recovery-note">${current?'지금 연결된 기록도 이 브라우저에 보관합니다. 서로 다른 기록은 합쳐지지 않아요.':'전에 쓰던 브라우저의 ‘복구 코드’ 메뉴에서 코드를 확인할 수 있어요.'}</p><label class="recovery-connect-confirm"><input type="checkbox" name="externallySaved"><span>이 코드는 브라우저 밖에도 따로 보관하고 있어요.</span></label><button class="btn primary" type="submit">내 기록 연결</button></form>${profiles.length>1?`<div class="recovery-profiles"><h3>이 브라우저에 보관한 기록</h3><div class="participation-profiles">${profiles.map((p,index)=>`<button type="button" class="btn" data-recovery="switch" data-profile="${index}" ${p.token===current?'disabled':''}>기록 ${index+1} · ${e(new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric'}).format(new Date(p.createdAt)))}${p.token===current?' · 연결 중':''}</button>`).join('')}</div></div>`:''}<p class="recovery-note">복구 코드와 원래 브라우저 정보가 모두 없으면 작성자임을 자동으로 확인할 수 없습니다.</p>`;
+ return `<div class="recovery-mode" role="group" aria-label="복구 코드 메뉴"><button type="button" data-recovery="mode" data-mode="issue" aria-pressed="${mode==='issue'}">${ready?'연결 상태':'발급·보관'}</button><button type="button" data-recovery="mode" data-mode="connect" aria-pressed="${mode==='connect'}">${current?'다른 기록 연결':'기존 기록 연결'}</button></div>${!persistent?'<div class="recovery-storage-warning" role="alert">이 브라우저에서는 작성 정보가 유지되지 않을 수 있어요. 창을 닫기 전에 코드를 꼭 따로 보관해 주세요.</div>':''}<div class="recovery-panel">${mode==='connect'?connect:issue}</div><p class="participation-result" role="status" aria-live="polite" aria-atomic="true"></p>`;
 }
 
 export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onConnected=()=>{},beforeSwitch=()=>true}={}){
  let alive=true,busy=false,controller,revealedToken='',renderedToken='';
  function render(focus=false){
   const current=participation.read();if(revealedToken!==current)revealedToken='';renderedToken=current;
-  root.innerHTML=recoveryPanel({current,saved:participation.backedUp(),persistent:participation.persistent(),revealed:!!revealedToken,mode,profiles:participation.profiles()});
+  const profiles=participation.profiles(),saved=participation.backedUp(),persistent=participation.persistent();
+  root.dataset.recoveryState=recoveryState({current,saved,persistent});
+  root.innerHTML=recoveryPanel({current,saved,persistent,revealed:!!revealedToken,mode,profiles});
   const field=root.querySelector('[data-recovery-code]');if(field)field.value=recoveryCode(revealedToken);
   if(focus)root.querySelector('[data-recovery-heading]')?.focus();
  }
@@ -118,10 +126,10 @@ export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onC
   try{await work(signal);}catch(error){if(alive)result(error.name==='AbortError'?'연결이 지연되고 있습니다. 잠시 후 다시 시도해 주세요.':error instanceof TypeError?'서버에 연결하지 못했습니다. 네트워크 상태를 확인해 주세요.':error instanceof SyntaxError?'서버 응답을 확인하지 못했습니다. 다시 시도해 주세요.':error.message,true);}
   finally{clearTimeout(timer);busy=false;if(alive){root.removeAttribute('aria-busy');controls.forEach(([node,disabled])=>{if(node.isConnected)node.disabled=disabled;});}}
  }
- function connect(code){return run(async signal=>{
+ function connect(code,externallySaved=false){return run(async signal=>{
   const previous=participation.read();
   const changed=await participation.connect(code,{origin,signal,beforeSwitch});if(!alive)return;
-  if(changed){revealedToken='';mode='issue';render(true);refreshParticipationBanners();result('내 기록을 연결했습니다. 보관한 코드는 계속 사용할 수 있어요.');if(previous!==participation.read())onConnected();}
+  if(changed){if(externallySaved)participation.markBackedUp(recoveryToken(code));revealedToken='';mode='issue';render(true);refreshParticipationBanners();result('내 기록을 연결했습니다. 보관한 코드는 계속 사용할 수 있어요.');if(previous!==participation.read())onConnected();}
   else result('기록 전환을 취소했습니다.');
  },'기존 기록을 확인하고 있습니다.');}
  async function click(event){
@@ -153,15 +161,15 @@ export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onC
    result(persisted?'코드 보관을 확인했습니다. 브라우저가 바뀌어도 이 코드로 내 기록을 연결하세요.':'보관 확인은 이 창에서만 유지될 수 있어요. 따로 저장한 복구 코드는 계속 보관해 주세요.');
   }
  }
- function submit(event){if(!event.target.matches('[data-recovery-form]'))return;event.preventDefault();if(!busy&&event.target.reportValidity())connect(new FormData(event.target).get('recoveryCode'));}
+ function submit(event){if(!event.target.matches('[data-recovery-form]'))return;event.preventDefault();if(!busy&&event.target.reportValidity()){const data=new FormData(event.target);connect(data.get('recoveryCode'),data.has('externallySaved'));}}
  function change(event){if(event.target.matches('[data-recovery-confirm]'))root.querySelector('[data-recovery="saved"]').disabled=busy||!event.target.checked;}
- function storageChanged(event){if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key)){refreshParticipationBanners();if(participation.read()!==renderedToken){controller?.abort();revealedToken='';render(true);result('다른 창에서 연결된 기록이 바뀌었습니다. 현재 기록을 확인해 주세요.');}}}
+ function storageChanged(event){if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key)){refreshParticipationBanners();if(participation.read()!==renderedToken){controller?.abort();revealedToken='';render(true);result('다른 창에서 연결된 기록이 바뀌었습니다. 현재 기록을 확인해 주세요.');}else if(!busy&&!revealedToken&&mode==='issue')render();}}
  root.addEventListener('click',click);root.addEventListener('submit',submit);root.addEventListener('change',change);window.addEventListener('storage',storageChanged);render();
  return ()=>{alive=false;controller?.abort();revealedToken='';root.querySelectorAll('[data-recovery-code], [name="recoveryCode"]').forEach(node=>{node.value='';});root.removeEventListener('click',click);root.removeEventListener('submit',submit);root.removeEventListener('change',change);window.removeEventListener('storage',storageChanged);};
 }
 
 export function mountRecoveryPage(root,options={}){
- root.innerHTML=`<section class="recovery-page"><header class="recovery-heading"><div class="eyebrow">KEEP YOUR MANOR</div><h1>복구 코드</h1><p>다른 기기나 브라우저에서 내가 쓴 글과 등록한 채널을 다시 관리할 때 사용합니다.</p></header><div class="recovery-layout"><aside class="recovery-intro"><h2>기기를 바꾸기 전에<br>코드를 따로 저장하세요.</h2><p>MANOR는 로그인 없이 글을 남길 수 있습니다. 복구 코드를 저장해 두면 다른 브라우저에서도 아래 작성 기록을 연결할 수 있습니다.</p><ul><li><strong>피드백과 댓글</strong><span>내 참여 글과 운영자 답변</span></li><li><strong>유저 상대법</strong><span>제출 내역과 운영자 검토 의견</span></li><li><strong>조합 이야기</strong><span>내 조합 제안과 댓글</span></li><li><strong>유튜브 채널</strong><span>등록한 채널의 작성 기록</span></li></ul><p class="recovery-note">기기 변경·브라우저 데이터 삭제 전에<br>복구 코드를 꼭 따로 저장해 주세요.</p></aside><div class="recovery-workspace" data-recovery-workspace></div></div></section>`;
+ root.innerHTML=`<section class="recovery-page"><header class="recovery-heading"><div class="eyebrow">KEEP YOUR MANOR</div><h1>복구 코드</h1><p>다른 기기나 브라우저에서 내가 쓴 글과 등록한 채널을 다시 관리할 때 사용합니다.</p></header><div class="recovery-layout"><aside class="recovery-intro"><h2>기기를 바꾸기 전에<br>코드를 따로 저장하세요.</h2><p>MANOR는 로그인 없이 글을 남길 수 있습니다. 복구 코드를 저장해 두면 다른 브라우저에서도 아래 작성 기록을 연결할 수 있습니다.</p><ul><li><strong>피드백과 댓글</strong><span>내 참여 글과 운영자 답변</span></li><li><strong>유저 상대법</strong><span>제출 내역과 운영자 검토 의견</span></li><li><strong>연구실</strong><span>내 연구 글과 댓글·도감 제안</span></li><li><strong>유튜브 채널</strong><span>등록한 채널의 작성 기록</span></li></ul><p class="recovery-note">기기 변경·브라우저 데이터 삭제 전에<br>복구 코드를 꼭 따로 저장해 주세요.</p></aside><div class="recovery-workspace" data-recovery-workspace></div></div></section>`;
  return mountRecovery(root.querySelector('[data-recovery-workspace]'),options);
 }
 
@@ -177,3 +185,6 @@ export function openParticipation(options={}){
  dialog.addEventListener('close',()=>{dispose();window.removeEventListener('hashchange',closeOnNavigation);activeDialog=null;dialog.remove();if(previousFocus?.isConnected)previousFocus.focus();else document.querySelector('[data-participation="open"]')?.focus();},{once:true});
  dialog.showModal();
 }
+
+// Update compact status strips across tabs even when the recovery panel is closed.
+globalThis.window?.addEventListener('storage',event=>{if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key))refreshParticipationBanners();});

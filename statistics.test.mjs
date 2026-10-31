@@ -97,7 +97,7 @@ function runtime(){
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
  return {context,nodes,handlers,fetches,app:context.app};
 }
 

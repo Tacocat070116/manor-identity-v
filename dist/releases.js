@@ -28,3 +28,22 @@ export function releaseNotesList(log,filters={}){
 export function releaseNotesPage(log,filters,{icon}){
  return `<div class="page-title"><div class="eyebrow">MANOR UPDATES</div><h1>MANOR 업데이트</h1><p>버전과 날짜별로 사이트에서 바뀐 내용을 확인하세요.</p></div><section class="panel release-summary" aria-label="사이트 버전과 오픈일"><div><span class="release-summary-label">현재 버전</span><strong class="release-version">${esc(releaseLabel(log))}</strong></div><dl><div><dt>베타 오픈</dt><dd><time datetime="${log.openedAt}">${dateLabel(log.openedAt)}</time></dd></div><div><dt>최근 업데이트</dt><dd><time datetime="${log.releases[0].date}">${dateLabel(log.releases[0].date)}</time></dd></div></dl></section><div class="toolbar release-toolbar"><label class="search-box">${icon('search')}<input id="release-search" type="search" value="${esc(filters.query)}" placeholder="업데이트 내용 검색" aria-label="MANOR 업데이트 검색" autocomplete="off"></label><label class="filter-label">변경 유형<select id="release-type" class="filter-select">${['전체',...releaseTypes].map(type=>`<option value="${type}" ${filters.type===type?'selected':''}>${type}</option>`).join('')}</select></label></div><p class="release-guide">${esc(log.historyNote)}</p><div id="release-results">${releaseNotesList(log,filters)}</div><a class="text-link release-feedback-link" href="#v=feedback">개선 의견 보내기 ${icon('arrow')}</a>`;
 }
+
+export function latestReleaseContent(log){
+ const latest=log.releases[0];
+ return `<header class="latest-update-heading"><div><span class="eyebrow">MANOR UPDATES</span><h2 id="latest-update-title">최신 업데이트</h2></div><button type="button" class="btn small" data-update-close aria-label="업데이트 닫기">닫기</button></header>${latest?`<div class="latest-update-meta"><span class="tag green">${esc(latest.version?releaseLabel(latest):'업데이트')}</span><time datetime="${esc(latest.date)}">${dateLabel(latest.date)}</time></div><ul class="release-changes">${latest.changes.map(change=>`<li><span class="release-kind" data-kind="${esc(change.type)}">${esc(change.type)}</span><span>${esc(change.text)}</span></li>`).join('')}</ul>`:'<p>아직 공지된 업데이트가 없습니다.</p>'}<a class="text-link latest-update-history" href="#v=patchnotes">이전 내역 살펴보기 →</a>`;
+}
+
+let latestDialog;
+export function openLatestRelease(log){
+ if(latestDialog?.open){latestDialog.querySelector('button')?.focus();return;}
+ const previous=document.activeElement,dialog=document.createElement('dialog');latestDialog=dialog;
+ dialog.className='latest-update-dialog';dialog.setAttribute('aria-labelledby','latest-update-title');
+ dialog.innerHTML=latestReleaseContent(log);document.body.append(dialog);
+ const close=()=>dialog.close();
+ dialog.querySelector('[data-update-close]').addEventListener('click',close);
+ dialog.querySelector('.latest-update-history').addEventListener('click',close);
+ window.addEventListener('hashchange',close);
+ dialog.addEventListener('close',()=>{window.removeEventListener('hashchange',close);dialog.remove();latestDialog=null;if(previous?.isConnected)previous.focus();},{once:true});
+ dialog.showModal();
+}

@@ -430,3 +430,5 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"]){--dange
 @media(max-width:700px){.compare-matchup-grid{grid-template-columns:minmax(0,1fr);gap:16px}}
 .ban-slot .label{font-size:11px;letter-spacing:0;white-space:nowrap}
 .ban-slot .remove{white-space:nowrap;gap:4px;min-height:44px;padding:8px}
+/* Give dot separators room without widening complete Korean sentences. */
+.text-separator{display:inline-block;padding-inline:.22em;letter-spacing:0;font-weight:inherit}

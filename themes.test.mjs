@@ -93,7 +93,7 @@ test('live theme changes keep the route, search and main content while reporting
  const storage=storageWith(null);
  const context={...themes,document,localStorage:storage,matchMedia:()=>({matches:false}),window:{addEventListener(){}},location:{hash:'#v=character&c=c16'},URLSearchParams,setTimeout,clearTimeout,__updates:updates};
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel);vm.runInNewContext(source+`\ndb={};navigationController={update:next=>__updates.push(next)};state.search='마리';globalThis.testApp={state,openThemePicker};`,context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+`\ndb={};navigationController={update:next=>__updates.push(next)};state.search='마리';globalThis.testApp={state,openThemePicker};`,context);
  context.testApp.openThemePicker();
  const dialog=nodes.get('#theme-picker');assert.equal(dialog.open,true);
  const originalMarkup=dialog.innerHTML;

@@ -28,8 +28,8 @@ test('post cards escape user text and retain shareable pair links; edit forms lo
  const post={id:'90000000-0000-4000-8000-000000000001',characterIds:['c55','c58'],title:'<img src=x onerror=alert(1)>',body:'<script>bad()</script>',caution:'조건을 확인하세요.',situations:['회복'],createdAt:1800000000000,author:{name:'<b>이름</b>'},commentCount:3};
  const html=synergyPostCard(post,characters,{ownId:'c58',partnerId:'c55'});
  assert.ok(html.includes('&lt;img'));assert.ok(html.includes('&lt;script&gt;'));assert.ok(!html.includes('<script>'));assert.ok(html.includes('partner=c55'));assert.ok(html.includes('댓글 3'));
- const form=synergyEditor({characters,post});assert.ok(form.includes('name="characterA" value="c55"'));assert.ok(!form.includes('<select name="characterA"'));
- const route=new URLSearchParams(synergyRoute('c58','c55',post.id).slice(1));assert.equal(route.get('post'),post.id);assert.equal(route.get('tab'),'synergy');
+ const form=synergyEditor({characters,post});assert.ok(form.includes('name="character" value="c55"'));assert.ok(!form.includes('<select name="character"'));
+ const route=new URLSearchParams(synergyRoute('c58','c55',post.id).slice(1));assert.equal(route.get('post'),post.id);assert.equal(route.get('v'),'laboratory');
 });
 
 test('rebuilding a discussion clears the hidden reply target and starts a fresh comment request',async()=>{
@@ -81,4 +81,18 @@ test('rebuilding a discussion clears the hidden reply target and starts a fresh 
   dispose?.();
   for(const [key,descriptor] of originals){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}
  }
+});
+
+test('laboratory validates persona sides and complete teams; proposal actions follow authorship and review state',async()=>{
+ const draft={title:'새로운 인격 구성 연구',body:'해당 인격을 선택한 이유와 게임 중 활용한 조건을 함께 연구합니다.',caution:'아직 검증하지 못한 상황이 있습니다.',situations:['운영']};
+ for(const [topic,characterIds] of [['combination',['c37','c55','c58','c60']],['survivor_persona',['c58']],['hunter_persona',['c01']],['strategy',[]]])assert.equal(validateSynergyDraft({...draft,topic,characterIds},characters),'');
+ assert.ok(validateSynergyDraft({...draft,topic:'hunter_persona',characterIds:['c58']},characters));
+ const {researchProposal}=await import('./dist/synergy.js');
+ const post={characterIds:['c58'],isMine:true,proposal:{status:'none'}};
+ assert.match(researchProposal(post),/data-sy-form="proposal"/);
+ assert.doesNotMatch(researchProposal({...post,isMine:false}),/data-sy-form="proposal"/);
+ assert.doesNotMatch(researchProposal({...post,proposal:{status:'pending'}}),/data-sy-form="proposal"/);
+ assert.match(researchProposal({...post,proposal:{status:'pending'}},{admin:true}),/data-sy-form="proposal-review"/);
+ assert.match(researchProposal({...post,proposal:{status:'approved',reason:'<script>test</script>'}}),/도감에서 보기/);
+ assert.doesNotMatch(researchProposal({...post,proposal:{status:'approved',reason:'<script>test</script>'}}),/<script>/);
 });

@@ -63,13 +63,16 @@ test('patchnotes deep link, shared version, filters and return navigation work i
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
  await context.app.boot();
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
  const header=nodes.get('#header').innerHTML;
  assert.equal((header.match(/class="nav-item /g)||[]).length,8,'desktop and mobile share eight links; ban records live under statistics');
  assert.ok(header.includes('href="#v=recovery"'));
+ assert.ok(header.includes('data-action="latest-update"'));assert.ok(header.includes('icon-megaphone'));
+ assert.ok(header.includes('href="#v=laboratory"'));assert.ok(header.includes('icon-flask'));
+ assert.ok(!header.includes('data-view="patchnotes"'));assert.ok(!header.includes('data-action="global-search"'));
  assert.ok(header.includes('aria-controls="category-panel"'));
  for(const selector of ['#header','#footer','#page-body'])assert.ok(!nodes.get(selector).innerHTML.includes('#v=gamepatches'),'game-patch links are removed from '+selector);
  assert.ok(header.includes('aria-expanded="false"'));
@@ -120,4 +123,13 @@ test('cache refresh fingerprints transitive module imports and propagates change
   const stable=fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8');refreshPackage(root);
   assert.equal(fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8'),stable);
  }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
+test('the megaphone shows only the latest announced update and links to the complete history',()=>{
+ const html=releaseUI.latestReleaseContent(log);
+ assert.match(html,/이전 내역 살펴보기/);assert.match(html,/href="#v=patchnotes"/);
+ assert.equal((html.match(/class="release-kind"/g)||[]).length,log.releases[0].changes.length);
+ assert.ok(html.includes(log.releases[0].changes[0].text));
+ const probe={...log,releases:[{...log.releases[0],changes:[{type:'수정',text:'<script>bad()</script>'}]},{...log.releases[1],changes:[{type:'수정',text:'old-entry-must-stay-in-history'}]}]};
+ const latest=releaseUI.latestReleaseContent(probe);assert.ok(latest.includes('&lt;script&gt;'));assert.ok(!latest.includes('<script>'));assert.ok(!latest.includes('old-entry-must-stay-in-history'));
 });

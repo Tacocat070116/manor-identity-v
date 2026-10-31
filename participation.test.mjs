@@ -121,3 +121,21 @@ test('recovery screens keep secrets out of markup and require explicit backup co
  assert(!restored.includes(a));assert(!restored.includes(b));assert.match(restored,/type="password"/);
  assert.match(recoveryPanel({persistent:false}),/role="alert"/);
 });
+
+test('recovery prompts distinguish disconnected, connected, confirmed and nonpersistent browsers without exposing codes',async()=>{
+ const {recoveryState,participationBar}=await import('./dist/participation.js');
+ for(const [current,saved,persistent,expected] of [['',false,true,'unconnected'],[a,false,true,'needs-backup'],[a,true,true,'ready'],[a,true,false,'temporary'],['',true,true,'unconnected']]){
+  assert.equal(recoveryState({current,saved,persistent}),expected);
+  const bar=participationBar({store:{read:()=>current,backedUp:()=>saved,persistent:()=>persistent}});
+  assert.match(bar,new RegExp('data-recovery-state="'+expected+'"'));assert.ok(!bar.includes(a));
+  if(expected==='ready'){assert.doesNotMatch(bar,/data-participation-view="connect"|발급받기|코드 확인·보관/);assert.match(bar,/코드 관리/);}
+ }
+ const completed=recoveryPanel({current:a,saved:true,persistent:true});
+ assert.match(completed,/recovery-completed" disabled/);assert.doesNotMatch(completed,/class="recovery-steps"|data-recovery-confirm/);
+ assert.match(recoveryPanel({current:a,saved:true,persistent:false}),/이 창에서만 연결/);
+});
+
+test('saving only the token cannot falsely report that recovery profiles persisted',async()=>{
+ const target=storage(),identity=createParticipationStore({storage:()=>({...target,setItem(key,value){if(key==='manor-participation-profiles')throw Error('quota');target.setItem(key,value);}})});
+ await identity.ensure(async()=>({token:a}));assert.equal(identity.read(),a);assert.equal(identity.persistent(),false);
+});

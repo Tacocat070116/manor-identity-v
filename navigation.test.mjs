@@ -62,7 +62,7 @@ test('one collapsed menu reports the current route, including character pages an
  assert.equal(h.links.filter(link=>link.attrs['aria-current']==='page').length,1);
  const sameLinks=[...h.links];h.update('character');
  assert.equal(h.currentLabel.textContent,'도감');assert.equal(h.links[0].attrs['aria-current'],'page');
- h.update('unknown');assert.equal(h.currentLabel.textContent,'메뉴');
+ h.update('unknown');assert.equal(h.currentLabel.textContent,'카테고리');
  assert.ok(h.links.every(link=>!link.attrs['aria-current']));
  h.update('patchnotes','dark');assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
  assert.equal(h.themeButton.innerHTML,'icon:palette');assert.equal(h.themeButton.attrs['aria-label'],'컬러 테마 선택 · 현재 다크');

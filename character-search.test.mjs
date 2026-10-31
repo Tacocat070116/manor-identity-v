@@ -75,7 +75,7 @@ test('live app input/change handlers apply search and sorting in catalogue, comp
   mountNavigation:()=>({update(){}}),fetch:async url=>({ok:true,json:async()=>read('dist/'+url.split('?')[0])})
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel);vm.runInNewContext(source+'\nglobalThis.app={boot,state,openPicker,updateExplorer};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,state,openPicker,updateExplorer};',context);
  const app=context.app;await app.boot();assert.equal(app.state.sort,'release');
  const ids=selector=>[...nodes.get(selector).innerHTML.matchAll(/data-id="(c\d+)"/g)].map(m=>m[1]);
  app.updateExplorer();assert.equal(ids('#explorer-results')[0],'c60');

@@ -1,22 +1,26 @@
-import {mountRecoveryPage} from './participation.js?v=1c030d58e4db';
+import './typography.js?v=debc54124e83';
+import {mountResearchHighlights} from './research-highlights.js?v=97029ecf685d';
+import {mountRecoveryPage} from './participation.js?v=686d68a3aae1';
 import {tournamentRelations,observedDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=6abcdba2235d';
-import {mountNavigation} from './navigation.js?v=94a6d9dd4a33';
+import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
 import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=7daffcd45847';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=ea4b96f7e79e';
-import {mountFeedback} from './feedback.js?v=5c0c08bc13c6';
-import {mountSynergy} from './synergy.js?v=b508a2d8b49c';
-import {SYNERGY_SITUATIONS,synergyGroups} from './synergy-model.js?v=c4a394898b4e';
-import {mountMatchupTips} from './matchup-tips.js?v=b925c656f76f';
-import {mountCreators} from './creators.js?v=6b074ef038f6';
+import {mountFeedback} from './feedback.js?v=e934cd2a006f';
+import {mountSynergy} from './synergy.js?v=cbe7f50dc6f5';
+import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=29eb430cab7a';
+import {mountMatchupTips} from './matchup-tips.js?v=4307e32718d9';
+import {mountCreators} from './creators.js?v=d7038626eced';
 import {selectRanked} from './statistics-model.js?v=f7a052d6be7b';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes} from './releases.js?v=c84473689ea6';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=81cedfeaf2bd';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('ko-KR').format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
+flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3M7 14h10"/><circle cx="10" cy="17.5" r=".6"/><circle cx="14" cy="18" r=".6"/>',
+megaphone:'<path d="M4 9h4l11-5v16L8 15H4V9Zm4 6 2 6h4l-2-4M8 9v6M22 9v6"/>',
 palette:'<path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.3 1.3 0 0 1 .9-2.2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-8.9Z"/><circle cx="7" cy="11" r=".9"/><circle cx="10" cy="7" r=".9"/><circle cx="15" cy="7.5" r=".9"/>',
 key:'<circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/>',
 check:'<path d="m5 12 4 4L19 6"/>',
@@ -62,7 +66,7 @@ applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
 let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
 let disposeMatchupTips=()=>{};
-let disposeSynergy=()=>{};
+let disposeSynergy=()=>{},disposeResearchHighlights=()=>{};
 let disposeCreators=()=>{},disposeRecovery=()=>{};
 let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
@@ -155,13 +159,19 @@ const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
- state.view=['explore','character','matchup','compare','bans','statistics','creators','feedback','recovery','patchnotes'].includes(p.get('v'))?p.get('v'):'explore';
+ state.view=['explore','character','matchup','compare','bans','statistics','creators','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
- if(state.tab==='synergy'&&byId[state.character]?.side!=='생존자')state.tab='overview';
- state.synergyPartner=byId[p.get('partner')]?.side==='생존자'&&p.get('partner')!==state.character?p.get('partner'):'';
+ const legacySynergy=state.view==='character'&&state.tab==='synergy'&&byId[state.character]?.side==='생존자';
+ if(state.tab==='synergy'){state.tab='overview';if(legacySynergy)state.view='laboratory';}
+ state.researchCharacter=byId[p.get('c')]?p.get('c'):'';
+ state.researchTopic=Object.hasOwn(RESEARCH_TOPICS,p.get('topic'))?p.get('topic'):legacySynergy?'combination':'';
+ state.synergyPartner=byId[p.get('partner')]&&p.get('partner')!==state.researchCharacter?p.get('partner'):'';
  state.synergyMine=p.get('mine')==='1';
+ state.researchSituation=SYNERGY_SITUATIONS.includes(p.get('situation'))?p.get('situation'):'';
+ state.researchQuery=(p.get('q')||'').slice(0,100);
+ state.researchSort=p.get('sort')==='discussed'?'discussed':'new';
  state.synergySituation=SYNERGY_SITUATIONS.includes(p.get('ss'))?p.get('ss'):'';
  if(['statistics','character','compare'].includes(state.view))for(const [param,key] of [['scope','scope'],['server','server'],['season','season'],['tier','tier'],['snap','snapshot'],['rs','side'],['sort','sort'],['order','direction'],['q','search'],['badge','badgeSnapshot']])if(p.has(param))state.statistics[key]=p.get(param);
  if(!['all','tournament','ranked'].includes(state.statistics.scope))state.statistics.scope='all';
@@ -184,10 +194,10 @@ function readRoute(){
 }
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['creators','유튜브','play'],['feedback','피드백','message'],['recovery','복구 코드','key'],['patchnotes','MANOR 업데이트','spark']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['creators','유튜브','play'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','복구 코드','key']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view==='bans'?'statistics':state.view))||['explore','도감','grid'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}${v==='creators'?'<span class="creator-beta-badge">BETA</span>':''}</span></a>`).join('');
- $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn global-search" data-action="global-search" aria-label="캐릭터 빠른 검색" title="검색 · Ctrl/⌘ K">${icon('search')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
+ $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
@@ -232,8 +242,8 @@ function listPanel(label,items,tone,ic){return `<div class="panel ${tone}"><h2 c
 function characterPage(){
  const c=char(state.character);state.character=c.id;
  return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${esc(c.introduction)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}공략 검토 ${esc(c.reviewedAt)}</span>${c.gamePatchDate?`<span class="date-pill">${icon('check')}게임 반영 ${esc(c.gamePatchDate)}</span>`:''}</div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
- <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],...(c.side==='생존자'?[['synergy','조합 이야기']]:[]),['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- <div id="character-content">${state.tab==='overview'?characterOverview(c):state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':state.tab==='synergy'?'<div id="synergy-board"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
+ <div id="character-content">${state.tab==='overview'?characterOverview(c)+`<section class="section-gap"><div class="heading-inline"><h2>연구실에서 반영한 전략</h2><span>이용자 연구 · 운영자 검토</span></div><p class="synergy-guidance">연구실에서 제안해 도감에 채택된 내용입니다. 활용 조건과 원문의 토론을 함께 확인하세요.</p><div id="research-highlights"></div></section>`:state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function synergyDetails(l){
@@ -244,11 +254,11 @@ function synergyCard(l){
 }
 function survivorSynergyCard(group,c){
  const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${esc(l.reason)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명을 바탕으로 한 조합 후보입니다. 실제 경기에서의 연계 효과는 아직 확인하지 못했습니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략을 바탕으로 작성한 조합입니다. 마지막 검토일 ${esc(l.reviewedAt)} 이후 변경된 스킬 조건을 확인해 주세요.</p>`:''}`;
- return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(s)).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'character',c:c.id,tab:'synergy',partner:group.partner.id})}">이 조합의 경험 나누기 →</a></article>`;
+ return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(s)).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">연구실에서 이 조합 토의하기 →</a></article>`;
 }
 function survivorSynergies(c){
  const groups=synergyGroups(db.links,c.name,byId,state.synergySituation);
- return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2><span>활용 상황별 추천</span></div><p class="synergy-guidance">서로의 역할을 보완하는 조합입니다. 모든 상대에게 유리하다는 뜻은 아니니, 활용 조건과 주의점을 함께 읽어주세요.</p><div class="synergy-toolbar"><label class="filter-label">활용 상황<select id="synergy-situation"><option value="">모든 상황</option>${SYNERGY_SITUATIONS.map(s=>`<option value="${s}" ${s===state.synergySituation?'selected':''}>${s}</option>`).join('')}</select></label><a class="btn" href="${route({v:'character',c:c.id,tab:'synergy'})}">조합 제안·이야기 보기</a></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">이 상황으로 분류된 추천 조합이 없습니다. 조합 이야기에서 경험을 나눠주세요.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 동반 출전과 팀 결과 보기 →</a><p class="sy-caption">동반 출전 횟수는 같은 팀으로 나온 경기 수입니다. 두 캐릭터의 연계 효과만을 측정한 수치는 아닙니다.</p></section>`;
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2><span>활용 상황별 추천</span></div><p class="synergy-guidance">서로의 역할을 보완하는 조합입니다. 모든 상대에게 유리하다는 뜻은 아니니, 활용 조건과 주의점을 함께 읽어주세요.</p><div class="synergy-toolbar"><label class="filter-label">활용 상황<select id="synergy-situation"><option value="">모든 상황</option>${SYNERGY_SITUATIONS.map(s=>`<option value="${s}" ${s===state.synergySituation?'selected':''}>${s}</option>`).join('')}</select></label><a class="btn" href="${route({v:'laboratory',c:c.id,topic:'combination'})}">연구실에서 조합 연구</a></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">이 상황으로 분류된 추천 조합이 없습니다. 연구실에서 경험을 나눠주세요.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 동반 출전과 팀 결과 보기 →</a><p class="sy-caption">동반 출전 횟수는 같은 팀으로 나온 경기 수입니다. 두 캐릭터의 연계 효과만을 측정한 수치는 아닙니다.</p></section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
@@ -355,12 +365,12 @@ function refreshBanRecords({focusRecords=false}={}){
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
+ disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeResearchHighlights();disposeResearchHighlights=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
  const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
- else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='synergy')disposeSynergy=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.character,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,navigate:(post,{partnerId,mine})=>navigate({v:'character',c:state.character,tab:'synergy',...(partnerId?{partner:partnerId}:{}),...(post?{post}:{}),...(mine?{mine:'1'}:{})})});if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
+ else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeResearchHighlights=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
   rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
   $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
@@ -380,6 +390,10 @@ async function render({scroll=false}={}){
     $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 추격 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
    }catch(e){if(token===renderToken)$('#pair-observations').innerHTML=loadError(e);}
   }
+ }
+ else if(state.view==='laboratory'){
+  body.innerHTML=title('MANOR LABORATORY','연구실','생존자 조합과 인격, 게임 속 전략을 함께 연구하는 공간입니다.')+'<div id="synergy-board"></div>';
+  disposeSynergy=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.researchCharacter,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,initialTopic:state.researchTopic,initialSituation:state.researchSituation,initialQuery:state.researchQuery,initialSort:state.researchSort,navigate:(post,filters)=>navigate({v:'laboratory',...(filters.character?{c:filters.character}:{}),...(filters.partner?{partner:filters.partner}:{}),...(filters.topic?{topic:filters.topic}:{}),...(post?{post}:{}),...(filters.mine?{mine:'1'}:{}),...(filters.situation?{situation:filters.situation}:{}),...(filters.q?{q:filters.q}:{}),...(filters.sort==='discussed'?{sort:filters.sort}:{})})});
  }
  else if(state.view==='recovery'){disposeRecovery=mountRecoveryPage(body);}
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
@@ -467,6 +481,7 @@ document.addEventListener('click',e=>{
  if(a==='character')navigate({v:'character',c:b.dataset.id});
  if(a==='theme')openThemePicker();
  if(a==='global-search')openPicker();
+ if(a==='latest-update')openLatestRelease(releaseLog);
  if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}
  if(a==='favorites'){state.favoriteOnly=!state.favoriteOnly;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}

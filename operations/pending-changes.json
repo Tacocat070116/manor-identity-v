@@ -17,6 +17,19 @@
         "배포와 공개 공지 분리 및 필수 검증 명령 정리"
       ],
       "announcement": "pending-explicit-owner-request"
+    },
+    {
+      "date": "2026-10-31",
+      "scope": "laboratory-recovery-updates",
+      "summary": [
+        "가운뎃점·불릿 구분자의 좌우 여백 개선",
+        "복구 코드 연결·외부 보관·브라우저 저장 가능 여부에 따른 안내 정리",
+        "삼각 플라스크 아이콘의 연구실 활성화 및 조합·인격·전략 토론 지원",
+        "도감의 조합 작성 탭을 연구실로 이동하고 기존 링크 유지",
+        "연구 글의 도감 반영 제안·운영자 검토·원문 연결 구현",
+        "상단 확성기에서 최신 공지를 열고 이전 내역으로 연결"
+      ],
+      "announcement": "pending-explicit-owner-request"
     }
   ]
 }

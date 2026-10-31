@@ -31,7 +31,7 @@ export function mountNavigation(root,{icon}){
   const from=animate?toggle.getBoundingClientRect().width:0;
   const empty=animate?Math.max(0,from-currentLabel.getBoundingClientRect().width):0;
   stopMotion({settle:false});
-  currentSelection={label:current?.dataset.navLabel||'메뉴',icon:current?.dataset.navIcon||'grid'};
+  currentSelection={label:current?.dataset.navLabel||'카테고리',icon:current?.dataset.navIcon||'grid'};
   if(!animate){showCurrent();return;}
   function reveal(){
    showCurrent();

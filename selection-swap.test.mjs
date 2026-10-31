@@ -28,7 +28,7 @@ async function harness(hash){
   fetch:async path=>({ok:true,json:async()=>read('dist/'+path.split('?')[0])})
  };
  context.window={scrollY:180,scrollTo:options=>scrolls.push(options),addEventListener(){},history:{pushState(_state,_unused,hash){history.push(hash);context.location.hash=hash;}}};
- Object.assign(context,synergyModel);vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
  context.app.readRoute();await context.app.render();
  return {...context.app,nodes,handlers,history,scrolls,context,tipMounts,synergyMounts,synergyDisposed:()=>synergyDisposed,tipsDisposed:()=>tipsDisposed,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
 }
@@ -64,9 +64,9 @@ test('character tips deep link restores the player section and clears it when le
 test('synergy links restore pair and post, dispose on exit, and do not create a hunter-only board',async()=>{
  const id='90000000-0000-4000-8000-000000000001';
  const h=await harness('#v=character&c=c58&tab=synergy&partner=c55&post='+id);
- assert.equal(h.state.tab,'synergy');assert.equal(h.synergyMounts[0].postId,id);assert.equal(h.synergyMounts[0].partnerId,'c55');
+ assert.equal(h.state.view,'laboratory');assert.equal(h.state.tab,'overview');assert.equal(h.synergyMounts[0].postId,id);assert.equal(h.synergyMounts[0].partnerId,'c55');
  h.context.location.hash='#v=character&c=c58';h.readRoute();await h.render();assert.equal(h.synergyDisposed(),1);
- assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('조합 제안·이야기 보기'));
+ assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('연구실에서 조합 연구'));
  h.context.location.hash='#v=character&c=c01&tab=synergy';h.readRoute();await h.render();assert.equal(h.state.tab,'overview');assert.ok(!h.html().includes('data-tab="synergy"'));
 });
 
