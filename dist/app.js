@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=50d2bfecf8a7';
+import {loadFeature} from './feature-loader.js?v=8a727291a8cb';
 import './typography.js?v=f2553395f702';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=b9019d6b0d40';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -222,14 +222,14 @@ function readRoute(){
 }
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['creators','유튜브','play'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','복구 코드','key']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['creators','유튜브','play'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','내 기록','key']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view==='bans'?'statistics':state.view))||['explore','도감','grid'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}${v==='creators'?'<span class="creator-beta-badge">BETA</span>':''}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
-function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">복구 코드</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
+function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">내 기록</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
@@ -412,7 +412,7 @@ async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
  disposeView();disposeView=()=>{};
  const token=++renderToken;header();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'내 기록',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  const feature=({creators:'creators',feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
  const needsGuides=['character','matchup','compare'].includes(state.view)||(state.view==='explore'&&state.favoriteOnly);

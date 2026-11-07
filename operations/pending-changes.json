@@ -156,6 +156,18 @@
       ],
       "announcement": "pending",
       "audit": "operations/performance-cleanup-2026-11-07.json"
+    },
+    {
+      "date": "2026-11-07",
+      "scope": "google-account-migration",
+      "status": "prepared-awaiting-google-client",
+      "summary": [
+        "Google 로그인 서버 검증·만료·로그아웃과 기존 작성 기록 연결 준비",
+        "원래 글·댓글·별명을 보존하고 여러 브라우저 기록을 계정 안에서 선택",
+        "Google 클라이언트 설정 전에는 기존 복구 코드 유지"
+      ],
+      "announcement": "not-ready",
+      "reason": "Google 웹 클라이언트 ID와 승인된 JavaScript 원본 설정 후 실제 Google 계정 로그인 검증이 필요함"
     }
   ]
 }

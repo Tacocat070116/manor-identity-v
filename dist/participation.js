@@ -1,4 +1,6 @@
+import {ACCOUNT_KEY,googleConfig,mountGoogleAccount} from './google-account.js?v=76ea06994d40';
 const TOKEN_KEY='manor-feedback-visitor',PROFILE_KEY='manor-participation-profiles';
+let googleAvailable=false;
 const validToken=value=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);
 export function recoveryCode(token){return validToken(token)?'MANOR-R1-'+token.toUpperCase().match(/.{8}/g).join('-'):'';}
 export function recoveryToken(code){
@@ -8,9 +10,13 @@ export function recoveryToken(code){
 
 // One identity store serves feedback, player notes and creator posts. Keep the
 // old key so existing authors retain their records without a data migration.
-export function createParticipationStore({storage=()=>globalThis.localStorage,locks=()=>typeof window==='undefined'?undefined:globalThis.navigator?.locks}={}){
+export function createParticipationStore({storage=()=>globalThis.localStorage,locks=()=>typeof window==='undefined'?undefined:globalThis.navigator?.locks,now=()=>Date.now()}={}){
  let memory='',memoryOnly=false,profiles=[],pending,persistent=true,queue=Promise.resolve();
- const read=()=>{try{const target=storage();if(!target)throw Error();const value=target.getItem(TOKEN_KEY);if(validToken(value)){memory=value;memoryOnly=false;return value;}return memoryOnly?memory:'';}catch{persistent=false;return memory;}};
+ let accountMemory=null,accountMemoryOnly=false;
+ const legacyRead=()=>{try{const target=storage();if(!target)throw Error();const value=target.getItem(TOKEN_KEY);if(validToken(value)){memory=value;memoryOnly=false;return value;}return memoryOnly?memory:'';}catch{persistent=false;return memory;}};
+ const accountRead=()=>{try{const target=storage();if(!target)throw Error();const raw=target.getItem(ACCOUNT_KEY);if(!raw)return accountMemoryOnly?accountMemory:null;const value=JSON.parse(raw);if(!validToken(value?.token)||!Number.isFinite(value.expiresAt)||typeof value.profileId!=='string')return null;accountMemory=value;accountMemoryOnly=false;return value;}catch{persistent=false;return accountMemory;}};
+ const read=()=>{const account=accountRead();return account?(account.expiresAt>now()?account.token:''):legacyRead();};
+ function accountSave(value){accountMemory=value;try{const target=storage();if(!target)throw Error();if(value)target.setItem(ACCOUNT_KEY,JSON.stringify(value));else target.removeItem(ACCOUNT_KEY);accountMemoryOnly=false;}catch{persistent=false;accountMemoryOnly=true;}}
  function saved(){
   try{const raw=JSON.parse(storage()?.getItem(PROFILE_KEY)||'[]');if(Array.isArray(raw)){
    const merged=new Map(profiles.map(p=>[p.token,p]));
@@ -23,7 +29,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
  function persistProfiles(){try{const target=storage();if(!target)throw Error();target.setItem(PROFILE_KEY,JSON.stringify(profiles));return true;}catch{persistent=false;return false;}}
  function save(token){
   if(token&&!validToken(token))throw Error('작성 정보가 올바르지 않습니다.');
-  const previous=read();remember(previous);remember(token);
+  const previous=legacyRead();remember(previous);remember(token);
   const profilesStored=persistProfiles();
   if(!profilesStored&&previous&&token&&previous!==token)throw Error('현재 기록의 코드를 보관하지 못해 전환하지 않았습니다. 현재 복구 코드를 먼저 파일로 보관하고, 저장 가능한 브라우저에서 연결해 주세요.');
   memory=token;memoryOnly=false;
@@ -36,12 +42,22 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
  }
  return {
   read,
+  legacyToken:legacyRead,
+  googleAccount:accountRead,
+  setGoogleAccount(value,expected=read()){return serial(()=>{
+   if(read()!==expected)throw Error('다른 창에서 로그인 상태가 바뀌었습니다. 다시 확인해 주세요.');
+   if(!validToken(value?.token)||!Number.isFinite(value.expiresAt)||value.expiresAt<=now()||typeof value.profileId!=='string')throw Error('로그인 응답이 올바르지 않습니다.');
+   remember(legacyRead());persistProfiles();accountSave({token:value.token,profileId:value.profileId,expiresAt:value.expiresAt});return true;
+  });},
+  expireGoogleAccount(expected){return serial(()=>{const current=accountRead();if(current?.token!==expected)return false;accountSave({...current,expiresAt:0});return true;});},
+  clearGoogleAccount(expected=read()){return serial(()=>{if(read()!==expected)return false;save('');accountSave(null);return true;});},
   persistent:()=>persistent,
-  profiles:()=>{remember(read());return saved().map(p=>({...p}));},
+  profiles:()=>{remember(legacyRead());return saved().map(p=>({...p}));},
   backedUp:()=>saved().some(p=>p.token===read()&&p.backedUp),
-  markBackedUp(expected=read()){if(!expected||read()!==expected)return false;remember(expected);const p=profiles.find(p=>p.token===expected);if(p)p.backedUp=true;return persistProfiles();},
+  markBackedUp(expected=read()){if(accountRead()||!expected||read()!==expected)return false;remember(expected);const p=profiles.find(p=>p.token===expected);if(p)p.backedUp=true;return persistProfiles();},
   ensure(create){
    if(read())return Promise.resolve(read());
+   if(accountRead()||googleAvailable)return Promise.reject(Error('Google로 로그인한 뒤 다시 작성해 주세요. 입력한 내용은 유지됩니다.'));
    if(!pending)pending=serial(async()=>{
     if(read())return read();
     const result=await create();if(!validToken(result?.token))throw Error('작성 정보를 만들지 못했습니다. 다시 시도해 주세요.');
@@ -50,8 +66,9 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
    }).finally(()=>{pending=null;});
    return pending;
   },
-  invalidate(expected){return serial(()=>{if(expected&&read()===expected){save('');return true;}return false;});},
+  invalidate(expected){return serial(()=>{const current=accountRead();if(expected&&current?.token===expected){accountSave({...current,expiresAt:0});return true;}if(expected&&read()===expected){save('');return true;}return false;});},
   async connect(code,{origin,fetcher=globalThis.fetch,signal,beforeSwitch=()=>true}={}){
+   if(accountRead())throw Error('내 기록 화면에서 기존 코드를 Google 계정에 연결해 주세요.');
    const token=recoveryToken(code);if(!token)throw Error('MANOR-R1로 시작하는 개인 복구 코드 전체를 입력해 주세요.');
    const response=await fetcher(origin+'/api/feedback/session',{method:'GET',credentials:'omit',cache:'no-store',redirect:'error',headers:{Authorization:'Bearer '+token,Accept:'application/json'},signal});
    if(!response.ok)throw Error(response.status===401?'등록된 기록을 찾지 못했습니다. 복구 코드를 다시 확인해 주세요.':'기록을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.');
@@ -68,6 +85,7 @@ const keyIcon='<svg class="recovery-icon ui-icon" data-icon="key" viewBox="0 0 2
 // Explicit issuance uses the same server identity as writing. Reopening or
 // repeating it must never replace the visitor who owns the existing records.
 export async function issueRecoveryCode({store=participation,origin=PARTICIPATION_ORIGIN,fetcher=globalThis.fetch,signal}={}){
+ if(store.googleAccount?.())throw Error('Google 계정으로 연결된 기록에는 복구 코드를 발급하지 않습니다.');
  if(signal?.aborted)throw new DOMException('Aborted','AbortError');
  return store.ensure(async()=>{
   if(signal?.aborted)throw new DOMException('Aborted','AbortError');
@@ -84,6 +102,10 @@ export function recoveryState({current='',saved=false,persistent=true}={}){
  return !current?'unconnected':!persistent?'temporary':saved?'ready':'needs-backup';
 }
 export function participationBar({store=participation}={}){
+ if(googleAvailable||store.googleAccount?.()){
+  const account=store.googleAccount?.(),connected=account?.expiresAt>Date.now();
+  return `<aside class="participation-bar ${connected?'is-saved':'is-important'}" data-participation-banner aria-label="내 기록 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${connected?'Google 계정으로 기록이 연결되어 있습니다.':'Google로 내 기록을 이어보세요.'}</strong><p>${connected?'다른 기기에서도 같은 계정으로 로그인하세요.':'로그인하면 작성한 글과 댓글을 다른 기기에서도 관리할 수 있습니다.'}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${connected?'':'primary'} small" data-participation="open">${connected?'내 기록 관리':'Google 로그인'}</button></div></aside>`;
+ }
  const current=store.read(),saved=!!current&&store.backedUp(),state=recoveryState({current,saved,persistent:store.persistent()});
  if(state==='ready')return `<aside class="participation-bar is-saved" data-participation-banner data-recovery-state="ready" aria-label="복구 코드 상태"><span class="participation-key">${keyIcon}</span><strong>이 브라우저는 연결·보관 완료</strong><button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">코드 관리</button></aside>`;
  const title=state==='temporary'?'이 브라우저에서는 연결을 저장할 수 없습니다':current?'연결된 기록의 복구 코드를 보관하세요':'연결된 작성 기록이 없습니다';
@@ -111,7 +133,7 @@ export function recoveryPanel({current='',saved=false,persistent=true,revealed=f
  return `<div class="recovery-mode" role="group" aria-label="복구 코드 메뉴"><button type="button" data-recovery="mode" data-mode="issue" aria-pressed="${mode==='issue'}">${ready?'연결 상태':'발급·보관'}</button><button type="button" data-recovery="mode" data-mode="connect" aria-pressed="${mode==='connect'}">${current?'다른 기록 연결':'기존 기록 연결'}</button></div>${!persistent?'<div class="recovery-storage-warning" role="alert">이 브라우저에서는 작성 정보가 유지되지 않을 수 있습니다. 창을 닫기 전에 코드를 꼭 따로 보관해 주세요.</div>':''}<div class="recovery-panel">${mode==='connect'?connect:issue}</div><p class="participation-result" role="status" aria-live="polite" aria-atomic="true"></p>`;
 }
 
-export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onConnected=()=>{},beforeSwitch=()=>true}={}){
+function mountLegacyRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onConnected=()=>{},beforeSwitch=()=>true}={}){
  let alive=true,busy=false,controller,revealedToken='',renderedToken='';
  function render(focus=false){
   const current=participation.read();if(revealedToken!==current)revealedToken='';renderedToken=current;
@@ -170,16 +192,34 @@ export function mountRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onC
  return ()=>{alive=false;controller?.abort();revealedToken='';root.querySelectorAll('[data-recovery-code], [name="recoveryCode"]').forEach(node=>{node.value='';});root.removeEventListener('click',click);root.removeEventListener('submit',submit);root.removeEventListener('change',change);window.removeEventListener('storage',storageChanged);};
 }
 
+export function mountRecovery(root,options={}){
+ const origin=options.origin||PARTICIPATION_ORIGIN;let alive=true,dispose;
+ root.innerHTML='<p class="participation-result" role="status">내 기록 연결을 확인하고 있습니다.</p>';
+ googleConfig(origin).then(config=>{
+  if(!alive)return;googleAvailable=config.enabled;refreshParticipationBanners();
+  if(config.enabled){options.onGoogle?.();dispose=mountGoogleAccount(root,{...options,store:participation,origin,clientId:config.clientId,recoveryToken,onChange:refreshParticipationBanners});}
+  else if(participation.googleAccount())root.innerHTML='<div class="recovery-panel"><h2>Google 로그인을 일시적으로 사용할 수 없습니다.</h2><p>작성 기록은 계정에 보관되어 있습니다. 잠시 후 다시 접속해 주세요.</p></div>';
+  else dispose=mountLegacyRecovery(root,options);
+ }).catch(()=>{if(alive){if(participation.googleAccount())root.innerHTML='<p class="participation-result is-error" role="alert">로그인 서버에 연결하지 못했습니다. 잠시 후 다시 접속해 주세요.</p>';else dispose=mountLegacyRecovery(root,options);}});
+ return ()=>{alive=false;dispose?.();};
+}
+
 export function mountRecoveryPage(root,options={}){
  root.innerHTML=`<section class="recovery-page"><header class="recovery-heading"><div class="eyebrow">KEEP YOUR MANOR</div><h1>복구 코드</h1><p>다른 기기나 브라우저에서 내가 쓴 글과 등록한 채널을 다시 관리할 때 사용합니다.</p></header><div class="recovery-layout"><aside class="recovery-intro"><h2>기기를 바꾸기 전에<br>코드를 따로 저장하세요.</h2><p>MANOR는 로그인 없이 글을 남길 수 있습니다. 복구 코드를 저장해 두면 다른 브라우저에서도 아래 작성 기록을 연결할 수 있습니다.</p><ul><li><strong>피드백과 댓글</strong><span>내 참여 글과 운영자 답변</span></li><li><strong>유저 상대법</strong><span>제출 내역과 운영자 검토 의견</span></li><li><strong>연구실</strong><span>내 연구 글과 댓글·도감 제안</span></li><li><strong>유튜브 채널</strong><span>등록한 채널의 작성 기록</span></li></ul><p class="recovery-note">기기 변경·브라우저 데이터 삭제 전에<br>복구 코드를 꼭 따로 저장해 주세요.</p></aside><div class="recovery-workspace" data-recovery-workspace></div></div></section>`;
- return mountRecovery(root.querySelector('[data-recovery-workspace]'),options);
+ return mountRecovery(root.querySelector('[data-recovery-workspace]'),{...options,onGoogle:()=>{
+  root.querySelector('.recovery-heading h1').textContent='로그인 · 내 기록';
+  root.querySelector('.recovery-heading p').textContent='Google 계정으로 로그인하고, 기존 작성 기록을 연결하세요.';
+  root.querySelector('.recovery-intro h2').textContent='기기가 바뀌어도 내 기록은 그대로';
+  root.querySelector('.recovery-intro p').textContent='같은 Google 계정으로 로그인하면 연결한 작성 기록을 다시 관리할 수 있습니다. 기존 복구 코드는 처음 기록을 가져올 때만 사용하세요.';
+  root.querySelector('.recovery-intro .recovery-note').textContent='즐겨찾기와 화면 설정은 현재 브라우저에 저장됩니다.';
+ }});
 }
 
 let activeDialog=null;
 export function openParticipation(options={}){
  if(activeDialog){activeDialog.querySelector('button')?.focus();return;}
  const dialog=document.createElement('dialog');dialog.className='participation-dialog';dialog.setAttribute('aria-labelledby','participation-title');
- dialog.innerHTML='<div class="participation-dialog-head"><div><span class="eyebrow">MY RECOVERY CODE</span><h2 id="participation-title">복구 코드</h2></div><button type="button" class="btn small" data-participation-close aria-label="복구 코드 닫기">닫기</button></div><div class="recovery-workspace" data-recovery-workspace></div>';
+ dialog.innerHTML='<div class="participation-dialog-head"><div><span class="eyebrow">MY MANOR</span><h2 id="participation-title">내 기록</h2></div><button type="button" class="btn small" data-participation-close aria-label="내 기록 닫기">닫기</button></div><div class="recovery-workspace" data-recovery-workspace></div>';
  const previousFocus=document.activeElement;activeDialog=dialog;document.body.append(dialog);
  const dispose=mountRecovery(dialog.querySelector('[data-recovery-workspace]'),options);
  const closeOnNavigation=()=>dialog.close();window.addEventListener('hashchange',closeOnNavigation);
@@ -189,4 +229,5 @@ export function openParticipation(options={}){
 }
 
 // Update compact status strips across tabs even when the recovery panel is closed.
-globalThis.window?.addEventListener('storage',event=>{if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key))refreshParticipationBanners();});
+globalThis.window?.addEventListener('storage',event=>{if(event.key===null||[TOKEN_KEY,PROFILE_KEY,ACCOUNT_KEY].includes(event.key))refreshParticipationBanners();});
+if(globalThis.window&&globalThis.document)googleConfig(PARTICIPATION_ORIGIN).then(config=>{googleAvailable=config.enabled;refreshParticipationBanners();}).catch(()=>{});

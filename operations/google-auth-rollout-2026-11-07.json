@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-07",
+  "status": "prepared-awaiting-google-client",
+  "publicBase": "d56fd0e4634b85e2022c2fe0e5701fedcaa16142",
+  "backendProject": "appgprj_6ad2e1e485cc819180a237eab7455ebe",
+  "implementation": [
+    "GIS JavaScript popup with server-side Google signature, issuer, audience, expiry and nonce verification",
+    "Single-use origin-bound challenges; no cross-site cookie dependency",
+    "Seven-day opaque bearer sessions, server-side logout and fixed expiration across profile switches",
+    "Existing author identities and content unchanged; explicit legacy token proof links separate records",
+    "No Google names, emails, photos, or ID tokens persisted; owner authorization unchanged"
+  ],
+  "activation": {
+    "requiredRuntimeVariable": "GOOGLE_CLIENT_ID",
+    "authorizedJavaScriptOrigin": "https://tacocat070116.github.io",
+    "clientType": "Web application",
+    "redirectUriRequired": false,
+    "clientSecretRequired": false,
+    "state": "not configured; legacy recovery remains available"
+  },
+  "verification": {
+    "frontendTests": 162,
+    "backendTests": 72,
+    "backendBuild": "passed",
+    "actualGoogleSignIn": "not performed; requires owner Google client configuration",
+    "mobileCheck": "390px browser viewport fixture; not physical Safari"
+  },
+  "limits": [
+    "Linked record groups remain individually selectable; existing authors and aliases are not merged",
+    "Favorites and themes remain local to each browser",
+    "Actual Google consent, account selection, cross-device sign-in and Safari behavior require activation verification"
+  ],
+  "backendDeployment": {
+    "commit": "7a7af2acc0b1482772cd116b663578b49de7082d",
+    "version": 25,
+    "deploymentId": "appgdep_6aeed40886e88191831f04e3adf18011",
+    "status": "succeeded",
+    "googleEnabled": false
+  }
+}
