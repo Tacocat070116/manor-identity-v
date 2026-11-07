@@ -1,6 +1,6 @@
 {
   "date": "2026-11-07",
-  "status": "prepared-awaiting-google-client",
+  "status": "active-awaiting-mobile-verification",
   "publicBase": "d56fd0e4634b85e2022c2fe0e5701fedcaa16142",
   "backendProject": "appgprj_6ad2e1e485cc819180a237eab7455ebe",
   "implementation": [
@@ -16,26 +16,32 @@
     "clientType": "Web application",
     "redirectUriRequired": false,
     "clientSecretRequired": false,
-    "state": "not configured; legacy recovery remains available"
+    "state": "configured; Google sign-in is active",
+    "runtimeRevision": 3,
+    "activatedAt": "2026-11-07T18:42:08+09:00",
+    "flow": "GIS popup; iOS compatibility requires separate verification"
   },
   "verification": {
     "frontendTests": 162,
     "backendTests": 72,
     "backendBuild": "passed",
-    "actualGoogleSignIn": "not performed; requires owner Google client configuration",
+    "actualGoogleSignIn": "passed: owner-selected Google account, consent, server session, signed-in account screen, reload, new tab, logout and cross-tab logout on cloud Chrome",
     "mobileCheck": "390px browser viewport fixture; not physical Safari",
-    "publicLegacyFeedback": "confirmed: five existing feedback posts remain visible with Google disabled"
+    "publicLegacyFeedback": "confirmed before activation: five existing feedback posts remain visible; activation changes runtime configuration only",
+    "productionLegacyLink": "not exercised with an owner's recovery code; covered by backend tests",
+    "googlePublishingStatus": "not independently inspected in the owner's Google project"
   },
   "limits": [
     "Linked record groups remain individually selectable; existing authors and aliases are not merged",
     "Favorites and themes remain local to each browser",
-    "Actual Google consent, account selection, cross-device sign-in and Safari behavior require activation verification"
+    "Actual Google consent, account selection, reload, new-tab persistence and logout are verified on cloud Chrome",
+    "Cross-device sign-in, physical iOS/Safari and production legacy-code linking still require verification"
   ],
   "backendDeployment": {
     "commit": "0f174680be5900bcd0e0e541aa82a5087e6fa612",
     "version": 26,
-    "deploymentId": "appgdep_6aeed60c0df4819180dc4470870cfd8c",
+    "deploymentId": "appgdep_6aeef264e93c8191be915faadb39b218",
     "status": "succeeded",
-    "googleEnabled": false
+    "googleEnabled": true
   }
 }
