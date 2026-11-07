@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.17.3",
+  "lastAnnouncedVersion": "1.18.0",
   "entries": [
     {
       "date": "2026-10-31",
@@ -154,8 +154,10 @@
         "표시하지 않는 통계 자료 요청을 줄이고 통계 재집계·검색어 정규화·스킬명 강조 정규식을 재사용",
         "랭킹전 자료의 원본 배열 중복 보관과 화면별 중복 정리 코드를 제거하고 사용하지 않는 보조 코드·CSS 중복 선언을 정리"
       ],
-      "announcement": "pending",
-      "audit": "operations/performance-cleanup-2026-11-07.json"
+      "announcement": "announced",
+      "audit": "operations/performance-cleanup-2026-11-07.json",
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07"
     },
     {
       "date": "2026-11-07",
@@ -166,9 +168,12 @@
         "원래 글·댓글·별명을 보존하고 여러 브라우저 기록을 계정 안에서 선택",
         "운영자가 선택한 Google 계정으로 실제 로그인·새로고침·새 탭 유지·탭 간 로그아웃 확인"
       ],
-      "announcement": "not-ready",
-      "reason": "실제 Chrome 로그인 검증 완료. 기기 간 로그인·아이폰 Safari·실제 기존 복구 코드 연결은 추가 확인 필요",
-      "audit": "operations/google-auth-rollout-2026-11-07.json"
+      "announcement": "announced",
+      "reason": "공개 구현과 실제 Chrome 로그인·저장·로그아웃 검증 범위 공지. 실제 기기 추가 검증 대기.",
+      "audit": "operations/google-auth-rollout-2026-11-07.json",
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07",
+      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지."
     },
     {
       "date": "2026-11-07",
@@ -180,12 +185,14 @@
         "저장에 실패했는데도 저장됨으로 표시되던 오류를 수정하고 읽을 수 없는 저장 목록의 덮어쓰기 방지",
         "즐겨찾기 변경 시 화면 전체를 다시 그리지 않고 별 버튼과 필요한 목록만 갱신"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "validation": {
         "regressionTests": "favorites.test.mjs: 10 cases passed",
         "browserPreview": "Chrome에서 새로고침·새 탭 유지, 탭 간 별 버튼과 필터 목록 갱신, 여러 캐릭터의 추가·해제 보존 확인",
         "scope": "기존 manor-favorites 브라우저 저장 형식 유지. 계정·복구 코드·테마 저장은 변경하지 않으며 기기 간 즐겨찾기 동기화는 포함하지 않음. 실제 iOS Safari는 미검증."
-      }
+      },
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07"
     },
     {
       "date": "2026-11-07",
@@ -197,14 +204,16 @@
         "로그인 다시 시작 버튼으로 Google 로그인 환경을 새로 불러오고 Google 계정 추가 화면으로 직접 이동하는 보조 링크 제공",
         "재시작과 외부 계정 추가 이동에 입력 중인 내용 확인 절차 적용"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "validation": {
         "regressionTests": "google-account-lifecycle.test.mjs 및 google-signin.test.mjs: 14개 회귀 검사 통과. 기존 Google 세션 검사 7개 통과.",
         "baselineReproduction": "수정 전 여러 로그인 화면 중 마지막 화면을 닫으면 남은 화면의 인증 응답이 무시되는 오류 재현. 수정 후 통과.",
         "browserScope": "기존 Chrome에서는 Google의 다른 계정 사용이 같은 창의 이메일 입력 화면으로 전환되었으며 로그인 창 닫기 후 두 번째 열기도 동작함. 실제 iOS Safari 제보 증상은 직접 재현하지 못함.",
         "limits": "Google이 제공하는 계정 선택 화면 내부 코드는 변경하지 않음. Google 콘솔·서버 검증·기존 기록과 세션 저장 방식 유지.",
         "siteChecks": "npm test: 186개 통과. 기존 배포 기준 공지·내용 정합성, SHA256, git diff 검사 통과."
-      }
+      },
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07"
     },
     {
       "date": "2026-11-07",
@@ -217,7 +226,7 @@
         "브라우저의 저장 실패, 인증 취소·만료·중복 응답, 화면 종료와 계정 변경 시 기존 기록 유지",
         "별도 로그인 복귀 페이지에도 의존 파일의 캐시 갱신 적용"
       ],
-      "announcement": "not-ready",
+      "announcement": "announced",
       "activation": {
         "enabled": true,
         "redirectUri": "https://tacocat070116.github.io/manor-identity-v/google-return.html",
@@ -229,8 +238,12 @@
         "focusedTests": "Google 로그인·복귀·계정 저장·릴리스 관련 56개 검사 통과",
         "iosSafari": "실제 기기 검증 대기",
         "server": "기존 서명·발급자·수신자·nonce·일회용 challenge 검증과 저장 구조 유지. 접근 토큰이나 클라이언트 비밀키를 추가하지 않음.",
-        "siteChecks": "활성화 변경 후 npm test 212개 및 배포 기준 공지·내용·체크섬 검사 통과"
-      }
+        "siteChecks": "활성화 변경 후 npm test 212개 및 배포 기준 공지·내용·체크섬 검사 통과",
+        "browserScope": "2026-11-07 공개 사이트에서 Google 계정 선택 → 같은 탭의 복귀 페이지 → MANOR 로그인 연결됨까지 실제 Chrome으로 확인"
+      },
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07",
+      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지."
     },
     {
       "date": "2026-11-07",
@@ -241,7 +254,7 @@
         "기록 저장 안내의 모바일 줄바꿈을 막던 스타일 충돌을 제거해 Google 로그인 후 문장이 세로로 늘어지거나 버튼이 화면 밖으로 밀리는 오류 수정",
         "기록 안내 갱신 시 같은 문구를 여러 번 생성하고 저장소를 읽는 중복 작업 제거, 불필요한 스타일 선언과 감싸기 요소 정리"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "validation": {
         "baseline": "375px 모바일 폭에서 로딩 아이콘 중심 -124px, 활용 조건 들여쓰기 40px, 로그인 기록 안내의 텍스트 폭 0px와 가로 넘침 재현",
         "responsive": "320·375·390·480·768·1280px에서 Google 연결·로그인 전·기존 코드 안내의 가로 넘침 없음. 375px에서 로딩 중심 오차와 조건 들여쓰기 모두 0px.",
@@ -249,7 +262,9 @@
         "limits": "Chrome의 반응형 프레임으로 실제 소스의 HTML·CSS를 검사. 실제 iPhone Safari 기기 검사는 수행하지 않음.",
         "siteChecks": "npm test 212개 및 배포 기준 공지·내용 정합성·SHA256·git diff 검사 통과"
       },
-      "preservation": "요청한 세 배치 수정 외 기능·문구·게임 데이터·로그인 처리·공개 버전·공지 유지"
+      "preservation": "요청한 세 배치 수정 외 기능·문구·게임 데이터·로그인 처리·공개 버전·공지 유지",
+      "announcedVersion": "1.18.0",
+      "announcedAt": "2026-11-07"
     }
   ]
 }
