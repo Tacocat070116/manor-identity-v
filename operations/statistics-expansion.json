@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-10-31",
+  "updatedAt": "2026-11-07",
   "baseCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe",
-  "branch": "codex/statistics-upload-20261031",
+  "branch": "main",
   "publicUrl": "https://tacocat070116.github.io/manor-identity-v/",
-  "state": "validated-for-deployment",
+  "state": "deployed",
   "instructions": {
     "statisticsOnly": true,
     "newInterface": false,
     "patchNotesOnlyAfterAllWork": true,
     "intermediatePublication": false,
-    "announcements": "Only on explicit owner announcement request; preserve BETA v1.17.2."
+    "announcements": "Only on explicit owner announcement request. Expansion was announced in BETA v1.17.3 on 2026-10-31; this documentation review adds no release or announcement."
   },
   "batches": [
     {
@@ -22,17 +22,66 @@
       "chinaRows": 95238,
       "asiaRows": 1267,
       "validation": "research/ranked/stage-validation.json",
-      "excludedSourceErrorRows": 1575
+      "excludedSourceErrorRows": 1575,
+      "beforeDatasets": 421,
+      "chinaDatasets": 1166,
+      "asiaDatasets": 15,
+      "equivalentRowsRemoved": 556,
+      "excludedSourceErrorDatasets": 18,
+      "unit": "자료 묶음 안의 캐릭터별 비율 행. 자료 묶음은 서버·시즌·랭크·기간별 집계이며 실제 경기 수가 아닙니다.",
+      "seasons": {
+        "cn": [
+          "S24",
+          "S26",
+          "S28",
+          "S32",
+          "S33",
+          "S34",
+          "S35",
+          "S36",
+          "S37",
+          "S38",
+          "S39",
+          "S40",
+          "S41",
+          "S42",
+          "S43",
+          "S44",
+          "S45"
+        ],
+        "asia": [
+          "S36",
+          "S37",
+          "S38",
+          "S43"
+        ]
+      },
+      "latestChinaPeriod": {
+        "start": "2026-09-10",
+        "end": "2026-10-29"
+      }
     },
     {
       "id": "knowledge-scores",
       "status": "verified",
       "preparedTargetRows": 274016,
       "preparedTargetDates": 402,
-      "currentlyIncludedRows": 1384,
+      "currentlyIncludedRows": 274016,
       "afterRows": 274016,
       "dates": 402,
-      "monthlyPartitions": 14
+      "monthlyPartitions": 14,
+      "beforeRows": 1384,
+      "beforeDates": 2,
+      "earliestDate": "2025-09-18",
+      "latestDate": "2026-10-29",
+      "missingDates": [
+        "2025-10-11",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-18",
+        "2026-07-02"
+      ],
+      "unit": "날짜·캐릭터·순위 경계별 인지 점수. 경기 수·이용자 수·실제 휘장 지급 기록이 아닙니다."
     },
     {
       "id": "tournament-and-bans",
@@ -42,7 +91,39 @@
       "preparedTargetObservedBans": 16842,
       "afterHalfGames": 17056,
       "afterDetails": 16930,
-      "afterObservedBans": 16842
+      "afterObservedBans": 16842,
+      "beforeHalfGames": 16953,
+      "beforeDetails": 1650,
+      "beforeObservedBans": 1634,
+      "beforeOpeningBans": 15516,
+      "afterOpeningBans": 15516,
+      "confirmedResults": 17035,
+      "unknownResults": 21,
+      "dateRanges": {
+        "halfGames": [
+          "2020-02-15",
+          "2026-10-30"
+        ],
+        "details": [
+          "2020-06-25",
+          "2026-10-30"
+        ],
+        "openingBans": [
+          "2020-06-25",
+          "2026-10-05"
+        ],
+        "observedBans": [
+          "2020-06-25",
+          "2026-10-30"
+        ]
+      },
+      "units": {
+        "halfGames": "양 팀이 진영을 교대하기 전 한 차례의 플레이",
+        "details": "상세가 있는 반경기. 전체 반경기에 추가 합산하지 않음",
+        "openingBans": "반경기에 대응하는 생존자 선밴 목록",
+        "observedBans": "반경기에 대응하는 전체 생존자 밴 목록. 선밴과 합산하지 않음"
+      },
+      "latestCoverage": "2026-10-30 DOU5–ASC 2세트의 두 반경기만 추가. 해당 날짜·대회 전체 수집이 아닙니다."
     },
     {
       "id": "community-evidence-review",
@@ -52,22 +133,31 @@
     },
     {
       "id": "final-integration-and-release",
-      "status": "verified",
-      "policy": "통합 검증 후 기존 main에 반영합니다. 공지와 공개 버전 변경은 운영자의 별도 요청을 따릅니다."
+      "status": "deployed",
+      "policy": "통합 검증과 main 반영, 기존 GitHub Pages 배포를 완료했습니다. 이후 운영자의 공지 요청에 따라 BETA v1.17.3에 포함했습니다."
     }
   ],
   "coverageLimits": [
-    "아시아 S44 및 S39~S42 전체 보관본은 미확보입니다.",
-    "한국 유저만의 랭킹전 통계나 실제 경기 수는 확인되지 않았습니다.",
-    "공식 통계의 공개 전사·보관본이며 모든 공식 원본 이미지의 전수 대조는 아닙니다."
+    "중국 S24·S26·S28·S32~S45, 아시아 S36~S38·S43의 확보된 공개 집계만 수록합니다. 서버별 시즌 번호는 서로 다르며 모든 날짜·랭크·캐릭터 조합을 포함하지 않습니다.",
+    "아시아 S36~S38은 전체 랭크·최고 7티어만, S43은 전체·1~7티어·최고 7티어와 양 진영을 수록합니다. S43의 신동·투우사는 원문 미수록이며 정확한 집계 시작·종료일도 미공개입니다.",
+    "아시아 S44 및 S39~S42 완전한 보관본, 북미/유럽, 한국 이용자만의 통계, 개별 랭킹전 전적·실제 경기 수, 캐릭터별 맵·인격 통계는 미확보입니다.",
+    "중국 S44 누적 18묶음·1,575행은 정정 미확인으로 공개 조회에서 제외했고 일별·주별 자료는 유지합니다. 같은 관측 중복 556행도 제외했습니다.",
+    "중국 27묶음에는 생존자만 기재되어 있습니다. 인지 점수 402개 날짜 사이에는 5일의 공백이 있으며 미기재를 0으로 채우지 않습니다.",
+    "인덱스 수집 기준일 2026-10-31, 중국 최신 집계일 2026-10-29, 대회 최신 경기일 2026-10-30, 선밴 최신 경기일 2026-10-05를 구분합니다. 문서 대조일은 새 수집일이 아닙니다.",
+    "공식 통계의 공개 전사·보관본이며 실시간 공식 API 응답이나 공식 원본 이미지 전수 대조 결과가 아닙니다. 미러·전재와 기간이 겹치는 집계를 독립 표본으로 합산하지 않습니다.",
+    "중국의 선택 비중, 아시아의 원문 비율, 대회의 반경기당 출전·선밴 비율은 분모가 다릅니다. 여론을 경기 수·승률로 환산하지 않습니다.",
+    "대회 상세·선밴·전체 생존자 밴은 서로 겹치는 별도 자료입니다. 개인 지표·인격 미기재와 결과 미확인 21건을 보존하며 대회 전 기간의 완전 수집을 보증하지 않습니다.",
+    "대회 공급자의 누락 안내는 MANOR 전체의 확정 누락 목록이 아닙니다. 다른 출처를 포함한 실제 수록 범위를 별도로 확인합니다."
   ],
   "resume": {
-    "nextStep": "Validate the integrated latest public source, upload the remaining objects, and deploy the existing GitHub Pages site.",
+    "status": "completed",
+    "nextStep": null,
+    "remainingBatches": [],
     "publicationAuthorized": true,
     "retiredUnpublishedAnnouncement": "1.16.4"
   },
   "cleanupReview": "operations/statistics-input-review.json",
-  "announcedVersion": "1.17.2",
+  "announcedVersion": "1.17.3",
   "verification": {
     "testsPassed": 146,
     "testsFailed": 0,
@@ -76,6 +166,32 @@
     "terminologyCheck": true,
     "guideDataPreserved": true,
     "announcementsPreserved": true,
-    "publicBaseCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe"
+    "publicBaseCommit": "1ad478ed21546e095a153047b85b79b92c54fbbe",
+    "checkedAt": "2026-10-31",
+    "announcedVersionAtValidation": "1.17.2",
+    "note": "확장 당시 검증 이력입니다. 문서 대조일의 새 테스트 결과나 현재 공개 버전으로 해석하지 않습니다."
+  },
+  "collectedAt": "2026-10-31",
+  "documentationReviewedAt": "2026-11-07",
+  "preparationBranch": "codex/statistics-upload-20261031",
+  "announcedAt": "2026-10-31",
+  "deployment": {
+    "status": "success",
+    "deployedAt": "2026-10-31",
+    "commit": "37be148ed78acc603a0e85b68bda3b8cbbeabaf7",
+    "workflowRunId": 41195611348,
+    "workflowRunUrl": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/41195611348",
+    "runUpdatedAt": "2026-10-31T11:09:04Z"
+  },
+  "documentationReview": {
+    "date": "2026-11-07",
+    "publicCommit": "7dc3cb9aee551996ec56712dfa8d1f4dcbbcb5da",
+    "successfulDeploymentRunUrl": "https://github.com/Tacocat070116/manor-identity-v/actions/runs/41198447985",
+    "scope": "README·운영 문서의 현재 수치, 단위, 날짜, 서버·시즌 범위, 누락과 한계를 배포 자료에 맞게 수정",
+    "publicDataChanged": false,
+    "sourceInputsChanged": false,
+    "interfaceChanged": false,
+    "versionChanged": false,
+    "announcementAdded": false
   }
 }

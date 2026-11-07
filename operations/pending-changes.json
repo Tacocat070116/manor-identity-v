@@ -132,6 +132,17 @@
       "rolledBackAt": "2026-10-31",
       "requestedBy": "owner",
       "rollbackReason": "공개 사이트에서 시험한 뒤 기존 홈 화면 복구 요청"
+    },
+    {
+      "date": "2026-11-07",
+      "scope": "statistics-documentation",
+      "summary": [
+        "README와 운영 문서를 2026-10-31 배포 통계의 행·자료 묶음 수, 집계 단위, 서버·시즌 범위와 날짜에 맞춰 수정",
+        "원문 누락·오류 자료 제외·인지 점수 날짜 공백과 대회 부분 수록 한계를 명시",
+        "통계 확장 운영 상태를 실제 GitHub Pages 배포 성공 이력에 맞춰 완료로 정리"
+      ],
+      "announcement": "not-planned",
+      "reason": "기존 문서의 정합성 수정만 수행. 통계 원자료·사이트 화면·공개 버전·공지 변경 없음."
     }
   ]
 }

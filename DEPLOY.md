@@ -1,6 +1,6 @@
 # 본인 계정에서 무료 배포하기
 
-문서 확인일: 2026-10-16. GitHub Pages 첫 배포가 성공했고 실제 사이트 접속과 주요 기능을 확인했습니다.
+문서 확인일: 2026-11-07. 최초 GitHub Pages 공개일은 2026-10-16입니다. 2026-10-31 통계 확장 커밋 `37be148ed78acc603a0e85b68bda3b8cbbeabaf7`의 [배포 성공](https://github.com/Tacocat070116/manor-identity-v/actions/runs/41195611348)을 확인했습니다. 통계의 수집일·집계 단위·수록 범위는 [README](README.md)와 [운영 안내](OPERATIONS.md)를 기준으로 확인합니다. 문서 확인일은 새 통계 수집일이나 새 브라우저 검증일이 아닙니다.
 
 운영 주소: https://tacocat070116.github.io/manor-identity-v/
 
@@ -32,6 +32,8 @@ GitHub Free에서는 공개 저장소로 Pages를 사용할 수 있습니다. �
 4. **Actions → Deploy MANOR to GitHub Pages**의 실행 결과를 확인합니다. 필요하면 `main`에서 **Run workflow**를 사용합니다.
 
 `.github/workflows/pages.yml`은 검증 성공 후 `dist`만 업로드합니다. 외부 패키지 설치나 개인 액세스 토큰은 필요하지 않습니다. 배포용 권한은 해당 실행의 GitHub 토큰과 Pages용 OIDC를 사용합니다. 검증이 실패하면 배포하지 않으며, 문제를 수정한 다음 다시 실행합니다.
+
+문서만 수정해도 현재 워크플로는 `main` 변경으로 실행됩니다. 이때 통계 원자료나 `dist/`를 다시 생성할 필요는 없습니다. 수정 문서의 `SHA256SUMS.txt` 항목을 갱신하고 `npm test`, `node scripts/check-release.mjs --base <수정 전 공개 커밋>`, `sha256sum --check --status SHA256SUMS.txt`를 확인합니다. 공개 버전과 업데이트 공지는 그대로 유지하며, 배포되는 사이트 파일도 이전과 동일해야 합니다.
 
 ## 3. 실제 주소 검증
 
