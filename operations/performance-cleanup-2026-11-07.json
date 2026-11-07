@@ -1,0 +1,397 @@
+{
+  "base": "1bc9644efd0e8a155f94458b97aa892499509d10",
+  "method": "Uncompressed bytes and independent gzip sizes of startup HTML/CSS/static JS imports/boot JSON; excludes images, headers and cache effects. Timings are local Node medians, not browser page-load measurements.",
+  "before": {
+    "startup": {
+      "resources": [
+        {
+          "file": "index.html",
+          "bytes": 2740,
+          "gzipBytes": 1292
+        },
+        {
+          "file": "style.css",
+          "bytes": 69473,
+          "gzipBytes": 13862
+        },
+        {
+          "file": "navigation.css",
+          "bytes": 5177,
+          "gzipBytes": 1622
+        },
+        {
+          "file": "participation.css",
+          "bytes": 10419,
+          "gzipBytes": 2529
+        },
+        {
+          "file": "feedback.css",
+          "bytes": 16760,
+          "gzipBytes": 3549
+        },
+        {
+          "file": "synergy.css",
+          "bytes": 7794,
+          "gzipBytes": 1898
+        },
+        {
+          "file": "matchup-tips.css",
+          "bytes": 7121,
+          "gzipBytes": 1906
+        },
+        {
+          "file": "creators.css",
+          "bytes": 58408,
+          "gzipBytes": 11542
+        },
+        {
+          "file": "releases.css",
+          "bytes": 5342,
+          "gzipBytes": 1458
+        },
+        {
+          "file": "themes.css",
+          "bytes": 12388,
+          "gzipBytes": 3369
+        },
+        {
+          "file": "icons.css",
+          "bytes": 4112,
+          "gzipBytes": 1157
+        },
+        {
+          "file": "app.js",
+          "bytes": 85292,
+          "gzipBytes": 26975
+        },
+        {
+          "file": "typography.js",
+          "bytes": 3061,
+          "gzipBytes": 1385
+        },
+        {
+          "file": "skill-names.js",
+          "bytes": 5132,
+          "gzipBytes": 2600
+        },
+        {
+          "file": "research-highlights.js",
+          "bytes": 2472,
+          "gzipBytes": 1281
+        },
+        {
+          "file": "synergy-model.js",
+          "bytes": 3706,
+          "gzipBytes": 1754
+        },
+        {
+          "file": "participation.js",
+          "bytes": 25151,
+          "gzipBytes": 8130
+        },
+        {
+          "file": "compendium-model.js",
+          "bytes": 5345,
+          "gzipBytes": 2288
+        },
+        {
+          "file": "model.js",
+          "bytes": 4040,
+          "gzipBytes": 1782
+        },
+        {
+          "file": "character-search.js",
+          "bytes": 3752,
+          "gzipBytes": 1741
+        },
+        {
+          "file": "character-search-data.js",
+          "bytes": 15824,
+          "gzipBytes": 5400
+        },
+        {
+          "file": "navigation.js",
+          "bytes": 5675,
+          "gzipBytes": 2139
+        },
+        {
+          "file": "themes.js",
+          "bytes": 2708,
+          "gzipBytes": 1121
+        },
+        {
+          "file": "carousel.js",
+          "bytes": 10666,
+          "gzipBytes": 3770
+        },
+        {
+          "file": "statistics.js",
+          "bytes": 13319,
+          "gzipBytes": 4912
+        },
+        {
+          "file": "statistics-model.js",
+          "bytes": 4392,
+          "gzipBytes": 1947
+        },
+        {
+          "file": "feedback.js",
+          "bytes": 25860,
+          "gzipBytes": 8700
+        },
+        {
+          "file": "request-id.js",
+          "bytes": 512,
+          "gzipBytes": 330
+        },
+        {
+          "file": "synergy.js",
+          "bytes": 28619,
+          "gzipBytes": 9305
+        },
+        {
+          "file": "matchup-tips.js",
+          "bytes": 16443,
+          "gzipBytes": 6266
+        },
+        {
+          "file": "creators.js",
+          "bytes": 53983,
+          "gzipBytes": 16715
+        },
+        {
+          "file": "creators-model.js",
+          "bytes": 12712,
+          "gzipBytes": 5685
+        },
+        {
+          "file": "releases.js",
+          "bytes": 6427,
+          "gzipBytes": 2608
+        },
+        {
+          "file": "data.json",
+          "bytes": 1090031,
+          "gzipBytes": 201855
+        },
+        {
+          "file": "specialties.json",
+          "bytes": 30892,
+          "gzipBytes": 6520
+        },
+        {
+          "file": "introductions.json",
+          "bytes": 15394,
+          "gzipBytes": 4945
+        },
+        {
+          "file": "releases.json",
+          "bytes": 83624,
+          "gzipBytes": 18212
+        }
+      ],
+      "requests": 37,
+      "bytes": 1754766,
+      "gzipBytes": 392550
+    },
+    "cpu": {
+      "repeatedStatistics20Ms": 365.724,
+      "skillFormatting267ParagraphsMs": 10.842
+    }
+  },
+  "after": {
+    "startup": {
+      "resources": [
+        {
+          "file": "index.html",
+          "bytes": 2823,
+          "gzipBytes": 1326
+        },
+        {
+          "file": "style.css",
+          "bytes": 69431,
+          "gzipBytes": 13851
+        },
+        {
+          "file": "navigation.css",
+          "bytes": 5177,
+          "gzipBytes": 1622
+        },
+        {
+          "file": "releases.css",
+          "bytes": 5342,
+          "gzipBytes": 1458
+        },
+        {
+          "file": "themes.css",
+          "bytes": 12376,
+          "gzipBytes": 3362
+        },
+        {
+          "file": "icons.css",
+          "bytes": 4112,
+          "gzipBytes": 1157
+        },
+        {
+          "file": "app.js",
+          "bytes": 87332,
+          "gzipBytes": 27431
+        },
+        {
+          "file": "feature-loader.js",
+          "bytes": 2267,
+          "gzipBytes": 954
+        },
+        {
+          "file": "typography.js",
+          "bytes": 3257,
+          "gzipBytes": 1487
+        },
+        {
+          "file": "skill-names.js",
+          "bytes": 5434,
+          "gzipBytes": 2713
+        },
+        {
+          "file": "compendium-model.js",
+          "bytes": 5345,
+          "gzipBytes": 2285
+        },
+        {
+          "file": "model.js",
+          "bytes": 3886,
+          "gzipBytes": 1712
+        },
+        {
+          "file": "character-search.js",
+          "bytes": 3885,
+          "gzipBytes": 1796
+        },
+        {
+          "file": "character-search-data.js",
+          "bytes": 15824,
+          "gzipBytes": 5400
+        },
+        {
+          "file": "navigation.js",
+          "bytes": 5675,
+          "gzipBytes": 2139
+        },
+        {
+          "file": "themes.js",
+          "bytes": 2708,
+          "gzipBytes": 1121
+        },
+        {
+          "file": "carousel.js",
+          "bytes": 10666,
+          "gzipBytes": 3770
+        },
+        {
+          "file": "statistics.js",
+          "bytes": 13529,
+          "gzipBytes": 4978
+        },
+        {
+          "file": "statistics-model.js",
+          "bytes": 5118,
+          "gzipBytes": 2214
+        },
+        {
+          "file": "synergy-model.js",
+          "bytes": 3706,
+          "gzipBytes": 1754
+        },
+        {
+          "file": "releases.js",
+          "bytes": 6427,
+          "gzipBytes": 2608
+        },
+        {
+          "file": "catalog.json",
+          "bytes": 12385,
+          "gzipBytes": 3378
+        },
+        {
+          "file": "specialties.json",
+          "bytes": 30892,
+          "gzipBytes": 6520
+        },
+        {
+          "file": "introductions.json",
+          "bytes": 15394,
+          "gzipBytes": 4945
+        },
+        {
+          "file": "releases.json",
+          "bytes": 83624,
+          "gzipBytes": 18212
+        }
+      ],
+      "requests": 25,
+      "bytes": 416615,
+      "gzipBytes": 118193
+    },
+    "cpu": {
+      "repeatedStatistics20Ms": 0.01,
+      "skillFormatting267ParagraphsMs": 1.219
+    }
+  },
+  "reduction": {
+    "startupBytesPercent": 76.3,
+    "startupGzipPercent": 69.9
+  },
+  "date": "2026-11-07",
+  "scope": "Published GitHub Pages source; earlier uncommitted information-refresh work remains untouched in its original checkout.",
+  "announcedVersion": "1.17.3",
+  "announcement": "unchanged",
+  "changes": [
+    "Generated catalogue is verified against the canonical data on every npm test and regenerated by release --refresh.",
+    "Optional modules/styles load once, retain CSS cascade order and retry on failure.",
+    "A render token prevents delayed feature loads from mounting after navigation.",
+    "One view disposer replaces seven parallel cleanup slots.",
+    "Ranked-only views skip tournament match, ban and detailed observation downloads; tournament-only views skip ranked partitions.",
+    "A one-entry cache reuses tournament aggregation for search, sorting and side selection.",
+    "Ranked partitions hydrate once per shared request; the cache retains hydrated objects without also retaining their source tuple arrays.",
+    "Number formatting, query normalization and skill patterns are reused; typography avoids overlapping subtree walks.",
+    "Validation-only URL checks were moved out of the browser module, a retired typography alias and obsolete feedback selector were removed.",
+    "19 identical CSS declarations and two resulting empty rules were removed without changing the final cascade."
+  ],
+  "removedCssDuplicateDeclarations": 19,
+  "tests": {
+    "nodeTestCount": 155,
+    "baselineNodeTestCount": 146,
+    "result": "passed",
+    "regressions": [
+      "catalogue fidelity",
+      "deferred feature retry",
+      "stylesheet retry and listener cleanup",
+      "stale route prevention",
+      "data hydration once",
+      "scope-specific request avoidance",
+      "server filter preservation",
+      "aggregate invalidation",
+      "carousel preservation during filtering",
+      "dynamic import cache fingerprints"
+    ]
+  },
+  "browserChecks": {
+    "local": [
+      "home and alias search",
+      "character overview and skill emphasis",
+      "character statistics and scope switching",
+      "YouTube feature loading",
+      "recovery screen",
+      "390px iframe: catalogue, faction filtering, no horizontal overflow"
+    ],
+    "externalData": "Local preview cannot access the feedback API with its preview origin. The existing public-origin feedback list was verified working before deployment. API and identity code are unchanged.",
+    "limitations": [
+      "Responsive iframe is not an iOS Safari device test.",
+      "Byte totals exclude images, headers and cache effects; CPU measurements are local Node medians, not end-to-end browser load time."
+    ]
+  },
+  "preservation": [
+    "Canonical guide, tournament, ranked and badge JSON retained byte-for-byte.",
+    "Images, research archives, user records, identity modules and release history unchanged."
+  ]
+}

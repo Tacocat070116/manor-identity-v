@@ -33,11 +33,14 @@ function searchIndex(character){
  if(!indexes.has(cacheKey))indexes.set(cacheKey,names.map(name=>({text:compact(name),keys:keyboardSearchKey(name),initials:initials(name)})));
  return indexes.get(cacheKey);
 }
+let previousQuery,previousMatcher;
 export function matchesCharacter(character,query=''){
- const text=compact(query);
- if(!text)return !String(query).trim();
- const key=keyboardSearchKey(query),cho=initialQuery(query),isInitials=/^[ㄱ-ㅎ]{2,}$/.test(cho);
- return searchIndex(character).some(item=>item.text.includes(text)||item.keys.includes(key)||(isInitials&&item.initials.includes(cho)));
+ if(query!==previousQuery||!previousMatcher){
+  const text=compact(query),key=keyboardSearchKey(query),cho=initialQuery(query),isInitials=/^[ㄱ-ㅎ]{2,}$/.test(cho);
+  previousQuery=query;
+  previousMatcher=!text?()=>!String(query).trim():c=>searchIndex(c).some(item=>item.text.includes(text)||item.keys.includes(key)||(isInitials&&item.initials.includes(cho)));
+ }
+ return previousMatcher(character);
 }
 export const characterSortOptions=[['release','최근 출시순'],['release-asc','오래된 출시순'],['name','가나다순'],['easy','난이도 낮은순'],['hard','난이도 높은순']];
 export function sortCharacters(characters,sort='release'){

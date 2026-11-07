@@ -1,4 +1,4 @@
-import {skillNamesFor,skillTextParts} from './skill-names.js?v=42deca43e1bd';
+import {skillNamesFor,skillTextParts} from './skill-names.js?v=8761b3d80676';
 // Presentation only: keep saved text, URLs, editable values and code unchanged.
 const excluded='script,style,textarea,input,select,code,pre,kbd,samp,math,svg,[contenteditable],.inline-copy';
 const separators=/[ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*[·•ㆍ∙‧][ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*/g;
@@ -40,14 +40,18 @@ export function formatTypography(root){
   node.replaceWith(flow);
  }
 }
-export const spaceSeparators=formatTypography;
 
 if(globalThis.document?.body&&globalThis.MutationObserver){
  const root=document.body,settings={childList:true,subtree:true,characterData:true};
  const observer=new MutationObserver(records=>{
   observer.disconnect();
   const roots=new Set(records.flatMap(record=>record.type==='characterData'?[record.target.parentElement]:[...record.addedNodes].map(n=>n.nodeType===3?n.parentElement:n)).filter(n=>n?.isConnected&&n.nodeType===1));
-  for(const node of roots)formatTypography(node);
+  // Ancestors already include their descendants; process each changed subtree once.
+  for(const node of roots){
+   let covered=false;
+   for(let parent=node.parentElement;parent;parent=parent.parentElement)if(roots.has(parent)){covered=true;break;}
+   if(!covered)formatTypography(node);
+  }
   observer.observe(root,settings);
  });
  formatTypography(root);observer.observe(root,settings);

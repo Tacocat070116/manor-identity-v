@@ -252,7 +252,7 @@ html[data-theme="plum"]{
  .character-card,.quick-link,.character-hero,.panel,.selection-card,.brief-card,
  .evidence-card,.stat-box,.ban-slot,details,
  .statistics-overview>div,.statistics-table-wrap,dialog,.icon-btn,.btn,.search-box,
- .fb-summary,.fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form){
+ .fb-card,.fb-detail,.fb-comment-form,.fb-compose,.fb-admin-form){
  background-origin:border-box;
  background-clip:border-box;
  background-repeat:no-repeat;

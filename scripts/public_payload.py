@@ -23,6 +23,25 @@ FIELDS = {
     },
 }
 
+CATALOG_FIELDS = ('id', 'name', 'originalName', 'side', 'portrait', 'difficulty')
+
+
+def refresh_catalog(write):
+    """Generate the small startup payload from the canonical, complete guide."""
+    data = json.loads((ROOT / 'dist/data.json').read_text())
+    catalog = {
+        'meta': data['meta'],
+        'maps': data['maps'],
+        'characters': [{key: row[key] for key in CATALOG_FIELDS if key in row}
+                       for row in data['characters']],
+    }
+    encoded = (json.dumps(catalog, ensure_ascii=False, separators=(',', ':')) + '\n').encode()
+    target = ROOT / 'dist/catalog.json'
+    if write:
+        target.write_bytes(encoded)
+    elif not target.exists() or target.read_bytes() != encoded:
+        raise SystemExit('Startup catalog is stale: run npm run release -- --refresh')
+
 
 def compact_payload(filename, data):
     """Remove only reviewed unused fields; preserve every row and its identity."""
@@ -76,6 +95,7 @@ def main():
     elif changes:
         ARCHIVE.parent.mkdir(parents=True, exist_ok=True)
         ARCHIVE.write_text(json.dumps(archive, ensure_ascii=False, indent=2) + '\n')
+    refresh_catalog(args.write)
 
 
 if __name__ == '__main__':

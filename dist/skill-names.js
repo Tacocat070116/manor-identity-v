@@ -93,16 +93,25 @@ export const characterSkillNames={
 };
 const contextualNames=new Set(['고치','기생','습기','도약','활공','추격 공격','은신','현','위협','촬영','기록','재생','판결','나무','극성','자기장','흡수','낙하 공격','연속 도약','가시','덫','붕괴','분신','화살','중상','예측','강풍','환영','관','지팡이','잠행','삽','공연','지도','통로','위치 교환','스트레스','분노','돌진','보호대','편지','회상','보호막','향수','전하','저주','응원','격려','연막','자석','천','분사','체공','그림','투영','갈고리']);
 const sharedNames=[...new Set(Object.values(characterSkillNames).flat())].filter(name=>!contextualNames.has(name));
+const scopes=new Map(),patterns=new WeakMap();
 export function skillNamesFor(ids){
+ const key=String(ids||'');
+ if(scopes.has(key))return scopes.get(key);
  const scoped=String(ids||'').split(/\s+/).flatMap(id=>characterSkillNames[id]||[]);
- return scoped.length?[...new Set([...sharedNames,...scoped])].sort((a,b)=>b.length-a.length):[];
+ const names=scoped.length?[...new Set([...sharedNames,...scoped])].sort((a,b)=>b.length-a.length):[];
+ if(scopes.size>=256)scopes.delete(scopes.keys().next().value);
+ scopes.set(key,names);return names;
 }
 
 export function skillTextParts(value,names){
  const text=String(value),parts=[];
  if(!names?.length)return [{text,strong:false}];
+ let pattern=patterns.get(names);
+ if(!pattern){
  const escaped=names.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
- const pattern=new RegExp('https?:\\/\\/[^\\s]+|'+escaped.join('|'),'gu');
+ pattern=new RegExp('https?:\\/\\/[^\\s]+|'+escaped.join('|'),'gu');
+  patterns.set(names,pattern);
+ }
  let offset=0;
  for(const match of text.matchAll(pattern)){
   if(match[0].startsWith('http'))continue;

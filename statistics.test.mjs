@@ -8,7 +8,7 @@ import vm from 'node:vm';
 import {gunzipSync} from 'node:zlib';
 import {createHash} from 'node:crypto';
 import {createStatisticsUI} from './dist/statistics.js';
-import {selectRanked,tournamentStatistics,sortStatistics,rankedCharacter} from './dist/statistics-model.js';
+import {selectRanked,tournamentStatistics,createTournamentStatistics,sortStatistics,rankedCharacter} from './dist/statistics-model.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
 
@@ -104,7 +104,7 @@ function runtime(){
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});context.loadFeature=async()=>context;vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
  return {context,nodes,handlers,fetches,app:context.app};
 }
 
@@ -277,4 +277,71 @@ test('navigation cancels a pending statistics search before another screen is re
  context.setTimeout=fn=>{timers.set(++id,fn);return id;};context.clearTimeout=id=>timers.delete(id);
  handlers.input({target:{id:'statistics-search',value:'마리'}});assert.equal(timers.size,1);
  context.location.hash='#v=explore';app.readRoute();await app.render();assert.equal(timers.size,0);
+});
+
+test('startup loads the compact catalogue and hydrates full guides once on demand',async()=>{
+ const {context,app,fetches,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
+ assert.ok(fetches.some(url=>url.startsWith('catalog.json')));
+ assert.ok(!fetches.some(url=>/^(data|matches|bans|tournament-details)\.json/.test(url)));
+ assert.match(nodes.get('#explorer-results').innerHTML,/89명의 캐릭터/);
+ context.location.hash='#v=character&c=c58';app.readRoute();await app.render();
+ assert.match(nodes.get('#page-body').innerHTML,/부엉이/);
+ assert.match(nodes.get('#page-body').innerHTML,/함께하면 좋은 생존자/);
+ context.location.hash='#v=character&c=c16&tab=matchups';app.readRoute();await app.render();
+ assert.match(nodes.get('#page-body').innerHTML,/상대하기 어려운 생존자/);
+ assert.equal(fetches.filter(url=>url.startsWith('data.json')).length,1);
+});
+
+test('ranked-only views never download hidden tournament records and preserve overview totals',async()=>{
+ for(const route of ['#v=statistics','#v=character&c=c16&tab=stats','#v=compare&a=c16&b=c15']){
+  const {context,app,fetches,nodes}=runtime();context.location.hash=route+'&scope=ranked';await app.boot();
+  assert.ok(!fetches.some(url=>/^(matches|bans|tournament-details)\.json/.test(url)),route);
+  const html=nodes.get(route.includes('v=character')?'#character-content':'#page-body').innerHTML;
+  assert.match(html,/랭킹전/);assert.doesNotMatch(html,/undefined|NaN/);
+  if(route==='#v=statistics'){assert.match(html,/17,056/);assert.match(html,/2026-10-30/);}
+ }
+});
+
+test('tournament-only views leave ranked partitions unloaded and retain the selected server',async()=>{
+ for(const route of ['#v=statistics','#v=character&c=c16&tab=stats','#v=compare&a=c16&b=c15']){
+  const {context,app,fetches}=runtime();context.location.hash=route+'&scope=tournament&server=cn';await app.boot();
+  assert.ok(!fetches.some(url=>/^ranked\/(?!index\.json)/.test(url)),route);
+  assert.equal(app.state.statistics.server,'cn');
+ }
+});
+
+test('a delayed or failed feature load cannot mount onto a newer route, and remains retryable',async()=>{
+ const {context,app,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
+ let finish,mounts=0;context.loadFeature=()=>new Promise(resolve=>{finish=resolve;});
+ context.location.hash='#v=creators';app.readRoute();const pending=app.render();
+ context.location.hash='#v=explore';app.readRoute();await app.render();
+ finish({mountCreators:()=>{mounts++;return ()=>{};}});await pending;
+ assert.equal(mounts,0);assert.match(nodes.get('#page-body').innerHTML,/A CLEARER WAY TO PLAY/);
+ context.location.hash='#v=creators';app.readRoute();context.loadFeature=async()=>{throw Error('offline');};await app.render();
+ assert.match(nodes.get('#page-body').innerHTML,/다시 시도/);
+ context.loadFeature=async()=>({mountCreators:()=>{mounts++;return ()=>{};}});await app.render();assert.equal(mounts,1);
+});
+
+test('presentation changes reuse tournament aggregation while real filter and input changes recompute',()=>{
+ const matches=read('matches.json'),bans=read('bans.json'),aggregate=createTournamentStatistics(db.characters);
+ const first=aggregate(matches,bans,{days:0});
+ assert.deepEqual(first,tournamentStatistics(matches,bans,db.characters));
+ assert.equal(aggregate(matches,bans,{days:0,search:'마리',sort:'win',side:'감시자'}),first);
+ const filtered=aggregate(matches,bans,{map:'군수 공장'});assert.notEqual(filtered,first);
+ assert.deepEqual(filtered,tournamentStatistics(matches,bans,db.characters,{map:'군수 공장'}));
+ const changed=matches.slice(1);assert.notEqual(aggregate(changed,bans,{map:'군수 공장'}),filtered);
+});
+
+test('catalogue faction filters preserve the mounted carousel and only update catalogue controls/results',async()=>{
+ const {context,app,handlers,nodes}=runtime();context.location.hash='#v=explore';
+ let mounts=0,disposals=0;context.mountHeroCarousel=()=>{mounts++;return ()=>disposals++;};
+ const buttons=['전체','감시자','생존자'].map(side=>({dataset:{action:'side',side},classList:{toggle(){}},setAttribute(name,value){this[name]=value;}}));
+ context.document.querySelectorAll=()=>buttons;
+ await app.boot();const page=nodes.get('#page-body').innerHTML;
+ handlers.click({target:{closest:()=>buttons[1]}});
+ assert.match(nodes.get('#explorer-results').innerHTML,/36명의 캐릭터/);
+ assert.equal(buttons[1]['aria-pressed'],'true');assert.equal(buttons[0]['aria-pressed'],'false');
+ handlers.click({target:{closest:()=>buttons[2]}});
+ assert.match(nodes.get('#explorer-results').innerHTML,/53명의 캐릭터/);
+ assert.equal(mounts,1);assert.equal(disposals,0);assert.equal(nodes.get('#page-body').innerHTML,page);
 });

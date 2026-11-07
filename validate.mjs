@@ -9,7 +9,8 @@ import {createCarouselSession,carouselItems} from './dist/carousel.js';
 import {createStatisticsUI} from './dist/statistics.js';
 import {selectRanked} from './dist/statistics-model.js';
 import * as releaseUI from './dist/releases.js';
-import {statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,filterRows,matchesCharacter,sortCharacters,characterSortOptions} from './dist/model.js';
+import {statsFor,queryBanRecords,banRecordPage,pairEvidence,filterRows,matchesCharacter,sortCharacters,characterSortOptions} from './dist/model.js';
+function safeUrl(value){try{const url=new URL(value);return ['http:','https:'].includes(url.protocol)?url.href:'';}catch{return '';}}
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
 const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
 const introductions=read('introductions.json'),releases=read('releases.json');
@@ -132,7 +133,7 @@ assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,cont
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -174,7 +175,7 @@ location.hash='#v=gamepatches&c=c16&since=2020-01-01&note=retired';readRoute();a
 location.hash='#v=character&c=c16&tab=patches';readRoute();audit.retiredGameTab=state.tab;
 audit.shareFallback=share().then(()=>({open:$('#share-dialog').open,html:$('#share-dialog').innerHTML}));
 `;
-vm.runInNewContext(source,context,{timeout:15000});
+context.loadFeature=async()=>context;vm.runInNewContext(source,context,{timeout:15000});
 assert.equal(context.audit.checked,356);
 for(const result of context.audit.personaGuides){
  const ch=db.characters.find(c=>c.id===result.id);

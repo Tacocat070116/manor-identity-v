@@ -28,7 +28,7 @@ async function harness(hash){
   fetch:async path=>({ok:true,json:async()=>read('dist/'+path.split('?')[0])})
  };
  context.window={scrollY:180,scrollTo:options=>scrolls.push(options),addEventListener(){},history:{pushState(_state,_unused,hash){history.push(hash);context.location.hash=hash;}}};
- Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});context.loadFeature=async()=>context;vm.runInNewContext(source+`\ndb=__db;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));releaseLog=__releases;navigationController={update(){}};globalThis.app={state,readRoute,render,swapSelections,selectionSwap,currentViewParams};`,context);
  context.app.readRoute();await context.app.render();
  return {...context.app,nodes,handlers,history,scrolls,context,tipMounts,synergyMounts,synergyDisposed:()=>synergyDisposed,tipsDisposed:()=>tipsDisposed,html:()=>nodes.get('#page-body').innerHTML,params:()=>new URLSearchParams(context.location.hash.slice(1))};
 }

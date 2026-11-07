@@ -28,7 +28,7 @@ function guideScreens(payload){
   __data:db,__releases:read('dist/releases.json'),
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- vm.runInNewContext(source+`
+ context.loadFeature=async()=>context;vm.runInNewContext(source+`
   db=__data;releaseLog=__releases;
   byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
   globalThis.screens=[explore()];
@@ -59,4 +59,12 @@ test('all ranked cohorts render the same rates, warnings and filters without unu
   const render=source=>ui.page({data:source,matches:[],bans:[],settings:{...settings},tournamentFilters:{}});
   assert.equal(render(catalog),render(original),d.id);
  }
+});
+
+test('generated startup catalogue preserves every identity and keeps full guide content canonical',()=>{
+ const catalog=read('dist/catalog.json');
+ assert.deepEqual(catalog.meta,data.meta);assert.deepEqual(catalog.maps,data.maps);
+ assert.deepEqual(catalog.characters,data.characters.map(c=>Object.fromEntries(['id','name','originalName','side','portrait','difficulty'].filter(key=>Object.hasOwn(c,key)).map(key=>[key,c[key]]))));
+ assert.ok(fs.statSync('dist/catalog.json').size<20000,'startup catalogue budget');
+ assert.equal(data.characters.length,89);assert.equal(data.matchups.length,463);
 });

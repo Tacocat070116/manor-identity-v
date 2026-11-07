@@ -89,7 +89,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});context.loadFeature=async()=>context;vm.runInNewContext(source+'\nglobalThis.app={boot,readRoute,render};',context);
  await context.app.boot();
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
@@ -139,12 +139,16 @@ test('cache refresh fingerprints transitive module imports and propagates change
   execFileSync('git',['init','-q',root]);fs.mkdirSync(path.join(root,'dist'));
   const write=(file,body)=>fs.writeFileSync(path.join(root,'dist',file),body);
   write('index.html','<script type="module" src="app.js?v=old"></script>');
-  write('app.js',"import {value} from './model.js'; console.log(value);");
+  write('app.js',"import {value} from './model.js'; export const load=()=>import('./feature.js'); console.log(value);");
+  write('feature.js',"export {value} from './model.js';");
   write('model.js','export const value=1;');
   refreshPackage(root);
   const first=fs.readFileSync(path.join(root,'dist','index.html'),'utf8');
   assert.match(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),/model\.js\?v=[a-f0-9]{12}/);
+  assert.match(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),/import\('\.\/feature\.js\?v=[a-f0-9]{12}'\)/);
+  const firstFeature=fs.readFileSync(path.join(root,'dist','feature.js'),'utf8');
   write('model.js','export const value=2;');refreshPackage(root);
+  assert.notEqual(fs.readFileSync(path.join(root,'dist','feature.js'),'utf8'),firstFeature);
   assert.notEqual(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),first);
   const stable=fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8');refreshPackage(root);
   assert.equal(fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8'),stable);

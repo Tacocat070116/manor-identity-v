@@ -64,7 +64,7 @@ export function refreshPackage(root=process.cwd()){
   let contents=fs.readFileSync(file);
   if(/\.(?:html|js)$/.test(file)){
    const before=contents.toString();
-   const withModuleKeys=before.replace(/(\bfrom\s*|\bimport\s*)(['"])(\.\/[\w./-]+\.js)\2/g,'$1$2$3?v=pending$2');
+   const withModuleKeys=before.replace(/(\bfrom\s*|\bimport\s*(?:\(\s*)?)(['"])(\.\/[\w./-]+\.js)\2/g,'$1$2$3?v=pending$2');
    const after=withModuleKeys.replace(/(['"])([./\w-]+\.(?:css|js|json))\?v=[\w.-]+\1/g,(match,quote,url)=>{
     const target=path.resolve(path.dirname(file),url);
     assert.ok(target.startsWith(dist+path.sep)&&fs.existsSync(target),'잘못된 캐시 참조: '+url);

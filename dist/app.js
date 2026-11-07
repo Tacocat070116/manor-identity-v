@@ -1,24 +1,20 @@
-import './typography.js?v=d3e23c8c5a2d';
-import {mountResearchHighlights} from './research-highlights.js?v=4872eeee7907';
-import {mountRecoveryPage} from './participation.js?v=1e240856280c';
-import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=65b6a077bcb8';
+import {loadFeature} from './feature-loader.js?v=50d2bfecf8a7';
+import './typography.js?v=f2553395f702';
+import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=b9019d6b0d40';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
-import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=14e893932898';
+import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=83ce7088fcef';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=ac92cf58d4f1';
-import {mountFeedback} from './feedback.js?v=edf87fe575c6';
-import {mountSynergy} from './synergy.js?v=cc7006c95875';
+import {createStatisticsUI} from './statistics.js?v=5cd94008b541';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=07aa8169749c';
-import {mountMatchupTips} from './matchup-tips.js?v=eb8424f7732b';
-import {mountCreators} from './creators.js?v=d74010346d76';
-import {selectRanked} from './statistics-model.js?v=dc1137c9a822';
+import {selectRanked} from './statistics-model.js?v=fb23a81e83d6';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=e46d44cddb04';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const guide=(value,...ids)=>`<span data-skill-characters="${ids.flat().filter(Boolean).join(' ')}">${esc(value)}</span>`;
 const matchupCopy=(value,m)=>guide(value,byName[m.hunter]?.id,byName[m.survivor]?.id);
-const num=n=>new Intl.NumberFormat('ko-KR').format(n);
+const numberFormat=new Intl.NumberFormat('ko-KR');
+const num=n=>numberFormat.format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
 flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3"/><path data-stroke="soft" d="M7 14c2-1 3 1 5 0s3-1 5 0"/><circle cx="10" cy="17.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r=".7" fill="currentColor" stroke="none"/>',
@@ -66,15 +62,13 @@ try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.ge
 state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').matches).id;
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
-let heroSession,disposeHeroCarousel=()=>{},disposeFeedback=()=>{};
-let disposeMatchupTips=()=>{};
-let disposeSynergy=()=>{},disposeResearchHighlights=()=>{};
-let disposeCreators=()=>{},disposeRecovery=()=>{};
+let heroSession,disposeView=()=>{};
 let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
 let releaseLog;
 const releaseFilters={query:'',type:'전체'};
-// Static requests share retryable promises; dynamic ranked files revalidate on a new visit.
+// Static requests share retryable promises; ranked partitions retain only hydrated rows.
+// Concurrent requests share hydration, and failed parsing can be retried.
 async function loadJSON(url,message,options={}){
  try{
   const response=await fetch(url,{...options,signal:globalThis.AbortSignal?.timeout?.(15000)});
@@ -91,10 +85,10 @@ function cachedJSON(url,message,transform=value=>value){
 }
 const loadRankedIndex=cachedJSON('ranked/index.json?v=5b04497f6a25','랭킹전 자료를 불러오지 못했습니다.');
 const rankedFiles=new Map();
-function loadRankedFile(path,message,version){
+function loadRankedFile(path,message,version,transform=value=>value){
  if(!/^ranked\/[a-z0-9-]+\.json$/.test(path||'')||!/^[a-f0-9]{12}$/.test(version||''))throw Error('랭킹전 자료 경로를 확인하지 못했습니다.');
  const url=path+'?v='+version;
- if(!rankedFiles.has(url))rankedFiles.set(url,loadJSON(url,message,{cache:'no-cache'}).catch(error=>{rankedFiles.delete(url);throw error;}));
+ if(!rankedFiles.has(url))rankedFiles.set(url,loadJSON(url,message,{cache:'no-cache'}).then(transform).catch(error=>{rankedFiles.delete(url);throw error;}));
  return rankedFiles.get(url);
 }
 const loadRanked=async(filters={...state.statistics})=>{
@@ -102,7 +96,7 @@ const loadRanked=async(filters={...state.statistics})=>{
  const data=await loadRankedIndex();
  const s=selectRanked(data,filters);
  if(s.dataset&&!s.dataset.rows){
-  const part=await loadRankedFile(s.dataset.path,'선택한 시즌 자료를 불러오지 못했습니다.',data.assetVersions[s.dataset.path]);
+  await loadRankedFile(s.dataset.path,'선택한 시즌 자료를 불러오지 못했습니다.',data.assetVersions[s.dataset.path],part=>{
   const targets=new Map(data.datasets.map(d=>[d.id,d]));
   // Validate the complete response before updating the shared cache.
   const hydrated=part.datasets.map(entry=>{
@@ -111,7 +105,9 @@ const loadRanked=async(filters={...state.statistics})=>{
    const rows=entry.rows.map(r=>{const c=byId[r[0]];if(!c)throw Error('통계 캐릭터 정보를 확인하지 못했습니다.');return {id:c.id,name:c.name,side:c.side,pick:r[1],win:r[2],draw:r[3],loss:r[4],ban:r[5]};});
    return {target,rows};
   });
+  if(!hydrated.some(entry=>entry?.target===s.dataset))throw Error('선택한 통계 항목을 확인하지 못했습니다.');
   for(const entry of hydrated)if(entry)entry.target.rows=entry.rows;
+  });
   if(!s.dataset.rows)throw Error('선택한 통계 항목을 확인하지 못했습니다.');
  }
  if(s.filters.server==='cn'){
@@ -119,7 +115,7 @@ const loadRanked=async(filters={...state.statistics})=>{
    if(!data.badges)data.badges=(await loadRankedFile(data.badgesPath,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[data.badgesPath])).datasets;
    const selected=data.badges.find(d=>d.id===filters.badgeSnapshot)||data.badges[0];
    if(includeScores&&selected&&!selected.rows){
-    const part=await loadRankedFile(selected.path,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[selected.path]);
+    await loadRankedFile(selected.path,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[selected.path],part=>{
     const targets=new Map(data.badges.map(d=>[d.id,d]));
     const hydrated=part.datasets.map(entry=>{
      const target=targets.get(entry.id);if(!target)return null;
@@ -129,7 +125,9 @@ const loadRanked=async(filters={...state.statistics})=>{
      });
      return {target,rows};
     });
+    if(!hydrated.some(entry=>entry?.target===selected))throw Error('선택한 인지 점수 기록이 없습니다.');
     for(const entry of hydrated)if(entry)entry.target.rows=entry.rows;
+    });
     if(!selected.rows)throw Error('선택한 인지 점수 기록이 없습니다.');
    }
    delete data.badgesError;
@@ -138,6 +136,13 @@ const loadRanked=async(filters={...state.statistics})=>{
  }
  return data;
 };
+const loadGuideData=cachedJSON('data.json?v=48f821cc3126','공략 자료를 불러오지 못했습니다.');
+async function ensureGuides(){
+ if(db.matchups)return;
+ const data=await loadGuideData();
+ for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
+ db.matchups=data.matchups;db.links=data.links;
+}
 const loadMatches=cachedJSON('matches.json?v=001b77da9d24','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=ea94c7967200','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=2cbe7b449344','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -244,6 +249,21 @@ function updateExplorer(){
  const root=$('#explorer-results');if(!root)return;
  root.innerHTML=`<p class="result-count" role="status">${list.length}명의 캐릭터${state.specialty?' · #'+esc(state.specialty):''}${state.favoriteOnly?' · 이 기기에 저장한 즐겨찾기':''}</p>${favoriteInsight(list)}${list.length?`<div class="character-grid">${list.map(card).join('')}</div>`:`<div class="empty">${icon(state.favoriteOnly?'star':'search')}<h3>${state.favoriteOnly?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${state.favoriteOnly?'캐릭터 상세에서 별을 눌러 자주 찾는 캐릭터를 모아 보세요.':'이름이나 필터를 바꿔 다시 찾아보세요.'}</p><button class="btn small" data-action="reset-explore">전체 캐릭터 보기</button></div>`}`;
 }
+function refreshExplorer(){
+ document.querySelectorAll('[data-action="side"], [data-action="favorites"]').forEach(button=>{
+  const active=button.dataset.action==='favorites'?state.favoriteOnly:button.dataset.side===state.side&&!state.favoriteOnly;
+  button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+ });
+ $('.specialty-toolbar').outerHTML=specialtyFilters();
+ $('#character-search').value=state.search;
+ updateExplorer();
+}
+async function toggleFavorites(){
+ state.favoriteOnly=!state.favoriteOnly;const token=renderToken;
+ try{if(state.favoriteOnly)await ensureGuides();}
+ catch(error){if(token===renderToken){state.favoriteOnly=false;toast(error.message);}return;}
+ if(token===renderToken&&state.view==='explore')refreshExplorer();
+}
 function matchupSummary(c,item,kind,{label=''}={}){
  const resolved=summaryEvidence(db.matchups,c,item,kind),opponent=byName[item.name];
  if(!resolved||!opponent)return '';
@@ -252,7 +272,7 @@ function matchupSummary(c,item,kind,{label=''}={}){
  return `<article class="matchup-summary"><div class="matchup-summary-heading">${label?`<strong>${esc(label)}</strong>`:`<button class="mini-character" data-action="character" data-id="${opponent.id}" aria-label="${esc(opponent.name)} 공략 보기">${portrait(opponent)}<span>${esc(opponent.name)}</span></button>`}<span class="tag">${esc(m.situation)}</span></div><p class="matchup-summary-copy">${matchupCopy(m.summary,m)}</p><details class="matchup-summary-details"><summary>적용 조건${contexts.length?' · 다른 상황 '+contexts.length+'개':''}</summary><p class="matchup-condition">${matchupCopy(cleanCondition(m.condition),m)}</p>${evidenceDetail(m)?`<p class="muted">${esc(evidenceDetail(m))}</p>`:''}${contexts.map(variant).join('')}<a class="text-link" href="${route({v:'matchup',own:c.id,opp:opponent.id})}">이 대진 전체 보기 ↗</a></details></article>`;
 }
 function favoriteInsight(list){
- if(!state.favoriteOnly)return '';
+ if(!state.favoriteOnly||!db.matchups)return '';
  return ['감시자','생존자'].map(side=>{
   const mine=list.filter(c=>c.side===side);if(mine.length<2)return '';
   const counts={};
@@ -390,27 +410,37 @@ function refreshBanRecords({focusRecords=false}={}){
 function loadError(e){return `<div class="empty">${icon('info')}<h3>자료를 불러오지 못했습니다.</h3><p>${esc(e.message)} 연결 상태를 확인하고 다시 시도하세요.</p><button class="btn primary" data-action="retry">다시 시도</button></div>`;}
 async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
- disposeHeroCarousel();disposeHeroCarousel=()=>{};disposeFeedback();disposeFeedback=()=>{};disposeMatchupTips();disposeMatchupTips=()=>{};disposeSynergy();disposeSynergy=()=>{};disposeResearchHighlights();disposeResearchHighlights=()=>{};disposeCreators();disposeCreators=()=>{};disposeRecovery();disposeRecovery=()=>{};
- const token=++renderToken;header();footer();if(scroll)window.scrollTo({top:0,behavior:'instant'});
+ disposeView();disposeView=()=>{};
+ const token=++renderToken;header();if(scroll)window.scrollTo({top:0,behavior:'instant'});
  document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',creators:'유튜브 채널 BETA',feedback:'피드백',recovery:'복구 코드',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
- if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeHeroCarousel=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
- else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeResearchHighlights=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
-  const [t,r,d]=await Promise.allSettled([loadMatches(),loadRanked(),loadDetails()]);if(token!==renderToken)return;
+ const feature=({creators:'creators',feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
+ const needsGuides=['character','matchup','compare'].includes(state.view)||(state.view==='explore'&&state.favoriteOnly);
+ let featureModule;
+ if(feature||(needsGuides&&!db.matchups)){
+  body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>화면을 준비하고 있습니다.</p></div>';
+  try{[featureModule]=await Promise.all([feature?loadFeature(feature):null,needsGuides?ensureGuides():null]);}
+  catch(error){if(token===renderToken)body.innerHTML=loadError(error);return;}
+  if(token!==renderToken)return;
+ }
+ const {mountCreators,mountFeedback,mountSynergy,mountRecoveryPage,mountResearchHighlights,mountMatchupTips}=featureModule||{};
+ if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeView=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
+ else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
+  const [t,r,d]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='tournament'?Promise.resolve(null):loadRanked(),state.statistics.scope==='ranked'?Promise.resolve(null):loadDetails()]);if(token!==renderToken)return;
   rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
-  $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
+  $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:state.statistics.scope==='ranked'?'':t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
  }}
  else if(state.view==='statistics'){
   body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>대회·랭킹전 통계를 불러오고 있습니다.</p></div>';
-  const [t,b,r]=await Promise.allSettled([loadMatches(),loadBans(),loadRanked()]);if(token!==renderToken)return;
-  body.innerHTML=statisticsSections('characters')+getStatisticsUI().page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,coverageNote:db.meta.statisticsRefresh?.latestCoverage,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
+  const [t,b,r]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='ranked'?Promise.resolve([]):loadBans(),state.statistics.scope==='tournament'?loadRankedIndex():loadRanked()]);if(token!==renderToken)return;
+  body.innerHTML=statisticsSections('characters')+getStatisticsUI().page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,summary:db.meta,coverageNote:db.meta.statisticsRefresh?.latestCoverage,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
  }
  else if(state.view==='matchup'){
   body.innerHTML=matchupPage();
   const own=char(state.own),opp=byId[state.opponent];
   if(opp){
    body.innerHTML+='<div id="matchup-tips"></div><section class="panel section-gap" id="pair-observations"><p class="muted">두 캐릭터가 만난 대회 기록을 불러오고 있습니다.</p></section>';
-   disposeMatchupTips=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:own.id,opponentId:opp.id});
+   disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:own.id,opponentId:opp.id});
    try{const rows=await loadMatches();if(token!==renderToken)return;const s=statsFor(rows,own,{...state.stats,opponent:opp.id});
     $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 추격 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
    }catch(e){if(token===renderToken)$('#pair-observations').innerHTML=loadError(e);}
@@ -418,17 +448,17 @@ async function render({scroll=false}={}){
  }
  else if(state.view==='laboratory'){
   body.innerHTML=title('MANOR LABORATORY','연구실','생존자 조합과 인격, 게임 속 전략을 함께 연구하는 공간입니다.')+'<div id="synergy-board"></div>';
-  disposeSynergy=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.researchCharacter,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,initialTopic:state.researchTopic,initialSituation:state.researchSituation,initialQuery:state.researchQuery,initialSort:state.researchSort,navigate:(post,filters)=>navigate({v:'laboratory',...(filters.character?{c:filters.character}:{}),...(filters.partner?{partner:filters.partner}:{}),...(filters.topic?{topic:filters.topic}:{}),...(post?{post}:{}),...(filters.mine?{mine:'1'}:{}),...(filters.situation?{situation:filters.situation}:{}),...(filters.q?{q:filters.q}:{}),...(filters.sort==='discussed'?{sort:filters.sort}:{})})});
+  disposeView=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.researchCharacter,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,initialTopic:state.researchTopic,initialSituation:state.researchSituation,initialQuery:state.researchQuery,initialSort:state.researchSort,navigate:(post,filters)=>navigate({v:'laboratory',...(filters.character?{c:filters.character}:{}),...(filters.partner?{partner:filters.partner}:{}),...(filters.topic?{topic:filters.topic}:{}),...(post?{post}:{}),...(filters.mine?{mine:'1'}:{}),...(filters.situation?{situation:filters.situation}:{}),...(filters.q?{q:filters.q}:{}),...(filters.sort==='discussed'?{sort:filters.sort}:{})})});
  }
- else if(state.view==='recovery'){disposeRecovery=mountRecoveryPage(body);}
+ else if(state.view==='recovery'){disposeView=mountRecoveryPage(body);}
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
- else if(state.view==='creators'){disposeCreators=mountCreators(body,{characters:byId,postId:state.creatorPost,navigate:id=>navigate({v:'creators',...(id?{channel:id}:{})})});}
- else if(state.view==='feedback'){disposeFeedback=mountFeedback(body,{characters:byId,postId:state.feedbackPost,focusComment:state.feedbackComment,navigate:(id,comment)=>navigate({v:'feedback',...(id?{post:id}:{}),...(id&&comment?{comment:'1'}:{})})});}
+ else if(state.view==='creators'){disposeView=mountCreators(body,{characters:byId,postId:state.creatorPost,navigate:id=>navigate({v:'creators',...(id?{channel:id}:{})})});}
+ else if(state.view==='feedback'){disposeView=mountFeedback(body,{characters:byId,postId:state.feedbackPost,focusComment:state.feedbackComment,navigate:(id,comment)=>navigate({v:'feedback',...(id?{post:id}:{}),...(id&&comment?{comment:'1'}:{})})});}
  else{
   const view=state.view;
   body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>조건에 맞는 기록을 준비하고 있습니다.</p></div>';
   try{
-   const [records,ranked]=await Promise.allSettled([view==='bans'?(state.banSource==='legacy'?loadBans():loadObservedBans()):loadMatches(),view==='compare'?loadRanked():Promise.resolve(null)]);
+   const [records,ranked]=await Promise.allSettled([view==='bans'?(state.banSource==='legacy'?loadBans():loadObservedBans()):state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),view==='compare'&&state.statistics.scope!=='tournament'?loadRanked():Promise.resolve(null)]);
    if(token!==renderToken)return;
    if(records.status==='rejected')throw records.reason;
    if(view==='compare'){rankedData=ranked.status==='fulfilled'?ranked.value:null;rankedError=ranked.status==='rejected'?ranked.reason.message:'';}
@@ -507,10 +537,10 @@ document.addEventListener('click',e=>{
  if(a==='theme')openThemePicker();
  if(a==='global-search')openPicker();
  if(a==='latest-update')openLatestRelease(releaseLog);
- if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
+ if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';refreshExplorer();}
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}
- if(a==='favorites'){state.favoriteOnly=!state.favoriteOnly;const y=window.scrollY;render().then(()=>window.scrollTo(0,y));}
- if(a==='reset-explore'){state.side='전체';state.specialty='';state.favoriteOnly=false;state.search='';render();}
+ if(a==='favorites')toggleFavorites();
+ if(a==='reset-explore'){state.side='전체';state.specialty='';state.favoriteOnly=false;state.search='';refreshExplorer();}
  if(a==='favorite'){const id=b.dataset.id;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);try{localStorage.setItem('manor-favorites',JSON.stringify([...state.favorites]));}catch{toast('이 브라우저에서는 즐겨찾기를 저장할 수 없습니다.');}render();}
  if(a==='character-tab'){state.tab=b.dataset.tab;navigate({v:'character',c:state.character,tab:state.tab});}
  if(a==='own-matchup'){state.own=b.dataset.id;state.opponent='';state.situation='';navigate({v:'matchup',own:state.own});}
@@ -534,12 +564,12 @@ for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventLis
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('data.json?v=48f821cc3126'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c40d5bd925ef')]);
+ const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c40d5bd925ef')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
  releaseLog=releases;db=data;Object.assign(db.meta,specialties.meta);
  for(const c of db.characters){const role=specialties.characters[c.id];if(!validSpecialties(c.side,role))throw Error('캐릭터 역할 태그 자료를 확인하지 못했습니다.');Object.assign(c,role);const introduction=introductions.characters[c.id];if(typeof introduction!=='string'||!introduction.trim())throw Error('캐릭터 소개 자료를 확인하지 못했습니다.');c.introduction=introduction;}
- byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;readRoute();await render();
+ byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;footer();readRoute();await render();
  }catch(e){$('#main').innerHTML=`<div class="shell"><div class="empty section-gap"><h1>사이트 자료를 불러오지 못했습니다.</h1><p>${esc(e.message)}</p><button class="btn primary" id="reload-app">다시 불러오기</button></div></div>`;$('#reload-app')?.addEventListener('click',()=>location.reload());}}
 boot();

@@ -1,4 +1,4 @@
-export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=bb16060d15ab';
+export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=096d68ea57ce';
 export const REFERENCE_DATE = '2026-10-31';
 export function cutoff(days, reference = REFERENCE_DATE) {
   if (!Number(days)) return '';
@@ -60,7 +60,4 @@ export function pairEvidence(data, own, opponent, situation = '') {
     seen.add(key);
     return true;
   });
-}
-export function safeUrl(value) {
-  try { const u = new URL(value); return ['http:','https:'].includes(u.protocol) ? u.href : ''; } catch { return ''; }
 }
