@@ -102,8 +102,9 @@ export function recoveryState({current='',saved=false,persistent=true}={}){
  return !current?'unconnected':!persistent?'temporary':saved?'ready':'needs-backup';
 }
 export function participationBar({store=participation}={}){
- if(googleAvailable||store.googleAccount?.()){
-  const account=store.googleAccount?.(),connected=account?.expiresAt>Date.now();
+ const account=store.googleAccount?.();
+ if(googleAvailable||account){
+  const connected=account?.expiresAt>Date.now();
   return `<aside class="participation-bar ${connected?'is-saved':'is-important'}" data-participation-banner aria-label="내 기록 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${connected?'Google 계정으로 기록이 연결되어 있습니다.':'Google로 내 기록을 이어보세요.'}</strong><p>${connected?'다른 기기에서도 같은 계정으로 로그인하세요.':'로그인하면 작성한 글과 댓글을 다른 기기에서도 관리할 수 있습니다.'}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${connected?'':'primary'} small" data-participation="open">${connected?'내 기록 관리':'Google 로그인'}</button></div></aside>`;
  }
  const current=store.read(),saved=!!current&&store.backedUp(),state=recoveryState({current,saved,persistent:store.persistent()});
@@ -113,7 +114,10 @@ export function participationBar({store=participation}={}){
  return `<aside class="participation-bar is-important" data-participation-banner data-recovery-state="${state}" aria-label="복구 코드 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${title}</strong><p>${e(text)}</p></div><div class="participation-bar-actions"><button type="button" class="btn primary small" data-participation="open" data-participation-view="${current?'issue':'connect'}">${current?'코드 확인·보관':'기존 코드로 연결'}</button>${!current?'<button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">처음 이용 · 코드 발급</button>':''}</div></aside>`;
 }
 export function refreshParticipationBanners(){
- globalThis.document?.querySelectorAll('[data-participation-banner]').forEach(node=>{node.outerHTML=participationBar();});
+ const banners=globalThis.document?.querySelectorAll('[data-participation-banner]');
+ if(!banners?.length)return;
+ const html=participationBar();
+ banners.forEach(node=>{node.outerHTML=html;});
 }
 
 const checkIcon='<svg class="recovery-icon ui-icon" data-icon="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><g class="icon-art"><path d="m5 12 4 4L19 6"/></g></svg>';

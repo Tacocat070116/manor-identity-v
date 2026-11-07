@@ -33,10 +33,10 @@ export function createFeatureLoader(definitions,loadStyle){
 }
 
 export const loadFeature=createFeatureLoader({
- feedback:{load:()=>import('./feedback.js?v=c169b2a576f1'),styles:['participation','feedback']},
- creators:{load:()=>import('./creators.js?v=ccd9ac68d4a3'),styles:['participation','creators']},
- laboratory:{load:()=>import('./synergy.js?v=23d9404c1a0e'),styles:['participation','synergy']},
- tips:{load:()=>import('./matchup-tips.js?v=8e7c124a1ca9'),styles:['participation','matchup-tips']},
- recovery:{load:()=>import('./participation.js?v=f8e77c63c365'),styles:['participation']},
+ feedback:{load:()=>import('./feedback.js?v=15bab785d943'),styles:['participation','feedback']},
+ creators:{load:()=>import('./creators.js?v=e4c2e7a66d83'),styles:['participation','creators']},
+ laboratory:{load:()=>import('./synergy.js?v=87f16a603e8a'),styles:['participation','synergy']},
+ tips:{load:()=>import('./matchup-tips.js?v=36238c2cef81'),styles:['participation','matchup-tips']},
+ recovery:{load:()=>import('./participation.js?v=d6feb4e6173e'),styles:['participation']},
  highlights:{load:()=>import('./research-highlights.js?v=4872eeee7907'),styles:['synergy']}
 },createStyleLoader());

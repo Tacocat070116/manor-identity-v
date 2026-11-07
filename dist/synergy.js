@@ -1,5 +1,5 @@
 import {requestId as uuid} from './request-id.js?v=58ef88b53202';
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=f8e77c63c365';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=d6feb4e6173e';
 import {SYNERGY_SITUATIONS,SYNERGY_REPORTS,RESEARCH_TOPICS,PROPOSAL_STATES,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=07aa8169749c';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const date=time=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(time));
