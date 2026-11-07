@@ -23,7 +23,8 @@
     "backendTests": 72,
     "backendBuild": "passed",
     "actualGoogleSignIn": "not performed; requires owner Google client configuration",
-    "mobileCheck": "390px browser viewport fixture; not physical Safari"
+    "mobileCheck": "390px browser viewport fixture; not physical Safari",
+    "publicLegacyFeedback": "confirmed: five existing feedback posts remain visible with Google disabled"
   },
   "limits": [
     "Linked record groups remain individually selectable; existing authors and aliases are not merged",
@@ -31,9 +32,9 @@
     "Actual Google consent, account selection, cross-device sign-in and Safari behavior require activation verification"
   ],
   "backendDeployment": {
-    "commit": "7a7af2acc0b1482772cd116b663578b49de7082d",
-    "version": 25,
-    "deploymentId": "appgdep_6aeed40886e88191831f04e3adf18011",
+    "commit": "0f174680be5900bcd0e0e541aa82a5087e6fa612",
+    "version": 26,
+    "deploymentId": "appgdep_6aeed60c0df4819180dc4470870cfd8c",
     "status": "succeeded",
     "googleEnabled": false
   }
