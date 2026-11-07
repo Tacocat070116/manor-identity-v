@@ -142,14 +142,18 @@ test('cache refresh fingerprints transitive module imports and propagates change
   write('app.js',"import {value} from './model.js'; export const load=()=>import('./feature.js'); console.log(value);");
   write('feature.js',"export {value} from './model.js';");
   write('model.js','export const value=1;');
+  write('return.html','<script type="module" src="return.js?v=old"></script>');
+  write('return.js',"import {value} from './model.js'; export const callback=value;");
   refreshPackage(root);
   const first=fs.readFileSync(path.join(root,'dist','index.html'),'utf8');
+  const firstReturn=fs.readFileSync(path.join(root,'dist','return.html'),'utf8');
   assert.match(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),/model\.js\?v=[a-f0-9]{12}/);
   assert.match(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),/import\('\.\/feature\.js\?v=[a-f0-9]{12}'\)/);
   const firstFeature=fs.readFileSync(path.join(root,'dist','feature.js'),'utf8');
   write('model.js','export const value=2;');refreshPackage(root);
   assert.notEqual(fs.readFileSync(path.join(root,'dist','feature.js'),'utf8'),firstFeature);
   assert.notEqual(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),first);
+  assert.notEqual(fs.readFileSync(path.join(root,'dist','return.html'),'utf8'),firstReturn);
   const stable=fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8');refreshPackage(root);
   assert.equal(fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8'),stable);
  }finally{fs.rmSync(root,{recursive:true,force:true});}

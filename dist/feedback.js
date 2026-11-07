@@ -1,5 +1,5 @@
 import {requestId} from './request-id.js?v=58ef88b53202';
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=b08bb17913a7';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=f970d0ad2fa8';
 export const FEEDBACK_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const FEEDBACK_STATUSES={open:'의견 수렴',reviewing:'검토 중',planned:'반영 예정',completed:'반영 완료',hold:'보류'};
 export const FEEDBACK_STATUS_HELP={

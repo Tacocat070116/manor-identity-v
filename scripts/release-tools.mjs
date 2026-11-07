@@ -75,7 +75,8 @@ export function refreshPackage(root=process.cwd()){
   }
   const digest=hash(contents);visiting.delete(file);done.set(file,digest);return digest;
  }
- visit(path.join(dist,'index.html'));
+ // Standalone login callbacks need the same transitive cache keys as the app.
+ for(const file of fs.readdirSync(dist).filter(file=>file.endsWith('.html')))visit(path.join(dist,file));
  const files=[...new Set(execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{cwd:root,encoding:'utf8'}).split('\0'))].filter(file=>file&&!['SHA256SUMS.txt','qa-summary.json'].includes(file)&&fs.existsSync(path.join(root,file))).sort();
  fs.writeFileSync(path.join(root,'SHA256SUMS.txt'),files.map(file=>hash(fs.readFileSync(path.join(root,file)))+'  '+file+'\n').join(''));
  return files.length;
