@@ -1,5 +1,5 @@
 import {createGoogleSignIn} from './google-signin.js?v=7a8297c89228';
-import {GOOGLE_REDIRECT_READY,prefersGoogleRedirect,startGoogleRedirect} from './google-redirect.js?v=3738304abba7';
+import {GOOGLE_REDIRECT_READY,prefersGoogleRedirect,startGoogleRedirect} from './google-redirect.js?v=ed402332fa0c';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const ACCOUNT_KEY='manor-google-session';
 const configCache=new Map();

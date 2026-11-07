@@ -1,4 +1,4 @@
-import {ACCOUNT_KEY,googleConfig,mountGoogleAccount} from './google-account.js?v=6329b23909eb';
+import {ACCOUNT_KEY,googleConfig,mountGoogleAccount} from './google-account.js?v=88db72fb3bd0';
 const TOKEN_KEY='manor-feedback-visitor',PROFILE_KEY='manor-participation-profiles';
 let googleAvailable=false;
 const validToken=value=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);

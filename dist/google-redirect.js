@@ -1,6 +1,6 @@
 export const GOOGLE_REDIRECT_URI='https://tacocat070116.github.io/manor-identity-v/google-return.html';
-// Enable only after this exact URI is registered and the live round trip passes.
-export const GOOGLE_REDIRECT_READY=false;
+// The owner registered this exact callback URI on 2026-11-07.
+export const GOOGLE_REDIRECT_READY=true;
 export const REDIRECT_KEY='manor-google-redirect';
 const MAX_AGE=9*60*1000;
 const token=value=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {GOOGLE_REDIRECT_URI,GOOGLE_REDIRECT_READY,REDIRECT_KEY,prefersGoogleRedirect,startGoogleRedirect,finishGoogleRedirect} from './dist/google-redirect.js';
+import {GOOGLE_REDIRECT_URI,REDIRECT_KEY,prefersGoogleRedirect,startGoogleRedirect,finishGoogleRedirect} from './dist/google-redirect.js';
 import {completeGoogleReturn} from './dist/google-return.js';
 import {createParticipationStore} from './dist/participation.js';
 import {ACCOUNT_KEY,accountPanel} from './dist/google-account.js';
@@ -151,8 +151,8 @@ test('Safari and iOS use the same-tab preference while desktop Chrome keeps its 
  assert.equal(prefersGoogleRedirect({userAgent:'Mozilla/5.0 (Android) Chrome/142.0 Safari/537.36'}),false);
 });
 
-test('an unregistered callback cannot replace live login and the unrelated AddSession path is removed',()=>{
- assert.equal(GOOGLE_REDIRECT_READY,false);
- const live=accountPanel();assert.doesNotMatch(live,/AddSession|data-account="redirect"/);assert.match(live,/data-google-button/);
- const ready=accountPanel({redirectAvailable:true,sameTab:true});assert.match(ready,/data-account="redirect"/);assert.match(ready,/data-account="popup"/);assert.doesNotMatch(ready,/data-google-button/);
+test('registered redirect login is available with popup fallback and can be disabled safely',()=>{
+ const desktop=accountPanel();assert.doesNotMatch(desktop,/AddSession/);assert.match(desktop,/data-google-button/);assert.match(desktop,/data-account="redirect"/);
+ const safari=accountPanel({sameTab:true});assert.match(safari,/data-account="redirect"/);assert.match(safari,/data-account="popup"/);assert.doesNotMatch(safari,/data-google-button/);
+ const disabled=accountPanel({redirectAvailable:false});assert.doesNotMatch(disabled,/data-account="redirect"/);assert.match(disabled,/data-google-button/);
 });

@@ -88,7 +88,7 @@ test('restarting login and redirect navigation respect the unsent-content guard'
   globalThis.window=new EventTarget();globalThis.location={reload:()=>{reloads++;}};
   globalThis.google={accounts:{id:{initialize(){},renderButton(){}}}};
   globalThis.fetch=async()=>new Response(JSON.stringify({id:'guard',nonce:'guard-nonce',proof:'guard-proof'}),{headers:{'Content-Type':'application/json'}});
-  dispose=mountGoogleAccount(root,{store,origin:'https://guard.example',clientId:'123-test.apps.googleusercontent.com',beforeSwitch:()=>allow});
+  dispose=mountGoogleAccount(root,{store,origin:'https://guard.example',clientId:'123-test.apps.googleusercontent.com',beforeSwitch:()=>allow,redirectEnabled:false});
   await new Promise(setImmediate);
   assert.equal(click('retry'),true);assert.equal(reloads,0);
   assert.equal(click('redirect'),true,'canceling the guard must prevent redirect navigation');
