@@ -56,12 +56,20 @@ pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
 'role-camp':'<path d="M7 14V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9M3 10v7h18v-7M3 14h18M6 17v4m12-4v4M10 7h4"/>'
 };
 const icon=n=>{const name=Object.hasOwn(paths,n)?n:'info';return `<svg class="icon icon-${name} ui-icon" data-icon="${name}" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><g class="icon-art">${paths[name]}</g></svg>`;};
-const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'release',favoriteOnly:false,stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banSource:'observed',banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],banPage:1,banRecordHunter:'',situation:'',favorites:new Set(),theme:'light'};
+const FAVORITES_KEY='manor-favorites';
+function readFavorites(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(FAVORITES_KEY)||'[]');
+  return Array.isArray(saved)&&saved.every(id=>typeof id==='string'&&id.trim())?new Set(saved):null;
+ }catch{return null;}
+}
+const state={view:'explore',character:'',tab:'overview',own:'',opponent:'',a:'',b:'',search:'',side:'전체',specialty:'',sort:'release',favoriteOnly:false,stats:{days:0,map:'',tournament:''},statistics:{scope:'all',side:'감시자',server:'asia',season:'',tier:'all',snapshot:'',sort:'pick',direction:'desc',search:'',badgeSnapshot:''},banSource:'observed',banFilters:{days:0,map:'',tournament:'',excluded:[]},bans:['','',''],banPage:1,banRecordHunter:'',situation:'',favorites:readFavorites()||new Set(),theme:'light'};
 let themeStorage;
-try{themeStorage=localStorage;state.favorites=new Set(JSON.parse(localStorage.getItem('manor-favorites')||'[]'));}catch{}
+try{themeStorage=localStorage;}catch{}
 state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').matches).id;
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
+let favoriteBusy=false;
 let heroSession,disposeView=()=>{};
 let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
@@ -232,6 +240,44 @@ function header(){
 function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">내 기록</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
+function refreshFavoriteDisplay(){
+ if(!db)return;
+ document.querySelectorAll('[data-action="favorite"]').forEach(button=>{
+  const selected=state.favorites.has(button.dataset.id);
+  button.classList.toggle('favorite-on',selected);
+  button.setAttribute('aria-pressed',String(selected));
+  button.querySelector('span').textContent=selected?'저장됨':'즐겨찾기';
+ });
+ if(state.view==='explore')updateExplorer();
+}
+function syncFavorites(){
+ const saved=readFavorites();
+ if(!saved||saved.size===state.favorites.size&&[...saved].every(id=>state.favorites.has(id)))return;
+ state.favorites=saved;
+ refreshFavoriteDisplay();
+}
+async function setFavorite(button){
+ const id=button.dataset.id;
+ if(favoriteBusy||!Object.hasOwn(byId,id))return;
+ const selected=!state.favorites.has(id);
+ favoriteBusy=true;button.disabled=true;
+ // Apply only this click to the latest list. A stale tab must not replace other changes.
+ const save=()=>{
+  const saved=readFavorites();
+  if(!saved){toast('즐겨찾기를 불러오지 못해 변경하지 않았습니다. 새로고침 후 다시 시도해 주세요.');return;}
+  if(selected)saved.add(id);else saved.delete(id);
+  localStorage.setItem(FAVORITES_KEY,JSON.stringify([...saved]));
+  state.favorites=saved;
+  refreshFavoriteDisplay();
+ };
+ try{
+  const locks=globalThis.navigator?.locks;
+  if(locks?.request)await locks.request(FAVORITES_KEY,save);else save();
+ }catch{
+  syncFavorites();
+  toast('즐겨찾기를 저장하지 못했습니다. 브라우저의 저장 공간 설정을 확인해 주세요.');
+ }finally{favoriteBusy=false;button.disabled=false;}
+}
 function title(e,h,d){return `<div class="page-title"><div class="eyebrow">${esc(e)}</div><h1>${esc(h)}</h1><p>${esc(d)}</p></div>`;}
 function card(c){return `<button class="character-card" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)}, ${esc(c.side)}, ${esc(specialtyLabels(c))}, 난이도 ${c.difficulty}/5 공략 보기"><div class="portrait-wrap">${portrait(c)}<span class="card-overlay"></span><span class="role-dot" title="메인 역할: ${esc(c.specialties[0])}">${primarySpecialtyIcon(c)}</span>${state.favorites.has(c.id)?`<span class="mini-star">${icon('star')}</span>`:''}</div><div class="card-info"><span class="card-name">${esc(c.name)}</span><span class="card-specialty">${specialtyTags(c,true)}</span><div class="card-bottom"><span>${esc(c.side)}</span>${difficulty(c.difficulty)}</div></div></button>`;}
 function heroCarousel(){
@@ -541,7 +587,7 @@ document.addEventListener('click',e=>{
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}
  if(a==='favorites')toggleFavorites();
  if(a==='reset-explore'){state.side='전체';state.specialty='';state.favoriteOnly=false;state.search='';refreshExplorer();}
- if(a==='favorite'){const id=b.dataset.id;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);try{localStorage.setItem('manor-favorites',JSON.stringify([...state.favorites]));}catch{toast('이 브라우저에서는 즐겨찾기를 저장할 수 없습니다.');}render();}
+ if(a==='favorite')return setFavorite(b);
  if(a==='character-tab'){state.tab=b.dataset.tab;navigate({v:'character',c:state.character,tab:state.tab});}
  if(a==='own-matchup'){state.own=b.dataset.id;state.opponent='';state.situation='';navigate({v:'matchup',own:state.own});}
  if(a==='picker')openPicker(b.dataset.mode);
@@ -562,6 +608,10 @@ document.addEventListener('change',e=>{if(!db)return;const el=e.target;if(el.id=
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'&&db){e.preventDefault();if(!$('#picker').open&&!$('#theme-picker').open)openPicker();}});
 for(const d of[$('#picker'),$('#share-dialog'),$('#theme-picker')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
 window.addEventListener('hashchange',()=>{if(!db||location.hash==='#characters')return;readRoute();render({scroll:true});});
+window.addEventListener('storage',event=>{if(event.key===FAVORITES_KEY||event.key===null)syncFavorites();});
+window.addEventListener('pageshow',syncFavorites);
+window.addEventListener('focus',syncFavorites);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFavorites();});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=f2ef2e854151'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=c40d5bd925ef')]);
