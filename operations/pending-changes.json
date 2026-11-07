@@ -186,6 +186,25 @@
         "browserPreview": "Chrome에서 새로고침·새 탭 유지, 탭 간 별 버튼과 필터 목록 갱신, 여러 캐릭터의 추가·해제 보존 확인",
         "scope": "기존 manor-favorites 브라우저 저장 형식 유지. 계정·복구 코드·테마 저장은 변경하지 않으며 기기 간 즐겨찾기 동기화는 포함하지 않음. 실제 iOS Safari는 미검증."
       }
+    },
+    {
+      "date": "2026-11-07",
+      "scope": "google-login-retry",
+      "summary": [
+        "여러 로그인 화면이 Google의 공통 인증 콜백을 덮어써 남은 버튼이 작동하지 않던 오류 수정",
+        "로그인 창을 닫거나 화면으로 돌아오면 인증 요청을 유지한 채 Google 버튼을 다시 표시하고 중복·닫힌 화면의 인증 응답 제외",
+        "인증 처리 실패 후 새 일회용 인증 요청으로 재시도하고 여러 로그인 화면의 요청을 함께 갱신",
+        "로그인 다시 시작 버튼으로 Google 로그인 환경을 새로 불러오고 Google 계정 추가 화면으로 직접 이동하는 보조 링크 제공",
+        "재시작과 외부 계정 추가 이동에 입력 중인 내용 확인 절차 적용"
+      ],
+      "announcement": "pending",
+      "validation": {
+        "regressionTests": "google-account-lifecycle.test.mjs 및 google-signin.test.mjs: 14개 회귀 검사 통과. 기존 Google 세션 검사 7개 통과.",
+        "baselineReproduction": "수정 전 여러 로그인 화면 중 마지막 화면을 닫으면 남은 화면의 인증 응답이 무시되는 오류 재현. 수정 후 통과.",
+        "browserScope": "기존 Chrome에서는 Google의 다른 계정 사용이 같은 창의 이메일 입력 화면으로 전환되었으며 로그인 창 닫기 후 두 번째 열기도 동작함. 실제 iOS Safari 제보 증상은 직접 재현하지 못함.",
+        "limits": "Google이 제공하는 계정 선택 화면 내부 코드는 변경하지 않음. Google 콘솔·서버 검증·기존 기록과 세션 저장 방식 유지.",
+        "siteChecks": "npm test: 186개 통과. 기존 배포 기준 공지·내용 정합성, SHA256, git diff 검사 통과."
+      }
     }
   ]
 }
