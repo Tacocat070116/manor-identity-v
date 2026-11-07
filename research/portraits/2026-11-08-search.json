@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-08",
+  "request": "신동·마음의 짐승을 기존 도감 일러스트와 같은 형식으로 교체할 자료 검색",
+  "result": "matching-style-not-confirmed",
+  "decision": "현재 자료 유지. 같은 배경·화풍의 정사각형 도감 아이콘으로 확인되지 않은 원화·모델·홍보 이미지는 대체 적용하지 않음.",
+  "sources": [
+    {
+      "url": "https://wikiwiki.jp/story5/キャラクターアイコン",
+      "finding": "기존 일러스트 출처의 공개 아이콘 목록에서 神童와 心の獣 항목을 확인하지 못함."
+    },
+    {
+      "url": "https://wiki.biligame.com/dwrg/“神童”",
+      "finding": "신동 캐릭터 자료 및 기존 초상화 출처 확인. 같은 형식의 대체 일러스트는 확인하지 못함."
+    },
+    {
+      "url": "https://wiki.biligame.com/dwrg/心兽",
+      "finding": "마음의 짐승 캐릭터 자료 및 기존 초상화 출처 확인. 같은 형식의 대체 일러스트는 확인하지 못함."
+    },
+    {
+      "url": "https://wikiwiki.jp/story5/「神童」",
+      "finding": "캐릭터 소개와 이미지 자료 대조."
+    },
+    {
+      "url": "https://wikiwiki.jp/story5/「心の獣」",
+      "finding": "캐릭터 소개와 이미지 자료 대조."
+    }
+  ],
+  "retainedAssets": [
+    "dist/assets/c60.png",
+    "dist/assets/c11.png"
+  ],
+  "limits": "검색한 공개 출처의 확인 결과이며 동일 자료가 전혀 없다는 단정은 아님. 이미지 새 제작·보정·대체 작업은 수행하지 않음."
+}

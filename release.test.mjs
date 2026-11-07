@@ -120,7 +120,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  creatorMounts[0].options.navigate();assert.equal(context.location.hash,'#v=creators');
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(creatorDisposals,1);
  context.location.hash='#v=recovery';context.app.readRoute();await context.app.render();
- assert.equal(context.document.title,'내 기록 · MANOR');assert.equal(recoveryMounts.length,1);
+ assert.equal(context.document.title,'로그인 · MANOR');assert.equal(recoveryMounts.length,1);
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(recoveryDisposals,1);
 });
 

@@ -68,7 +68,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
   },
   invalidate(expected){return serial(()=>{const current=accountRead();if(expected&&current?.token===expected){accountSave({...current,expiresAt:0});return true;}if(expected&&read()===expected){save('');return true;}return false;});},
   async connect(code,{origin,fetcher=globalThis.fetch,signal,beforeSwitch=()=>true}={}){
-   if(accountRead())throw Error('내 기록 화면에서 기존 코드를 Google 계정에 연결해 주세요.');
+   if(accountRead())throw Error('로그인 화면에서 기존 코드를 Google 계정에 연결해 주세요.');
    const token=recoveryToken(code);if(!token)throw Error('MANOR-R1로 시작하는 개인 복구 코드 전체를 입력해 주세요.');
    const response=await fetcher(origin+'/api/feedback/session',{method:'GET',credentials:'omit',cache:'no-store',redirect:'error',headers:{Authorization:'Bearer '+token,Accept:'application/json'},signal});
    if(!response.ok)throw Error(response.status===401?'등록된 기록을 찾지 못했습니다. 복구 코드를 다시 확인해 주세요.':'기록을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.');
@@ -81,6 +81,7 @@ export const participation=createParticipationStore();
 export const PARTICIPATION_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyIcon='<svg class="recovery-icon ui-icon" data-icon="key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="icon-art"><circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/></g></svg>';
+const lockIcon='<svg class="recovery-icon ui-icon" data-icon="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><g class="icon-art"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></g></svg>';
 
 // Explicit issuance uses the same server identity as writing. Reopening or
 // repeating it must never replace the visitor who owns the existing records.
@@ -105,7 +106,7 @@ export function participationBar({store=participation}={}){
  const account=store.googleAccount?.();
  if(googleAvailable||account){
   const connected=account?.expiresAt>Date.now();
-  return `<aside class="participation-bar ${connected?'is-saved':'is-important'}" data-participation-banner aria-label="내 기록 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${connected?'Google 계정으로 기록이 연결되어 있습니다.':'Google로 내 기록을 이어보세요.'}</strong><p>${connected?'다른 기기에서도 같은 계정으로 로그인하세요.':'로그인하면 작성한 글과 댓글을 다른 기기에서도 관리할 수 있습니다.'}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${connected?'':'primary'} small" data-participation="open">${connected?'내 기록 관리':'Google 로그인'}</button></div></aside>`;
+  return `<aside class="participation-bar ${connected?'is-saved':'is-important'}" data-participation-banner aria-label="로그인 안내"><span class="participation-key">${lockIcon}</span><div class="participation-bar-copy"><strong>${connected?'Google 로그인 완료':'Google 로그인'}</strong><p>${connected?'같은 계정으로 내 기록을 이어보세요.':'다른 기기에서도 내 글과 댓글을 관리하세요.'}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${connected?'':'primary'} small" data-participation="open">${connected?'기록 관리':'로그인'}</button></div></aside>`;
  }
  const current=store.read(),saved=!!current&&store.backedUp(),state=recoveryState({current,saved,persistent:store.persistent()});
  if(state==='ready')return `<aside class="participation-bar is-saved" data-participation-banner data-recovery-state="ready" aria-label="복구 코드 상태"><span class="participation-key">${keyIcon}</span><strong>이 브라우저는 연결·보관 완료</strong><button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">코드 관리</button></aside>`;
@@ -211,7 +212,7 @@ export function mountRecovery(root,options={}){
 export function mountRecoveryPage(root,options={}){
  root.innerHTML=`<section class="recovery-page"><header class="recovery-heading"><div class="eyebrow">KEEP YOUR MANOR</div><h1>복구 코드</h1><p>다른 기기나 브라우저에서 내가 쓴 글과 등록한 채널을 다시 관리할 때 사용합니다.</p></header><div class="recovery-layout"><aside class="recovery-intro"><h2>기기를 바꾸기 전에<br>코드를 따로 저장하세요.</h2><p>MANOR는 로그인 없이 글을 남길 수 있습니다. 복구 코드를 저장해 두면 다른 브라우저에서도 아래 작성 기록을 연결할 수 있습니다.</p><ul><li><strong>피드백과 댓글</strong><span>내 참여 글과 운영자 답변</span></li><li><strong>유저 상대법</strong><span>제출 내역과 운영자 검토 의견</span></li><li><strong>연구실</strong><span>내 연구 글과 댓글·도감 제안</span></li><li><strong>유튜브 채널</strong><span>등록한 채널의 작성 기록</span></li></ul><p class="recovery-note">기기 변경·브라우저 데이터 삭제 전에<br>복구 코드를 꼭 따로 저장해 주세요.</p></aside><div class="recovery-workspace" data-recovery-workspace></div></div></section>`;
  return mountRecovery(root.querySelector('[data-recovery-workspace]'),{...options,onGoogle:()=>{
-  root.querySelector('.recovery-heading h1').textContent='로그인 · 내 기록';
+  root.querySelector('.recovery-heading h1').textContent='로그인';
   root.querySelector('.recovery-heading p').textContent='Google 계정으로 로그인하고, 기존 작성 기록을 연결하세요.';
   root.querySelector('.recovery-intro h2').textContent='기기가 바뀌어도 내 기록은 그대로';
   root.querySelector('.recovery-intro p').textContent='같은 Google 계정으로 로그인하면 연결한 작성 기록을 다시 관리할 수 있습니다. 기존 복구 코드는 처음 기록을 가져올 때만 사용하세요.';

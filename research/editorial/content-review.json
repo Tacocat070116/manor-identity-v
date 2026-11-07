@@ -3,9 +3,9 @@
   "gameBalanceRevalidated": false,
   "characters": {
     "c01": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "fbfdfd5216f84af1c51e4e981de22fcc976f80fcd26568a51e0e2c4c672701f8",
-      "fingerprint": "fbfdfd5216f84af1c51e4e981de22fcc976f80fcd26568a51e0e2c4c672701f8",
+      "fingerprint": "476db99f6cb2eb2e0318152b28ae6c20968fd12759fcf82454dfe770eadca0c8",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -15,7 +15,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c02": {
       "date": "2026-10-31",
@@ -48,9 +48,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c04": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "97ca3627be46d898b8e21016490bad17dc47259c141548dd2a5c993bdc946a2f",
-      "fingerprint": "97ca3627be46d898b8e21016490bad17dc47259c141548dd2a5c993bdc946a2f",
+      "fingerprint": "f6ccfd3be19c22eba95bad6354c56d48390254fbf9f3f9025b5ff4356169d162",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -60,7 +60,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c05": {
       "date": "2026-10-31",
@@ -78,9 +78,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c06": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "0ca2660e75fc02d349b762fe02a442f40279be4d47102247a1b8019c44fc3e6c",
-      "fingerprint": "0ca2660e75fc02d349b762fe02a442f40279be4d47102247a1b8019c44fc3e6c",
+      "fingerprint": "e8dca6d1b5d131b240005b72f6484ad889d964792cbdf4d0922049fe0bb3cb99",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -90,12 +90,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c07": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "ed0533d068fc1aea6a70984d49cfcf47f6078ba30af47d071143124af5f51f8e",
-      "fingerprint": "ed0533d068fc1aea6a70984d49cfcf47f6078ba30af47d071143124af5f51f8e",
+      "fingerprint": "ba8bf1db47817fc2fbe3241a53f5cf7c4ec73cbcaec6c5bd6aac38e1389ac9aa",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -105,7 +105,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c08": {
       "date": "2026-10-31",
@@ -123,9 +123,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c09": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "c6af2b9e7006083eb86e0579775e3cc84924bbf94d59a211cb8a5699b635ee7a",
-      "fingerprint": "c6af2b9e7006083eb86e0579775e3cc84924bbf94d59a211cb8a5699b635ee7a",
+      "fingerprint": "7ce78d29da713aa2faf509353128ad6ceeea0f72359e9057e5e813c21a3d61f1",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -135,12 +135,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c10": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "820d606c06bbab7b5a41436ca20d2dffe05131af2f0a97bde08eb41028784984",
-      "fingerprint": "820d606c06bbab7b5a41436ca20d2dffe05131af2f0a97bde08eb41028784984",
+      "fingerprint": "7a84344231ef2927a9d60a4d8e3f869f4671b7394d398e06c5047e3a7ed13992",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -150,12 +150,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c11": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "2e2658bf5d96633c38f3add22597b6242102f49d727682895c124c6242821439",
-      "fingerprint": "2e2658bf5d96633c38f3add22597b6242102f49d727682895c124c6242821439",
+      "fingerprint": "60c376c7ad1bb3e3e54b3a23ab9fba3d35a9a5abe7da64f81f15afc72403f5f9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -165,12 +165,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c12": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "8b0f65a18879b150914fa3a5dd06aa3defdd5dc6723fde56209313c899099cb7",
-      "fingerprint": "7fd4f897ddd11827728c1569dfde9ab55a13195a1630ae830cb0d8f976ccc088",
+      "date": "2026-11-08",
+      "baselineFingerprint": "7fd4f897ddd11827728c1569dfde9ab55a13195a1630ae830cb0d8f976ccc088",
+      "fingerprint": "bed9a854ba0e37676e9639dc63dcdbef95c40f5cb2cb09b62bd523f69df02033",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -180,7 +180,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c13": {
       "date": "2026-10-31",
@@ -198,9 +198,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c14": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "1cbbb57bb58656185cd122b9036a3c7de50c387213160925126b435e76265f49",
-      "fingerprint": "1cbbb57bb58656185cd122b9036a3c7de50c387213160925126b435e76265f49",
+      "fingerprint": "d259cc8dc1c3eb91713ae50969cd749b9dc97b8d55a124811b4aaf8409f3823b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -210,12 +210,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c15": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "dc1651914d290b2c9b569d2b29936d58730f6d3102239e92f34370a8b3a84204",
-      "fingerprint": "0ca65fb9ad91cd93c49dc5bde82fb06ad373dd909c39f3e6cbda39423e0701cb",
+      "date": "2026-11-08",
+      "baselineFingerprint": "0ca65fb9ad91cd93c49dc5bde82fb06ad373dd909c39f3e6cbda39423e0701cb",
+      "fingerprint": "0c71656b5858b14f926e8d8c6d44dea82b1816d97a03cdb2cadebdfd341882cb",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -225,12 +225,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c16": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "aeb5f849891b50068979cd75a1ee2d298b323a33a44e34d2dcf1e1abc7ce4722",
-      "fingerprint": "b0b08e9ea43ffbe8d99e0452838f49877bcec4269d62e80c83654fa263ce2fba",
+      "date": "2026-11-08",
+      "baselineFingerprint": "b0b08e9ea43ffbe8d99e0452838f49877bcec4269d62e80c83654fa263ce2fba",
+      "fingerprint": "6b40d9693d855610a42b3711475aa2b53aec5a4ffb07531857682936f47bfc6c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -240,12 +240,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c17": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "853a3b9ee3129adfb6e21883844ec159dc295b839e60da84ce871bd15213efef",
-      "fingerprint": "853a3b9ee3129adfb6e21883844ec159dc295b839e60da84ce871bd15213efef",
+      "fingerprint": "7058788aed8fb54d962ba3bfbc2fe62ad561d0e679636a6882b538c00ecf924d",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -255,12 +255,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c18": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "8a8a61a1f187da5a2ba2d606ab8320a684cc4642a167eef8ce448b8766e65401",
-      "fingerprint": "8a8a61a1f187da5a2ba2d606ab8320a684cc4642a167eef8ce448b8766e65401",
+      "fingerprint": "7e11cbee5059bfa41e2f0a9bdfe8279a481eaf6043d769df1e5236086a21cba0",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -270,7 +270,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c19": {
       "date": "2026-10-31",
@@ -363,9 +363,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c25": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "646c8ceebe9ab7277736c6d989c617387c0c5e74ff5b65c73d2458f1b06c1831",
-      "fingerprint": "646c8ceebe9ab7277736c6d989c617387c0c5e74ff5b65c73d2458f1b06c1831",
+      "fingerprint": "3925424f7535ccdfdc239b09bd1f1867e3cb62ef6c00410d21078875d0bbd8a5",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -375,7 +375,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c26": {
       "date": "2026-10-31",
@@ -423,9 +423,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c29": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "f02e7680c1167761e8841276258c23b73bb295f16bc6719ebfb2ed9d0b717ed0",
-      "fingerprint": "f02e7680c1167761e8841276258c23b73bb295f16bc6719ebfb2ed9d0b717ed0",
+      "fingerprint": "5c9c20a9df9f148256c702d9113f6d8986c20f1316de84c112ddd6b2f9689da9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -435,12 +435,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c30": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "66aa54ab53dfb4b7ff48980734ff36ff97a2908a2d34a24bd035327366c6ba17",
-      "fingerprint": "66aa54ab53dfb4b7ff48980734ff36ff97a2908a2d34a24bd035327366c6ba17",
+      "fingerprint": "236eb4461dc27b22b1c278a0a47e0bfca0bf88c16341196dd79f2a295143fae0",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -450,12 +450,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c31": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "55599fbb50e0c88a7be40a3fcf3dda8a76297482e8d07ebf2c3f6a907e2b1728",
-      "fingerprint": "a66fdc59ab321ea00f4f32ae4934f703ee85a36ae84a14d1d9b1bd59c2e54246",
+      "date": "2026-11-08",
+      "baselineFingerprint": "a66fdc59ab321ea00f4f32ae4934f703ee85a36ae84a14d1d9b1bd59c2e54246",
+      "fingerprint": "7a408bfbc77bf96b79c2a98a0c2d979ec8a3f4a8fc810eccfda97768ce48a603",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -465,7 +465,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c32": {
       "date": "2026-10-31",
@@ -483,9 +483,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c33": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "5b177c5839daf231a42a03ea45624cc82c369db03c98e05bf053f68c4ff80dd0",
-      "fingerprint": "39bc1aeb31b12443d0ce2305beb37f5c2f3a8bfa37a9b94833ef958f17fc10c6",
+      "date": "2026-11-08",
+      "baselineFingerprint": "39bc1aeb31b12443d0ce2305beb37f5c2f3a8bfa37a9b94833ef958f17fc10c6",
+      "fingerprint": "f060f51ff079bfae113cea0f01bca413ac8d1f74e319383adf4fcd38fafd1235",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -495,12 +495,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c34": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "86c50e02c548bdfa717d443dd9024857f7a73da1bd223f0469bc78996deaebd6",
-      "fingerprint": "1bdd3b0bef4cf129e46a3c5cfad29009d6fa07d3d2204698653c951ce1443340",
+      "date": "2026-11-08",
+      "baselineFingerprint": "1bdd3b0bef4cf129e46a3c5cfad29009d6fa07d3d2204698653c951ce1443340",
+      "fingerprint": "fbf362d989850dd6561745b42a588b1e2ed8b4b217b2c2da5ce56f1a984719eb",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -510,12 +510,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c35": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "eeae640fe86255949ef236b987fa9d943c4b0245202bb5b6579389bb5e3296d8",
-      "fingerprint": "ed0b00e6e4a93c4c68d0f5841e8f759cd1e1d4371c21a9546ecdfd40350ad738",
+      "date": "2026-11-08",
+      "baselineFingerprint": "ed0b00e6e4a93c4c68d0f5841e8f759cd1e1d4371c21a9546ecdfd40350ad738",
+      "fingerprint": "99937fea433b8485674452fe47611de35d433dc9be57a44d2cbd707c3d3a3644",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -525,12 +525,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c36": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "42c9819ffd265607eba3bc30b8fd98aba2a7a55714eb81421e19493277e878c6",
-      "fingerprint": "42c9819ffd265607eba3bc30b8fd98aba2a7a55714eb81421e19493277e878c6",
+      "fingerprint": "9f4bfca38ef5d6975f8c0667f5135a3518d979537818331ac9d41dab0ea1144c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -540,12 +540,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c37": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "d3e39219cb5926c6033ef1380280f85d29073ce565ea89475c5890d574c41349",
-      "fingerprint": "d3e39219cb5926c6033ef1380280f85d29073ce565ea89475c5890d574c41349",
+      "fingerprint": "92e6fe610d63b47bc0eea37de334558adf912a69f2e6b7a7aa6cdbc868840c8f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -555,12 +555,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c38": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "386b65f753b1ad3d47ff649071ec3a4d06d8c5f9889b0ce067f14129a5bf37bd",
-      "fingerprint": "386b65f753b1ad3d47ff649071ec3a4d06d8c5f9889b0ce067f14129a5bf37bd",
+      "fingerprint": "7df4c24fc56960584f2696d237634dc617ff184d56a9438d08b4869c6cb53c11",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -570,12 +570,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c39": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "e8fc468319612f5b0704a4d61d179be12fb5087f7aa4f9fcd932f980c4b0e979",
-      "fingerprint": "1e23d09029a66cbee51ca16b1fdbe5f84131d7025bf3efdfa65ae812d712fcd2",
+      "date": "2026-11-08",
+      "baselineFingerprint": "1e23d09029a66cbee51ca16b1fdbe5f84131d7025bf3efdfa65ae812d712fcd2",
+      "fingerprint": "7585c7b02246202b0be433041a618b3deb34b3c3005c8b8e0dbdfa2ca2b6fba0",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -585,7 +585,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c40": {
       "date": "2026-10-31",
@@ -603,9 +603,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c41": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "7da1b6d27eb7869c6d7406767475fd17b604539fe3c0a181fd02366372ddc67e",
-      "fingerprint": "7da1b6d27eb7869c6d7406767475fd17b604539fe3c0a181fd02366372ddc67e",
+      "fingerprint": "bd7833c1cff6204c98c9e28997b9a88b1ba8f35be03b40d4051ccd40edbef19f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -615,7 +615,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c42": {
       "date": "2026-10-31",
@@ -663,9 +663,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c45": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "35089486a13dc4d9eb37367ab4659dd5502095fb33195d715ef39dd4de337f0d",
-      "fingerprint": "78df67ddb1ce5e936aa48a2f123da36a1df33e256fa142ece907b514d4369182",
+      "date": "2026-11-08",
+      "baselineFingerprint": "78df67ddb1ce5e936aa48a2f123da36a1df33e256fa142ece907b514d4369182",
+      "fingerprint": "5a282a17d53c854ea40c50eaa33d2e6c1204e9e080c5b5d17f650c34a51df5fb",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -675,12 +675,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c46": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "fdee0d93b0ad34cd6f8a082fa3287323e492978e96a3c440d6b4a0620f4d82d3",
-      "fingerprint": "fdee0d93b0ad34cd6f8a082fa3287323e492978e96a3c440d6b4a0620f4d82d3",
+      "fingerprint": "160b157ea0153afb7a07a93d58ee4d858a26e14c578c312fa6bc61467654fcb1",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -690,7 +690,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c47": {
       "date": "2026-10-31",
@@ -708,9 +708,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c48": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "77bb57c3ca8fd143e329ccd4224d4484b16053b1d7996bb11fa2d4a7e0dca27d",
-      "fingerprint": "77bb57c3ca8fd143e329ccd4224d4484b16053b1d7996bb11fa2d4a7e0dca27d",
+      "fingerprint": "706e7e9189420fa1d48fdb53f3253b76e06304d6051def228c57f3c03d1f0399",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -720,12 +720,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c49": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "d44334398890e23a7fadeb4077fb30f008dfd3debe4bca1bc66113c8b753149f",
-      "fingerprint": "f2b484c5f1cb47b7fb8c27f9c4fe4ce289c1834097288948aeec38e402203819",
+      "date": "2026-11-08",
+      "baselineFingerprint": "f2b484c5f1cb47b7fb8c27f9c4fe4ce289c1834097288948aeec38e402203819",
+      "fingerprint": "6e7a62206c4ac438fdf2a9eb6c6749707b14c6a8f3737dd9c78bfa1d98865b05",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -735,7 +735,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c50": {
       "date": "2026-10-31",
@@ -783,9 +783,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c53": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "a79ad3dc39875f71f895c9cd4cf27331e2da5f8f49466d79c242bee874e0c1a2",
-      "fingerprint": "a79ad3dc39875f71f895c9cd4cf27331e2da5f8f49466d79c242bee874e0c1a2",
+      "fingerprint": "c618084c7c357be4ae1c823d1b5b2cc883d5ca2005c93c862250eada827b56d6",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -795,12 +795,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c54": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "e7cfaad7be6cda53174308d9cf0872838c1031eef10ca41b9a853b732600bcd8",
-      "fingerprint": "e7cfaad7be6cda53174308d9cf0872838c1031eef10ca41b9a853b732600bcd8",
+      "fingerprint": "786c0c6215cae18201bccb1cb2900875a55695e250d04ddec3c92e022b19f01c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -810,12 +810,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c55": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "8566b4cc75103f5f3bf744d8746ed92c921d0e11f1035fa06190ce48c8c80593",
-      "fingerprint": "0241b3b3bc1a1acaab3ec32578cb5d97b7611775bdb6cbdc50100bb7b4dec2b0",
+      "date": "2026-11-08",
+      "baselineFingerprint": "0241b3b3bc1a1acaab3ec32578cb5d97b7611775bdb6cbdc50100bb7b4dec2b0",
+      "fingerprint": "a094b7cc4907556e438214ca3709f8575c009c8fff450071c7d6479a3f7a4e50",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -825,7 +825,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c56": {
       "date": "2026-10-31",
@@ -843,9 +843,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c57": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "0dbca4d04318baa59bdc83a8470d878cdfa9b71d89a5641143faff419cfd505f",
-      "fingerprint": "0dbca4d04318baa59bdc83a8470d878cdfa9b71d89a5641143faff419cfd505f",
+      "fingerprint": "53a5e7162812bcbb1dd32e24ebde0ffc65ad20d40f040fa732e38bf38e5f71a6",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -855,7 +855,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c58": {
       "date": "2026-10-31",
@@ -873,9 +873,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c59": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "2269e2bfdb7666846019f148d40c2921899ae305b848375bcd6a5ae2719b17ae",
-      "fingerprint": "2269e2bfdb7666846019f148d40c2921899ae305b848375bcd6a5ae2719b17ae",
+      "fingerprint": "0601529ab8d62afb84258c5cad7bf2176e40d8829c89c93dc300952c421a37a9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -885,12 +885,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c60": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "cb96280ddbec0c623af35a17f549eddb0361b1c474c75dd8172360f091d24b86",
-      "fingerprint": "cb96280ddbec0c623af35a17f549eddb0361b1c474c75dd8172360f091d24b86",
+      "fingerprint": "7ac76562197645f1d4ab0af7524dfc4a2a4968cdb9496e913102e47cf009740c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -900,12 +900,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c61": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "b2aec2943764985993b3c44e4206f3630e634e26d618ebe46069b35767de3ed5",
-      "fingerprint": "b2aec2943764985993b3c44e4206f3630e634e26d618ebe46069b35767de3ed5",
+      "fingerprint": "d884aa6d995bf26b0f7b7f4bcbf8c6f86cb727973853c3628d107c1771cd8add",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -915,12 +915,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c62": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "01af510f4a96d56e2bf71344f066581dff901102dfedc9e7028e2a667a3015cf",
-      "fingerprint": "01af510f4a96d56e2bf71344f066581dff901102dfedc9e7028e2a667a3015cf",
+      "fingerprint": "60036bf1370daec1468b2ea1c8d169e82c55252397eae74a7bb1cfab8f472e13",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -930,7 +930,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c63": {
       "date": "2026-10-31",
@@ -963,9 +963,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c65": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "f68ab9a85be5cf41ebbb9854055defe284f83029318ca2970a50625ad014e60d",
-      "fingerprint": "f68ab9a85be5cf41ebbb9854055defe284f83029318ca2970a50625ad014e60d",
+      "fingerprint": "5187ffc9373900643745b7022b2aba02d59edc7f4058ed2bf5feeafae5f137a7",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -975,7 +975,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c66": {
       "date": "2026-10-31",
@@ -1008,9 +1008,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c68": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "d6a8fc9b614bf3fe4527fb48b2c80debc4e2eb672775ce04281bbceec0cb4356",
-      "fingerprint": "06f64e4a67cbb9856e4f81c7961a1692cc02100fc6cb3df24db60399cf70d3f1",
+      "date": "2026-11-08",
+      "baselineFingerprint": "06f64e4a67cbb9856e4f81c7961a1692cc02100fc6cb3df24db60399cf70d3f1",
+      "fingerprint": "0168675d8558237b8f3cbe30c16cc583ba5a9a56daa3c8657af821c8a2594bcd",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1020,7 +1020,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c69": {
       "date": "2026-10-31",
@@ -1038,9 +1038,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c70": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "d4d99c1bb34fdbebb78d1e4c5f0d8b29435152d873cb78ec16b373335d5944a5",
-      "fingerprint": "7f0fd74db9ebdbb9e098b1931563d05fbe7f3e71b4f96b11ff05c447caf2516b",
+      "date": "2026-11-08",
+      "baselineFingerprint": "7f0fd74db9ebdbb9e098b1931563d05fbe7f3e71b4f96b11ff05c447caf2516b",
+      "fingerprint": "3c10496611b6d14a2b120ac11e99d8778cb02fca1e9ba4002ab28598a47afbba",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1050,12 +1050,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c71": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "b8bc1179bdb92e694677a8caaba84f6c82ebb81d5d56863a02c98b2923546fa8",
-      "fingerprint": "b8bc1179bdb92e694677a8caaba84f6c82ebb81d5d56863a02c98b2923546fa8",
+      "fingerprint": "d9574897490ddce7917248890d7707b8082960986496d36aec5a8f45c2841069",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1065,12 +1065,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c72": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "0190400e5f44057da476d94fe82da7a1289f315baff4d2b2ec9b41f36146dfbd",
-      "fingerprint": "0190400e5f44057da476d94fe82da7a1289f315baff4d2b2ec9b41f36146dfbd",
+      "fingerprint": "14987d3fc6bf65b98aa223effb8aa531f7a1440a7ca9e8233bb992daf912e85d",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1080,7 +1080,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c73": {
       "date": "2026-10-31",
@@ -1098,9 +1098,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c74": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "5a5faa11ba61b214a104b6d1eaf7b3f9d43cf29cb72825708edd07460ca2c0a5",
-      "fingerprint": "c8673461fc212f94bd80ee739649ae14a33c5e8bbc5be243c467467116813234",
+      "date": "2026-11-08",
+      "baselineFingerprint": "c8673461fc212f94bd80ee739649ae14a33c5e8bbc5be243c467467116813234",
+      "fingerprint": "9ffca0d96a35635660adbc8345620ab13c9a4b5b306b10506a2e07577b80c29c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1110,12 +1110,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c75": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "2a7ff8e130eea5dae34a73c1298afa494cb52125aed105f09abcf8151d70975d",
-      "fingerprint": "2a7ff8e130eea5dae34a73c1298afa494cb52125aed105f09abcf8151d70975d",
+      "fingerprint": "da7c82f93e292f24107e321095022b445a620629f3104f748a01190c90330036",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1125,7 +1125,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c76": {
       "date": "2026-10-31",
@@ -1143,9 +1143,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c77": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "3bca4a3076af69b821917fd8756ee4982d6530b376cce46795d3f5442da3e439",
-      "fingerprint": "3bca4a3076af69b821917fd8756ee4982d6530b376cce46795d3f5442da3e439",
+      "fingerprint": "a6eb294e635ce244fe639bd4e3af40753928835bd58e8c9c528b01cc59a91bf8",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1155,7 +1155,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c78": {
       "date": "2026-10-31",
@@ -1173,9 +1173,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c79": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "9b596b22f33466920fce07969c9d242c11e4228274ce57aededf3d5b6a11a5a2",
-      "fingerprint": "9b596b22f33466920fce07969c9d242c11e4228274ce57aededf3d5b6a11a5a2",
+      "fingerprint": "13862c668e2c7f02120e6657e2b0e53026900eb12b884e198d63059fc109193f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1185,12 +1185,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c80": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "31d82d5b5a2e59601c52c1ce5a74280d32c5a38ebb1b7944610fda50018dd56e",
-      "fingerprint": "31d82d5b5a2e59601c52c1ce5a74280d32c5a38ebb1b7944610fda50018dd56e",
+      "fingerprint": "d8b1ff7c341347b2199c010456268d0e7bb7aa99b1d7aa704837786f7e65bd25",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1200,7 +1200,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c81": {
       "date": "2026-10-31",
@@ -1233,9 +1233,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c83": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "eb48ba6966a5dc318dd6de34588b5df58112fee8a5f55e645a191a6b40cde36f",
-      "fingerprint": "eb48ba6966a5dc318dd6de34588b5df58112fee8a5f55e645a191a6b40cde36f",
+      "fingerprint": "ff23539ac21cacff894f7f001a8dc9f957dbb9ff468da73040f24c2183a2760c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1245,7 +1245,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c84": {
       "date": "2026-10-31",
@@ -1278,9 +1278,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c86": {
-      "date": "2026-10-31",
+      "date": "2026-11-08",
       "baselineFingerprint": "c761dacb50d1e3b449f7725eafee25e4212a1be1296d36bb852786e79d293dbf",
-      "fingerprint": "c761dacb50d1e3b449f7725eafee25e4212a1be1296d36bb852786e79d293dbf",
+      "fingerprint": "246c2ee2ef5c1eb88172b75271c11aaafaa08da7d4b62e5b776b433022a03f4e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1290,12 +1290,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c87": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "7093441eec7762f3be5cc72a888726f6f80ea36a83c1b1a1936676206dab8b95",
-      "fingerprint": "e4fca20f5d43bef8d991fc618f5364bb1131f6f822f7630cd8206c74b47ecf34",
+      "date": "2026-11-08",
+      "baselineFingerprint": "e4fca20f5d43bef8d991fc618f5364bb1131f6f822f7630cd8206c74b47ecf34",
+      "fingerprint": "67f1f2c9a27c37d7ad7b20b7deff34f6a4e88d3782d263de27085eeefbbb10a6",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1305,7 +1305,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c88": {
       "date": "2026-10-31",
@@ -1323,9 +1323,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c89": {
-      "date": "2026-10-31",
-      "baselineFingerprint": "904fd9268ea4d45870b98e39aa0e67b5c1e0b50a94e5df34f732f218a513c9f8",
-      "fingerprint": "e16e90509acfec679c68977879a2c87d7522cf1727da56d9d380ac885eeb0bbb",
+      "date": "2026-11-08",
+      "baselineFingerprint": "e16e90509acfec679c68977879a2c87d7522cf1727da56d9d380ac885eeb0bbb",
+      "fingerprint": "be210dbb5a9f648446d5038ddc473a304f4d6c7ac7137b0c64ebddcab7f73f49",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1335,7 +1335,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     }
   }
 }

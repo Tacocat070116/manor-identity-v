@@ -1,6 +1,6 @@
 // Clear the credential before loading dependencies, including when they fail.
 // No analytics or third-party scripts run on this callback page.
-export async function completeGoogleReturn({location=globalThis.location,history=globalThis.history,document=globalThis.document,load=()=>Promise.all([import('./google-redirect.js?v=ed402332fa0c'),import('./participation.js?v=d6feb4e6173e'),import('./google-account.js?v=88db72fb3bd0')])}={}){
+export async function completeGoogleReturn({location=globalThis.location,history=globalThis.history,document=globalThis.document,load=()=>Promise.all([import('./google-redirect.js?v=ed402332fa0c'),import('./participation.js?v=ea43bdaa4432'),import('./google-account.js?v=88db72fb3bd0')])}={}){
  const status=document.getElementById('login-status');
  try{
   const fragment=location.hash;

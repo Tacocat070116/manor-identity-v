@@ -1,0 +1,1100 @@
+{
+  "date": "2026-11-08",
+  "baseline": "da04b5ebc37401d272d588820504cb478b3bc8c5",
+  "scope": "사용자 요청에 따른 생존자 어그로·감시자 사냥 역할 태그 분리",
+  "gameBalanceRevalidated": false,
+  "decisions": [
+    "태그 분류와 역할 설명의 키만 진영별로 구분합니다.",
+    "일반 공략의 추격 표현·출처·기존 역할 판단·아이콘·메인과 서브 순서는 유지합니다.",
+    "관련 설명 전체를 확인하고 문장 내용이 변경되지 않았음을 대조합니다."
+  ],
+  "charactersReviewed": [
+    "c01",
+    "c04",
+    "c06",
+    "c07",
+    "c09",
+    "c10",
+    "c11",
+    "c12",
+    "c14",
+    "c15",
+    "c16",
+    "c17",
+    "c18",
+    "c25",
+    "c29",
+    "c30",
+    "c31",
+    "c33",
+    "c34",
+    "c35",
+    "c36",
+    "c37",
+    "c38",
+    "c39",
+    "c41",
+    "c45",
+    "c46",
+    "c48",
+    "c49",
+    "c53",
+    "c54",
+    "c55",
+    "c57",
+    "c59",
+    "c60",
+    "c61",
+    "c62",
+    "c65",
+    "c68",
+    "c70",
+    "c71",
+    "c72",
+    "c74",
+    "c75",
+    "c77",
+    "c79",
+    "c80",
+    "c83",
+    "c86",
+    "c87",
+    "c89"
+  ],
+  "edits": [
+    {
+      "path": "dist/specialties.json/characters/c01/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c01/specialtyReasons",
+      "before": {
+        "추격": "거미줄로 자신은 빨라지고 생존자는 느려지게 해 거리를 빠르게 좁힙니다."
+      },
+      "after": {
+        "사냥": "거미줄로 자신은 빨라지고 생존자는 느려지게 해 거리를 빠르게 좁힙니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c04/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c04/specialtyReasons",
+      "before": {
+        "추격": "로켓 돌진과 부품을 활용해 거리를 좁히고 추격을 이어 갑니다."
+      },
+      "after": {
+        "사냥": "로켓 돌진과 부품을 활용해 거리를 좁히고 추격을 이어 갑니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c06/specialties",
+      "before": [
+        "캠핑",
+        "추격"
+      ],
+      "after": [
+        "캠핑",
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c06/specialtyReasons",
+      "before": {
+        "캠핑": "의자 주변에 습기 구역을 만들어 구출 접근과 구출 후 이동을 제한합니다.",
+        "추격": "회유로 거리를 좁히고 습기 구역으로 도주 경로를 감싸 추격 중 피해를 누적합니다."
+      },
+      "after": {
+        "캠핑": "의자 주변에 습기 구역을 만들어 구출 접근과 구출 후 이동을 제한합니다.",
+        "사냥": "회유로 거리를 좁히고 습기 구역으로 도주 경로를 감싸 추격 중 피해를 누적합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c07/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c07/specialtyReasons",
+      "before": {
+        "추격": "바람과 빠른 이동으로 생존자와의 거리를 지속적으로 줄입니다."
+      },
+      "after": {
+        "사냥": "바람과 빠른 이동으로 생존자와의 거리를 지속적으로 줄입니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c09/specialties",
+      "before": [
+        "추격",
+        "운영"
+      ],
+      "after": [
+        "사냥",
+        "운영"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c09/specialtyReasons",
+      "before": {
+        "추격": "공의 이동 경로를 따라 접근하고, 메인 볼로 생존자의 위치를 바꿔 도주를 방해합니다.",
+        "운영": "공으로 만든 경로를 따라 빠르게 이동해 추격 대상을 바꾸고, 해독기 주변을 공으로 둘러 해독을 방해합니다."
+      },
+      "after": {
+        "사냥": "공의 이동 경로를 따라 접근하고, 메인 볼로 생존자의 위치를 바꿔 도주를 방해합니다.",
+        "운영": "공으로 만든 경로를 따라 빠르게 이동해 추격 대상을 바꾸고, 해독기 주변을 공으로 둘러 해독을 방해합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c10/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c10/specialtyReasons",
+      "before": {
+        "추격": "안개 칼날과 은신 가속으로 거리를 좁히며 연속 타격을 노립니다."
+      },
+      "after": {
+        "사냥": "안개 칼날과 은신 가속으로 거리를 좁히며 연속 타격을 노립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c11/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c11/specialtyReasons",
+      "before": {
+        "추격": "돌진과 도약으로 표식을 남긴 뒤 후속 공격으로 추격을 마무리합니다."
+      },
+      "after": {
+        "사냥": "돌진과 도약으로 표식을 남긴 뒤 후속 공격으로 추격을 마무리합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c12/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c12/specialtyReasons",
+      "before": {
+        "추격": "촛농을 누적해 생존자의 이동과 판자·창틀 사용을 막고 타격 기회를 만듭니다.",
+        "캠핑": "구출 동선에 촛농을 누적해 접근을 지연하고, 존재감을 쌓아 사용할 수 있는 고열 촛농과 일반 공격으로 연속 피해를 노립니다."
+      },
+      "after": {
+        "사냥": "촛농을 누적해 생존자의 이동과 판자·창틀 사용을 막고 타격 기회를 만듭니다.",
+        "캠핑": "구출 동선에 촛농을 누적해 접근을 지연하고, 존재감을 쌓아 사용할 수 있는 고열 촛농과 일반 공격으로 연속 피해를 노립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c14/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c14/specialtyReasons",
+      "before": {
+        "추격": "돌진과 판자 대응으로 빠르게 쓰러뜨린 뒤 다음 추격을 이어 갑니다."
+      },
+      "after": {
+        "사냥": "돌진과 판자 대응으로 빠르게 쓰러뜨린 뒤 다음 추격을 이어 갑니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c15/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c15/specialtyReasons",
+      "before": {
+        "추격": "산제비나비를 이용해 장애물을 넘어 접근하고 벌어진 거리를 다시 좁힙니다."
+      },
+      "after": {
+        "사냥": "산제비나비를 이용해 장애물을 넘어 접근하고 벌어진 거리를 다시 좁힙니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c16/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c16/specialtyReasons",
+      "before": {
+        "추격": "거울상으로 지형을 넘어 공격하고 위치 교환으로 추격을 이어 갑니다."
+      },
+      "after": {
+        "사냥": "거울상으로 지형을 넘어 공격하고 위치 교환으로 추격을 이어 갑니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c17/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c17/specialtyReasons",
+      "before": {
+        "추격": "갈퀴 사슬로 거리를 줄이고 덫으로 도주 경로를 제한합니다.",
+        "캠핑": "갈퀴 사슬로 구출자를 의자에서 떼어 놓거나 일반 공격과 연계하고, 덫으로 구출 동선을 좁힙니다."
+      },
+      "after": {
+        "사냥": "갈퀴 사슬로 거리를 줄이고 덫으로 도주 경로를 제한합니다.",
+        "캠핑": "갈퀴 사슬로 구출자를 의자에서 떼어 놓거나 일반 공격과 연계하고, 덫으로 구출 동선을 좁힙니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c18/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c18/specialtyReasons",
+      "before": {
+        "추격": "고양이의 기절과 침묵으로 소지품 사용을 막고 공격할 기회를 만듭니다.",
+        "캠핑": "의자에 접근하는 구출자에게 고양이를 붙여 기절로 구출 시점을 늦추고 연속 타격을 노립니다."
+      },
+      "after": {
+        "사냥": "고양이의 기절과 침묵으로 소지품 사용을 막고 공격할 기회를 만듭니다.",
+        "캠핑": "의자에 접근하는 구출자에게 고양이를 붙여 기절로 구출 시점을 늦추고 연속 타격을 노립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c25/specialties",
+      "before": [
+        "추격",
+        "운영"
+      ],
+      "after": [
+        "사냥",
+        "운영"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c25/specialtyReasons",
+      "before": {
+        "추격": "그림자 구간을 빠르게 오가며 이동하는 생존자에게 따라붙습니다.",
+        "운영": "그림자를 잇는 기동력으로 해독기 사이를 순회하고, 잔영 복귀로 자리를 비운 뒤 다시 압박합니다."
+      },
+      "after": {
+        "사냥": "그림자 구간을 빠르게 오가며 이동하는 생존자에게 따라붙습니다.",
+        "운영": "그림자를 잇는 기동력으로 해독기 사이를 순회하고, 잔영 복귀로 자리를 비운 뒤 다시 압박합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c29/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c29/specialtyReasons",
+      "before": {
+        "추격": "장애물 통과와 이동·속박 능력을 조합해 도주 경로를 압박합니다.",
+        "캠핑": "의자 앞에서 속박과 거래 능력을 일반 공격에 연결해 구출자와 구출 대상을 함께 압박합니다."
+      },
+      "after": {
+        "사냥": "장애물 통과와 이동·속박 능력을 조합해 도주 경로를 압박합니다.",
+        "캠핑": "의자 앞에서 속박과 거래 능력을 일반 공격에 연결해 구출자와 구출 대상을 함께 압박합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c30/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c30/specialtyReasons",
+      "before": {
+        "추격": "도약으로 장애물을 우회하고 멀어진 생존자에게 다시 접근합니다.",
+        "캠핑": "낙하 공격을 해금한 뒤 의자 앞 착지 피해와 일반 공격을 연계해 구출을 저지합니다."
+      },
+      "after": {
+        "사냥": "도약으로 장애물을 우회하고 멀어진 생존자에게 다시 접근합니다.",
+        "캠핑": "낙하 공격을 해금한 뒤 의자 앞 착지 피해와 일반 공격을 연계해 구출을 저지합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c31/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c31/specialtyReasons",
+      "before": {
+        "추격": "케이지 경계를 넘는 이동으로 빠르게 접근하고 생존자의 이동기를 제한합니다.",
+        "캠핑": "구출자와 의자를 서로 다른 구역에 가두어 접근을 막고, 경계 이동으로 구출 동선을 압박합니다."
+      },
+      "after": {
+        "사냥": "케이지 경계를 넘는 이동으로 빠르게 접근하고 생존자의 이동기를 제한합니다.",
+        "캠핑": "구출자와 의자를 서로 다른 구역에 가두어 접근을 막고, 경계 이동으로 구출 동선을 압박합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c33/specialties",
+      "before": [
+        "추격",
+        "캠핑"
+      ],
+      "after": [
+        "사냥",
+        "캠핑"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c33/specialtyReasons",
+      "before": {
+        "추격": "구강경의 원거리 범위 공격과 위치 이동을 연계하고 광막으로 도주 경로를 제한합니다.",
+        "캠핑": "의자 주변 구출 경로에 범위 공격을 겹쳐 일반 공격과 함께 연속 피해를 노립니다."
+      },
+      "after": {
+        "사냥": "구강경의 원거리 범위 공격과 위치 이동을 연계하고 광막으로 도주 경로를 제한합니다.",
+        "캠핑": "의자 주변 구출 경로에 범위 공격을 겹쳐 일반 공격과 함께 연속 피해를 노립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c34/specialties",
+      "before": [
+        "운영",
+        "추격"
+      ],
+      "after": [
+        "운영",
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c34/specialtyReasons",
+      "before": {
+        "운영": "바퀴로 여러 구역을 빠르게 오가며 생존자들에게 가시를 쌓아 회복과 해독을 방해합니다.",
+        "추격": "바퀴로 가시를 붙인 뒤 변신과 후속 공격을 연결해 한 대상을 빠르게 쓰러뜨립니다."
+      },
+      "after": {
+        "운영": "바퀴로 여러 구역을 빠르게 오가며 생존자들에게 가시를 쌓아 회복과 해독을 방해합니다.",
+        "사냥": "바퀴로 가시를 붙인 뒤 변신과 후속 공격을 연결해 한 대상을 빠르게 쓰러뜨립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c35/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c35/specialtyReasons",
+      "before": {
+        "추격": "곡괭이의 불안정 구역으로 판자와 장애물 주변 도주 경로를 압박합니다."
+      },
+      "after": {
+        "사냥": "곡괭이의 불안정 구역으로 판자와 장애물 주변 도주 경로를 압박합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c36/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "사냥"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c36/specialtyReasons",
+      "before": {
+        "추격": "빠른 이동과 분신으로 서로 다른 색의 표식을 쌓으며 추격을 이어 갑니다."
+      },
+      "after": {
+        "사냥": "빠른 이동과 분신으로 서로 다른 색의 표식을 쌓으며 추격을 이어 갑니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c37/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c37/specialtyReasons",
+      "before": {
+        "추격": "폭탄의 효과와 도약을 활용해 추격 시간을 벌고 다른 구역으로 이동합니다."
+      },
+      "after": {
+        "어그로": "폭탄의 효과와 도약을 활용해 추격 시간을 벌고 다른 구역으로 이동합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c38/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c38/specialtyReasons",
+      "before": {
+        "추격": "곤충 떼에 올라 이동하거나 곤충 떼로 공격과 접근을 막아 감시자의 추격을 오래 버팁니다.",
+        "커버": "곤충 떼로 감시자를 밀거나 길을 막아 쫓기는 동료가 거리를 벌릴 틈을 만듭니다."
+      },
+      "after": {
+        "어그로": "곤충 떼에 올라 이동하거나 곤충 떼로 공격과 접근을 막아 감시자의 추격을 오래 버팁니다.",
+        "커버": "곤충 떼로 감시자를 밀거나 길을 막아 쫓기는 동료가 거리를 벌릴 틈을 만듭니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c39/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c39/specialtyReasons",
+      "before": {
+        "추격": "밀치기·무장 해제와 이동 기술을 조합해 감시자의 접근과 일반 공격을 끊습니다.",
+        "커버": "쫓기는 동료 옆에서 감시자를 제어하거나 풍선 운반을 끊어 동료를 보호합니다."
+      },
+      "after": {
+        "어그로": "밀치기·무장 해제와 이동 기술을 조합해 감시자의 접근과 일반 공격을 끊습니다.",
+        "커버": "쫓기는 동료 옆에서 감시자를 제어하거나 풍선 운반을 끊어 동료를 보호합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c41/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c41/specialtyReasons",
+      "before": {
+        "추격": "비늘 방어와 밀치기를 반복해 감시자의 추격을 오래 버팁니다.",
+        "커버": "동료가 주울 수 있는 비늘을 남겨 일반 공격을 막을 기회를 제공합니다. 실제 방어는 동료의 사용 타이밍에 달려 있습니다."
+      },
+      "after": {
+        "어그로": "비늘 방어와 밀치기를 반복해 감시자의 추격을 오래 버팁니다.",
+        "커버": "동료가 주울 수 있는 비늘을 남겨 일반 공격을 막을 기회를 제공합니다. 실제 방어는 동료의 사용 타이밍에 달려 있습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c45/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c45/specialtyReasons",
+      "before": {
+        "추격": "바람으로 접근을 끊고 층운으로 고저차를 활용해 추격을 연장합니다."
+      },
+      "after": {
+        "어그로": "바람으로 접근을 끊고 층운으로 고저차를 활용해 추격을 연장합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c46/specialties",
+      "before": [
+        "구출",
+        "추격"
+      ],
+      "after": [
+        "구출",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c46/specialtyReasons",
+      "before": {
+        "구출": "환영에게 공격을 대신 받게 하거나 구출을 맡겨, 본체가 의자에 접근할 때의 위험을 줄입니다.",
+        "추격": "판자 환영으로 길을 막고 공격을 대신 받아 본체가 다음 구역으로 이동할 시간을 법니다."
+      },
+      "after": {
+        "구출": "환영에게 공격을 대신 받게 하거나 구출을 맡겨, 본체가 의자에 접근할 때의 위험을 줄입니다.",
+        "어그로": "판자 환영으로 길을 막고 공격을 대신 받아 본체가 다음 구역으로 이동할 시간을 법니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c48/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c48/specialtyReasons",
+      "before": {
+        "추격": "손전등과 판자 활용으로 감시자의 스킬과 접근을 방해합니다."
+      },
+      "after": {
+        "어그로": "손전등과 판자 활용으로 감시자의 스킬과 접근을 방해합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c49/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c49/specialtyReasons",
+      "before": {
+        "추격": "환영과 은신으로 공격을 피하고 이동 방향을 숨겨 시간을 법니다."
+      },
+      "after": {
+        "어그로": "환영과 은신으로 공격을 피하고 이동 방향을 숨겨 시간을 법니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c53/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c53/specialtyReasons",
+      "before": {
+        "추격": "설치물로 길을 바꾸고 비행으로 지형을 넘어 추격 시간을 법니다.",
+        "커버": "쫓기는 동료의 경로에 벽·판자와 우산을 배치해 감시자의 접근을 막거나 이탈을 돕습니다."
+      },
+      "after": {
+        "어그로": "설치물로 길을 바꾸고 비행으로 지형을 넘어 추격 시간을 법니다.",
+        "커버": "쫓기는 동료의 경로에 벽·판자와 우산을 배치해 감시자의 접근을 막거나 이탈을 돕습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c54/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c54/specialtyReasons",
+      "before": {
+        "추격": "오르골과 판자 구역을 함께 활용해 감시자의 추격을 지연합니다."
+      },
+      "after": {
+        "어그로": "오르골과 판자 구역을 함께 활용해 감시자의 추격을 지연합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c55/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c55/specialtyReasons",
+      "before": {
+        "추격": "가속으로 거리를 벌리고 이동 중 회복을 완료해 추격을 더 오래 버팁니다.",
+        "커버": "부상당한 동료에게 도블린 술을 제공해 다시 추격을 버틸 여유를 만듭니다."
+      },
+      "after": {
+        "어그로": "가속으로 거리를 벌리고 이동 중 회복을 완료해 추격을 더 오래 버팁니다.",
+        "커버": "부상당한 동료에게 도블린 술을 제공해 다시 추격을 버틸 여유를 만듭니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c57/specialties",
+      "before": [
+        "운영",
+        "추격"
+      ],
+      "after": [
+        "운영",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c57/specialtyReasons",
+      "before": {
+        "운영": "긴 통로로 동료와 합류해 회복하고, 구출 뒤 안전하게 벗어날 경로를 마련합니다.",
+        "추격": "직선 통로로 벽과 층을 넘고 감시자의 추격 경로를 바꿔 본체의 생존 시간을 늘립니다."
+      },
+      "after": {
+        "운영": "긴 통로로 동료와 합류해 회복하고, 구출 뒤 안전하게 벗어날 경로를 마련합니다.",
+        "어그로": "직선 통로로 벽과 층을 넘고 감시자의 추격 경로를 바꿔 본체의 생존 시간을 늘립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c59/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c59/specialtyReasons",
+      "before": {
+        "추격": "위치 교환으로 공격 방향을 뒤집고 판자·창틀 심리전을 이어 갑니다."
+      },
+      "after": {
+        "어그로": "위치 교환으로 공격 방향을 뒤집고 판자·창틀 심리전을 이어 갑니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c60/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c60/specialtyReasons",
+      "before": {
+        "추격": "흙공의 방어와 이동 방해를 활용해 감시자의 추격을 오래 버팁니다."
+      },
+      "after": {
+        "어그로": "흙공의 방어와 이동 방해를 활용해 감시자의 추격을 오래 버팁니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c61/specialties",
+      "before": [
+        "커버",
+        "추격"
+      ],
+      "after": [
+        "커버",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c61/specialtyReasons",
+      "before": {
+        "커버": "멀리 있는 부상당한 동료를 치료해 다시 구출에 나서거나 추격을 버틸 수 있도록 돕습니다.",
+        "추격": "스트레스 회복이 남아 있을 때 추가 타격을 버티며 시간을 법니다. 회복이 소진되거나 연속 피해를 받으면 이점이 줄어듭니다."
+      },
+      "after": {
+        "커버": "멀리 있는 부상당한 동료를 치료해 다시 구출에 나서거나 추격을 버틸 수 있도록 돕습니다.",
+        "어그로": "스트레스 회복이 남아 있을 때 추가 타격을 버티며 시간을 법니다. 회복이 소진되거나 연속 피해를 받으면 이점이 줄어듭니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c62/specialties",
+      "before": [
+        "커버",
+        "추격"
+      ],
+      "after": [
+        "커버",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c62/specialtyReasons",
+      "before": {
+        "커버": "탑승 돌진으로 풍선 운반과 추격을 방해해 동료의 탈출 기회를 만듭니다.",
+        "추격": "탑승 상태의 피해 방어와 이동으로 추격을 버팁니다. 탑승 시간이 끝나면 방어력이 크게 줄어듭니다."
+      },
+      "after": {
+        "커버": "탑승 돌진으로 풍선 운반과 추격을 방해해 동료의 탈출 기회를 만듭니다.",
+        "어그로": "탑승 상태의 피해 방어와 이동으로 추격을 버팁니다. 탑승 시간이 끝나면 방어력이 크게 줄어듭니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c65/specialties",
+      "before": [
+        "커버",
+        "추격"
+      ],
+      "after": [
+        "커버",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c65/specialtyReasons",
+      "before": {
+        "커버": "로켓에 동료를 태워 이탈시키거나 폭발 기절로 추격과 풍선 들기를 방해합니다.",
+        "추격": "로켓으로 긴 거리를 이동하고 폭발로 추격을 끊어 본체의 생존 시간을 늘립니다."
+      },
+      "after": {
+        "커버": "로켓에 동료를 태워 이탈시키거나 폭발 기절로 추격과 풍선 들기를 방해합니다.",
+        "어그로": "로켓으로 긴 거리를 이동하고 폭발로 추격을 끊어 본체의 생존 시간을 늘립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c68/specialties",
+      "before": [
+        "추격",
+        "구출"
+      ],
+      "after": [
+        "어그로",
+        "구출"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c68/specialtyReasons",
+      "before": {
+        "추격": "변신과 피해 방어로 감시자가 본체를 잡는 데 드는 시간을 늘립니다.",
+        "구출": "루이 형태의 피해 방어를 의자 앞에서 활용해 구출을 시도합니다. 변신 비용과 남은 체력에 따라 버틸 수 있는 공격이 달라집니다."
+      },
+      "after": {
+        "어그로": "변신과 피해 방어로 감시자가 본체를 잡는 데 드는 시간을 늘립니다.",
+        "구출": "루이 형태의 피해 방어를 의자 앞에서 활용해 구출을 시도합니다. 변신 비용과 남은 체력에 따라 버틸 수 있는 공격이 달라집니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c70/specialties",
+      "before": [
+        "추격",
+        "운영"
+      ],
+      "after": [
+        "어그로",
+        "운영"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c70/specialtyReasons",
+      "before": {
+        "추격": "발사기와 활공으로 지형을 넘어 거리를 크게 벌립니다.",
+        "운영": "동료도 쓸 수 있는 발사기를 배치하고 소지품을 전달해 팀의 이동과 자원 사용을 돕습니다."
+      },
+      "after": {
+        "어그로": "발사기와 활공으로 지형을 넘어 거리를 크게 벌립니다.",
+        "운영": "동료도 쓸 수 있는 발사기를 배치하고 소지품을 전달해 팀의 이동과 자원 사용을 돕습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c71/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c71/specialtyReasons",
+      "before": {
+        "추격": "보호막으로 공격을 받아내며 추격을 버틸 시간을 확보합니다.",
+        "커버": "의자를 철거해 동료의 풍선 운반을 지연합니다. 동료의 저항 진행도와 운반 경로를 보고 개입해야 합니다."
+      },
+      "after": {
+        "어그로": "보호막으로 공격을 받아내며 추격을 버틸 시간을 확보합니다.",
+        "커버": "의자를 철거해 동료의 풍선 운반을 지연합니다. 동료의 저항 진행도와 운반 경로를 보고 개입해야 합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c72/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c72/specialtyReasons",
+      "before": {
+        "추격": "향수로 피해와 위치를 되돌려 추격 중 거리를 유지합니다."
+      },
+      "after": {
+        "어그로": "향수로 피해와 위치를 되돌려 추격 중 거리를 유지합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c74/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c74/specialtyReasons",
+      "before": {
+        "추격": "추격 중 쌓은 저주를 반복 사용해 감시자의 접근과 공격을 끊습니다.",
+        "커버": "모아 둔 저주로 동료를 쫓거나 운반하는 감시자를 기절시킵니다. 짧은 기절만으로는 구출된 동료가 다시 쓰러지는 것을 막기 어렵습니다."
+      },
+      "after": {
+        "어그로": "추격 중 쌓은 저주를 반복 사용해 감시자의 접근과 공격을 끊습니다.",
+        "커버": "모아 둔 저주로 동료를 쫓거나 운반하는 감시자를 기절시킵니다. 짧은 기절만으로는 구출된 동료가 다시 쓰러지는 것을 막기 어렵습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c75/specialties",
+      "before": [
+        "커버",
+        "추격"
+      ],
+      "after": [
+        "커버",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c75/specialtyReasons",
+      "before": {
+        "커버": "가속과 능력 재사용 지원으로 동료가 추격을 더 오래 버티게 하고, 격려를 쌓아 쓰러진 동료가 일어나도록 돕습니다.",
+        "추격": "자신에게도 사용할 수 있는 가속으로 구역을 바꾸며 추격 거리를 벌립니다. 가속이 끝난 뒤의 감속을 고려해야 합니다."
+      },
+      "after": {
+        "커버": "가속과 능력 재사용 지원으로 동료가 추격을 더 오래 버티게 하고, 격려를 쌓아 쓰러진 동료가 일어나도록 돕습니다.",
+        "어그로": "자신에게도 사용할 수 있는 가속으로 구역을 바꾸며 추격 거리를 벌립니다. 가속이 끝난 뒤의 감속을 고려해야 합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c77/specialties",
+      "before": [
+        "커버",
+        "추격"
+      ],
+      "after": [
+        "커버",
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c77/specialtyReasons",
+      "before": {
+        "커버": "크리켓볼로 감시자를 밀어내 동료 추격과 풍선 운반을 방해합니다.",
+        "추격": "자신을 쫓는 감시자도 크리켓볼로 밀어내며 거리를 벌리고, 크리켓볼을 회수해 추격 중 재사용합니다."
+      },
+      "after": {
+        "커버": "크리켓볼로 감시자를 밀어내 동료 추격과 풍선 운반을 방해합니다.",
+        "어그로": "자신을 쫓는 감시자도 크리켓볼로 밀어내며 거리를 벌리고, 크리켓볼을 회수해 추격 중 재사용합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c79/specialties",
+      "before": [
+        "추격",
+        "커버"
+      ],
+      "after": [
+        "어그로",
+        "커버"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c79/specialtyReasons",
+      "before": {
+        "추격": "자석으로 밀거나 당겨 벽에 부딪히게 하고, 기절한 동안 이동할 시간을 확보합니다.",
+        "커버": "쫓기는 동료에게 접근한 감시자를 밀거나 풍선 운반을 끊습니다. 잘못된 당기기와 짧은 기절은 동료를 위험하게 할 수 있습니다."
+      },
+      "after": {
+        "어그로": "자석으로 밀거나 당겨 벽에 부딪히게 하고, 기절한 동안 이동할 시간을 확보합니다.",
+        "커버": "쫓기는 동료에게 접근한 감시자를 밀거나 풍선 운반을 끊습니다. 잘못된 당기기와 짧은 기절은 동료를 위험하게 할 수 있습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c80/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c80/specialtyReasons",
+      "before": {
+        "추격": "공격에 맞춘 회피와 밀어내기, 지형 이동으로 추격 시간을 늘립니다."
+      },
+      "after": {
+        "어그로": "공격에 맞춘 회피와 밀어내기, 지형 이동으로 추격 시간을 늘립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c83/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c83/specialtyReasons",
+      "before": {
+        "추격": "분사와 비행으로 지형을 넘어 감시자와 거리를 벌립니다."
+      },
+      "after": {
+        "어그로": "분사와 비행으로 지형을 넘어 감시자와 거리를 벌립니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c86/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c86/specialtyReasons",
+      "before": {
+        "추격": "감시자가 그림을 바라보게 해 접근을 멈추고, 그동안 다음 구역으로 이동합니다."
+      },
+      "after": {
+        "어그로": "감시자가 그림을 바라보게 해 접근을 멈추고, 그동안 다음 구역으로 이동합니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c87/specialties",
+      "before": [
+        "추격",
+        "운영"
+      ],
+      "after": [
+        "어그로",
+        "운영"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c87/specialtyReasons",
+      "before": {
+        "추격": "에어백으로 통로를 나누고 튕겨 나가는 이동을 이용해 추격 거리를 벌립니다.",
+        "운영": "동료도 이용할 에어백 경로를 미리 배치하고 회수·재배치해 이동과 위험 구역 이탈을 돕습니다."
+      },
+      "after": {
+        "어그로": "에어백으로 통로를 나누고 튕겨 나가는 이동을 이용해 추격 거리를 벌립니다.",
+        "운영": "동료도 이용할 에어백 경로를 미리 배치하고 회수·재배치해 이동과 위험 구역 이탈을 돕습니다."
+      }
+    },
+    {
+      "path": "dist/specialties.json/characters/c89/specialties",
+      "before": [
+        "추격"
+      ],
+      "after": [
+        "어그로"
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c89/specialtyReasons",
+      "before": {
+        "추격": "갈고리로 벽과 층을 넘어 이동하며 추격 거리를 크게 벌립니다."
+      },
+      "after": {
+        "어그로": "갈고리로 벽과 층을 넘어 이동하며 추격 거리를 크게 벌립니다."
+      }
+    }
+  ]
+}

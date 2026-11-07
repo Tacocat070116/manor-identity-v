@@ -34,7 +34,7 @@ assert.equal(Object.keys(specialties.characters).length,db.characters.length);
 Object.assign(db.meta,specialties.meta);
 for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
-const allowedSpecialties={생존자:['추격','커버','구출','운영','해독'],감시자:['추격','캠핑','운영']};
+const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,17056);assert.equal(bans.length,15516);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
@@ -162,9 +162,12 @@ location.hash='#v=bans&bans='+byName['의사'].id+','+byName['의사'].id+','+by
 state.view='explore';state.favoriteOnly=false;state.search='';state.sort='name';
 audit.specialtyResults=[];
 for(const [side,roles] of Object.entries(specialtyGroups)){for(const role of roles){state.side=side;state.specialty=role;updateExplorer();audit.specialtyResults.push({side,role,html:$('#explorer-results').innerHTML});}}
+for(const role of ['어그로','사냥']){state.side='전체';state.specialty=role;updateExplorer();audit.specialtyResults.push({side:'전체',role,html:$('#explorer-results').innerHTML});}
 state.side='생존자';state.specialty='커버';state.search='선 지자';state.favoriteOnly=true;state.favorites=new Set([byName['선지자'].id,byName['용병'].id]);updateExplorer();audit.combinedFilter=$('#explorer-results').innerHTML;
 state.search='교수';state.favorites=new Set([byName['교수'].id,byName['용병'].id]);updateExplorer();audit.secondaryCombinedFilter=$('#explorer-results').innerHTML;
 state.specialty='구출';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetInvalidSpecialty=state.specialty;
+state.side='생존자';state.specialty='어그로';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'감시자'}})}});audit.resetKiteSpecialty=state.specialty;
+state.specialty='사냥';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.resetHuntSpecialty=state.specialty;
 state.specialty='운영';__handlers.click({target:{closest:()=>({dataset:{action:'side',side:'생존자'}})}});audit.keepSharedSpecialty=state.specialty;
 __handlers.click({target:{closest:()=>({dataset:{action:'reset-explore'}})}});audit.resetExplore=[state.side,state.specialty,state.search,state.favoriteOnly];
 audit.invalidRoles=[undefined,{specialties:[]},{specialties:['어그로','커버','구출']},{specialties:['커버','커버']},{specialties:['사냥']},{specialties:['어그로'],specialtyReasons:{}}].map(role=>validSpecialties('생존자',role));
@@ -217,14 +220,17 @@ assert.ok(context.audit.condition.includes('구버전 중국어'));
 assert.ok(context.audit.escape.includes('&lt;img'));assert.ok(context.audit.sameSide);
 assert.equal(context.audit.cleanBans.length,1);
 for(const {side,role,html} of context.audit.specialtyResults){
- const expected=db.characters.filter(ch=>ch.side===side&&ch.specialties.includes(role)).map(ch=>ch.id).sort();
+ const expected=db.characters.filter(ch=>(side==='전체'||ch.side===side)&&ch.specialties.includes(role)).map(ch=>ch.id).sort();
  const actual=[...html.matchAll(/class="character-card"[^>]*data-id="(c\d+)"/g)].map(m=>m[1]).sort();
  assert.ok(expected.length>0,side+' '+role+' populated');
  assert.deepEqual(actual,expected,side+' '+role+' filtered roster');
+ if(['어그로','사냥'].includes(role))assert.ok(actual.every(id=>db.characters.find(ch=>ch.id===id).side===(role==='어그로'?'생존자':'감시자')),'faction-specific tag does not mix sides');
 }
 assert.ok(context.audit.combinedFilter.includes('data-id="'+c('선지자').id+'"'));
 assert.ok(!context.audit.combinedFilter.includes('data-id="'+c('용병').id+'"'));
 assert.equal(context.audit.resetInvalidSpecialty,'');
+assert.equal(context.audit.resetKiteSpecialty,'');
+assert.equal(context.audit.resetHuntSpecialty,'');
 assert.equal(context.audit.keepSharedSpecialty,'운영');
 assert.ok(context.audit.secondaryCombinedFilter.includes('data-id="'+c('교수').id+'"'));
 assert.ok(!context.audit.secondaryCombinedFilter.includes('data-id="'+c('용병').id+'"'));
@@ -242,7 +248,7 @@ for(const result of context.audit.roleCards){
  assert.ok(result.card.includes('메인 #'+ch.specialties[0]),ch.name+' accessible main role');
  assert.ok(!/card-game-patch|최근 패치 날짜|<time/.test(result.card),ch.name+' no patch date on catalog card');
  assert.ok(!/icon-hunter|icon-survivor|icon-info/.test(result.card),ch.name+' specialty icon without faction fallback');
- if(ch.specialties[0]==='추격')assert.ok(result.card.includes(ch.side==='생존자'?'role-kite':'role-hunt'),ch.name+' faction-specific chase icon');
+ if(['어그로','사냥'].includes(ch.specialties[0]))assert.ok(result.card.includes(ch.side==='생존자'?'role-kite':'role-hunt'),ch.name+' faction-specific chase icon');
  assert.deepEqual(cardTags,ch.specialties,ch.name+' ordered card tags');
  assert.deepEqual(selectionTags,ch.specialties,ch.name+' ordered compare tags');
 }
