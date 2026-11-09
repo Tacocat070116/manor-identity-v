@@ -71,6 +71,7 @@ test('text and control edges remain clear over translucent surfaces and ambient 
  const css=fs.readFileSync('dist/themes.css','utf8'),style=fs.readFileSync('dist/style.css','utf8');
  const ambient=Number(style.match(/\.ambient\{[^}]*opacity:([\d.]+)/)[1]);
  const alpha=name=>Number(css.match(new RegExp(`--${name}:rgba\\(var\\([^)]+\\),([\\d.]+)\\)`))[1]);
+ for(const [token,max] of [['surface',.65],['glass',.5],['nav-surface',.7]])assert.ok(alpha(token)<=max,token+' still reveals its backdrop');
  const palettes=theme=>Object.fromEntries([...css.split(`html[data-theme="${theme.id}"]{`)[1].split('}')[0].matchAll(/--([\w-]+):([^;]+);/g)].map(m=>[m[1],m[2]]));
  const toHex=value=>hex(value.split(',').map(Number));
  for(const t of colorThemes){
@@ -99,8 +100,8 @@ test('neutral themes stay achromatic and every dark palette also themes native c
   for(const match of palette.matchAll(/#[a-f\d]{6}/g))assert.equal(new Set(rgb(match[0])).size,1,id+' has no color tint');
  }
  const darkRule=style.match(/html:is\(([^)]+)\)\{[^}]*color-scheme:dark/)[1];
- for(const t of colorThemes.filter(t=>t.mode==='dark'))assert.ok(darkRule.includes(`[data-theme="${t.id}"]`),t.id+' native controls and status colors');
- const christmas=resolveTheme('christmas');assert.notEqual(christmas.action,christmas.accent,'seasonal red actions and gold accents remain distinct');
+ for(const t of colorThemes)assert.equal(darkRule.includes(`[data-theme="${t.id}"]`),t.mode==='dark',t.id+' native controls and status colors');
+ const christmas=resolveTheme('christmas');assert.equal(christmas.mode,'light');assert.ok(luminance(christmas.bg)>.8,'Christmas has a bright winter background distinct from the dark palette');
 });
 
 test('palettes cannot change component geometry or add another reflective edge',()=>{

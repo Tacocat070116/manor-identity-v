@@ -9,7 +9,7 @@ export const colorThemes=Object.freeze([
  {id:'sand',name:'샌드',mode:'light',bg:'#f3eee5',surface:'#fcfaf5',ink:'#3b3227',muted:'#594c3a',accent:'#765424',onAccent:'#ffffff'},
  {id:'midnight',name:'미드나이트',mode:'dark',bg:'#111b2c',surface:'#1b2a40',ink:'#edf3fc',muted:'#c0cde0',accent:'#b5d3fa',onAccent:'#14243a'},
  {id:'plum',name:'플럼',mode:'dark',bg:'#231b2d',surface:'#31253f',ink:'#f4effa',muted:'#d4c5df',accent:'#e1c4f3',onAccent:'#2b1b3a'},
- {id:'christmas',name:'크리스마스',mode:'dark',bg:'#081d16',surface:'#122f23',ink:'#fff8e8',muted:'#d0d6c1',accent:'#f1d38a',onAccent:'#172b1e',action:'#bd364b',onAction:'#ffffff'}
+ {id:'christmas',name:'크리스마스',mode:'light',bg:'#faf5eb',surface:'#fffdf7',ink:'#193c2e',muted:'#445447',accent:'#8d2036',onAccent:'#ffffff',action:'#a8243b',onAction:'#ffffff'}
 ].map(theme=>Object.freeze({action:theme.accent,onAction:theme.onAccent,...theme})));
 
 export function resolveTheme(id,prefersDark=false){

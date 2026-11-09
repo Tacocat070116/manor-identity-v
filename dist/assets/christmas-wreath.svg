@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 350" fill="none">
+<defs>
+ <g id="sprig" stroke-linecap="round"><path d="M-24 0h48" stroke="#436a43" stroke-width="2"/><path d="m-20 0 12-15M-12 0 12-18M-4 0 14-17M4 0l15-12M12 0l12-7M-20 0l12 15M-12 0 0 18M-4 0l14 17M4 0l15 12M12 0l12 7" stroke="#315e43" stroke-width="4"/><path d="m-15 0 10-10M-2 0l11-11M10 0l10-5M-15 0l10 10M-2 0l11 11" stroke="#75946b" stroke-width="1.5"/></g>
+ <radialGradient id="bauble" cx="30%" cy="20%"><stop stop-color="#dc6f6a"/><stop offset=".55" stop-color="#b52b40"/><stop offset="1" stop-color="#8d2036"/></radialGradient>
+ <radialGradient id="gold"><stop stop-color="#f9e2a4"/><stop offset="1" stop-color="#c29949"/></radialGradient>
+</defs>
+<ellipse cx="280" cy="169" rx="234" ry="137" stroke="#b69c61" stroke-width="1.2" opacity=".5"/>
+<use href="#sprig" transform="translate(510.0 169.0) rotate(90.0)"/>
+<use href="#sprig" transform="translate(505.6 194.9) rotate(109.0)"/>
+<use href="#sprig" transform="translate(492.5 219.9) rotate(125.6)"/>
+<use href="#sprig" transform="translate(471.2 242.9) rotate(139.1)"/>
+<use href="#sprig" transform="translate(442.6 263.0) rotate(150.0)"/>
+<use href="#sprig" transform="translate(407.8 279.6) rotate(158.9)"/>
+<use href="#sprig" transform="translate(368.0 291.9) rotate(166.5)"/>
+<use href="#sprig" transform="translate(324.9 299.4) rotate(173.4)"/>
+<use href="#sprig" transform="translate(280.0 302.0) rotate(180.0)"/>
+<use href="#sprig" transform="translate(235.1 299.4) rotate(-173.4)"/>
+<use href="#sprig" transform="translate(192.0 291.9) rotate(-166.5)"/>
+<use href="#sprig" transform="translate(152.2 279.6) rotate(-158.9)"/>
+<use href="#sprig" transform="translate(117.4 263.0) rotate(-150.0)"/>
+<use href="#sprig" transform="translate(88.8 242.9) rotate(-139.1)"/>
+<use href="#sprig" transform="translate(67.5 219.9) rotate(-125.6)"/>
+<use href="#sprig" transform="translate(54.4 194.9) rotate(-109.0)"/>
+<use href="#sprig" transform="translate(50.0 169.0) rotate(-90.0)"/>
+<use href="#sprig" transform="translate(54.4 143.1) rotate(-71.0)"/>
+<use href="#sprig" transform="translate(67.5 118.1) rotate(-54.4)"/>
+<use href="#sprig" transform="translate(88.8 95.1) rotate(-40.9)"/>
+<use href="#sprig" transform="translate(117.4 75.0) rotate(-30.0)"/>
+<use href="#sprig" transform="translate(152.2 58.4) rotate(-21.1)"/>
+<use href="#sprig" transform="translate(192.0 46.1) rotate(-13.5)"/>
+<use href="#sprig" transform="translate(235.1 38.6) rotate(-6.6)"/>
+<use href="#sprig" transform="translate(280.0 36.0) rotate(-0.0)"/>
+<use href="#sprig" transform="translate(324.9 38.6) rotate(6.6)"/>
+<use href="#sprig" transform="translate(368.0 46.1) rotate(13.5)"/>
+<use href="#sprig" transform="translate(407.8 58.4) rotate(21.1)"/>
+<use href="#sprig" transform="translate(442.6 75.0) rotate(30.0)"/>
+<use href="#sprig" transform="translate(471.2 95.1) rotate(40.9)"/>
+<use href="#sprig" transform="translate(492.5 118.1) rotate(54.4)"/>
+<use href="#sprig" transform="translate(505.6 143.1) rotate(71.0)"/>
+<g transform="translate(505.5 191.9)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<g transform="translate(401.4 280.9)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<g transform="translate(151.9 278.4)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<g transform="translate(51.9 180.5)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<g transform="translate(99.5 87.7)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<g transform="translate(411.3 60.9)"><rect x="-4" y="-15" width="8" height="5" rx="1" fill="#c8a259"/><circle r="13" fill="url(#bauble)"/><path d="M-6-7q-5 5-2 11" stroke="#f4c7bc" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></g>
+<circle cx="473.3" cy="248.7" r="6" fill="url(#gold)"/><circle cx="472.3" cy="247.7" r="1.5" fill="#fff5cf"/>
+<circle cx="312.8" cy="306.6" r="6" fill="url(#gold)"/><circle cx="311.8" cy="305.6" r="1.5" fill="#fff5cf"/>
+<circle cx="86.7" cy="248.7" r="6" fill="url(#gold)"/><circle cx="85.7" cy="247.7" r="1.5" fill="#fff5cf"/>
+<circle cx="53.1" cy="130.7" r="6" fill="url(#gold)"/><circle cx="52.1" cy="129.7" r="1.5" fill="#fff5cf"/>
+<circle cx="187.8" cy="41.0" r="6" fill="url(#gold)"/><circle cx="186.8" cy="40.0" r="1.5" fill="#fff5cf"/>
+<circle cx="329.1" cy="33.0" r="6" fill="url(#gold)"/><circle cx="328.1" cy="32.0" r="1.5" fill="#fff5cf"/>
+<circle cx="492.1" cy="108.1" r="6" fill="url(#gold)"/><circle cx="491.1" cy="107.1" r="1.5" fill="#fff5cf"/>
+<g transform="translate(280 304)"><path d="M0-3C-24-30-48-26-42-7c6 19 25 15 42 4M0-3c24-27 48-23 42-4C36 12 17 8 0-3" fill="#a8243b"/><path d="m-5 2-16 32 13-3 9 7 4-31M5 2l16 32-13-3-9 7-4-31" fill="#b52b40"/><path d="M-6-6q6-4 12 0v14H-6z" fill="#d05d5c"/></g>
+<path d="m280 5 3 10 11 1-9 6 3 11-8-7-9 7 3-11-9-6 11-1z" fill="url(#gold)"/>
+<g stroke="#c09a51" stroke-linecap="round"><path d="M32 66v12m-6-6h12M518 251v14m-7-7h14M487 43v10m-5-5h10"/></g>
+</svg>

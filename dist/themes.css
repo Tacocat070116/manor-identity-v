@@ -1,21 +1,21 @@
 /* Shared translucent material, without displacement or edge optics.
    Broad, feathered reflections live in the surface background, below its content. */
 :root{
- --surface:rgba(var(--surface-rgb),.90);
- --surface-soft:rgba(var(--inset-rgb),.86);
- --surface-hover:rgba(var(--surface-rgb),.98);
- --line:rgba(var(--ink-rgb),.24);
+ --surface:rgba(var(--surface-rgb),.58);
+ --surface-soft:rgba(var(--inset-rgb),.46);
+ --surface-hover:rgba(var(--surface-rgb),.82);
+ --line:rgba(var(--ink-rgb),.18);
  --control-line:rgba(var(--ink-rgb),.58);
  --accent-line:rgba(var(--accent-rgb),.55);
- --accent-soft:rgba(var(--accent-soft-rgb),.76);
- --glass:rgba(var(--surface-rgb),.86);
- --glass-line:rgba(var(--ink-rgb),.26);
+ --accent-soft:rgba(var(--accent-soft-rgb),.50);
+ --glass:rgba(var(--surface-rgb),.42);
+ --glass-line:rgba(var(--ink-rgb),.18);
  --sheen-peak:.48;
  --sheen-spread:.12;
  --sheen-return:.16;
  --glass-sheen:radial-gradient(ellipse at 12% 0%,rgba(var(--sheen-rgb),var(--sheen-peak)) 0%,rgba(var(--sheen-rgb),var(--sheen-spread)) 34%,rgba(var(--sheen-rgb),0) 72%),radial-gradient(ellipse at 100% 110%,rgba(var(--sheen-rgb),var(--sheen-return)) 0%,rgba(var(--sheen-rgb),0) 65%);
  --action-sheen:linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,0) 68%);
- --nav-surface:rgba(var(--surface-rgb),.94);
+ --nav-surface:rgba(var(--surface-rgb),.64);
  --shadow:0 10px 28px -18px rgba(var(--shadow-rgb),.22),0 3px 8px -6px rgba(var(--shadow-rgb),.12);
  --nav-shadow:0 14px 36px -18px rgba(var(--shadow-rgb),.26),0 3px 8px -4px rgba(var(--shadow-rgb),.12);
  --selected-shadow:0 3px 8px -3px rgba(var(--shadow-rgb),.16);
@@ -25,7 +25,7 @@
 }
 
 /* Dark glass receives a quieter reflection tinted by its own palette. */
-html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-theme="black"],[data-theme="christmas"]){
+html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-theme="black"]){
  --sheen-peak:.13;
  --sheen-spread:.03;
  --sheen-return:.045;
@@ -263,26 +263,52 @@ html[data-theme="black"]{
 }
 
 html[data-theme="christmas"]{
- --ink:#fff8e8;
- --muted:#d0d6c1;
- --accent:#f1d38a;
- --on-accent:#172b1e;
- --action-bg:#bd364b;
+ --ink:#193c2e;
+ --muted:#445447;
+ --accent:#8d2036;
+ --on-accent:#ffffff;
+ --action-bg:#a8243b;
  --on-action:#ffffff;
- --bg:#081d16;
- --surface-solid:#122f23;
- --surface-inset:#1c3d2e;
- --surface-rgb:18,47,35;
- --inset-rgb:28,61,46;
- --ink-rgb:255,248,232;
- --accent-rgb:241,211,138;
- --accent-soft-rgb:50,69,39;
- --sheen-rgb:241,211,138;
- --shadow-rgb:2,14,9;
- --ambient-one:#8a3441;
- --ambient-two:#2b6742;
- --persona-bg:#315b40;
- --select-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d0d6c1' stroke-width='1.8' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+ --bg:#faf5eb;
+ --surface-solid:#fffdf7;
+ --surface-inset:#efe7d8;
+ --surface-rgb:255,253,247;
+ --inset-rgb:239,231,216;
+ --ink-rgb:25,60,46;
+ --accent-rgb:141,32,54;
+ --accent-soft-rgb:237,214,209;
+ --sheen-rgb:255,253,247;
+ --shadow-rgb:49,50,35;
+ --ambient-one:#e7a29c;
+ --ambient-two:#a9c6ad;
+ --persona-bg:#214c38;
+ --select-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23445447' stroke-width='1.8' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Seasonal artwork stays behind content and never intercepts a touch. */
+html[data-theme="christmas"] body{
+ background-image:radial-gradient(circle at 10% 24%,rgba(185,139,62,.16) 0 1px,transparent 2px),radial-gradient(circle at 74% 66%,rgba(185,139,62,.12) 0 1px,transparent 2px);
+ background-size:174px 181px,237px 223px;
+}
+html[data-theme="christmas"] body::before{
+ content:"";position:absolute;inset:0 0 auto;height:144px;pointer-events:none;z-index:-1;
+ background:url('./assets/christmas-garland.svg') center top / 1200px 144px repeat-x;
+}
+html[data-theme="christmas"] .brand-word{color:var(--accent)}
+html[data-theme="christmas"] .brand-mark{stroke:var(--ink)}
+html[data-theme="christmas"] .hero-stage .art-orbit{
+ inset:-20px -8px -2px;
+ background:url('./assets/christmas-wreath.svg') center / 100% 100% no-repeat;
+ border-color:transparent;transform:none;
+}
+html[data-theme="christmas"] .art-orbit::after{border-color:transparent}
+.theme-option>input[value="christmas"]+.theme-option-card .theme-preview{
+ background-image:radial-gradient(circle at 91% 13%,#d3ad5c 0 3px,transparent 4px),linear-gradient(135deg,transparent 75%,rgba(169,198,173,.4));
+}
+@media(forced-colors:active),print{
+ html[data-theme="christmas"] body{background-image:none}
+ html[data-theme="christmas"] body::before{display:none}
+ html[data-theme="christmas"] .hero-stage .art-orbit{background-image:none}
 }
 
 /* The picker stays compact on phones and uses native radio-keyboard behavior. */
