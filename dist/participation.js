@@ -1,4 +1,5 @@
-import {ACCOUNT_KEY,googleConfig,mountGoogleAccount} from './google-account.js?v=88db72fb3bd0';
+import {PARTICIPATION_ORIGIN} from './account-api.js?v=f1b44b39b0a6';
+import {ACCOUNT_KEY,ACCOUNT_CHANGED,googleConfig,mountGoogleAccount} from './google-account.js?v=d8f8d27ca539';
 const TOKEN_KEY='manor-feedback-visitor',PROFILE_KEY='manor-participation-profiles';
 let googleAvailable=false;
 const validToken=value=>typeof value==='string'&&/^[a-f0-9]{64}$/.test(value);
@@ -16,7 +17,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
  const legacyRead=()=>{try{const target=storage();if(!target)throw Error();const value=target.getItem(TOKEN_KEY);if(validToken(value)){memory=value;memoryOnly=false;return value;}return memoryOnly?memory:'';}catch{persistent=false;return memory;}};
  const accountRead=()=>{try{const target=storage();if(!target)throw Error();const raw=target.getItem(ACCOUNT_KEY);if(!raw)return accountMemoryOnly?accountMemory:null;const value=JSON.parse(raw);if(!validToken(value?.token)||!Number.isFinite(value.expiresAt)||typeof value.profileId!=='string')return null;accountMemory=value;accountMemoryOnly=false;return value;}catch{persistent=false;return accountMemory;}};
  const read=()=>{const account=accountRead();return account?(account.expiresAt>now()?account.token:''):legacyRead();};
- function accountSave(value){accountMemory=value;try{const target=storage();if(!target)throw Error();if(value)target.setItem(ACCOUNT_KEY,JSON.stringify(value));else target.removeItem(ACCOUNT_KEY);accountMemoryOnly=false;}catch{persistent=false;accountMemoryOnly=true;}}
+ function accountSave(value){accountMemory=value;try{const target=storage();if(!target)throw Error();if(value)target.setItem(ACCOUNT_KEY,JSON.stringify(value));else target.removeItem(ACCOUNT_KEY);accountMemoryOnly=false;}catch{persistent=false;accountMemoryOnly=true;}if(globalThis.window?.dispatchEvent)window.dispatchEvent(new CustomEvent(ACCOUNT_CHANGED,{detail:value}));}
  function saved(){
   try{const raw=JSON.parse(storage()?.getItem(PROFILE_KEY)||'[]');if(Array.isArray(raw)){
    const merged=new Map(profiles.map(p=>[p.token,p]));
@@ -47,7 +48,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
   setGoogleAccount(value,expected=read()){return serial(()=>{
    if(read()!==expected)throw Error('다른 창에서 로그인 상태가 바뀌었습니다. 다시 확인해 주세요.');
    if(!validToken(value?.token)||!Number.isFinite(value.expiresAt)||value.expiresAt<=now()||typeof value.profileId!=='string')throw Error('로그인 응답이 올바르지 않습니다.');
-   remember(legacyRead());persistProfiles();accountSave({token:value.token,profileId:value.profileId,expiresAt:value.expiresAt});return true;
+   remember(legacyRead());persistProfiles();accountSave({token:value.token,profileId:value.profileId,expiresAt:value.expiresAt,...(validToken(value.accountId)?{accountId:value.accountId}:{})});return true;
   });},
   expireGoogleAccount(expected){return serial(()=>{const current=accountRead();if(current?.token!==expected)return false;accountSave({...current,expiresAt:0});return true;});},
   clearGoogleAccount(expected=read()){return serial(()=>{if(read()!==expected)return false;save('');accountSave(null);return true;});},
@@ -78,7 +79,7 @@ export function createParticipationStore({storage=()=>globalThis.localStorage,lo
  };
 }
 export const participation=createParticipationStore();
-export const PARTICIPATION_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
+export {PARTICIPATION_ORIGIN};
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyIcon='<svg class="recovery-icon ui-icon" data-icon="key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="icon-art"><circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/></g></svg>';
 const lockIcon='<svg class="recovery-icon ui-icon" data-icon="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><g class="icon-art"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></g></svg>';
@@ -216,7 +217,7 @@ export function mountRecoveryPage(root,options={}){
   root.querySelector('.recovery-heading p').textContent='Google 계정으로 로그인하고, 기존 작성 기록을 연결하세요.';
   root.querySelector('.recovery-intro h2').textContent='기기가 바뀌어도 내 기록은 그대로';
   root.querySelector('.recovery-intro p').textContent='같은 Google 계정으로 로그인하면 연결한 작성 기록을 다시 관리할 수 있습니다. 기존 복구 코드는 처음 기록을 가져올 때만 사용하세요.';
-  root.querySelector('.recovery-intro .recovery-note').textContent='즐겨찾기와 화면 설정은 현재 브라우저에 저장됩니다.';
+  root.querySelector('.recovery-intro .recovery-note').textContent='테마와 즐겨찾기는 브라우저에 저장되며, 로그인하면 계정에도 동기화됩니다.';
  }});
 }
 

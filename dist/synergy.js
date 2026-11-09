@@ -1,6 +1,6 @@
 import {situationLabel} from './model.js?v=f8d023c3841b';
 import {requestId as uuid} from './request-id.js?v=58ef88b53202';
-import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=ea43bdaa4432';
+import {participation,participationBar,openParticipation,refreshParticipationBanners} from './participation.js?v=64bcc5dd9179';
 import {SYNERGY_SITUATIONS,researchSide,SYNERGY_REPORTS,RESEARCH_TOPICS,PROPOSAL_STATES,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=5fd8ec1aadc3';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 const date=time=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(time));

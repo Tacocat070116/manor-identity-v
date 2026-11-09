@@ -1,8 +1,9 @@
-import {loadFeature} from './feature-loader.js?v=15d93bd92d0a';
+import {loadFeature} from './feature-loader.js?v=e5fd1704270a';
 import './typography.js?v=f2553395f702';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=14498846d884';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
+import {createPreferenceSync} from './preferences.js?v=5095557af69a';
 import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=f8d023c3841b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {createStatisticsUI} from './statistics.js?v=231f852ec63b';
@@ -70,6 +71,7 @@ state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').mat
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
 let favoriteBusy=false;
+let preferenceSync;
 let heroSession,disposeView=()=>{};
 let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
@@ -263,10 +265,12 @@ async function setFavorite(button){
  favoriteBusy=true;button.disabled=true;
  // Apply only this click to the latest list. A stale tab must not replace other changes.
  const save=()=>{
+  preferenceSync?.prepare();
   const saved=readFavorites();
   if(!saved){toast('즐겨찾기를 불러오지 못해 변경하지 않았습니다. 새로고침 후 다시 시도해 주세요.');return;}
   if(selected)saved.add(id);else saved.delete(id);
   localStorage.setItem(FAVORITES_KEY,JSON.stringify([...saved]));
+  preferenceSync?.favoriteChanged(id,selected);
   state.favorites=saved;
   refreshFavoriteDisplay();
  };
@@ -293,7 +297,7 @@ function explore(){
 function updateExplorer(){
  const list=sortCharacters(db.characters.filter(c=>(state.side==='전체'||c.side===state.side)&&(!state.specialty||c.specialties.includes(state.specialty))&&(!state.favoriteOnly||state.favorites.has(c.id))&&matchesCharacter(c,state.search)),state.sort);
  const root=$('#explorer-results');if(!root)return;
- root.innerHTML=`<p class="result-count" role="status">${list.length}명의 캐릭터${state.specialty?' · #'+esc(state.specialty):''}${state.favoriteOnly?' · 이 기기에 저장한 즐겨찾기':''}</p>${favoriteInsight(list)}${list.length?`<div class="character-grid">${list.map(card).join('')}</div>`:`<div class="empty">${icon(state.favoriteOnly?'star':'search')}<h3>${state.favoriteOnly?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${state.favoriteOnly?'캐릭터 상세에서 별을 눌러 자주 찾는 캐릭터를 모아 보세요.':'이름이나 필터를 바꿔 다시 찾아보세요.'}</p><button class="btn small" data-action="reset-explore">전체 캐릭터 보기</button></div>`}`;
+ root.innerHTML=`<p class="result-count" role="status">${list.length}명의 캐릭터${state.specialty?' · #'+esc(state.specialty):''}${state.favoriteOnly?' · 저장한 즐겨찾기':''}</p>${favoriteInsight(list)}${list.length?`<div class="character-grid">${list.map(card).join('')}</div>`:`<div class="empty">${icon(state.favoriteOnly?'star':'search')}<h3>${state.favoriteOnly?'아직 저장한 캐릭터가 없습니다.':'검색 결과가 없습니다.'}</h3><p>${state.favoriteOnly?'캐릭터 상세에서 별을 눌러 자주 찾는 캐릭터를 모아 보세요.':'이름이나 필터를 바꿔 다시 찾아보세요.'}</p><button class="btn small" data-action="reset-explore">전체 캐릭터 보기</button></div>`}`;
 }
 function refreshExplorer(){
  document.querySelectorAll('[data-action="side"], [data-action="favorites"]').forEach(button=>{
@@ -551,15 +555,31 @@ async function share(){
 }
 function openThemePicker(){
  const dialog=$('#theme-picker');
- dialog.innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2 id="theme-title">${icon('palette')}컬러 테마</h2><button class="icon-btn" data-action="close-dialog" data-dialog="theme-picker" aria-label="테마 선택 창 닫기">${icon('close')}</button></div></div><div class="theme-options" role="radiogroup" aria-label="컬러 테마 선택">${themeOptions(state.theme,icon('check'))}</div><p class="theme-status" id="theme-status" role="status">${resolveTheme(state.theme).name} 테마 사용 중 · 선택한 테마는 자동으로 저장됩니다.</p>`;
+ dialog.innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2 id="theme-title">${icon('palette')}컬러 테마</h2><button class="icon-btn" data-action="close-dialog" data-dialog="theme-picker" aria-label="테마 선택 창 닫기">${icon('close')}</button></div></div><div class="theme-options" role="radiogroup" aria-label="컬러 테마 선택">${themeOptions(state.theme,icon('check'))}</div><p class="theme-status" id="theme-status" role="status">${resolveTheme(state.theme).name} 테마 사용 중 · ${preferenceSync?.message()||'선택한 테마는 자동으로 저장됩니다.'}</p>`;
  dialog.showModal();
  dialog.querySelector('input:checked')?.focus();
 }
 function selectColorTheme(id){
  if(!colorThemes.some(theme=>theme.id===id))return;
+ preferenceSync?.prepare();
  const {theme,saved}=applyTheme(id,{document,storage:themeStorage});
  state.theme=theme.id;header();
+ if(saved)preferenceSync?.themeChanged(id);
  $('#theme-status').textContent=theme.name+' 테마 사용 중 · '+(saved?'다음 방문에도 유지됩니다.':'브라우저에서 저장을 허용하지 않아 이번 방문에만 적용됩니다.');
+ if(saved&&preferenceSync)updatePreferenceStatus(preferenceSync.message());
+}
+function updatePreferenceStatus(message){
+ const status=document.querySelector('#theme-status');
+ if(status)status.textContent=resolveTheme(state.theme).name+' 테마 사용 중 · '+message;
+}
+function applyPreferences(value){
+ if(value.theme&&value.theme!==state.theme){
+  state.theme=applyTheme(value.theme,{document,remember:false}).theme.id;
+  if(navigationController)header();
+  document.querySelectorAll('input[name="color-theme"]').forEach(input=>{input.checked=input.value===state.theme;});
+ }
+ const favorites=new Set(value.favorites);
+ if(favorites.size!==state.favorites.size||[...favorites].some(id=>!state.favorites.has(id))){state.favorites=favorites;refreshFavoriteDisplay();}
 }
 async function swapSelections(mode){
  if(mode!==state.view||!['matchup','compare'].includes(mode))return;
@@ -614,12 +634,14 @@ window.addEventListener('focus',syncFavorites);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFavorites();});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=aef73f96a845')]);
+ const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=e7155e648a87')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
  releaseLog=releases;db=data;Object.assign(db.meta,specialties.meta);
  for(const c of db.characters){const role=specialties.characters[c.id];if(!validSpecialties(c.side,role))throw Error('캐릭터 역할 태그 자료를 확인하지 못했습니다.');Object.assign(c,role);const introduction=introductions.characters[c.id];if(typeof introduction!=='string'||!introduction.trim())throw Error('캐릭터 소개 자료를 확인하지 못했습니다.');c.introduction=introduction;}
- byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;footer();readRoute();await render();
+ byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));state.character=byName['블러디 퀸'].id;state.own=state.character;state.a=state.character;state.b=byName['붉은 나비'].id;
+ preferenceSync=createPreferenceSync({characterIds:Object.keys(byId),themeIds:colorThemes.map(theme=>theme.id),apply:applyPreferences,onStatus:updatePreferenceStatus});
+ footer();readRoute();await render();preferenceSync.start();
  }catch(e){$('#main').innerHTML=`<div class="shell"><div class="empty section-gap"><h1>사이트 자료를 불러오지 못했습니다.</h1><p>${esc(e.message)}</p><button class="btn primary" id="reload-app">다시 불러오기</button></div></div>`;$('#reload-app')?.addEventListener('click',()=>location.reload());}}
 boot();

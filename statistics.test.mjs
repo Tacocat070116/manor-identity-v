@@ -96,7 +96,7 @@ test('missing values sort last and zero remains a real zero',()=>{
 function runtime(){
  const nodes=new Map(),handlers={},fetches=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},focus(){},showModal(){},close(){}});
- const context={...compendium,...themeUI,...model,...releaseUI,createStatisticsUI,selectRanked,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...compendium,...themeUI,...model,...releaseUI,createStatisticsUI,selectRanked,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
  document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},getElementById(id){return nodes.get('#'+id);},addEventListener(t,h){handlers[t]=h;}},
  window:{addEventListener(){},scrollTo(){},scrollY:0,history:{replaceState(_a,_b,url){context.location.hash=url;}}},
  location:{hash:'#v=statistics',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
