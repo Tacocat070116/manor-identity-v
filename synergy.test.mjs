@@ -31,6 +31,22 @@ test('post cards escape user text and retain shareable pair links; edit forms lo
  const route=new URLSearchParams(synergyRoute('c58','c55',post.id).slice(1));assert.equal(route.get('post'),post.id);assert.equal(route.get('v'),'laboratory');
 });
 
+test('research activity labels follow topic and faction while stored values and user prose remain intact',()=>{
+ const post={id:'90000000-0000-4000-8000-000000000001',title:'추격 경험',body:'이용자가 작성한 추격 경험은 그대로 유지합니다.',caution:'기존 추격 조건',situations:['추격'],createdAt:1800000000000,author:{name:'작성자'}};
+ for(const [topic,characterIds,label] of [
+  ['combination',['c55','c58'],'어그로'],['survivor_persona',['c58'],'어그로'],['hunter_persona',['c16'],'사냥'],
+  ['strategy',['c16'],'사냥'],['strategy',['c58'],'어그로'],['strategy',['c16','c58'],'어그로·사냥'],['strategy',[],'어그로·사냥'],
+ ]){
+  const row={...post,topic,characterIds},card=synergyPostCard(row,characters),editor=synergyEditor({characters,post:row});
+  assert.ok(card.includes(`<span class="tag">${label}</span>`));
+  assert.ok(editor.includes(`value="추격" checked><span>${label}</span>`));
+  assert.ok(card.includes(post.body));assert.ok(editor.includes(post.caution));
+  assert.deepEqual(row.situations,['추격']);
+ }
+ const legacy=synergyPostCard({...post,characterIds:['c55','c58']},characters);
+ assert.match(legacy,/<span class="tag">어그로<\/span>/,'legacy combination posts keep their original category');
+});
+
 test('rebuilding a discussion clears the hidden reply target and starts a fresh comment request',async()=>{
  const originals=new Map();
  const replace=(key,value)=>{originals.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{configurable:true,writable:true,value});};

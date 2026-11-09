@@ -37,11 +37,13 @@ test('matchup swap reverses perspective, retains situation and focus, and can be
  const h=await harness('#v=matchup&own=c16&opp=c37&situation=추격');
  const before=h.html();
  assert.match(before,/data-action="swap-selection"/);
+ assert.match(before,/<option value="추격" selected>사냥<\/option>/);
  await h.swapSelections('matchup');
  assert.equal(h.state.own,'c37');assert.equal(h.state.opponent,'c16');
  assert.equal(h.tipMounts.at(-1).ownId,'c37');assert.equal(h.tipMounts.at(-1).opponentId,'c16');assert.equal(h.tipsDisposed(),1);
  assert.equal(h.params().get('own'),'c37');assert.equal(h.params().get('opp'),'c16');
  assert.equal(h.state.situation,'추격');assert.equal(h.params().get('situation'),'추격');
+ assert.match(h.html(),/<option value="추격" selected>어그로<\/option>/);
  for(const [heading,character,field] of [['경계할 핵심 스킬','c16','skill'],['내 스킬을 아낄 때','c37','hold']]){
   const paragraph=h.html().split(heading+'</h3><p>')[1]?.split('</p>')[0]||'';
   assert.equal(paragraph.replace(/<[^>]*>/g,''),byId[character][field]);

@@ -87,7 +87,7 @@ test('all 89 characters have consistent team totals and source-backed updated co
  const terminologyEdits=new Map(read('research/localization/2026-10-27/edits.json').map(e=>[e.path,e]));
  const terminologyFollowup=new Map(read('research/localization/2026-10-27-followup/edits.json').map(e=>[e.path,e]));
  const latest=(index,field,previous)=>{
-  const history=[...terminologyEdits.values(),...terminologyFollowup.values(),...['2026-10-29','2026-10-30','2026-10-31'].flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits)];
+  const history=[...terminologyEdits.values(),...terminologyFollowup.values(),...fs.readdirSync('research/editorial').filter(date=>/^\d{4}-\d{2}-\d{2}$/.test(date)&&fs.existsSync('research/editorial/'+date+'/consistency-edits.json')).sort().flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits)];
   for(const edit of history.filter(e=>e.path===`dist/data.json/characters/${index}/${field}`)){
    assert.equal(edit.before,previous,`${index} ${field} preserves terminology history`);
    previous=edit.after;
@@ -149,7 +149,7 @@ test('Grave Keeper chase disadvantage keeps the separate rescue exception reacha
  assert.match(chase[0].condition,/돌진/);
  assert.match(rescue[0].condition,/잠행 시작 동작을 마쳐야/);
  assert.match(rescue[0].condition,/삽이 남아/);
- assert.match(rescue[0].condition,/먼저 추격받아/);
+ assert.match(rescue[0].condition,/먼저 어그로를 끌어/);
  assert.deepEqual(contextEvidence(db.matchups,'M131'),rescue);
  assert.deepEqual(pairEvidence(db.matchups,wu,grave,'구출'),rescue);
 });

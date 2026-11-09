@@ -9,7 +9,7 @@ import {createCarouselSession,carouselItems} from './dist/carousel.js';
 import {createStatisticsUI} from './dist/statistics.js';
 import {selectRanked} from './dist/statistics-model.js';
 import * as releaseUI from './dist/releases.js';
-import {statsFor,queryBanRecords,banRecordPage,pairEvidence,filterRows,matchesCharacter,sortCharacters,characterSortOptions} from './dist/model.js';
+import {chaseActivity,situationLabel,statsFor,queryBanRecords,banRecordPage,pairEvidence,filterRows,matchesCharacter,sortCharacters,characterSortOptions} from './dist/model.js';
 function safeUrl(value){try{const url=new URL(value);return ['http:','https:'].includes(url.protocol)?url.href:'';}catch{return '';}}
 const read=n=>JSON.parse(fs.readFileSync('dist/'+n,'utf8'));
 const db=read('data.json'),matches=read('matches.json'),bans=read('bans.json'),specialties=read('specialties.json');
@@ -89,7 +89,7 @@ for(const ch of db.characters){
    assert.ok(evidence?.listEligible&&evidence.status==='반영',item.evidence+' approved list evidence');
    assert.equal(evidence.advantage===ch.name,kind==='easy',item.evidence+' correct direction');
    assert.ok([evidence.hunter,evidence.survivor].includes(ch.name)&&[evidence.hunter,evidence.survivor].includes(item.name),item.evidence+' correct pair');
-   assert.equal(item.reason,`[${evidence.situation}] ${evidence.summary}\n조건: ${evidence.condition}`,item.evidence+' current wording');
+   assert.equal(item.reason,`[${situationLabel(evidence.situation,ch.side)}] ${evidence.summary}\n조건: ${evidence.condition}`,item.evidence+' current wording');
   }
  }
 }
@@ -133,7 +133,7 @@ assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,cont
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={chaseActivity,situationLabel,...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,selectRanked,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -260,7 +260,7 @@ console.log('PASS: 89 portraits, 356 character template variants, data integrity
 for(const {c:cid,kind,item,html} of context.audit.summaries){
  const c=db.characters.find(c=>c.id===cid),resolved=compendium.summaryEvidence(db.matchups,c,item,kind);
  assert.ok(resolved,c.name+' '+item.name+' has approved context');
- for(const text of [resolved.primary.situation,resolved.primary.summary,resolved.primary.condition])assert.ok(html.includes(text.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))),c.name+' '+item.name+' preserves situation and conditions');
+ for(const text of [situationLabel(resolved.primary.situation,c.side),resolved.primary.summary,resolved.primary.condition])assert.ok(html.includes(text.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))),c.name+' '+item.name+' preserves situation and conditions');
  for(const variant of resolved.contexts)assert.ok(html.includes(variant.summary),'alternate situation preserved');
 }
 assert.ok(context.audit.pairFirst.indexOf('이 대진에서 먼저 확인할 것')<context.audit.pairFirst.indexOf('기본 스킬·공통 대응 보기'));

@@ -16,7 +16,7 @@ const byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));
 const managed=[...db.characters.flatMap(c=>fields(c,characterFields)),...db.matchups.flatMap(m=>fields(m,['summary','condition','situation','situationDetail'])),...db.links.flatMap(l=>fields(l,['reason','use','when','caution'])),...Object.values(roles.characters).flatMap(r=>Object.values(r.specialtyReasons)),...Object.values(intros.characters)];
 
 test('authored guide, matchup, synergy and role copy share the Korean glossary',()=>{
- for(const value of managed)assert.doesNotMatch(value,/어그로|피리|평타|암호 장치|암호장치|암호기|포탈|포털|쿨타임|아이템|백우산|흑우산|흰 우산|검은 우산|사진 세계|감정 전이|분발|향기 지팡이|은폐 진행도/);
+ for(const value of managed)assert.doesNotMatch(value,/피리|평타|암호 장치|암호장치|암호기|포탈|포털|쿨타임|아이템|백우산|흑우산|흰 우산|검은 우산|사진 세계|감정 전이|분발|향기 지팡이|은폐 진행도/);
  for(const value of managed)assert.doesNotMatch(value,/해독 진도|재사용 시간|재사용 대기시간|플라이휠(?! 효과)|플라이휠 효과(?:을|은|과|으로|이\s)/,'unified terms keep the correct Korean particle');
  for(const side of ['생존자','감시자']){
   const members=db.characters.filter(c=>c.side===side);
@@ -28,6 +28,18 @@ test('authored guide, matchup, synergy and role copy share the Korean glossary',
    assert.deepEqual(Object.keys(role.specialtyReasons).sort(),[...role.specialties].sort());
   }
  }
+});
+
+test('current authored copy distinguishes kiting and hunting without rewriting the named pursuit attack',()=>{
+ const prose=[...db.characters.flatMap(c=>[...fields(c,characterFields),...c.hard.map(i=>i.reason),...c.easy.map(i=>i.reason)]),...db.matchups.flatMap(m=>fields(m,['summary','condition'])),...db.links.flatMap(l=>fields(l,['reason','use','when','caution'])),...Object.values(roles.characters).flatMap(r=>Object.values(r.specialtyReasons)),...Object.values(intros.characters)];
+ for(const text of prose){
+  assert.doesNotMatch(text.replaceAll('추격 공격',''),/추격/,'current prose uses the faction-specific activity');
+  assert.doesNotMatch(text,/어그로(?:을|은|으로|과|받|당)|재어그로|재사냥|사냥(?:받|당)/,'particle and passive phrasing remains grammatical');
+ }
+ assert.match(byId.c11.skill,/추격 공격/,'a named game skill remains unchanged');
+ assert.match(byId.c71.tips.join(' '),/정원사를 사냥한다면/,'opponent tips use the hunter action on a survivor page');
+ assert.match(byId.c53.tips.join(' '),/이후 어그로에도 재사용/,'survivor board reuse stays kiting within hunter advice');
+ assert.ok(db.matchups.some(m=>m.summary==='첫 어그로에서 공으로 거리를 벌리면 공장장의 사냥 시간이 길어집니다.'),'a shared matchup sentence can describe both actors');
 });
 
 test('item names are contextual and character names remain intact',()=>{

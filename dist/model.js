@@ -1,5 +1,11 @@
 export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=096d68ea57ce';
 export const REFERENCE_DATE = '2026-10-31';
+export const chaseActivity=side=>side==='생존자'?'어그로':side==='감시자'?'사냥':'어그로·사냥';
+// Display labels only: retain stored situation keys and existing shared URLs.
+export function situationLabel(value,side){
+ const term=chaseActivity(side);
+ return String(value??'').replaceAll('재추격',term+' 재개').replaceAll('추격 지원','어그로 지원').replaceAll('추격',term);
+}
 export function cutoff(days, reference = REFERENCE_DATE) {
   if (!Number(days)) return '';
   const d = new Date(reference + 'T00:00:00Z');

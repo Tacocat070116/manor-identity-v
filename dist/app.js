@@ -1,13 +1,13 @@
-import {loadFeature} from './feature-loader.js?v=5f057c037c34';
+import {loadFeature} from './feature-loader.js?v=15d93bd92d0a';
 import './typography.js?v=f2553395f702';
-import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=b9019d6b0d40';
+import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=14498846d884';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=20b623b7cbb2';
-import {statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=83ce7088fcef';
+import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=f8d023c3841b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=5cd94008b541';
-import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=07aa8169749c';
-import {selectRanked} from './statistics-model.js?v=fb23a81e83d6';
+import {createStatisticsUI} from './statistics.js?v=231f852ec63b';
+import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=5fd8ec1aadc3';
+import {selectRanked} from './statistics-model.js?v=34bef5af9850';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=e46d44cddb04';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -144,7 +144,7 @@ const loadRanked=async(filters={...state.statistics})=>{
  }
  return data;
 };
-const loadGuideData=cachedJSON('data.json?v=48f821cc3126','공략 자료를 불러오지 못했습니다.');
+const loadGuideData=cachedJSON('data.json?v=4123330f09de','공략 자료를 불러오지 못했습니다.');
 async function ensureGuides(){
  if(db.matchups)return;
  const data=await loadGuideData();
@@ -190,7 +190,7 @@ const availableSpecialties=(side=state.side)=>side==='전체'?[...new Set(Object
 function specialtyFilters(){return `<div class="specialty-toolbar"><div class="specialty-label">역할 태그</div><div class="specialty-options" role="group" aria-label="캐릭터 역할 태그 필터">${['',...availableSpecialties()].map(v=>`<button type="button" data-action="specialty" data-specialty="${v}" class="specialty-filter ${state.specialty===v?'active':''}" aria-pressed="${state.specialty===v}">${v?'#'+esc(v):'전체 태그'}</button>`).join('')}</div></div>`;}
 
 const char=(id,fallback='블러디 퀸')=>byId[id]||byName[fallback]||db.characters[0];
-const options=(values,selected,all='전체')=>`<option value="">${all}</option>${values.map(v=>`<option value="${esc(v)}" ${v===selected?'selected':''}>${esc(v)}</option>`).join('')}`;
+const options=(values,selected,all='전체',label=v=>v)=>`<option value="">${all}</option>${values.map(v=>`<option value="${esc(v)}" ${v===selected?'selected':''}>${esc(label(v))}</option>`).join('')}`;
 const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
@@ -314,8 +314,8 @@ function matchupSummary(c,item,kind,{label=''}={}){
  const resolved=summaryEvidence(db.matchups,c,item,kind),opponent=byName[item.name];
  if(!resolved||!opponent)return '';
  const {primary:m,contexts}=resolved;
- const variant=e=>`<div class="matchup-summary-context"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회')}${evidenceDetail(e)?chip(evidenceDetail(e)):''}</div><p>${matchupCopy(e.summary,e)}</p><p class="matchup-condition"><strong>적용 조건</strong> ${matchupCopy(cleanCondition(e.condition),e)}</p></div>`;
- return `<article class="matchup-summary"><div class="matchup-summary-heading">${label?`<strong>${esc(label)}</strong>`:`<button class="mini-character" data-action="character" data-id="${opponent.id}" aria-label="${esc(opponent.name)} 공략 보기">${portrait(opponent)}<span>${esc(opponent.name)}</span></button>`}<span class="tag">${esc(m.situation)}</span></div><p class="matchup-summary-copy">${matchupCopy(m.summary,m)}</p><details class="matchup-summary-details"><summary>적용 조건${contexts.length?' · 다른 상황 '+contexts.length+'개':''}</summary><p class="matchup-condition">${matchupCopy(cleanCondition(m.condition),m)}</p>${evidenceDetail(m)?`<p class="muted">${esc(evidenceDetail(m))}</p>`:''}${contexts.map(variant).join('')}<a class="text-link" href="${route({v:'matchup',own:c.id,opp:opponent.id})}">이 대진 전체 보기 ↗</a></details></article>`;
+ const variant=e=>`<div class="matchup-summary-context"><div class="tag-row">${chip(situationLabel(e.situation,c.side))}${chip(e.advantage+'의 기회')}${evidenceDetail(e)?chip(situationLabel(evidenceDetail(e),c.side)):''}</div><p>${matchupCopy(e.summary,e)}</p><p class="matchup-condition"><strong>적용 조건</strong> ${matchupCopy(cleanCondition(e.condition),e)}</p></div>`;
+ return `<article class="matchup-summary"><div class="matchup-summary-heading">${label?`<strong>${esc(label)}</strong>`:`<button class="mini-character" data-action="character" data-id="${opponent.id}" aria-label="${esc(opponent.name)} 공략 보기">${portrait(opponent)}<span>${esc(opponent.name)}</span></button>`}<span class="tag">${esc(situationLabel(m.situation,c.side))}</span></div><p class="matchup-summary-copy">${matchupCopy(m.summary,m)}</p><details class="matchup-summary-details"><summary>적용 조건${contexts.length?' · 다른 상황 '+contexts.length+'개':''}</summary><p class="matchup-condition">${matchupCopy(cleanCondition(m.condition),m)}</p>${evidenceDetail(m)?`<p class="muted">${esc(situationLabel(evidenceDetail(m),c.side))}</p>`:''}${contexts.map(variant).join('')}<a class="text-link" href="${route({v:'matchup',own:c.id,opp:opponent.id})}">이 대진 전체 보기 ↗</a></details></article>`;
 }
 function favoriteInsight(list){
  if(!state.favoriteOnly||!db.matchups)return '';
@@ -345,7 +345,7 @@ function auxiliaryTraitCard(l){
 }
 function survivorSynergyCard(group,c){
  const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명에 따른 조합 후보로, 실전 연계 효과는 미확인입니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략 기준입니다. 검토일 ${esc(l.reviewedAt)} 이후의 스킬 변경을 확인하세요.</p>`:''}`;
- return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(s)).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">이 조합 토론 →</a></article>`;
+ return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(situationLabel(s,'생존자'))).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">이 조합 토론 →</a></article>`;
 }
 function survivorSynergies(c){
  const groups=synergyGroups(db.links,c.name,byId);
@@ -363,8 +363,8 @@ function matchupItem(i){
 }
 function matchupLabel(c,kind){return `상대하기 ${kind==='hard'?'어려운':'쉬운'} ${c.side==='생존자'?'감시자':'생존자'}`;}
 function characterMatchups(c){
- const item=m=>({name:c.side==='감시자'?m.survivor:m.hunter,reason:`[${m.situation}] ${m.summary}\n조건: ${m.condition}`,evidence:m.id});
- return `<div class="note has-icon">${icon('info')}<span>[추격] 직접 쫓기는 상황 · [구출] 의자 구출 · [커버] 동료 보호·풍선 구출 · [운영] 해독·회복·재정비. 표시된 상황과 조건에 따라 유불리가 달라집니다.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 상황별 분석이며 대진 승률 순위가 아닙니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
+ const item=m=>({name:c.side==='감시자'?m.survivor:m.hunter,reason:`[${situationLabel(m.situation,c.side)}] ${m.summary}\n조건: ${m.condition}`,evidence:m.id});
+ return `<div class="note has-icon">${icon('info')}<span>[${chaseActivity(c.side)}] ${c.side==='생존자'?'직접 쫓기는 상황':'생존자를 쫓는 상황'} · [구출] 의자 구출 · [커버] 동료 보호·풍선 구출 · [운영] 해독·회복·재정비. 표시된 상황과 조건에 따라 유불리가 달라집니다.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 상황별 분석이며 대진 승률 순위가 아닙니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
  const all=characterEvidence(db.matchups,c,kind),selected=new Set(c[kind].map(i=>i.evidence)),rest=all.filter(m=>!selected.has(m.id));
  return `<section><div class="heading-inline matchup-section-heading"><h2>${matchupLabel(c,kind)}</h2><span>상황별 ${all.length}건</span></div><div class="matchup-list">${c[kind].map(matchupItem).join('')}${!all.length?'<div class="note">확인된 상성이 없습니다. 통계 탭에서 대회 기록을 볼 수 있습니다.</div>':''}</div>${rest.length?`<details class="methodology section-gap"><summary>다른 상대·상황 ${rest.length}건 더 보기</summary><div class="matchup-list section-gap">${rest.map(m=>matchupItem(item(m))).join('')}</div></details>`:''}</section>`;
  }).join('')}</div><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">상대별 대회 기록 →</a>`;
@@ -392,7 +392,7 @@ function refreshStatistics(){
 }
 function statsPanel(c,rows,details=null,detailError=''){
  const s=statsFor(rows,c,state.stats),relations=tournamentRelations(rows,c,state.stats);
- return `${commonFilters('stats')}<div class="note">${c.side==='감시자'?'감시자':'생존자 팀'}의 대회 결과입니다. 같은 팀·대진의 기록에는 선수·밴픽·맵의 영향이 함께 포함됩니다. 최근 기간은 ${REFERENCE_DATE} 기준입니다.</div><div class="stats-grid"><div class="stat-box"><label>출전 경기</label><strong>${num(s.appearances)}</strong><small>경기</small></div><div class="stat-box"><label>팀 승률 · 무승부 포함</label><strong>${s.winRate===null?'—':pct(s.winRate)}</strong></div><div class="stat-box"><label>결과 확인</label><strong>${num(s.results)}</strong><small>${s.smallSample?'적은 표본':'경기'}</small></div></div><div class="panel"><div class="chart-heading"><h3>승 · 무 · 패</h3><small>${esc(c.name)} 관점</small></div>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 결과 미확인 ${num(s.unknown)}경기는 비율에서 제외합니다.</p></div><div class="two-col section-gap"><section class="panel"><h2 class="panel-title">${icon('swords')}${c.side==='감시자'?'상대 팀에 포함된 생존자':'상대한 감시자'}</h2><p class="statistics-caption">1:1 추격 승률이 아닌 해당 대진의 팀 결과입니다.</p>${relationTable(relations.opponents,'상대')}</section><section class="panel"><h2 class="panel-title">${icon(c.side==='생존자'?'globe':'chart')}${c.side==='생존자'?'함께 출전한 생존자':'맵별 결과'}</h2><p class="statistics-caption">${c.side==='생존자'?'동반 출전 빈도와 팀 결과입니다. 승률 상승 효과를 측정한 값은 아닙니다.':'같은 기간·대회·맵 필터를 적용한 결과입니다.'}</p>${relationTable(c.side==='생존자'?relations.companions:relations.maps,c.side==='생존자'?'동료':'맵')}</section></div>${c.side==='생존자'?`<details class="methodology section-gap"><summary>맵별 출전·결과 보기</summary>${relationTable(relations.maps,'맵')}</details>`:''}${details?observationPanel(c,details):detailError?`<div class="note section-gap">${esc(detailError)} <button class="btn small" data-action="retry">다시 불러오기</button></div>`:''}`;
+ return `${commonFilters('stats')}<div class="note">${c.side==='감시자'?'감시자':'생존자 팀'}의 대회 결과입니다. 같은 팀·대진의 기록에는 선수·밴픽·맵의 영향이 함께 포함됩니다. 최근 기간은 ${REFERENCE_DATE} 기준입니다.</div><div class="stats-grid"><div class="stat-box"><label>출전 경기</label><strong>${num(s.appearances)}</strong><small>경기</small></div><div class="stat-box"><label>팀 승률 · 무승부 포함</label><strong>${s.winRate===null?'—':pct(s.winRate)}</strong></div><div class="stat-box"><label>결과 확인</label><strong>${num(s.results)}</strong><small>${s.smallSample?'적은 표본':'경기'}</small></div></div><div class="panel"><div class="chart-heading"><h3>승 · 무 · 패</h3><small>${esc(c.name)} 관점</small></div>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 결과 미확인 ${num(s.unknown)}경기는 비율에서 제외합니다.</p></div><div class="two-col section-gap"><section class="panel"><h2 class="panel-title">${icon('swords')}${c.side==='감시자'?'상대 팀에 포함된 생존자':'상대한 감시자'}</h2><p class="statistics-caption">1:1 ${chaseActivity(c.side)} 승률이 아닌 해당 대진의 팀 결과입니다.</p>${relationTable(relations.opponents,'상대')}</section><section class="panel"><h2 class="panel-title">${icon(c.side==='생존자'?'globe':'chart')}${c.side==='생존자'?'함께 출전한 생존자':'맵별 결과'}</h2><p class="statistics-caption">${c.side==='생존자'?'동반 출전 빈도와 팀 결과입니다. 승률 상승 효과를 측정한 값은 아닙니다.':'같은 기간·대회·맵 필터를 적용한 결과입니다.'}</p>${relationTable(c.side==='생존자'?relations.companions:relations.maps,c.side==='생존자'?'동료':'맵')}</section></div>${c.side==='생존자'?`<details class="methodology section-gap"><summary>맵별 출전·결과 보기</summary>${relationTable(relations.maps,'맵')}</details>`:''}${details?observationPanel(c,details):detailError?`<div class="note section-gap">${esc(detailError)} <button class="btn small" data-action="retry">다시 불러오기</button></div>`:''}`;
 }
 function relationTable(rows,label){
  if(!rows.length)return '<p class="muted">선택한 조건의 기록이 없습니다. 기간·맵·대회를 넓혀 보세요.</p>';
@@ -421,7 +421,7 @@ function matchupPage(){
  return `${title('MATCHUP STUDIO','매치업','내 캐릭터와 상대를 선택해 상황별 상성을 확인하세요.')}<div class="selection-board">${selectionCard(own,'own','내 캐릭터')}${selectionSwap('matchup',!opp)}${selectionCard(opp,'opponent','상대 캐릭터','상대 선택')}</div>
  ${!opp?`<div class="empty">${icon('swords')}<h3>상대할 캐릭터를 선택해 주세요.</h3><button class="btn primary" data-action="picker" data-mode="opponent">상대 선택 ${icon('plus')}</button></div>`:
  `<div class="briefing-header"><div><div class="eyebrow">MATCHUP</div><h2>${esc(own.name)} → ${esc(opp.name)}</h2></div><button class="btn small share-btn" data-action="share" aria-label="현재 대진 공유">${icon('share')}<span>공유</span></button></div>
- <section class="section-gap"><div class="section-heading"><div><h2>상황별 상성</h2></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황')}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(e.situation)}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${evidenceDetail(e)?chip(evidenceDetail(e)):''}</div><h3>[${esc(e.situation)}] ${matchupCopy(e.summary,e)}</h3><p class="matchup-condition"><strong>적용 조건</strong> ${matchupCopy(cleanCondition(e.condition),e)}</p></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진에서 확인된 상성 정보가 없습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}</section>
+ <section class="section-gap"><div class="section-heading"><div><h2>상황별 상성</h2></div>${situations.length?`<select id="situation-filter" class="filter-select" aria-label="상성 상황 필터">${options(situations,state.situation,'모든 상황',s=>situationLabel(s,own.side))}</select>`:''}</div>${evidence.length?evidence.map(e=>`<article class="evidence-card"><div class="tag-row">${chip(situationLabel(e.situation,own.side))}${chip(e.advantage+'의 기회',e.advantage===own.name?'green':'warm')}${evidenceDetail(e)?chip(situationLabel(evidenceDetail(e),own.side)):''}</div><h3>[${esc(situationLabel(e.situation,own.side))}] ${matchupCopy(e.summary,e)}</h3><p class="matchup-condition"><strong>적용 조건</strong> ${matchupCopy(cleanCondition(e.condition),e)}</p></article>`).join(''):`<div class="empty">${icon('book')}<h3>이 대진에서 확인된 상성 정보가 없습니다.</h3><p>일반 대응은 참고할 수 있지만, 유리·불리한 상성으로 확정하지 않습니다.</p></div>`}</section>
  <details class="matchup-basics section-gap"><summary>기본 스킬·공통 대응 보기</summary><p class="muted">공통 대응법입니다. 대진별 유불리는 위의 적용 조건을 확인하세요.</p><div class="briefing"><article class="brief-card"><div class="brief-step">01 · 먼저 볼 것 ${icon('search')}</div><h3>경계할 핵심 스킬</h3><p>${guide(opp.skill,opp.id)}</p></article><article class="brief-card"><div class="brief-step">02 · 움직이는 방법 ${icon('arrow')}</div><h3>상대에게 대응하기</h3><p>${guide(opp.response,opp.id)}</p></article><article class="brief-card"><div class="brief-step">03 · 남겨 둘 자원 ${icon('clock')}</div><h3>내 스킬을 아낄 때</h3><p>${guide(own.hold,own.id)}</p></article></div> <div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}상대 대응 팁</h2>${opp.tips.map((t,i)=>`<p class="prose ${i?'section-gap':''}">${guide(t,opp.id)}</p>`).join('')}</div><div class="panel"><h2 class="panel-title">${icon('shield')}내 인격 기준</h2>${personaBuild(own)}<p class="muted section-gap">${guide(own.personaReason,own.id)}</p><div class="divider"></div><p class="muted">기본 인격입니다. 대진·팀 역할·맵·시작 위치에 맞춰 조정하세요.</p></div></div></details>`}`;
 }
 function miniCharacters(c,kind){const html=c[kind].map(item=>matchupSummary(c,item,kind)).join('');return html?`<div class="matchup-summaries">${html}</div>`:'<p class="muted small">확인된 상성이 없습니다.</p>';}
@@ -488,7 +488,7 @@ async function render({scroll=false}={}){
    body.innerHTML+='<div id="matchup-tips"></div><section class="panel section-gap" id="pair-observations"><p class="muted">두 캐릭터가 만난 대회 기록을 불러오고 있습니다.</p></section>';
    disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:own.id,opponentId:opp.id});
    try{const rows=await loadMatches();if(token!==renderToken)return;const s=statsFor(rows,own,{...state.stats,opponent:opp.id});
-    $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 추격 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
+    $('#pair-observations').innerHTML=`<h2 class="panel-title">${icon('chart')}대회에서 만난 두 캐릭터</h2>${commonFilters('matchup')}<p class="muted">${esc(own.name)} 관점 · 출전 ${num(s.appearances)}경기 · 결과 ${num(s.results)}경기</p>${resultChart(s)}<p class="statistics-caption">${num(s.win)}승 · ${num(s.draw)}무 · ${num(s.loss)}패. 해당 생존자가 팀에 포함된 경기 결과이며, 개인 ${chaseActivity(own.side)} 승률이나 위 상성 설명의 검증 점수가 아닙니다.</p>`;
    }catch(e){if(token===renderToken)$('#pair-observations').innerHTML=loadError(e);}
   }
  }
@@ -614,7 +614,7 @@ window.addEventListener('focus',syncFavorites);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFavorites();});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
- const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=41cb99b95c03'),fetch('introductions.json?v=6103572238d9'),fetch('releases.json?v=aef73f96a845')]);
+ const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=aef73f96a845')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

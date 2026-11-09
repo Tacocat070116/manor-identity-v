@@ -1,4 +1,10 @@
 export const SYNERGY_SITUATIONS=['추격','구출','커버','해독','회복','이동','운영'];
+export function researchSide(topic,ids,characters){
+ if(topic==='hunter_persona')return '감시자';
+ if(topic==='combination'||topic==='survivor_persona')return '생존자';
+ const sides=new Set(ids.map(id=>characters[id]?.side).filter(Boolean));
+ return sides.size===1?[...sides][0]:'';
+}
 export const RESEARCH_TOPICS={combination:'생존자 조합',survivor_persona:'생존자 인격',hunter_persona:'감시자 인격',strategy:'자유 전략'};
 export const PROPOSAL_STATES={none:'토론 중',pending:'도감 검토 중',approved:'도감 반영',declined:'보완 필요'};
 export const SYNERGY_REPORTS={spam:'도배·광고',abuse:'욕설·비방',misinformation:'잘못된 정보',privacy:'개인정보 노출',other:'기타'};
