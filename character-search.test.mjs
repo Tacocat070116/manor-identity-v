@@ -69,7 +69,7 @@ test('statistics aliases preserve faction, rates and metric sorting',()=>{
 test('live app input/change handlers apply search and sorting in catalogue, comparison and bans',async()=>{
  const nodes=new Map(),handlers={};
  const node=()=>({innerHTML:'',textContent:'',value:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},showModal(){},focus(){}});
- const context={createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={mountSeasonalEffects:()=>({refresh(){}}),createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(k,h){handlers[k]=h;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=character&c=c15'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
   mountNavigation:()=>({update(){}}),fetch:async url=>({ok:true,json:async()=>read('dist/'+url.split('?')[0])})

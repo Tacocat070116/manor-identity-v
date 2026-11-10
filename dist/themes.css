@@ -285,29 +285,116 @@ html[data-theme="christmas"]{
  --select-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23445447' stroke-width='1.8' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
 }
 
-/* Seasonal artwork stays behind content and never intercepts a touch. */
+/* Seasonal layers are decorative and sit behind the interactive page. */
+.seasonal-scene,.seasonal-motion-settings{display:none}
+html[data-seasonal-motion="running"]{--seasonal-play-state:running}
 html[data-theme="christmas"] body{
  background-image:radial-gradient(circle at 10% 24%,rgba(185,139,62,.16) 0 1px,transparent 2px),radial-gradient(circle at 74% 66%,rgba(185,139,62,.12) 0 1px,transparent 2px);
  background-size:174px 181px,237px 223px;
 }
-html[data-theme="christmas"] body::before{
- content:"";position:absolute;inset:0 0 auto;height:144px;pointer-events:none;z-index:-1;
- background:url('./assets/christmas-garland.svg') center top / 1200px 144px repeat-x;
+html[data-theme="christmas"] .seasonal-scene{display:block;position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:layout paint}
+html[data-theme="christmas"] .seasonal-canopy{
+ position:absolute;inset:0 0 auto;height:144px;
+ background:url('./assets/christmas-garland.svg') left top / 1200px 144px repeat-x;
 }
+html[data-theme="christmas"] .seasonal-canopy::before,
+html[data-theme="christmas"] .seasonal-canopy::after{
+ content:"";position:absolute;inset:0;background-repeat:repeat-x;background-size:300px 144px;
+ animation:christmas-lights 5s ease-in-out infinite alternate;
+}
+html[data-theme="christmas"] .seasonal-canopy::before{
+ background-image:radial-gradient(circle at 10% 12.5%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px),radial-gradient(circle at 40% 30.6%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px),radial-gradient(circle at 70% 27.1%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px);
+}
+html[data-theme="christmas"] .seasonal-canopy::after{
+ background-image:radial-gradient(circle at 25% 24.3%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px),radial-gradient(circle at 55% 31.9%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px),radial-gradient(circle at 85% 18.1%,#fff7cd 0 3px,rgba(242,196,99,.6) 6px,transparent 23px);
+ animation-duration:6.5s;animation-delay:-3s;
+}
+html[data-theme="christmas"] .seasonal-snow>i{
+ position:absolute;top:-16px;left:var(--snow-x);width:var(--snow-size);height:var(--snow-size);
+ border-radius:50%;background:#fffdf7;box-shadow:0 0 0 1px rgba(106,127,104,.12);opacity:0;
+ animation:christmas-snow var(--snow-duration) linear var(--snow-delay) infinite;
+}
+html[data-theme="christmas"] .seasonal-snow>i:nth-child(5n){border-radius:2px;background:#fff8e5}
 html[data-theme="christmas"] .brand-word{color:var(--accent)}
 html[data-theme="christmas"] .brand-mark{stroke:var(--ink)}
+html[data-theme="christmas"] .hero-art::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 50% 45%,rgba(229,190,101,.28),transparent 68%);
+ animation:christmas-glow 7s ease-in-out infinite alternate;
+}
 html[data-theme="christmas"] .hero-stage .art-orbit{
  inset:-20px -8px -2px;
  background:url('./assets/christmas-wreath.svg') center / 100% 100% no-repeat;
  border-color:transparent;transform:none;
 }
-html[data-theme="christmas"] .art-orbit::after{border-color:transparent}
+html[data-theme="christmas"] .hero-stage .art-orbit::before,
+html[data-theme="christmas"] .hero-stage .art-orbit::after{
+ content:"";position:absolute;inset:24px auto auto 10%;width:40px;height:100px;
+ border:0;border-radius:0;pointer-events:none;
+ background:url('./assets/christmas-pendant.svg') center top / contain no-repeat;
+ transform-origin:50% 0;animation:christmas-sway 6s ease-in-out infinite alternate;
+}
+html[data-theme="christmas"] .hero-stage .art-orbit::after{left:auto;right:9%;top:12px;width:32px;height:86px;animation-duration:7.5s;animation-delay:-4s}
+html[data-theme="christmas"] #footer{position:relative}
+html[data-theme="christmas"] #footer::before{
+ content:"";display:block;width:240px;height:120px;margin:0 auto 12px;pointer-events:none;
+ background:url('./assets/christmas-trees.svg') center / contain no-repeat;
+}
+html[data-theme="christmas"] #footer::after{
+ content:"";position:absolute;top:-4px;left:calc(50% - 22px);width:44px;height:44px;pointer-events:none;
+ background:radial-gradient(circle,rgba(255,244,206,.9),rgba(226,188,97,.45) 25%,transparent 68%);
+ animation:christmas-glow 4s ease-in-out infinite alternate;
+}
+html[data-theme="christmas"] .seasonal-motion-settings{display:block;margin:0 24px 20px;padding-top:16px;border-top:1px solid var(--line)}
+.seasonal-motion-label{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;cursor:pointer;font-size:13px;font-weight:650;color:var(--ink)}
+.seasonal-motion-label small{display:block;margin-top:3px;font-size:11px;font-weight:400;line-height:18px;color:var(--muted)}
+.seasonal-motion-label input{width:20px;height:20px;flex:0 0 20px;accent-color:var(--accent);cursor:pointer}
+.seasonal-motion-label input:disabled{cursor:default}
 .theme-option>input[value="christmas"]+.theme-option-card .theme-preview{
  background-image:radial-gradient(circle at 91% 13%,#d3ad5c 0 3px,transparent 4px),linear-gradient(135deg,transparent 75%,rgba(169,198,173,.4));
 }
+@keyframes christmas-snow{
+ 0%{transform:translate3d(0,0,0);opacity:0}
+ 8%{opacity:.85}
+ 88%{opacity:.85}
+ 100%{transform:translate3d(var(--snow-drift),calc(100svh + 24px),0);opacity:0}
+}
+@keyframes christmas-lights{from{opacity:.22}to{opacity:.95}}
+@keyframes christmas-sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes christmas-glow{from{opacity:.35}to{opacity:.9}}
+html[data-theme="christmas"] .seasonal-snow>i,
+html[data-theme="christmas"] .seasonal-canopy::before,
+html[data-theme="christmas"] .seasonal-canopy::after,
+html[data-theme="christmas"] .hero-art::before,
+html[data-theme="christmas"] .hero-stage .art-orbit::before,
+html[data-theme="christmas"] .hero-stage .art-orbit::after,
+html[data-theme="christmas"] #footer::after{animation-play-state:var(--seasonal-play-state,paused)}
+@media(max-width:640px){
+ html[data-theme="christmas"] .seasonal-snow>i:nth-child(n+13){display:none}
+ html[data-theme="christmas"] .seasonal-canopy{height:96px;background-size:800px 96px}
+ html[data-theme="christmas"] .seasonal-canopy::before,
+ html[data-theme="christmas"] .seasonal-canopy::after{background-size:200px 96px}
+ html[data-theme="christmas"] .hero-stage .art-orbit::before{left:7%;width:30px;height:80px}
+ html[data-theme="christmas"] .hero-stage .art-orbit::after{right:6%;width:26px;height:70px}
+ html[data-theme="christmas"] .seasonal-motion-settings{margin:0 16px 16px}
+}
+@media(prefers-reduced-motion:reduce){
+ html[data-theme="christmas"] .seasonal-snow{display:none}
+ html[data-theme="christmas"] .seasonal-canopy::before,
+ html[data-theme="christmas"] .seasonal-canopy::after,
+ html[data-theme="christmas"] .hero-art::before,
+ html[data-theme="christmas"] .hero-stage .art-orbit::before,
+ html[data-theme="christmas"] .hero-stage .art-orbit::after,
+ html[data-theme="christmas"] #footer::after{animation:none;opacity:1;transform:none}
+}
 @media(forced-colors:active),print{
  html[data-theme="christmas"] body{background-image:none}
- html[data-theme="christmas"] body::before{display:none}
+ html[data-theme="christmas"] .seasonal-scene,
+ html[data-theme="christmas"] .hero-art::before,
+ html[data-theme="christmas"] .hero-stage .art-orbit::before,
+ html[data-theme="christmas"] .hero-stage .art-orbit::after,
+ html[data-theme="christmas"] #footer::before,
+ html[data-theme="christmas"] #footer::after{display:none}
  html[data-theme="christmas"] .hero-stage .art-orbit{background-image:none}
 }
 

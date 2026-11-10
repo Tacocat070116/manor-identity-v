@@ -3,6 +3,7 @@ import './typography.js?v=f2553395f702';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=14498846d884';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
+import {mountSeasonalEffects} from './seasonal-effects.js?v=93603cac7a84';
 import {createPreferenceSync} from './preferences.js?v=5095557af69a';
 import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=f8d023c3841b';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
@@ -71,7 +72,7 @@ state.theme=readTheme(themeStorage,matchMedia('(prefers-color-scheme:dark)').mat
 applyTheme(state.theme,{document,remember:false});
 let db,byId,byName,renderToken=0,pickerContext,toastTimer;
 let favoriteBusy=false;
-let preferenceSync;
+let preferenceSync,seasonalEffects;
 let heroSession,disposeView=()=>{};
 let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
@@ -555,9 +556,10 @@ async function share(){
 }
 function openThemePicker(){
  const dialog=$('#theme-picker');
- dialog.innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2 id="theme-title">${icon('palette')}컬러 테마</h2><button class="icon-btn" data-action="close-dialog" data-dialog="theme-picker" aria-label="테마 선택 창 닫기">${icon('close')}</button></div></div><div class="theme-options" role="radiogroup" aria-label="컬러 테마 선택">${themeOptions(state.theme,icon('check'))}</div><p class="theme-status" id="theme-status" role="status">${resolveTheme(state.theme).name} 테마 사용 중 · ${preferenceSync?.message()||'선택한 테마는 자동으로 저장됩니다.'}</p>`;
+ dialog.innerHTML=`<div class="dialog-head"><div class="dialog-title"><h2 id="theme-title">${icon('palette')}컬러 테마</h2><button class="icon-btn" data-action="close-dialog" data-dialog="theme-picker" aria-label="테마 선택 창 닫기">${icon('close')}</button></div></div><div class="theme-options" role="radiogroup" aria-label="컬러 테마 선택">${themeOptions(state.theme,icon('check'))}</div><div class="seasonal-motion-settings"><label class="seasonal-motion-label"><span>크리스마스 애니메이션<small data-seasonal-motion-status>눈 내림 · 전구 반짝임 · 오너먼트 움직임</small></span><input type="checkbox" role="switch" name="seasonal-motion" checked></label></div><p class="theme-status" id="theme-status" role="status">${resolveTheme(state.theme).name} 테마 사용 중 · ${preferenceSync?.message()||'선택한 테마는 자동으로 저장됩니다.'}</p>`;
+ seasonalEffects?.refresh();
  dialog.showModal();
- dialog.querySelector('input:checked')?.focus();
+ dialog.querySelector('input[name="color-theme"]:checked')?.focus();
 }
 function selectColorTheme(id){
  if(!colorThemes.some(theme=>theme.id===id))return;
@@ -634,6 +636,7 @@ window.addEventListener('focus',syncFavorites);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFavorites();});
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
+ seasonalEffects=mountSeasonalEffects({document,storage:themeStorage,media:matchMedia('(prefers-reduced-motion:reduce)')});
  const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=e7155e648a87')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
