@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=e5fd1704270a';
+import {loadFeature} from './feature-loader.js?v=943bb060b23e';
 import './typography.js?v=f2553395f702';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=14498846d884';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -9,7 +9,7 @@ import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.
 import {createStatisticsUI} from './statistics.js?v=231f852ec63b';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=5fd8ec1aadc3';
 import {selectRanked} from './statistics-model.js?v=34bef5af9850';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=e46d44cddb04';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=f6793bf42de5';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const guide=(value,...ids)=>`<span data-skill-characters="${ids.flat().filter(Boolean).join(' ')}">${esc(value)}</span>`;

@@ -82,7 +82,6 @@ export const participation=createParticipationStore();
 export {PARTICIPATION_ORIGIN};
 const e=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const keyIcon='<svg class="recovery-icon ui-icon" data-icon="key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="icon-art"><circle cx="8" cy="8" r="4.5"/><path d="m11.2 11.2 9.3 9.3m-3-3 3-3m-6 0 3-3"/></g></svg>';
-const lockIcon='<svg class="recovery-icon ui-icon" data-icon="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><g class="icon-art"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></g></svg>';
 
 // Explicit issuance uses the same server identity as writing. Reopening or
 // repeating it must never replace the visitor who owns the existing records.
@@ -103,25 +102,6 @@ export async function issueRecoveryCode({store=participation,origin=PARTICIPATIO
 export function recoveryState({current='',saved=false,persistent=true}={}){
  return !current?'unconnected':!persistent?'temporary':saved?'ready':'needs-backup';
 }
-export function participationBar({store=participation}={}){
- const account=store.googleAccount?.();
- if(googleAvailable||account){
-  const connected=account?.expiresAt>Date.now();
-  return `<aside class="participation-bar ${connected?'is-saved':'is-important'}" data-participation-banner aria-label="로그인 안내"><span class="participation-key">${lockIcon}</span><div class="participation-bar-copy"><strong>${connected?'Google 로그인 완료':'Google 로그인'}</strong><p>${connected?'같은 계정으로 내 기록을 이어보세요.':'다른 기기에서도 내 글과 댓글을 관리하세요.'}</p></div><div class="participation-bar-actions"><button type="button" class="btn ${connected?'':'primary'} small" data-participation="open">${connected?'기록 관리':'로그인'}</button></div></aside>`;
- }
- const current=store.read(),saved=!!current&&store.backedUp(),state=recoveryState({current,saved,persistent:store.persistent()});
- if(state==='ready')return `<aside class="participation-bar is-saved" data-participation-banner data-recovery-state="ready" aria-label="복구 코드 상태"><span class="participation-key">${keyIcon}</span><strong>이 브라우저는 연결·보관 완료</strong><button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">코드 관리</button></aside>`;
- const title=state==='temporary'?'이 브라우저에서는 연결을 저장할 수 없습니다':current?'연결된 기록의 복구 코드를 보관하세요':'연결된 작성 기록이 없습니다';
- const text=state==='temporary'?'창을 닫기 전에 복구 코드를 따로 저장해 주세요.':current?'외부 보관을 확인하면 이 안내는 접힙니다. 파일이나 개인 메모에 저장해 주세요.':'보관한 코드가 있으면 연결하세요. 처음 이용한다면 코드를 발급받을 수 있습니다.';
- return `<aside class="participation-bar is-important" data-participation-banner data-recovery-state="${state}" aria-label="복구 코드 안내"><span class="participation-key">${keyIcon}</span><div class="participation-bar-copy"><strong>${title}</strong><p>${e(text)}</p></div><div class="participation-bar-actions"><button type="button" class="btn primary small" data-participation="open" data-participation-view="${current?'issue':'connect'}">${current?'코드 확인·보관':'기존 코드로 연결'}</button>${!current?'<button type="button" class="participation-text-button" data-participation="open" data-participation-view="issue">처음 이용 · 코드 발급</button>':''}</div></aside>`;
-}
-export function refreshParticipationBanners(){
- const banners=globalThis.document?.querySelectorAll('[data-participation-banner]');
- if(!banners?.length)return;
- const html=participationBar();
- banners.forEach(node=>{node.outerHTML=html;});
-}
-
 const checkIcon='<svg class="recovery-icon ui-icon" data-icon="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><g class="icon-art"><path d="m5 12 4 4L19 6"/></g></svg>';
 
 export function recoveryPanel({current='',saved=false,persistent=true,revealed=false,mode='issue',profiles=[]}={}){
@@ -159,7 +139,7 @@ function mountLegacyRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onCo
  function connect(code,externallySaved=false){return run(async signal=>{
   const previous=participation.read();
   const changed=await participation.connect(code,{origin,signal,beforeSwitch});if(!alive)return;
-  if(changed){if(externallySaved)participation.markBackedUp(recoveryToken(code));revealedToken='';mode='issue';render(true);refreshParticipationBanners();result('내 기록을 연결했습니다. 보관한 코드는 계속 사용할 수 있습니다.');if(previous!==participation.read())onConnected();}
+  if(changed){if(externallySaved)participation.markBackedUp(recoveryToken(code));revealedToken='';mode='issue';render(true);result('내 기록을 연결했습니다. 보관한 코드는 계속 사용할 수 있습니다.');if(previous!==participation.read())onConnected();}
   else result('기록 전환을 취소했습니다.');
  },'기존 기록을 확인하고 있습니다.');}
  async function click(event){
@@ -168,7 +148,7 @@ function mountLegacyRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onCo
   if(action==='mode'){mode=button.dataset.mode==='connect'?'connect':'issue';revealedToken='';render(true);return;}
   if(action==='issue'){await run(async signal=>{
    const token=await issueRecoveryCode({origin,signal});if(!alive)return;
-   revealedToken=token===participation.read()?token:'';render(true);refreshParticipationBanners();
+   revealedToken=token===participation.read()?token:'';render(true);
    result(revealedToken?'복구 코드를 확인했습니다. 따로 저장한 뒤 보관 완료를 눌러 주세요.':'연결된 기록이 바뀌었습니다. 현재 기록의 코드를 다시 확인해 주세요.');
   },'복구 코드를 준비하고 있습니다.');return;}
   if(action==='switch'){const profile=participation.profiles()[Number(button.dataset.profile)];if(profile)await connect(recoveryCode(profile.token));return;}
@@ -187,13 +167,13 @@ function mountLegacyRecovery(root,{origin=PARTICIPATION_ORIGIN,mode='issue',onCo
    }catch{result('파일을 저장하지 못했습니다. 코드 복사를 이용해 따로 보관해 주세요.',true);}return;
   }
   if(action==='saved'&&root.querySelector('[data-recovery-confirm]')?.checked){
-   const persisted=participation.markBackedUp(token);revealedToken='';render(true);refreshParticipationBanners();
+   const persisted=participation.markBackedUp(token);revealedToken='';render(true);
    result(persisted?'코드 보관을 확인했습니다. 브라우저가 바뀌어도 이 코드로 내 기록을 연결하세요.':'보관 확인은 이 창에서만 유지될 수 있습니다. 따로 저장한 복구 코드는 계속 보관해 주세요.');
   }
  }
  function submit(event){if(!event.target.matches('[data-recovery-form]'))return;event.preventDefault();if(!busy&&event.target.reportValidity()){const data=new FormData(event.target);connect(data.get('recoveryCode'),data.has('externallySaved'));}}
  function change(event){if(event.target.matches('[data-recovery-confirm]'))root.querySelector('[data-recovery="saved"]').disabled=busy||!event.target.checked;}
- function storageChanged(event){if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key)){refreshParticipationBanners();if(participation.read()!==renderedToken){controller?.abort();revealedToken='';render(true);result('다른 창에서 연결된 기록이 바뀌었습니다. 현재 기록을 확인해 주세요.');}else if(!busy&&!revealedToken&&mode==='issue')render();}}
+ function storageChanged(event){if(event.key===null||[TOKEN_KEY,PROFILE_KEY].includes(event.key)){if(participation.read()!==renderedToken){controller?.abort();revealedToken='';render(true);result('다른 창에서 연결된 기록이 바뀌었습니다. 현재 기록을 확인해 주세요.');}else if(!busy&&!revealedToken&&mode==='issue')render();}}
  root.addEventListener('click',click);root.addEventListener('submit',submit);root.addEventListener('change',change);window.addEventListener('storage',storageChanged);render();
  return ()=>{alive=false;controller?.abort();revealedToken='';root.querySelectorAll('[data-recovery-code], [name="recoveryCode"]').forEach(node=>{node.value='';});root.removeEventListener('click',click);root.removeEventListener('submit',submit);root.removeEventListener('change',change);window.removeEventListener('storage',storageChanged);};
 }
@@ -202,8 +182,8 @@ export function mountRecovery(root,options={}){
  const origin=options.origin||PARTICIPATION_ORIGIN;let alive=true,dispose;
  root.innerHTML='<p class="participation-result" role="status">내 기록 연결을 확인하고 있습니다.</p>';
  googleConfig(origin).then(config=>{
-  if(!alive)return;googleAvailable=config.enabled;refreshParticipationBanners();
-  if(config.enabled){options.onGoogle?.();dispose=mountGoogleAccount(root,{...options,store:participation,origin,clientId:config.clientId,recoveryToken,onChange:refreshParticipationBanners});}
+  if(!alive)return;googleAvailable=config.enabled;
+  if(config.enabled){options.onGoogle?.();dispose=mountGoogleAccount(root,{...options,store:participation,origin,clientId:config.clientId,recoveryToken});}
   else if(participation.googleAccount())root.innerHTML='<div class="recovery-panel"><h2>Google 로그인을 일시적으로 사용할 수 없습니다.</h2><p>작성 기록은 계정에 보관되어 있습니다. 잠시 후 다시 접속해 주세요.</p></div>';
   else dispose=mountLegacyRecovery(root,options);
  }).catch(()=>{if(alive){if(participation.googleAccount())root.innerHTML='<p class="participation-result is-error" role="alert">로그인 서버에 연결하지 못했습니다. 잠시 후 다시 접속해 주세요.</p>';else dispose=mountLegacyRecovery(root,options);}});
@@ -221,19 +201,4 @@ export function mountRecoveryPage(root,options={}){
  }});
 }
 
-let activeDialog=null;
-export function openParticipation(options={}){
- if(activeDialog){activeDialog.querySelector('button')?.focus();return;}
- const dialog=document.createElement('dialog');dialog.className='participation-dialog';dialog.setAttribute('aria-labelledby','participation-title');
- dialog.innerHTML='<div class="participation-dialog-head"><div><span class="eyebrow">MY MANOR</span><h2 id="participation-title">내 기록</h2></div><button type="button" class="btn small" data-participation-close aria-label="내 기록 닫기">닫기</button></div><div class="recovery-workspace" data-recovery-workspace></div>';
- const previousFocus=document.activeElement;activeDialog=dialog;document.body.append(dialog);
- const dispose=mountRecovery(dialog.querySelector('[data-recovery-workspace]'),options);
- const closeOnNavigation=()=>dialog.close();window.addEventListener('hashchange',closeOnNavigation);
- dialog.querySelector('[data-participation-close]').addEventListener('click',()=>dialog.close());
- dialog.addEventListener('close',()=>{dispose();window.removeEventListener('hashchange',closeOnNavigation);activeDialog=null;dialog.remove();if(previousFocus?.isConnected)previousFocus.focus();else document.querySelector('[data-participation="open"]')?.focus();},{once:true});
- dialog.showModal();
-}
-
-// Update compact status strips across tabs even when the recovery panel is closed.
-globalThis.window?.addEventListener('storage',event=>{if(event.key===null||[TOKEN_KEY,PROFILE_KEY,ACCOUNT_KEY].includes(event.key))refreshParticipationBanners();});
-if(globalThis.window&&globalThis.document)googleConfig(PARTICIPATION_ORIGIN).then(config=>{googleAvailable=config.enabled;refreshParticipationBanners();}).catch(()=>{});
+if(globalThis.window&&globalThis.document)googleConfig(PARTICIPATION_ORIGIN).then(config=>{googleAvailable=config.enabled;}).catch(()=>{});
