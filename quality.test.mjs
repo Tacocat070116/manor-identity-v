@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {queryBanRecords,banRecordPage} from './dist/model.js';
+import {queryBanRecords,banRecordPage,statsFor} from './dist/model.js';
 import {summaryEvidence} from './dist/compendium-model.js';
 const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
 const db=read('dist/data.json');
@@ -76,4 +76,23 @@ test('request IDs work without randomUUID and preserve UUID version and variant'
  const first=requestId(crypto),second=requestId(crypto);
  assert.match(first,/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/);
  assert.notEqual(first,second);
+});
+test('character statistics preserve range totals, opponent selection and both result perspectives',()=>{
+ const rows=[
+  ['2026-10-30','A','h',['s'],'IVL','승'],
+  ['2026-10-29','A','h',['s'],'IVL','무'],
+  ['2026-10-28','A','h',['s'],'IVL','패'],
+  ['2026-10-27','A','h',['s'],'IVL','미확인'],
+  ['2026-10-26','A','other',['s'],'IVL','승'],
+  ['2026-09-01','A','h',['s'],'IVL','승'],
+  ['2026-10-30','B','h',['s'],'IJL','패']
+ ];
+ const original=structuredClone(rows),filters={days:7,map:'A',tournament:'IVL'};
+ const expected={appearances:4,results:3,win:1,draw:1,loss:1,unknown:1,base:5,winRate:1/3,smallSample:true};
+ assert.deepEqual(statsFor(rows,{id:'h',side:'감시자'},filters),expected);
+ assert.deepEqual(statsFor(rows,{id:'s',side:'생존자'},{...filters,opponent:'h'}),expected);
+ assert.equal(statsFor(rows,{id:'s',side:'생존자'},filters).loss,2);
+ const empty=statsFor(rows,{id:'h',side:'감시자'},{...filters,opponent:'absent'});
+ assert.equal(empty.appearances,0);assert.equal(empty.base,5);assert.equal(empty.winRate,null);
+ assert.deepEqual(rows,original);
 });

@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {gunzipSync} from 'node:zlib';
 import {createHash} from 'node:crypto';
-import {createStatisticsUI} from './dist/statistics.js';
+import {createStatisticsUI,createRankedLoader} from './dist/statistics.js';
 import {selectRanked,tournamentStatistics,createTournamentStatistics,sortStatistics,rankedCharacter} from './dist/statistics-model.js';
 import * as model from './dist/model.js';
 import * as releaseUI from './dist/releases.js';
@@ -94,9 +94,9 @@ test('missing values sort last and zero remains a real zero',()=>{
 });
 
 function runtime(){
- const nodes=new Map(),handlers={},fetches=[];
+ const nodes=new Map(),handlers={},fetches=[],features=[];
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},focus(){},showModal(){},close(){}});
- const context={mountSeasonalEffects:()=>({refresh(){}}),createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...compendium,...themeUI,...model,...releaseUI,createStatisticsUI,selectRanked,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
+ const context={mountSeasonalEffects:()=>({refresh(){}}),createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...compendium,...themeUI,...model,...releaseUI,createStatisticsUI,createRankedLoader,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
  document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},getElementById(id){return nodes.get('#'+id);},addEventListener(t,h){handlers[t]=h;}},
  window:{addEventListener(){},scrollTo(){},scrollY:0,history:{replaceState(_a,_b,url){context.location.hash=url;}}},
  location:{hash:'#v=statistics',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
@@ -104,8 +104,8 @@ function runtime(){
  fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
- Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});context.loadFeature=async()=>context;vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute,getStatisticsUI};',context);
- return {context,nodes,handlers,fetches,app:context.app};
+ Object.assign(context,synergyModel,{mountResearchHighlights:()=>()=>{}});context.loadFeature=async name=>{features.push(name);return context;};vm.runInNewContext(source+'\nglobalThis.app={boot,render,readRoute,state,loadRanked,refreshStatistics,statisticsParams,syncStatisticsRoute};',context);
+ return {context,nodes,handlers,fetches,features,app:context.app};
 }
 
 test('live app routes load only selected season files and render all three scopes, details and comparisons',async()=>{
@@ -236,15 +236,16 @@ test('all score partitions preserve source values and excluded map inputs are ab
 
 test('overlapping ranked loads retain the latest filters and revalidate dynamic files',async()=>{
  const {context,app}=runtime();context.location.hash='#v=explore';await app.boot();
- const fetch=context.fetch,requests=[];let finishIndex;
+ const fetch=context.fetch,requests=[];let finishIndex,indexStarted;
+ const started=new Promise(resolve=>{indexStarted=resolve;});
  context.fetch=async(url,options)=>{
   requests.push({url,options});
-  if(url.startsWith('ranked/index.json'))await new Promise(resolve=>{finishIndex=resolve;});
+  if(url.startsWith('ranked/index.json'))await new Promise(resolve=>{finishIndex=resolve;indexStarted();});
   return fetch(url);
  };
  const asia=app.loadRanked();
  Object.assign(app.state.statistics,{server:'cn',season:'S43',tier:'all',snapshot:''});
- const china=app.loadRanked();finishIndex();
+ const china=app.loadRanked();await started;finishIndex();
  const [a,b]=await Promise.all([asia,china]);
  assert.equal(a,b);assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.season,'S43');
  assert.ok(a.datasets.some(d=>d.server==='asia'&&d.rows));assert.ok(b.datasets.some(d=>d.server==='cn'&&d.rows));
@@ -263,9 +264,10 @@ test('retrying a failed badge request removes the stale error after recovery',as
 
 test('a slow statistics refresh cannot restore its old URL or scroll after navigation',async()=>{
  const {context,app,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
- const fetch=context.fetch;let finishMatches;
- context.fetch=async url=>{if(url.startsWith('matches.json'))await new Promise(resolve=>{finishMatches=resolve;});return fetch(url);};
- context.location.hash='#v=statistics';app.readRoute();const pending=app.refreshStatistics();
+ const fetch=context.fetch;let finishMatches,matchesStarted;
+ const started=new Promise(resolve=>{matchesStarted=resolve;});
+ context.fetch=async url=>{if(url.startsWith('matches.json'))await new Promise(resolve=>{finishMatches=resolve;matchesStarted();});return fetch(url);};
+ context.location.hash='#v=statistics';app.readRoute();const pending=app.refreshStatistics();await started;
  context.location.hash='#v=explore';app.readRoute();await app.render();
  let scrolls=0;context.window.scrollTo=()=>{scrolls++;};finishMatches();await pending;
  assert.equal(context.location.hash,'#v=explore');assert.equal(scrolls,0);assert.match(nodes.get('#page-body').innerHTML,/A CLEARER WAY TO PLAY/);
@@ -344,4 +346,15 @@ test('catalogue faction filters preserve the mounted carousel and only update ca
  handlers.click({target:{closest:()=>buttons[2]}});
  assert.match(nodes.get('#explorer-results').innerHTML,/53명의 캐릭터/);
  assert.equal(mounts,1);assert.equal(disposals,0);assert.equal(nodes.get('#page-body').innerHTML,page);
+});
+test('statistics code stays off the home route and failed imports remain retryable',async()=>{
+ const {context,app,features,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
+ assert.ok(!features.includes('statistics'));
+ const load=context.loadFeature;context.loadFeature=async name=>{if(name==='statistics')throw Error('통계 코드 offline');return load(name);};
+ context.location.hash='#v=statistics';app.readRoute();await app.render();
+ assert.match(nodes.get('#page-body').innerHTML,/다시 시도/);
+ context.loadFeature=load;await app.render();assert.match(nodes.get('#page-body').innerHTML,/id="ranked-title"/);
+ context.location.hash='#v=compare&a=c16&b=c15';app.readRoute();await app.render();
+ assert.equal(features.filter(name=>name==='statistics').length,1);
+ assert.match(nodes.get('#page-body').innerHTML,/캐릭터 비교/);
 });

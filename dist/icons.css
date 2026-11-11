@@ -3,10 +3,10 @@
  display:inline-block;vertical-align:middle;flex-shrink:0;
  stroke-width:1.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;
 }
-.ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="megaphone"],[data-icon="clock"],[data-icon="sun"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
+.ui-icon:is([data-icon="search"],[data-icon="palette"],[data-icon="megaphone"],[data-icon="clock"],[data-icon="moon"],[data-icon="globe"],[data-icon="info"],[data-icon="lock"],[data-icon="reply"],[data-icon="heart"],[data-icon="sprout"],[data-icon="game"],[data-icon="role-kite"],[data-icon="role-control"],[data-icon="role-camp"]){
  stroke-linecap:round;stroke-linejoin:round;
 }
-.ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="pause"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="external"],[data-icon="swap"],[data-icon="role-hunt"]){
+.ui-icon:is([data-icon="plus"],[data-icon="close"],[data-icon="compare"],[data-icon="chart"],[data-icon="pause"],[data-icon="key"],[data-icon="arrow"],[data-icon="back"],[data-icon="down"],[data-icon="swap"],[data-icon="role-hunt"]){
  stroke-linecap:square;
 }
 .ui-icon [data-stroke="soft"]{stroke-linecap:round;stroke-linejoin:round}

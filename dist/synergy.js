@@ -1,9 +1,10 @@
-import {situationLabel} from './model.js?v=f8d023c3841b';
+import {situationLabel} from './model.js?v=dc932ba84d7d';
 import {requestId as uuid} from './request-id.js?v=58ef88b53202';
 import {participation} from './participation.js?v=8a4b3087a8ed';
 import {SYNERGY_SITUATIONS,researchSide,SYNERGY_REPORTS,RESEARCH_TOPICS,PROPOSAL_STATES,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=5fd8ec1aadc3';
 const ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
-const date=time=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(time));
+const dateFormat=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+const date=time=>dateFormat.format(new Date(time));
 const option=(value,label,selected)=>`<option value="${e(value)}" ${value===selected?'selected':''}>${e(label)}</option>`;
 const person=(author,characters)=>`<span class="sy-person">${characters[author?.characterId]?`<img src="${e(characters[author.characterId].portrait)}" alt="" width="28" height="28" loading="lazy">`:''}<span>${e(author?.name||'장원의 손님')}</span></span>`;
 const tags=(situations,side)=>`<div class="sy-tags">${situations.map(s=>`<span class="tag">${e(situationLabel(s,side))}</span>`).join('')}</div>`;

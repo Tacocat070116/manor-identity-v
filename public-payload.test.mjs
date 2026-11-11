@@ -8,7 +8,6 @@ import * as themes from './dist/themes.js';
 import * as synergy from './dist/synergy-model.js';
 import * as releases from './dist/releases.js';
 import {createStatisticsUI} from './dist/statistics.js';
-import {selectRanked} from './dist/statistics-model.js';
 import {withRetiredFields} from './scripts/public-payload-history.mjs';
 
 const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
@@ -19,7 +18,7 @@ function guideScreens(payload){
  for(const c of db.characters)Object.assign(c,roles.characters[c.id],{introduction:intros.characters[c.id]});
  const nodes=new Map();
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
- const context={...model,...compendium,...themes,...synergy,...releases,mountResearchHighlights:()=>()=>{},createStatisticsUI,selectRanked,
+ const context={...model,...compendium,...themes,...synergy,...releases,mountResearchHighlights:()=>()=>{},createStatisticsUI,
   console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s);},addEventListener(){}},
   window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},

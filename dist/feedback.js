@@ -14,7 +14,8 @@ const hasResponse=p=>typeof p.reason==='string'&&p.reason.trim().length>0;
 export const FEEDBACK_CATEGORIES={feature:'기능 제안',correction:'정보 수정',bug:'오류 제보',design:'디자인'};
 export const feedbackEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=feedbackEscape;
-const date=t=>new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(t));
+const dateFormat=new Intl.DateTimeFormat('ko-KR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+const date=t=>dateFormat.format(new Date(t));
 const glyph={message:'<path d="M6 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2Z"/><path data-stroke="soft" d="M8 8h8M8 12h5"/>',plus:'<path d="M12 4v16M4 12h16"/>',back:'<path d="M20 12H4m6-6-6 6 6 6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',reply:'<path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7v4"/>',check:'<path d="m5 12 4 4L19 6"/>'};
 const icon=n=>`<svg class="fb-icon fb-icon-${n} ui-icon" data-icon="${n}" aria-hidden="true" viewBox="0 0 24 24"><g class="icon-art">${glyph[n]||glyph.message}</g></svg>`;
 const badge=p=>`<span class="fb-status status-${statusKey(p)||'unknown'}">${e(FEEDBACK_STATUSES[statusKey(p)]||'상태 확인 필요')}</span>`;
@@ -26,9 +27,9 @@ export function feedbackCard(p,chars,{admin=false}={}){
 }
 export function feedbackStatusGuide(){return `<details class="fb-status-guide"><summary>처리 상태는 어떤 뜻인가요?</summary><dl>${Object.keys(FEEDBACK_STATUSES).map(status=>`<div><dt>${badge({status})}</dt><dd>${e(FEEDBACK_STATUS_HELP[status])}</dd></div>`).join('')}</dl><p>모든 상태를 순서대로 거치지는 않습니다. 운영자 답변과 반영 완료는 별개입니다.</p></details>`;}
 export function feedbackComment(c,chars,admin=false){return `<article class="fb-comment ${c.parentId?'is-reply':''}" id="fb-comment-${e(c.id)}"><div class="fb-comment-meta">${who(c.author,chars,c.isAuthor)}<time>${e(date(c.createdAt))}</time></div>${c.replyTo?`<span class="fb-reply-to">${icon('reply')}${e(c.replyTo.name)}에게</span>`:''}<p class="fb-comment-text ${c.deleted||c.hidden?'muted':''}">${e(c.deleted?'삭제된 댓글입니다.':c.hidden&&!admin?'운영자가 숨긴 댓글입니다.':c.body)}</p><div class="fb-comment-actions">${!admin&&!c.deleted&&!c.hidden?`<button type="button" data-fb="reply" data-id="${e(c.id)}">답글</button>`:''}${c.isMine&&!c.deleted?`<button type="button" data-fb="delete-comment" data-id="${e(c.id)}">삭제</button>`:''}${admin&&!c.deleted?`<button type="button" data-fb="hide-comment" data-id="${e(c.id)}">${c.hidden?'다시 공개':'숨기기'}</button>`:''}</div></article>`;}
+const historyDateFormat=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
 export function feedbackHistory(history=[]){
- const when=t=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(t));
- return history.length?`<details class="fb-history"><summary>처리 이력 ${history.length}건</summary><ol>${history.map(h=>`<li><div>${badge(h)}<time datetime="${new Date(h.createdAt).toISOString()}">${e(when(h.createdAt))}</time></div></li>`).join('')}</ol></details>`:'';
+ return history.length?`<details class="fb-history"><summary>처리 이력 ${history.length}건</summary><ol>${history.map(h=>`<li><div>${badge(h)}<time datetime="${new Date(h.createdAt).toISOString()}">${e(historyDateFormat.format(new Date(h.createdAt)))}</time></div></li>`).join('')}</ol></details>`:'';
 }
 export function feedbackResponse(p,admin=false,editing=false,draft=''){
  if(!admin&&!hasResponse(p))return '';

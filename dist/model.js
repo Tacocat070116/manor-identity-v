@@ -12,16 +12,23 @@ export function cutoff(days, reference = REFERENCE_DATE) {
   d.setUTCDate(d.getUTCDate() - Number(days));
   return d.toISOString().slice(0, 10);
 }
-export function filterRows(rows, filters = {}) {
+function recordFilter(filters) {
   const start = cutoff(filters.days, filters.reference);
-  return rows.filter(r => (!start || r[0] >= start) && (!filters.map || r[1] === filters.map) && (!filters.tournament || r[4] === filters.tournament));
+  return r => (!start || r[0] >= start) && (!filters.map || r[1] === filters.map) && (!filters.tournament || r[4] === filters.tournament);
+}
+export function filterRows(rows, filters = {}) {
+  return rows.filter(recordFilter(filters));
 }
 export function statsFor(rows, character, filters = {}) {
-  const base = filterRows(rows, filters);
-  const present = base.filter(r => r[2] === character.id || r[3].includes(character.id));
-  const filtered = filters.opponent ? present.filter(r => r[2] === filters.opponent || r[3].includes(filters.opponent)) : present;
-  const totals = { appearances: filtered.length, results: 0, win: 0, draw: 0, loss: 0, unknown: 0, base: base.length };
-  for (const r of filtered) {
+  const accepts = recordFilter(filters);
+  const totals = { appearances: 0, results: 0, win: 0, draw: 0, loss: 0, unknown: 0, base: 0 };
+  // Count once without allocating separate range, character and opponent arrays.
+  for (const r of rows) {
+    if (!accepts(r)) continue;
+    totals.base++;
+    if (r[2] !== character.id && !r[3].includes(character.id)) continue;
+    if (filters.opponent && r[2] !== filters.opponent && !r[3].includes(filters.opponent)) continue;
+    totals.appearances++;
     if (!['승','무','패'].includes(r[5])) { totals.unknown++; continue; }
     totals.results++;
     if (r[5] === '무') totals.draw++;

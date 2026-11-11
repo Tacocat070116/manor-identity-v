@@ -4,7 +4,8 @@ export const TIPS_ORIGIN='https://manor-feedback.tacocat070116.chatgpt.site';
 export const TIP_STATUSES={pending:'검토 대기',approved:'공개 중',needs_changes:'보완 요청',rejected:'반려',hidden:'비공개'};
 export const tipEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=tipEscape;
-const date=value=>value?new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(value)):'';
+const dateFormat=new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Seoul'});
+const date=value=>value?dateFormat.format(new Date(value)):'';
 const lock='<svg class="tip-icon ui-icon" data-icon="lock" viewBox="0 0 24 24" aria-hidden="true"><g class="icon-art"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></g></svg>';
 const check='<svg class="tip-icon ui-icon" data-icon="check" viewBox="0 0 24 24" aria-hidden="true"><g class="icon-art"><path d="m5 12 4 4L19 6"/></g></svg>';
 function pair(t,characters){return `<div class="tip-pair">${[t.ownId,t.opponentId].map((id,i)=>{const c=characters[id];return `${i?'<span class="tip-pair-arrow" aria-hidden="true">→</span>':''}<a href="#v=character&c=${e(id)}&tab=tips">${c?.portrait?`<img src="${e(c.portrait)}" alt="" width="32" height="32" loading="lazy">`:''}<span>${e(c?.name||'캐릭터')}</span></a>`;}).join('')}</div>`;}

@@ -10,7 +10,8 @@ Object.assign(paths,{
  gem:'<path d="m3 9 4-5h10l4 5-9 12L3 9Zm0 0h18M7 4l5 17 5-17M9 9l3-5 3 5"/>'
 });
 const icon=name=>`<svg class="creator-icon ui-icon" data-icon="${name}" viewBox="0 0 24 24" aria-hidden="true"><g class="icon-art">${paths[name]||paths.play}</g></svg>`;
-const date=value=>new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeZone:'Asia/Seoul'}).format(new Date(value));
+const dateFormat=new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium',timeZone:'Asia/Seoul'});
+const date=value=>dateFormat.format(new Date(value));
 const secret=()=>Array.from(crypto.getRandomValues(new Uint8Array(32)),x=>x.toString(16).padStart(2,'0')).join('');
 const keyPattern=/^[a-f0-9-]{36}\.[a-f0-9]{64}$/;
 const blank=()=>({title:'',channelUrl:'',tagline:'',body:'',videoUrl:'',server:'unspecified',color:'mint',country:'unspecified',appearance:{...CREATOR_APPEARANCE_DEFAULT},tags:[],characterIds:[],badges:[],tiers:[]});

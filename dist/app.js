@@ -1,15 +1,13 @@
-import {loadFeature} from './feature-loader.js?v=943bb060b23e';
+import {loadFeature} from './feature-loader.js?v=79eb716d57fe';
 import './typography.js?v=f2553395f702';
-import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=14498846d884';
+import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=1444cadbd774';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
 import {mountSeasonalEffects} from './seasonal-effects.js?v=24bf19695f6d';
 import {createPreferenceSync} from './preferences.js?v=5095557af69a';
-import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=f8d023c3841b';
+import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=dc932ba84d7d';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {createStatisticsUI} from './statistics.js?v=231f852ec63b';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=5fd8ec1aadc3';
-import {selectRanked} from './statistics-model.js?v=34bef5af9850';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=f6793bf42de5';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -33,8 +31,6 @@ shield:'<path d="m12 3 8 3v5.5c0 4.2-2.8 7.3-8 9.5-5.2-2.2-8-5.3-8-9.5V6l8-3Z"/>
 message:'<path d="M6 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2Z"/><path data-stroke="soft" d="M8 8h8M8 12h5"/>',
 book:'<path d="M12 6v15M3 3c3.5 0 6.5 1 9 3 2.5-2 5.5-3 9-3v15c-3.5 0-6.5 1-9 3-2.5-2-5.5-3-9-3V3Z"/>',
 star:'<path d="m12 3.4 2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.75 6.38 20.7l1.07-6.25L2.9 10l6.3-.9L12 3.4Z"/>',
-sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.75m0 13.5v2.75M2.5 12h2.75m13.5 0h2.75M5.3 5.3l1.95 1.95m9.5 9.5 1.95 1.95M5.3 18.7l1.95-1.95m9.5-9.5 1.95-1.95"/>',
-moon:'<path d="M20.45 13.65A8.5 8.5 0 0 1 10.35 3.55 8.5 8.5 0 1 0 20.45 13.65Z"/>',
 arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
 back:'<path d="M20 12H4m6-6-6 6 6 6"/>',
 down:'<path d="m6 9 6 6 6-6"/>',
@@ -46,7 +42,6 @@ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
 spark:'<path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/>',
 chart:'<path d="M3.5 3.5v17h17M8 16v-5m5 5V7m5 9V9"/>',
 globe:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7h15M4.5 17h15"/>',
-external:'<path d="M13 4h7v7m0-7L10 14M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>',
 play:'<path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none"/>',
 pause:'<path d="M9 5v14M15 5v14" stroke-width="2.4"/>',
 'role-kite':'<path d="M8 4h4l1 5 7 4a3 3 0 0 1 1 2.2V19H5v-6l3-9ZM5 16h16M12 9l-2 2m5 0-2 2"/><path data-stroke="square" d="M2 7h3m-3 3h2"/>',
@@ -74,7 +69,7 @@ let db,byId,byName,renderToken=0,pickerContext,toastTimer;
 let favoriteBusy=false;
 let preferenceSync,seasonalEffects;
 let heroSession,disposeView=()=>{};
-let statisticsUI,rankedData,rankedError='',statisticsSearchTimer;
+let statisticsUI,rankedSource,rankedData,rankedError='',statisticsSearchTimer;
 let navigationController;
 let releaseLog;
 const releaseFilters={query:'',type:'전체'};
@@ -95,58 +90,16 @@ function cachedJSON(url,message,transform=value=>value){
  return ()=>pending||=loadJSON(url,message).then(transform).catch(error=>{pending=null;throw error;});
 }
 const loadRankedIndex=cachedJSON('ranked/index.json?v=5b04497f6a25','랭킹전 자료를 불러오지 못했습니다.');
-const rankedFiles=new Map();
-function loadRankedFile(path,message,version,transform=value=>value){
- if(!/^ranked\/[a-z0-9-]+\.json$/.test(path||'')||!/^[a-f0-9]{12}$/.test(version||''))throw Error('랭킹전 자료 경로를 확인하지 못했습니다.');
- const url=path+'?v='+version;
- if(!rankedFiles.has(url))rankedFiles.set(url,loadJSON(url,message,{cache:'no-cache'}).then(transform).catch(error=>{rankedFiles.delete(url);throw error;}));
- return rankedFiles.get(url);
+async function prepareStatistics(){
+ if(statisticsUI)return;
+ const {createStatisticsUI,createRankedLoader}=await loadFeature('statistics');
+ statisticsUI??=createStatisticsUI({characters:db.characters,esc,num,portrait,icon,commonFilters});
+ rankedSource??=createRankedLoader({characters:byId,loadIndex:loadRankedIndex,loadJSON});
 }
-const loadRanked=async(filters={...state.statistics})=>{
+function loadRanked(filters={...state.statistics}){
  const includeScores=state.view==='statistics'&&filters.scope!=='tournament';
- const data=await loadRankedIndex();
- const s=selectRanked(data,filters);
- if(s.dataset&&!s.dataset.rows){
-  await loadRankedFile(s.dataset.path,'선택한 시즌 자료를 불러오지 못했습니다.',data.assetVersions[s.dataset.path],part=>{
-  const targets=new Map(data.datasets.map(d=>[d.id,d]));
-  // Validate the complete response before updating the shared cache.
-  const hydrated=part.datasets.map(entry=>{
-   const target=targets.get(entry.id);
-   if(!target)return null;
-   const rows=entry.rows.map(r=>{const c=byId[r[0]];if(!c)throw Error('통계 캐릭터 정보를 확인하지 못했습니다.');return {id:c.id,name:c.name,side:c.side,pick:r[1],win:r[2],draw:r[3],loss:r[4],ban:r[5]};});
-   return {target,rows};
-  });
-  if(!hydrated.some(entry=>entry?.target===s.dataset))throw Error('선택한 통계 항목을 확인하지 못했습니다.');
-  for(const entry of hydrated)if(entry)entry.target.rows=entry.rows;
-  });
-  if(!s.dataset.rows)throw Error('선택한 통계 항목을 확인하지 못했습니다.');
- }
- if(s.filters.server==='cn'){
-  try{
-   if(!data.badges)data.badges=(await loadRankedFile(data.badgesPath,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[data.badgesPath])).datasets;
-   const selected=data.badges.find(d=>d.id===filters.badgeSnapshot)||data.badges[0];
-   if(includeScores&&selected&&!selected.rows){
-    await loadRankedFile(selected.path,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[selected.path],part=>{
-    const targets=new Map(data.badges.map(d=>[d.id,d]));
-    const hydrated=part.datasets.map(entry=>{
-     const target=targets.get(entry.id);if(!target)return null;
-     const rows=entry.rows.map(([id,rankPosition,score])=>{
-      const c=byId[id];if(!c)throw Error('통계 캐릭터 정보를 확인하지 못했습니다.');
-      return {id,name:c.name,side:c.side,rankPosition,score};
-     });
-     return {target,rows};
-    });
-    if(!hydrated.some(entry=>entry?.target===selected))throw Error('선택한 인지 점수 기록이 없습니다.');
-    for(const entry of hydrated)if(entry)entry.target.rows=entry.rows;
-    });
-    if(!selected.rows)throw Error('선택한 인지 점수 기록이 없습니다.');
-   }
-   delete data.badgesError;
-  }
-  catch(error){data.badgesError=error.message;}
- }
- return data;
-};
+ return prepareStatistics().then(()=>rankedSource.load(filters,{includeScores}));
+}
 const loadGuideData=cachedJSON('data.json?v=4123330f09de','공략 자료를 불러오지 못했습니다.');
 async function ensureGuides(){
  if(db.matchups)return;
@@ -382,7 +335,6 @@ function resultChart(s){
  if(!s.results)return `<div class="note">확인된 경기 결과가 없습니다.</div>`;
  return `${s.results<50?`<p class="statistics-caption">적은 표본 · 결과 ${num(s.results)}경기. 한 경기로도 비율이 크게 달라질 수 있습니다.</p>`:''}<div class="stack-bar" role="img" aria-label="승 ${pct(s.win/s.results)}, 무승부 ${pct(s.draw/s.results)}, 패 ${pct(s.loss/s.results)}"><span class="stack-win" style="width:${s.win/s.results*100}%"></span><span class="stack-draw" style="width:${s.draw/s.results*100}%"></span><span class="stack-loss" style="width:${s.loss/s.results*100}%"></span></div><div class="bar-legend"><span><i class="stack-win"></i>승 ${pct(s.win/s.results)}</span><span><i class="stack-draw"></i>무 ${pct(s.draw/s.results)}</span><span><i class="stack-loss"></i>패 ${pct(s.loss/s.results)}</span></div>`;
 }
-function getStatisticsUI(){return statisticsUI||=createStatisticsUI({characters:db.characters,esc,num,portrait,icon,commonFilters});}
 function statisticsParams(){const s=state.statistics;return {scope:s.scope,server:s.server,season:s.season,tier:s.tier,snap:s.snapshot,rs:s.side,sort:s.sort,order:s.direction,q:s.search,badge:s.badgeSnapshot};}
 function syncStatisticsRoute(){
  if(!['statistics','compare'].includes(state.view)&&!(state.view==='character'&&state.tab==='stats'))return;
@@ -432,10 +384,10 @@ function matchupPage(){
 function miniCharacters(c,kind){const html=c[kind].map(item=>matchupSummary(c,item,kind)).join('');return html?`<div class="matchup-summaries">${html}</div>`:'<p class="muted small">확인된 상성이 없습니다.</p>';}
 function compareColumn(c,rows){
  const s=statsFor(rows,c,state.stats);
- return `<div class="compare-column"><div class="panel"><div class="compare-header">다루는 난이도</div><div class="compare-stars"><strong>${c.difficulty} <small>/ 5</small></strong>${difficulty(c.difficulty)}</div><p class="muted">${guide(c.difficultyReason,c.id)}</p></div>${getStatisticsUI().compareCharacter(c,{data:rankedData,settings:state.statistics,tournament:s})}${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}<div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p></div></div>`;
+ return `<div class="compare-column"><div class="panel"><div class="compare-header">다루는 난이도</div><div class="compare-stars"><strong>${c.difficulty} <small>/ 5</small></strong>${difficulty(c.difficulty)}</div><p class="muted">${guide(c.difficultyReason,c.id)}</p></div>${statisticsUI.compareCharacter(c,{data:rankedData,settings:state.statistics,tournament:s})}${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}<div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p></div></div>`;
 }
 function compareMatchups(c){return `<section class="panel compare-matchups">${characterHeading(c)}<h2 class="panel-title">${matchupLabel(c,'hard')}</h2>${miniCharacters(c,'hard')}<div class="divider"></div><h2 class="panel-title">${matchupLabel(c,'easy')}</h2>${miniCharacters(c,'easy')}<p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt||c.reviewedAt)}. 표시된 상황에 한해 읽고, 적용 조건을 펼쳐 확인하세요.</p></section>`;}
-function comparePage(rows){const a=char(state.a),b=char(state.b,'붉은 나비');state.a=a.id;state.b=b.id;return `${title('SIDE BY SIDE','캐릭터 비교','같은 진영의 난이도·장단점·통계를 비교하세요.')}<div class="selection-board">${selectionCard(a,'compare-a','캐릭터 A')}${selectionSwap('compare')}${selectionCard(b,'compare-b','캐릭터 B')}</div>${getStatisticsUI().scopeSwitch(state.statistics.scope)}${state.statistics.scope!=='ranked'?commonFilters('compare'):''}${state.statistics.scope!=='tournament'?getStatisticsUI().rankFilters(rankedData,state.statistics):''}<div class="note">대회와 랭킹전은 각각의 집계 조건으로 비교합니다. 승률에는 실력·조합·맵·밴픽의 영향이 포함됩니다.${rankedError?' '+esc(rankedError):''}</div><div class="compare-grid section-gap">${compareColumn(a,rows)}${compareColumn(b,rows)}</div><section class="section-gap"><div class="section-heading"><div><h2>상황별 상성 비교</h2></div></div><div class="compare-matchup-grid">${compareMatchups(a)}${compareMatchups(b)}</div></section>`;}
+function comparePage(rows){const a=char(state.a),b=char(state.b,'붉은 나비');state.a=a.id;state.b=b.id;return `${title('SIDE BY SIDE','캐릭터 비교','같은 진영의 난이도·장단점·통계를 비교하세요.')}<div class="selection-board">${selectionCard(a,'compare-a','캐릭터 A')}${selectionSwap('compare')}${selectionCard(b,'compare-b','캐릭터 B')}</div>${statisticsUI.scopeSwitch(state.statistics.scope)}${state.statistics.scope!=='ranked'?commonFilters('compare'):''}${state.statistics.scope!=='tournament'?statisticsUI.rankFilters(rankedData,state.statistics):''}<div class="note">대회와 랭킹전은 각각의 집계 조건으로 비교합니다. 승률에는 실력·조합·맵·밴픽의 영향이 포함됩니다.${rankedError?' '+esc(rankedError):''}</div><div class="compare-grid section-gap">${compareColumn(a,rows)}${compareColumn(b,rows)}</div><section class="section-gap"><div class="section-heading"><div><h2>상황별 상성 비교</h2></div></div><div class="compare-matchup-grid">${compareMatchups(a)}${compareMatchups(b)}</div></section>`;}
 function statisticsSections(active){return `<nav class="statistics-sections" aria-label="통계 메뉴"><a href="#v=statistics" ${active==='characters'?'aria-current="page"':''}>캐릭터 통계</a><a href="#v=bans" ${active==='bans'?'aria-current="page"':''}>밴 조합 기록</a></nav>`;}
 function banPage(rows){
  const r=queryBanRecords(rows,state.bans,state.banFilters);
@@ -467,10 +419,11 @@ async function render({scroll=false}={}){
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
  const feature=({creators:'creators',feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
  const needsGuides=['character','matchup','compare'].includes(state.view)||(state.view==='explore'&&state.favoriteOnly);
+ const needsStatistics=state.view==='statistics'||state.view==='compare'||state.view==='character'&&state.tab==='stats';
  let featureModule;
- if(feature||(needsGuides&&!db.matchups)){
+ if(feature||(needsGuides&&!db.matchups)||(needsStatistics&&!statisticsUI)){
   body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>화면을 준비하고 있습니다.</p></div>';
-  try{[featureModule]=await Promise.all([feature?loadFeature(feature):null,needsGuides?ensureGuides():null]);}
+  try{[featureModule]=await Promise.all([feature?loadFeature(feature):null,needsGuides?ensureGuides():null,needsStatistics?prepareStatistics():null]);}
   catch(error){if(token===renderToken)body.innerHTML=loadError(error);return;}
   if(token!==renderToken)return;
  }
@@ -479,12 +432,12 @@ async function render({scroll=false}={}){
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='tournament'?Promise.resolve(null):loadRanked(),state.statistics.scope==='ranked'?Promise.resolve(null):loadDetails()]);if(token!==renderToken)return;
   rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
-  $('#character-content').innerHTML=getStatisticsUI().character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:state.statistics.scope==='ranked'?'':t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
+  $('#character-content').innerHTML=statisticsUI.character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:state.statistics.scope==='ranked'?'':t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
  }}
  else if(state.view==='statistics'){
   body.innerHTML='<div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><p>대회·랭킹전 통계를 불러오고 있습니다.</p></div>';
   const [t,b,r]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='ranked'?Promise.resolve([]):loadBans(),state.statistics.scope==='tournament'?loadRankedIndex():loadRanked()]);if(token!==renderToken)return;
-  body.innerHTML=statisticsSections('characters')+getStatisticsUI().page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,summary:db.meta,coverageNote:db.meta.statisticsRefresh?.latestCoverage,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
+  body.innerHTML=statisticsSections('characters')+statisticsUI.page({data:r.status==='fulfilled'?r.value:null,matches:t.status==='fulfilled'?t.value:[],bans:b.status==='fulfilled'?b.value:[],settings:state.statistics,tournamentFilters:state.stats,summary:db.meta,coverageNote:db.meta.statisticsRefresh?.latestCoverage,errors:{tournament:t.status==='rejected'?t.reason.message:b.status==='rejected'?b.reason.message:'',ranked:r.status==='rejected'?r.reason.message:''}});
  }
  else if(state.view==='matchup'){
   body.innerHTML=matchupPage();
@@ -603,7 +556,6 @@ document.addEventListener('click',e=>{
  if(a==='scroll-characters'){e.preventDefault();$('#characters')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});return;}
  if(a==='character')navigate({v:'character',c:b.dataset.id});
  if(a==='theme')openThemePicker();
- if(a==='global-search')openPicker();
  if(a==='latest-update')openLatestRelease(releaseLog);
  if(a==='side'){state.side=b.dataset.side;state.favoriteOnly=false;if(!availableSpecialties().includes(state.specialty))state.specialty='';refreshExplorer();}
  if(a==='specialty'){state.specialty=availableSpecialties().includes(b.dataset.specialty)?b.dataset.specialty:'';document.querySelectorAll('[data-action="specialty"]').forEach(el=>{const active=el.dataset.specialty===state.specialty;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});updateExplorer();}

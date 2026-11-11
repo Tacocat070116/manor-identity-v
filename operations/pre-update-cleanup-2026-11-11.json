@@ -1,0 +1,81 @@
+{
+  "base": "9085a37705712131dacf9f45bb8efe08876f8efc",
+  "date": "2026-11-11",
+  "method": "Static startup JavaScript import graph only. Byte totals exclude HTML, CSS, data, images, headers and browser cache. CPU figures are local Node medians of 7 samples, not browser loading times.",
+  "before": {
+    "startupJS": {
+      "modules": [
+        "app.js",
+        "feature-loader.js",
+        "typography.js",
+        "skill-names.js",
+        "compendium-model.js",
+        "model.js",
+        "character-search.js",
+        "character-search-data.js",
+        "navigation.js",
+        "themes.js",
+        "seasonal-effects.js",
+        "preferences.js",
+        "account-api.js",
+        "carousel.js",
+        "statistics.js",
+        "statistics-model.js",
+        "synergy-model.js",
+        "releases.js"
+      ],
+      "requests": 18,
+      "bytes": 193118,
+      "gzipBytes": 69309
+    },
+    "characterStats89Ms": 132.965,
+    "feedbackCards100Ms": 13.253
+  },
+  "after": {
+    "startupJS": {
+      "modules": [
+        "app.js",
+        "feature-loader.js",
+        "typography.js",
+        "skill-names.js",
+        "compendium-model.js",
+        "model.js",
+        "character-search.js",
+        "character-search-data.js",
+        "navigation.js",
+        "themes.js",
+        "seasonal-effects.js",
+        "preferences.js",
+        "account-api.js",
+        "carousel.js",
+        "synergy-model.js",
+        "releases.js"
+      ],
+      "requests": 16,
+      "bytes": 171792,
+      "gzipBytes": 61362
+    },
+    "characterStats89Ms": 100.534,
+    "feedbackCards100Ms": 0.64
+  },
+  "validation": {
+    "identicalCharacterStatistics": 534,
+    "identicalFeedbackCards": 100,
+    "fullTestsPassed": 235
+  },
+  "sourceBytesMeasured": "Before final cache-key refresh; CPU samples use the final behavioral implementation.",
+  "audit": {
+    "removed": [
+      "Retired global-search click action and two responsive rules",
+      "Unused app icon definitions: sun, moon, external",
+      "Unused shared sun/external icon selector members"
+    ],
+    "retained": [
+      "Creator moon icon and its shared styling",
+      "Legacy author linking and unavailable-config recovery fallback",
+      "All game, tournament, ranking and research source data",
+      "Dynamically referenced persona/trait images and active illustrations"
+    ],
+    "scope": "No visible feature, style, category, content, authentication or stored preference changes."
+  }
+}

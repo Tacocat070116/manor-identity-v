@@ -7,8 +7,7 @@ import vm from 'node:vm';
 import * as themeUI from './dist/themes.js';
 import * as model from './dist/model.js';
 import * as releases from './dist/releases.js';
-import {createStatisticsUI} from './dist/statistics.js';
-import {selectRanked} from './dist/statistics-model.js';
+import {createStatisticsUI,createRankedLoader} from './dist/statistics.js';
 
 const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
 const db=read('dist/data.json');
@@ -19,7 +18,7 @@ const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'
 async function harness(hash){
  const nodes=new Map(),handlers={},history=[],scrolls=[],tipMounts=[],synergyMounts=[];let tipsDisposed=0,synergyDisposed=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},focus(options){this.focusOptions=options;}});
- const context={...compendium,...themeUI,...model,...releases,createStatisticsUI,selectRanked,__db:db,__releases:read('dist/releases.json'),
+ const context={...compendium,...themeUI,...model,...releases,createStatisticsUI,createRankedLoader,__db:db,__releases:read('dist/releases.json'),
   URL,URLSearchParams,Intl,setTimeout:()=>0,clearTimeout(){},location:{hash},
   mountSynergy:(root,options)=>{synergyMounts.push(options);return ()=>synergyDisposed++;},
   mountMatchupTips:(root,options)=>{tipMounts.push(options);return ()=>tipsDisposed++;},
