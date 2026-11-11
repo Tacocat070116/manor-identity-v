@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.19.1",
+  "lastAnnouncedVersion": "1.12.1",
   "entries": [
     {
       "date": "2026-10-31",
@@ -17,8 +17,9 @@
         "배포와 공개 공지 분리 및 필수 검증 명령 정리"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.0",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.0"
     },
     {
       "date": "2026-10-31",
@@ -32,8 +33,9 @@
         "상단 확성기에서 최신 공지를 열고 이전 내역으로 연결"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.0",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.0"
     },
     {
       "date": "2026-10-31",
@@ -45,8 +47,9 @@
         "아이콘의 곡선·직선 끝처리를 구분하고 같은 역할의 크기·정렬 통일"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.1",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.1"
     },
     {
       "date": "2026-10-31",
@@ -58,8 +61,9 @@
         "중복 안내와 빈 연구 영역을 줄이고 핵심 조건·예외 유지"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.2",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.2"
     },
     {
       "date": "2026-10-31",
@@ -70,8 +74,9 @@
         "공략의 적용 조건과 예외, 장단점의 어구체 유지"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.2",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.2"
     },
     {
       "date": "2026-10-31",
@@ -83,8 +88,9 @@
         "보조 특성 7종 아이콘 표시 및 활용법·주의할 점 항목 제거"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.2",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.2"
     },
     {
       "date": "2026-10-31",
@@ -93,8 +99,9 @@
         "시너지 화면의 중복 탭 배치 규칙을 제거해 모바일 캐릭터 상세의 네 탭을 한 줄로 정렬"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.3",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.3"
     },
     {
       "date": "2026-10-31",
@@ -104,8 +111,9 @@
         "함께하면 좋은 생존자의 상황 선택칸과 연결된 필터 제거"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.3",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.3"
     },
     {
       "date": "2026-10-31",
@@ -117,8 +125,9 @@
         "기존 통계 화면에 자료를 연결하고 최신 비동기 요청·캐시·한국어 교정 유지"
       ],
       "announcement": "announced",
-      "announcedVersion": "1.17.3",
-      "announcedAt": "2026-10-31"
+      "announcedVersion": "1.10.0",
+      "announcedAt": "2026-10-31",
+      "originalAnnouncedVersion": "1.17.3"
     },
     {
       "date": "2026-10-31",
@@ -156,8 +165,9 @@
       ],
       "announcement": "announced",
       "audit": "operations/performance-cleanup-2026-11-07.json",
-      "announcedVersion": "1.18.0",
-      "announcedAt": "2026-11-07"
+      "announcedVersion": "1.11.0",
+      "announcedAt": "2026-11-07",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-07",
@@ -171,9 +181,10 @@
       "announcement": "announced",
       "reason": "공개 구현과 실제 Chrome 로그인·저장·로그아웃 검증 범위 공지. 실제 기기 추가 검증 대기.",
       "audit": "operations/google-auth-rollout-2026-11-07.json",
-      "announcedVersion": "1.18.0",
+      "announcedVersion": "1.11.0",
       "announcedAt": "2026-11-07",
-      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지."
+      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지.",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-07",
@@ -191,8 +202,9 @@
         "browserPreview": "Chrome에서 새로고침·새 탭 유지, 탭 간 별 버튼과 필터 목록 갱신, 여러 캐릭터의 추가·해제 보존 확인",
         "scope": "기존 manor-favorites 브라우저 저장 형식 유지. 계정·복구 코드·테마 저장은 변경하지 않으며 기기 간 즐겨찾기 동기화는 포함하지 않음. 실제 iOS Safari는 미검증."
       },
-      "announcedVersion": "1.18.0",
-      "announcedAt": "2026-11-07"
+      "announcedVersion": "1.11.0",
+      "announcedAt": "2026-11-07",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-07",
@@ -212,8 +224,9 @@
         "limits": "Google이 제공하는 계정 선택 화면 내부 코드는 변경하지 않음. Google 콘솔·서버 검증·기존 기록과 세션 저장 방식 유지.",
         "siteChecks": "npm test: 186개 통과. 기존 배포 기준 공지·내용 정합성, SHA256, git diff 검사 통과."
       },
-      "announcedVersion": "1.18.0",
-      "announcedAt": "2026-11-07"
+      "announcedVersion": "1.11.0",
+      "announcedAt": "2026-11-07",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-07",
@@ -241,9 +254,10 @@
         "siteChecks": "활성화 변경 후 npm test 212개 및 배포 기준 공지·내용·체크섬 검사 통과",
         "browserScope": "2026-11-07 공개 사이트에서 Google 계정 선택 → 같은 탭의 복귀 페이지 → MANOR 로그인 연결됨까지 실제 Chrome으로 확인"
       },
-      "announcedVersion": "1.18.0",
+      "announcedVersion": "1.11.0",
       "announcedAt": "2026-11-07",
-      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지."
+      "announcedScope": "공개된 구현 및 확인된 동작을 공지. 실제 iPhone Safari·기기 간 로그인·실제 기존 복구 코드 연결의 추가 검증 상태는 별도로 유지.",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-07",
@@ -263,8 +277,9 @@
         "siteChecks": "npm test 212개 및 배포 기준 공지·내용 정합성·SHA256·git diff 검사 통과"
       },
       "preservation": "요청한 세 배치 수정 외 기능·문구·게임 데이터·로그인 처리·공개 버전·공지 유지",
-      "announcedVersion": "1.18.0",
-      "announcedAt": "2026-11-07"
+      "announcedVersion": "1.11.0",
+      "announcedAt": "2026-11-07",
+      "originalAnnouncedVersion": "1.18.0"
     },
     {
       "date": "2026-11-08",
@@ -282,8 +297,9 @@
         "limits": "Chrome의 반응형 프레임으로 실제 앱을 검사했으며 실제 iPhone Safari 기기 검사는 수행하지 않음."
       },
       "preservation": "공개 버전 1.18.0과 공지·기능·문구·게임 데이터·로그인 처리 유지",
-      "announcedVersion": "1.18.1",
-      "announcedAt": "2026-11-08"
+      "announcedVersion": "1.11.1",
+      "announcedAt": "2026-11-08",
+      "originalAnnouncedVersion": "1.18.1"
     },
     {
       "date": "2026-11-08",
@@ -303,7 +319,8 @@
       },
       "preservation": "로그인 처리·기록 저장·기존 주소·공략 본문·기존 역할 아이콘·공개 버전 1.18.1·공지 유지",
       "portraitResearch": "기존 도감과 같은 형식의 신동·마음의 짐승 일러스트를 확인하지 못해 현재 이미지 유지. research/portraits/2026-11-08-search.json 참조.",
-      "announcedVersion": "1.19.0"
+      "announcedVersion": "1.12.0",
+      "originalAnnouncedVersion": "1.19.0"
     },
     {
       "date": "2026-11-09",
@@ -321,7 +338,8 @@
         "limits": "실제 iPhone Safari 기기 검사는 수행하지 않음. 로컬 미리보기에서 외부 게시판 API 연결이 제한되어 연구실 조작 검사는 기존 모듈을 불러온 로컬 응답 대체 화면에서 수행."
       },
       "preservation": "게임 고유 기술명 추격 공격, 출처 메모·이용자 원문·과거 공지, 기존 상황 저장값·공유 링크·공략 조건·수치·역할 순서와 공개 버전 1.18.1 유지",
-      "announcedVersion": "1.19.0"
+      "announcedVersion": "1.12.0",
+      "originalAnnouncedVersion": "1.19.0"
     },
     {
       "date": "2026-11-09",
@@ -340,7 +358,8 @@
         "limits": "실제 iPhone Safari 기기 검사는 수행하지 않음."
       },
       "preservation": "기존 저장값·기본 테마·화면 배치·애니메이션·기능·게임 데이터와 공개 버전 1.18.1 유지. 계절에 따른 자동 테마 전환 없음.",
-      "announcedVersion": "1.19.0"
+      "announcedVersion": "1.12.0",
+      "originalAnnouncedVersion": "1.19.0"
     },
     {
       "date": "2026-11-09",
@@ -359,7 +378,8 @@
         "limits": "실제 iPhone Safari 기기 검사는 수행하지 않음."
       },
       "preservation": "기능·게임 데이터·선택 저장값·화면 배치·공개 버전 1.18.1과 공지 유지",
-      "announcedVersion": "1.19.0"
+      "announcedVersion": "1.12.0",
+      "originalAnnouncedVersion": "1.19.0"
     },
     {
       "date": "2026-11-09",
@@ -378,7 +398,8 @@
         "limits": "실제 iPhone Safari와 별도 실기기 사이의 Google 로그인 동기화는 직접 검사하지 않음."
       },
       "preservation": "작성 글·댓글·캐릭터 별칭·이전 복구 코드 연결·서버 접근 권한 유지. 계정 동기화에 이름·이메일을 저장하지 않음.",
-      "announcedVersion": "1.19.0"
+      "announcedVersion": "1.12.0",
+      "originalAnnouncedVersion": "1.19.0"
     },
     {
       "date": "2026-11-10",
@@ -395,8 +416,9 @@
         "automated": "전체 226개 검사 통과. 복구 화면의 기존 검증을 유지한 뒤 관련 검사 재통과. 공지·버전 일치, 콘텐츠 검토 지문, 343개 파일 검증 해시, diff 공백 검사 통과."
       },
       "preservation": "로그인 카테고리·Google 인증·테마와 즐겨찾기 계정 동기화·작성 권한·게임 자료·공개 버전 BETA v1.19.0·공지 내용 유지",
-      "announcedVersion": "1.19.1",
-      "announcedAt": "2026-11-11"
+      "announcedVersion": "1.12.1",
+      "announcedAt": "2026-11-11",
+      "originalAnnouncedVersion": "1.19.1"
     },
     {
       "date": "2026-11-10",
@@ -415,8 +437,9 @@
         "limits": "실제 iPhone Safari 기기 검사는 수행하지 않음. 시스템 동작 줄이기·화면 비활성화는 모듈 검사로 검증. 애니메이션 설정은 계정 동기화 대상이 아닌 현재 브라우저의 동작 설정."
       },
       "preservation": "기존 11종 테마의 색상·글래스 재질·기능·게임 자료·Google 로그인·테마 및 즐겨찾기 계정 동기화·공개 버전 BETA v1.19.0·공지 내용 유지",
-      "announcedVersion": "1.19.1",
-      "announcedAt": "2026-11-11"
+      "announcedVersion": "1.12.1",
+      "announcedAt": "2026-11-11",
+      "originalAnnouncedVersion": "1.19.1"
     },
     {
       "date": "2026-11-11",
@@ -434,8 +457,9 @@
         "limits": "실제 iPhone Safari 및 네이티브 핀치 확대 검사는 수행하지 않음. 확대 마감은 Chrome 반응형 프레임을 CSS로 300% 확대해 확인."
       },
       "preservation": "카드 잘라내기·기존 테마·글래스 재질·애니메이션 설정·Google 로그인·계정 동기화·게임 자료·공개 버전 BETA v1.19.0·공지 내용 유지",
-      "announcedVersion": "1.19.1",
-      "announcedAt": "2026-11-11"
+      "announcedVersion": "1.12.1",
+      "announcedAt": "2026-11-11",
+      "originalAnnouncedVersion": "1.19.1"
     },
     {
       "date": "2026-11-11",
@@ -455,8 +479,9 @@
         "limits": "실제 iPhone Safari 기기 및 네트워크 로딩 시간 측정은 수행하지 않음. 로그인·게시물 쓰기는 실행하지 않음."
       },
       "preservation": "기능·화면 디자인·카테고리·공략·통계 원본·사용 중인 이미지·이전 작성자 연결·Google 로그인·테마와 즐겨찾기 저장·공개 버전 BETA v1.19.0·공지 유지",
-      "announcedVersion": "1.19.1",
-      "announcedAt": "2026-11-11"
+      "announcedVersion": "1.12.1",
+      "announcedAt": "2026-11-11",
+      "originalAnnouncedVersion": "1.19.1"
     },
     {
       "date": "2026-11-11",
@@ -470,8 +495,9 @@
       },
       "preservation": "공개 버전 BETA v1.19.0과 기존 공지, 캐릭터·통계 원본, 로그인·즐겨찾기·테마 및 참여 기록 유지",
       "announcement": "announced",
-      "announcedVersion": "1.19.1",
-      "announcedAt": "2026-11-11"
+      "announcedVersion": "1.12.1",
+      "announcedAt": "2026-11-11",
+      "originalAnnouncedVersion": "1.19.1"
     },
     {
       "date": "2026-11-11",
@@ -489,8 +515,9 @@
       },
       "preservation": "기존 유튜브 제거·검색 최적화·공략과 통계의 맵별 자료·로그인·즐겨찾기·연구실 기록·BETA v1.19.0과 공지 유지. 서버의 이미 적용된 DB 이력과 기존 저장 기록은 삭제하지 않음.",
       "excludedAt": "2026-11-11",
-      "excludedFromVersion": "1.19.1",
-      "exclusionReason": "사용자가 버전 업데이트 시 맵 관련 공지를 모두 제외하도록 요청함. 이후 공지 대기 항목으로 다시 포함하지 않음."
+      "excludedFromVersion": "1.12.1",
+      "exclusionReason": "사용자가 버전 업데이트 시 맵 관련 공지를 모두 제외하도록 요청함. 이후 공지 대기 항목으로 다시 포함하지 않음.",
+      "originalExcludedFromVersion": "1.19.1"
     }
   ]
 }

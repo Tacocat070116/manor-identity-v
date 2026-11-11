@@ -19,7 +19,9 @@ if(base&&!/^0+$/.test(base)){
    const previous=JSON.parse(git('show',base+':dist/releases.json'));
    const editsPath='operations/release-copy-edits.json';
    const copyEdits=fs.existsSync(editsPath)?JSON.parse(fs.readFileSync(editsPath,'utf8')).edits:[];
-   validateReleaseUpdate(log,previous,{copyEdits});
+   const consolidationsPath='operations/release-consolidations.json';
+   const consolidations=fs.existsSync(consolidationsPath)?JSON.parse(fs.readFileSync(consolidationsPath,'utf8')).consolidations:[];
+   validateReleaseUpdate(log,previous,{copyEdits,consolidations});
   }
   else assert.ok(compareVersions(log.version,JSON.parse(git('show',base+':package.json')).version)>0,'버전 관리 도입 시 사이트 버전을 올려야 합니다.');
  }

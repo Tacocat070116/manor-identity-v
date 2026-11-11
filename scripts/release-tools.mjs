@@ -37,7 +37,49 @@ export function validateReleaseLog(log,packageVersion){
  assert.equal(log.releases.find(release=>release.id==='opening')?.date,log.openedAt,'오픈 기록을 보존하세요.');
 }
 export const releaseDigest=log=>createHash('sha256').update(JSON.stringify(log)).digest('hex');
-export function validateReleaseUpdate(current,previous,{copyEdits=[]}={}){
+function validateConsolidation(current,previous,record){
+ const message='공지 통합은 같은 날짜의 원본 항목·유형·커밋과 오픈 정보를 보존해야 합니다.';
+ assert.equal(record.grouping,'same-day-asia-seoul',message);
+ assert.ok(compareVersions(current.version,previous.version)<0,'공지 통합의 버전 재정렬을 확인하세요.');
+ assert.ok(current.releases.length<previous.releases.length,message);
+ const metadata=({version,releases,...rest})=>rest;
+ assert.deepEqual(metadata(current),metadata(previous),message);
+ assert.equal(record.groups.length,current.releases.length,message);
+ assert.deepEqual([...record.groups].reverse().flatMap(group=>group.sourceIds),[...previous.releases].reverse().map(release=>release.id),message);
+ assert.equal(new Set(record.groups.map(group=>group.date)).size,record.groups.length,message);
+ const sources=new Map(previous.releases.map(release=>[release.id,release]));
+ const edits=new Map();
+ for(const edit of record.versionReferenceEdits||[]){
+  const source=sources.get(edit.sourceId),key=edit.sourceId+':'+edit.changeIndex;
+  assert.ok(source&&Number.isInteger(edit.changeIndex)&&edit.changeIndex>=0&&edit.changeIndex<source.changes.length,message);
+  assert.ok(!edits.has(key)&&edit.reason?.trim()&&typeof edit.after==='string'&&edit.after.trim(),message);
+  assert.equal(source.changes[edit.changeIndex].text,edit.before,message);
+  assert.match(edit.before,/\bv\d+\.\d+\.\d+/,'통합 문구 교정은 이전 버전 참조에 한정합니다.');
+  edits.set(key,edit.after);
+ }
+ for(const [index,group] of record.groups.entries()){
+  assert.ok(group.sourceIds.length>0,message);
+  const originals=group.sourceIds.map(id=>sources.get(id));
+  assert.ok(originals.every(release=>release&&release.date===group.date),message);
+  const changes=originals.flatMap(release=>release.changes.map((change,i)=>({...change,text:edits.get(release.id+':'+i)??change.text})));
+  const expected={id:group.id,version:group.version,date:group.date,title:group.title,changes,commits:originals.flatMap(release=>release.commits)};
+  assert.deepEqual(current.releases[index],expected,message);
+ }
+ const chronological=[...current.releases].reverse();
+ let expectedVersion=[1,0,0];
+ for(const [index,release] of chronological.entries()){
+  if(index){
+   if(release.changes.some(change=>change.type==='추가')){expectedVersion[1]++;expectedVersion[2]=0;}
+   else expectedVersion[2]++;
+  }
+  assert.equal(release.version,expectedVersion.join('.'),'통합 버전은 기능 추가 시 minor, 그 외에는 patch를 순서대로 올립니다.');
+ }
+ assert.equal(chronological[0].id,'opening',message);
+ assert.equal(chronological[0].date,current.openedAt,message);
+}
+export function validateReleaseUpdate(current,previous,{copyEdits=[],consolidations=[]}={}){
+ const consolidation=consolidations.find(entry=>entry.requestedBy==='owner'&&entry.reason?.trim()&&entry.noAnnouncement===true&&entry.beforeVersion===previous.version&&entry.afterVersion===current.version&&entry.beforeSha256===releaseDigest(previous)&&entry.afterSha256===releaseDigest(current));
+ if(consolidation){validateConsolidation(current,previous,consolidation);return;}
  if(current.version===previous.version){
   const edit=copyEdits.find(entry=>entry.requestedBy==='owner'&&entry.reason?.trim()&&entry.noAnnouncement===true&&entry.version===current.version&&entry.beforeSha256===releaseDigest(previous)&&entry.afterSha256===releaseDigest(current));
   if(edit){

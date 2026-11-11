@@ -58,6 +58,61 @@ test('owner-requested copy edits apply only to the exact recorded text revision'
  }
 });
 
+function consolidationFixture(){
+ const opening={id:'opening',version:null,date:'2026-10-16',title:'베타 공개',changes:[{type:'추가',text:'도감을 공개했습니다.'}],commits:['a'.repeat(40)]};
+ const feature={id:'original-feature',version:'1.9.0',date:'2026-10-17',title:'검색 추가',changes:[{type:'추가',text:'캐릭터 검색을 추가했습니다.'}],commits:['b'.repeat(40)]};
+ const fix={id:'original-fix',version:'1.9.1',date:'2026-10-17',title:'버튼 수정',changes:[{type:'수정',text:'v1.9.0의 버튼을 원래 위치로 복원했습니다.'}],commits:['c'.repeat(40)]};
+ const before={stage:'BETA',version:'1.9.1',openedAt:'2026-10-16',historyNote:'한국 시간 기준입니다.',historySource:{openingDeployment:'original-deployment'},releases:[fix,feature,opening]};
+ const after={...structuredClone(before),version:'1.1.0',releases:[{id:'beta-1-1-0',version:'1.1.0',date:'2026-10-17',title:'검색·버튼 개선',changes:[...feature.changes,...fix.changes],commits:[...feature.commits,...fix.commits]},{...opening,version:'1.0.0'}]};
+ const groups=after.releases.map((release,index)=>({id:release.id,version:release.version,date:release.date,title:release.title,sourceIds:index?['opening']:['original-feature','original-fix']}));
+ const record=current=>({requestedBy:'owner',noAnnouncement:true,reason:'같은 날 공지 통합과 버전 재정렬 요청',grouping:'same-day-asia-seoul',beforeVersion:before.version,afterVersion:current.version,beforeSha256:releaseDigest(before),afterSha256:releaseDigest(current),groups:structuredClone(groups),versionReferenceEdits:[]});
+ return {before,after,record};
+}
+
+test('a requested consolidation permits only its recorded version reduction',()=>{
+ const {before,after,record}=consolidationFixture();
+ validateReleaseLog(after,after.version);
+ assert.throws(()=>validateReleaseUpdate(after,before),/버전/);
+ validateReleaseUpdate(after,before,{consolidations:[record(after)]});
+ for(const invalid of [{...record(after),noAnnouncement:false},{...record(after),requestedBy:'other'},{...record(after),beforeSha256:'0'.repeat(64)}]){
+  assert.throws(()=>validateReleaseUpdate(after,before,{consolidations:[invalid]}),/버전/);
+ }
+ const later=structuredClone(after);later.releases[0].changes[0].text+=' 기록되지 않은 수정';
+ assert.throws(()=>validateReleaseUpdate(later,before,{consolidations:[record(after)]}),/버전/);
+});
+
+test('consolidation cannot lose, duplicate, retype or move history across dates',()=>{
+ const {before,after,record}=consolidationFixture();
+ for(const mutate of [
+  current=>current.releases[0].changes.pop(),
+  current=>current.releases[0].changes.push(current.releases[0].changes[0]),
+  current=>current.releases[0].changes[0].type='삭제',
+  current=>current.releases[0].commits.pop(),
+  current=>current.releases[0].date='2026-10-18',
+  current=>current.openedAt='2026-10-15',
+  current=>current.historySource.openingDeployment='another-deployment',
+ ]){
+  const invalid=structuredClone(after);mutate(invalid);
+  assert.throws(()=>validateReleaseUpdate(invalid,before,{consolidations:[record(invalid)]}),/통합/);
+ }
+ const duplicated=record(after);duplicated.groups[0].sourceIds=['original-feature','original-feature'];
+ assert.throws(()=>validateReleaseUpdate(after,before,{consolidations:[duplicated]}),/통합/);
+ const wrongDate=record(after);wrongDate.groups[0].date='2026-10-18';
+ assert.throws(()=>validateReleaseUpdate(after,before,{consolidations:[wrongDate]}),/통합/);
+});
+
+test('consolidated notes adjust old version references only with an exact copy record',()=>{
+ const {before,after,record}=consolidationFixture();
+ const original=after.releases[0].changes[1].text;
+ after.releases[0].changes[1]={type:'수정',text:'버튼을 원래 위치로 복원했습니다.'};
+ const edit=record(after);
+ assert.throws(()=>validateReleaseUpdate(after,before,{consolidations:[edit]}),/통합/);
+ edit.versionReferenceEdits=[{sourceId:'original-fix',changeIndex:0,before:original,after:after.releases[0].changes[1].text,reason:'통합 후 이전 번호 대신 복원 대상을 표시'}];
+ validateReleaseUpdate(after,before,{consolidations:[edit]});
+ const missing=structuredClone(edit);missing.versionReferenceEdits[0].before='다른 원문';
+ assert.throws(()=>validateReleaseUpdate(after,before,{consolidations:[missing]}),/통합/);
+});
+
 test('history lists every entry, searches with type filters and escapes text',()=>{
  const all=releaseUI.releaseNotesList(log);
  assert.equal((all.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
@@ -106,8 +161,8 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
  assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>url.startsWith('patches/')));assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
- handlers.input({target:{id:'release-search',value:'닉네임'}});
- assert.ok(nodes.get('#release-results').innerHTML.includes('닉네임'));
+ handlers.input({target:{id:'release-search',value:'오너먼트'}});
+ assert.ok(nodes.get('#release-results').innerHTML.includes('오너먼트'));
  handlers.change({target:{id:'release-type',value:'데이터',dataset:{}}});
  assert.ok(nodes.get('#release-results').innerHTML.includes('일치하는 업데이트가 없습니다'));
  context.location.hash='#v=explore';context.app.readRoute();await context.app.render();
