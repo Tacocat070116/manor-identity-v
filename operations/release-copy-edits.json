@@ -24,6 +24,21 @@
       "correctedReleases": 20,
       "correctedChanges": 42,
       "reviewFile": "operations/release-history-review-2026-10-31.json"
+    },
+    {
+      "requestedBy": "owner",
+      "requestedAt": "2026-11-11",
+      "version": "1.19.1",
+      "noAnnouncement": true,
+      "reason": "모든 공지를 사용자가 이해하기 쉽도록 약간 더 간결하게 써 달라는 요청에 따라 전체 문장을 교정. 반복 설명과 긴 연결 표현을 줄이고 수치·범위·조건·예외·이용 방법과 당시 변경 사실은 보존. 새 버전·새 공지 없이 기존 맵 기능 공지 제외 방침 유지.",
+      "beforeSha256": "9972f00558a387a9677bbaf2e5dd9810362143715a93fe4c013d3f542c98b1e6",
+      "afterSha256": "7f3febee97657e2ea2f8a92b5c42460afd57c2f05be0a4dcd0fdfaea4c1b4862",
+      "reviewedReleases": 100,
+      "reviewedChanges": 327,
+      "correctedReleases": 100,
+      "correctedChanges": 327,
+      "beforeCharacters": 21534,
+      "afterCharacters": 19257
     }
   ]
 }
