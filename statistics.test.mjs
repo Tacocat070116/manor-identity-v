@@ -315,13 +315,13 @@ test('tournament-only views leave ranked partitions unloaded and retain the sele
 test('a delayed or failed feature load cannot mount onto a newer route, and remains retryable',async()=>{
  const {context,app,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
  let finish,mounts=0;context.loadFeature=()=>new Promise(resolve=>{finish=resolve;});
- context.location.hash='#v=maps';app.readRoute();const pending=app.render();
+ context.location.hash='#v=feedback';app.readRoute();const pending=app.render();
  context.location.hash='#v=explore';app.readRoute();await app.render();
- finish({mountMaps:()=>{mounts++;return ()=>{};}});await pending;
+ finish({mountFeedback:()=>{mounts++;return ()=>{};}});await pending;
  assert.equal(mounts,0);assert.match(nodes.get('#page-body').innerHTML,/A CLEARER WAY TO PLAY/);
- context.location.hash='#v=maps';app.readRoute();context.loadFeature=async()=>{throw Error('offline');};await app.render();
+ context.location.hash='#v=feedback';app.readRoute();context.loadFeature=async()=>{throw Error('offline');};await app.render();
  assert.match(nodes.get('#page-body').innerHTML,/다시 시도/);
- context.loadFeature=async()=>({mountMaps:()=>{mounts++;return ()=>{};}});await app.render();assert.equal(mounts,1);
+ context.loadFeature=async()=>({mountFeedback:()=>{mounts++;return ()=>{};}});await app.render();assert.equal(mounts,1);
 });
 
 test('presentation changes reuse tournament aggregation while real filter and input changes recompute',()=>{

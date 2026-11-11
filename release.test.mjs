@@ -78,12 +78,11 @@ test('history lists every entry, searches with type filters and escapes text',()
 });
 
 test('patchnotes deep link, shared version, filters and return navigation work in the app',async()=>{
- const nodes=new Map(),handlers={},fetches=[],views=[],mapMounts=[],recoveryMounts=[];let mapDisposals=0,recoveryDisposals=0;
+ const nodes=new Map(),handlers={},fetches=[],views=[],recoveryMounts=[];let recoveryDisposals=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
  const context={mountSeasonalEffects:()=>({refresh(){}}),createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
-  mountMaps:(root,options)=>{mapMounts.push({root,options});return ()=>mapDisposals++;},
   mountRecoveryPage:root=>{recoveryMounts.push(root);return ()=>recoveryDisposals++;},
   mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
@@ -94,7 +93,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  assert.equal(context.document.title,'MANOR 업데이트 · MANOR');
  for(const selector of ['#header','#footer','#page-body'])assert.ok(nodes.get(selector).innerHTML.includes('BETA v'+log.version),selector);
  const header=nodes.get('#header').innerHTML;
- assert.equal((header.match(/class="nav-item /g)||[]).length,8,'desktop and mobile share eight links; ban records live under statistics');
+ assert.equal((header.match(/class="nav-item /g)||[]).length,7,'desktop and mobile share seven links; ban records live under statistics');
  assert.ok(header.includes('href="#v=recovery"'));
  assert.ok(header.includes('data-action="latest-update"'));assert.ok(header.includes('icon-megaphone'));
  assert.ok(header.includes('href="#v=laboratory"'));assert.ok(header.includes('icon-flask'));
@@ -103,7 +102,7 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  for(const selector of ['#header','#footer','#page-body'])assert.ok(!nodes.get(selector).innerHTML.includes('#v=gamepatches'),'game-patch links are removed from '+selector);
  assert.ok(header.includes('aria-expanded="false"'));
  assert.ok(header.includes('aria-hidden="true" inert'));
- assert.equal((header.match(/tabindex="-1"/g)||[]).length,8);
+ assert.equal((header.match(/tabindex="-1"/g)||[]).length,7);
  assert.ok(!/desktop-nav|mobile-nav/.test(header));
  assert.equal((nodes.get('#page-body').innerHTML.match(/<article class="panel release-card/g)||[]).length,log.releases.length);
  assert.equal(fetches.length,4);assert.ok(!fetches.some(url=>url.startsWith('patches/')));assert.ok(!fetches.some(url=>/matches|ranked/.test(url)));
@@ -115,10 +114,13 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();
  assert.deepEqual(views,['patchnotes','explore','patchnotes']);
  assert.ok(nodes.get('#page-body').innerHTML.includes('일치하는 업데이트가 없습니다'));
- context.location.hash='#v=maps&share=11111111-1111-4111-8111-111111111111';context.app.readRoute();await context.app.render();
- assert.equal(context.document.title,'맵 BETA · MANOR');assert.equal(mapMounts.length,1);assert.equal(mapMounts[0].options.shareId,'11111111-1111-4111-8111-111111111111');
- mapMounts[0].options.navigate({v:'maps'});assert.equal(context.location.hash,'#v=maps');
- context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(mapDisposals,1);
+ for(const retired of ['maps','creators']){
+  context.location.hash='#v='+retired+'&share=11111111-1111-4111-8111-111111111111';context.app.readRoute();await context.app.render();
+  assert.equal(context.document.title,'캐릭터 도감 · MANOR');
+  assert.equal(views.at(-1),'explore');
+  assert.ok(!header.includes('data-view="'+retired+'"'));
+ }
+ assert.ok(!header.includes('beta-badge'));
  context.location.hash='#v=recovery';context.app.readRoute();await context.app.render();
  assert.equal(context.document.title,'로그인 · MANOR');assert.equal(recoveryMounts.length,1);
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(recoveryDisposals,1);

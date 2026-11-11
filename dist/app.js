@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=b59da80a3e27';
+import {loadFeature} from './feature-loader.js?v=9a61af63b2a4';
 import './typography.js?v=f2553395f702';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=b6ba11acef15';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -17,7 +17,6 @@ const numberFormat=new Intl.NumberFormat('ko-KR');
 const num=n=>numberFormat.format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
-map:'<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/>',
 flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3"/><path data-stroke="soft" d="M7 14c2-1 3 1 5 0s3-1 5 0"/><circle cx="10" cy="17.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r=".7" fill="currentColor" stroke="none"/>',
 megaphone:'<path d="M8 9 18.4 4.8a.6.6 0 0 1 .8.6v13.2a.6.6 0 0 1-.8.6L8 15H4.8a1.3 1.3 0 0 1-1.3-1.3v-3.4A1.3 1.3 0 0 1 4.8 9H8Zm0 0v6m.7.3 1.1 4.2a1.2 1.2 0 0 0 1.2.9h1.8M22 10v4"/>',
 palette:'<path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.3 1.3 0 0 1 .9-2.2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-8.9Z"/><circle cx="7" cy="11" r=".9"/><circle cx="10" cy="7" r=".9"/><circle cx="15" cy="7.5" r=".9"/>',
@@ -152,7 +151,7 @@ const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
- state.view=['explore','character','matchup','compare','bans','statistics','maps','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
+ state.view=['explore','character','matchup','compare','bans','statistics','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
@@ -172,10 +171,6 @@ function readRoute(){
  if(!['asc','desc'].includes(state.statistics.direction))state.statistics.direction='desc';
  state.feedbackPost=/^[0-9a-f-]{36}$/.test(p.get('post')||'')?p.get('post'):'';
  state.feedbackComment=state.view==='feedback'&&p.get('comment')==='1';
- state.mapId=['arms-factory','sacred-heart-hospital','red-church'].includes(p.get('map'))?p.get('map'):'';
- state.mapShare=p.get('share')||'';
- state.mapPlan=p.get('plan')||'';
- if(p.get('v')==='creators')state.view='maps';
  const f=state.view==='bans'?state.banFilters:state.stats;
  if(p.has('days')&&[0,30,90,365].includes(Number(p.get('days'))))f.days=Number(p.get('days'));
  if(p.has('map'))f.map=db.maps.includes(p.get('map'))?p.get('map'):'';
@@ -190,9 +185,9 @@ function readRoute(){
 }
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['maps','맵','map'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','로그인','lock']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','로그인','lock']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view==='bans'?'statistics':state.view))||['explore','도감','grid'];
- const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}${v==='maps'?'<span class="beta-badge">BETA</span>':''}</span></a>`).join('');
+ const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
@@ -419,9 +414,9 @@ async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
  disposeView();disposeView=()=>{};
  const token=++renderToken;header();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',maps:'맵 BETA',feedback:'피드백',recovery:'로그인',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',feedback:'피드백',recovery:'로그인',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
- const feature=({maps:'maps',feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
+ const feature=({feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
  const needsGuides=['character','matchup','compare'].includes(state.view)||(state.view==='explore'&&state.favoriteOnly);
  const needsStatistics=state.view==='statistics'||state.view==='compare'||state.view==='character'&&state.tab==='stats';
  let featureModule;
@@ -431,7 +426,7 @@ async function render({scroll=false}={}){
   catch(error){if(token===renderToken)body.innerHTML=loadError(error);return;}
   if(token!==renderToken)return;
  }
- const {mountMaps,mountFeedback,mountSynergy,mountRecoveryPage,mountResearchHighlights,mountMatchupTips}=featureModule||{};
+ const {mountFeedback,mountSynergy,mountRecoveryPage,mountResearchHighlights,mountMatchupTips}=featureModule||{};
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeView=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='tournament'?Promise.resolve(null):loadRanked(),state.statistics.scope==='ranked'?Promise.resolve(null):loadDetails()]);if(token!==renderToken)return;
@@ -460,7 +455,6 @@ async function render({scroll=false}={}){
  }
  else if(state.view==='recovery'){disposeView=mountRecoveryPage(body);}
  else if(state.view==='patchnotes')body.innerHTML=releaseNotesPage(releaseLog,releaseFilters,{icon});
- else if(state.view==='maps'){disposeView=mountMaps(body,{characters:byId,mapId:state.mapId,shareId:state.mapShare,planId:state.mapPlan,navigate:params=>navigate(params)});}
  else if(state.view==='feedback'){disposeView=mountFeedback(body,{characters:byId,postId:state.feedbackPost,focusComment:state.feedbackComment,navigate:(id,comment)=>navigate({v:'feedback',...(id?{post:id}:{}),...(id&&comment?{comment:'1'}:{})})});}
  else{
   const view=state.view;
