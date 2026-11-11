@@ -31,7 +31,7 @@ export function createPlanSession({initial,owner,storage,cloud,onStatus=()=>{}})
    const result=await cloud.save(plan,state.cloudRevision);
    records.set(key(plan.id),{...meta(plan.id),cloudRevision:result.revision});
    // Persist the acknowledged revision even if edits arrived during the request.
-   if(history.get().id===plan.id){dirty=true;await persist();status('계정에 저장됨 · 버전 '+result.revision);}
+   if(history.get().id===plan.id){dirty=true;await persist();status(JSON.stringify(history.get())===JSON.stringify(plan)?'계정에 저장됨 · 버전 '+result.revision:'계정에 버전 '+result.revision+' 저장됨 · 추가 변경은 다시 저장해 주세요.');}
    return result;
   },
   async openCloud(id){
