@@ -15,7 +15,7 @@ export function mountSeasonalEffects({document,storage,media}){
  scene.className='seasonal-scene';
  scene.setAttribute('aria-hidden','true');
  scene.setAttribute('inert','');
- scene.innerHTML=`<div class="seasonal-snow">${snowMarkup()}</div><div class="seasonal-canopy"></div>`;
+ scene.innerHTML=`<div class="seasonal-snow">${snowMarkup()}</div><div class="seasonal-canopy"><span class="seasonal-canopy-edge"></span><span class="seasonal-canopy-edge"></span></div>`;
  document.body.prepend(scene);
 
  function refresh(){

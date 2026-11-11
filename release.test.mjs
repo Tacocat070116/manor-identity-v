@@ -138,7 +138,9 @@ test('cache refresh fingerprints transitive module imports and propagates change
  try{
   execFileSync('git',['init','-q',root]);fs.mkdirSync(path.join(root,'dist'));
   const write=(file,body)=>fs.writeFileSync(path.join(root,'dist',file),body);
-  write('index.html','<script type="module" src="app.js?v=old"></script>');
+  write('index.html','<link rel="stylesheet" href="theme.css?v=old"><script type="module" src="app.js?v=old"></script>');
+  write('theme.css',"body{background:url('./ornament.svg?v=old')}");
+  write('ornament.svg','<svg id="before"/>');
   write('app.js',"import {value} from './model.js'; export const load=()=>import('./feature.js'); console.log(value);");
   write('feature.js',"export {value} from './model.js';");
   write('model.js','export const value=1;');
@@ -154,6 +156,14 @@ test('cache refresh fingerprints transitive module imports and propagates change
   assert.notEqual(fs.readFileSync(path.join(root,'dist','feature.js'),'utf8'),firstFeature);
   assert.notEqual(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),first);
   assert.notEqual(fs.readFileSync(path.join(root,'dist','return.html'),'utf8'),firstReturn);
+  const beforeArt=fs.readFileSync(path.join(root,'dist','index.html'),'utf8');
+  const beforeCSS=fs.readFileSync(path.join(root,'dist','theme.css'),'utf8');
+  const beforeApp=fs.readFileSync(path.join(root,'dist','app.js'),'utf8');
+  write('ornament.svg','<svg id="after"/>');refreshPackage(root);
+  assert.match(fs.readFileSync(path.join(root,'dist','theme.css'),'utf8'),/ornament\.svg\?v=[a-f0-9]{12}/);
+  assert.notEqual(fs.readFileSync(path.join(root,'dist','theme.css'),'utf8'),beforeCSS);
+  assert.notEqual(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),beforeArt);
+  assert.equal(fs.readFileSync(path.join(root,'dist','app.js'),'utf8'),beforeApp,'art changes do not invalidate unrelated JavaScript');
   const stable=fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8');refreshPackage(root);
   assert.equal(fs.readFileSync(path.join(root,'SHA256SUMS.txt'),'utf8'),stable);
  }finally{fs.rmSync(root,{recursive:true,force:true});}

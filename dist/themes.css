@@ -295,8 +295,13 @@ html[data-theme="christmas"] body{
 html[data-theme="christmas"] .seasonal-scene{display:block;position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:layout paint}
 html[data-theme="christmas"] .seasonal-canopy{
  position:absolute;inset:0 0 auto;height:144px;
- background:url('./assets/christmas-garland.svg') left top / 1200px 144px repeat-x;
+ background:url('./assets/christmas-garland.svg?v=84ff0a7db396') left top / 1200px 144px repeat-x;
 }
+html[data-theme="christmas"] .seasonal-canopy-edge{
+ position:absolute;top:0;left:0;width:144px;height:144px;
+ background:url('./assets/christmas-corner.svg?v=6a27f6dba3ae') center / contain no-repeat;
+}
+html[data-theme="christmas"] .seasonal-canopy-edge:last-child{left:auto;right:0;transform:scaleX(-1)}
 html[data-theme="christmas"] .seasonal-canopy::before,
 html[data-theme="christmas"] .seasonal-canopy::after{
  content:"";position:absolute;inset:0;background-repeat:repeat-x;background-size:300px 144px;
@@ -322,23 +327,27 @@ html[data-theme="christmas"] .hero-art::before{
  background:radial-gradient(ellipse at 50% 45%,rgba(229,190,101,.28),transparent 68%);
  animation:christmas-glow 7s ease-in-out infinite alternate;
 }
-html[data-theme="christmas"] .hero-stage .art-orbit{
- inset:-20px -8px -2px;
- background:url('./assets/christmas-wreath.svg') center / 100% 100% no-repeat;
+html[data-theme="christmas"] .hero-stage-frame{overflow:visible}
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit{
+ --wreath-star-size:24px;--wreath-bow-size:50px 36px;
+ inset:-8px -8px -2px;
+ background:url('./assets/christmas-star.svg?v=dd7cab82723c') center top / var(--wreath-star-size) var(--wreath-star-size) no-repeat,
+  url('./assets/christmas-bow.svg?v=2767e88c3268') center bottom / var(--wreath-bow-size) no-repeat,
+  url('./assets/christmas-wreath.svg?v=16ea83b08f31') center / 100% 100% no-repeat;
  border-color:transparent;transform:none;
 }
-html[data-theme="christmas"] .hero-stage .art-orbit::before,
-html[data-theme="christmas"] .hero-stage .art-orbit::after{
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit::before,
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after{
  content:"";position:absolute;inset:24px auto auto 10%;width:40px;height:100px;
  border:0;border-radius:0;pointer-events:none;
- background:url('./assets/christmas-pendant.svg') center top / contain no-repeat;
+ background:url('./assets/christmas-pendant.svg?v=4f98b4ffd027') center top / contain no-repeat;
  transform-origin:50% 0;animation:christmas-sway 6s ease-in-out infinite alternate;
 }
-html[data-theme="christmas"] .hero-stage .art-orbit::after{left:auto;right:9%;top:12px;width:32px;height:86px;animation-duration:7.5s;animation-delay:-4s}
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after{left:auto;right:9%;top:12px;width:32px;height:86px;animation-duration:7.5s;animation-delay:-4s}
 html[data-theme="christmas"] #footer{position:relative}
 html[data-theme="christmas"] #footer::before{
  content:"";display:block;width:240px;height:120px;margin:0 auto 12px;pointer-events:none;
- background:url('./assets/christmas-trees.svg') center / contain no-repeat;
+ background:url('./assets/christmas-trees.svg?v=39a4c54a436f') center / contain no-repeat;
 }
 html[data-theme="christmas"] #footer::after{
  content:"";position:absolute;top:-4px;left:calc(50% - 22px);width:44px;height:44px;pointer-events:none;
@@ -366,16 +375,18 @@ html[data-theme="christmas"] .seasonal-snow>i,
 html[data-theme="christmas"] .seasonal-canopy::before,
 html[data-theme="christmas"] .seasonal-canopy::after,
 html[data-theme="christmas"] .hero-art::before,
-html[data-theme="christmas"] .hero-stage .art-orbit::before,
-html[data-theme="christmas"] .hero-stage .art-orbit::after,
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit::before,
+html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after,
 html[data-theme="christmas"] #footer::after{animation-play-state:var(--seasonal-play-state,paused)}
 @media(max-width:640px){
  html[data-theme="christmas"] .seasonal-snow>i:nth-child(n+13){display:none}
  html[data-theme="christmas"] .seasonal-canopy{height:96px;background-size:800px 96px}
+ html[data-theme="christmas"] .seasonal-canopy-edge{width:96px;height:96px}
  html[data-theme="christmas"] .seasonal-canopy::before,
  html[data-theme="christmas"] .seasonal-canopy::after{background-size:200px 96px}
- html[data-theme="christmas"] .hero-stage .art-orbit::before{left:7%;width:30px;height:80px}
- html[data-theme="christmas"] .hero-stage .art-orbit::after{right:6%;width:26px;height:70px}
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit{--wreath-star-size:20px;--wreath-bow-size:44px 32px}
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::before{left:7%;width:30px;height:80px}
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after{right:6%;width:26px;height:70px}
  html[data-theme="christmas"] .seasonal-motion-settings{margin:0 16px 16px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -383,19 +394,19 @@ html[data-theme="christmas"] #footer::after{animation-play-state:var(--seasonal-
  html[data-theme="christmas"] .seasonal-canopy::before,
  html[data-theme="christmas"] .seasonal-canopy::after,
  html[data-theme="christmas"] .hero-art::before,
- html[data-theme="christmas"] .hero-stage .art-orbit::before,
- html[data-theme="christmas"] .hero-stage .art-orbit::after,
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::before,
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after,
  html[data-theme="christmas"] #footer::after{animation:none;opacity:1;transform:none}
 }
 @media(forced-colors:active),print{
  html[data-theme="christmas"] body{background-image:none}
  html[data-theme="christmas"] .seasonal-scene,
  html[data-theme="christmas"] .hero-art::before,
- html[data-theme="christmas"] .hero-stage .art-orbit::before,
- html[data-theme="christmas"] .hero-stage .art-orbit::after,
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::before,
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit::after,
  html[data-theme="christmas"] #footer::before,
  html[data-theme="christmas"] #footer::after{display:none}
- html[data-theme="christmas"] .hero-stage .art-orbit{background-image:none}
+ html[data-theme="christmas"] .hero-stage-frame>.art-orbit{background-image:none}
 }
 
 /* The picker stays compact on phones and uses native radio-keyboard behavior. */

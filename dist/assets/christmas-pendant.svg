@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 128" fill="none">
  <defs><radialGradient id="red" cx="30%" cy="25%" r="80%"><stop stop-color="#e6a095"/><stop offset=".45" stop-color="#b83e50"/><stop offset="1" stop-color="#8d2036"/></radialGradient><linearGradient id="gold"><stop stop-color="#e6cb85"/><stop offset="1" stop-color="#a88440"/></linearGradient></defs>
- <path d="M28 0v64" stroke="#b19559" stroke-width="1.2"/>
- <path d="M28 28c-19-23-30-12-22-5 6 6 13 7 22 5 19-23 30-12 22-5-6 6-13 7-22 5Z" fill="#386449"/>
- <path d="m24 28-9 17 8-2 5 5 2-19m2-1 9 17-8-2-5 5-2-19" fill="#4e7753"/>
+ <path d="M28 8v56" stroke="#b19559" stroke-width="1.2" stroke-linecap="round"/>
+ <path d="M26 27C17 15 6 11 5 18 4 25 17 29 26 27Z M30 27C39 15 50 11 51 18 52 25 39 29 30 27Z" fill="#386449"/>
+ <path d="M25 28 16 45 22 42 26 47 28 29Z M31 28 40 45 34 42 30 47 28 29Z" fill="#4e7753"/>
  <circle cx="28" cy="27" r="3" fill="url(#gold)"/>
  <rect x="23" y="62" width="10" height="8" rx="2" fill="url(#gold)"/>
  <circle cx="28" cy="89" r="21" fill="url(#red)"/>

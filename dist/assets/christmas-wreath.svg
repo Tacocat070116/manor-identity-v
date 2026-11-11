@@ -50,7 +50,5 @@
 <circle cx="187.8" cy="41.0" r="6" fill="url(#gold)"/><circle cx="186.8" cy="40.0" r="1.5" fill="#fff5cf"/>
 <circle cx="329.1" cy="33.0" r="6" fill="url(#gold)"/><circle cx="328.1" cy="32.0" r="1.5" fill="#fff5cf"/>
 <circle cx="492.1" cy="108.1" r="6" fill="url(#gold)"/><circle cx="491.1" cy="107.1" r="1.5" fill="#fff5cf"/>
-<g transform="translate(280 304)"><path d="M0-3C-24-30-48-26-42-7c6 19 25 15 42 4M0-3c24-27 48-23 42-4C36 12 17 8 0-3" fill="#a8243b"/><path d="m-5 2-16 32 13-3 9 7 4-31M5 2l16 32-13-3-9 7-4-31" fill="#b52b40"/><path d="M-6-6q6-4 12 0v14H-6z" fill="#d05d5c"/></g>
-<path d="m280 5 3 10 11 1-9 6 3 11-8-7-9 7 3-11-9-6 11-1z" fill="url(#gold)"/>
 <g stroke="#c09a51" stroke-linecap="round"><path d="M32 66v12m-6-6h12M518 251v14m-7-7h14M487 43v10m-5-5h10"/></g>
 </svg>
