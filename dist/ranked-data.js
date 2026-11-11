@@ -1,4 +1,4 @@
-import {selectRanked} from './statistics-model.js?v=5687d33c8da6';
+import {selectRanked} from './statistics-model.js?v=88c249887bf9';
 
 // One repository per app session owns partition requests and hydrated rows.
 // Failed requests are evicted; successful requests retain no raw tuple arrays.

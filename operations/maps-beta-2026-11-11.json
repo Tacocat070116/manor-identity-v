@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-11",
+  "baseCommit": "49682b68a20ae3ceb92183932e01ca351d84d6f3",
+  "search": {
+    "comparisons": 1068,
+    "iterationsPerSample": 32040,
+    "baselineMedianMs": 148.9,
+    "updatedMedianMs": 120.93,
+    "note": "Same local Node process, five warmed samples; not a device/network loading benchmark."
+  },
+  "mapImages": {
+    "count": 7,
+    "totalBytes": 532748
+  },
+  "mapSchemaSha256": "2f4ecdd53a25718801927b1e36fd9f7d626eba34514ffe28d1287bf80e3b7823",
+  "backendCommit": "783fb831ab966b51d184b9783b3b0c75cb755510",
+  "backendVersion": 29,
+  "sourceAudit": "research/maps/research-summary.json",
+  "verification": {
+    "automated": "프런트엔드 229개, 참여 서버 79개 검사 통과. 저장 충돌·계정 격리·공유 불변성·취소·입력 검증 포함.",
+    "browser": "Chrome에서 탐색·공략 복사·경로 편집·단계 복제·실행 취소·재생·새로고침 후 초안 복원 확인. 320/375/768/1280px 프레임의 가로 넘침 없음. 실제 IndexedDB 충돌·계정별 초안 분리, JSON 왕복 및 1600×1753 PNG 생성 확인.",
+    "limits": "현재 게임 클라이언트 배치, 실제 iPhone Safari 및 실제 Google 계정의 기기 간 저장은 실기기 검증하지 않음. 자동 길찾기·게임 판정 시뮬레이션·실시간 공동 편집은 초기 베타 제외."
+  }
+}

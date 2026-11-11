@@ -1,0 +1,524 @@
+{
+  "basis": {
+    "sourceDimensions": {
+      "width": 2643,
+      "height": 2294
+    },
+    "coordinateMeaning": "normalized x and y are 0..1000 relative to cropOriginal. originalPixel is relative to the original 2643x2294 PNG. Positions are visually read approximate building/region/gate centers, not game-world measurements or exact interactable-object positions.",
+    "orientation": "Source minimap orientation retained. No north-compass claim.",
+    "labels": "Korean translations of source labels; local Korean community names may differ.",
+    "floors": "Common outdoor footprints align across all supplied floor images. Building detail changes per selected floor. Do not infer basement certainty from stair drawings."
+  },
+  "maps": {
+    "arms-factory": {
+      "cropOriginal": {
+        "x": 325,
+        "y": 195,
+        "width": 2050,
+        "height": 1825
+      },
+      "landmarks": [
+        {
+          "id": "factory",
+          "label": "공장",
+          "sourceLabel": "工厂",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1825,
+            "y": 1510
+          },
+          "normalized": {
+            "x": 731.71,
+            "y": 720.55
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "shack",
+          "label": "작은 집",
+          "sourceLabel": "小屋",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1108,
+            "y": 748
+          },
+          "normalized": {
+            "x": 381.95,
+            "y": 303.01
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "main-gate",
+          "label": "정문",
+          "sourceLabel": "正门",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 2277,
+            "y": 852
+          },
+          "normalized": {
+            "x": 952.2,
+            "y": 360.0
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "side-gate",
+          "label": "옆문",
+          "sourceLabel": "侧门",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 419,
+            "y": 1070
+          },
+          "normalized": {
+            "x": 45.85,
+            "y": 479.45
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "side-gate-ruins",
+          "label": "옆문 폐허",
+          "sourceLabel": "侧门废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 640,
+            "y": 550
+          },
+          "normalized": {
+            "x": 153.66,
+            "y": 194.52
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "main-gate-ruins",
+          "label": "정문 폐허",
+          "sourceLabel": "正门废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 2020,
+            "y": 450
+          },
+          "normalized": {
+            "x": 826.83,
+            "y": 139.73
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "logging-forest",
+          "label": "벌목장",
+          "sourceLabel": "伐木林",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1495,
+            "y": 500
+          },
+          "normalized": {
+            "x": 570.73,
+            "y": 167.12
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "cargo",
+          "label": "화물 구역",
+          "sourceLabel": "堆货区",
+          "kind": "region",
+          "originalPixel": {
+            "x": 980,
+            "y": 1080
+          },
+          "normalized": {
+            "x": 319.51,
+            "y": 484.93
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "center",
+          "label": "중앙",
+          "sourceLabel": "中场",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1470,
+            "y": 1145
+          },
+          "normalized": {
+            "x": 558.54,
+            "y": 520.55
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "junkyard",
+          "label": "폐자재 구역",
+          "sourceLabel": "废料区",
+          "kind": "region",
+          "originalPixel": {
+            "x": 740,
+            "y": 1680
+          },
+          "normalized": {
+            "x": 202.44,
+            "y": 813.7
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "loading",
+          "label": "하역 구역",
+          "sourceLabel": "装卸区",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1465,
+            "y": 1700
+          },
+          "normalized": {
+            "x": 556.1,
+            "y": 824.66
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        }
+      ]
+    },
+    "sacred-heart-hospital": {
+      "cropOriginal": {
+        "x": 420,
+        "y": 130,
+        "width": 1950,
+        "height": 1880
+      },
+      "landmarks": [
+        {
+          "id": "hospital",
+          "label": "병원",
+          "sourceLabel": "医院",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1285,
+            "y": 1110
+          },
+          "normalized": {
+            "x": 443.59,
+            "y": 521.28
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "shack",
+          "label": "작은 집",
+          "sourceLabel": "小屋",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1895,
+            "y": 620
+          },
+          "normalized": {
+            "x": 756.41,
+            "y": 260.64
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "main-gate",
+          "label": "정문",
+          "sourceLabel": "正门",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 1285,
+            "y": 1815
+          },
+          "normalized": {
+            "x": 443.59,
+            "y": 896.28
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "side-gate",
+          "label": "동쪽 탈출구",
+          "sourceLabel": "unlabeled exit gate",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 2195,
+            "y": 405
+          },
+          "normalized": {
+            "x": 910.26,
+            "y": 146.28
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "shack-ruins",
+          "label": "작은 집 폐허",
+          "sourceLabel": "小屋废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1305,
+            "y": 565
+          },
+          "normalized": {
+            "x": 453.85,
+            "y": 231.38
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "west-ruins",
+          "label": "서쪽 폐허",
+          "sourceLabel": "西废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 665,
+            "y": 1345
+          },
+          "normalized": {
+            "x": 125.64,
+            "y": 646.28
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "east-ruins",
+          "label": "동쪽 폐허",
+          "sourceLabel": "东废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1950,
+            "y": 1210
+          },
+          "normalized": {
+            "x": 784.62,
+            "y": 574.47
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "hospital-statue",
+          "label": "병원 석상 구역",
+          "sourceLabel": "医院雕像",
+          "kind": "region",
+          "originalPixel": {
+            "x": 670,
+            "y": 670
+          },
+          "normalized": {
+            "x": 128.21,
+            "y": 287.23
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "abandoned-statue",
+          "label": "버려진 석상 구역",
+          "sourceLabel": "废弃石像",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1950,
+            "y": 1695
+          },
+          "normalized": {
+            "x": 784.62,
+            "y": 832.45
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        }
+      ]
+    },
+    "red-church": {
+      "cropOriginal": {
+        "x": 440,
+        "y": 165,
+        "width": 1870,
+        "height": 1870
+      },
+      "landmarks": [
+        {
+          "id": "church",
+          "label": "성당",
+          "sourceLabel": "教堂",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1300,
+            "y": 1100
+          },
+          "normalized": {
+            "x": 459.89,
+            "y": 500.0
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "shack",
+          "label": "작은 집",
+          "sourceLabel": "小屋",
+          "kind": "building",
+          "originalPixel": {
+            "x": 1285,
+            "y": 470
+          },
+          "normalized": {
+            "x": 451.87,
+            "y": 163.1
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "main-gate",
+          "label": "정문",
+          "sourceLabel": "unlabeled exit gate",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 1315,
+            "y": 1975
+          },
+          "normalized": {
+            "x": 467.91,
+            "y": 967.91
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "side-gate",
+          "label": "옆문",
+          "sourceLabel": "侧门",
+          "kind": "gate",
+          "originalPixel": {
+            "x": 1930,
+            "y": 320
+          },
+          "normalized": {
+            "x": 796.79,
+            "y": 82.89
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "graveyard",
+          "label": "묘지",
+          "sourceLabel": "墓园",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1960,
+            "y": 1460
+          },
+          "normalized": {
+            "x": 812.83,
+            "y": 692.51
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "red-carpet-garden",
+          "label": "붉은 융단 정원",
+          "sourceLabel": "红毯花园",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1310,
+            "y": 1750
+          },
+          "normalized": {
+            "x": 465.24,
+            "y": 847.59
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "north-wall",
+          "label": "북쪽 무너지는 벽",
+          "sourceLabel": "北危墙",
+          "kind": "region",
+          "originalPixel": {
+            "x": 750,
+            "y": 600
+          },
+          "normalized": {
+            "x": 165.78,
+            "y": 232.62
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "south-wall",
+          "label": "남쪽 무너지는 벽",
+          "sourceLabel": "南危墙",
+          "kind": "region",
+          "originalPixel": {
+            "x": 740,
+            "y": 1740
+          },
+          "normalized": {
+            "x": 160.43,
+            "y": 842.25
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "wall-ruins",
+          "label": "무너지는 벽 폐허",
+          "sourceLabel": "危墙废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 745,
+            "y": 1140
+          },
+          "normalized": {
+            "x": 163.1,
+            "y": 521.39
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        },
+        {
+          "id": "side-gate-ruins",
+          "label": "옆문 폐허",
+          "sourceLabel": "侧门废墟",
+          "kind": "region",
+          "originalPixel": {
+            "x": 1950,
+            "y": 970
+          },
+          "normalized": {
+            "x": 807.49,
+            "y": 430.48
+          },
+          "confidence": "high in supplied source image; current client not verified",
+          "approximate": true
+        }
+      ]
+    }
+  }
+}

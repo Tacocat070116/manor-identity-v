@@ -1,0 +1,145 @@
+{
+  "reviewedAt": "2026-11-11",
+  "source": "Identity V in-game mini-map screenshots hosted by the Bilibili Identity V community wiki (BWIKI); downloaded from original patchwiki asset URLs.",
+  "sourcePages": [
+    {
+      "map": "arms-factory",
+      "url": "https://wiki.biligame.com/dwrg/%E5%86%9B%E5%B7%A5%E5%8E%82",
+      "pageLastEdited": "2026-04-05 04:35",
+      "revisionId": 230183
+    },
+    {
+      "map": "sacred-heart-hospital",
+      "url": "https://wiki.biligame.com/dwrg/%E5%9C%A3%E5%BF%83%E5%8C%BB%E9%99%A2",
+      "pageLastEdited": "2026-04-01 00:05",
+      "revisionId": 229493
+    },
+    {
+      "map": "red-church",
+      "url": "https://wiki.biligame.com/dwrg/%E7%BA%A2%E6%95%99%E5%A0%82",
+      "pageLastEdited": "2026-04-05 04:41",
+      "revisionId": 230184
+    }
+  ],
+  "officialEvidence": [
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20240718/35288_1167979.html",
+      "date": "2024-07-18",
+      "finding": "Official mini-map support includes these three maps; expanded map supports floor switching. Detailed map no longer displays discovered dungeons."
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+      "date": "2025-04-24",
+      "finding": "Official map geometry adjustments affect Arms Factory and Hospital pallet zones. Old map-location overheads from 2023 should not be treated as current."
+    },
+    {
+      "url": "https://www.identityvgame.com/en/news/announcement/20260723/35288_1308796.html",
+      "date": "2026-07-23",
+      "finding": "Further radar/obstacle fixes referenced Arms Factory Junkyard and Hospital. Current client equivalence remains unverified."
+    }
+  ],
+  "attributionSuggestion": "지도 이미지: Identity V / NetEase · 자료 출처: BWIKI 제5인격 위키",
+  "licenseObservation": "The supplied images are game screenshots. No standalone open license for these files was verified on the source pages. Attribution does not imply an open license; do not label images CC0 or CC-BY.",
+  "versionCaveats": [
+    "Source-page last-edit dates do not prove screenshot capture date or game client version.",
+    "The images have not been compared against the current live Korean/global game client.",
+    "Chinese source labels are retained; Korean overlay labels are direct translations and may differ from community callouts.",
+    "Map orientation is preserved from source; no measured compass north is asserted.",
+    "No exact cipher, chair, hatch, basement, spawn or pallet locations are supplied as verified fixed points.",
+    "Some stairs are drawn in both basement-candidate buildings. Do not infer a fixed active basement from these images.",
+    "Landmark coordinates are visually read approximate building/region/gate centers, not measured in-game navigation coordinates."
+  ],
+  "floorSets": {
+    "arms-factory": [
+      "outdoor",
+      "1f"
+    ],
+    "sacred-heart-hospital": [
+      "outdoor",
+      "1f",
+      "2f"
+    ],
+    "red-church": [
+      "outdoor",
+      "1f"
+    ]
+  },
+  "floorAlignment": [
+    {
+      "map": "arms-factory",
+      "comparison": "outdoor vs 1f",
+      "checkedWallRegionOriginalPixels": [
+        450,
+        250,
+        850,
+        850
+      ],
+      "bestTranslation": {
+        "dx": 0,
+        "dy": 0
+      },
+      "mse": 0.31855833530426025,
+      "result": "same image coordinate grid, no shift needed"
+    },
+    {
+      "map": "sacred-heart-hospital",
+      "comparison": "outdoor vs 1f",
+      "checkedWallRegionOriginalPixels": [
+        500,
+        900,
+        850,
+        1400
+      ],
+      "bestTranslation": {
+        "dx": 0,
+        "dy": 0
+      },
+      "mse": 0.0,
+      "result": "same image coordinate grid, no shift needed"
+    },
+    {
+      "map": "sacred-heart-hospital",
+      "comparison": "outdoor vs 2f",
+      "checkedWallRegionOriginalPixels": [
+        500,
+        900,
+        850,
+        1400
+      ],
+      "bestTranslation": {
+        "dx": 0,
+        "dy": 0
+      },
+      "mse": 0.10205142945051193,
+      "result": "same image coordinate grid, no shift needed"
+    },
+    {
+      "map": "red-church",
+      "comparison": "outdoor vs 1f",
+      "checkedWallRegionOriginalPixels": [
+        500,
+        900,
+        850,
+        1400
+      ],
+      "bestTranslation": {
+        "dx": 0,
+        "dy": 0
+      },
+      "mse": 0.0,
+      "result": "same image coordinate grid, no shift needed"
+    }
+  ],
+  "deployEncoding": {
+    "maxDimension": 1400,
+    "format": "WebP",
+    "quality": 90,
+    "resample": "LANCZOS",
+    "sameCropForAllFloorsWithinMap": true,
+    "totalBytes": 532748,
+    "originalsRetained": true,
+    "losslessPixelEqualityVerifiedForAll": true
+  },
+  "visualQA": "All 3 representative 1F deployment images inspected. Full outer map boundary retained, game UI removed, wall and stair boundaries remain discernible. Source art itself is low-contrast.",
+  "betaNoticeSuggestion": "베타 지도입니다. 공개 미니맵 자료를 바탕으로 하며 현재 게임 버전과 다를 수 있습니다. 표식과 경로는 전략 메모용으로 실제 배치를 보장하지 않습니다."
+}

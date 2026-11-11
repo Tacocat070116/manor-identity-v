@@ -25,13 +25,15 @@ export function keyboardSearchKey(value){
 }
 function initials(value){return [...String(value).normalize('NFC')].map(c=>{const n=c.charCodeAt(0)-0xac00;return n>=0&&n<11172?initial[Math.floor(n/588)]:c;}).join('').replace(/\s/g,'');}
 function initialQuery(value){return [...String(value).normalize('NFKC')].map(c=>{const n=c.charCodeAt(0)-0x1100;return n>=0&&n<19?initial[n]:c;}).join('').replace(/\s/g,'');}
-const indexes=new Map();
+const indexes=new WeakMap();
 function searchIndex(character){
+ const cached=indexes.get(character);
+ if(cached&&cached.id===character.id&&cached.name===character.name&&cached.originalName===character.originalName)return cached.index;
  const meta=Object.hasOwn(characterSearchData,character.id)?characterSearchData[character.id]:null;
  const names=[character.name,character.originalName,...(meta?.aliases||[])].filter(Boolean);
- const cacheKey=JSON.stringify([character.id,names]);
- if(!indexes.has(cacheKey))indexes.set(cacheKey,names.map(name=>({text:compact(name),keys:keyboardSearchKey(name),initials:initials(name)})));
- return indexes.get(cacheKey);
+ const index=names.map(name=>({text:compact(name),keys:keyboardSearchKey(name),initials:initials(name)}));
+ indexes.set(character,{id:character.id,name:character.name,originalName:character.originalName,index});
+ return index;
 }
 let previousQuery,previousMatcher;
 export function matchesCharacter(character,query=''){

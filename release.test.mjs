@@ -78,12 +78,12 @@ test('history lists every entry, searches with type filters and escapes text',()
 });
 
 test('patchnotes deep link, shared version, filters and return navigation work in the app',async()=>{
- const nodes=new Map(),handlers={},fetches=[],views=[],creatorMounts=[],recoveryMounts=[];let creatorDisposals=0,recoveryDisposals=0;
+ const nodes=new Map(),handlers={},fetches=[],views=[],mapMounts=[],recoveryMounts=[];let mapDisposals=0,recoveryDisposals=0;
  const node=()=>({innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){}});
  const context={mountSeasonalEffects:()=>({refresh(){}}),createPreferenceSync:()=>({start(){},prepare(){},message:()=>'브라우저에 저장됩니다.'}),...themeUI,...model,...releaseUI,console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,Promise,setTimeout,clearTimeout,
   document:{documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},
   window:{addEventListener(){},scrollTo(){}},location:{hash:'#v=patchnotes'},localStorage:{getItem(){return null;}},matchMedia:()=>({matches:false}),
-  mountCreators:(root,options)=>{creatorMounts.push({root,options});return ()=>creatorDisposals++;},
+  mountMaps:(root,options)=>{mapMounts.push({root,options});return ()=>mapDisposals++;},
   mountRecoveryPage:root=>{recoveryMounts.push(root);return ()=>recoveryDisposals++;},
   mountNavigation:()=>({update:({view})=>views.push(view)}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
   fetch:async url=>{fetches.push(url);return {ok:true,json:async()=>read(url.split('?')[0])};}
@@ -115,10 +115,10 @@ test('patchnotes deep link, shared version, filters and return navigation work i
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();
  assert.deepEqual(views,['patchnotes','explore','patchnotes']);
  assert.ok(nodes.get('#page-body').innerHTML.includes('일치하는 업데이트가 없습니다'));
- context.location.hash='#v=creators&channel=11111111-1111-4111-8111-111111111111';context.app.readRoute();await context.app.render();
- assert.equal(context.document.title,'유튜브 채널 BETA · MANOR');assert.equal(creatorMounts.length,1);assert.equal(creatorMounts[0].options.postId,'11111111-1111-4111-8111-111111111111');
- creatorMounts[0].options.navigate();assert.equal(context.location.hash,'#v=creators');
- context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(creatorDisposals,1);
+ context.location.hash='#v=maps&share=11111111-1111-4111-8111-111111111111';context.app.readRoute();await context.app.render();
+ assert.equal(context.document.title,'맵 BETA · MANOR');assert.equal(mapMounts.length,1);assert.equal(mapMounts[0].options.shareId,'11111111-1111-4111-8111-111111111111');
+ mapMounts[0].options.navigate({v:'maps'});assert.equal(context.location.hash,'#v=maps');
+ context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(mapDisposals,1);
  context.location.hash='#v=recovery';context.app.readRoute();await context.app.render();
  assert.equal(context.document.title,'로그인 · MANOR');assert.equal(recoveryMounts.length,1);
  context.location.hash='#v=patchnotes';context.app.readRoute();await context.app.render();assert.equal(recoveryDisposals,1);

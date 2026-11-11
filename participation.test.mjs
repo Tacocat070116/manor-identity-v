@@ -10,7 +10,7 @@ const options={origin:'https://feedback.example',fetcher:valid};
 
 test('all public participation features load the same current identity module URL',()=>{
  const digest=createHash('sha256').update(fs.readFileSync('dist/participation.js')).digest('hex').slice(0,12);
- for(const file of ['feature-loader.js','feedback.js','matchup-tips.js','creators.js']){
+ for(const file of ['feature-loader.js','feedback.js','matchup-tips.js','synergy.js']){
   const source=fs.readFileSync('dist/'+file,'utf8');
   assert(source.includes("'./participation.js?v="+digest+"'"),file+' must share one module instance');
  }

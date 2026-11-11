@@ -50,7 +50,7 @@
 @media print{.category-nav{display:none}}
 
 /* Category labels must be ready before any optional screen is opened. */
-.nav-item .creator-beta-badge{margin-left:0;padding:2px 6px;font-size:9px}
+.nav-item .beta-badge{margin-left:0;padding:2px 6px;font-size:9px}
 .nav-item-label{display:flex;align-items:center;gap:6px;min-width:0}
-@media(max-width:640px){.nav-item[data-view="creators"] .nav-item-label{flex-direction:column;align-items:flex-start;gap:1px}.nav-item .creator-beta-badge{padding:1px 5px;font-size:8px}}
+@media(max-width:640px){.nav-item[data-view="maps"] .nav-item-label{flex-direction:column;align-items:flex-start;gap:1px}.nav-item .beta-badge{padding:1px 5px;font-size:8px}}
 @media(max-width:380px){.category-panel .nav-item{padding:10px;gap:6px;white-space:normal}.nav-item-label{overflow-wrap:anywhere}}

@@ -95,3 +95,9 @@ test('live app input/change handlers apply search and sorting in catalogue, comp
  app.state.bans=['','',''];app.openPicker('ban-1');
  handlers.input({target:{id:'picker-search',value:'노튼'}});assert.deepEqual(ids('#picker-results'),['c79']);
 });
+
+
+test('cached search invalidates renamed or reassigned character objects',()=>{
+ const c={id:'c15',name:'붉은 나비',originalName:'Geisha'};assert.equal(matchesCharacter(c,'붉은나비'),true);
+ c.id='future';c.name='새 인물';c.originalName='New Person';assert.equal(matchesCharacter(c,'붉은나비'),false);assert.equal(matchesCharacter(c,'새인물'),true);assert.equal(matchesCharacter(c,'newperson'),true);
+});

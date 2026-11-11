@@ -1,5 +1,5 @@
-export {createRankedLoader} from './ranked-data.js?v=11fc52886c18';
-import {SERVER_LABELS,TIER_LABELS,METRIC_LABELS,selectRanked,sortStatistics,createTournamentStatistics,rankedCharacter,cohortLabel,snapshotLabel,resultPercentages} from './statistics-model.js?v=5687d33c8da6';
+export {createRankedLoader} from './ranked-data.js?v=eb91ec4c18f2';
+import {SERVER_LABELS,TIER_LABELS,METRIC_LABELS,selectRanked,sortStatistics,createTournamentStatistics,rankedCharacter,cohortLabel,snapshotLabel,resultPercentages} from './statistics-model.js?v=88c249887bf9';
 
 export function createStatisticsUI({characters,esc,num,portrait,icon,commonFilters}){
  const byId=Object.fromEntries(characters.map(c=>[c.id,c]));
