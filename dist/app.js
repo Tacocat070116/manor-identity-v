@@ -587,7 +587,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  seasonalEffects=mountSeasonalEffects({document,storage:themeStorage,media:matchMedia('(prefers-reduced-motion:reduce)')});
- const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=e7155e648a87')]);
+ const responses=await Promise.all([fetch('catalog.json?v=2e99c36dd9f9'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=417355180844')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');
