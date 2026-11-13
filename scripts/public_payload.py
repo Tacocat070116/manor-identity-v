@@ -26,9 +26,34 @@ FIELDS = {
 CATALOG_FIELDS = ('id', 'name', 'originalName', 'side', 'portrait', 'difficulty')
 
 
+def refresh_information_metadata(data):
+    """Keep current display totals separate from dated collection audit snapshots."""
+    read = lambda name: json.loads((ROOT / 'dist' / name).read_text())
+    matches, bans, observed = [read(name) for name in ('matches.json', 'bans.json', 'bans-observed.json')]
+    urls = {url for character in data['characters'] for url in character.get('sources', [])}
+    urls.update(source['url'] for matchup in data['matchups'] for source in matchup.get('sourceSupport', []))
+    urls.update(url for link in data['links'] for url in link.get('sources', []))
+    data['meta'].update(
+        matches=len(matches), results=sum(row[5] in ('승', '무', '패') for row in matches),
+        recordEarliest=min((row[0] for row in matches), default=None),
+        recordLatest=max((row[0] for row in matches), default=None),
+        bans=len(bans), banLatest=max((row[0] for row in bans), default=None),
+        observedBanLatest=max((row[0] for row in observed), default=None),
+        sourceCount=len(urls),
+        matchupCount=sum(row['status'] == '반영' for row in data['matchups']),
+        heldMatchups=sum(row['status'] == '보류' for row in data['matchups']),
+    )
+
+
 def refresh_catalog(write):
     """Generate the small startup payload from the canonical, complete guide."""
     data = json.loads((ROOT / 'dist/data.json').read_text())
+    previous_meta = copy.deepcopy(data['meta'])
+    refresh_information_metadata(data)
+    if previous_meta != data['meta']:
+        if not write:
+            raise SystemExit('Display totals or latest dates are stale: run npm run release -- --refresh')
+        (ROOT / 'dist/data.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
     catalog = {
         'meta': data['meta'],
         'maps': data['maps'],

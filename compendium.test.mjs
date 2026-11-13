@@ -14,6 +14,7 @@ const november=read('research/refresh/2026-11-12/tournament/verified-additions.j
 const report=read('research/refresh/2026-10-21/reconciliation.json');
 const october=read('research/refresh/2026-10-27/reconciliation.json');
 const patch=read('research/refresh/2026-10-27/patch-review.json');
+const guidePatch=read('research/refresh/2026-11-13/guide-patch-review.json');
 const survivor={id:'a',name:'A',side:'생존자'},hunter={id:'h',name:'H',side:'감시자'};
 const fixture=[['2026-10-18','M','h',['a','b','c','d'],'IVL','승',1],['2026-10-17','M','h',['a','b','c','e'],'IVL','패',3],['2026-06-01','N','h2',['a','b','d','e'],'IJL',null,null]];
 
@@ -135,7 +136,7 @@ test('single-source and opposite situational evidence remain reachable without p
  }
  assert.ok(all>=800);
  assert.ok(db.matchups.some(m=>m.listEligible&&m.sourceFamilies.length===1));
- assert.equal(db.matchups.filter(m=>m.status==='보류').length,49);
+ assert.equal(db.matchups.filter(m=>m.status==='보류').length,49+guidePatch.heldByThisReview.length);
  assert.ok(db.characters.some(c=>c.easy.some(a=>c.hard.some(b=>a.name===b.name))));
 });
 
@@ -199,8 +200,8 @@ test('October refresh preserves existing records and reconciles every newly coll
  }
  for(const c of db.characters){
   const changed=patch.characters.some(e=>e.id===c.id);
-  assert.equal(c.gamePatchDate,changed?'2026-10-22':undefined);
-  assert.equal(c.patchCheckedAt,changed?'2026-10-27':undefined);
+  assert.equal(c.gamePatchDate,guidePatch.characterPatches[c.id]?.patchDate??(changed?'2026-10-22':undefined));
+  assert.equal(c.patchCheckedAt,guidePatch.characterPatches[c.id]?guidePatch.date:changed?'2026-10-27':undefined);
  }
  assert.equal(read('dist/ranked/index.json').meta.collectedAt,'2026-11-13');
  for(const name of ['statistics.zip','badges.csv','manifest.json'])assert.ok(!fs.existsSync('dist/ranked/'+name));
@@ -240,7 +241,8 @@ test('November statistics preserve deployed observations and add only reviewed s
  const original=base('matches.json'),oldDetails=expandTournamentDetails(base('tournament-details.json'));
  assert.deepEqual(matches.slice(0,original.length),original);
  assert.deepEqual(details.rows.slice(0,oldDetails.rows.length),oldDetails.rows);
- assert.deepEqual(db.characters,base('data.json').characters);
+ const deployedAfterStatistics=JSON.parse(execFileSync('git',['show',guidePatch.baseline+':dist/data.json'],{encoding:'utf8',maxBuffer:8*1024*1024}));
+ assert.deepEqual(deployedAfterStatistics.characters,base('data.json').characters,'statistics-only deployment preserved guide content before the later patch review');
  for(const [name,field] of [['bans.json','addedOpeningBans'],['bans-observed.json','addedObservedBans']]){
   const prior=base(name),current=read('dist/'+name);
   assert.deepEqual(current.slice(0,prior.length),prior);
@@ -264,4 +266,17 @@ test('November statistics preserve deployed observations and add only reviewed s
  }
  assert.deepEqual(Object.fromEntries(['IVL','IJL','IVC'].map(t=>[t,november.addedMatches.filter(x=>x.row[4]===t).length])),{IVL:100,IJL:88,IVC:52});
  assert.equal(details.meta.latestCoverage,november.coverage);
+});
+
+test('November patch review keeps uncertain matchups out of both representative lists',()=>{
+ const sculptor=db.characters.find(c=>c.name==='조각가'),prodigy=db.characters.find(c=>c.name==='신동');
+ const held=db.matchups.find(m=>m.id==='M351');
+ assert.equal(held.status,'보류');assert.equal(held.advantage,null);assert.equal(held.listEligible,false);
+ for(const c of [sculptor,prodigy])for(const kind of ['hard','easy']){
+  assert.ok(!c[kind].some(item=>item.evidence===held.id));
+  assert.ok(!characterEvidence(db.matchups,c,kind).some(m=>m.id===held.id));
+ }
+ for(const id of ['M117','M344','M348'])assert.equal(db.matchups.find(m=>m.id===id).status,'보류','an official interaction alone does not establish overall advantage');
+ assert.equal(db.meta.reviewedAt,'2026-10-21');assert.equal(db.meta.matchupReviewedAt,'2026-10-19');
+ assert.equal(db.meta.gamePatchDate,'2026-11-12');assert.equal(db.meta.gamePatchCheckedAt,'2026-11-13');
 });

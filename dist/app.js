@@ -1,5 +1,5 @@
 import {loadFeature} from './feature-loader.js?v=77fa58ff2e8b';
-import './typography.js?v=f2553395f702';
+import './typography.js?v=16a4e839efd8';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=403a09ef583a';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
@@ -99,7 +99,7 @@ async function prepareStatistics(){
 function loadRanked(filters={...state.statistics}){
  return prepareStatistics().then(()=>rankedSource.load(filters));
 }
-const loadGuideData=cachedJSON('data.json?v=d17611cd63e7','공략 자료를 불러오지 못했습니다.');
+const loadGuideData=cachedJSON('data.json?v=9dbf1c4e9c19','공략 자료를 불러오지 못했습니다.');
 async function ensureGuides(){
  if(db.matchups)return;
  const data=await loadGuideData();
@@ -327,7 +327,7 @@ function characterMatchups(c){
 }
 function commonFilters(scope){
  const f=scope==='bans'?state.banFilters:state.stats;
- return `<div class="toolbar common-filters"><label class="filter-label">기간<select class="filter-select" data-filter="days" data-scope="${scope}">${[[365,'최근 1년'],[90,'최근 90일'],[30,'최근 30일'],[0,'전체 보유 기록']].map(([v,t])=>`<option value="${v}" ${Number(f.days)===v?'selected':''}>${t}</option>`).join('')}</select></label><label class="filter-label">맵<select class="filter-select" data-filter="map" data-scope="${scope}">${options(db.maps,f.map,'전체 맵')}</select></label><label class="filter-label">대회<select class="filter-select" data-filter="tournament" data-scope="${scope}">${options(['COA','IVL','IJL','IVC','IVT','IVS'],f.tournament,'전체 대회')}</select></label><span class="date-pill push-right">${icon('clock')}기록 최신 ${scope==='bans'?(state.banSource==='legacy'?db.meta.banLatest:db.meta.refresh?.observedBanLatest):db.meta.recordLatest}</span></div>`;
+ return `<div class="toolbar common-filters"><label class="filter-label">기간<select class="filter-select" data-filter="days" data-scope="${scope}">${[[365,'최근 1년'],[90,'최근 90일'],[30,'최근 30일'],[0,'전체 보유 기록']].map(([v,t])=>`<option value="${v}" ${Number(f.days)===v?'selected':''}>${t}</option>`).join('')}</select></label><label class="filter-label">맵<select class="filter-select" data-filter="map" data-scope="${scope}">${options(db.maps,f.map,'전체 맵')}</select></label><label class="filter-label">대회<select class="filter-select" data-filter="tournament" data-scope="${scope}">${options(['COA','IVL','IJL','IVC','IVT','IVS'],f.tournament,'전체 대회')}</select></label><span class="date-pill push-right">${icon('clock')}기록 최신 ${scope==='bans'?(state.banSource==='legacy'?db.meta.banLatest:db.meta.observedBanLatest):db.meta.recordLatest}</span></div>`;
 }
 function resultChart(s){
  if(!s.results)return `<div class="note">확인된 경기 결과가 없습니다.</div>`;
@@ -586,7 +586,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  seasonalEffects=mountSeasonalEffects({document,storage:themeStorage,media:matchMedia('(prefers-reduced-motion:reduce)')});
- const responses=await Promise.all([fetch('catalog.json?v=58edff3657f7'),fetch('specialties.json?v=36df2e92d9f6'),fetch('introductions.json?v=fcd355498d8d'),fetch('releases.json?v=99986ca5c098')]);
+ const responses=await Promise.all([fetch('catalog.json?v=dce080f8a793'),fetch('specialties.json?v=73c5840b7a8d'),fetch('introductions.json?v=94a7b2e6f91c'),fetch('releases.json?v=99986ca5c098')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

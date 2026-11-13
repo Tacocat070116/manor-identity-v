@@ -38,15 +38,18 @@ assert.equal(db.characters.length,89);assert.equal(ids.size,89);
 assert.equal(matches.length,17296);assert.equal(bans.length,17066);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
 const situationReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-27/situation-review.json','utf8'));
+const guidePatchReview=JSON.parse(fs.readFileSync('research/refresh/2026-11-13/guide-patch-review.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
 const retired=JSON.parse(fs.readFileSync('research/refresh/2026-10-27/retired-public-data.json','utf8'));
-assert.equal(retired.sources.length,db.meta.sourceCount);
+assert.equal(retired.sources.length,240,'historical source registry stays unchanged');
+const sourceUrls=new Set([...db.characters.flatMap(c=>c.sources),...db.matchups.flatMap(m=>m.sourceSupport.map(s=>s.url)),...db.links.flatMap(l=>l.sources)]);
+assert.equal(sourceUrls.size,db.meta.sourceCount,'current source URL total');
 assert.ok(!('sources' in db)&&!('community' in db),'retired public payload stays outside boot data');
-assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted+situationReview.added.length);
-assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.held);
+assert.equal(db.matchups.filter(x=>x.status==='반영').length,matchupReview.accepted+situationReview.added.length-guidePatchReview.heldByThisReview.length);
+assert.equal(db.matchups.filter(x=>x.status==='보류').length,matchupReview.held+guidePatchReview.heldByThisReview.length);
 assert.equal(db.matchups.length,459+matchupReview.added+situationReview.added.length);
 const refresh=JSON.parse(fs.readFileSync('research/refresh/2026-10-21/reconciliation.json','utf8'));
-assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),situationReview.afterCounts.displayedSlots);
+assert.equal(db.characters.reduce((n,c)=>n+c.hard.length+c.easy.length,0),situationReview.afterCounts.displayedSlots-guidePatchReview.removedDisplaySlots.length);
 assert.equal(refresh.displayedSlots,situationReview.beforeCounts.displayedSlots);
 assert.equal(refresh.displayedSlots,632);
 assert.equal(matches.length,db.meta.matches);
@@ -56,7 +59,7 @@ const evidenceIds=new Set(db.matchups.map(m=>m.id));
 for(const comment of retired.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
 for(const m of db.matchups){
  const pairReviewed=[...situationReview.matchupEdits,...situationReview.added].some(e=>e.id===m.id);
- assert.equal(m.reviewedAt,pairReviewed?situationReview.date:db.meta.matchupReviewedAt,m.id+' review date');
+ assert.equal(m.reviewedAt,guidePatchReview.matchupChanges[m.id]?guidePatchReview.date:pairReviewed?situationReview.date:db.meta.matchupReviewedAt,m.id+' review date');
  assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
  assert.equal(c(m.survivor)?.side,'생존자',m.id+' survivor side');
  if(m.status==='보류')assert.equal(m.advantage,null,m.id+' unresolved direction');
@@ -147,6 +150,7 @@ audit.summaries=[];
 for(const c of db.characters)for(const kind of ['easy','hard'])for(const item of c[kind])audit.summaries.push({c:c.id,kind,item,html:matchupSummary(c,item,kind)});
 state.own=byName['묘지기'].id;state.opponent=byName['사도'].id;state.situation='';audit.pairFirst=matchupPage();
 state.view='bans';state.banSource='legacy';state.bans=[byName['의사'].id,byName['샤먼'].id,''];audit.banRecords=banPage(__bans);
+audit.openingBanFilters=commonFilters('bans');state.banSource='observed';audit.observedBanFilters=commonFilters('bans');state.banSource='legacy';
 state.view='explore';
 for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
@@ -205,6 +209,10 @@ for(const result of context.audit.personaGuides){
  assert.equal(result.overview.split(result.copy[2]).length-1,1,ch.name+' caution appears once');
 }
 assert.ok(context.audit.unmappedPersona.includes('새 인격 + 확인 중')&&!context.audit.unmappedPersona.includes('<img'),'unknown builds preserve readable text');
+for(const html of [context.audit.openingBanFilters,context.audit.observedBanFilters]){
+ assert.match(html,/기록 최신 2026-11-08/,'both ban ranges show the current latest record');
+ assert.doesNotMatch(html,/2026-10-26|2026-10-05/,'dated collection history is not used as the current latest record');
+}
 assert.equal(context.audit.retiredSourceRoute,'explore','retired source routes return to the catalog');
 assert.equal(context.audit.retiredSourceTab,'overview','retired source tabs return to the character overview');
 assert.equal(context.audit.retiredGameRoute,'explore','retired game-patch routes return to the catalog');

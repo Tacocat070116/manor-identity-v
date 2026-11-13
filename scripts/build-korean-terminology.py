@@ -15,7 +15,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from public_payload import compact_payload
+from public_payload import compact_payload, refresh_information_metadata
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
@@ -163,6 +163,8 @@ for name, data in all_files.items():
                 data['meta'][key] = copy.deepcopy(edit['after'])
     # Preserve the original editorial audit while omitting retired browser fields.
     compact_payload(name + '.json', data)
+    if name == 'data':
+        refresh_information_metadata(data)
     if args.check:
         assert data == json.loads((ROOT / 'dist' / (name + '.json')).read_text()), f'{name}: generated terminology differs'
     else:

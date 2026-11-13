@@ -3,9 +3,9 @@
   "gameBalanceRevalidated": false,
   "characters": {
     "c01": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "476db99f6cb2eb2e0318152b28ae6c20968fd12759fcf82454dfe770eadca0c8",
-      "fingerprint": "84d6064c1c474128e6ba4d58dead431eff00bdac7dd7e588dc000469017788b3",
+      "date": "2026-11-13",
+      "baselineFingerprint": "84d6064c1c474128e6ba4d58dead431eff00bdac7dd7e588dc000469017788b3",
+      "fingerprint": "011f489a25c6e62b818e1e6d12233eb54ebbb62d367f2d965daa197c5e90aeae",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -15,7 +15,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c02": {
       "date": "2026-11-09",
@@ -138,9 +138,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c10": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "7a84344231ef2927a9d60a4d8e3f869f4671b7394d398e06c5047e3a7ed13992",
-      "fingerprint": "1eb647b9d2b9af8ddbcf329c19419ba061cf7cdfad58624ca93ce9b382cd6ba0",
+      "date": "2026-11-13",
+      "baselineFingerprint": "1eb647b9d2b9af8ddbcf329c19419ba061cf7cdfad58624ca93ce9b382cd6ba0",
+      "fingerprint": "0aa20c83189e1b2cd473bf94d3951f97952fa26e4b8ffc1dc6fc24b5af0c3c55",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -150,12 +150,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c11": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "60c376c7ad1bb3e3e54b3a23ab9fba3d35a9a5abe7da64f81f15afc72403f5f9",
-      "fingerprint": "2f342b13b672243de40da92361a877e57a426c38ad41cd330b6823647fcf749e",
+      "date": "2026-11-13",
+      "baselineFingerprint": "2f342b13b672243de40da92361a877e57a426c38ad41cd330b6823647fcf749e",
+      "fingerprint": "99ce319bcd92c7cd2825d39a6cd3eb0f44912c7c67802e7bee25ab2c9b774d28",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -165,7 +165,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c12": {
       "date": "2026-11-08",
@@ -198,9 +198,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c14": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "d259cc8dc1c3eb91713ae50969cd749b9dc97b8d55a124811b4aaf8409f3823b",
-      "fingerprint": "8d0c6d881e0a2345054e219cfed05f2f89a78a10ef99dc7d7fe0020e34136893",
+      "date": "2026-11-13",
+      "baselineFingerprint": "8d0c6d881e0a2345054e219cfed05f2f89a78a10ef99dc7d7fe0020e34136893",
+      "fingerprint": "3d1008cef53995e85325eb38172d0fda8d117991440010a69ac66f7b733b4f2f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -210,7 +210,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c15": {
       "date": "2026-11-09",
@@ -228,9 +228,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c16": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "6b40d9693d855610a42b3711475aa2b53aec5a4ffb07531857682936f47bfc6c",
-      "fingerprint": "29ab2bc9b24762c08397b727287c4b947f97501709f9d923370105e1fb52c820",
+      "date": "2026-11-13",
+      "baselineFingerprint": "29ab2bc9b24762c08397b727287c4b947f97501709f9d923370105e1fb52c820",
+      "fingerprint": "8f5cda2b4320bad765c1f13612fbcfea7fd0bf4ab53de5613947b42ea0113b98",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -240,7 +240,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c17": {
       "date": "2026-11-08",
@@ -258,9 +258,9 @@
       "assessment": "감시자의 추격 역할 태그를 사냥로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c18": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "7e11cbee5059bfa41e2f0a9bdfe8279a481eaf6043d769df1e5236086a21cba0",
-      "fingerprint": "bd1daf555c064e43b831d5a7e0afd9dbdbf35129dc23ae168865706a300e843a",
+      "date": "2026-11-13",
+      "baselineFingerprint": "bd1daf555c064e43b831d5a7e0afd9dbdbf35129dc23ae168865706a300e843a",
+      "fingerprint": "52134952f42db441d8397a6f010da89c475984692dd2b107dfea7e2fa881594d",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -270,7 +270,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c19": {
       "date": "2026-11-09",
@@ -318,9 +318,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c22": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "dd00d84807223a9ea10dfa63540fd4229c4b2afeddd7b4e5b5daf00a931cac38",
-      "fingerprint": "47bdc2b17638e0e186ec9b61425fcf5646620012dd3d76235a4ce8272fdc15fc",
+      "date": "2026-11-13",
+      "baselineFingerprint": "47bdc2b17638e0e186ec9b61425fcf5646620012dd3d76235a4ce8272fdc15fc",
+      "fingerprint": "8ccea5772566b811a5215f21b04e5c89b85647ba658b27773fae7f545e004916",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -330,12 +330,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c23": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "8a8527bc5f8cd31e46575de9860c9431ed9a8e7f860230a3c3800f97ce8f514b",
-      "fingerprint": "cfc0207593d3c651fdd9550f5fcc2004e290ba106f409f596e334295d7198e28",
+      "date": "2026-11-13",
+      "baselineFingerprint": "cfc0207593d3c651fdd9550f5fcc2004e290ba106f409f596e334295d7198e28",
+      "fingerprint": "59d720a795e44ba3ad03b5142d27fbf73322711f9056c76cc36e20ee0a750925",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -345,7 +345,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c24": {
       "date": "2026-10-31",
@@ -468,9 +468,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c32": {
-      "date": "2026-10-31",
+      "date": "2026-11-13",
       "baselineFingerprint": "25c89ec82a8fcbfdeac9ba34614f7968d746856d204ba1e37fc906af726ec4aa",
-      "fingerprint": "25c89ec82a8fcbfdeac9ba34614f7968d746856d204ba1e37fc906af726ec4aa",
+      "fingerprint": "850d34b836d35aa1c1c5057c1471c87b07dfc0e18112e75d3d97dfd9e55fd7a4",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -480,12 +480,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c33": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "f060f51ff079bfae113cea0f01bca413ac8d1f74e319383adf4fcd38fafd1235",
-      "fingerprint": "6f4b29c49710b2bed38c7e79698c4a07f0aef956e0cd1f19471351b3c183924c",
+      "date": "2026-11-13",
+      "baselineFingerprint": "6f4b29c49710b2bed38c7e79698c4a07f0aef956e0cd1f19471351b3c183924c",
+      "fingerprint": "3b329d4cb84631aa65dbb0637a5ff1559632c30afe05c4da3656e1184d5d9fba",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -495,7 +495,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c34": {
       "date": "2026-11-08",
@@ -543,9 +543,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c37": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "92e6fe610d63b47bc0eea37de334558adf912a69f2e6b7a7aa6cdbc868840c8f",
-      "fingerprint": "769875d727be052ce3eafa8e64b96750b04c4ee112dde39a3182751417139460",
+      "date": "2026-11-13",
+      "baselineFingerprint": "769875d727be052ce3eafa8e64b96750b04c4ee112dde39a3182751417139460",
+      "fingerprint": "12c50809fdb09d13879fa4daa09e0f62d1699c58d5c0fa47b39e200f4929f733",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -555,7 +555,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c38": {
       "date": "2026-11-09",
@@ -648,9 +648,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c44": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "2537ad6ec865e07a1e359076f76fb408254fc0e5525f08ee6995176c3ae7b3d9",
-      "fingerprint": "0b8ee3e10da623baaf24878aa7427b7342d34d01080faeb8e6f9bb812de77846",
+      "date": "2026-11-13",
+      "baselineFingerprint": "0b8ee3e10da623baaf24878aa7427b7342d34d01080faeb8e6f9bb812de77846",
+      "fingerprint": "29d4bd23aba5dfa0c6f3897eae35eac6835154b8f645979fe1fcbea3a0a8a31c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -660,7 +660,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c45": {
       "date": "2026-11-09",
@@ -738,9 +738,9 @@
       "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
     },
     "c50": {
-      "date": "2026-10-31",
+      "date": "2026-11-13",
       "baselineFingerprint": "b7a39de29f6d23b8c42aa7ee45ae33074279506204b4e63547eaa392b6cf1204",
-      "fingerprint": "b7a39de29f6d23b8c42aa7ee45ae33074279506204b4e63547eaa392b6cf1204",
+      "fingerprint": "ff1af3a799014863b1bb4fa3e11ef1cc689e761a3d8ea98235a1e0b6da89e283",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -750,7 +750,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c51": {
       "date": "2026-10-31",
@@ -798,9 +798,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c54": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "786c0c6215cae18201bccb1cb2900875a55695e250d04ddec3c92e022b19f01c",
-      "fingerprint": "40349071734190bfa893792d345a59817784b2c98d7be8efede49248e1c713de",
+      "date": "2026-11-13",
+      "baselineFingerprint": "40349071734190bfa893792d345a59817784b2c98d7be8efede49248e1c713de",
+      "fingerprint": "f97b401c671c6268d3cb240f4b9e515279e0c9de5af581512c8745155d2ad4e7",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -810,7 +810,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c55": {
       "date": "2026-11-09",
@@ -858,9 +858,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c58": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "2d7b37e159f139f40b4bf5621cbcf55a0737b8f2e56e87b1bb4b67dc8955f9dc",
-      "fingerprint": "3182b5b5441a74d6bdd6a026b0e9010af7e342588f7051e0a8da0187a4e829fe",
+      "date": "2026-11-13",
+      "baselineFingerprint": "3182b5b5441a74d6bdd6a026b0e9010af7e342588f7051e0a8da0187a4e829fe",
+      "fingerprint": "970153b2f91368a8b8a81f2bdfbc2d1e651b3582675f5a857fb2474207edcf44",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -870,7 +870,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c59": {
       "date": "2026-11-09",
@@ -888,9 +888,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c60": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "7ac76562197645f1d4ab0af7524dfc4a2a4968cdb9496e913102e47cf009740c",
-      "fingerprint": "406cbc39fd0a47de2c77f5759b9c18529aae6b1cd0b9dab95a42397221c94927",
+      "date": "2026-11-13",
+      "baselineFingerprint": "406cbc39fd0a47de2c77f5759b9c18529aae6b1cd0b9dab95a42397221c94927",
+      "fingerprint": "5add0da4c40ad2d2281088eac66a12c20b752fd7cf09f9744b1c4eea388310a8",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -900,7 +900,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c61": {
       "date": "2026-11-09",

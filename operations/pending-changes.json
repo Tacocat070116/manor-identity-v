@@ -530,6 +530,24 @@
       ],
       "announcement": "pending",
       "evidence": "operations/statistics-refresh-2026-11-13.json"
+    },
+    {
+      "date": "2026-11-13",
+      "scope": "guide-and-internal-information-refresh",
+      "summary": [
+        "11월 12일 공식 패치까지 대조해 캐릭터 19명의 스킬·운용·대응 설명과 상성 11건 갱신",
+        "조각가–신동 상성을 보류하고 양쪽 대표 카드에서 기존 유리 판정 제외",
+        "공략·상성·조합의 출처 수와 밴 통계 수록 수·최근 날짜를 실제 공개 자료에서 계산",
+        "Google 로그인·테마·즐겨찾기 동기화 안내와 README·운영 문서의 현재 정보 정리",
+        "새 폭탄 명칭과 신동의 상태 이름에 스킬명 강조 적용"
+      ],
+      "validation": {
+        "automated": "224개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 용어 재생성·편집 지문·공지 보존·파일 해시 검증.",
+        "browser": "Chrome에서 곡예사 데스크톱 화면 및 곡예사·치과의사·신동의 320·375px 프레임 확인. 가로 넘침 없이 주의사항 전체 표시와 스킬명 강조 확인.",
+        "limits": "실제 iPhone Safari 검사는 수행하지 않음. 캐릭터별 모든 수치·실전 상성·난이도·추천의 우열을 전면 재측정한 것은 아님."
+      },
+      "announcement": "pending",
+      "evidence": "research/refresh/2026-11-13/guide-patch-review.json"
     }
   ]
 }

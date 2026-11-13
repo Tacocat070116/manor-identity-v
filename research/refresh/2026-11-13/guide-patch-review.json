@@ -1,0 +1,658 @@
+{
+  "date": "2026-11-13",
+  "baseline": "63f125f439f5a7ff9b0477eba0ece346908091c9",
+  "latestPatchDate": "2026-11-12",
+  "scope": "현재 수록 정보에 대한 공식 패치 차이·출처·표시 수치·제품 안내 점검. 모든 수치의 실전 재측정이나 신규 기능 추가가 아닙니다.",
+  "sources": [
+    {
+      "name": "2026-10-29-en",
+      "url": "https://www.identityvgame.com/en/news/announcement/20261028/35288_1317993.html",
+      "sha256": "f71b5db50a33430fdda486add3db76597943b0fcd653c6dcc707181f1769f089",
+      "bytes": 37296,
+      "talentsPresent": false,
+      "listenPresent": false
+    },
+    {
+      "name": "2026-11-05-en",
+      "url": "https://www.identityvgame.com/en/news/announcement/20261104/35288_1318752.html",
+      "sha256": "89ba8cacbbe9a038033a5daeb48d69250b9229de1fefbe8bedf84f2247690c7e",
+      "bytes": 67011,
+      "talentsPresent": false,
+      "listenPresent": false
+    },
+    {
+      "name": "2026-11-12-en",
+      "url": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "sha256": "7ccebd246099959436017bae13c589083ff66f85c6a3f7a5c0332ce0efa72aa3",
+      "bytes": 52040,
+      "talentsPresent": true,
+      "listenPresent": true
+    },
+    {
+      "name": "2026-11-12-jp",
+      "url": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+      "sha256": "11be76919f4f76ffdcfd9951cb4eca9fe80669c434b9f4bbdb971ad06d3797d9",
+      "bytes": 44639,
+      "talentsPresent": false,
+      "listenPresent": false
+    }
+  ],
+  "before": {
+    "sourceCount": 240,
+    "matchupCount": 414,
+    "heldMatchups": 49,
+    "bans": 15516,
+    "banLatest": "2026-10-05",
+    "gamePatchDate": "2026-10-22"
+  },
+  "after": {
+    "sourceCount": 486,
+    "matchupCount": 413,
+    "heldMatchups": 50,
+    "bans": 17066,
+    "banLatest": "2026-11-08",
+    "observedBanLatest": "2026-11-08",
+    "gamePatchDate": "2026-11-12"
+  },
+  "characterPatches": {
+    "c07": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c11": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c16": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c23": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c24": {
+      "patchDate": "2026-11-05",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261104/35288_1318752.html"
+    },
+    "c33": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c37": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c60": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c01": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c14": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c18": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c32": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c44": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c50": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c58": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c20": {
+      "patchDate": "2026-11-05",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261104/35288_1318752.html"
+    },
+    "c10": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    },
+    "c22": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+    },
+    "c54": {
+      "patchDate": "2026-11-12",
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+    }
+  },
+  "characterCoverage": [
+    {
+      "id": "c01",
+      "name": "거미",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c02",
+      "name": "공장장",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c03",
+      "name": "광기의 눈",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c04",
+      "name": "광대",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c05",
+      "name": "꿈의 마녀",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c06",
+      "name": "나이아스",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c07",
+      "name": "나이트 워치",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c08",
+      "name": "노란 옷의 왕",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c09",
+      "name": "당구 선수",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c10",
+      "name": "리퍼",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c11",
+      "name": "마음의 짐승",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c12",
+      "name": "밀랍인형사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c13",
+      "name": "바이올리니스트",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c14",
+      "name": "박사",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c15",
+      "name": "붉은 나비",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c16",
+      "name": "블러디 퀸",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c17",
+      "name": "사냥터지기",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c18",
+      "name": "사도",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c19",
+      "name": "사진사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c20",
+      "name": "서기관",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c21",
+      "name": "수위 26호",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c22",
+      "name": "시공의 그림자",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c23",
+      "name": "악몽",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c24",
+      "name": "여왕벌",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c25",
+      "name": "오페라 가수",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c26",
+      "name": "우산의 영혼",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c27",
+      "name": "울보",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c28",
+      "name": "은둔자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c29",
+      "name": "잡화상",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c30",
+      "name": "재앙의 도마뱀",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c31",
+      "name": "절름발이 판",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c32",
+      "name": "조각가",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c33",
+      "name": "치과의사",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c34",
+      "name": "파멸의 바퀴",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c35",
+      "name": "파이라이트",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c36",
+      "name": "훌라발루",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c37",
+      "name": "곡예사",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c38",
+      "name": "곤충학자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c39",
+      "name": "골동품 상인",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c40",
+      "name": "공군",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c41",
+      "name": "교수",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c42",
+      "name": "궁수",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c43",
+      "name": "기계공",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c44",
+      "name": "기사",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c45",
+      "name": "기상학자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c46",
+      "name": "기자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c47",
+      "name": "납관사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c48",
+      "name": "도둑",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c49",
+      "name": "마술사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c50",
+      "name": "맹인",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c51",
+      "name": "모험가",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c52",
+      "name": "묘지기",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c53",
+      "name": "무언극 아티스트",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c54",
+      "name": "무희",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c55",
+      "name": "바텐더",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c56",
+      "name": "변호사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c57",
+      "name": "샤먼",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c58",
+      "name": "선지자",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c59",
+      "name": "소설가",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c60",
+      "name": "신동",
+      "decision": "updated-confirmed-patch"
+    },
+    {
+      "id": "c61",
+      "name": "심리학자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c62",
+      "name": "야만인",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c63",
+      "name": "여자아이",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c64",
+      "name": "용병",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c65",
+      "name": "우는 광대",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c66",
+      "name": "우편 배달부",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c67",
+      "name": "의사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c68",
+      "name": "인형사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c69",
+      "name": "작곡가",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c70",
+      "name": "장난감 상인",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c71",
+      "name": "정원사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c72",
+      "name": "조향사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c73",
+      "name": "죄수",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c74",
+      "name": "주술사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c75",
+      "name": "치어리더",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c76",
+      "name": "카우보이",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c77",
+      "name": "타자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c78",
+      "name": "탈출 마스터",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c79",
+      "name": "탐사원",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c80",
+      "name": "투우사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c81",
+      "name": "파로 부인",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c82",
+      "name": "포워드",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c83",
+      "name": "항공 전문가",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c84",
+      "name": "항해사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c85",
+      "name": "행운아",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c86",
+      "name": "화가",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c87",
+      "name": "화재조사관",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c88",
+      "name": "환등사",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    },
+    {
+      "id": "c89",
+      "name": "환자",
+      "decision": "no-conflicting-claim-in-covered-official-patch-delta"
+    }
+  ],
+  "matchupsScanned": 463,
+  "matchupChanges": {
+    "M117": {
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+      "decision": "11월 12일 공 밀기·공연 중단은 확인. 대진 전체의 우세는 미확인."
+    },
+    "M344": {
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+      "decision": "11월 12일 공 밀기·공연 중단은 확인. 대진 전체의 우세는 미확인."
+    },
+    "M348": {
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+      "decision": "11월 12일 위협의 상태 중단을 확인. 고양이 기절과 구분하며 우세는 보류."
+    },
+    "M351": {
+      "source": "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+      "decision": "11월 12일 공연 중 조각상 밀치기를 확인하여 이전 신동 우세를 보류."
+    },
+    "M410": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "광선 치료 구역 안의 장애물 관통 조건과 활성화당 공격 한도를 반영."
+    },
+    "M333": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "연막의 조준 방해와 광선 치료 구역 안의 장애물 관통을 구분."
+    },
+    "M224": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "냉각 폭탄의 회복 속도 감소와 구강경의 별도 원거리 공격 조건을 구분."
+    },
+    "M079": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "근접 견제 조건은 유지하되 빗나간 공격의 다음 물거울 대기 시간 감소를 반영."
+    },
+    "M297": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "근접 견제 조건은 유지하되 빗나간 공격의 다음 물거울 대기 시간 감소를 반영."
+    },
+    "M081": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "근접 견제 조건은 유지하되 빗나간 공격의 다음 물거울 대기 시간 감소를 반영."
+    },
+    "M431": {
+      "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "decision": "근접 견제 조건은 유지하되 빗나간 공격의 다음 물거울 대기 시간 감소를 반영."
+    }
+  },
+  "heldByThisReview": [
+    "M351"
+  ],
+  "removedDisplaySlots": [
+    {
+      "characterId": "c32",
+      "kind": "hard",
+      "evidence": "M351"
+    },
+    {
+      "characterId": "c60",
+      "kind": "easy",
+      "evidence": "M351"
+    }
+  ],
+  "linksScanned": 275,
+  "talentAndTraitScope": {
+    "displayedFinalTalents": 8,
+    "recommendedAuxiliaryTraits": 7,
+    "retiredCompensateReferences": 0,
+    "wellEarnedReferences": 0,
+    "listenReferences": 0,
+    "decision": "영문 공지의 하위 인격·경청 변경은 확인했으나 현재 사이트에 해당 설명·추천이 없어 기존 8종 최종 인격과 7종 보조 특성을 임의로 교체하지 않습니다. 대회 과거 선택 기록도 당시 명칭을 보존합니다."
+  },
+  "limits": [
+    "공식 공지는 능력 변경의 근거이며 캐릭터별 모든 수치·실전 상성·추천의 우열을 직접 측정한 자료가 아닙니다.",
+    "표시 출처 수는 현재 공략·상성·조합에서 연결한 서로 다른 URL 수입니다. 예전 출처 목록 240개와 집계 범위가 다르며 독립 근거 수가 아닙니다.",
+    "한국어 공식 공지 목록은 2022년 이후 갱신이 확인되지 않아 글로벌 영문·일문 공지를 사용했습니다. 기존 검토된 한국어 명칭을 유지합니다."
+  ]
+}
