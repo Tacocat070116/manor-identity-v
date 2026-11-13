@@ -518,6 +518,18 @@
       "excludedFromVersion": "1.12.1",
       "exclusionReason": "사용자가 버전 업데이트 시 맵 관련 공지를 모두 제외하도록 요청함. 이후 공지 대기 항목으로 다시 포함하지 않음.",
       "originalExcludedFromVersion": "1.19.1"
+    },
+    {
+      "date": "2026-11-13",
+      "scope": "statistics-refresh-and-score-removal",
+      "summary": [
+        "랭킹전 비율 12,816행 추가 · 중국 11월 12일 집계 반영",
+        "대회 240반경기·상세 240건 추가 · 최근 경기 11월 8일",
+        "생존자 선밴 1,550건·전체 밴 277건 보완",
+        "인지 점수 통계와 관련 공개 데이터·수집 항목 삭제"
+      ],
+      "announcement": "pending",
+      "evidence": "operations/statistics-refresh-2026-11-13.json"
     }
   ]
 }

@@ -1,4 +1,4 @@
-import {situationLabel} from './model.js?v=b06c968227f0';
+import {situationLabel} from './model.js?v=89308651af5f';
 import {requestId as uuid} from './request-id.js?v=58ef88b53202';
 import {participation} from './participation.js?v=8a4b3087a8ed';
 import {SYNERGY_SITUATIONS,researchSide,SYNERGY_REPORTS,RESEARCH_TOPICS,PROPOSAL_STATES,synergyEscape as e,synergyRoute,validateSynergyDraft} from './synergy-model.js?v=5fd8ec1aadc3';

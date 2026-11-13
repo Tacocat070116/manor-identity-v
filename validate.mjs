@@ -35,7 +35,7 @@ for(const ch of db.characters)Object.assign(ch,specialties.characters[ch.id]);
 const c=n=>db.characters.find(x=>x.name===n),ids=new Set(db.characters.map(c=>c.id));
 const allowedSpecialties={생존자:['어그로','커버','구출','운영','해독'],감시자:['사냥','캠핑','운영']};
 assert.equal(db.characters.length,89);assert.equal(ids.size,89);
-assert.equal(matches.length,17056);assert.equal(bans.length,15516);
+assert.equal(matches.length,17296);assert.equal(bans.length,17066);
 const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/summary.json','utf8'));
 const situationReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-27/situation-review.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
@@ -95,24 +95,24 @@ for(const ch of db.characters){
 for(const row of matches){assert.ok(ids.has(row[2]));assert.equal(row[3].length,4);assert.equal(new Set(row[3]).size,4);row[3].forEach(id=>assert.ok(ids.has(id)));}
 for(const row of bans){assert.ok(ids.has(row[2]));row[3].forEach(id=>assert.ok(ids.has(id)));assert.ok(row[3].length>=1);}
 const hull=statsFor(matches,c('훌라발루'),{days:0});
-assert.equal(hull.appearances,722);assert.equal(hull.results,722);assert.equal(hull.win,306);assert.equal(hull.draw,304);assert.equal(hull.loss,112);assert.equal(hull.unknown,0);
+assert.equal(hull.appearances,736);assert.equal(hull.results,736);assert.equal(hull.win,313);assert.equal(hull.draw,309);assert.equal(hull.loss,114);assert.equal(hull.unknown,0);
 const prediction=queryBanRecords(bans,[c('의사').id,c('샤먼').id],{days:0});
-assert.equal(prediction.base,15516);assert.equal(prediction.matched,5);
+assert.equal(prediction.base,17066);assert.equal(prediction.matched,11);
 assert.equal(prediction.groups[0].id,c('광기의 눈').id);
 assert.equal(prediction.groups[0].count,3);
-assert.equal(prediction.groups.reduce((n,x)=>n+x.count,0),5);
+assert.equal(prediction.groups.reduce((n,x)=>n+x.count,0),11);
 assert.ok(prediction.groups.every(x=>x.count>0&&!('score' in x)));
 assert.equal(queryBanRecords(bans,[],{days:0}).groups.length,0);
 assert.ok(queryBanRecords(bans,[c('의사').id,c('의사').id]).error);
 const none=queryBanRecords(bans,[c('신동').id],{days:30});assert.equal(none.matched,0);assert.equal(none.groups.length,0);
-const excluded=queryBanRecords(bans,[c('의사').id,c('샤먼').id],{days:0,excluded:[c('광기의 눈').id]});assert.ok(!excluded.groups.some(x=>x.id===c('광기의 눈').id));assert.equal(excluded.matched,2);
+const excluded=queryBanRecords(bans,[c('의사').id,c('샤먼').id],{days:0,excluded:[c('광기의 눈').id]});assert.ok(!excluded.groups.some(x=>x.id===c('광기의 눈').id));assert.equal(excluded.matched,8);
 const fixture=Array.from({length:100},(_,i)=>['2026-10-01','테스트 맵','h',['s','s2','s3','s4'],'IVL',i<40?'승':i<70?'무':'패',2]);
 assert.equal(statsFor(fixture,{id:'h',side:'감시자'}).winRate,.4);
 assert.equal(statsFor(fixture,{id:'s',side:'생존자'}).winRate,.3);
 assert.equal(statsFor(fixture.slice(0,49),{id:'h',side:'감시자'}).winRate,40/49);
-assert.equal(filterRows(fixture,{days:30,map:'없는 맵'}).length,0);
-assert.equal(filterRows(fixture,{days:30,map:'테스트 맵',tournament:'IVL'}).length,100);
-assert.equal(filterRows(fixture,{days:30,tournament:'COA'}).length,0);
+assert.equal(filterRows(fixture,{days:30,reference:'2026-10-31',map:'없는 맵'}).length,0);
+assert.equal(filterRows(fixture,{days:30,reference:'2026-10-31',map:'테스트 맵',tournament:'IVL'}).length,100);
+assert.equal(filterRows(fixture,{days:30,reference:'2026-10-31',tournament:'COA'}).length,0);
 assert.equal(safeUrl('javascript:alert(1)'), '');assert.equal(safeUrl('data:text/html,bad'), '');
 for(const ch of db.characters){
  const stat=statsFor(matches,ch,{days:0});

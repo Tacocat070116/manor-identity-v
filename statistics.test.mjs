@@ -20,9 +20,6 @@ for(const d of catalog.datasets){
  if(!parts.has(d.path))parts.set(d.path,read(d.path));
  d.rows=parts.get(d.path).datasets.find(x=>x.id===d.id).rows.map(([id,pick,win,draw,loss,ban])=>({id,name:byId[id].name,side:byId[id].side,pick,win,draw,loss,ban}));
 }
-catalog.badges=read('ranked/badges.json').datasets;
-const badgeParts=new Map();
-for(const d of catalog.badges){if(!badgeParts.has(d.path))badgeParts.set(d.path,read(d.path));d.rows=badgeParts.get(d.path).datasets.find(x=>x.id===d.id).rows.map(([id,rankPosition,score])=>({id,name:byId[id].name,side:byId[id].side,rankPosition,score}));}
 const refresh=JSON.parse(fs.readFileSync('research/ranked/refreshes.json','utf8'));
 const input=p=>JSON.parse(p.endsWith('.gz')?gunzipSync(fs.readFileSync(p)):fs.readFileSync(p,'utf8'));
 
@@ -30,8 +27,8 @@ test('all imported rows retain their source rates, characters and distinct cohor
  const inputs=JSON.parse(gunzipSync(fs.readFileSync('research/ranked/normalized-inputs.json.gz')));
  const original=new Map([...inputs.cn.datasets,...inputs.global.datasets].map(d=>[d.id,d]));
  for(const spec of refresh.ranked)for(const d of input(spec.path).datasets)original.set(d.id,d);
- assert.equal(catalog.datasets.length,1181);
- assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),96505);
+ assert.equal(catalog.datasets.length,1325);
+ assert.equal(catalog.datasets.reduce((n,d)=>n+d.rows.length,0),109321);
  assert.ok(catalog.datasets.every(d=>['asia','cn'].includes(d.server)));
  assert.equal(new Set(catalog.datasets.map(d=>d.id)).size,catalog.datasets.length);
  for(const d of catalog.datasets){
@@ -47,7 +44,6 @@ test('all imported rows retain their source rates, characters and distinct cohor
    if(r.loss!==null)assert.ok(Math.abs(r.win+r.draw+r.loss-100)<.21);
   }
  }
- assert.equal(catalog.badges.reduce((n,d)=>n+d.rows.length,0),274016);
 });
 
 test('rank selection keeps sources distinct and old excluded snapshot links fall back safely',()=>{
@@ -120,7 +116,7 @@ test('live app routes load only selected season files and render all three scope
  app.state.statistics.scope='tournament';await app.render();html=nodes.get('#page-body').innerHTML;
  assert.doesNotMatch(html,/id="ranked-title"/);assert.match(html,/id="tournament-title"/);
  Object.assign(app.state.statistics,{server:'cn',season:'S44',tier:'all',snapshot:'cn-s44-20260702-20260804-all',scope:'ranked'});await app.render();html=nodes.get('#page-body').innerHTML;
- assert.doesNotMatch(html,/정정 확인이 필요한 과거 통계/);assert.match(html,/인지 점수/);assert.match(html,/2026-10-29/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
+ assert.doesNotMatch(html,/정정 확인이 필요한 과거 통계/);assert.doesNotMatch(html,/인지 점수/);assert.doesNotMatch(html,/href="https?:|인지 점수 원문|badges.csv|\bdownload(?:[ =>])/);
  app.state.statistics.search='거미';await app.render();assert.match(nodes.get('#page-body').innerHTML,/1명의 캐릭터/);
  app.syncStatisticsRoute();assert.match(context.location.hash,/season=S44/);
  app.readRoute();assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.search,'거미');
@@ -143,7 +139,7 @@ test('ranked import survives partial network failure without hiding tournament r
  const {context,nodes,app}=runtime();const fetch=context.fetch;
  context.fetch=async url=>url.startsWith('ranked/')?{ok:false}:fetch(url);
  await app.boot();const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/17,056/);
+ assert.match(html,/랭킹전 자료를 불러오지 못했습니다/);assert.match(html,/id="tournament-title"/);assert.match(html,/17,296/);
 });
 
 test('ranked cohorts deduplicate equivalent daily/weekly observations without pooling periods',()=>{
@@ -167,7 +163,7 @@ test('ranked cohorts deduplicate equivalent daily/weekly observations without po
 });
 
 test('new ranked coverage preserves source dates, unknown denominators and missing characters',()=>{
- for(const [server,rows,cohorts] of [['asia',1267,15],['cn',95238,1166]]){
+ for(const [server,rows,cohorts] of [['asia',1267,15],['cn',108054,1310]]){
   const datasets=catalog.datasets.filter(d=>d.server===server);
   assert.equal(datasets.length,cohorts);assert.equal(datasets.reduce((n,d)=>n+d.rows.length,0),rows);
  }
@@ -182,7 +178,7 @@ test('new ranked coverage preserves source dates, unknown denominators and missi
  const asia=catalog.datasets.filter(d=>d.server==='asia');
  assert.deepEqual([...new Set(asia.map(d=>d.season))].sort(),['S36','S37','S38','S43']);
  assert.ok(asia.filter(d=>d.season==='S43').every(d=>!d.asOf&&!d.periodEnd&&d.rows.length===87&&!d.rows.some(r=>r.id==='c60'||r.id==='c80')));
- assert.ok(catalog.datasets.every(d=>(!d.periodEnd||d.periodEnd<='2026-10-31')&&(!d.asOf||d.asOf<='2026-10-31')));
+ assert.ok(catalog.datasets.every(d=>(!d.periodEnd||d.periodEnd<='2026-11-12')&&(!d.asOf||d.asOf<='2026-11-12')));
 });
 
 test('season loads use content hashes and the existing controls display the expanded ranked archive',async()=>{
@@ -192,7 +188,7 @@ test('season loads use content hashes and the existing controls display the expa
  const {context,nodes,fetches,app}=runtime();
  context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';await app.boot();
  const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/96,505/);assert.match(html,/2026-10-29/);assert.doesNotMatch(html,/undefined|NaN|community-evidence/);
+ assert.match(html,/109,321/);assert.match(html,/2026-11-12/);assert.doesNotMatch(html,/undefined|NaN|community-evidence/);
  assert.ok(fetches.some(url=>url.startsWith('ranked/cn-s45.json?v=')));
  assert.ok(!fetches.some(url=>url.includes('map-cn-')));
  for(const url of fetches.filter(url=>url.startsWith('ranked/')&&!url.startsWith('ranked/index.json'))){
@@ -200,33 +196,12 @@ test('season loads use content hashes and the existing controls display the expa
  }
 });
 
-test('expanded China archives use existing controls and fetch only one score month with current hashes',async()=>{
- const {nodes,fetches,app,context}=runtime();context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';await app.boot();
- const html=nodes.get('#page-body').innerHTML;
- assert.match(html,/2026-10-29/);assert.match(html,/인지 점수 기록/);assert.doesNotMatch(html,/맵별 진영 성적|community-evidence|VOICES & SOURCES/);
- assert.ok(!fetches.some(url=>url.includes('map-cn-')||url.includes('community-evidence')));
- const months=fetches.filter(url=>/^ranked\/badges-\d{6}\.json/.test(url));assert.equal(months.length,1);assert.match(months[0],/badges-202610/);
- for(const url of fetches.filter(url=>url.startsWith('ranked/')&&!url.startsWith('ranked/index.json'))){const [path,query]=url.split('?');assert.equal(query,'v='+catalog.assetVersions[path]);}
- Object.assign(app.state.statistics,{badgeSnapshot:catalog.badges.find(d=>d.asOf==='2025-09-18').id});await app.render();
- assert.equal(fetches.filter(url=>url.startsWith('ranked/badges-202509')).length,1);assert.match(nodes.get('#page-body').innerHTML,/2025-09-18/);
- app.syncStatisticsRoute();assert.match(context.location.hash,/badge=cn-badge-20250918/);app.readRoute();assert.equal(app.state.statistics.badgeSnapshot,'cn-badge-20250918');
-});
-
-test('optional score archive failures preserve character statistics and can be retried',async()=>{
- const {context,nodes,app}=runtime();const fetch=context.fetch;
- context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all';
- context.fetch=async url=>/ranked\/badges-/.test(url)?{ok:false}:fetch(url);await app.boot();
- let html=nodes.get('#page-body').innerHTML;assert.match(html,/36명의 캐릭터/);assert.match(html,/인지 점수 자료를 불러오지 못했습니다/);assert.match(html,/자료 다시 불러오기/);
- context.fetch=fetch;await app.render();html=nodes.get('#page-body').innerHTML;assert.doesNotMatch(html,/자료를 불러오지 못했습니다/);assert.match(html,/인지 점수 기록/);
-});
-
-test('all score partitions preserve source values and excluded map inputs are absent',()=>{
+test('retired score archives and excluded map inputs are absent',()=>{
  assert.ok(!refresh.maps);assert.ok(!fs.existsSync('research/refresh/2026-10-29/china/map-additions.json.gz'));
  assert.ok(!catalog.mapDatasets);assert.ok(!Object.keys(catalog.assetVersions).some(p=>p.includes('/map-')));
- const badgeSources=new Map(refresh.badges.flatMap(spec=>input(spec.path).datasets).map(d=>[d.id,d]));
- assert.equal(catalog.badges.length,402);assert.equal(catalog.badges[0].asOf,'2026-10-29');
- for(const d of catalog.badges){assert.ok(d.asOf<='2026-10-29');const src=badgeSources.get(d.id);assert.ok(src);const rows=new Map(src.rows.map(r=>[(r.characterId||r.id)+'|'+r.rankPosition,r.score]));assert.equal(rows.size,d.rows.length);for(const r of d.rows)assert.equal(r.score,rows.get(r.id+'|'+r.rankPosition));}
- const cn=selectRanked(catalog,{server:'cn',season:'S45',tier:'all'});assert.equal(cn.dataset.periodEnd,'2026-10-29');assert.equal(cn.dataset.periodKind,'season-cumulative');assert.equal(cn.dataset.rows.length,89);
+ assert.ok(!refresh.badges);assert.ok(!catalog.badgesPath);assert.ok(!Object.keys(catalog.assetVersions).some(p=>p.includes('badges')));
+ assert.ok(!fs.readdirSync('dist/ranked').some(p=>p.startsWith('badges')));
+ const cn=selectRanked(catalog,{server:'cn',season:'S45',tier:'all'});assert.equal(cn.dataset.periodEnd,'2026-11-12');assert.equal(cn.dataset.periodKind,'season-cumulative');assert.equal(cn.dataset.rows.length,89);
  const s44=selectRanked(catalog,{server:'cn',season:'S44',tier:'all'});assert.notEqual(s44.dataset.status,'needs-review');
  const keys=catalog.datasets.map(d=>JSON.stringify([d.server,d.season,d.tier,d.periodStart,d.periodEnd,d.periodKind]));assert.equal(new Set(keys).size,keys.length);
  assert.equal(catalog.meta.equivalentRowsRemoved,556);
@@ -250,16 +225,17 @@ test('overlapping ranked loads retain the latest filters and revalidate dynamic 
  assert.equal(a,b);assert.equal(app.state.statistics.server,'cn');assert.equal(app.state.statistics.season,'S43');
  assert.ok(a.datasets.some(d=>d.server==='asia'&&d.rows));assert.ok(b.datasets.some(d=>d.server==='cn'&&d.rows));
  const dynamic=requests.filter(r=>/^ranked\/(?!index)/.test(r.url));
- assert.ok(dynamic.length>=3);assert.ok(dynamic.every(r=>r.options.cache==='no-cache'&&!r.url.includes('20261017')));
+ assert.equal(dynamic.length,2);assert.ok(dynamic.every(r=>r.options.cache==='no-cache'&&!r.url.includes('20261017')));
 });
 
-test('retrying a failed badge request removes the stale error after recovery',async()=>{
- const {context,app}=runtime();context.location.hash='#v=explore';await app.boot();
- Object.assign(app.state.statistics,{server:'cn',season:'S43',tier:'all'});
- const fetch=context.fetch;let fail=true;
- context.fetch=async url=>url.startsWith('ranked/badges.json')&&fail?{ok:false}:fetch(url);
- const first=await app.loadRanked();assert.match(first.badgesError,/인지 점수/);assert.equal(first.badges,undefined);
- fail=false;const second=await app.loadRanked();assert.ok(second.badges.length);assert.equal(second.badgesError,undefined);
+test('old recognition-score links load ranked statistics without requesting retired archives',async()=>{
+ const {context,app,nodes,fetches}=runtime();
+ context.location.hash='#v=statistics&scope=ranked&server=cn&season=S45&tier=all&badge=cn-badge-20250918';
+ await app.boot();const html=nodes.get('#page-body').innerHTML;
+ assert.match(html,/36명의 캐릭터/);assert.match(html,/2026-11-12/);
+ assert.doesNotMatch(html,/인지 점수|자료 다시 불러오기|undefined|NaN/);
+ assert.ok(!fetches.some(url=>url.includes('badge')));
+ app.syncStatisticsRoute();assert.doesNotMatch(context.location.hash,/badge=/);
 });
 
 test('a slow statistics refresh cannot restore its old URL or scroll after navigation',async()=>{
@@ -300,7 +276,7 @@ test('ranked-only views never download hidden tournament records and preserve ov
   assert.ok(!fetches.some(url=>/^(matches|bans|tournament-details)\.json/.test(url)),route);
   const html=nodes.get(route.includes('v=character')?'#character-content':'#page-body').innerHTML;
   assert.match(html,/랭킹전/);assert.doesNotMatch(html,/undefined|NaN/);
-  if(route==='#v=statistics'){assert.match(html,/17,056/);assert.match(html,/2026-10-30/);}
+  if(route==='#v=statistics'){assert.match(html,/17,296/);assert.match(html,/2026-11-08/);}
  }
 });
 

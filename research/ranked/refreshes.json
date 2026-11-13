@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-31",
+  "collectedAt": "2026-11-13",
   "ranked": [
     {
       "path": "research/refresh/2026-10-29/china/ranked-additions.json.gz"
@@ -23,14 +23,12 @@
     },
     {
       "path": "research/refresh/2026-10-31/china/ranked-additions.json.gz"
-    }
-  ],
-  "badges": [
-    {
-      "path": "research/refresh/2026-10-29/china/badge-additions.json.gz"
     },
     {
-      "path": "research/refresh/2026-10-31/china/badge-additions.json.gz"
+      "path": "research/refresh/2026-11-12/china/ranked-additions.json.gz"
+    },
+    {
+      "path": "research/refresh/2026-11-13/china/ranked-additions.json.gz"
     }
   ],
   "excludedStatuses": [

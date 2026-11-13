@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-11-13",
+  "ranked": {
+    "source": "https://website.homeworkkun.top/胜率数据/form",
+    "files": [
+      {
+        "name": "S45-261112.json",
+        "url": "https://website.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/json/S45-261112.json",
+        "status": 200,
+        "bytes": 302078,
+        "sha256": "738c01617f87f869f81da2393eb43cd9c87dfec3ff2a0b162e1d29b8d358098d",
+        "gzipSha256": "fbceb8eef90b9a9b58648abaaa84c1a4baf4b5398ae63300c485b491f881af2f",
+        "rows": 801
+      }
+    ],
+    "newRows": 12816,
+    "newCohorts": 144,
+    "latestPeriodEnd": "2026-11-12",
+    "asia": "Current public source indexes and mirror heads contain no newer confirmed Asia release. Existing S36–S38 and S43 rate rows are retained without reimport.",
+    "excludedSourceErrorRows": 1575,
+    "incrementalRows": 801,
+    "incrementalCohorts": 9
+  },
+  "tournament": {
+    "sources": [
+      {
+        "id": "match-log",
+        "url": "https://identityv-match-log.vercel.app",
+        "sha256": "416879357a1f1e1237efc03630d42dcc5ab3d1faf7cba0b7adb51913ce8a25c8",
+        "snapshotPath": "research/refresh/2026-11-12/match-log.json.gz",
+        "matches": 307,
+        "records": 1844
+      },
+      {
+        "id": "bwiki-all",
+        "url": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+        "sha256": "bb1f842309561e0d8648508796afab12340376f59f8cf2a6bb46688581d55835",
+        "records": 16626,
+        "publishedAt": null,
+        "withheldByPublisher": {}
+      },
+      {
+        "id": "239705bcf2d58e99",
+        "url": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/239705bcf2d58e99.db.gz",
+        "sha256": "89626b90aacd00410feb3eec304d7cb7a9e2cd3fe957e96fbb3c20decc138f68",
+        "records": 138,
+        "publishedAt": "2026-11-11T16:11:48",
+        "withheldByPublisher": {
+          "dropped_matches": 32,
+          "dropped_records": 200,
+          "dropped_incomplete": 1
+        }
+      },
+      {
+        "id": "c4706250c17fe65e",
+        "url": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/c4706250c17fe65e.db.gz",
+        "sha256": "69ec9fac2bc1cc4de2897a66a709400d4eabc25b1b77b075d7b99fbdd217c0c7",
+        "records": 77,
+        "publishedAt": "2026-10-30T23:34:25",
+        "withheldByPublisher": {
+          "dropped_matches": 0,
+          "dropped_records": 3,
+          "dropped_incomplete": 0
+        }
+      },
+      {
+        "id": "28af8e4833e99882",
+        "url": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+        "sha256": "cf87a7c341a1ded332ae3e04d60c2035a41a2af3bd3757ddb390a09e838cdc2c",
+        "records": 314,
+        "publishedAt": "2026-11-11T15:49:30",
+        "withheldByPublisher": {
+          "dropped_matches": 36,
+          "dropped_records": 242,
+          "dropped_incomplete": 0
+        }
+      },
+      {
+        "id": "64e9350236a773db",
+        "url": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/64e9350236a773db.db.gz",
+        "sha256": "b520a327c338f784031ca7c436dceddb51d9246028aadb3ad56f5554df218a44",
+        "records": 53,
+        "publishedAt": "2026-11-06T08:48:12",
+        "withheldByPublisher": {
+          "dropped_matches": 11,
+          "dropped_records": 79,
+          "dropped_incomplete": 3
+        }
+      }
+    ],
+    "validObservations": {
+      "match-log": 1842,
+      "bwiki": 17081
+    },
+    "excluded": {
+      "observed": 55,
+      "record": 129,
+      "opening": 24
+    },
+    "conflicts": {
+      "outcome": 32,
+      "compositionOrMap": 21,
+      "observedBans": 29
+    },
+    "coverage": "공개 전사본에서 확인된 IVL·IJL·IVC 기록을 수록했습니다. 원문에 누락되거나 미완성인 경기는 제외했으며 대회 전체를 완전 수록한 자료는 아닙니다.",
+    "newDisputedRoundsHeld": [
+      "303-4",
+      "320-6"
+    ],
+    "recheck": {
+      "path": "research/refresh/2026-11-13/tournament-source-recheck.json",
+      "sha256": "dc7840b3e8fcdf25a8c4350c00a21e392d8bc9851167c42c32d98062fb02417f",
+      "matches": 307,
+      "rounds": 1844,
+      "changedFacts": 0,
+      "additionalImportedRows": 0,
+      "databaseDecision": "Public SQLite manifest, remote descriptor and BWIKI overlay index are byte-identical to the November 12 checked versions; reuse their previously verified database snapshots."
+    },
+    "originalSourceCollectedAt": "2026-11-12"
+  },
+  "recognitionScores": {
+    "status": "removed",
+    "requestedAt": "2026-11-12",
+    "reason": "Owner requested removal of nonessential recognition-score statistics; not used by win/pick/ban rates."
+  },
+  "limits": [
+    "Published community transcriptions, not direct official API or exhaustive official replay verification.",
+    "Publisher overlays omit unfinished/unpublished rounds; only published valid records are eligible.",
+    "Preserve 21 unknown outcomes and previously reviewed date corrections.",
+    "Do not sum overlapping ranked periods or the distinct ban-stage denominators."
+  ],
+  "previousCoverage": "research/refresh/2026-11-12/source-coverage.json",
+  "sourceIndexChecks": "research/refresh/2026-11-13/source-index-checks.json",
+  "mirrorHeadChecks": "research/refresh/2026-11-13/ranked-mirror-heads.json"
+}

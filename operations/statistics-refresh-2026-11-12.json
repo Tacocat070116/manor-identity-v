@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-12",
+  "baseline": "9f6b1805ed9dcb6e22e497311ee1b35017c125f8",
+  "state": "verified",
+  "version": "1.12.1",
+  "announcement": "pending",
+  "sourceCoverage": "research/refresh/2026-11-12/source-coverage.json",
+  "tournament": {
+    "before": {
+      "matches": 17056,
+      "details": 16930,
+      "openingBans": 15516,
+      "observedBans": 16842
+    },
+    "after": {
+      "matches": 17296,
+      "details": 17170,
+      "openingBans": 17066,
+      "observedBans": 17119,
+      "latestMatch": "2026-11-08",
+      "unknownResults": 21
+    },
+    "added": {
+      "addedMatches": 240,
+      "addedDetails": 240,
+      "addedObservedBans": 277,
+      "addedOpeningBans": 1550
+    }
+  },
+  "ranked": {
+    "beforeRows": 96505,
+    "afterRows": 108520,
+    "addedRows": 12015,
+    "beforeCohorts": 1181,
+    "afterCohorts": 1316,
+    "latestPeriodEnd": "2026-11-11"
+  },
+  "recognitionScores": "Removed from the interface, public files, active collection and build inputs; historical audits preserved.",
+  "heldCompositionOrMap": 19,
+  "guideContentChanged": false,
+  "newDisputedRoundsHeld": 2,
+  "verification": {
+    "testsPassed": 223,
+    "testsFailed": 0,
+    "releaseCheck": true,
+    "contentConsistencyCheck": true,
+    "terminologyCheck": true,
+    "guideContentPreserved": true,
+    "announcementsPreserved": true,
+    "oldRecognitionScoreLinksTested": true
+  },
+  "deploymentStatusSource": "GitHub Actions pages.yml run for the commit containing this audit"
+}

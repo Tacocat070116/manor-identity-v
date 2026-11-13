@@ -1,0 +1,1093 @@
+{
+  "checkedAt": "2026-11-12",
+  "records": [
+    {
+      "id": "bwiki-40e3b09f2ba494a2c074",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "CPG_GR_124",
+        "BO3",
+        "上"
+      ],
+      "row": [
+        "2020-12-04",
+        "호수 마을",
+        "c13",
+        [
+          "c64",
+          "c51",
+          "c72",
+          "c82"
+        ],
+        "IVL",
+        "패",
+        3
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-04",
+            "호수 마을",
+            "c13",
+            [
+              "c58",
+              "c51",
+              "c64",
+              "c76"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 860
+        },
+        {
+          "row": [
+            "2020-12-04",
+            "호수 마을",
+            "c32",
+            [
+              "c64",
+              "c51",
+              "c72",
+              "c82"
+            ],
+            "IVL",
+            "승",
+            1
+          ],
+          "baselineCoreIndex": 861
+        }
+      ]
+    },
+    {
+      "id": "bwiki-30dda97dcf60762ae59b",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "CPG_GR_124",
+        "BO3",
+        "下"
+      ],
+      "row": [
+        "2020-12-04",
+        "호수 마을",
+        "c32",
+        [
+          "c58",
+          "c51",
+          "c64",
+          "c76"
+        ],
+        "IVL",
+        "승",
+        1
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-04",
+            "호수 마을",
+            "c13",
+            [
+              "c58",
+              "c51",
+              "c64",
+              "c76"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 860
+        },
+        {
+          "row": [
+            "2020-12-04",
+            "호수 마을",
+            "c32",
+            [
+              "c64",
+              "c51",
+              "c72",
+              "c82"
+            ],
+            "IVL",
+            "승",
+            1
+          ],
+          "baselineCoreIndex": 861
+        }
+      ]
+    },
+    {
+      "id": "bwiki-b0bb2922d173c1a7100c",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "WBG_CPG_1212",
+        "BO1",
+        "上"
+      ],
+      "row": [
+        "2020-12-12",
+        "성심 병원",
+        "c05",
+        [
+          "c43",
+          "c58",
+          "c57",
+          "c82"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-12",
+            "성심 병원",
+            "c05",
+            [
+              "c82",
+              "c51",
+              "c57",
+              "c64"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 954
+        },
+        {
+          "row": [
+            "2020-12-12",
+            "성심 병원",
+            "c32",
+            [
+              "c43",
+              "c58",
+              "c57",
+              "c82"
+            ],
+            "IVL",
+            "승",
+            0
+          ],
+          "baselineCoreIndex": 955
+        }
+      ]
+    },
+    {
+      "id": "bwiki-cbb76fb4069aad8f9fb0",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "WBG_CPG_1212",
+        "BO1",
+        "下"
+      ],
+      "row": [
+        "2020-12-12",
+        "성심 병원",
+        "c32",
+        [
+          "c82",
+          "c51",
+          "c57",
+          "c64"
+        ],
+        "IVL",
+        "승",
+        0
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-12",
+            "성심 병원",
+            "c05",
+            [
+              "c82",
+              "c51",
+              "c57",
+              "c64"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 954
+        },
+        {
+          "row": [
+            "2020-12-12",
+            "성심 병원",
+            "c32",
+            [
+              "c43",
+              "c58",
+              "c57",
+              "c82"
+            ],
+            "IVL",
+            "승",
+            0
+          ],
+          "baselineCoreIndex": 955
+        }
+      ]
+    },
+    {
+      "id": "bwiki-7dc1fbbe178b06e5c65e",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "WBG_CPG_1212",
+        "BO3",
+        "上"
+      ],
+      "row": [
+        "2020-12-12",
+        "에버슬리핑 타운",
+        "c13",
+        [
+          "c64",
+          "c72",
+          "c51",
+          "c82"
+        ],
+        "IVL",
+        "패",
+        3
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-12",
+            "에버슬리핑 타운",
+            "c13",
+            [
+              "c57",
+              "c51",
+              "c84",
+              "c64"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 957
+        },
+        {
+          "row": [
+            "2020-12-12",
+            "에버슬리핑 타운",
+            "c16",
+            [
+              "c64",
+              "c72",
+              "c51",
+              "c82"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 958
+        }
+      ]
+    },
+    {
+      "id": "bwiki-22394c13830a82d2ac74",
+      "identity": [
+        "2020IVL秋季赛常规赛",
+        "WBG_CPG_1212",
+        "BO3",
+        "下"
+      ],
+      "row": [
+        "2020-12-12",
+        "에버슬리핑 타운",
+        "c16",
+        [
+          "c57",
+          "c51",
+          "c84",
+          "c64"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2020-12-12",
+            "에버슬리핑 타운",
+            "c13",
+            [
+              "c57",
+              "c51",
+              "c84",
+              "c64"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 957
+        },
+        {
+          "row": [
+            "2020-12-12",
+            "에버슬리핑 타운",
+            "c16",
+            [
+              "c64",
+              "c72",
+              "c51",
+              "c82"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 958
+        }
+      ]
+    },
+    {
+      "id": "bwiki-7be7c46d433df75545cb",
+      "identity": [
+        "2025IJL夏季赛常规赛",
+        "FL_DFM_61",
+        "BO3",
+        "上"
+      ],
+      "row": [
+        "2025-06-01",
+        "군수 공장",
+        "c18",
+        [
+          "c39",
+          "c44",
+          "c45",
+          "c52"
+        ],
+        "IJL",
+        "패",
+        3
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2025-06-01",
+            "군수 공장",
+            "c18",
+            [
+              "c44",
+              "c45",
+              "c87",
+              "c52"
+            ],
+            "IJL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 10959
+        },
+        {
+          "row": [
+            "2025-06-01",
+            "군수 공장",
+            "c18",
+            [
+              "c52",
+              "c61",
+              "c37",
+              "c39"
+            ],
+            "IJL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 10973
+        }
+      ]
+    },
+    {
+      "id": "bwiki-76b3f470a6b0479a9138",
+      "identity": [
+        "2025IVL夏季赛常规赛",
+        "GR_Wolves_66",
+        "BO2",
+        "上"
+      ],
+      "row": [
+        "2025-06-06",
+        "달빛강 공원",
+        "c25",
+        [
+          "c89",
+          "c62",
+          "c37",
+          "c47"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2025-06-06",
+            "달빛강 공원",
+            "c25",
+            [
+              "c83",
+              "c72",
+              "c62",
+              "c37"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 10978
+        },
+        {
+          "row": [
+            "2025-06-06",
+            "달빛강 공원",
+            "c25",
+            [
+              "c59",
+              "c45",
+              "c83",
+              "c64"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 10979
+        }
+      ]
+    },
+    {
+      "id": "bwiki-a86c780e6e2b687fd112",
+      "identity": [
+        "2026COA预选赛",
+        "GW_GR_38",
+        "BO2",
+        "上"
+      ],
+      "row": [
+        "2026-03-08",
+        "에버슬리핑 타운",
+        "c27",
+        [
+          "c67",
+          "c75",
+          "c52",
+          "c79"
+        ],
+        "COA",
+        "승",
+        1
+      ],
+      "source": "https://website.homeworkkun.top/赛事数据展示/data/sqlite/all.db",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-03-08",
+            "에버슬리핑 타운",
+            "c27",
+            [
+              "c75",
+              "c67",
+              "c79",
+              "c64"
+            ],
+            "COA",
+            "승",
+            1
+          ],
+          "baselineCoreIndex": 13167
+        }
+      ]
+    },
+    {
+      "id": "bwiki-4add1037635ab1ac84da",
+      "identity": [
+        "2026IJL秋季赛常规赛",
+        "FL_ZETA_118",
+        "BO3",
+        "下"
+      ],
+      "row": [
+        "2026-11-08",
+        "성심 병원",
+        "c22",
+        [
+          "c64",
+          "c40",
+          "c53",
+          "c50"
+        ],
+        "IJL",
+        "패",
+        3
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/239705bcf2d58e99.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-11-08",
+            "성심 병원",
+            "c05",
+            [
+              "c50",
+              "c53",
+              "c64",
+              "c40"
+            ],
+            "IJL",
+            "패",
+            3
+          ],
+          "sourceRecordId": "320-6"
+        }
+      ]
+    },
+    {
+      "id": "bwiki-385734b2c97f9d87fa65",
+      "identity": [
+        "2026IJL秋季赛常规赛",
+        "ZETA_DFM_111",
+        "BO2",
+        "下"
+      ],
+      "row": [
+        "2026-11-01",
+        "차이나타운",
+        "c24",
+        [
+          "c74",
+          "c83",
+          "c84",
+          "c45"
+        ],
+        "IJL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/239705bcf2d58e99.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-11-01",
+            "차이나타운",
+            "c24",
+            [
+              "c74",
+              "c83",
+              "c45",
+              "c82"
+            ],
+            "IJL",
+            "패",
+            3
+          ],
+          "sourceRecordId": "303-3"
+        },
+        {
+          "row": [
+            "2026-11-01",
+            "차이나타운",
+            "c33",
+            [
+              "c74",
+              "c45",
+              "c84",
+              "c83"
+            ],
+            "IJL",
+            "무",
+            2
+          ],
+          "sourceRecordId": "303-4"
+        }
+      ]
+    },
+    {
+      "id": "bwiki-321d0a2aea4ebdf63aae",
+      "identity": [
+        "2026IVL夏季赛季后赛",
+        "GR_ACT_820",
+        "BO5",
+        "上"
+      ],
+      "row": [
+        "2026-08-20",
+        "에버슬리핑 타운",
+        "c31",
+        [
+          "c74",
+          "c43",
+          "c72",
+          "c65"
+        ],
+        "IVL",
+        "패",
+        3
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/c4706250c17fe65e.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-08-20",
+            "호수 마을",
+            "c31",
+            [
+              "c72",
+              "c74",
+              "c43",
+              "c65"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 14594
+        }
+      ]
+    },
+    {
+      "id": "bwiki-b03b00a261db9f1dfaa9",
+      "identity": [
+        "2026IVL夏季赛季后赛",
+        "GR_ACT_820",
+        "BO5",
+        "下"
+      ],
+      "row": [
+        "2026-08-20",
+        "에버슬리핑 타운",
+        "c17",
+        [
+          "c43",
+          "c42",
+          "c85",
+          "c89"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/c4706250c17fe65e.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-08-20",
+            "호수 마을",
+            "c17",
+            [
+              "c42",
+              "c89",
+              "c43",
+              "c85"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 14595
+        }
+      ]
+    },
+    {
+      "id": "bwiki-bc0156cb240b6b0ba9fa",
+      "identity": [
+        "2026IVL夏季赛季后赛",
+        "MRC_GG_820",
+        "BO4",
+        "上"
+      ],
+      "row": [
+        "2026-08-20",
+        "차이나타운",
+        "c22",
+        [
+          "c43",
+          "c47",
+          "c52",
+          "c87"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/c4706250c17fe65e.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-08-20",
+            "차이나타운",
+            "c22",
+            [
+              "c47",
+              "c78",
+              "c87",
+              "c38"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 14592
+        },
+        {
+          "row": [
+            "2026-08-20",
+            "차이나타운",
+            "c05",
+            [
+              "c43",
+              "c47",
+              "c52",
+              "c87"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 14602
+        }
+      ]
+    },
+    {
+      "id": "bwiki-09cdc3c83cd250eb7dce",
+      "identity": [
+        "2026IVL秋季赛常规赛",
+        "FPX.ZQ_WBG_1023",
+        "BO2",
+        "上"
+      ],
+      "row": [
+        "2026-10-23",
+        "차이나타운",
+        "c09",
+        [
+          "c45",
+          "c62",
+          "c80",
+          "c68"
+        ],
+        "IVL",
+        "승",
+        1
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-10-23",
+            "차이나타운",
+            "c36",
+            [
+              "c62",
+              "c68",
+              "c45",
+              "c80"
+            ],
+            "IVL",
+            "승",
+            1
+          ],
+          "baselineCoreIndex": 16911
+        },
+        {
+          "row": [
+            "2026-10-23",
+            "차이나타운",
+            "c09",
+            [
+              "c87",
+              "c45",
+              "c52",
+              "c61"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 16918
+        }
+      ]
+    },
+    {
+      "id": "bwiki-d39871a54abc13e5ecc8",
+      "identity": [
+        "2026IVL秋季赛常规赛",
+        "GR_ACT_1023",
+        "BO2",
+        "上"
+      ],
+      "row": [
+        "2026-10-23",
+        "달빛강 공원",
+        "c36",
+        [
+          "c82",
+          "c55",
+          "c88",
+          "c68"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-10-23",
+            "달빛강 공원",
+            "c36",
+            [
+              "c71",
+              "c80",
+              "c89",
+              "c84"
+            ],
+            "IVL",
+            "패",
+            3
+          ],
+          "baselineCoreIndex": 16907
+        },
+        {
+          "row": [
+            "2026-10-23",
+            "호수 마을",
+            "c36",
+            [
+              "c68",
+              "c82",
+              "c88",
+              "c55"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 16915
+        }
+      ]
+    },
+    {
+      "id": "bwiki-dc778db716c0fb267a6b",
+      "identity": [
+        "2026IVL秋季赛常规赛",
+        "GR_ACT_1023",
+        "BO2",
+        "下"
+      ],
+      "row": [
+        "2026-10-23",
+        "달빛강 공원",
+        "c33",
+        [
+          "c40",
+          "c80",
+          "c64",
+          "c53"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-10-23",
+            "호수 마을",
+            "c33",
+            [
+              "c80",
+              "c53",
+              "c64",
+              "c40"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 16916
+        }
+      ]
+    },
+    {
+      "id": "bwiki-8d73824f3d1c9cb2426b",
+      "identity": [
+        "2026IVL秋季赛常规赛",
+        "TE_Wolves_1024",
+        "BO1",
+        "上"
+      ],
+      "row": [
+        "2026-10-24",
+        "돌아올 수 없는 숲",
+        "c33",
+        [
+          "c52",
+          "c39",
+          "c53",
+          "c41"
+        ],
+        "IVL",
+        "무",
+        2
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-10-24",
+            "달빛강 공원",
+            "c33",
+            [
+              "c52",
+              "c39",
+              "c53",
+              "c41"
+            ],
+            "IVL",
+            "무",
+            2
+          ],
+          "baselineCoreIndex": 16919
+        }
+      ]
+    },
+    {
+      "id": "bwiki-2f13daeee4e6899e5023",
+      "identity": [
+        "2026IVL秋季赛常规赛",
+        "TE_Wolves_1024",
+        "BO1",
+        "下"
+      ],
+      "row": [
+        "2026-10-24",
+        "돌아올 수 없는 숲",
+        "c33",
+        [
+          "c39",
+          "c83",
+          "c53",
+          "c52"
+        ],
+        "IVL",
+        "승",
+        0
+      ],
+      "source": "https://ossmatchdata.homeworkkun.top/matchdata/v1/tournaments/28af8e4833e99882.db.gz",
+      "reason": "동일 날짜·대회·반경기에 대응하는 기존 기록과 캐릭터 구성 또는 맵이 다릅니다. 새 경기로 중복 추가하지 않고 원문 재검증 전까지 보류합니다.",
+      "comparisonCandidates": [
+        {
+          "row": [
+            "2026-10-24",
+            "달빛강 공원",
+            "c33",
+            [
+              "c53",
+              "c83",
+              "c52",
+              "c39"
+            ],
+            "IVL",
+            "승",
+            0
+          ],
+          "baselineCoreIndex": 16920
+        }
+      ]
+    },
+    {
+      "id": "303-4",
+      "row": [
+        "2026-11-01",
+        "차이나타운",
+        "c33",
+        [
+          "c74",
+          "c45",
+          "c84",
+          "c83"
+        ],
+        "IJL",
+        "무",
+        2
+      ],
+      "source": "https://identityv-match-log.vercel.app/matches/303",
+      "relatedObservationIds": [
+        "bwiki-385734b2c97f9d87fa65"
+      ],
+      "reason": "신규 경기의 감시자 기록이 다른 공개 원문의 동일 반경기와 충돌합니다. 공식 반경기 원본 확인 전까지 양쪽 수치를 모두 추가 집계에서 보류합니다."
+    },
+    {
+      "id": "320-6",
+      "row": [
+        "2026-11-08",
+        "성심 병원",
+        "c05",
+        [
+          "c50",
+          "c53",
+          "c64",
+          "c40"
+        ],
+        "IJL",
+        "패",
+        3
+      ],
+      "source": "https://identityv-match-log.vercel.app/matches/320",
+      "relatedObservationIds": [
+        "bwiki-4add1037635ab1ac84da"
+      ],
+      "reason": "신규 경기의 감시자 기록이 다른 공개 원문의 동일 반경기와 충돌합니다. 공식 반경기 원본 확인 전까지 양쪽 수치를 모두 추가 집계에서 보류합니다."
+    }
+  ],
+  "summary": {
+    "bwikiCompositionOrMapConflicts": 19,
+    "newMatchLogRoundsHeld": 2
+  }
+}

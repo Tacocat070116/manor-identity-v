@@ -1,4 +1,4 @@
-import {selectRanked} from './statistics-model.js?v=88c249887bf9';
+import {selectRanked} from './statistics-model.js?v=da7a6f69a1d6';
 
 // One repository per app session owns partition requests and hydrated rows.
 // Failed requests are evicted; successful requests retain no raw tuple arrays.
@@ -16,7 +16,6 @@ export function createRankedLoader({characters,loadIndex,loadJSON}){
   return {id:c.id,name:c.name,side:c.side};
  }
  const rankedRow=([id,pick,win,draw,loss,ban])=>({...character(id),pick,win,draw,loss,ban});
- const badgeRow=([id,rankPosition,score])=>({...character(id),rankPosition,score});
  async function hydrate(selected,datasets,versions,toRow,message,missing){
   if(!selected||selected.rows)return;
   await loadFile(selected.path,message,versions[selected.path],part=>{
@@ -32,17 +31,9 @@ export function createRankedLoader({characters,loadIndex,loadJSON}){
   if(!selected.rows)throw Error(missing);
  }
  return {
-  async load(filters={}, {includeScores=false}={}){
+  async load(filters={}){
    const data=await loadIndex(),selection=selectRanked(data,filters);
    await hydrate(selection.dataset,data.datasets,data.assetVersions,rankedRow,'선택한 시즌 자료를 불러오지 못했습니다.','선택한 통계 항목을 확인하지 못했습니다.');
-   if(selection.filters.server==='cn'){
-    try{
-     if(!data.badges)data.badges=(await loadFile(data.badgesPath,'인지 점수 자료를 불러오지 못했습니다.',data.assetVersions[data.badgesPath])).datasets;
-     const selected=data.badges.find(d=>d.id===filters.badgeSnapshot)||data.badges[0];
-     if(includeScores)await hydrate(selected,data.badges,data.assetVersions,badgeRow,'인지 점수 자료를 불러오지 못했습니다.','선택한 인지 점수 기록이 없습니다.');
-     delete data.badgesError;
-    }catch(error){data.badgesError=error.message;}
-   }
    return data;
   }
  };

@@ -87,7 +87,7 @@ test('character statistics preserve range totals, opponent selection and both re
   ['2026-09-01','A','h',['s'],'IVL','승'],
   ['2026-10-30','B','h',['s'],'IJL','패']
  ];
- const original=structuredClone(rows),filters={days:7,map:'A',tournament:'IVL'};
+ const original=structuredClone(rows),filters={days:7,reference:'2026-10-31',map:'A',tournament:'IVL'};
  const expected={appearances:4,results:3,win:1,draw:1,loss:1,unknown:1,base:5,winRate:1/3,smallSample:true};
  assert.deepEqual(statsFor(rows,{id:'h',side:'감시자'},filters),expected);
  assert.deepEqual(statsFor(rows,{id:'s',side:'생존자'},{...filters,opponent:'h'}),expected);

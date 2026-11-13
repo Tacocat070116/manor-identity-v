@@ -1,4 +1,4 @@
-"""Apply the reviewed 2026-10-29 tournament delta to its immutable deployed base."""
+"""Apply reviewed tournament deltas to their immutable deployed baseline."""
 import gzip
 import hashlib
 import json
@@ -53,8 +53,8 @@ assert sum(r[5] is None for r in matches) == summary['after']['unknownResults']
 assert max(r[0] for r in matches) == summary['after']['latestMatch']
 assert all(r[0] <= summary['date'] and len(set(r[3])) == 4 for r in matches)
 
-# Later official set-result observations stay separate from the historical
-# import, with explicit partial coverage and unknown personal metrics.
+# Dated increments keep their source facts and coverage separate. Ban stages
+# retain separate files and denominators even when collected together.
 increments = []
 for addition_path in sorted((ROOT / 'research/refresh').glob('????-??-??/tournament/verified-additions.json')):
     addition = json.loads(addition_path.read_text())
@@ -63,24 +63,37 @@ for addition_path in sorted((ROOT / 'research/refresh').glob('????-??-??/tournam
     known_ids = {r['id'] for r in details['rows']}
     add_details = {r['id']: r for r in addition['addedDetails']}
     add_bans = {r['id']: r for r in addition['addedObservedBans']}
-    assert len(add_details) == len(add_bans) == len(addition['addedMatches'])
+    if 'before' in addition:
+        assert addition['before'] == dict(matches=len(matches),details=len(details['rows']),openingBans=len(legacy),observedBans=len(observed))
+    else:
+        assert len(add_details) == len(add_bans) == len(addition['addedMatches'])
     for item in addition['addedMatches']:
         row, identity = item['row'], item['id']
         assert identity not in known_ids and row not in matches, ('Duplicate observation needs review', identity)
         assert row[0] <= addition['checkedAt'] and len(set(row[3])) == 4
-        detail, ban = add_details[identity], add_bans[identity]['row']
+        detail = add_details[identity]
         assert [detail[k] for k in ['date', 'map', 'hunter', 'survivors', 'tournament', 'result']] == row[:6]
-        assert ban[:3] == row[:3] and ban[4] == row[4] and not set(ban[3]).intersection(row[3])
-        assert item['source'] == detail['source'] == add_bans[identity]['source']
-        matches.append(row); details['rows'].append(detail); observed.append(ban)
+        assert item['source'] == detail['source']
+        matches.append(row); details['rows'].append(detail)
         known_ids.add(identity)
+    assert len(add_details) == len(addition['addedMatches'])
+    for kind, target in [('addedObservedBans',observed),('addedOpeningBans',legacy)]:
+        for item in addition.get(kind,[]):
+            ban = item['row']
+            row = matches[item['coreIndex']] if 'coreIndex' in item else next(x['row'] for x in addition['addedMatches'] if x['id']==item['id'])
+            assert ban[:3] == row[:3] and ban[4] == row[4] and not set(ban[3]).intersection(row[3])
+            assert ban[3] and len(set(ban[3])) == len(ban[3])
+            target.append(ban)
+    if 'after' in addition:
+        assert addition['after'] == dict(matches=len(matches),details=len(details['rows']),openingBans=len(legacy),observedBans=len(observed),latestMatch=max(r[0] for r in matches),unknownResults=sum(r[5] is None for r in matches))
     increments.append({'path':str(addition_path.relative_to(ROOT)), 'sha256':hashlib.sha256(addition_path.read_bytes()).hexdigest(),
                        'checkedAt':addition['checkedAt'], 'matches':len(addition['addedMatches']),
-                       'details':len(add_details), 'observedBans':len(add_bans), 'stage':addition['stage'], 'coverage':addition['coverage']})
+                       'details':len(add_details), 'observedBans':len(addition['addedObservedBans']),
+                       'openingBans':len(addition.get('addedOpeningBans',[])), 'stage':addition['stage'], 'coverage':addition['coverage']})
 if increments:
     summary['historicalImportDate'] = delta['summary']['date']
     summary['date'] = max(summary['date'], *(a['checkedAt'] for a in increments))
-    summary['after'].update(matches=len(matches), details=len(details['rows']), observedBans=len(observed), latestMatch=max(r[0] for r in matches))
+    summary['after'].update(matches=len(matches), details=len(details['rows']), openingBans=len(legacy), observedBans=len(observed), latestMatch=max(r[0] for r in matches))
     summary['addedMatches'] = len(matches) - summary['before']['matches']
     summary['addedDetails'] = len(details['rows']) - summary['before']['details']
     summary['addedObservedBans'] = len(observed) - summary['before']['observedBans']
@@ -89,6 +102,7 @@ if increments:
     for increment in increments:
         stage = increment['stage']
         summary['newCoreStages'][stage] = summary['newCoreStages'].get(stage, 0) + increment['matches']
+    summary['personalObservations'] = {k:sum(p[k] is not None for d in details['rows'] for p in d['players']) for k in ['decode','rescues','kite','escaped']}
 assert len({r['id'] for r in details['rows']}) == len(details['rows'])
 assert sum(r[5] is None for r in matches) == summary['after']['unknownResults']
 
@@ -109,7 +123,7 @@ statistics_keys = ['recordLatest','recordEarliest','matches','results','statisti
 preserved = json.dumps({**db, 'meta':{k:v for k,v in db['meta'].items() if k not in statistics_keys}}, ensure_ascii=False, sort_keys=True)
 ranked = json.loads((ROOT/'dist/ranked/index.json').read_text())['meta']
 db['meta'].update(recordLatest=max(r[0] for r in matches), recordEarliest=min(r[0] for r in matches), matches=len(matches), results=sum(r[5] in ['승','무','패'] for r in matches))
-db['meta']['statisticsRefresh'] = dict(summary, rankedRows=ranked['recordCount'], rankedNewRows=ranked['recordCount']-32667, rankedDatasets=ranked['datasetCount'], badgeRows=ranked['badgeRecordCount'])
+db['meta']['statisticsRefresh'] = dict(summary, rankedRows=ranked['recordCount'], rankedNewRows=ranked['recordCount']-32667, rankedDatasets=ranked['datasetCount'])
 # Keep the tournament's observed date separate from later ranked refreshes.
 if ranked['collectedAt'] != summary['date']:
     db['meta']['statisticsRefresh']['rankedCollectedAt'] = ranked['collectedAt']

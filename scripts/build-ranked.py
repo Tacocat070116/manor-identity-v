@@ -46,13 +46,12 @@ def identify(row):
     assert c['side'] == row['side'], row
     return c
 
-sources = {s['id']: s for g in [inputs['cn'], inputs['global'], inputs['badges']] for s in g['sources']}
+sources = {s['id']: s for g in [inputs['cn'], inputs['global']] for s in g['sources']}
 sets = {d['id']: d for g in [inputs['cn'], inputs['global']] for d in g['datasets'] if d['server'] in SERVERS}
-badge_sets = {d['id']: d for d in inputs['badges']['datasets']}
 input_files = [{'path': str(INPUT.relative_to(ROOT)), 'sha256': digest(INPUT)}]
 replacements = []
-raw_sources = list(inputs['manifest'])
-for kind, target in [('ranked', sets), ('badges', badge_sets)]:
+raw_sources = [s for s in inputs['manifest'] if s.get('kind') != 'character-knowledge-score']
+for kind, target in [('ranked', sets)]:
     for spec in config[kind]:
         path = ROOT / spec['path']
         group = read(path)
@@ -104,7 +103,6 @@ public_keys = {'id','sourceId','sourceIds','server','season','tier','asOf','peri
 parts = defaultdict(list)
 audit_datasets = []
 datasets = []
-badges = []
 
 def metadata(d, path):
     meta = {k: v for k, v in d.items() if k != 'rows'}
@@ -138,29 +136,16 @@ for d in sets.values():
     parts[path].append({'id': d['id'], 'rows': sorted(rows)})
     datasets.append(meta)
 
-for d in sorted(badge_sets.values(), key=lambda d: d['asOf'], reverse=True):
-    path = 'ranked/badges-' + d['asOf'][:7].replace('-', '') + '.json'
-    rows = []
-    for r in d['rows']:
-        assert isinstance(r['score'], (int,float)) and r['score'] >= 0
-        assert r['rankPosition'] in [1,10,11,100,101,300,301,500]
-        rows.append([identify(r)['id'], r['rankPosition'], r['score']])
-    assert len({tuple(r[:2]) for r in rows}) == len(rows), d['id']
-    badges.append(metadata(d, path))
-    parts[path].append({'id': d['id'], 'rows': sorted(rows)})
-
 # Remove retired public exports and obsolete partitions deterministically.
-expected = {Path(path).name for path in parts} | {'index.json','badges.json'}
+expected = {Path(path).name for path in parts} | {'index.json'}
 for p in OUT.iterdir():
     if p.is_file() and p.name not in expected: p.unlink()
 for path, values in parts.items():
-    columns = ['id','position','score'] if '/badges-' in path else ['id','pick','win','draw','loss','ban']
+    columns = ['id','pick','win','draw','loss','ban']
     dump(ROOT / 'dist' / path, {'columns': columns, 'datasets': values})
-dump(OUT / 'badges.json', {'datasets': badges})
 
 meta = {
     'collectedAt': DATE, 'recordCount': sum(d['rowCount'] for d in datasets), 'datasetCount': len(datasets),
-    'badgeRecordCount': sum(d['rowCount'] for d in badges), 'badgeDatasetCount': len(badges),
     'equivalentRowsRemoved': sum(d['rows'] for d in equivalences),
     'reviewNeededDatasets': sum(d['status']=='needs-review' for d in datasets),
     'excludedSourceErrorRows': sum(d['rows'] for d in excluded),
@@ -174,8 +159,12 @@ meta = {
 }
 source_ids = {sid for d in audit_datasets for sid in [d['sourceId'], *d.get('sourceIds', [])]}
 public_sources = [dict(s, notes=' '.join(s['notes']) if isinstance(s.get('notes'), list) else s.get('notes', '')) for sid,s in sources.items() if sid in source_ids]
-versions = {path: digest(ROOT / 'dist' / path)[:12] for path in [*parts, 'ranked/badges.json']}
-catalog = {'schemaVersion': 2, 'meta': meta, 'sources': public_sources, 'datasets': datasets, 'badgesPath': 'ranked/badges.json', 'assetVersions': versions}
+# Keep historical input wording intact while describing only the active output.
+for source in public_sources:
+    if source['id'] == 'cn-homework-public-20261031':
+        source['notes'] = source['notes'].replace('누적·인지 점수 자료', '누적 자료').replace(' 인지 점수는 실제 휘장 지급 기록이 아닙니다.', '')
+versions = {path: digest(ROOT / 'dist' / path)[:12] for path in parts}
+catalog = {'schemaVersion': 2, 'meta': meta, 'sources': public_sources, 'datasets': datasets, 'assetVersions': versions}
 # Source metadata remains in the research manifest; keep the shipped index compact.
 compact_payload('ranked/index.json', catalog)
 dump(OUT / 'index.json', catalog)

@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-11-13",
+  "indexes": [
+    {
+      "name": "season.js",
+      "url": "https://website.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/js/season.js",
+      "previousSha256": "cf26a3e71773e935957cd561dc776b81115c702aaf365161bf59e6fb49be7ba9",
+      "status": 200,
+      "bytes": 4319,
+      "sha256": "186ed26b399193b9d10989889bee26204075ae7e4be1b70d2b3b35ba59337156",
+      "changed": true
+    },
+    {
+      "name": "globallist.js",
+      "url": "https://website.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/js/globallist.js",
+      "previousSha256": "5fc3d05e8df38ba0aa9930f6dd85bfaca396a25415812b77dc9c6c4e745f32cc",
+      "status": 200,
+      "bytes": 211,
+      "sha256": "5fc3d05e8df38ba0aa9930f6dd85bfaca396a25415812b77dc9c6c4e745f32cc",
+      "changed": false
+    },
+    {
+      "name": "match-index",
+      "url": "https://identityv-match-log.vercel.app/",
+      "previousSha256": "feac73a3b5f034f2f1fcec97146cfa02dd33669343d85640e261a2d8d076e1bd",
+      "status": 200,
+      "bytes": 261177,
+      "sha256": "7df829a5116157e7bc3104d596ec33540d626a0f4b5a85f23ddf217572237965",
+      "changed": true
+    },
+    {
+      "name": "cn-form",
+      "url": "https://website.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/form",
+      "previousSha256": "7124181e1185dfb2dd879e479fbd97d919f3392625a008d3e3ddcba602e1b301",
+      "status": 200,
+      "bytes": 177075,
+      "sha256": "7124181e1185dfb2dd879e479fbd97d919f3392625a008d3e3ddcba602e1b301",
+      "changed": false
+    },
+    {
+      "name": "global-form",
+      "url": "https://website.homeworkkun.top/%E8%83%9C%E7%8E%87%E6%95%B0%E6%8D%AE/form_global",
+      "previousSha256": "704a236eef2034696350924b0e18b6adc5db374f0d2b2b8dc0866ed8746da787",
+      "status": 200,
+      "bytes": 97653,
+      "sha256": "704a236eef2034696350924b0e18b6adc5db374f0d2b2b8dc0866ed8746da787",
+      "changed": false
+    },
+    {
+      "name": "manifest.json",
+      "url": "https://website.homeworkkun.top/%E8%B5%9B%E4%BA%8B%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/data/sqlite/manifest.json",
+      "previousSha256": "02867d792181cb5f1ad6e985bedb1c32ed5e92169c3b48ec8f93e51b4b98e974",
+      "status": 200,
+      "bytes": 14359,
+      "sha256": "02867d792181cb5f1ad6e985bedb1c32ed5e92169c3b48ec8f93e51b4b98e974",
+      "changed": false
+    },
+    {
+      "name": "remote.json",
+      "url": "https://website.homeworkkun.top/%E8%B5%9B%E4%BA%8B%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/data/sqlite/remote.json",
+      "previousSha256": "8645d72248b5ba13debd12a2ae73340829250b36862bd95215c94246958cda9a",
+      "status": 200,
+      "bytes": 174,
+      "sha256": "8645d72248b5ba13debd12a2ae73340829250b36862bd95215c94246958cda9a",
+      "changed": false
+    },
+    {
+      "name": "bwiki-overlay-index.json",
+      "url": "https://ossmatchdata.homeworkkun.top/matchdata/v1/index.json",
+      "previousSha256": "5bcfd714060a5fbc682b576203747277ac7da73eacb332d27584003779d8d33f",
+      "status": 200,
+      "bytes": 2056,
+      "sha256": "5bcfd714060a5fbc682b576203747277ac7da73eacb332d27584003779d8d33f",
+      "changed": false
+    }
+  ]
+}

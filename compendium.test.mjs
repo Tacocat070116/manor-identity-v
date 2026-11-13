@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
+import {execFileSync} from 'node:child_process';
 import {statsFor,pairEvidence} from './dist/model.js';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence} from './dist/compendium-model.js';
 
@@ -9,6 +10,7 @@ const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const db=read('dist/data.json'),matches=read('dist/matches.json'),details=expandTournamentDetails(read('dist/tournament-details.json'));
 const expansion=JSON.parse(gunzipSync(fs.readFileSync('research/refresh/2026-10-29/tournament/update-delta.json.gz')));
 const official=read('research/refresh/2026-10-31/tournament/verified-additions.json');
+const november=read('research/refresh/2026-11-12/tournament/verified-additions.json');
 const report=read('research/refresh/2026-10-21/reconciliation.json');
 const october=read('research/refresh/2026-10-27/reconciliation.json');
 const patch=read('research/refresh/2026-10-27/patch-review.json');
@@ -59,26 +61,26 @@ test('refresh reconciliation adds only nonduplicate valid rounds and resolves ex
  assert.equal(report.duplicateRounds+report.added.length+report.excluded.length,report.collectedRounds);
  assert.equal(report.added.length,94);assert.equal(report.filledResults.length,12);assert.equal(report.conflictingResults.length,1);
  assert.equal(report.added.filter(r=>r.row[0]>'2026-10-05').length,90);
- assert.equal(matches.length,16757+94+october.added.length+expansion.addedMatches.length+official.addedMatches.length);
- assert.equal(matches.filter(r=>r[5]!==null).length,16725+94+12-1+october.added.length+expansion.addedMatches.length+official.addedMatches.length);
+ assert.equal(matches.length,16757+94+october.added.length+expansion.addedMatches.length+official.addedMatches.length+november.addedMatches.length);
+ assert.equal(matches.filter(r=>r[5]!==null).length,16725+94+12-1+october.added.length+expansion.addedMatches.length+official.addedMatches.length+november.addedMatches.length);
  for(const r of report.filledResults)assert.deepEqual(matches[r.index].slice(5),r.result);
  for(const r of report.conflictingResults)assert.deepEqual(matches[r.index].slice(5),[null,null]);
  for(const {row} of report.added){assert.equal(new Set(row[3]).size,4);assert.ok(row[0]<='2026-10-21');}
 });
 
 test('detail source identities and talent side mappings are valid; old and full bans stay separate',()=>{
- assert.equal(details.rows.length,16930);assert.equal(new Set(details.rows.map(r=>r.id)).size,16930);
+ assert.equal(details.rows.length,17170);assert.equal(new Set(details.rows.map(r=>r.id )).size,17170);
  const talents=read('research/persona-icons.json').talents;
  const byId=new Map(db.characters.map(c=>[c.id,c]));
  for(const r of details.rows){
   assert.equal(byId.get(r.hunter).side,'감시자');assert.equal(new Set(r.survivors).size,4);
-  assert.ok(r.id.startsWith('weibo-')?official.addedDetails.some(d=>d.id===r.id&&d.source===r.source):r.id.startsWith('bwiki-')?r.source.startsWith('https://website.homeworkkun.top/赛事数据展示/data/'):r.source.endsWith('/'+r.id.split('-')[0]));
+  assert.ok(r.id.startsWith('weibo-')?official.addedDetails.some(d=>d.id===r.id&&d.source===r.source):r.id.startsWith('bwiki-')?(r.source.startsWith('https://website.homeworkkun.top/赛事数据展示/data/')||november.addedDetails.some(d=>d.id===r.id&&d.source===r.source)):r.source.endsWith('/'+r.id.split('-')[0]));
   r.hunterTalents.forEach(t=>assert.ok(talents.some(x=>x.name===t&&x.side==='감시자')));
   for(const p of r.players){assert.ok(r.survivors.includes(p.id));p.talents.forEach(t=>assert.ok(talents.some(x=>x.name===t&&x.side==='생존자')));}
  }
  const full=read('dist/bans-observed.json'),legacy=read('dist/bans.json');
- assert.equal(legacy.length,15516);assert.equal(full.length,db.meta.statisticsRefresh.after.observedBans);
-  for(const r of full){assert.ok(r[0]<='2026-10-31');assert.equal(new Set(r[3]).size,r[3].length);r[3].forEach(id=>assert.equal(byId.get(id).side,'생존자'));}
+ assert.equal(legacy.length,17066);assert.equal(full.length,db.meta.statisticsRefresh.after.observedBans);
+  for(const r of full){assert.ok(r[0]<='2026-11-08');assert.equal(new Set(r[3]).size,r[3].length);r[3].forEach(id=>assert.equal(byId.get(id).side,'생존자'));}
 });
 
 test('all 89 characters have consistent team totals and source-backed updated core descriptions',()=>{
@@ -188,7 +190,7 @@ test('October refresh preserves existing records and reconciles every newly coll
  const rounds=raw.matches.flatMap(m=>m.rounds);
  assert.equal(rounds.length,102);
  assert.deepEqual([...new Set(rounds.map(r=>r.id))].sort(),[...october.addedRoundIds].sort());
- assert.equal(db.meta.recordLatest,'2026-10-30');
+ assert.equal(db.meta.recordLatest,'2026-11-08');
  for(const entry of october.added){
   const original=rounds.find(r=>r.id===entry.id);
   assert.equal(entry.row[0],original.date);
@@ -200,7 +202,7 @@ test('October refresh preserves existing records and reconciles every newly coll
   assert.equal(c.gamePatchDate,changed?'2026-10-22':undefined);
   assert.equal(c.patchCheckedAt,changed?'2026-10-27':undefined);
  }
- assert.equal(read('dist/ranked/index.json').meta.collectedAt,'2026-10-31');
+ assert.equal(read('dist/ranked/index.json').meta.collectedAt,'2026-11-13');
  for(const name of ['statistics.zip','badges.csv','manifest.json'])assert.ok(!fs.existsSync('dist/ranked/'+name));
 });
 
@@ -211,24 +213,55 @@ test('expanded tournament records round-trip compact data and preserve reviewed 
  for(const row of expansion.addedDetails)assert.deepEqual(byId.get(row.id),row);
  for(const fix of expansion.detailCorrections)assert.deepEqual(byId.get(fix.id),fix.after);
  for(const fix of expansion.dateCorrections){assert.deepEqual(matches[fix.coreIndex],fix.afterRow);assert.equal(byId.get(fix.detailId).date,fix.verifiedMatchDate);for(const ban of fix.observedBans)assert.deepEqual(read('dist/bans-observed.json')[ban.index],ban.after);}
- assert.equal(matches.filter(r=>r[5]===null).length,21);assert.ok(matches.every(r=>r[0]<='2026-10-31'));
- assert.equal(read('dist/bans-observed.json').length,16842);
+ assert.equal(matches.filter(r=>r[5]===null).length,21);assert.ok(matches.every(r=>r[0]<='2026-11-08'));
+ assert.equal(read('dist/bans-observed.json').length,17119);
  const counts=Object.fromEntries(['decode','rescues','kite','escaped'].map(k=>[k,details.rows.reduce((n,r)=>n+r.players.filter(p=>p[k]!==null).length,0)]));
- assert.deepEqual(counts,expansion.summary.personalObservations);
+ assert.deepEqual(counts,november.personalObservations);
  const allNull=expansion.addedDetails.find(r=>r.players.every(p=>p.decode===null));assert.ok(allNull);assert.equal(observedDetails([allNull],{id:allNull.survivors[0],side:'생존자'}).metrics.decode.count,0);
  assert.equal(expandTournamentDetails({meta:{},rows:[]}).rows.length,0);
 });
 
 test('official October 30 set observations preserve partial coverage and unknown individual metrics',()=>{
- assert.deepEqual(matches.slice(expansion.summary.after.matches),official.addedMatches.map(x=>x.row));
- assert.deepEqual(read('dist/bans-observed.json').slice(expansion.summary.after.observedBans),official.addedObservedBans.map(x=>x.row));
+ assert.deepEqual(matches.slice(expansion.summary.after.matches,expansion.summary.after.matches+official.addedMatches.length),official.addedMatches.map(x=>x.row));
+ assert.deepEqual(read('dist/bans-observed.json').slice(expansion.summary.after.observedBans,expansion.summary.after.observedBans+official.addedObservedBans.length),official.addedObservedBans.map(x=>x.row));
  const newRows=details.rows.filter(d=>d.id.startsWith('weibo-'));
  assert.deepEqual(newRows,official.addedDetails);assert.equal(newRows.length,2);
  for(const d of newRows){
   assert.equal(d.date,'2026-10-30');assert.equal(d.result,'무');assert.deepEqual(d.hunterTalents,[]);
   for(const p of d.players){assert.deepEqual(p.talents,[]);for(const key of ['decode','rescues','kite','escaped'])assert.equal(p[key],null);}
  }
- assert.equal(read('dist/bans.json').length,15516);
+ assert.equal(read('dist/bans.json').length,17066);
  assert.equal(official.legacyOpeningBansAdded,0);assert.equal(official.individualMetricValuesAdded,0);
- assert.match(details.meta.latestCoverage,/2세트 두 반경기만/);
+ assert.match(official.coverage,/2세트 두 반경기만/);
+});
+
+test('November statistics preserve deployed observations and add only reviewed source facts',()=>{
+ const base=name=>JSON.parse(execFileSync('git',['show',november.baseline+':dist/'+name],{encoding:'utf8',maxBuffer:20*1024*1024}));
+ const original=base('matches.json'),oldDetails=expandTournamentDetails(base('tournament-details.json'));
+ assert.deepEqual(matches.slice(0,original.length),original);
+ assert.deepEqual(details.rows.slice(0,oldDetails.rows.length),oldDetails.rows);
+ assert.deepEqual(db.characters,base('data.json').characters);
+ for(const [name,field] of [['bans.json','addedOpeningBans'],['bans-observed.json','addedObservedBans']]){
+  const prior=base(name),current=read('dist/'+name);
+  assert.deepEqual(current.slice(0,prior.length),prior);
+  assert.deepEqual(current.slice(prior.length),november[field].map(x=>x.row));
+ }
+ assert.equal(november.addedMatches.length,240);
+ assert.deepEqual(matches.slice(original.length),november.addedMatches.map(x=>x.row));
+ const facts=JSON.parse(gunzipSync(fs.readFileSync(november.sourceFacts.path)));
+ const observations=new Map(Object.values(facts.observations).flat().map(x=>[x.id,x]));
+ const held=new Set(read('research/refresh/2026-11-12/tournament/source-disagreements.json').records.map(x=>x.id));
+ for(const item of november.addedMatches){
+  assert.ok(!held.has(item.id));assert.deepEqual(item.row,observations.get(item.id).row);
+  assert.equal(item.source,observations.get(item.id).source);
+  assert.equal(item.row[5],item.row[6]<2?'승':item.row[6]===2?'무':'패');
+ }
+ for(const d of november.addedDetails)assert.deepEqual(d,observations.get(d.id).detail);
+ for(const [field,kind] of [['addedOpeningBans','opening'],['addedObservedBans','observed']])for(const item of november[field]){
+  assert.deepEqual(item.row,observations.get(item.id)[kind]);
+  assert.ok(!held.has(item.id));
+  assert.ok(!item.row[3].some(id=>matches[item.coreIndex][3].includes(id)));
+ }
+ assert.deepEqual(Object.fromEntries(['IVL','IJL','IVC'].map(t=>[t,november.addedMatches.filter(x=>x.row[4]===t).length])),{IVL:100,IJL:88,IVC:52});
+ assert.equal(details.meta.latestCoverage,november.coverage);
 });

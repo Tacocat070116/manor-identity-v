@@ -1,5 +1,5 @@
 export {matchesCharacter,sortCharacters,characterSortOptions} from './character-search.js?v=04c867237674';
-export const REFERENCE_DATE = '2026-10-31';
+export const REFERENCE_DATE = '2026-11-13';
 export const chaseActivity=side=>side==='생존자'?'어그로':side==='감시자'?'사냥':'어그로·사냥';
 // Display labels only: retain stored situation keys and existing shared URLs.
 export function situationLabel(value,side){
