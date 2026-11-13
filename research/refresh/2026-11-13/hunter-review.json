@@ -1,0 +1,621 @@
+{
+  "date": "2026-11-13",
+  "baseline": "6a8feca3b008a5a30d2d85bc3c6ce5e8809a713b",
+  "scope": "감시자 36명의 기존 본문과 역할·소개를 읽고, 스킬 발동·종료·구출 예외를 선별 대조한 후속 검토",
+  "previousReviews": [
+    "research/refresh/2026-11-13/guide-patch-review.json",
+    "research/refresh/2026-11-13/survivor-review.json"
+  ],
+  "gameBalanceRevalidated": false,
+  "method": [
+    "직전 생존자 배포를 기준으로 이미 완료한 11월 패치와 통계 작업을 반복하지 않음.",
+    "공식 확정 패치가 커뮤니티의 오래된 표보다 우선. 위키의 특성·스킬 표는 보조 근거이며 공식 한국어 명칭 확인 또는 실전 재측정과 구분.",
+    "현재 36명의 공략 본문과 역할 묶음을 모두 읽고 36개 위키의 스킬 설명을 열람. 모든 수치·추천·상성 판정을 전면 재검증했다는 뜻은 아님."
+  ],
+  "characterChanges": {
+    "c01": {
+      "decision": "거미줄 가속의 기절 회복 효과와 설치 거미줄의 최대 2단계·발사 거미줄의 3단계 적용을 구분.",
+      "fields": [
+        "skill"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/結魂者",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c03": {
+      "decision": "격벽 생성과 넘기의 피해 차이, 의자·해독기 주변 유지 시간 예외를 보완.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/狂眼"
+      ]
+    },
+    "c04": {
+      "decision": "생존자의 방해로 돌진 중단 시 부품 반환·재장착 및 짧아진 대기 시간과 지형 충돌을 구분.",
+      "fields": [
+        "caution",
+        "response"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/道化師",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    "c05": {
+      "decision": "신도별 보조 특성 대기 시간과 다른 신도에 생기는 20초 공통 사용 제한을 구분.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/夢の魔女"
+      ]
+    },
+    "c06": {
+      "decision": "점유 의자·지하실 주변 습기 축적 완화와 습기 피해 후 5초간 재축적 제한을 보완.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/漁師"
+      ]
+    },
+    "c08": {
+      "decision": "기본 촉수 공격의 가장 가까운 대상 선택과 점유 의자 주변 촉수의 20초 유지 제한을 명시.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/黄衣の王"
+      ]
+    },
+    "c09": {
+      "decision": "봉쇄 구역의 단일 해독기 후퇴·탈락 이후 9%와 의자 주변 메인 볼 포착 1.8초를 보완. 소개의 밀치기를 포착·이동으로 수정.",
+      "fields": [
+        "skill",
+        "use",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/ビリヤードプレイヤー",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+        "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
+      ]
+    },
+    "c12": {
+      "decision": "일반 촛농의 구속·구조물 봉쇄와 고열 촛농의 직접 피해를 구분.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/蝋人形師"
+      ]
+    },
+    "c13": {
+      "decision": "두 음표를 잇는 6초 제한과 일반 공격 명중 시 마력의 음색 해제를 보완.",
+      "fields": [
+        "hold",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c17": {
+      "decision": "갈퀴 사슬의 주변 동시 끌기와 점유 의자 20미터 내 덫 설치 불가·기존 덫 소멸을 명시.",
+      "fields": [
+        "skill",
+        "caution",
+        "response"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/断罪狩人",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c19": {
+      "decision": "사진 정산은 사진상의 피해가 더 클 때 체력을 평균하며 사진상 의자 구속은 즉시 다운인 예외를 구분.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/写真家"
+      ]
+    },
+    "c20": {
+      "decision": "판결 충전 대상을 자유롭게 행동하는 생존자로 한정하고 재생 공격의 절반 피해·공포의 일격 불가를 명시.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/書記官",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c21": {
+      "decision": "의자에 부착한 폭탄이 탈락 진행도를 늘리는 효과와 구출 시 소멸 조건을 명시.",
+      "fields": [
+        "skill",
+        "use"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/ガードNo.26",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    "c22": {
+      "decision": "탈락 발생 또는 탈출구 전력 공급 뒤 침식의 조각의 50초 유지·철거 가능 시점 단축을 보완.",
+      "fields": [
+        "hold"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/時空の影",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+        "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
+      ]
+    },
+    "c29": {
+      "decision": "흡수 중 감속의 풀존재 예외와 의자 주변 지면 흡수의 1초 속박을 덩굴 속박과 구분.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/雑貨商",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    "c30": {
+      "decision": "초기 두 번 도약과 풀존재의 횟수 제한 해제를 구분하고 자원 제한은 유지.",
+      "fields": [
+        "skill"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/魔トカゲ"
+      ]
+    },
+    "c31": {
+      "decision": "케이지 밖 일반 공격의 절반 피해, 피해 후 케이지 소멸 및 외부 철거 조건을 보완.",
+      "fields": [
+        "skill",
+        "caution",
+        "weaknesses"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/足萎えの羊"
+      ]
+    },
+    "c32": {
+      "decision": "일반 조각상의 압착과 풀존재 합체 조각상의 폭발 피해를 분리해 모든 조각에 압착 조건을 적용하지 않음.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/彫刻師"
+      ]
+    },
+    "c34": {
+      "decision": "같은 대상에 대한 5초 가시 부착 제한과 풀존재 변신 가시의 예외를 명시.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/破輪"
+      ]
+    },
+    "c36": {
+      "decision": "카메라 회전과 순회 커튼콜의 무대 회전, 세 표식 완성 시 피해·풀존재 재부착을 구분.",
+      "fields": [
+        "skill",
+        "use",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/フラバルー",
+        "https://www.identityvgame.com/jp/news/update/20241113/35356_1193446.html",
+        "https://www.namu.moe/w/%27%ED%9B%8C%EB%9D%BC%EB%B0%9C%EB%A3%A8%27"
+      ]
+    }
+  },
+  "characterCoverage": [
+    {
+      "id": "c01",
+      "name": "거미",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/結魂者"
+    },
+    {
+      "id": "c02",
+      "name": "공장장",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/復讐者"
+    },
+    {
+      "id": "c03",
+      "name": "광기의 눈",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/狂眼"
+    },
+    {
+      "id": "c04",
+      "name": "광대",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/道化師"
+    },
+    {
+      "id": "c05",
+      "name": "꿈의 마녀",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/夢の魔女"
+    },
+    {
+      "id": "c06",
+      "name": "나이아스",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/漁師"
+    },
+    {
+      "id": "c07",
+      "name": "나이트 워치",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/夜の番人"
+    },
+    {
+      "id": "c08",
+      "name": "노란 옷의 왕",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/黄衣の王"
+    },
+    {
+      "id": "c09",
+      "name": "당구 선수",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/ビリヤードプレイヤー"
+    },
+    {
+      "id": "c10",
+      "name": "리퍼",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/リッパー"
+    },
+    {
+      "id": "c11",
+      "name": "마음의 짐승",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/心の獣"
+    },
+    {
+      "id": "c12",
+      "name": "밀랍인형사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/蝋人形師"
+    },
+    {
+      "id": "c13",
+      "name": "바이올리니스트",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/ヴァイオリニスト"
+    },
+    {
+      "id": "c14",
+      "name": "박사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/アンデッド"
+    },
+    {
+      "id": "c15",
+      "name": "붉은 나비",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/芸者"
+    },
+    {
+      "id": "c16",
+      "name": "블러디 퀸",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/血の女王"
+    },
+    {
+      "id": "c17",
+      "name": "사냥터지기",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/断罪狩人"
+    },
+    {
+      "id": "c18",
+      "name": "사도",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/使徒"
+    },
+    {
+      "id": "c19",
+      "name": "사진사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/写真家"
+    },
+    {
+      "id": "c20",
+      "name": "서기관",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/書記官"
+    },
+    {
+      "id": "c21",
+      "name": "수위 26호",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/ガードNo.26"
+    },
+    {
+      "id": "c22",
+      "name": "시공의 그림자",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/時空の影"
+    },
+    {
+      "id": "c23",
+      "name": "악몽",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/悪夢"
+    },
+    {
+      "id": "c24",
+      "name": "여왕벌",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/女王蜂"
+    },
+    {
+      "id": "c25",
+      "name": "오페라 가수",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/オペラ歌手"
+    },
+    {
+      "id": "c26",
+      "name": "우산의 영혼",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/白黒無常"
+    },
+    {
+      "id": "c27",
+      "name": "울보",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/泣き虫"
+    },
+    {
+      "id": "c28",
+      "name": "은둔자",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/隠者"
+    },
+    {
+      "id": "c29",
+      "name": "잡화상",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/雑貨商"
+    },
+    {
+      "id": "c30",
+      "name": "재앙의 도마뱀",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/魔トカゲ"
+    },
+    {
+      "id": "c31",
+      "name": "절름발이 판",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/足萎えの羊"
+    },
+    {
+      "id": "c32",
+      "name": "조각가",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/彫刻師"
+    },
+    {
+      "id": "c33",
+      "name": "치과의사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/歯医者"
+    },
+    {
+      "id": "c34",
+      "name": "파멸의 바퀴",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/破輪"
+    },
+    {
+      "id": "c35",
+      "name": "파이라이트",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/フールズ・ゴールド"
+    },
+    {
+      "id": "c36",
+      "name": "훌라발루",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/フラバルー"
+    }
+  ],
+  "matchupChanges": {
+    "M020": {
+      "source": "https://wikiwiki.jp/identity5ch/道化師",
+      "decision": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+      "advantageChanged": false
+    },
+    "M022": {
+      "source": "https://wikiwiki.jp/identity5ch/道化師",
+      "decision": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+      "advantageChanged": false
+    },
+    "M308": {
+      "source": "https://wikiwiki.jp/identity5ch/道化師",
+      "decision": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+      "advantageChanged": false
+    },
+    "M318": {
+      "source": "https://wikiwiki.jp/identity5ch/道化師",
+      "decision": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+      "advantageChanged": false
+    },
+    "M398": {
+      "source": "https://wikiwiki.jp/identity5ch/道化師",
+      "decision": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+      "advantageChanged": false
+    },
+    "M251": {
+      "source": "https://wikiwiki.jp/identity5ch/断罪狩人",
+      "decision": "점유 의자 20미터·지하실 주변 덫 제한과 기존 7월 동시 끌기 조건을 함께 적용.",
+      "advantageChanged": false
+    },
+    "M368": {
+      "source": "https://wikiwiki.jp/identity5ch/ビリヤードプレイヤー",
+      "decision": "점유 의자 주변의 메인 볼 포착은 1.8초로 단축됨을 구출 조건에 추가.",
+      "advantageChanged": false
+    },
+    "M154": {
+      "source": "https://wikiwiki.jp/identity5ch/足萎えの羊",
+      "decision": "케이지 안 피해에 따른 소멸은 향수 복귀로 되돌아오지 않음을 설명.",
+      "advantageChanged": false
+    },
+    "M223": {
+      "source": "https://wikiwiki.jp/identity5ch/足萎えの羊",
+      "decision": "긴 기절이 외부 동료의 케이지 철거 제한을 없애는 것은 아님을 명시.",
+      "advantageChanged": false
+    },
+    "M174": {
+      "source": "https://wikiwiki.jp/identity5ch/フラバルー",
+      "decision": "표식 피해를 보호막으로 막아도 풀존재의 마지막 색 재부착이 남는 점을 보완.",
+      "advantageChanged": false
+    }
+  },
+  "representativeUpdates": [
+    {
+      "characterId": "c04",
+      "kind": "hard",
+      "evidence": "M398"
+    },
+    {
+      "characterId": "c04",
+      "kind": "hard",
+      "evidence": "M022"
+    },
+    {
+      "characterId": "c09",
+      "kind": "easy",
+      "evidence": "M368"
+    },
+    {
+      "characterId": "c17",
+      "kind": "hard",
+      "evidence": "M251"
+    },
+    {
+      "characterId": "c31",
+      "kind": "hard",
+      "evidence": "M154"
+    },
+    {
+      "characterId": "c31",
+      "kind": "hard",
+      "evidence": "M223"
+    },
+    {
+      "characterId": "c36",
+      "kind": "hard",
+      "evidence": "M174"
+    },
+    {
+      "characterId": "c37",
+      "kind": "easy",
+      "evidence": "M022"
+    },
+    {
+      "characterId": "c46",
+      "kind": "easy",
+      "evidence": "M251"
+    },
+    {
+      "characterId": "c63",
+      "kind": "easy",
+      "evidence": "M318"
+    },
+    {
+      "characterId": "c64",
+      "kind": "hard",
+      "evidence": "M368"
+    },
+    {
+      "characterId": "c71",
+      "kind": "easy",
+      "evidence": "M174"
+    },
+    {
+      "characterId": "c72",
+      "kind": "easy",
+      "evidence": "M154"
+    },
+    {
+      "characterId": "c77",
+      "kind": "easy",
+      "evidence": "M398"
+    },
+    {
+      "characterId": "c82",
+      "kind": "easy",
+      "evidence": "M223"
+    }
+  ],
+  "audit": {
+    "path": "research/editorial/2026-11-13/consistency-edits.json",
+    "editOffset": 239,
+    "editCount": 97
+  },
+  "heldByThisReview": [],
+  "removedDisplaySlots": [],
+  "counts": {
+    "huntersScreened": 36,
+    "huntersChanged": 20,
+    "matchupsChanged": 10,
+    "sourceUrls": 491
+  },
+  "limitations": [
+    "위키의 나이트 워치 5초·마음의 짐승 40초/4초·치과의사 초기 1.5회는 11월 12일 공식 패치보다 오래된 값이므로 재적용하지 않음. 블러디 퀸·악몽 등의 기존 공식 패치도 보존.",
+    "수위 26호의 의자 폭탄 추가 설치 가능 구간은 공식 영문과 위키 문구가 달라 이번 설명에는 공통으로 확인한 첫 설치 28초·폭탄당 4초·최대 5개·구출 시 소멸만 사용.",
+    "훌라발루의 순회 커튼콜 한국어 이름은 한국어 게임 설명 전재본으로 교차 확인한 명칭이며 공식 한국어 원문 확인으로 표시하지 않음.",
+    "현재 자료와 모순이 확인되지 않은 인격·역할·난이도·상성 우열은 임의로 바꾸지 않음.",
+    "전체 공략 검토일과 이번 부분 편집일·공식 패치 기준일을 분리해 보존."
+  ],
+  "validation": {
+    "automatedTests": 224,
+    "renderTemplates": 356,
+    "priorEditsPreserved": 239,
+    "matchupStatusAndAdvantagePreserved": true,
+    "survivorGuideBodiesAndLinksPreserved": true,
+    "browser": {
+      "engine": "Chrome",
+      "frameWidths": [
+        320,
+        375
+      ],
+      "frames": 6,
+      "horizontalOverflow": false,
+      "checkedCharacters": [
+        "c36",
+        "c21",
+        "c17",
+        "c31",
+        "c12"
+      ],
+      "skillEmphasis": "순회 커튼콜·깜짝 표식의 strong 표시와 모바일 줄바꿈 확인",
+      "limits": [
+        "실제 iPhone Safari 미검증",
+        "미리보기에서 연구실 연동 응답은 확보하지 못함; 이번 변경은 공개 공략 데이터에 한정"
+      ]
+    }
+  }
+}

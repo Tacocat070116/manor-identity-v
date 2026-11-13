@@ -40,6 +40,7 @@ const matchupReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-19/sum
 const situationReview=JSON.parse(fs.readFileSync('research/matchups/2026-10-27/situation-review.json','utf8'));
 const guidePatchReview=JSON.parse(fs.readFileSync('research/refresh/2026-11-13/guide-patch-review.json','utf8'));
 const survivorReview=JSON.parse(fs.readFileSync('research/refresh/2026-11-13/survivor-review.json','utf8'));
+const hunterReview=JSON.parse(fs.readFileSync('research/refresh/2026-11-13/hunter-review.json','utf8'));
 assert.equal(matchupReview.reviewedExisting,459,'all original matchup records reviewed');
 const retired=JSON.parse(fs.readFileSync('research/refresh/2026-10-27/retired-public-data.json','utf8'));
 assert.equal(retired.sources.length,240,'historical source registry stays unchanged');
@@ -60,7 +61,7 @@ const evidenceIds=new Set(db.matchups.map(m=>m.id));
 for(const comment of retired.community)assert.ok(evidenceIds.has(comment.evidence),comment.id+' reachable community reference');
 for(const m of db.matchups){
  const pairReviewed=[...situationReview.matchupEdits,...situationReview.added].some(e=>e.id===m.id);
- assert.equal(m.reviewedAt,survivorReview.matchupChanges[m.id]?survivorReview.date:guidePatchReview.matchupChanges[m.id]?guidePatchReview.date:pairReviewed?situationReview.date:db.meta.matchupReviewedAt,m.id+' review date');
+ assert.equal(m.reviewedAt,hunterReview.matchupChanges[m.id]?hunterReview.date:survivorReview.matchupChanges[m.id]?survivorReview.date:guidePatchReview.matchupChanges[m.id]?guidePatchReview.date:pairReviewed?situationReview.date:db.meta.matchupReviewedAt,m.id+' review date');
  assert.equal(c(m.hunter)?.side,'감시자',m.id+' hunter side');
  assert.equal(c(m.survivor)?.side,'생존자',m.id+' survivor side');
  if(m.status==='보류')assert.equal(m.advantage,null,m.id+' unresolved direction');

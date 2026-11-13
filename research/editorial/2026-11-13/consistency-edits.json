@@ -2260,6 +2260,815 @@
       "path": "dist/specialties.json/characters/c38/specialtyReasons/어그로",
       "before": "곤충 떼에 올라 이동하거나 곤충 떼로 공격과 접근을 막아 감시자의 사냥을 오래 버팁니다.",
       "after": "곤충 떼에 올라 이동하거나 곤충 떼로 일부 스킬과 접근을 막아 어그로 시간을 벌어 줍니다. 일반 공격은 본체에 닿을 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/0/skill",
+      "before": "거미줄로 생존자의 이동과 행동을 늦추고, 자신은 설치한 거미줄을 밟아 빠르게 사냥합니다. 쓰러진 생존자는 고치로 묶어 의자까지 운반하지 않고도 탈락을 노릴 수 있습니다.",
+      "after": "거미줄로 생존자의 이동과 행동을 늦추고, 자신은 거미줄을 밟아 이동과 기절 회복을 빠르게 합니다. 설치한 줄만으로는 생존자에게 최대 두 단계까지 쌓이며, 세 단계로 만들려면 발사한 거미줄을 맞혀야 합니다. 쓰러진 생존자는 고치로 묶어 운반 없이 탈락을 노릴 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/0/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/kekkonnsya/kekkonnsya.html",
+        "https://namu.wiki/w/%EA%B1%B0%EB%AF%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EA%B1%B0%EB%AF%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/結魂者",
+        "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/kekkonnsya/kekkonnsya.html",
+        "https://namu.wiki/w/%EA%B1%B0%EB%AF%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EA%B1%B0%EB%AF%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/結魂者",
+        "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/2/caution",
+      "before": "생존자가 콘솔을 조작하면 콘솔 사용과 에너지 회복에 차질이 생깁니다. 한 구역만 오래 보고 있으면 본체가 노출되거나 다른 콘솔을 빼앗길 수 있으므로 여러 위치를 번갈아 살핍니다.",
+      "after": "생존자가 콘솔을 조작하면 해당 콘솔 사용과 에너지 회복에 차질이 생깁니다. 생존자가 묶인 의자나 해독이 끝나지 않은 해독기 주변에서는 격벽이 더 빨리 사라지므로, 한 번 세운 벽만으로 계속 길을 막을 수 있다고 생각하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/2/skill",
+      "before": "콘솔로 모니터를 조작해 격벽을 세웁니다. 본체와 떨어진 해독기나 구출 경로도 동시에 견제할 수 있습니다.",
+      "after": "콘솔로 모니터를 조작해 격벽을 세웁니다. 벽이 올라올 때는 일반 공격의 절반 피해를 주고, 생존자가 벽을 넘으면 일반 공격 한 번 분량의 피해를 줍니다. 본체와 떨어진 해독기나 구출 경로도 견제할 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/3/caution",
+      "before": "부품을 장착하는 동안에는 바로 공격할 기회를 놓칠 수 있습니다. 일반 공격이 닿는 거리에서는 개조를 고집하지 않으며, 개조 드릴의 치료 지연이 모든 회복 수단에 똑같이 적용된다고 계산하지 않습니다.",
+      "after": "생존자의 소지품이나 능력에 막혀 로켓 돌진이 중단되면 사용한 부품이 돌아오지만 다시 장착해야 합니다. 다음 돌진의 대기 시간도 짧아지므로 남은 시간을 확인합니다. 지형에 부딪혀 멈춘 경우와 구분하고, 개조 드릴의 치료 지연을 모든 회복 수단에 똑같이 적용하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/3/hard/1/reason",
+      "before": "[사냥] 돌진 중인 광대에게 크리켓볼을 맞히면 추진기를 끊을 수 있습니다.\n조건: 광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다.",
+      "after": "[사냥] 돌진 중인 광대에게 크리켓볼을 맞히면 추진기를 끊을 수 있습니다.\n조건: 광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/3/hard/2/reason",
+      "before": "[사냥] 불공을 통과한 돌진은 끊기고 진흙공은 사냥 속도를 늦춥니다.\n조건: 폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다.",
+      "after": "[사냥] 불공을 통과한 돌진은 끊기고 진흙공은 사냥 속도를 늦춥니다.\n조건: 폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/3/response",
+      "before": "직선으로만 달리지 말고 돌진 방향을 틀기 어렵도록 장애물을 끼고 돕니다. 기절 수단은 돌진 각이 잡힐 때까지 남겨 둡니다.",
+      "after": "장애물로 돌진 경로를 끊고, 기절 수단은 돌진 각이 잡힐 때까지 남겨 둡니다. 방해로 한 번 끊어도 부품을 다시 장착해 돌진할 수 있으므로 멈추지 말고 다음 판자·창틀로 이동합니다."
+    },
+    {
+      "path": "dist/data.json/characters/3/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/doukesi/doukesi.html",
+        "https://namu.wiki/w/%EA%B4%91%EB%8C%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EA%B4%91%EB%8C%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/道化師"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/doukesi/doukesi.html",
+        "https://namu.wiki/w/%EA%B4%91%EB%8C%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EA%B4%91%EB%8C%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/道化師",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/4/caution",
+      "before": "기생 신도로 자기 숙주를 때리면 그 신도는 사라집니다. 확실히 쓰러뜨리기 위해 소모할지 다른 신도로 때릴지 정하고, 조작을 바꾼 사이 기생이 제거되는지도 살핍니다.",
+      "after": "기생 신도로 자기 숙주를 때리면 그 신도는 사라집니다. 확실히 쓰러뜨리기 위해 소모할지 다른 신도로 때릴지 정합니다. 한 신도가 보조 특성을 쓰면 다른 신도에도 20초의 사용 제한이 걸리므로, 조작 대상만 바꿔 즉시 연속 사용할 수는 없습니다."
+    },
+    {
+      "path": "dist/data.json/characters/5/caution",
+      "before": "헤엄치는 동안에는 일반 공격을 할 수 없습니다. 상대를 따라잡았더라도 작살을 회수할 때 거리가 다시 벌어지지 않도록 위치를 잡습니다. 물웅덩이를 크게 만드는 것보다 상대를 실제로 가둘 수 있는지 살핍니다.",
+      "after": "헤엄치는 동안에는 일반 공격을 할 수 없으므로 작살을 회수한 뒤에도 공격이 닿을 위치를 잡습니다. 생존자가 묶인 의자와 지하실 주변에서는 습기가 더 느리게 쌓입니다. 습기 피해를 받은 상대에게는 5초간 습기가 다시 쌓이지 않으므로 일반 공격을 이어 갈 기회를 봅니다."
+    },
+    {
+      "path": "dist/data.json/characters/7/caution",
+      "before": "촉수 가까이에 여러 생존자가 겹치면 의도한 상대를 맞히지 못할 수 있습니다. 구출 직후에는 두 생존자의 위치를 구분하고, 의자 주변에 설치한 촉수가 계속 남아 있을 것으로 기대하지 않습니다.",
+      "after": "기본 촉수 공격은 촉수에서 가장 가까운 생존자를 향하므로 여러 명이 겹치면 의도한 상대를 놓칠 수 있습니다. 생존자가 묶인 의자 주변의 촉수는 20초 뒤 사라집니다. 구출 직전의 배치와 남은 시간을 확인합니다."
+    },
+    {
+      "path": "dist/data.json/characters/8/caution",
+      "before": "빠르게 이동하거나 상대를 옮겼다고 타격까지 보장되지는 않습니다. 경로에서 빠져나올 위치와 상대의 출구를 함께 보고, 이탈 직후 기절이나 견제를 받을 자리도 피합니다.",
+      "after": "생존자가 묶인 의자 주변에서는 메인 볼의 포착 시간이 3초에서 1.8초로 줄어듭니다. 포착 뒤 이동시킬 위치를 빨리 정하고, 이동만으로 일반 공격까지 보장되지는 않으므로 도착 거리와 퇴로를 함께 확인합니다."
+    },
+    {
+      "path": "dist/data.json/characters/8/easy/1/reason",
+      "before": "[구출] 메인 볼로 용병을 의자에서 떼어 놓아 구출을 늦출 수 있습니다.\n조건: 메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 먼저 접근하거나 공을 피하는 대응은 가능합니다.",
+      "after": "[구출] 메인 볼로 용병을 의자에서 떼어 놓아 구출을 늦출 수 있습니다.\n조건: 메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 생존자가 묶인 의자 주변에서는 포착 시간이 1.8초로 줄어듭니다. 먼저 접근하거나 공을 피하면 구출을 시도할 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/8/skill",
+      "before": "공으로 만든 경로를 따라 빠르게 이동하고, 경로에서 나온 뒤의 가속과 행동 속도 보너스로 사냥합니다. 메인 볼로 생존자의 위치를 바꿀 수도 있습니다.",
+      "after": "공으로 만든 경로를 따라 이동하고, 경로에서 나온 뒤의 가속과 행동 속도 보너스로 사냥합니다. 메인 볼로 생존자를 포착해 위치를 옮길 수 있습니다. 공으로 닫힌 구역을 만들면 주기적으로 내부를 탐지하고 해독 진행도를 낮춥니다."
+    },
+    {
+      "path": "dist/data.json/characters/8/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/biriyadopureiya/biriyadopureiya.html",
+        "https://namu.wiki/w/%27%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98%27",
+        "https://www.namu.moe/w/%27%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98%27",
+        "https://wikiwiki.jp/identity5ch/ビリヤードプレイヤー"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/biriyadopureiya/biriyadopureiya.html",
+        "https://namu.wiki/w/%27%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98%27",
+        "https://www.namu.moe/w/%27%EB%8B%B9%EA%B5%AC%20%EC%84%A0%EC%88%98%27",
+        "https://wikiwiki.jp/identity5ch/ビリヤードプレイヤー",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+        "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/8/use",
+      "before": "상대가 다음 구역으로 이동하려 할 때 그 방향으로 경로를 연결해 먼저 접근합니다. 메인 볼로 상대를 옮길 때는 옮겨진 자리에서 일반 공격이 닿도록 위치를 맞춥니다.",
+      "after": "상대가 다음 구역으로 이동할 때 경로를 연결해 먼저 접근합니다. 닫힌 구역은 내부에서 가장 많이 진행된 해독기 한 대의 진행도를 15% 낮추며, 생존자가 한 명이라도 탈락한 뒤에는 9%로 줄어듭니다."
+    },
+    {
+      "path": "dist/data.json/characters/11/caution",
+      "before": "굳은 생존자를 공격하면 구속이 풀리고 잠시 촛농이 다시 쌓이지 않습니다. 타격 직후 계속 분사하지 말고 상대의 이동을 따라가며 다시 쌓을 시점을 기다립니다.",
+      "after": "굳은 생존자에게 피해를 주면 구속이 풀리고 3초간 촛농이 다시 쌓이지 않습니다. 고열 촛농도 피해를 준 뒤에는 재축적 제한이 있습니다. 고열 상태에서는 판자·창틀·해독기에 촛농이 붙지 않으므로 구조물 봉쇄와 직접 피해 중 필요한 효과를 선택합니다."
+    },
+    {
+      "path": "dist/data.json/characters/11/skill",
+      "before": "생존자와 판자·창틀·해독기에 촛농을 쌓아 이동과 행동을 제한합니다. 기절이나 밀치기를 당했을 때 주변에 촛농이 튀는 특성도 활용합니다.",
+      "after": "촛농을 쌓아 생존자를 굳히거나 판자·창틀·해독기의 사용을 막습니다. 풀존재에서 고열 촛농으로 전환하면 누적량을 피해로 바꿀 수 있습니다. 기절·밀치기를 당할 때 주변에 촛농이 튀는 밀랍옷도 활용합니다."
+    },
+    {
+      "path": "dist/data.json/characters/12/caution",
+      "before": "현이 만들어지는 순간의 피해와 이후 남는 효과는 다릅니다. 이미 생긴 현을 상대가 밟아도 처음과 같은 피해를 다시 받지는 않습니다.",
+      "after": "현이 만들어지는 순간의 피해와 이후 남는 효과는 다릅니다. 이미 생긴 현을 밟는다고 같은 피해를 다시 받지는 않습니다. 일반 공격을 맞히면 상대에게 쌓인 마력의 음색이 모두 사라지므로, 타격 뒤에도 감속이 계속된다고 계산하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/12/hold",
+      "before": "구출자의 위치를 모르는 동안 음표를 연달아 소모하지 않습니다. 첫 음표를 놓은 뒤 상대가 옆으로 빠져 각도가 사라졌다면 억지로 현을 잇기보다 본체로 다음 길을 막습니다.",
+      "after": "첫 음표를 놓은 뒤 6초 안에 두 번째 음표를 놓아야 현을 만들 수 있습니다. 상대가 옆으로 빠져 각도가 사라졌다면 억지로 잇기보다 본체로 다음 길을 막습니다. 취소하거나 시간이 끝나면 다음 사용까지의 대기 시간이 줄어듭니다."
+    },
+    {
+      "path": "dist/data.json/characters/12/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/vaiorinisuto/vaiorinisuto.html",
+        "https://namu.wiki/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/vaiorinisuto/vaiorinisuto.html",
+        "https://namu.wiki/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EB%B0%94%EC%9D%B4%EC%98%AC%EB%A6%AC%EB%8B%88%EC%8A%A4%ED%8A%B8%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/ヴァイオリニスト",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/16/caution",
+      "before": "생존자를 직접 맞힐 때와 장애물에 걸어 본체가 이동할 때는 도착 위치가 다릅니다. 끌려간 끝에 판자를 맞거나 상대에게서 더 멀어지지 않도록 경로 끝까지 봅니다.",
+      "after": "생존자가 묶인 의자 20미터 안과 지하실 주변에는 덫을 놓을 수 없으며, 의자에 묶는 순간 해당 범위의 기존 덫도 사라집니다. 갈퀴 사슬로 직접 끌어올 때와 장애물로 이동할 때의 도착 위치를 구분하고, 의자 앞 구출은 덫보다 갈퀴 사슬과 일반 공격으로 압박합니다."
+    },
+    {
+      "path": "dist/data.json/characters/16/hard/2/reason",
+      "before": "[구출] 환영을 먼저 보내 덫을 소모시키거나 갈퀴 사슬을 대신 받게 하면 기자의 구출 진입을 도울 수 있습니다.\n조건: 본체가 먼저 노출되면 막지 못합니다. 7월 변경 후 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서는 배치를 피합니다.",
+      "after": "[구출] 의자에서 떨어진 진입로의 덫이나 갈퀴 사슬을 환영으로 먼저 받아 기자의 접근을 도울 수 있습니다.\n조건: 생존자가 묶인 의자 20미터 안과 지하실 주변에는 덫을 설치할 수 없으며 기존 덫도 사라집니다. 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/16/response",
+      "before": "갈퀴 사슬과 본체 사이에 장애물을 두고 좁은 통로의 덫을 확인합니다. 직선으로 멀어지는 것보다 조준선을 끊는 쪽을 우선합니다.",
+      "after": "갈퀴 사슬과 본체 사이에 장애물을 두고 좁은 통로의 덫을 확인합니다. 다른 생존자와 붙어 서 있으면 함께 끌릴 수 있으므로 간격을 벌리고, 직선으로 달리기보다 사선을 끊습니다."
+    },
+    {
+      "path": "dist/data.json/characters/16/skill",
+      "before": "갈퀴 사슬로 생존자를 끌어오거나 장애물에 걸어 자신이 이동합니다. 첫 갈퀴 사슬을 장애물에 건 뒤에는 추가로 사용할 기회가 생깁니다.",
+      "after": "갈퀴 사슬로 맞힌 생존자와 그 가까이에 있는 생존자를 함께 끌어오거나, 장애물에 걸어 자신이 이동합니다. 첫 갈퀴 사슬을 장애물에 건 뒤에는 추가로 사용할 기회가 생깁니다."
+    },
+    {
+      "path": "dist/data.json/characters/16/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/dannzaikariudo/dannzaikariudo.html",
+        "https://namu.wiki/w/사냥터지기(제5인격)",
+        "https://www.namu.moe/w/사냥터지기(제5인격)",
+        "https://wikiwiki.jp/identity5ch/断罪狩人"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/dannzaikariudo/dannzaikariudo.html",
+        "https://namu.wiki/w/사냥터지기(제5인격)",
+        "https://www.namu.moe/w/사냥터지기(제5인격)",
+        "https://wikiwiki.jp/identity5ch/断罪狩人",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/18/caution",
+      "before": "사진 속 세계가 끝나도 현실에서 이미 해독을 마친 해독기는 되돌릴 수 없습니다. 사진 속 피해만 보지 말고 종료 직전의 현실 체력과 곧 완료될 해독기 위치를 함께 살핍니다.",
+      "after": "사진 정산이 현실의 체력을 회복시켜 주지는 않습니다. 해독 진행도도 두 세계의 평균으로 조정되지만, 현실에서 이미 해독을 끝낸 해독기는 되돌아가지 않습니다. 종료 직전의 체력과 곧 완료될 해독기 위치를 함께 살핍니다."
+    },
+    {
+      "path": "dist/data.json/characters/18/skill",
+      "before": "촬영 시점의 생존자 상태와 해독 진행도를 사진 속 세계에 남깁니다. 사진 속 세계가 끝나면 두 세계의 피해와 해독 진행도 차이가 현실에 반영됩니다.",
+      "after": "촬영 시점의 생존자 상태와 해독 진행도를 사진 속 세계에 남깁니다. 종료할 때 사진상의 피해가 현실보다 크면 두 체력의 평균이 현실에 반영됩니다. 사진상이 의자에 묶인 채 종료하면 현실의 본체는 쓰러집니다."
+    },
+    {
+      "path": "dist/data.json/characters/19/caution",
+      "before": "기록으로 재생한 공격은 본체의 공격과 효과가 다릅니다. 저장된 행동의 방향과 대상을 헷갈리면 퇴로를 열어 줄 수 있으므로 재생할 위치를 먼저 맞춥니다.",
+      "after": "기록으로 재생한 공격의 피해는 절반이며 공포의 일격을 일으키지 않습니다. 본체의 직접 공격과 구분하고, 저장된 행동의 방향과 대상을 확인해 재생합니다. 판결의 강화 효과도 공격을 맞히면 끝나므로 다음 공격까지 이어진다고 기대하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/19/skill",
+      "before": "생존자와 자신의 행동을 기록한 뒤 재생해 판자·창틀, 해독, 공격에 활용합니다. 주변에 살아 있는 생존자가 많으면 판결도 더 빠르게 충전됩니다. 의자에서 이미 탈락한 생존자는 충전에 포함되지 않습니다.",
+      "after": "생존자와 자신의 행동을 기록한 뒤 재생해 판자·창틀, 해독, 공격에 활용합니다. 주변에서 자유롭게 행동할 수 있는 생존자가 많으면 판결도 더 빠르게 충전됩니다. 의자에서 이미 탈락한 생존자는 충전에 포함되지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/19/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/syokikann/syokikann.html",
+        "https://namu.wiki/w/%EC%84%9C%EA%B8%B0%EA%B4%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EC%84%9C%EA%B8%B0%EA%B4%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/書記官",
+        "https://www.identityvgame.com/en/news/announcement/20261104/35288_1318752.html"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/syokikann/syokikann.html",
+        "https://namu.wiki/w/%EC%84%9C%EA%B8%B0%EA%B4%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EC%84%9C%EA%B8%B0%EA%B4%80%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/書記官",
+        "https://www.identityvgame.com/en/news/announcement/20261104/35288_1318752.html",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/20/skill",
+      "before": "십자 모양의 폭발 범위가 이어지도록 폭탄을 놓아 연쇄 폭발을 일으킵니다. 의자에 붙인 폭탄으로 구출도 방해할 수 있습니다.",
+      "after": "십자 모양의 폭발 범위를 연결해 연쇄 폭발을 일으킵니다. 생존자가 묶인 의자에는 폭탄을 따로 부착해 탈락 진행도를 늘릴 수 있으며, 바닥에 놓아 구출자를 공격하는 폭탄과 구분합니다."
+    },
+    {
+      "path": "dist/data.json/characters/20/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/bonnbonn/bonnbonn.html",
+        "https://namu.wiki/w/%EC%88%98%EC%9C%84%2026%ED%98%B8",
+        "https://www.namu.moe/w/%EC%88%98%EC%9C%84%2026%ED%98%B8",
+        "https://wikiwiki.jp/identity5ch/ガードNo.26"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/bonnbonn/bonnbonn.html",
+        "https://namu.wiki/w/%EC%88%98%EC%9C%84%2026%ED%98%B8",
+        "https://www.namu.moe/w/%EC%88%98%EC%9C%84%2026%ED%98%B8",
+        "https://wikiwiki.jp/identity5ch/ガードNo.26",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/20/use",
+      "before": "상대가 좁은 길을 지나거나 구출자가 의자로 들어올 때 피할 공간을 줄이는 순서로 설치합니다. 연쇄 폭발로 한쪽을 막고 남은 출구는 본체로 압박합니다.",
+      "after": "좁은 길과 구출 진입로에 폭탄을 연결하고 남은 출구를 본체로 막습니다. 의자 부착 폭탄은 첫 설치 28초 뒤 함께 터지며, 하나당 탈락 진행도를 4초씩 늘립니다. 최대 다섯 개까지 붙일 수 있지만 폭발 전에 구출되면 모두 사라집니다."
+    },
+    {
+      "path": "dist/data.json/characters/21/hold",
+      "before": "이미 공격 거리에 들어왔거나 의자에 남은 시간이 얼마 없다면 이스인을 오래 조종하지 않습니다. 당장 쓸 계획이 없는 거점을 늘리기보다 본체로 필요한 위치를 지킵니다.",
+      "after": "이미 공격 거리에 들어왔거나 의자에 남은 시간이 적다면 이스인을 오래 조종하지 않습니다. 생존자가 한 명이라도 탈락하거나 탈출구에 전력이 공급되면 침식의 조각의 유지 시간은 최대 50초, 파괴할 수 없는 시간은 6초로 줄어듭니다. 오래 남을 거점으로 계산하지 말고 이동할 시점을 정합니다."
+    },
+    {
+      "path": "dist/data.json/characters/21/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/zikuunokage/zikuunokage.html",
+        "https://namu.wiki/w/%EC%8B%9C%EA%B3%B5%EC%9D%98%20%EA%B7%B8%EB%A6%BC%EC%9E%90",
+        "https://www.namu.moe/w/%EC%8B%9C%EA%B3%B5%EC%9D%98%20%EA%B7%B8%EB%A6%BC%EC%9E%90",
+        "https://wikiwiki.jp/identity5ch/時空の影",
+        "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/zikuunokage/zikuunokage.html",
+        "https://namu.wiki/w/%EC%8B%9C%EA%B3%B5%EC%9D%98%20%EA%B7%B8%EB%A6%BC%EC%9E%90",
+        "https://www.namu.moe/w/%EC%8B%9C%EA%B3%B5%EC%9D%98%20%EA%B7%B8%EB%A6%BC%EC%9E%90",
+        "https://wikiwiki.jp/identity5ch/時空の影",
+        "https://www.identityvgame.com/jp/news/update/20261111/35356_1319388.html",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+        "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/28/caution",
+      "before": "흡수 중에는 이동이 느려져 상대와 거리가 벌어질 수 있습니다. 의자 근처에서는 지면 속박의 지속 시간이 다르므로 일반 사냥 때와 같은 시간 동안 묶어 둘 수 있다고 생각하지 않습니다.",
+      "after": "풀존재 전에는 흡수 중 이동이 느려지지만 풀존재에서는 이 감속이 사라집니다. 생존자가 묶인 의자 12미터 안에서 지면을 흡수하면 구역은 4초, 속박은 1초만 유지됩니다. 덩굴을 직접 맞혔을 때의 속박과 구분해 후속 공격 시간을 잡습니다."
+    },
+    {
+      "path": "dist/data.json/characters/28/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/zakkasyou/zakkasyou.html",
+        "https://namu.wiki/w/%EC%9E%A1%ED%99%94%EC%83%81%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EC%9E%A1%ED%99%94%EC%83%81%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/雑貨商"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/zakkasyou/zakkasyou.html",
+        "https://namu.wiki/w/%EC%9E%A1%ED%99%94%EC%83%81%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://www.namu.moe/w/%EC%9E%A1%ED%99%94%EC%83%81%28%EC%A0%9C5%EC%9D%B8%EA%B2%A9%29",
+        "https://wikiwiki.jp/identity5ch/雑貨商",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/29/skill",
+      "before": "도약 중 방향을 바꾸거나 수직으로 내려와 공격할 위치를 잡습니다. 존재감이 쌓이면 낙하 공격과 연속 도약을 활용할 수 있습니다.",
+      "after": "처음부터 착지 전 두 번까지 도약하며 방향을 바꾸거나 수직으로 내려올 수 있습니다. 존재감이 쌓이면 낙하 공격을 사용하고, 풀존재에서는 자원이 남아 있는 한 공중에서 도약을 계속할 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/30/caution",
+      "before": "본체와 생존자는 경계를 넘은 뒤 다시 경계를 이용할 수 있을 때까지 걸리는 시간이 다릅니다. 의자 근처에서는 생존자가 더 빨리 철거할 수 있으므로 오래 가두는 것보다 당장의 타격 위치를 우선합니다.",
+      "after": "케이지 안에서 피해를 주면 자신을 둘러싼 케이지가 사라집니다. 안에 자유롭게 행동할 수 있는 생존자가 있으면 다른 생존자는 밖에서 철거할 수 없습니다. 의자 근처의 빠른 철거와 양측의 경계 재이용 대기 시간도 고려해 후속 사냥을 준비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/30/hard/0/reason",
+      "before": "[사냥] 케이지 안에서 받은 피해를 향수로 되돌리면 감시자가 케이지와 공격을 추가로 사용해야 합니다.\n조건: 향수 잔량과 복귀할 시간·위치가 있어야 합니다.",
+      "after": "[사냥] 케이지 안에서 받은 피해를 향수로 되돌리면 감시자가 케이지와 공격을 추가로 사용해야 합니다.\n조건: 향수 잔량과 복귀할 시간·위치가 필요합니다. 피해로 사라진 케이지가 향수 복귀로 복원되지는 않으므로 감시자는 다음 케이지와 공격을 준비해야 합니다."
+    },
+    {
+      "path": "dist/data.json/characters/30/hard/2/reason",
+      "before": "[사냥·커버] 긴 판자 기절로 케이지를 해제할 시간을 만들 수 있습니다.\n조건: 태클은 케이지 경계에 제한될 수 있어 양쪽 상황을 구분합니다.",
+      "after": "[사냥·커버] 긴 판자 기절로 케이지를 해제할 시간을 만들 수 있습니다.\n조건: 태클은 케이지 경계에 제한될 수 있습니다. 안에 자유롭게 행동하는 생존자가 있으면 밖의 동료는 철거할 수 없으므로, 기절로 번 시간에 누가 안에서 해제할지 구분합니다."
+    },
+    {
+      "path": "dist/data.json/characters/30/skill",
+      "before": "케이지를 설치해 도주 경로를 제한합니다. 본체나 생존자가 경계에 닿으면 반대편의 대칭 위치로 이동하므로, 이동 후 위치까지 계산하며 사냥합니다.",
+      "after": "케이지의 경계에 닿은 본체나 생존자는 반대편의 대칭 위치로 이동합니다. 케이지 밖에서 하는 일반 공격은 절반 피해만 주므로, 가둔 뒤 이동할 위치와 타격할 자리를 함께 계산합니다."
+    },
+    {
+      "path": "dist/data.json/characters/30/weaknesses/0",
+      "before": "케이지 밖 공격 효율 저하",
+      "after": "케이지 밖 일반 공격 피해 감소"
+    },
+    {
+      "path": "dist/data.json/characters/30/weaknesses/1",
+      "before": "다른 생존자의 케이지 철거·커버에 취약",
+      "after": "케이지 내부 철거·외부 커버 대응 부담"
+    },
+    {
+      "path": "dist/data.json/characters/31/caution",
+      "before": "조각상이 스치기만 해서는 피해가 들어가지 않습니다. 지형이나 다른 조각상 사이에 끼이는 경로를 만들고, 원거리 조작 중에는 본체 곁으로 다가오는 생존자도 살핍니다. 공연 중인 신동도 조각상에 밀려나므로 밀치기와 실제 피해 판정을 구분합니다.",
+      "after": "일반 조각상이 스치기만 해서는 피해가 들어가지 않습니다. 지형이나 다른 조각상 사이에 끼이는 경로를 만들고, 원거리 조작 중에는 본체 곁으로 다가오는 생존자도 살핍니다. 공연 중인 신동도 조각상에 밀려나므로 밀치기와 실제 피해 판정을 구분합니다."
+    },
+    {
+      "path": "dist/data.json/characters/31/skill",
+      "before": "좌우와 앞뒤에서 움직이는 조각상으로 생존자를 밀어냅니다. 생존자를 두 조각상 사이 또는 조각상과 지형 사이에 끼워 피해를 줍니다.",
+      "after": "일반 조각상으로 생존자를 밀어 두 조각상 사이나 지형에 끼워 피해를 줍니다. 풀존재에서 서로 다른 조각상이 합쳐지면 가까운 생존자를 향해 움직이고, 대상이나 지형에 닿을 때 폭발해 주변에 피해를 줍니다."
+    },
+    {
+      "path": "dist/data.json/characters/33/caution",
+      "before": "변신 직후에는 곧바로 원래 형태로 돌아올 수 없습니다. 같은 상대를 연달아 스쳐도 매번 가시가 추가되지는 않으므로 부착 수와 변신 후 버틸 공간을 확인합니다.",
+      "after": "변신 직후에는 곧바로 원래 형태로 돌아올 수 없습니다. 같은 생존자는 가시가 붙은 뒤 5초 동안 다시 스쳐도 가시가 늘지 않지만, 풀존재에서 인간형으로 돌아올 때 붙이는 가시는 이 제한의 예외입니다. 부착 수와 변신 뒤 공격할 공간을 확인합니다."
+    },
+    {
+      "path": "dist/data.json/characters/35/caution",
+      "before": "카메라를 돌리는 것만으로 색 구역의 방향이 바뀌지는 않습니다. 본체를 이동해 배치를 맞추고, 공격 횟수보다 서로 다른 표식이 쌓였는지를 기준으로 피해를 계산합니다. 분신의 무대는 파괴 모션이 시작되면 사라지며, 이 표시 변경으로 유지 시간이 늘어난 것은 아닙니다.",
+      "after": "카메라를 돌리는 것만으로 색 구역의 방향이 바뀌지는 않습니다. 무대 회전 스킬과 본체 이동을 구분해 사용하고, 공격 횟수보다 서로 다른 표식이 쌓였는지를 봅니다. 분신의 무대는 파괴 모션이 시작되면 사라지며, 이 표시 변경으로 유지 시간이 늘어난 것은 아닙니다."
+    },
+    {
+      "path": "dist/data.json/characters/35/hard/2/reason",
+      "before": "[사냥] 보호막이 남아 있으면 완성된 표식 피해를 한 번 더 받아냅니다.\n조건: 보호막이 끝나면 같은 효과를 기대하기 어렵고, 다시 만들려면 잠시 멈출 여유가 필요합니다.",
+      "after": "[사냥] 보호막이 남아 있으면 완성된 표식 피해를 한 번 더 받아냅니다.\n조건: 보호막이 끝나면 같은 효과를 기대하기 어렵고 다시 만들려면 멈출 여유가 필요합니다. 풀존재에서는 피해를 막아도 마지막 색 표식이 다시 붙으므로, 표식이 모두 사라졌다고 생각하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/35/skill",
+      "before": "본체 주변의 세 가지 색 구역으로 생존자의 능력 사용과 행동, 이동을 제한합니다. 서로 다른 색의 표식을 쌓아 피해를 줍니다.",
+      "after": "본체 주변 세 가지 색 구역으로 생존자의 능력 사용과 행동, 이동을 제한합니다. 서로 다른 깜짝 표식 세 개를 완성해야 피해가 생깁니다. 순회 커튼콜은 무대를 시계방향으로 120도 돌리며, 사용 후 1초 안에 한 번 더 돌릴 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/35/sources",
+      "before": [
+        "https://daigoroku.com/honntai/hanta/hurabaru/hurabaru.html",
+        "https://namu.wiki/w/%27%ED%9B%8C%EB%9D%BC%EB%B0%9C%EB%A3%A8%27",
+        "https://www.namu.moe/w/%27%ED%9B%8C%EB%9D%BC%EB%B0%9C%EB%A3%A8%27",
+        "https://wikiwiki.jp/identity5ch/フラバルー",
+        "https://www.identityvgame.com/en/news/announcement/20261021/35288_1317338.html"
+      ],
+      "after": [
+        "https://daigoroku.com/honntai/hanta/hurabaru/hurabaru.html",
+        "https://namu.wiki/w/%27%ED%9B%8C%EB%9D%BC%EB%B0%9C%EB%A3%A8%27",
+        "https://www.namu.moe/w/%27%ED%9B%8C%EB%9D%BC%EB%B0%9C%EB%A3%A8%27",
+        "https://wikiwiki.jp/identity5ch/フラバルー",
+        "https://www.identityvgame.com/en/news/announcement/20261021/35288_1317338.html",
+        "https://www.identityvgame.com/jp/news/update/20241113/35356_1193446.html"
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/35/use",
+      "before": "상대에게 아직 붙지 않은 색의 구역에 들어가도록 위치를 옮긴 뒤 공격합니다. 도주 방향을 읽고 다음 표식도 붙일 수 있는 쪽에서 압박합니다.",
+      "after": "상대에게 없는 색을 붙일 수 있도록 본체의 위치를 옮기거나 순회 커튼콜로 무대를 돌립니다. 풀존재에서는 피해를 낸 마지막 색의 표식이 다시 붙으므로, 다음에 필요한 두 색을 확인하며 사냥을 이어 갑니다."
+    },
+    {
+      "path": "dist/data.json/characters/36/easy/0/reason",
+      "before": "[어그로] 불공을 통과한 돌진은 끊기고 진흙공은 사냥 속도를 늦춥니다.\n조건: 폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다.",
+      "after": "[어그로] 불공을 통과한 돌진은 끊기고 진흙공은 사냥 속도를 늦춥니다.\n조건: 폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/45/easy/0/reason",
+      "before": "[구출] 환영을 먼저 보내 덫을 소모시키거나 갈퀴 사슬을 대신 받게 하면 기자의 구출 진입을 도울 수 있습니다.\n조건: 본체가 먼저 노출되면 막지 못합니다. 7월 변경 후 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서는 배치를 피합니다.",
+      "after": "[구출] 의자에서 떨어진 진입로의 덫이나 갈퀴 사슬을 환영으로 먼저 받아 기자의 접근을 도울 수 있습니다.\n조건: 생존자가 묶인 의자 20미터 안과 지하실 주변에는 덫을 설치할 수 없으며 기존 덫도 사라집니다. 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/62/easy/0/reason",
+      "before": "[어그로] 추억 조각을 돌진에 맞춰 터뜨리면 추진기를 끊을 수 있습니다.\n조건: 광대가 먼저 조각을 빼거나 효과 범위 밖으로 돌아오면 다시 대응해야 합니다.",
+      "after": "[어그로] 추억 조각을 돌진에 맞춰 터뜨리면 추진기를 끊을 수 있습니다.\n조건: 광대가 먼저 조각을 빼거나 효과 범위 밖으로 돌아오면 다시 대응해야 합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/63/hard/3/reason",
+      "before": "[구출] 메인 볼로 용병을 의자에서 떼어 놓아 구출을 늦출 수 있습니다.\n조건: 메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 먼저 접근하거나 공을 피하는 대응은 가능합니다.",
+      "after": "[구출] 메인 볼로 용병을 의자에서 떼어 놓아 구출을 늦출 수 있습니다.\n조건: 메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 생존자가 묶인 의자 주변에서는 포착 시간이 1.8초로 줄어듭니다. 먼저 접근하거나 공을 피하면 구출을 시도할 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/70/easy/0/reason",
+      "before": "[어그로] 보호막이 남아 있으면 완성된 표식 피해를 한 번 더 받아냅니다.\n조건: 보호막이 끝나면 같은 효과를 기대하기 어렵고, 다시 만들려면 잠시 멈출 여유가 필요합니다.",
+      "after": "[어그로] 보호막이 남아 있으면 완성된 표식 피해를 한 번 더 받아냅니다.\n조건: 보호막이 끝나면 같은 효과를 기대하기 어렵고 다시 만들려면 멈출 여유가 필요합니다. 풀존재에서는 피해를 막아도 마지막 색 표식이 다시 붙으므로, 표식이 모두 사라졌다고 생각하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/characters/71/easy/2/reason",
+      "before": "[어그로] 케이지 안에서 받은 피해를 향수로 되돌리면 감시자가 케이지와 공격을 추가로 사용해야 합니다.\n조건: 향수 잔량과 복귀할 시간·위치가 있어야 합니다.",
+      "after": "[어그로] 케이지 안에서 받은 피해를 향수로 되돌리면 감시자가 케이지와 공격을 추가로 사용해야 합니다.\n조건: 향수 잔량과 복귀할 시간·위치가 필요합니다. 피해로 사라진 케이지가 향수 복귀로 복원되지는 않으므로 감시자는 다음 케이지와 공격을 준비해야 합니다."
+    },
+    {
+      "path": "dist/data.json/characters/76/easy/0/reason",
+      "before": "[어그로] 돌진 중인 광대에게 크리켓볼을 맞히면 추진기를 끊을 수 있습니다.\n조건: 광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다.",
+      "after": "[어그로] 돌진 중인 광대에게 크리켓볼을 맞히면 추진기를 끊을 수 있습니다.\n조건: 광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/characters/81/easy/4/reason",
+      "before": "[어그로·커버] 긴 판자 기절로 케이지를 해제할 시간을 만들 수 있습니다.\n조건: 태클은 케이지 경계에 제한될 수 있어 양쪽 상황을 구분합니다.",
+      "after": "[어그로·커버] 긴 판자 기절로 케이지를 해제할 시간을 만들 수 있습니다.\n조건: 태클은 케이지 경계에 제한될 수 있습니다. 안에 자유롭게 행동하는 생존자가 있으면 밖의 동료는 철거할 수 없으므로, 기절로 번 시간에 누가 안에서 해제할지 구분합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/19/condition",
+      "before": "무장 해제만으로 로켓 돌진까지 봉쇄되지는 않습니다. 타격을 빗맞히거나 재돌진을 허용하면 위험합니다.",
+      "after": "무장 해제만으로 로켓 돌진까지 봉쇄되지는 않습니다. 타격을 빗맞히거나 재돌진을 허용하면 위험합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/19/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/19/sourceSupport",
+      "before": [
+        {
+          "url": "https://www.taptap.cn/moment/357624762081477724",
+          "support": "direct",
+          "note": "돌진을 봉으로 중단하는 개인 대진 의견",
+          "sourceFamily": "taptap"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "무장해제 중에도 광대 돌진 가능",
+          "sourceFamily": "identity5ch"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://www.taptap.cn/moment/357624762081477724",
+          "support": "direct",
+          "note": "돌진을 봉으로 중단하는 개인 대진 의견",
+          "sourceFamily": "taptap"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "무장해제 중에도 광대 돌진 가능",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/道化師",
+          "support": "mechanic",
+          "note": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/21/condition",
+      "before": "폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다.",
+      "after": "폭탄을 피해 우회할 수 없는 길에서 효과가 큽니다. 넓은 평지에 던지면 우회당할 수 있습니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/21/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/21/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+          "support": "direct",
+          "note": "도약·폭탄 효과·위치",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/288664880578301736",
+          "support": "mechanic",
+          "note": "원저자 실전 공략: 돌진 중단·지형·치료; 구판 수치 미인용",
+          "sourceFamily": "netease-official"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/曲芸師",
+          "support": "direct",
+          "note": "도약·폭탄 효과·위치",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/288664880578301736",
+          "support": "mechanic",
+          "note": "원저자 실전 공략: 돌진 중단·지형·치료; 구판 수치 미인용",
+          "sourceFamily": "netease-official"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/道化師",
+          "support": "mechanic",
+          "note": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/153/condition",
+      "before": "향수 잔량과 복귀할 시간·위치가 있어야 합니다.",
+      "after": "향수 잔량과 복귀할 시간·위치가 필요합니다. 피해로 사라진 케이지가 향수 복귀로 복원되지는 않으므로 감시자는 다음 케이지와 공격을 준비해야 합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/153/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/153/sourceSupport/0/note",
+      "before": "대진·제한 확인",
+      "after": "케이지 안 피해에 따른 소멸은 향수 복귀로 되돌아오지 않음을 설명."
+    },
+    {
+      "path": "dist/data.json/matchups/173/condition",
+      "before": "보호막이 끝나면 같은 효과를 기대하기 어렵고, 다시 만들려면 잠시 멈출 여유가 필요합니다.",
+      "after": "보호막이 끝나면 같은 효과를 기대하기 어렵고 다시 만들려면 멈출 여유가 필요합니다. 풀존재에서는 피해를 막아도 마지막 색 표식이 다시 붙으므로, 표식이 모두 사라졌다고 생각하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/173/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/173/sourceSupport/0/note",
+      "before": "보호막 소모에 표식 완성 필요",
+      "after": "표식 피해를 보호막으로 막아도 풀존재의 마지막 색 재부착이 남는 점을 보완."
+    },
+    {
+      "path": "dist/data.json/matchups/222/condition",
+      "before": "태클은 케이지 경계에 제한될 수 있어 양쪽 상황을 구분합니다.",
+      "after": "태클은 케이지 경계에 제한될 수 있습니다. 안에 자유롭게 행동하는 생존자가 있으면 밖의 동료는 철거할 수 없으므로, 기절로 번 시간에 누가 안에서 해제할지 구분합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/222/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/222/sourceFamilies",
+      "before": [
+        "namuwiki"
+      ],
+      "after": [
+        "namuwiki",
+        "identity5ch"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/222/sourceSupport",
+      "before": [
+        {
+          "url": "https://www.namu.moe/w/'절름발이 판'",
+          "support": "direct",
+          "note": "대진·제한 확인",
+          "sourceFamily": "namuwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://www.namu.moe/w/'절름발이 판'",
+          "support": "direct",
+          "note": "대진·제한 확인",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/足萎えの羊",
+          "support": "mechanic",
+          "note": "긴 기절이 외부 동료의 케이지 철거 제한을 없애는 것은 아님을 명시.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/250/condition",
+      "before": "본체가 먼저 노출되면 막지 못합니다. 7월 변경 후 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서는 배치를 피합니다.",
+      "after": "생존자가 묶인 의자 20미터 안과 지하실 주변에는 덫을 설치할 수 없으며 기존 덫도 사라집니다. 갈퀴 사슬이 맞은 생존자 곁에 다른 생존자가 모여 있으면 함께 끌리므로 겹쳐 서지 않습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/250/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/250/sourceSupport",
+      "before": [
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "환영의 덫 소모·갈고리 방어.",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "mechanic",
+          "note": "환영 경로와 투사체 방어의 배치 조건.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html",
+          "support": "exception",
+          "note": "갈고리 적중 대상 주변 생존자의 동시 끌기.",
+          "sourceFamily": "netease-official"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://www.namu.moe/w/기자(제5인격)",
+          "support": "direct",
+          "note": "환영의 덫 소모·갈고리 방어.",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/記者",
+          "support": "mechanic",
+          "note": "환영 경로와 투사체 방어의 배치 조건.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html",
+          "support": "exception",
+          "note": "갈고리 적중 대상 주변 생존자의 동시 끌기.",
+          "sourceFamily": "netease-official"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/断罪狩人",
+          "support": "mechanic",
+          "note": "점유 의자 20미터·지하실 주변 덫 제한과 기존 7월 동시 끌기 조건을 함께 적용.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/250/summary",
+      "before": "환영을 먼저 보내 덫을 소모시키거나 갈퀴 사슬을 대신 받게 하면 기자의 구출 진입을 도울 수 있습니다.",
+      "after": "의자에서 떨어진 진입로의 덫이나 갈퀴 사슬을 환영으로 먼저 받아 기자의 접근을 도울 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/307/condition",
+      "before": "무장 해제만으로 다음 로켓 돌진을 막지는 못합니다.",
+      "after": "무장 해제만으로 다음 로켓 돌진을 막지는 못합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/307/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/307/sourceSupport",
+      "before": [
+        {
+          "url": "https://www.taptap.cn/moment/357624762081477724",
+          "support": "direct",
+          "note": "돌진을 봉으로 중단하는 개인 대진 의견",
+          "sourceFamily": "taptap"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "무장해제 중에도 광대 돌진 가능",
+          "sourceFamily": "identity5ch"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://www.taptap.cn/moment/357624762081477724",
+          "support": "direct",
+          "note": "돌진을 봉으로 중단하는 개인 대진 의견",
+          "sourceFamily": "taptap"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/骨董商",
+          "support": "exception",
+          "note": "무장해제 중에도 광대 돌진 가능",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/道化師",
+          "support": "mechanic",
+          "note": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/317/condition",
+      "before": "광대가 먼저 조각을 빼거나 효과 범위 밖으로 돌아오면 다시 대응해야 합니다.",
+      "after": "광대가 먼저 조각을 빼거나 효과 범위 밖으로 돌아오면 다시 대응해야 합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/317/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/317/sourceSupport/1/note",
+      "before": "돌진·드릴·중단 수단과 재돌진·무장해제 예외",
+      "after": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내."
+    },
+    {
+      "path": "dist/data.json/matchups/367/condition",
+      "before": "메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 먼저 접근하거나 공을 피하는 대응은 가능합니다.",
+      "after": "메인 볼이 해금되고 접근 동선을 맞혀야 합니다. 생존자가 묶인 의자 주변에서는 포착 시간이 1.8초로 줄어듭니다. 먼저 접근하거나 공을 피하면 구출을 시도할 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/367/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/367/sourceSupport/1/note",
+      "before": "포착으로 의자에서 이격",
+      "after": "점유 의자 주변의 메인 볼 포착은 1.8초로 단축됨을 구출 조건에 추가."
+    },
+    {
+      "path": "dist/data.json/matchups/397/condition",
+      "before": "광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다.",
+      "after": "광대가 크리켓볼을 먼저 쓰게 한 뒤 다시 돌진할 수 있으므로, 막은 뒤에는 안전한 장애물 쪽으로 이동합니다. 방해로 돌진을 끊으면 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/397/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-13"
+    },
+    {
+      "path": "dist/data.json/matchups/397/sourceFamilies",
+      "before": [
+        "namuwiki",
+        "netease-official"
+      ],
+      "after": [
+        "namuwiki",
+        "netease-official",
+        "identity5ch"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/397/sourceSupport",
+      "before": [
+        {
+          "url": "https://www.namu.moe/w/타자(제5인격)",
+          "support": "direct",
+          "note": "돌진 중단·다중 신도·벽과 커버",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/288664880578301736",
+          "support": "mechanic",
+          "note": "원저자 실전 공략: 돌진 중단·지형·치료; 구판 수치 미인용",
+          "sourceFamily": "netease-official"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://www.namu.moe/w/타자(제5인격)",
+          "support": "direct",
+          "note": "돌진 중단·다중 신도·벽과 커버",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://www.taptap.cn/moment/288664880578301736",
+          "support": "mechanic",
+          "note": "원저자 실전 공략: 돌진 중단·지형·치료; 구판 수치 미인용",
+          "sourceFamily": "netease-official"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/道化師",
+          "support": "mechanic",
+          "note": "소지품·능력으로 로켓 돌진 중단 시 부품 반환과 재장착·재돌진 가능성을 함께 안내.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/specialties.json/characters/c17/specialtyReasons/캠핑",
+      "before": "갈퀴 사슬로 구출자를 의자에서 떼어 놓거나 일반 공격과 연계하고, 덫으로 구출 동선을 좁힙니다.",
+      "after": "갈퀴 사슬로 구출자를 의자에서 떼어 놓고 일반 공격을 연결합니다. 덫은 점유 의자 주변에 남지 않으므로 더 바깥의 진입 경로에서 활용합니다."
+    },
+    {
+      "path": "dist/introductions.json/characters/c09",
+      "before": "공으로 만든 경로를 따라 빠르게 이동합니다. 경로에서 나온 뒤의 가속과 메인 볼의 밀치기로 생존자를 사냥합니다.",
+      "after": "공으로 만든 경로를 따라 빠르게 이동합니다. 경로에서 나온 뒤의 가속과 메인 볼의 포착·이동으로 생존자를 사냥합니다."
     }
   ],
   "followups": [
@@ -2284,6 +3093,36 @@
         "c88"
       ],
       "evidence": "research/refresh/2026-11-13/survivor-review.json"
+    },
+    {
+      "scope": "hunter-guide-condition-review",
+      "baseline": "6a8feca3b008a5a30d2d85bc3c6ce5e8809a713b",
+      "date": "2026-11-13",
+      "editOffset": 239,
+      "editCount": 97,
+      "charactersReviewed": [
+        "c01",
+        "c03",
+        "c04",
+        "c05",
+        "c06",
+        "c08",
+        "c09",
+        "c12",
+        "c13",
+        "c17",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c34",
+        "c36"
+      ],
+      "evidence": "research/refresh/2026-11-13/hunter-review.json"
     }
   ]
 }
