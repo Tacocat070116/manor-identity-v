@@ -1,0 +1,646 @@
+{
+  "date": "2026-11-13",
+  "baseline": "ff97a45bd00e769d23d8b66d0a284be984e94f8e",
+  "scope": "생존자 53명의 현재 설명을 읽고, 빠진 발동 조건·종료 조건·구출 주체·회복 예외를 선별 대조한 후속 검토",
+  "previousReview": "research/refresh/2026-11-13/guide-patch-review.json",
+  "gameBalanceRevalidated": false,
+  "method": [
+    "직전 배포의 11월 12일 패치 반영을 기준으로 사용하고 같은 패치나 통계를 다시 수집하지 않음.",
+    "현재 공략 원문과 글로벌 공식 확정 패치를 우선 대조. 일본 커뮤니티 위키의 현재 외재 특성 설명은 보조 근거이며 공식 한국어 명칭 검증이나 실전 측정을 뜻하지 않음.",
+    "53명 전원의 기존 본문을 선별 점검했으며 모든 수치·추천 우열·연계 판정을 전면 재검증했다는 의미가 아님."
+  ],
+  "characterChanges": {
+    "c38": {
+      "decision": "곤충 떼 탑승을 일반 공격 보호막으로 오해하지 않도록 피격 대상을 명확히 구분.",
+      "fields": [
+        "caution",
+        "strengths"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/昆虫学者"
+      ]
+    },
+    "c41": {
+      "decision": "직접 쓰는 비늘 경화와 자동 비늘 표피, 재사용 기회의 발동 조건을 분리.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/教授"
+      ]
+    },
+    "c42": {
+      "decision": "활과 손목 쇠뇌의 사용 범위, 이동에 따른 중상 누적과 정지 시 감소를 보완.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/弓使い"
+      ]
+    },
+    "c45": {
+      "decision": "따뜻한 비의 단일 대상·이동 중 회복과 점유 의자 주변 강풍 약화를 구분. 정지 필수라는 문구 삭제.",
+      "fields": [
+        "skill",
+        "caution",
+        "weaknesses"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/気象学者"
+      ]
+    },
+    "c47": {
+      "decision": "해독 완료 후 재생 보호 소멸과 쓰러진 상태 재생의 의자 진행도 비용을 명시.",
+      "fields": [
+        "caution",
+        "hold"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/納棺師",
+        "https://www.identityvgame.com/en/news/announcement/20211209/35288_990855.html",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c48": {
+      "decision": "직접 든 손전등의 침묵과 설치 손전등의 기절만 누적하는 효과, 흥분 예외를 구분.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/泥棒"
+      ]
+    },
+    "c49": {
+      "decision": "구출받을 때 본인 은신과 처음 직접 구출할 때 두 사람 은신의 주체 오류 수정.",
+      "fields": [
+        "skill",
+        "strengths"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/マジシャン",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c52": {
+      "decision": "잠행 해제 이동·밀치기와 무피격 자발 해제에만 붙는 구출 가속 조건 보완.",
+      "fields": [
+        "skill",
+        "use",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/墓守"
+      ]
+    },
+    "c55": {
+      "decision": "회복의 15초·25초 단계와 회복 종료 기준이 단일 타격이 아닌 누적 피해임을 수정.",
+      "fields": [
+        "skill",
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/バーメイド",
+        "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      ]
+    },
+    "c61": {
+      "decision": "스트레스와 연결된 일회성 이동 및 위기 모면 중 감정이입·스트레스 제한을 보완.",
+      "fields": [
+        "skill",
+        "caution",
+        "strengths"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/心理学者"
+      ]
+    },
+    "c68": {
+      "decision": "일반 치료 불가의 다운 상태 예외와 동료 치료·별도 회복을 명확히 설명.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/人形師"
+      ]
+    },
+    "c88": {
+      "decision": "탈출구를 실제로 연 뒤가 아닌 전력 공급 시점에 투영 시간 감소가 시작됨을 수정. 지하 통로 조건 포함.",
+      "fields": [
+        "caution"
+      ],
+      "sources": [
+        "https://wikiwiki.jp/identity5ch/幻灯師",
+        "https://www.identityvgame.com/en/news/announcement/20251226/35288_1278721.html"
+      ]
+    }
+  },
+  "characterCoverage": [
+    {
+      "id": "c37",
+      "name": "곡예사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/曲芸師"
+    },
+    {
+      "id": "c38",
+      "name": "곤충학자",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/昆虫学者"
+    },
+    {
+      "id": "c39",
+      "name": "골동품 상인",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/骨董商"
+    },
+    {
+      "id": "c40",
+      "name": "공군",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/空軍"
+    },
+    {
+      "id": "c41",
+      "name": "교수",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/教授"
+    },
+    {
+      "id": "c42",
+      "name": "궁수",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/弓使い"
+    },
+    {
+      "id": "c43",
+      "name": "기계공",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/機械技師"
+    },
+    {
+      "id": "c44",
+      "name": "기사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/「騎士」"
+    },
+    {
+      "id": "c45",
+      "name": "기상학자",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/気象学者"
+    },
+    {
+      "id": "c46",
+      "name": "기자",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/記者"
+    },
+    {
+      "id": "c47",
+      "name": "납관사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/納棺師"
+    },
+    {
+      "id": "c48",
+      "name": "도둑",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/泥棒"
+    },
+    {
+      "id": "c49",
+      "name": "마술사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/マジシャン"
+    },
+    {
+      "id": "c50",
+      "name": "맹인",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/心眼"
+    },
+    {
+      "id": "c51",
+      "name": "모험가",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/冒険家"
+    },
+    {
+      "id": "c52",
+      "name": "묘지기",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/墓守"
+    },
+    {
+      "id": "c53",
+      "name": "무언극 아티스트",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/マイムアーティスト"
+    },
+    {
+      "id": "c54",
+      "name": "무희",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/踊り子"
+    },
+    {
+      "id": "c55",
+      "name": "바텐더",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/バーメイド"
+    },
+    {
+      "id": "c56",
+      "name": "변호사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/弁護士"
+    },
+    {
+      "id": "c57",
+      "name": "샤먼",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/祭司"
+    },
+    {
+      "id": "c58",
+      "name": "선지자",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/占い師"
+    },
+    {
+      "id": "c59",
+      "name": "소설가",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/小説家"
+    },
+    {
+      "id": "c60",
+      "name": "신동",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/「神童」"
+    },
+    {
+      "id": "c61",
+      "name": "심리학자",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/心理学者"
+    },
+    {
+      "id": "c62",
+      "name": "야만인",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/野人"
+    },
+    {
+      "id": "c63",
+      "name": "여자아이",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/「少女」"
+    },
+    {
+      "id": "c64",
+      "name": "용병",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/傭兵"
+    },
+    {
+      "id": "c65",
+      "name": "우는 광대",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/泣きピエロ"
+    },
+    {
+      "id": "c66",
+      "name": "우편 배달부",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/ポストマン"
+    },
+    {
+      "id": "c67",
+      "name": "의사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/医師"
+    },
+    {
+      "id": "c68",
+      "name": "인형사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/人形師"
+    },
+    {
+      "id": "c69",
+      "name": "작곡가",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/作曲家"
+    },
+    {
+      "id": "c70",
+      "name": "장난감 상인",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/玩具職人"
+    },
+    {
+      "id": "c71",
+      "name": "정원사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/庭師"
+    },
+    {
+      "id": "c72",
+      "name": "조향사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/調香師"
+    },
+    {
+      "id": "c73",
+      "name": "죄수",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/「囚人」"
+    },
+    {
+      "id": "c74",
+      "name": "주술사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/呪術師"
+    },
+    {
+      "id": "c75",
+      "name": "치어리더",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/応援団"
+    },
+    {
+      "id": "c76",
+      "name": "카우보이",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/カウボーイ"
+    },
+    {
+      "id": "c77",
+      "name": "타자",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/バッツマン"
+    },
+    {
+      "id": "c78",
+      "name": "탈출 마스터",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/脱出マスター"
+    },
+    {
+      "id": "c79",
+      "name": "탐사원",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/探鉱者"
+    },
+    {
+      "id": "c80",
+      "name": "투우사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/闘牛士"
+    },
+    {
+      "id": "c81",
+      "name": "파로 부인",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/レディ・ファウロ"
+    },
+    {
+      "id": "c82",
+      "name": "포워드",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/オフェンス"
+    },
+    {
+      "id": "c83",
+      "name": "항공 전문가",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/航空エンジニア"
+    },
+    {
+      "id": "c84",
+      "name": "항해사",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/一等航海士"
+    },
+    {
+      "id": "c85",
+      "name": "행운아",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/幸運児"
+    },
+    {
+      "id": "c86",
+      "name": "화가",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/画家"
+    },
+    {
+      "id": "c87",
+      "name": "화재조사관",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/火災調査員"
+    },
+    {
+      "id": "c88",
+      "name": "환등사",
+      "decision": "updated-conditions",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/幻灯師"
+    },
+    {
+      "id": "c89",
+      "name": "환자",
+      "decision": "screened-no-change",
+      "sourceUrl": "https://wikiwiki.jp/identity5ch/患者"
+    }
+  ],
+  "matchupChanges": {
+    "M029": {
+      "source": "https://wikiwiki.jp/identity5ch/バーメイド",
+      "decision": "술 회복 종료는 일반 공격 한 번 분량의 누적 피해가 기준. 단일 타격으로 한정하지 않음.",
+      "advantageChanged": false
+    },
+    "M130": {
+      "source": "https://wikiwiki.jp/identity5ch/バーメイド",
+      "decision": "술 회복 종료는 일반 공격 한 번 분량의 누적 피해가 기준. 단일 타격으로 한정하지 않음.",
+      "advantageChanged": false
+    },
+    "M139": {
+      "source": "https://wikiwiki.jp/identity5ch/バーメイド",
+      "decision": "분담 피해도 술 회복을 끝내는 누적 피해에 포함하므로 회복 보장을 안내하지 않음.",
+      "advantageChanged": false
+    },
+    "M299": {
+      "source": "https://wikiwiki.jp/identity5ch/バーメイド",
+      "decision": "분담 피해도 술 회복을 끝내는 누적 피해에 포함하므로 회복 보장을 안내하지 않음.",
+      "advantageChanged": false
+    },
+    "M070": {
+      "source": "https://wikiwiki.jp/identity5ch/人形師",
+      "decision": "동료를 치료하는 속도 감소와 쓰러진 인형사가 일반 치료를 받을 수 있다는 예외를 분리. 기존 운영 판정의 범위를 축소.",
+      "advantageChanged": false
+    }
+  },
+  "representativeUpdates": [
+    {
+      "characterId": "c05",
+      "kind": "hard",
+      "evidence": "M029"
+    },
+    {
+      "characterId": "c25",
+      "kind": "easy",
+      "evidence": "M130"
+    },
+    {
+      "characterId": "c28",
+      "kind": "hard",
+      "evidence": "M139"
+    },
+    {
+      "characterId": "c55",
+      "kind": "hard",
+      "evidence": "M130"
+    },
+    {
+      "characterId": "c55",
+      "kind": "easy",
+      "evidence": "M139"
+    },
+    {
+      "characterId": "c55",
+      "kind": "easy",
+      "evidence": "M029"
+    },
+    {
+      "characterId": "c68",
+      "kind": "hard",
+      "evidence": "M070"
+    }
+  ],
+  "linkChanges": [
+    {
+      "index": 30,
+      "character": "납관사",
+      "target": "용병",
+      "fields": [
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 31,
+      "character": "납관사",
+      "target": "죄수",
+      "fields": [
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 32,
+      "character": "납관사",
+      "target": "샤먼",
+      "fields": [
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 54,
+      "character": "바텐더",
+      "target": "용병",
+      "fields": [
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 267,
+      "character": "인형사",
+      "target": "기상학자",
+      "fields": [
+        "reason",
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 268,
+      "character": "기상학자",
+      "target": "인형사",
+      "fields": [
+        "reason",
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 269,
+      "character": "인형사",
+      "target": "바텐더",
+      "fields": [
+        "reason",
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 270,
+      "character": "바텐더",
+      "target": "인형사",
+      "fields": [
+        "reason",
+        "caution",
+        "sources"
+      ]
+    },
+    {
+      "index": 271,
+      "character": "인형사",
+      "target": "심리학자",
+      "fields": [
+        "reason",
+        "sources"
+      ]
+    },
+    {
+      "index": 272,
+      "character": "심리학자",
+      "target": "인형사",
+      "fields": [
+        "reason",
+        "sources"
+      ]
+    }
+  ],
+  "audit": {
+    "path": "research/editorial/2026-11-13/consistency-edits.json",
+    "editOffset": 160,
+    "editCount": 79
+  },
+  "heldByThisReview": [],
+  "removedDisplaySlots": [],
+  "counts": {
+    "survivorsScreened": 53,
+    "survivorsChanged": 12,
+    "matchupsChanged": 5,
+    "linksChanged": 10,
+    "sourceUrls": 488
+  },
+  "limitations": [
+    "죄수·여자아이 위키의 본문을 이번 열람에서 확보하지 못해 상세 수치의 최신성 확인을 완료로 표시하지 않음. 기존 내용은 유지.",
+    "현재 자료에서 모순이 확인되지 않은 인격·역할·난이도·상성 우열은 임의로 바꾸지 않음.",
+    "기상학자 조합의 출구 개방 중 회복 제한은 이번 원문에서 독립적으로 확인하지 못해 확실히 확인한 해독 중 제한으로 좁힘.",
+    "환등사의 종료 시점은 커뮤니티 위키의 개방 표현보다 공식 패치의 전력 공급 조건을 우선함.",
+    "최근 전체 공략 검토일과 부분 편집일·공식 패치 기준일을 분리해 보존함."
+  ],
+  "validation": {
+    "automated": "224개 검사 및 356개 캐릭터 화면 템플릿 검사 통과. 용어 재생성·역할/운용 묶음 지문·이전 160개 편집 이력 보존 확인. 배포 전 공지·버전 보존 및 파일 해시 검사 적용.",
+    "browser": "Chrome 데스크톱 궁수 화면의 손목 쇠뇌 강조와 모바일 320·375px 프레임 6개에서 가로 넘침 없음 확인. 바텐더·납관사·기상학자·인형사의 수정 문구와 줄바꿈 확인.",
+    "limits": "실제 iPhone Safari는 미검증. 미리보기에서 연구실 연동 응답은 확보하지 못했으며 이번 변경은 공개 공략 데이터에 한정. 모든 게임 수치·상성 우열을 실전 재측정한 작업은 아님."
+  }
+}

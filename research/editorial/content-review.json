@@ -558,9 +558,9 @@
       "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c38": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "7df4c24fc56960584f2696d237634dc617ff184d56a9438d08b4869c6cb53c11",
-      "fingerprint": "a6f57666972d870a23b79fa4b80e89d7ec8a9cfdda42cc55a503202f898f6fe4",
+      "date": "2026-11-13",
+      "baselineFingerprint": "a6f57666972d870a23b79fa4b80e89d7ec8a9cfdda42cc55a503202f898f6fe4",
+      "fingerprint": "54e3a0ce4d0df02044a2e64bb9edd779904aaae66e3f24deb314e40b9d97ba2c",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -570,7 +570,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 곤충 떼 탑승을 일반 공격 보호막으로 오해하지 않도록 피격 대상을 명확히 구분. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c39": {
       "date": "2026-11-09",
@@ -603,9 +603,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c41": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "bd7833c1cff6204c98c9e28997b9a88b1ba8f35be03b40d4051ccd40edbef19f",
-      "fingerprint": "311dbc8c54a225f79e8bf8a8b0e37ba4dc1dd8098538e459cf2f53a53bb72806",
+      "date": "2026-11-13",
+      "baselineFingerprint": "311dbc8c54a225f79e8bf8a8b0e37ba4dc1dd8098538e459cf2f53a53bb72806",
+      "fingerprint": "abd1290bb07c4b253f87e6acc94ffaf61620305b7fa11113b1b38d849c2cfec9",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -615,12 +615,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 직접 쓰는 비늘 경화와 자동 비늘 표피, 재사용 기회의 발동 조건을 분리. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c42": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "d466ef8a0304a7caafd62e9e0e022dead7ac3eadffbbb15e5f4a5f24fc3a93ce",
-      "fingerprint": "d34917ba267e9e4a37fcef3a2e99f237cacb51c402c5b129f0af2742e24217ca",
+      "date": "2026-11-13",
+      "baselineFingerprint": "d34917ba267e9e4a37fcef3a2e99f237cacb51c402c5b129f0af2742e24217ca",
+      "fingerprint": "b5b3e41cca0b045907cf9a7dea5d034564b0a2ca22732bf29fb9d43cfcdc857b",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -630,7 +630,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 활과 손목 쇠뇌의 사용 범위, 이동에 따른 중상 누적과 정지 시 감소를 보완. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c43": {
       "date": "2026-10-31",
@@ -663,9 +663,9 @@
       "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c45": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "5a282a17d53c854ea40c50eaa33d2e6c1204e9e080c5b5d17f650c34a51df5fb",
-      "fingerprint": "5151ee8c43988b58428cda48ddffa29911ec114ad8ba6fbca140344081b5c5c0",
+      "date": "2026-11-13",
+      "baselineFingerprint": "5151ee8c43988b58428cda48ddffa29911ec114ad8ba6fbca140344081b5c5c0",
+      "fingerprint": "d0b66dc2d17af616c5eec7b0c3f9888250938ec3cea9b81a170a98dc50c30870",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -675,7 +675,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 따뜻한 비의 단일 대상·이동 중 회복과 점유 의자 주변 강풍 약화를 구분. 정지 필수라는 문구 삭제. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c46": {
       "date": "2026-11-09",
@@ -693,9 +693,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c47": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "a717e3905a4f3bfeed22953261e5bc81d603ddc2d32a01a06715e303fe371baf",
-      "fingerprint": "bbf95da95c3c2fd7e4caa625aead5e713a4cb563266ae3d9ca7ebd9ba56b9f0d",
+      "date": "2026-11-13",
+      "baselineFingerprint": "bbf95da95c3c2fd7e4caa625aead5e713a4cb563266ae3d9ca7ebd9ba56b9f0d",
+      "fingerprint": "eaeefa63549c6311fde5f331553c03e5026d13907b10e303beb0007dd5e9a700",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -705,12 +705,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 해독 완료 후 재생 보호 소멸과 쓰러진 상태 재생의 의자 진행도 비용을 명시. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c48": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "706e7e9189420fa1d48fdb53f3253b76e06304d6051def228c57f3c03d1f0399",
-      "fingerprint": "616664b62af3c58d8dabf62e85793c02dc251863473648670a399bcc2d3772fb",
+      "date": "2026-11-13",
+      "baselineFingerprint": "616664b62af3c58d8dabf62e85793c02dc251863473648670a399bcc2d3772fb",
+      "fingerprint": "fb2c466a9b71f3b3c1beb2d74a5658a158ab55f988d9ab38e29bb18306dd6471",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -720,12 +720,12 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 직접 든 손전등의 침묵과 설치 손전등의 기절만 누적하는 효과, 흥분 예외를 구분. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c49": {
-      "date": "2026-11-08",
-      "baselineFingerprint": "f2b484c5f1cb47b7fb8c27f9c4fe4ce289c1834097288948aeec38e402203819",
-      "fingerprint": "6e7a62206c4ac438fdf2a9eb6c6749707b14c6a8f3737dd9c78bfa1d98865b05",
+      "date": "2026-11-13",
+      "baselineFingerprint": "6e7a62206c4ac438fdf2a9eb6c6749707b14c6a8f3737dd9c78bfa1d98865b05",
+      "fingerprint": "498163afd9774f17725c85bee945600ad131d81d08f7fcf0c5c6d08d59c34ebd",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -735,7 +735,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "생존자의 추격 역할 태그를 어그로로 구분했습니다. 역할 이유·소개·장점·사용·보존·주의를 함께 확인했으며 기존 추격의 주체와 조건이 유지되므로 설명 문장과 메인·서브 순서는 바꾸지 않았습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 구출받을 때 본인 은신과 처음 직접 구출할 때 두 사람 은신의 주체 오류 수정. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c50": {
       "date": "2026-11-13",
@@ -768,9 +768,9 @@
       "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
     },
     "c52": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "febc60f99694afd95c5955b1c4bd1a3a3f995cbff79760eaf842a5bf82ff201a",
-      "fingerprint": "08defe6153766ff03dcdba481c180b1af40a41c54f7c8335bd8f9f4e69813df4",
+      "date": "2026-11-13",
+      "baselineFingerprint": "08defe6153766ff03dcdba481c180b1af40a41c54f7c8335bd8f9f4e69813df4",
+      "fingerprint": "6a1e19c9a2efc6da89c53a3baf5a1b209ac95f202673e5eab4c320ab3bb7cc7e",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -780,7 +780,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 잠행 해제 이동·밀치기와 무피격 자발 해제에만 붙는 구출 가속 조건 보완. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c53": {
       "date": "2026-11-09",
@@ -813,9 +813,9 @@
       "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c55": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "a094b7cc4907556e438214ca3709f8575c009c8fff450071c7d6479a3f7a4e50",
-      "fingerprint": "4c0eea3b80878ef504533d36736bbb9a7ec0fbc9a080e1ea8d2e0490fad62226",
+      "date": "2026-11-13",
+      "baselineFingerprint": "4c0eea3b80878ef504533d36736bbb9a7ec0fbc9a080e1ea8d2e0490fad62226",
+      "fingerprint": "37cdbec7ac517141984cb4bf0aa920e2b0509143bd6d7a9ce26a13fae60ee0b2",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -825,7 +825,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 회복의 15초·25초 단계와 회복 종료 기준이 단일 타격이 아닌 누적 피해임을 수정. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c56": {
       "date": "2026-11-09",
@@ -903,9 +903,9 @@
       "assessment": "역할·소개·장점·사용·보존·주의를 함께 대조하고 공식 패치가 바꾼 능력과 조건을 반영했습니다. 역할과 기본 공략 검토일은 유지하며 전체 밸런스나 실전 승률을 재검증했다는 뜻은 아닙니다."
     },
     "c61": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "d884aa6d995bf26b0f7b7f4bcbf8c6f86cb727973853c3628d107c1771cd8add",
-      "fingerprint": "90a4960b435ef93eac8f1579d87c998ed3d9eaa72540c740e40426c3923c5d5e",
+      "date": "2026-11-13",
+      "baselineFingerprint": "90a4960b435ef93eac8f1579d87c998ed3d9eaa72540c740e40426c3923c5d5e",
+      "fingerprint": "d6f367d76ccf81d867889c7abcb6a95e94dab859de4525a5f4d0e7b73e658dd4",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -915,7 +915,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 스트레스와 연결된 일회성 이동 및 위기 모면 중 감정이입·스트레스 제한을 보완. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c62": {
       "date": "2026-11-09",
@@ -1008,9 +1008,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c68": {
-      "date": "2026-11-09",
-      "baselineFingerprint": "0168675d8558237b8f3cbe30c16cc583ba5a9a56daa3c8657af821c8a2594bcd",
-      "fingerprint": "8d60926219914ebb3a3e911be43f7df15bc1a759066d9dfe2a2360aa2affa74f",
+      "date": "2026-11-13",
+      "baselineFingerprint": "8d60926219914ebb3a3e911be43f7df15bc1a759066d9dfe2a2360aa2affa74f",
+      "fingerprint": "cb0c52bd16395dd91de882a60b6e2c70ac804e32e8dcd52053e20a893291941f",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1020,7 +1020,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 일반 치료 불가의 다운 상태 예외와 동료 치료·별도 회복을 명확히 설명. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c69": {
       "date": "2026-11-09",
@@ -1308,9 +1308,9 @@
       "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자의 어그로와 감시자의 사냥을 행동 주체에 맞게 구분했습니다. 상대 대응 문장과 조사를 함께 확인했으며, 공략 조건·수치·역할 순서와 판정은 유지했습니다."
     },
     "c88": {
-      "date": "2026-10-31",
+      "date": "2026-11-13",
       "baselineFingerprint": "e46b2b882872618c2f86e0e9a44d265d986e152f7baf81cbda6f9c22ba0e4269",
-      "fingerprint": "e46b2b882872618c2f86e0e9a44d265d986e152f7baf81cbda6f9c22ba0e4269",
+      "fingerprint": "7f0d8d7d78dfe7040959cbfdfd8f7135618f7a112e885724df4450e3917052ea",
       "reviewedFields": [
         "specialties",
         "specialtyReasons",
@@ -1320,7 +1320,7 @@
         "hold",
         "caution"
       ],
-      "assessment": "소개·스킬·장단점·운용·대응·인격·역할 설명을 캐릭터별로 함께 읽었습니다. 행동 주체·목적어·문장 연결을 다듬고 기존 조건·수치·역할·상성 판단과 장단점의 어구체는 유지했습니다."
+      "assessment": "역할·역할 이유·소개·장점·사용·보존·주의를 함께 읽고 생존자 스킬의 적용 조건과 예외를 대조했습니다. 탈출구를 실제로 연 뒤가 아닌 전력 공급 시점에 투영 시간 감소가 시작됨을 수정. 지하 통로 조건 포함. 기존 역할·인격 추천·전체 밸런스 검토일은 유지합니다."
     },
     "c89": {
       "date": "2026-11-09",

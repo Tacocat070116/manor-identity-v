@@ -548,6 +548,23 @@
       },
       "announcement": "pending",
       "evidence": "research/refresh/2026-11-13/guide-patch-review.json"
+    },
+    {
+      "date": "2026-11-13",
+      "scope": "survivor-guide-condition-review",
+      "summary": [
+        "생존자 53명의 설명을 선별 점검하고 12명의 스킬 적용 조건·회복 예외 보완",
+        "마술사의 구출 주체별 은신, 바텐더의 단계별 회복과 누적 피해, 납관사·환등사의 해독 완료 후 조건 수정",
+        "연결된 상성 5건·조합 10건과 대표 카드 설명을 함께 정리",
+        "궁수의 손목 쇠뇌 설명·강조 및 현재 출처 URL 수 갱신"
+      ],
+      "validation": {
+        "automated": "224개 검사 및 356개 캐릭터 화면 템플릿 검사 통과. 용어 재생성·역할/운용 묶음 지문·이전 160개 편집 이력 보존 확인. 배포 전 공지·버전 보존 및 파일 해시 검사 적용.",
+        "browser": "Chrome 데스크톱 궁수 화면의 손목 쇠뇌 강조와 모바일 320·375px 프레임 6개에서 가로 넘침 없음 확인. 바텐더·납관사·기상학자·인형사의 수정 문구와 줄바꿈 확인.",
+        "limits": "실제 iPhone Safari는 미검증. 미리보기에서 연구실 연동 응답은 확보하지 못했으며 이번 변경은 공개 공략 데이터에 한정. 모든 게임 수치·상성 우열을 실전 재측정한 작업은 아님."
+      },
+      "announcement": "pending",
+      "evidence": "research/refresh/2026-11-13/survivor-review.json"
     }
   ]
 }
