@@ -149,6 +149,10 @@ for name, data in all_files.items():
             parent = parent[int(part)] if isinstance(parent, list) else parent[part]
         key = int(parts[-1]) if isinstance(parent, list) else parts[-1]
         if edit.get('beforeMissing'):
+            if isinstance(parent, list):
+                assert key == len(parent), f"{edit['path']}: editorial list addition must append"
+                parent.append(copy.deepcopy(edit['after']))
+                continue
             assert key not in parent, f"{edit['path']}: editorial addition already exists"
         else:
             assert parent[key] == edit['before'], f"{edit['path']}: editorial baseline differs"

@@ -84,7 +84,11 @@ test('every replacement has provenance and the audit only touches editorial fiel
  const editorialDates=fs.readdirSync('research/editorial').filter(date=>/^\d{4}-\d{2}-\d{2}$/.test(date)&&fs.existsSync('research/editorial/'+date+'/consistency-edits.json')).sort().reverse();
  for(const edit of editorialDates.flatMap(date=>read('research/editorial/'+date+'/consistency-edits.json').edits.toReversed())){
   const [,file,...parts]=edit.path.split('/');let parent=files[file];for(const part of parts.slice(0,-1))parent=parent[part];
-  assert.deepEqual(parent[parts.at(-1)],edit.after);if(edit.beforeMissing)delete parent[parts.at(-1)];else parent[parts.at(-1)]=structuredClone(edit.before);
+  assert.deepEqual(parent[parts.at(-1)],edit.after);
+  if(edit.beforeMissing){
+   if(Array.isArray(parent)){assert.equal(Number(parts.at(-1)),parent.length-1,'reverse appended evidence in order');parent.pop();}
+   else delete parent[parts.at(-1)];
+  }else parent[parts.at(-1)]=structuredClone(edit.before);
  }
  for(const review of [...roleReviews].reverse()){
   assert.deepEqual(files['specialties.json'].characters[review.characterId],review.after,review.characterId+' reviewed roles');
@@ -103,7 +107,8 @@ test('every replacement has provenance and the audit only touches editorial fiel
   else if(group==='links')assert.ok(['reason','use','when','caution'].includes(field),edit.path);
   else assert.fail(edit.path);
  }
- assert.equal(db.characters.length,89);assert.equal(db.matchups.length,463);assert.equal(db.links.length,275);
+ assert.equal(db.characters.length,89);assert.equal(db.matchups.length,471);assert.equal(db.links.length,275);
+ assert.equal(files['data.json'].matchups.length,463,'reversing editorial additions restores the original evidence list');
  assert.equal(db.meta.recordLatest,'2026-11-08');
 });
 

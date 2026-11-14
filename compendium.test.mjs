@@ -136,7 +136,12 @@ test('single-source and opposite situational evidence remain reachable without p
  }
  assert.ok(all>=800);
  assert.ok(db.matchups.some(m=>m.listEligible&&m.sourceFamilies.length===1));
- assert.equal(db.matchups.filter(m=>m.status==='보류').length,49+guidePatch.heldByThisReview.length);
+ const naverReview=JSON.parse(fs.readFileSync('research/matchups/2026-11-13/naver-review.json','utf8'));
+ assert.equal(db.matchups.filter(m=>m.status==='보류').length,49+guidePatch.heldByThisReview.length+naverReview.heldByThisReview.length);
+ for(const id of naverReview.heldByThisReview){
+  const held=db.matchups.find(m=>m.id===id),hunter=db.characters.find(c=>c.name===held.hunter),survivor=db.characters.find(c=>c.name===held.survivor);
+  assert.deepEqual(pairEvidence(db.matchups,hunter,survivor),[],id+' conflicting evidence stays out of public matchup conclusions');
+ }
  assert.ok(db.characters.some(c=>c.easy.some(a=>c.hard.some(b=>a.name===b.name))));
 });
 

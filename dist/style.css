@@ -390,7 +390,7 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-th
 .matchup-summary-details .text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-size:13px}
 .matchup-summary-context{border-top:1px solid var(--line);margin-top:16px;padding-top:16px}
 .matchup-summary-context p{margin-top:8px;font-size:14px;line-height:1.75}
-.matchup-condition strong{display:block;margin-bottom:4px;font-size:12px;color:var(--muted)}
+.matchup-condition>strong:first-child{display:block;margin-bottom:4px;font-size:12px;color:var(--muted)}
 .matchup-basics{border:1px solid var(--line);border-radius:20px;padding:0 24px;background:var(--surface)}
 .matchup-basics>summary{min-height:56px;padding:16px 0;font-weight:700;cursor:pointer}
 .matchup-basics[open]{padding-bottom:24px}

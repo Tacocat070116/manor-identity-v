@@ -1,4 +1,4 @@
-import {skillNamesFor,skillTextParts} from './skill-names.js?v=5cc055e8b3a4';
+import {skillNamesFor,skillTextParts} from './skill-names.js?v=e04548b306f9';
 // Presentation only: keep saved text, URLs, editable values and code unchanged.
 const excluded='script,style,textarea,input,select,code,pre,kbd,samp,math,svg,[contenteditable],.inline-copy';
 const separators=/[ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*[·•ㆍ∙‧][ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*/g;

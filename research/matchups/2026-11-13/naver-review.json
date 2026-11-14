@@ -1,0 +1,503 @@
+{
+  "date": "2026-11-13",
+  "baseline": "6246476e19191aaf68ce9cc84b2d8c6340b0176f",
+  "scope": "네이버 카페 검색·본문·댓글과 현재 기전을 대조한 상성 부분 갱신",
+  "gameBalanceRevalidated": false,
+  "method": [
+    "로그인 후 회원 접근 권한으로 카페 내부의 글+댓글 검색 사용. 총 13개 검색어·게시판 조합과 글 17건의 본문·댓글 검토. 카페 전체 수집이나 모든 댓글·영상 검증은 아님.",
+    "작성자 정정, 반대 사례, 시험 서버와 정식 서버 구분, 이후 공식 패치를 우선 확인. 카페 등급·추천 수만으로 사실 판정하지 않음.",
+    "커뮤니티 글들은 하나의 출처군으로 집계. 공식 GM 공지는 영문 공지와 같은 netease-official 출처군. MANOR 소개·재인용은 독립 근거로 사용하지 않음.",
+    "확인한 상호작용과 적용 조건을 요약하며 체감 티어·승률로 바꾸지 않음. 원문·개인 계정 정보·로그인 URL은 저장하지 않음."
+  ],
+  "cafe": {
+    "url": "https://cafe.naver.com/identity5",
+    "searches": [
+      {
+        "query": "상성",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "카운터",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "카운터",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "카운터",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "상대법",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 묘지기",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "환등사 박사",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "잡화상 포워드",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 기자",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 환영",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "잡화상 풍구",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "잡화상 화재",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "잡화상 에어백",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      }
+    ],
+    "articles": [
+      {
+        "articleId": 7967274,
+        "publishedAt": "2026-04-19",
+        "topic": "잡화상–포워드 상성",
+        "decision": "accepted-conditions",
+        "reason": "구역을 비껴 가는 태클 사례로 제한 조건 보완.",
+        "url": "https://cafe.naver.com/identity5/7967274"
+      },
+      {
+        "articleId": 7819011,
+        "publishedAt": "2025-12-21",
+        "topic": "여왕벌 상성 정리",
+        "decision": "partially-accepted",
+        "reason": "기자 댓글의 기전만 대조. 이미지 순위 미확인. 묘지기 우열은 보류.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7819011"
+      },
+      {
+        "articleId": 7520449,
+        "publishedAt": "2025-05-23",
+        "topic": "기사의 감시자별 상성",
+        "decision": "partially-accepted",
+        "reason": "특정 행동의 상호작용만 사용. 시공의 그림자·훌라발루 정정 댓글 반영.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7520449"
+      },
+      {
+        "articleId": 8030565,
+        "publishedAt": "2026-06-02",
+        "topic": "파로 부인–은둔자",
+        "decision": "rejected",
+        "reason": "무한 해독 보너스는 질문·추측뿐이며 적용 조건 불충분."
+      },
+      {
+        "articleId": 7896756,
+        "publishedAt": "2026-02-20",
+        "topic": "투우사 공략과 잡기술",
+        "decision": "partially-accepted",
+        "reason": "전극 방어 주장은 작성자 정정으로 제외. 오페라 우열 논쟁과 4월 이전 수치는 채택하지 않음.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7896756"
+      },
+      {
+        "articleId": 7659100,
+        "publishedAt": "2025-08-25",
+        "topic": "기사 예측 판정 설명",
+        "decision": "accepted-conditions",
+        "reason": "발동 전후·수동/자동·본체/이스인 구분에 사용. 같은 작성자의 다른 글은 별도 독립 출처로 세지 않음.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7659100"
+      },
+      {
+        "articleId": 8041591,
+        "publishedAt": "2026-06-09",
+        "topic": "무언극 아티스트 플레이 아이디어",
+        "decision": "rejected",
+        "reason": "벽 거리에서 추산한 고정 19미터 이동과 확정 풍선 탈출은 검증되지 않음."
+      },
+      {
+        "articleId": 7643046,
+        "publishedAt": "2025-08-15",
+        "topic": "악몽 운용 팁",
+        "decision": "screened-no-change",
+        "reason": "후속 댓글에서 확인되지 않은 낙하 공격 취소 팁은 제외. 현재 설명을 반복 추가하지 않음."
+      },
+      {
+        "articleId": 7120352,
+        "publishedAt": "2024-09-11",
+        "topic": "사도의 탐사원 사냥",
+        "decision": "accepted-conditions",
+        "reason": "척력 연결·선타 조건만 사용. 오래된 수치와 영상 미검증 내용 제외.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7120352"
+      },
+      {
+        "articleId": 7630183,
+        "publishedAt": "2025-08-08",
+        "topic": "사진사 운용 팁",
+        "decision": "rejected",
+        "reason": "다른 세계의 소리 관련 버그 추측은 상성 근거로 채택하지 않음."
+      },
+      {
+        "articleId": 8217190,
+        "publishedAt": "2026-10-12",
+        "topic": "여왕벌–묘지기 경험담",
+        "decision": "held-candidate",
+        "reason": "잠행 중 에너지와 구출 상황의 의견 충돌. 짧은 생존 시간 경험담으로 우열을 정하지 않음."
+      },
+      {
+        "articleId": 8256234,
+        "publishedAt": "2026-11-07",
+        "topic": "박사–환등사 경험담",
+        "decision": "held-candidate",
+        "reason": "반응 속도 비교와 체감만으로 대진 전체의 유불리 미확정."
+      },
+      {
+        "articleId": 8176904,
+        "publishedAt": "2026-09-13",
+        "topic": "박사의 환등사·파로 대응 질문",
+        "decision": "partially-accepted",
+        "reason": "훌라발루 화염 구역 댓글만 기존 근거와 대조. 무상성 주장은 제외.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8176904"
+      },
+      {
+        "articleId": 8261957,
+        "publishedAt": "2026-11-11",
+        "topic": "공식 11월 12일 업데이트 예고",
+        "decision": "official-cross-check",
+        "reason": "기존 반영 패치와 대조. 영문 공지와 같은 공식 출처군으로 취급."
+      },
+      {
+        "articleId": 8155064,
+        "publishedAt": "2026-08-26",
+        "topic": "마음의 짐승–기자",
+        "decision": "held-candidate",
+        "reason": "후속 밸런스 변경 전 글이므로 현재 우열 근거로 올리지 않음."
+      },
+      {
+        "articleId": 8187522,
+        "publishedAt": "2026-09-21",
+        "topic": "시험 서버 신동 상성표",
+        "decision": "rejected",
+        "reason": "정식 서버 전 자료. 11월 12일 조각상·위협·놀래키기 조정과 충돌."
+      },
+      {
+        "articleId": 7531633,
+        "publishedAt": "2025-05-31",
+        "topic": "화재조사관–잡화상 에어백 판정",
+        "decision": "conflicting",
+        "reason": "본체가 막힌 개별 사례와 통과 가능 배치 설명이 충돌. M375 보류.",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7531633"
+      }
+    ]
+  },
+  "matchupChanges": {
+    "M001": {
+      "decision": "척력 발동 전의 거리 이탈과 선타 예외 보완.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7120352"
+      ]
+    },
+    "M023": {
+      "decision": "예측 시작 전 돌진과 범위 안의 새 발동을 구분.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7659100",
+        "https://wikiwiki.jp/identity5ch/騎士"
+      ]
+    },
+    "M088": {
+      "decision": "거울과 본체 사이의 예측 범위를 수치로 명시.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7520449",
+        "https://wikiwiki.jp/identity5ch/騎士"
+      ]
+    },
+    "M126": {
+      "decision": "예측이 성립하는 거리와 봉인 종료 뒤 재접근 보완.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7520449",
+        "https://wikiwiki.jp/identity5ch/騎士"
+      ]
+    },
+    "M058": {
+      "decision": "굳은 뒤 기술을 쓸 수 있다는 오해를 막고 휩쓸기 시점으로 한정.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7896756",
+        "https://wikiwiki.jp/identity5ch/闘牛士"
+      ]
+    },
+    "M435": {
+      "decision": "정확한 휩쓸기 시점과 광대의 부품 반환 이후까지 설명.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7896756",
+        "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html",
+        "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      ]
+    },
+    "M436": {
+      "decision": "물레타의 이동 전체가 무적이라는 오해를 방지.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7896756",
+        "https://wikiwiki.jp/identity5ch/闘牛士"
+      ]
+    },
+    "M437": {
+      "decision": "화염 구역 진입에 따른 중단과 구역 밖 방어를 구분.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7896756",
+        "https://wikiwiki.jp/identity5ch/フラバルー"
+      ]
+    },
+    "M373": {
+      "decision": "속박 구역과 기절 경감을 풍선 구출 완전 차단으로 일반화하지 않음.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/identity5/7967274",
+        "https://wikiwiki.jp/identity5ch/雑貨商"
+      ]
+    },
+    "M286": {
+      "decision": "투영 사용 봉쇄를 구역·발동 시점 조건으로 명시.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8176904",
+        "https://wikiwiki.jp/identity5ch/フラバルー"
+      ]
+    },
+    "M375": {
+      "decision": "에어백에 본체가 막힌다는 과거 사례와 통과 가능한 배치를 설명한 현행 자료가 충돌해 우열 보류.",
+      "statusBefore": "반영",
+      "statusAfter": "보류",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7531633",
+        "https://wikiwiki.jp/identity5ch/雑貨商"
+      ]
+    }
+  },
+  "added": [
+    "M464",
+    "M465",
+    "M466",
+    "M467",
+    "M468",
+    "M469",
+    "M470",
+    "M471"
+  ],
+  "heldByThisReview": [
+    "M375"
+  ],
+  "removedDisplaySlots": [
+    {
+      "characterId": "c29",
+      "kind": "hard",
+      "evidence": "M375"
+    },
+    {
+      "characterId": "c87",
+      "kind": "easy",
+      "evidence": "M375"
+    }
+  ],
+  "addedDisplaySlots": [
+    {
+      "characterId": "c06",
+      "kind": "hard",
+      "evidence": "M467"
+    },
+    {
+      "characterId": "c10",
+      "kind": "hard",
+      "evidence": "M465"
+    },
+    {
+      "characterId": "c13",
+      "kind": "hard",
+      "evidence": "M468"
+    },
+    {
+      "characterId": "c18",
+      "kind": "hard",
+      "evidence": "M466"
+    },
+    {
+      "characterId": "c24",
+      "kind": "easy",
+      "evidence": "M464"
+    },
+    {
+      "characterId": "c44",
+      "kind": "easy",
+      "evidence": "M465"
+    },
+    {
+      "characterId": "c44",
+      "kind": "easy",
+      "evidence": "M466"
+    },
+    {
+      "characterId": "c44",
+      "kind": "hard",
+      "evidence": "M469"
+    },
+    {
+      "characterId": "c44",
+      "kind": "hard",
+      "evidence": "M470"
+    }
+  ],
+  "representativeUpdates": [
+    {
+      "characterId": "c12",
+      "kind": "easy",
+      "evidence": "M058"
+    },
+    {
+      "characterId": "c16",
+      "kind": "easy",
+      "evidence": "M088"
+    },
+    {
+      "characterId": "c18",
+      "kind": "hard",
+      "evidence": "M001"
+    },
+    {
+      "characterId": "c23",
+      "kind": "easy",
+      "evidence": "M436"
+    },
+    {
+      "characterId": "c25",
+      "kind": "hard",
+      "evidence": "M126"
+    },
+    {
+      "characterId": "c29",
+      "kind": "easy",
+      "evidence": "M373"
+    },
+    {
+      "characterId": "c36",
+      "kind": "easy",
+      "evidence": "M286"
+    },
+    {
+      "characterId": "c36",
+      "kind": "easy",
+      "evidence": "M437"
+    },
+    {
+      "characterId": "c44",
+      "kind": "hard",
+      "evidence": "M088"
+    },
+    {
+      "characterId": "c44",
+      "kind": "hard",
+      "evidence": "M023"
+    },
+    {
+      "characterId": "c44",
+      "kind": "easy",
+      "evidence": "M126"
+    },
+    {
+      "characterId": "c79",
+      "kind": "easy",
+      "evidence": "M001"
+    },
+    {
+      "characterId": "c80",
+      "kind": "hard",
+      "evidence": "M436"
+    },
+    {
+      "characterId": "c80",
+      "kind": "hard",
+      "evidence": "M437"
+    },
+    {
+      "characterId": "c80",
+      "kind": "hard",
+      "evidence": "M058"
+    },
+    {
+      "characterId": "c80",
+      "kind": "easy",
+      "evidence": "M435"
+    },
+    {
+      "characterId": "c88",
+      "kind": "hard",
+      "evidence": "M286"
+    }
+  ],
+  "beforeCounts": {
+    "total": 463,
+    "accepted": 413,
+    "held": 50,
+    "displayedSlots": 629,
+    "sourceUrls": 491
+  },
+  "afterCounts": {
+    "total": 471,
+    "accepted": 420,
+    "held": 51,
+    "displayedSlots": 636,
+    "sourceUrls": 501
+  },
+  "audit": {
+    "path": "research/editorial/2026-11-13/consistency-edits.json",
+    "editOffset": 336,
+    "editCount": 82
+  },
+  "limitations": [
+    "모든 대진·티어·승률을 실전 재측정한 검토가 아님.",
+    "이미지로만 제시된 순위, 재생하지 않은 영상, 회원 작성자의 경력 주장은 별도 증거로 채택하지 않음.",
+    "여왕벌–묘지기, 박사–환등사, 마음의 짐승–기자는 추가 확인 후보로 남기며 공개 확정 상성을 신설하지 않음.",
+    "M375는 현재 배치별 재현 자료가 필요. 보류를 반대 방향의 우세로 해석하지 않음.",
+    "대표 목록은 진영·유불리별 최대 5개를 유지. 새 근거는 대진 상세에서 확인하며 기존 대표를 무작위로 밀어내지 않음."
+  ],
+  "validation": {
+    "automated": "224개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 새 근거 8건의 정방향·역방향 편집 재생, 보류 대진의 공개 제외, 기존 공지·통계 보존 검사.",
+    "browser": "Chrome에서 기사–리퍼·잡화상–포워드·여왕벌–기자·화재조사관–잡화상 네 대진의 320·375px 프레임 확인. 가로 넘침 없음, 스킬 강조는 문장 안에 유지, 보류 대진은 미확인 안내 표시.",
+    "limits": "실제 iPhone Safari와 실전 대진 재현은 수행하지 않음. 미리보기의 유저 상대법 서버 응답은 확보하지 못함."
+  },
+  "displayFix": "상성 조건의 제목만 블록으로 표시하고 본문의 스킬 강조는 인라인으로 유지."
+}
