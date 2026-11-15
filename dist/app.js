@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=77fa58ff2e8b';
+import {loadFeature} from './feature-loader.js?v=6dee3b0b66b5';
 import './typography.js?v=523bbfd675cd';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=403a09ef583a';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -7,7 +7,7 @@ import {mountSeasonalEffects} from './seasonal-effects.js?v=24bf19695f6d';
 import {createPreferenceSync} from './preferences.js?v=5095557af69a';
 import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=89308651af5f';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
-import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=5fd8ec1aadc3';
+import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=0deba77bab30';
 import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=3e25de1d285d';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -99,7 +99,7 @@ async function prepareStatistics(){
 function loadRanked(filters={...state.statistics}){
  return prepareStatistics().then(()=>rankedSource.load(filters));
 }
-const loadGuideData=cachedJSON('data.json?v=c17ef95658bc','공략 자료를 불러오지 못했습니다.');
+const loadGuideData=cachedJSON('data.json?v=23d701639805','공략 자료를 불러오지 못했습니다.');
 async function ensureGuides(){
  if(db.matchups)return;
  const data=await loadGuideData();
@@ -300,12 +300,12 @@ function auxiliaryTraitCard(l){
  return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl class="auxiliary-trait-condition"><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></dl></div>`;
 }
 function survivorSynergyCard(group,c){
- const entry=l=>`<p class="sy-context">${esc(l.character)}의 활용을 중심으로</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}${l.basisKind==='candidate'?'<p class="synergy-guidance">스킬 설명에 따른 조합 후보로, 실전 연계 효과는 미확인입니다.</p>':l.basisKind==='historical_direct_guide'?`<p class="synergy-guidance">이전 공략 기준입니다. 검토일 ${esc(l.reviewedAt)} 이후의 스킬 변경을 확인하세요.</p>`:''}`;
+ const entry=l=>`<p class="sy-context">${guide(l.interaction,byName[l.character]?.id,byName[l.target]?.id)}</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}`;
  return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(situationLabel(s,'생존자'))).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">이 조합 토론 →</a></article>`;
 }
 function survivorSynergies(c){
  const groups=synergyGroups(db.links,c.name,byId);
- return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><div class="three-col">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">추천 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><p class="muted">두 캐릭터의 스킬이 맞물리는 연계와 성립 조건을 소개합니다.</p><div class="three-col section-gap">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">구체적인 스킬 연계 근거를 확인한 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
@@ -586,7 +586,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  seasonalEffects=mountSeasonalEffects({document,storage:themeStorage,media:matchMedia('(prefers-reduced-motion:reduce)')});
- const responses=await Promise.all([fetch('catalog.json?v=3ea045b75a57'),fetch('specialties.json?v=500dcc06d1f1'),fetch('introductions.json?v=41a16fbff6b9'),fetch('releases.json?v=99986ca5c098')]);
+ const responses=await Promise.all([fetch('catalog.json?v=3b0433809082'),fetch('specialties.json?v=500dcc06d1f1'),fetch('introductions.json?v=41a16fbff6b9'),fetch('releases.json?v=99986ca5c098')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

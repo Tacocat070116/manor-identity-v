@@ -70,8 +70,10 @@ test('synergy links restore pair and post, dispose on exit, and do not create a 
  const h=await harness('#v=character&c=c58&tab=synergy&partner=c55&post='+id);
  assert.equal(h.state.view,'laboratory');assert.equal(h.state.tab,'overview');assert.equal(h.synergyMounts[0].postId,id);assert.equal(h.synergyMounts[0].partnerId,'c55');
  h.context.location.hash='#v=character&c=c58';h.readRoute();await h.render();assert.equal(h.synergyDisposed(),1);
+ assert.ok(h.html().includes('구체적인 스킬 연계 근거를 확인한 조합이 없습니다.'));assert.ok(!h.html().includes('이 조합 토론'));
+ h.context.location.hash='#v=character&c=c59';h.readRoute();await h.render();
  assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('이 조합 토론'));
- assert.match(h.html(),/href="#v=laboratory&c=c58&topic=combination&partner=c\d+"/);
+ assert.match(h.html(),/href="#v=laboratory&c=c59&topic=combination&partner=c88"/);
  h.context.location.hash='#v=character&c=c01&tab=synergy';h.readRoute();await h.render();assert.equal(h.state.tab,'overview');assert.ok(!h.html().includes('data-tab="synergy"'));
 });
 

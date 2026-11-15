@@ -1,4 +1,4 @@
-import {RESEARCH_TOPICS,synergyEscape as e,synergyRoute} from './synergy-model.js?v=5fd8ec1aadc3';
+import {RESEARCH_TOPICS,synergyEscape as e,synergyRoute} from './synergy-model.js?v=0deba77bab30';
 
 export function researchHighlights(posts,characterId,characters){
  const link=synergyRoute(characterId);

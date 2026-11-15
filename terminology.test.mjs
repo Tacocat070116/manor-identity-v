@@ -107,7 +107,8 @@ test('every replacement has provenance and the audit only touches editorial fiel
   else if(group==='links')assert.ok(['reason','use','when','caution'].includes(field),edit.path);
   else assert.fail(edit.path);
  }
- assert.equal(db.characters.length,89);assert.equal(db.matchups.length,496);assert.equal(db.links.length,275);
+ assert.equal(db.characters.length,89);assert.equal(db.matchups.length,496);assert.equal(db.links.length,128);
+ assert.equal(files['data.json'].links.length,275,'reversing the duo replacement restores every previous recommendation');
  assert.equal(files['data.json'].matchups.length,463,'reversing editorial additions restores the original evidence list');
  assert.equal(db.meta.recordLatest,'2026-11-08');
 });

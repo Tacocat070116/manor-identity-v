@@ -24,12 +24,13 @@ export function synergyGroups(links,character,characters){
  const byName=Object.fromEntries(Object.values(characters).map(c=>[c.name,c]));
  const groups=new Map();
  for(const link of links){
+  if(link.type!=='시너지'||link.status!=='반영'||link.basisKind!=='duo_interaction')continue;
   if(link.character!==character&&link.target!==character)continue;
   if(byName[link.character]?.side!=='생존자'||byName[link.target]?.side!=='생존자')continue;
   const partner=byName[link.character===character?link.target:link.character];
-  if(!groups.has(partner.id))groups.set(partner.id,{partner,entries:[],order:1000+(link.order||0)});
+  if(!groups.has(partner.id))groups.set(partner.id,{partner,entries:[],order:link.order||0});
   const group=groups.get(partner.id);group.entries.push(link);
-  if(link.character===character)group.order=Math.min(group.order,link.order||0);
+  group.order=Math.min(group.order,link.order||0);
  }
  return [...groups.values()].map(group=>({...group,entries:group.entries.sort((a,b)=>Number(b.character===character)-Number(a.character===character)),situations:SYNERGY_SITUATIONS.filter(s=>group.entries.some(e=>e.situations?.includes(s)))})).sort((a,b)=>a.order-b.order||a.partner.name.localeCompare(b.partner.name,'ko'));
 }

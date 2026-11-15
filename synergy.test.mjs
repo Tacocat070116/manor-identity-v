@@ -16,7 +16,29 @@ test('all survivor pairs remain reachable from either character, grouped without
    for(const entry of g.entries){assert.ok(entry.use&&entry.when&&entry.caution);assert.ok(entry.situations.length);assert.ok(entry.situations.every(s=>SYNERGY_SITUATIONS.includes(s)));}
   }
  }
- const seer=synergyGroups(db.links,characters.c58.name,characters);assert.ok(seer.find(g=>g.partner.id==='c55'),'barmaid → seer is discoverable from seer too');
+ const novelist=synergyGroups(db.links,characters.c59.name,characters);assert.equal(novelist.find(g=>g.partner.id==='c88').entries.length,1,'lantern → novelist is discoverable in reverse without duplicate rows');
+});
+test('published duos require specific interactions, evidence and conditions; generic roles never fill empty lists',()=>{
+ const review=JSON.parse(fs.readFileSync('research/synergies/2026-11-15/duo-review.json','utf8'));
+ const duos=db.links.filter(l=>l.type==='시너지');
+ assert.equal(duos.length,review.after.uniquePairs);
+ assert.equal(new Set(duos.map(l=>[l.character,l.target].sort().join('|'))).size,duos.length);
+ for(const l of duos){
+  assert.equal(l.status,'반영');assert.equal(l.basisKind,'duo_interaction');
+  assert.ok(l.interaction&&l.reason&&l.use&&l.when&&l.caution&&l.reviewedAt);
+  assert.ok(l.sourceSupport.some(s=>s.kind==='community'&&s.url.startsWith('https://cafe.naver.com/')));
+  assert.deepEqual(l.sources,[...new Set(l.sourceSupport.map(s=>s.url))]);
+  assert.ok(l.sourceSupport.every(s=>s.note&&new URL(s.url).protocol==='https:'));
+  const a=synergyGroups(db.links,l.character,characters).find(g=>g.partner.name===l.target);
+  const b=synergyGroups(db.links,l.target,characters).find(g=>g.partner.name===l.character);
+  assert.equal(a.order,b.order);assert.deepEqual(a.entries,b.entries);
+ }
+ const valid=duos[0];
+ for(const override of [{basisKind:'role_division'},{basisKind:'candidate'},{status:'보류'},{type:'보조 특성'}])assert.deepEqual(synergyGroups([{...valid,...override}],valid.character,characters),[]);
+ assert.deepEqual(synergyGroups(db.links,'선지자',characters),[]);
+ const edit=JSON.parse(fs.readFileSync('research/editorial/2026-11-15/consistency-edits.json','utf8')).edits.find(e=>e.path==='dist/data.json/links');
+ const hunterNames=new Set(db.characters.filter(c=>c.side==='감시자').map(c=>c.name));
+ assert.deepEqual(db.links.filter(l=>hunterNames.has(l.character)),edit.before.filter(l=>hunterNames.has(l.character)),'all 108 hunter auxiliary trait recommendations stay unchanged');
 });
 test('proposals require two distinct survivors, meaningful usage, cautions and bounded situations',()=>{
  const draft={characterIds:['c55','c58'],title:'함께 사용한 경험',body:'회복 시간을 확보할 수 있도록 부엉이 보호를 요청했습니다.',caution:'부엉이가 남아 있어야 합니다.',situations:['회복']};

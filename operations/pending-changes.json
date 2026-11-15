@@ -623,6 +623,22 @@
       ],
       "announcement": "pending",
       "evidence": "research/matchups/2026-11-15/naver-broad-search.json"
+    },
+    {
+      "date": "2026-11-15",
+      "scope": "survivor-duo-synergy-review",
+      "summary": [
+        "범용 역할 중심의 생존자 추천 167행을 스킬 연계가 있는 듀오 20쌍으로 재구성",
+        "23명의 생존자에게 연계 원리·활용 순서·성립 조건·실패 상황을 양방향으로 안내",
+        "카페 검색 조합 50개와 본문·댓글 29건을 검토하고 과장·과거 판정·근거 부족 후보 제외",
+        "근거가 부족한 캐릭터는 일반 구출·해독·보호 추천으로 채우지 않도록 수정"
+      ],
+      "announcement": "pending",
+      "evidence": "research/synergies/2026-11-15/duo-review.json",
+      "validation": {
+        "automated": "225개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 기존 74개 편집 기록·캐릭터 본문·상성 496건·감시자 보조 특성 108행·통계 보존 확인. 용어 재생성과 이전 배포 기준 공지·내용 검사 통과.",
+        "limits": "게임 내 직접 실험이나 듀오 승률 측정은 수행하지 않음. 실제 iPhone Safari는 미검증."
+      }
     }
   ]
 }
