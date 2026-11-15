@@ -1,0 +1,962 @@
+{
+  "date": "2026-11-15",
+  "baseline": "f10c9d7bb5eb1982f8c1df690c646f235a51404b",
+  "scope": "실전 표현·별칭·동작별 카페 검색을 통한 조건부 상성 확장",
+  "gameBalanceRevalidated": false,
+  "method": [
+    "로그인된 네이버 카페에서 글+댓글을 최신순으로 검색했습니다. 전체 게시판·생존자 공략·감시자 공략·질문&답변에 걸친 62개 조합의 첫 결과 페이지를 확인했습니다.",
+    "검색 결과 행 805개는 중복·무관한 글을 포함한 목록 검토 수입니다. 본문·댓글을 새로 읽은 글은 22건이며 전체 카페나 모든 결과 페이지를 수집한 것은 아닙니다.",
+    "이전 두 검토의 글 33건과 검색 조합을 대조해 중복 본문 열람·재등록을 피했습니다. 기존 상성과 같은 내용은 새 근거 번호를 만들지 않았습니다.",
+    "힘든·쉬운·까다로운·못 잡는 등 체감 표현, 파훼·대처·평캔·관통·씹기 등 행동 표현, 구출컷·풍구·빡쉴·더블다운 등 실전 표현과 캐릭터 별칭을 조합했습니다.",
+    "같은 카페는 하나의 출처군입니다. 8254308·8254377은 같은 작성자의 글이며 독립 실증으로 중복 계산하지 않습니다. 위키 기전·공식 변경과의 대조도 독립 실전 재현 실험을 뜻하지 않습니다.",
+    "회원 원문·작성자 신원·계정·로그인 세션은 저장하지 않고 안정된 글 주소와 짧은 판단 근거만 남깁니다. 첨부 영상은 재생하지 않았으며 영상 실험을 직접 검증한 것으로 표시하지 않습니다."
+  ],
+  "cafe": {
+    "url": "https://cafe.naver.com/identity5",
+    "loggedInSearch": true,
+    "searches": [
+      {
+        "query": "힘든",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "쉬운",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "못잡",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "상대하기",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "못잡겠",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 3
+      },
+      {
+        "query": "못잡는",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "못 잡",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "까다로운",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "편한",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "빡센",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "하드카운터",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "역상성",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 2
+      },
+      {
+        "query": "상극",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "구출컷",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 10
+      },
+      {
+        "query": "구출 막",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "확정구출",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "평캔",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "기절 면역",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "스턴면역",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "씹히는",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "뚫리는",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "관통",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "막히는",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "풍구",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "더블다운",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "구출불가",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "이중구출",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "힘든",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "쉬운",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "상대하기",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "평캔",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "파훼",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "구출",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "씹",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 2
+      },
+      {
+        "query": "풍구",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "힘든",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "쉬운",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "상대하기",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "파훼",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "대처",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "평캔",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 7
+      },
+      {
+        "query": "관통",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 8
+      },
+      {
+        "query": "까다로운",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "막히",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 0
+      },
+      {
+        "query": "뚫",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 0
+      },
+      {
+        "query": "씹는",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 12
+      },
+      {
+        "query": "상대하기",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "카운터",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "구출",
+        "board": "질문&답변",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "감사원 상대",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "화조관 카운터",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "작곡가 상대",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "카보 풍구",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "파부 어려운",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 6
+      },
+      {
+        "query": "탈마 구출실패",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "변호사 힘든",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "행운아 카운터",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "기놀 막는",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 0
+      },
+      {
+        "query": "빡쉴",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "포탈 끊김",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "투우사 사도",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 15
+      },
+      {
+        "query": "그랩 씹기",
+        "board": "전체",
+        "mode": "글 + 댓글",
+        "sort": "최신순",
+        "page": 1,
+        "resultRowsScanned": 5
+      }
+    ],
+    "resultRowsScanned": 805,
+    "newBodiesAndCommentsReviewed": 22,
+    "articles": [
+      {
+        "articleId": 8266346,
+        "publishedAt": "2026-11-15",
+        "topic": "마음의 짐승의 궁수 상대 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8266346",
+        "decision": "screened-no-change",
+        "reason": "기존 M359의 보류 쟁점과 중복. 화살 시점 경험담으로 대진 전체 우열을 확정하지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8250247,
+        "publishedAt": "2026-11-03",
+        "topic": "투우사의 감시자별 대응 체감",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8250247",
+        "decision": "partially-accepted",
+        "reason": "사도의 마비 발동 순간 휩쓸기만 현재 기전과 대조. 무상성·쉬운 승리·순위 자기소개는 근거에서 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8189251,
+        "publishedAt": "2026-09-22",
+        "topic": "악몽 사용자 질의응답",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8189251",
+        "decision": "screened-no-change",
+        "reason": "은신으로 엿보기를 끊는 대응은 기존 M118·P009·M277과 중복. 밴 선호와 순위 주장은 미채택.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8247310,
+        "publishedAt": "2026-11-01",
+        "topic": "나이아스 상대 무희의 오르골 이탈",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8247310",
+        "decision": "accepted-exception",
+        "reason": "작살 회수에 맞춘 빠른 오르골·슬라이드 이탈을 반례로 채택. 무조건 유리하다는 주장은 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8262694,
+        "publishedAt": "2026-11-12",
+        "topic": "여왕벌 구출 실패 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8262694",
+        "decision": "screened-no-change",
+        "reason": "벌침·일반 공격의 연속 피격 사례만으로 특정 생존자의 확정 구출 실패 상성을 만들지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8017209,
+        "publishedAt": "2026-05-23",
+        "topic": "환등사 투영 종료와 플라이휠",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8017209",
+        "decision": "partially-accepted",
+        "reason": "기존 M106의 수동·자동 종료 직전 회피 조건을 보완. 열차 사례를 일반 대진에 확대하지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7931207,
+        "publishedAt": "2026-03-21",
+        "topic": "탐사원 자석을 남겨 두는 활용",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7931207",
+        "decision": "screened-no-change",
+        "reason": "일반 소지품 관리이며 특정 감시자 대진의 새 근거가 아님. 미대조 수치 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8254308,
+        "publishedAt": "2026-11-06",
+        "topic": "환등사 일반 운용 공략",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8254308",
+        "decision": "screened-no-change",
+        "reason": "투영의 일반 제약을 검토했으나 특정 대진은 새로 추가하지 않음. 다음 글과 같은 작성자이므로 독립 실증 아님.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8254377,
+        "publishedAt": "2026-11-06",
+        "topic": "환등사 투영의 세부 제약",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8254377",
+        "decision": "accepted-exception",
+        "reason": "일반 공격·의자 주변 제한을 M106에 반영. 확정 구출·모호한 비율은 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7773379,
+        "publishedAt": "2025-11-20",
+        "topic": "사냥터지기 상대 구출법",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7773379",
+        "decision": "rejected-outdated",
+        "reason": "작성자가 2026-09-12 댓글에서 끼어들기 구출법이 현재 안 된다고 정정. 옛 확정 구출과 인형·환영 방어 주장을 채택하지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8227656,
+        "publishedAt": "2026-10-20",
+        "topic": "선지자의 붉은 나비 상대 인식",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8227656",
+        "decision": "accepted-exception",
+        "reason": "과거 인식과 현재 나비 대상 이동을 구분. M388의 주시·충전 조건을 보완하며 대진 우열 자체는 뒤집지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8088033,
+        "publishedAt": "2026-07-10",
+        "topic": "무언극의 공연별 방해 대응",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8088033",
+        "decision": "partially-accepted",
+        "reason": "우산 내부의 기절·속박·강제 이동 회피만 채택. 발사 무적·확정 구출·구버전 해독 수치는 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8169239,
+        "publishedAt": "2026-09-07",
+        "topic": "궁수의 어려운 상대 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8169239",
+        "decision": "partially-accepted",
+        "reason": "리퍼 은신 중 조준 표시와 명중 판정을 구분. 반박된 상대 목록과 가시 관련 미대조 주장은 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8048720,
+        "publishedAt": "2026-06-14",
+        "topic": "기계 인형의 감시자별 상호작용",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+        "decision": "partially-accepted",
+        "reason": "까마귀·극성·습기·이스인·꿈의 마녀 기생을 대조. 패치 전 갈퀴 사슬 방어·미확인 수치와 일반 치료 잡담은 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7422034,
+        "publishedAt": "2025-03-26",
+        "topic": "소설가 위치 교환 대응",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7422034",
+        "decision": "partially-accepted",
+        "reason": "발사된 안개 칼날과 정면 관찰의 침식 위험을 현재 기전과 대조. 구버전 수치와 단순 박사 카운터 주장은 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7939656,
+        "publishedAt": "2026-03-29",
+        "topic": "모험가의 축소와 기생 탐지",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7939656",
+        "decision": "partially-accepted",
+        "reason": "꿈의 마녀·이스인의 기생과 감지 예외를 채택. 거리 조건 없는 자동 탐지로 확대하지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8202306,
+        "publishedAt": "2026-10-01",
+        "topic": "서기관 사용자의 상대별 대응 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8202306",
+        "decision": "partially-accepted",
+        "reason": "투우사의 명중 후 이동으로 기록 구역을 벗어나는 조건만 채택. 밴 선호를 절대 우열로 쓰지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7962283,
+        "publishedAt": "2026-04-16",
+        "topic": "화재조사관 카운터 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7962283",
+        "decision": "rejected-insufficient",
+        "reason": "농담과 캐릭터 이름만 제시한 답변으로 작동 원리를 확인할 수 없어 제외.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8255443,
+        "publishedAt": "2026-11-06",
+        "topic": "기상학자의 강풍·층운 활용 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8255443",
+        "decision": "screened-no-change",
+        "reason": "준비 여부에 따라 갈리는 일반 활용. 기존 보류 M335·M338을 단편 팁으로 승격하지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8259749,
+        "publishedAt": "2026-11-09",
+        "topic": "무언극 판자 기절 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8259749",
+        "decision": "screened-no-change",
+        "reason": "일반 풍선 구출 동작과 봇 과제 이야기로 특정 감시자 대진 근거가 부족.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 8163856,
+        "publishedAt": "2026-09-02",
+        "topic": "서기관 카운터 영상 글",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8163856",
+        "decision": "rejected-unreviewed-media",
+        "reason": "본문·댓글에는 상대와 기전이 충분히 없고 영상은 재생하지 않아 근거로 쓰지 않음.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      },
+      {
+        "articleId": 7977374,
+        "publishedAt": "2026-04-26",
+        "topic": "파멸의 바퀴 가시 폭발 실험 설명",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7977374",
+        "decision": "partially-accepted",
+        "reason": "현재 환등사 기전과 일치하는 지연 예외만 M290에 반영. 투우사의 가시 제거는 독립 확인 부족으로 보류. 붕괴 적용 주장은 작성자 정정에 따라 제외. 첨부 영상 미재생.",
+        "bodyAndCommentsReviewed": true,
+        "embeddedMediaReproduced": false
+      }
+    ],
+    "selfReferentialResultsExcluded": [
+      8240995,
+      8247484
+    ]
+  },
+  "added": [
+    "M483",
+    "M484",
+    "M485",
+    "M486",
+    "M487",
+    "M488",
+    "M489",
+    "M490",
+    "M491",
+    "M492",
+    "M493",
+    "M494",
+    "M495",
+    "M496"
+  ],
+  "matchupChanges": {
+    "M388": {
+      "decision": "부엉이 충전과 생멸 차단을 구분하고, 설치된 나비를 향한 이동의 예외를 구체화.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8227656",
+        "https://wikiwiki.jp/identity5ch/芸者"
+      ]
+    },
+    "M051": {
+      "decision": "은신으로 조준 표시가 사라지는 것과 화살 명중 불가를 구분. 기존 중복 근거의 문구도 함께 일치시킴.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8169239",
+        "https://wikiwiki.jp/identity5ch/弓使い"
+      ]
+    },
+    "M409": {
+      "decision": "은신으로 조준 표시가 사라지는 것과 화살 명중 불가를 구분. 기존 중복 근거의 문구도 함께 일치시킴.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8169239",
+        "https://wikiwiki.jp/identity5ch/弓使い"
+      ]
+    },
+    "M106": {
+      "decision": "수동 종료와 자동 종료의 직전 회피 시점을 명시하고 일반 공격·의자 주변 예외 유지.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8017209",
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8254377"
+      ]
+    },
+    "M290": {
+      "decision": "가시 폭발의 투영 지연 예외를 일반적인 스킬 피해 지연과 구분.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/7977374",
+        "https://wikiwiki.jp/identity5ch/幻灯師"
+      ]
+    },
+    "M032": {
+      "decision": "기계 인형의 기생 면역과 공격·장기 운영 압박을 구분.",
+      "statusBefore": "반영",
+      "statusAfter": "반영",
+      "sources": [
+        "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720"
+      ]
+    }
+  },
+  "heldByThisReview": [],
+  "addedDisplaySlots": [
+    {
+      "characterId": "c18",
+      "kind": "hard",
+      "evidence": "M484"
+    },
+    {
+      "characterId": "c20",
+      "kind": "hard",
+      "evidence": "M496"
+    },
+    {
+      "characterId": "c22",
+      "kind": "hard",
+      "evidence": "M487"
+    },
+    {
+      "characterId": "c29",
+      "kind": "hard",
+      "evidence": "M486"
+    },
+    {
+      "characterId": "c43",
+      "kind": "easy",
+      "evidence": "M488"
+    },
+    {
+      "characterId": "c43",
+      "kind": "easy",
+      "evidence": "M491"
+    },
+    {
+      "characterId": "c51",
+      "kind": "hard",
+      "evidence": "M492"
+    },
+    {
+      "characterId": "c51",
+      "kind": "hard",
+      "evidence": "M493"
+    },
+    {
+      "characterId": "c54",
+      "kind": "hard",
+      "evidence": "M483"
+    },
+    {
+      "characterId": "c59",
+      "kind": "hard",
+      "evidence": "M494"
+    },
+    {
+      "characterId": "c59",
+      "kind": "hard",
+      "evidence": "M495"
+    },
+    {
+      "characterId": "c80",
+      "kind": "easy",
+      "evidence": "M484"
+    },
+    {
+      "characterId": "c80",
+      "kind": "easy",
+      "evidence": "M496"
+    }
+  ],
+  "removedDisplaySlots": [],
+  "representativeUpdates": [
+    {
+      "characterId": "c05",
+      "kind": "easy",
+      "evidence": "M032"
+    },
+    {
+      "characterId": "c10",
+      "kind": "easy",
+      "evidence": "M409"
+    },
+    {
+      "characterId": "c21",
+      "kind": "hard",
+      "evidence": "M106"
+    },
+    {
+      "characterId": "c34",
+      "kind": "easy",
+      "evidence": "M290"
+    },
+    {
+      "characterId": "c42",
+      "kind": "hard",
+      "evidence": "M409"
+    },
+    {
+      "characterId": "c88",
+      "kind": "easy",
+      "evidence": "M106"
+    },
+    {
+      "characterId": "c88",
+      "kind": "hard",
+      "evidence": "M290"
+    }
+  ],
+  "beforeCounts": {
+    "total": 482,
+    "accepted": 431,
+    "held": 51,
+    "displayedSlots": 645,
+    "sourceUrls": 509
+  },
+  "afterCounts": {
+    "total": 496,
+    "accepted": 445,
+    "held": 51,
+    "displayedSlots": 658,
+    "sourceUrls": 521
+  },
+  "audit": {
+    "path": "research/editorial/2026-11-15/consistency-edits.json",
+    "editOffset": 19,
+    "editCount": 55
+  },
+  "interpretation": [
+    "신규 근거는 해당 행동·상태의 유불리이며 전체 대진의 승률이나 티어 순위가 아닙니다.",
+    "서기관–투우사는 이용자 경험과 현재 이동·기록 기전을 조합한 조건부 판단입니다. 기록 면역이나 일괄 우세를 입증한 실험으로 보지 않습니다.",
+    "기계공–나이아스의 본체 어그로 불리와 인형 운영의 습기 예외는 서로 다른 상황으로 함께 보존합니다."
+  ],
+  "rejectedOrHeldClaims": [
+    "작성자가 철회한 사냥터지기 끼어들기 구출과 구버전 확정 구출",
+    "무희·투우사의 무상성·무조건 승리 및 미확인 순위 주장",
+    "리퍼 은신 중 화살 면역",
+    "우산 설치·발사·착지 전체 무적",
+    "투우사 휩쓸기의 가시 폭발 회피 후 가시 제거: 독립 확인 부족",
+    "붕괴가 가시 폭발에 적용된다는 철회된 설명",
+    "새 영상의 내용을 직접 실험·검증했다는 해석",
+    "MANOR 소개 글을 MANOR 상성의 독립 출처로 사용하는 순환 인용"
+  ],
+  "limitations": [
+    "검색 결과 첫 페이지를 조합별로 선별했으며 오래된 모든 글을 전수 열람하지 않았습니다.",
+    "스킬명·별칭의 부분 검색이 결과를 놓칠 수 있어 완성형 표현도 함께 사용했으나 누락 가능성은 남습니다.",
+    "기존 보류 51건은 유지하고 새로운 미확인 후보는 공개 상성으로 자동 등록하지 않습니다.",
+    "대표 목록은 유불리별 최대 5개이며 빈 슬롯에만 추가했습니다. 모든 신규 근거는 대진 상세에 있습니다.",
+    "전체 공략·상성 검토일, 현재 패치 기준, 통계와 공지 버전은 유지합니다."
+  ]
+}

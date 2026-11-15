@@ -611,6 +611,18 @@
       ],
       "announcement": "pending",
       "evidence": "research/matchups/2026-11-15/naver-expansion.json"
+    },
+    {
+      "date": "2026-11-15",
+      "scope": "naver-broad-matchup-search",
+      "summary": [
+        "실전 표현·캐릭터 별칭으로 카페 검색을 확장해 조건부 상성 14건 추가",
+        "기존 6건의 조준·투영 종료·기생·주시 예외 보완",
+        "기계 인형·축소·우산 내부 보호의 적용 조건과 실패 구간 명시",
+        "이전 검토 중복·철회된 구출법·근거 없는 단정·자기 인용 제외"
+      ],
+      "announcement": "pending",
+      "evidence": "research/matchups/2026-11-15/naver-broad-search.json"
     }
   ]
 }

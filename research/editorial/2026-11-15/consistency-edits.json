@@ -746,6 +746,1334 @@
         "evidenceLevel": "복수 출처",
         "situationDetail": "물웅덩이에 묶인 판자용 환영"
       }
+    },
+    {
+      "path": "dist/data.json/characters/4/easy/4/reason",
+      "before": "[운영] 여러 생존자를 다치게 하고 기계 인형까지 견제하면 기계공이 해독을 계속하기 어려워집니다.\n조건: 초반에 기계 인형을 안전하게 운용해 해독을 빠르게 진행하면, 장기전의 부담이 커지기 전에 이득을 볼 수 있습니다.",
+      "after": "[운영] 여러 생존자를 다치게 하고 기계 인형까지 견제하면 기계공이 해독을 계속하기 어려워집니다.\n조건: 기계 인형 자체에는 기생할 수 없지만 신도로 인형을 찾아 공격할 수는 있습니다. 초반에 인형을 안전하게 운용해 해독을 빠르게 진행하면 장기전의 부담이 커지기 전에 이득을 볼 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/characters/9/easy/3/reason",
+      "before": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "after": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 중에는 심장 표시가 보이지 않지만 화살의 명중 판정까지 사라지지는 않습니다. 위치를 읽어 맞히거나 은신 전·공격 직후에 조준할 수 있으며, 안개 칼날을 피할 공간도 필요합니다."
+    },
+    {
+      "path": "dist/data.json/characters/17/hard",
+      "before": [
+        {
+          "name": "탐사원",
+          "reason": "[사냥] 미리 붙인 척력 자석은 고양이 기절 중에도 발동해 탐사원을 밀어내고 기절을 풀 수 있습니다.\n조건: 인력 자석은 같은 대응이 아닙니다. 사도가 척력 연결 범위에서 벗어나거나 발동 전에 공격하면 보호받지 못합니다. 자석을 던지기 전에 위협을 맞은 경우도 구분합니다.",
+          "evidence": "M001"
+        },
+        {
+          "name": "묘지기",
+          "reason": "[구출] 미리 잠행 중인 묘지기는 고양이 기절을 피하며 의자에 접근할 수 있습니다.\n조건: 잠행 전에 위협을 맞으면 삽을 쓰기 어렵습니다. 사도는 잠행이 끝날 때까지 기다리거나, 기절 범위 밖에서 묘지기의 잠행을 해제시킨 뒤 접근할 수도 있습니다.",
+          "evidence": "M003"
+        },
+        {
+          "name": "카우보이",
+          "reason": "[사냥] 고양이가 붙은 뒤 사도에게 올가미를 걸어 뛰어넘으면 기절을 피하며 거리를 벌릴 수 있습니다.\n조건: 기절 전에 올가미를 성공시켜야 합니다. 풍선 근처에서 고양이를 맞고 묶인 상황까지 안전한 구출을 보장하지 않습니다.",
+          "evidence": "M002"
+        },
+        {
+          "name": "기사",
+          "reason": "[구출] 고양이 도약이나 수동 분열을 스킬로 예측하면 사도의 접근·구출 방해를 늦출 수 있습니다.\n조건: 발동 전에 예측을 맞혀야 하며 고양이의 자동 분열까지 같은 판정은 아닙니다. 먼저 위협의 능력 봉쇄를 받으면 기사도 원거리 구출을 쓸 수 없습니다.",
+          "evidence": "M466"
+        }
+      ],
+      "after": [
+        {
+          "name": "탐사원",
+          "reason": "[사냥] 미리 붙인 척력 자석은 고양이 기절 중에도 발동해 탐사원을 밀어내고 기절을 풀 수 있습니다.\n조건: 인력 자석은 같은 대응이 아닙니다. 사도가 척력 연결 범위에서 벗어나거나 발동 전에 공격하면 보호받지 못합니다. 자석을 던지기 전에 위협을 맞은 경우도 구분합니다.",
+          "evidence": "M001"
+        },
+        {
+          "name": "묘지기",
+          "reason": "[구출] 미리 잠행 중인 묘지기는 고양이 기절을 피하며 의자에 접근할 수 있습니다.\n조건: 잠행 전에 위협을 맞으면 삽을 쓰기 어렵습니다. 사도는 잠행이 끝날 때까지 기다리거나, 기절 범위 밖에서 묘지기의 잠행을 해제시킨 뒤 접근할 수도 있습니다.",
+          "evidence": "M003"
+        },
+        {
+          "name": "카우보이",
+          "reason": "[사냥] 고양이가 붙은 뒤 사도에게 올가미를 걸어 뛰어넘으면 기절을 피하며 거리를 벌릴 수 있습니다.\n조건: 기절 전에 올가미를 성공시켜야 합니다. 풍선 근처에서 고양이를 맞고 묶인 상황까지 안전한 구출을 보장하지 않습니다.",
+          "evidence": "M002"
+        },
+        {
+          "name": "기사",
+          "reason": "[구출] 고양이 도약이나 수동 분열을 스킬로 예측하면 사도의 접근·구출 방해를 늦출 수 있습니다.\n조건: 발동 전에 예측을 맞혀야 하며 고양이의 자동 분열까지 같은 판정은 아닙니다. 먼저 위협의 능력 봉쇄를 받으면 기사도 원거리 구출을 쓸 수 없습니다.",
+          "evidence": "M466"
+        },
+        {
+          "name": "투우사",
+          "reason": "[사냥] 고양이의 마비가 발동하는 순간에 휩쓸기를 맞추면 기절을 피하고 사도와 거리를 벌릴 수 있습니다.\n조건: 휩쓸기의 짧은 방어 구간을 맞춰야 하며 첫 돌진부터 무적인 것은 아닙니다. 위협으로 소지품 사용이 막혔거나, 존재감이 쌓인 사도가 다시 도약할 수 있는 상황은 따로 대비합니다.",
+          "evidence": "M484"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/19/hard",
+      "before": [
+        {
+          "name": "파로 부인",
+          "reason": "[사냥] 은신 중에는 기록 대상 지정을 피하고 이미 걸린 기록을 해제할 수 있습니다.\n조건: 은신이 풀린 뒤에는 다시 기록되며, 해독 견제까지 사라지는 것은 아닙니다.",
+          "evidence": "M278"
+        },
+        {
+          "name": "항공 전문가",
+          "reason": "[사냥] 기록 중 판자·창틀을 쓰지 않고 비행으로 거리를 벌려 어그로를 늘릴 수 있습니다.\n조건: 제트 자원과 착지 공간이 필요하며, 팀의 해독 기록까지 막지는 못합니다.",
+          "evidence": "M101"
+        },
+        {
+          "name": "환등사",
+          "reason": "[사냥] 위치 투영을 시작하면 본인에게 걸린 기록을 끊을 수 있습니다.\n조건: 투영 잔량이 필요하고 다른 팀원의 기록·해독 봉쇄는 계속됩니다.",
+          "evidence": "M102"
+        }
+      ],
+      "after": [
+        {
+          "name": "파로 부인",
+          "reason": "[사냥] 은신 중에는 기록 대상 지정을 피하고 이미 걸린 기록을 해제할 수 있습니다.\n조건: 은신이 풀린 뒤에는 다시 기록되며, 해독 견제까지 사라지는 것은 아닙니다.",
+          "evidence": "M278"
+        },
+        {
+          "name": "항공 전문가",
+          "reason": "[사냥] 기록 중 판자·창틀을 쓰지 않고 비행으로 거리를 벌려 어그로를 늘릴 수 있습니다.\n조건: 제트 자원과 착지 공간이 필요하며, 팀의 해독 기록까지 막지는 못합니다.",
+          "evidence": "M101"
+        },
+        {
+          "name": "환등사",
+          "reason": "[사냥] 위치 투영을 시작하면 본인에게 걸린 기록을 끊을 수 있습니다.\n조건: 투영 잔량이 필요하고 다른 팀원의 기록·해독 봉쇄는 계속됩니다.",
+          "evidence": "M102"
+        },
+        {
+          "name": "투우사",
+          "reason": "[사냥] 휩쓸기를 맞힌 뒤 이어지는 이동으로 기록된 판자·창틀 주변을 벗어나면 서기관의 압박을 늦출 수 있습니다.\n조건: 물레타를 쓸 자원과 이동 공간이 있고 휩쓸기를 맞혀야 합니다. 투우사의 판자·창틀 동작도 기록되므로 기록 면역으로 보지 않으며, 공격을 늦춰 휩쓸기를 빼는 대응에는 실패할 수 있습니다.",
+          "evidence": "M496"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/20/hard/3/reason",
+      "before": "[사냥] 투영으로 폭탄 피해의 반영을 늦추고 종료 시점의 회피를 준비할 수 있습니다.\n조건: 플라이휠 효과를 정확히 맞춰야 하며, 본체 일반 공격과 의자 주변의 짧은 투영 시간은 별개입니다.",
+      "after": "[사냥] 투영으로 폭탄 피해의 반영을 늦추고 종료 시점의 회피를 준비할 수 있습니다.\n조건: 수동으로 투영을 끝내거나 자동으로 끝나기 직전에 플라이휠 효과를 맞춰야 합니다. 일반 공격은 지연 대상이 아니며 투영을 일찍 끊을 수 있습니다. 의자 주변에서는 투영 시간이 짧아져 같은 여유를 기대하기 어렵습니다."
+    },
+    {
+      "path": "dist/data.json/characters/21/hard",
+      "before": [
+        {
+          "name": "환등사",
+          "reason": "[사냥] 투영 고정 중에는 바라보기와 공포로 인한 침식도 누적을 피할 수 있습니다.\n조건: 침식의 조각의 범위와 침식도 전달까지 막지는 못하며, 빙의도 투영에 남습니다.",
+          "evidence": "M284"
+        },
+        {
+          "name": "마술사",
+          "reason": "[사냥] 마술봉으로 빙의를 해제하고 은신 중에 다음 지형으로 이동할 수 있습니다.\n조건: 봉을 소모한 뒤에는 다시 빙의될 수 있어 이동 경로를 미리 정해야 합니다.",
+          "evidence": "M111"
+        },
+        {
+          "name": "항해사",
+          "reason": "[사냥] 시계를 켜 빙의를 끊고 이스인이 바라보는 방향을 숨길 수 있습니다.\n조건: 최면이 끝난 뒤 다시 빙의되는 상황까지 막지는 못합니다.",
+          "evidence": "M112"
+        }
+      ],
+      "after": [
+        {
+          "name": "환등사",
+          "reason": "[사냥] 투영 고정 중에는 바라보기와 공포로 인한 침식도 누적을 피할 수 있습니다.\n조건: 침식의 조각의 범위와 침식도 전달까지 막지는 못하며, 빙의도 투영에 남습니다.",
+          "evidence": "M284"
+        },
+        {
+          "name": "마술사",
+          "reason": "[사냥] 마술봉으로 빙의를 해제하고 은신 중에 다음 지형으로 이동할 수 있습니다.\n조건: 봉을 소모한 뒤에는 다시 빙의될 수 있어 이동 경로를 미리 정해야 합니다.",
+          "evidence": "M111"
+        },
+        {
+          "name": "항해사",
+          "reason": "[사냥] 시계를 켜 빙의를 끊고 이스인이 바라보는 방향을 숨길 수 있습니다.\n조건: 최면이 끝난 뒤 다시 빙의되는 상황까지 막지는 못합니다.",
+          "evidence": "M112"
+        },
+        {
+          "name": "무언극 아티스트",
+          "reason": "[사냥] 우산 안에 들어간 동안에는 침식으로 생기는 강제 이동을 피할 수 있습니다.\n조건: 우산 내부의 보호 구간에 한정합니다. 침식도 관리나 기생 대응을 대신하는 능력은 아니며, 설치 전과 발사·착지 뒤에는 다시 방해받을 수 있습니다.",
+          "evidence": "M487"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/28/hard",
+      "before": [
+        {
+          "name": "기자",
+          "reason": "[사냥·구출] 환영을 앞세워 덩굴과 타격을 대신 받아낼 수 있습니다.\n조건: 자갈 피해까지 모두 막는 것은 아닙니다.",
+          "evidence": "M374"
+        },
+        {
+          "name": "탐사원",
+          "reason": "[사냥] 미리 붙인 자석은 속박된 동안에도 발동할 수 있습니다.\n조건: 기절 경감 강화가 켜졌거나 타격이 먼저 닿으면 효율이 낮아집니다.",
+          "evidence": "M144"
+        }
+      ],
+      "after": [
+        {
+          "name": "기자",
+          "reason": "[사냥·구출] 환영을 앞세워 덩굴과 타격을 대신 받아낼 수 있습니다.\n조건: 자갈 피해까지 모두 막는 것은 아닙니다.",
+          "evidence": "M374"
+        },
+        {
+          "name": "탐사원",
+          "reason": "[사냥] 미리 붙인 자석은 속박된 동안에도 발동할 수 있습니다.\n조건: 기절 경감 강화가 켜졌거나 타격이 먼저 닿으면 효율이 낮아집니다.",
+          "evidence": "M144"
+        },
+        {
+          "name": "무언극 아티스트",
+          "reason": "[사냥] 우산 안에 들어간 동안에는 덩굴의 속박을 피하며 이동할 시점을 잡을 수 있습니다.\n조건: 덩굴이 닿기 전에 우산 안에 들어가야 합니다. 이미 속박된 뒤 우산으로 해제하는 대응은 아니며, 발사 이후의 이동 경로와 착지 지점도 안전해야 합니다.",
+          "evidence": "M486"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/33/easy/0/reason",
+      "before": "[사냥] 투영된 몸에 가시를 쌓고 투영 지연을 받지 않는 폭발로 압박합니다.\n조건: 가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다.",
+      "after": "[사냥] 투영된 몸에 가시를 쌓고 투영 지연을 받지 않는 폭발로 압박합니다.\n조건: 가시가 쌓인 대상이 폭발 범위 안에 있어야 합니다. 이 폭발은 일반적인 스킬 피해 지연의 예외이며, 가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다."
+    },
+    {
+      "path": "dist/data.json/characters/41/hard/3/reason",
+      "before": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "after": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 중에는 심장 표시가 보이지 않지만 화살의 명중 판정까지 사라지지는 않습니다. 위치를 읽어 맞히거나 은신 전·공격 직후에 조준할 수 있으며, 안개 칼날을 피할 공간도 필요합니다."
+    },
+    {
+      "path": "dist/data.json/characters/42/easy",
+      "before": [],
+      "after": [
+        {
+          "name": "악몽",
+          "reason": "[운영] 기계 인형에는 까마귀가 붙지 않아 본체와 나눠 출입문을 여는 운영에 활용할 수 있습니다.\n조건: 기계 인형 자체의 까마귀 부착 판정에 한정합니다. 해독기의 흔들림이나 직접 발견으로 위치가 드러날 수 있고, 주변으로 이동한 악몽이 인형을 공격하는 것까지 막지는 않습니다.",
+          "evidence": "M488"
+        },
+        {
+          "name": "나이아스",
+          "reason": "[운영] 기계 인형에는 습기가 쌓이지 않아 물웅덩이 안에서도 인형으로 해독을 이어 갈 수 있습니다.\n조건: 기계공 본체에는 습기가 정상적으로 쌓입니다. 나이아스의 돌진으로 인형의 동작이 끊기거나 일반 공격으로 인형이 제거될 수 있으므로, 물웅덩이만으로 방해하는 상황과 구분합니다.",
+          "evidence": "M491"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/50/hard",
+      "before": [
+        {
+          "name": "우산의 영혼",
+          "reason": "[어그로] 시작 위치나 해독기로 진혼산을 던져 이동하면 모험가가 숨기 전에 사냥을 시작할 수 있습니다.\n조건: 진혼산으로 축소 상태의 모험가를 탐지할 수 있다는 뜻은 아니며, 미리 숨는 데 성공하면 결과가 달라집니다.",
+          "evidence": "M184"
+        }
+      ],
+      "after": [
+        {
+          "name": "우산의 영혼",
+          "reason": "[어그로] 시작 위치나 해독기로 진혼산을 던져 이동하면 모험가가 숨기 전에 사냥을 시작할 수 있습니다.\n조건: 진혼산으로 축소 상태의 모험가를 탐지할 수 있다는 뜻은 아니며, 미리 숨는 데 성공하면 결과가 달라집니다.",
+          "evidence": "M184"
+        },
+        {
+          "name": "꿈의 마녀",
+          "reason": "[운영] 모험가가 축소해 숨어 있어도 기생 대상이 될 수 있어, 신도 생성으로 은신 위치를 압박할 수 있습니다.\n조건: 기생할 거리와 대상 조건을 갖춰야 하며 맵 전체를 자동 탐지하는 능력은 아닙니다. 모험가의 감지에는 꿈의 마녀 본체가 잡히지 않으므로 접근을 확인하기 어렵습니다.",
+          "evidence": "M492"
+        },
+        {
+          "name": "시공의 그림자",
+          "reason": "[운영] 이스인으로 기생하면 축소한 모험가의 위치도 확인할 수 있어 숨는 운영을 제한합니다.\n조건: 먼저 기생할 거리와 대상 조건을 갖춰야 합니다. 이스인은 모험가의 감지에 잡히지 않지만, 기생 전부터 맵 전체의 축소한 모험가를 자동으로 찾는 것은 아닙니다.",
+          "evidence": "M493"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/53/hard",
+      "before": [
+        {
+          "name": "거미",
+          "reason": "[어그로] 거미줄이 쌓인 오르골 구역에 머무르면 가속 사냥을 허용합니다.\n조건: 먼저 판자를 내리고 다른 구역으로 옮기는 대응에서는 오르골의 지연 효과가 남습니다.",
+          "evidence": "M413"
+        },
+        {
+          "name": "바이올리니스트",
+          "reason": "[어그로] 오르골 밖에서 현을 그으면 무희가 좁은 판자 구역에 계속 머물기 어렵습니다.\n조건: 미끄러짐으로 현이 생기는 순간을 피하거나 오르골을 떠나면 달라집니다. 오르골의 감속 자체가 사라지는 것은 아닙니다.",
+          "evidence": "M061"
+        },
+        {
+          "name": "수위 26호",
+          "reason": "[어그로] 느린 리듬 오르골 안에 머무르면 본체 속도와 무관한 폭탄 피해에 노출되기 쉽습니다.\n조건: 오르골을 지키기보다 폭발 범위를 벗어나고 다른 지형으로 옮길 수 있습니다.",
+          "evidence": "M110"
+        }
+      ],
+      "after": [
+        {
+          "name": "거미",
+          "reason": "[어그로] 거미줄이 쌓인 오르골 구역에 머무르면 가속 사냥을 허용합니다.\n조건: 먼저 판자를 내리고 다른 구역으로 옮기는 대응에서는 오르골의 지연 효과가 남습니다.",
+          "evidence": "M413"
+        },
+        {
+          "name": "바이올리니스트",
+          "reason": "[어그로] 오르골 밖에서 현을 그으면 무희가 좁은 판자 구역에 계속 머물기 어렵습니다.\n조건: 미끄러짐으로 현이 생기는 순간을 피하거나 오르골을 떠나면 달라집니다. 오르골의 감속 자체가 사라지는 것은 아닙니다.",
+          "evidence": "M061"
+        },
+        {
+          "name": "수위 26호",
+          "reason": "[어그로] 느린 리듬 오르골 안에 머무르면 본체 속도와 무관한 폭탄 피해에 노출되기 쉽습니다.\n조건: 오르골을 지키기보다 폭발 범위를 벗어나고 다른 지형으로 옮길 수 있습니다.",
+          "evidence": "M110"
+        },
+        {
+          "name": "나이아스",
+          "reason": "[어그로] 오르골 주변을 물웅덩이로 둘러싸면 무희가 같은 구역에서 계속 버티기 어렵습니다.\n조건: 물웅덩이가 닫히기 전에 빠른 리듬 오르골과 슬라이드 스텝으로 구역을 벗어나면 대응이 달라집니다. 오르골 한 곳을 지키는 상황의 불리함이며, 무희의 이동 기술 전체를 무력화하지는 않습니다.",
+          "evidence": "M483"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/58/hard",
+      "before": [
+        {
+          "name": "블러디 퀸",
+          "reason": "[어그로] 소설가가 본체와 교환할 거리 밖에서 거울을 맞으면 위치 교환을 쓰기 어렵습니다.\n조건: 본체가 교환 범위 안에 들어오면 거울 배치까지 흔들 수 있습니다. 거울상을 직접 교환하는 능력으로 보지 않습니다.",
+          "evidence": "M089"
+        },
+        {
+          "name": "조각가",
+          "reason": "[어그로] 위치를 바꿔도 남아 있는 조각상으로 사냥 압박을 이어 갈 수 있습니다.\n조건: 판자 기절이나 구출 지원의 효과까지 막는 것은 아닙니다.",
+          "evidence": "M160"
+        }
+      ],
+      "after": [
+        {
+          "name": "블러디 퀸",
+          "reason": "[어그로] 소설가가 본체와 교환할 거리 밖에서 거울을 맞으면 위치 교환을 쓰기 어렵습니다.\n조건: 본체가 교환 범위 안에 들어오면 거울 배치까지 흔들 수 있습니다. 거울상을 직접 교환하는 능력으로 보지 않습니다.",
+          "evidence": "M089"
+        },
+        {
+          "name": "조각가",
+          "reason": "[어그로] 위치를 바꿔도 남아 있는 조각상으로 사냥 압박을 이어 갈 수 있습니다.\n조건: 판자 기절이나 구출 지원의 효과까지 막는 것은 아닙니다.",
+          "evidence": "M160"
+        },
+        {
+          "name": "시공의 그림자",
+          "reason": "[어그로] 소설가가 위치 교환 자원을 다시 모으려고 정면을 바라보는 동안 침식도를 쌓아 압박할 수 있습니다.\n조건: 이미 가진 자원으로 바로 위치를 교환하는 대응까지 막지는 않습니다. 정면 관찰로 재충전하는 구간과, 시선을 돌리며 저장한 자원으로 벗어나는 구간을 구분합니다.",
+          "evidence": "M494"
+        },
+        {
+          "name": "리퍼",
+          "reason": "[어그로] 이미 날아오는 안개 칼날이 위치 교환 완료 전에 소설가를 맞히면 교환을 끊을 수 있습니다.\n조건: 안개 칼날이 실제로 명중하는 경로와 시점에 한정합니다. 위치 교환 중 새 공격을 할 수 있다는 뜻은 아니며, 소설가가 칼날을 먼저 피하거나 교환을 완료하면 같은 대응이 성립하지 않습니다.",
+          "evidence": "M495"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/79/easy",
+      "before": [
+        {
+          "name": "광대",
+          "reason": "[커버] 물레타 대응으로 돌진을 끊고 어그로를 끄는 동료에게 이동할 틈을 줄 수 있습니다.\n조건: 방어 판정은 휩쓸기의 짧은 순간에 있으므로 광대의 방향 전환이나 지연에 실패할 수 있습니다. 돌진을 끊어도 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다.",
+          "evidence": "M435"
+        },
+        {
+          "name": "우산의 영혼",
+          "reason": "[어그로] 사필안의 긴 공격 준비를 보고 물레타로 받아내며 섭혼에서 벗어날 수 있습니다.\n조건: 범무구의 탕백은 돌진을 끊을 수 있으므로 형태가 바뀌면 같은 대응을 고집하면 안 됩니다.",
+          "evidence": "M438"
+        }
+      ],
+      "after": [
+        {
+          "name": "광대",
+          "reason": "[커버] 물레타 대응으로 돌진을 끊고 어그로를 끄는 동료에게 이동할 틈을 줄 수 있습니다.\n조건: 방어 판정은 휩쓸기의 짧은 순간에 있으므로 광대의 방향 전환이나 지연에 실패할 수 있습니다. 돌진을 끊어도 부품이 반환되고 다음 대기 시간이 짧아지므로, 재장착 후의 돌진까지 대비합니다.",
+          "evidence": "M435"
+        },
+        {
+          "name": "우산의 영혼",
+          "reason": "[어그로] 사필안의 긴 공격 준비를 보고 물레타로 받아내며 섭혼에서 벗어날 수 있습니다.\n조건: 범무구의 탕백은 돌진을 끊을 수 있으므로 형태가 바뀌면 같은 대응을 고집하면 안 됩니다.",
+          "evidence": "M438"
+        },
+        {
+          "name": "사도",
+          "reason": "[어그로] 고양이의 마비가 발동하는 순간에 휩쓸기를 맞추면 기절을 피하고 사도와 거리를 벌릴 수 있습니다.\n조건: 휩쓸기의 짧은 방어 구간을 맞춰야 하며 첫 돌진부터 무적인 것은 아닙니다. 위협으로 소지품 사용이 막혔거나, 존재감이 쌓인 사도가 다시 도약할 수 있는 상황은 따로 대비합니다.",
+          "evidence": "M484"
+        },
+        {
+          "name": "서기관",
+          "reason": "[어그로] 휩쓸기를 맞힌 뒤 이어지는 이동으로 기록된 판자·창틀 주변을 벗어나면 서기관의 압박을 늦출 수 있습니다.\n조건: 물레타를 쓸 자원과 이동 공간이 있고 휩쓸기를 맞혀야 합니다. 투우사의 판자·창틀 동작도 기록되므로 기록 면역으로 보지 않으며, 공격을 늦춰 휩쓸기를 빼는 대응에는 실패할 수 있습니다.",
+          "evidence": "M496"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/87/easy/4/reason",
+      "before": "[어그로] 투영으로 폭탄 피해의 반영을 늦추고 종료 시점의 회피를 준비할 수 있습니다.\n조건: 플라이휠 효과를 정확히 맞춰야 하며, 본체 일반 공격과 의자 주변의 짧은 투영 시간은 별개입니다.",
+      "after": "[어그로] 투영으로 폭탄 피해의 반영을 늦추고 종료 시점의 회피를 준비할 수 있습니다.\n조건: 수동으로 투영을 끝내거나 자동으로 끝나기 직전에 플라이휠 효과를 맞춰야 합니다. 일반 공격은 지연 대상이 아니며 투영을 일찍 끊을 수 있습니다. 의자 주변에서는 투영 시간이 짧아져 같은 여유를 기대하기 어렵습니다."
+    },
+    {
+      "path": "dist/data.json/characters/87/hard/1/reason",
+      "before": "[어그로] 투영된 몸에 가시를 쌓고 투영 지연을 받지 않는 폭발로 압박합니다.\n조건: 가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다.",
+      "after": "[어그로] 투영된 몸에 가시를 쌓고 투영 지연을 받지 않는 폭발로 압박합니다.\n조건: 가시가 쌓인 대상이 폭발 범위 안에 있어야 합니다. 이 폭발은 일반적인 스킬 피해 지연의 예외이며, 가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/31/condition",
+      "before": "초반에 기계 인형을 안전하게 운용해 해독을 빠르게 진행하면, 장기전의 부담이 커지기 전에 이득을 볼 수 있습니다.",
+      "after": "기계 인형 자체에는 기생할 수 없지만 신도로 인형을 찾아 공격할 수는 있습니다. 초반에 인형을 안전하게 운용해 해독을 빠르게 진행하면 장기전의 부담이 커지기 전에 이득을 볼 수 있습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/31/evidenceLevel",
+      "before": "단일 출처",
+      "after": "복수 출처"
+    },
+    {
+      "path": "dist/data.json/matchups/31/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/31/sourceFamilies",
+      "before": [
+        "identity5ch"
+      ],
+      "after": [
+        "identity5ch",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/31/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/機械技師",
+          "support": "direct",
+          "note": "장기 부상 압박과 초반 인형 운용",
+          "sourceFamily": "identity5ch"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/機械技師",
+          "support": "direct",
+          "note": "장기 부상 압박과 초반 인형 운용",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+          "support": "exception",
+          "note": "꿈의 마녀가 인형 자체에 기생할 수 없는 판정.",
+          "sourceFamily": "naver-cafe-identity5"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/50/condition",
+      "before": "은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "after": "은신 중에는 심장 표시가 보이지 않지만 화살의 명중 판정까지 사라지지는 않습니다. 위치를 읽어 맞히거나 은신 전·공격 직후에 조준할 수 있으며, 안개 칼날을 피할 공간도 필요합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/50/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/50/sourceFamilies",
+      "before": [
+        "identity5ch",
+        "namuwiki"
+      ],
+      "after": [
+        "identity5ch",
+        "namuwiki",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/50/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제.",
+          "sourceFamily": "namuwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제.",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8169239",
+          "support": "direct",
+          "note": "은신 중 조준 표시의 제약과 명중 가능성을 구분.",
+          "sourceFamily": "naver-cafe-identity5"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/弓使い",
+          "support": "mechanic",
+          "note": "은신 중 심장 표시가 없어져도 명중 판정은 남음.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/105/condition",
+      "before": "플라이휠 효과를 정확히 맞춰야 하며, 본체 일반 공격과 의자 주변의 짧은 투영 시간은 별개입니다.",
+      "after": "수동으로 투영을 끝내거나 자동으로 끝나기 직전에 플라이휠 효과를 맞춰야 합니다. 일반 공격은 지연 대상이 아니며 투영을 일찍 끊을 수 있습니다. 의자 주변에서는 투영 시간이 짧아져 같은 여유를 기대하기 어렵습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/105/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/105/sourceFamilies",
+      "before": [
+        "identity5ch",
+        "namuwiki"
+      ],
+      "after": [
+        "identity5ch",
+        "namuwiki",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/105/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "투영 피해 지연·플라이휠 회피",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "mechanic",
+          "note": "고정 투영의 피해 전달과 시간 제한",
+          "sourceFamily": "namuwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "direct",
+          "note": "투영 피해 지연·플라이휠 회피",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "mechanic",
+          "note": "고정 투영의 피해 전달과 시간 제한",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8017209",
+          "support": "direct",
+          "note": "수동·자동 투영 종료 직전 플라이휠 사용 사례.",
+          "sourceFamily": "naver-cafe-identity5"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8254377",
+          "support": "exception",
+          "note": "일반 공격과 의자 주변 투영 시간 제약.",
+          "sourceFamily": "naver-cafe-identity5"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/289/condition",
+      "before": "가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다.",
+      "after": "가시가 쌓인 대상이 폭발 범위 안에 있어야 합니다. 이 폭발은 일반적인 스킬 피해 지연의 예외이며, 가시가 없거나 범위를 벗어나면 같은 피해를 줄 수 없습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/289/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/289/sourceFamilies",
+      "before": [
+        "identity5ch",
+        "namuwiki"
+      ],
+      "after": [
+        "identity5ch",
+        "namuwiki",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/289/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/破輪",
+          "support": "direct",
+          "note": "폭발은 투영 지연 없이 피해·투영 종료",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "mechanic",
+          "note": "바퀴 상처 피해는 투영 지연 예외",
+          "sourceFamily": "namuwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/破輪",
+          "support": "direct",
+          "note": "폭발은 투영 지연 없이 피해·투영 종료",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/환등사",
+          "support": "mechanic",
+          "note": "바퀴 상처 피해는 투영 지연 예외",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7977374",
+          "support": "direct",
+          "note": "가시 폭발이 투영 피해 지연을 받지 않는다는 본문 설명. 첨부 영상은 미재생.",
+          "sourceFamily": "naver-cafe-identity5"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/幻灯師",
+          "support": "mechanic",
+          "note": "파멸의 바퀴 가시 폭발은 투영 지연의 예외.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/387/condition",
+      "before": "산제비나비 부착 여부·본체 시야·구간 높이가 달라지면 찰나의 생멸을 멈추지 못할 수 있습니다. 관찰만으로 첫 어그로 우위를 보장하지 않습니다.",
+      "after": "부엉이 충전과 찰나의 생멸 차단은 다릅니다. 설치된 산제비나비를 향한 이동은 본체를 바라보는 것만으로 막히지 않으며, 부착한 나비·주시·시야 조건을 확인해야 합니다. 관찰만으로 첫 어그로 우위를 보장하지 않습니다."
+    },
+    {
+      "path": "dist/data.json/matchups/387/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/387/sourceFamilies",
+      "before": [
+        "bwiki",
+        "identity5ch"
+      ],
+      "after": [
+        "bwiki",
+        "identity5ch",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/387/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "mechanic",
+          "note": "본체 관찰에 따른 부엉이 충전.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "생멸 차단에 필요한 나비 부착과 주시 조건.",
+          "sourceFamily": "bwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/占い師",
+          "support": "mechanic",
+          "note": "본체 관찰에 따른 부엉이 충전.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://wiki.biligame.com/dwrg/红蝶/进阶",
+          "support": "mechanic",
+          "note": "생멸 차단에 필요한 나비 부착과 주시 조건.",
+          "sourceFamily": "bwiki"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8227656",
+          "support": "exception",
+          "note": "과거의 주시 인식과 현재 어그로의 어려움을 구분한 댓글.",
+          "sourceFamily": "naver-cafe-identity5"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/芸者",
+          "support": "mechanic",
+          "note": "본체를 바라보는 것만으로 설치된 나비를 향한 생멸까지 막지는 못함.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/408/condition",
+      "before": "은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+      "after": "은신 중에는 심장 표시가 보이지 않지만 화살의 명중 판정까지 사라지지는 않습니다. 위치를 읽어 맞히거나 은신 전·공격 직후에 조준할 수 있으며, 안개 칼날을 피할 공간도 필요합니다."
+    },
+    {
+      "path": "dist/data.json/matchups/408/reviewedAt",
+      "before": "2026-10-19",
+      "after": "2026-11-15"
+    },
+    {
+      "path": "dist/data.json/matchups/408/sourceFamilies",
+      "before": [
+        "identity5ch",
+        "namuwiki"
+      ],
+      "after": [
+        "identity5ch",
+        "namuwiki",
+        "naver-cafe-identity5"
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/408/sourceSupport",
+      "before": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제.",
+          "sourceFamily": "namuwiki"
+        }
+      ],
+      "after": [
+        {
+          "url": "https://wikiwiki.jp/identity5ch/リッパー",
+          "support": "direct",
+          "note": "궁수 등 본체를 조준하는 캐릭터의 어려움.",
+          "sourceFamily": "identity5ch"
+        },
+        {
+          "url": "https://www.namu.moe/w/리퍼(제5인격)",
+          "support": "mechanic",
+          "note": "시야 은폐와 공격 후 해제.",
+          "sourceFamily": "namuwiki"
+        },
+        {
+          "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8169239",
+          "support": "direct",
+          "note": "은신 중 조준 표시의 제약과 명중 가능성을 구분.",
+          "sourceFamily": "naver-cafe-identity5"
+        },
+        {
+          "url": "https://wikiwiki.jp/identity5ch/弓使い",
+          "support": "mechanic",
+          "note": "은신 중 심장 표시가 없어져도 명중 판정은 남음.",
+          "sourceFamily": "identity5ch"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/482",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M483",
+        "status": "반영",
+        "hunter": "나이아스",
+        "survivor": "무희",
+        "advantage": "나이아스",
+        "situation": "추격",
+        "summary": "오르골 주변을 물웅덩이로 둘러싸면 무희가 같은 구역에서 계속 버티기 어렵습니다.",
+        "condition": "물웅덩이가 닫히기 전에 빠른 리듬 오르골과 슬라이드 스텝으로 구역을 벗어나면 대응이 달라집니다. 오르골 한 곳을 지키는 상황의 불리함이며, 무희의 이동 기술 전체를 무력화하지는 않습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8247310",
+            "support": "exception",
+            "note": "오르골에 머무르지 않고 작살 회수에 맞춰 이동하는 반례.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/踊り子",
+            "support": "mechanic",
+            "note": "오르골 구역의 물웅덩이 압박과 빠른 리듬의 이동 활용.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/漁師",
+            "support": "mechanic",
+            "note": "물웅덩이를 닫는 경로와 습기 누적.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "물웅덩이에 둘러싸인 오르골 구역"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/483",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M484",
+        "status": "반영",
+        "hunter": "사도",
+        "survivor": "투우사",
+        "advantage": "투우사",
+        "situation": "추격",
+        "summary": "고양이의 마비가 발동하는 순간에 휩쓸기를 맞추면 기절을 피하고 사도와 거리를 벌릴 수 있습니다.",
+        "condition": "휩쓸기의 짧은 방어 구간을 맞춰야 하며 첫 돌진부터 무적인 것은 아닙니다. 위협으로 소지품 사용이 막혔거나, 존재감이 쌓인 사도가 다시 도약할 수 있는 상황은 따로 대비합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8250247",
+            "support": "direct",
+            "note": "마비 발동에 휩쓸기를 맞추는 대응 사례만 채택.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+            "support": "mechanic",
+            "note": "휩쓸기의 피해·방해 회피와 연속 이동 감시자의 재접근.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/使徒",
+            "support": "mechanic",
+            "note": "마비 발동과 위협의 소지품 봉쇄.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html",
+            "support": "mechanic",
+            "note": "4월 16일 휩쓸기 회피 구간 축소 확인; 구버전 수치 제외.",
+            "sourceFamily": "netease-official"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5",
+          "netease-official"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "마비 발동 순간의 휩쓸기"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/484",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M485",
+        "status": "반영",
+        "hunter": "은둔자",
+        "survivor": "무언극 아티스트",
+        "advantage": "무언극 아티스트",
+        "situation": "추격",
+        "summary": "우산 안에 들어간 동안에는 자기장의 기절을 피하며 다음 이동을 준비할 수 있습니다.",
+        "condition": "우산 무대를 미리 만들고 안에 들어가 있어야 합니다. 설치 중이나 발사·착지 구간까지 보호되지 않으며, 은둔자가 도착 지점에 자기장을 준비하면 다시 기절할 수 있습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8088033",
+            "support": "direct",
+            "note": "우산 내부에서 전극 기절을 피하는 구간.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+            "support": "mechanic",
+            "note": "우산 내부 보호와 감시자 진입 시 기절 우선 판정.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティストの対策",
+            "support": "exception",
+            "note": "발사 순간에는 공격받을 수 있는 예외.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "우산 내부에서 자기장 기절 회피"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/485",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M486",
+        "status": "반영",
+        "hunter": "잡화상",
+        "survivor": "무언극 아티스트",
+        "advantage": "무언극 아티스트",
+        "situation": "추격",
+        "summary": "우산 안에 들어간 동안에는 덩굴의 속박을 피하며 이동할 시점을 잡을 수 있습니다.",
+        "condition": "덩굴이 닿기 전에 우산 안에 들어가야 합니다. 이미 속박된 뒤 우산으로 해제하는 대응은 아니며, 발사 이후의 이동 경로와 착지 지점도 안전해야 합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8088033",
+            "support": "direct",
+            "note": "우산 내부에서 잡화상의 방해를 피하는 구간.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+            "support": "mechanic",
+            "note": "우산 내부의 보호 상태.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティストの対策",
+            "support": "exception",
+            "note": "설치·발사 동작 전체가 보호되지는 않음.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "우산 내부에서 덩굴 속박 회피"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/486",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M487",
+        "status": "반영",
+        "hunter": "시공의 그림자",
+        "survivor": "무언극 아티스트",
+        "advantage": "무언극 아티스트",
+        "situation": "추격",
+        "summary": "우산 안에 들어간 동안에는 침식으로 생기는 강제 이동을 피할 수 있습니다.",
+        "condition": "우산 내부의 보호 구간에 한정합니다. 침식도 관리나 기생 대응을 대신하는 능력은 아니며, 설치 전과 발사·착지 뒤에는 다시 방해받을 수 있습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8088033",
+            "support": "direct",
+            "note": "우산 내부에서 시공의 그림자의 강제 이동을 피하는 구간.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティスト",
+            "support": "mechanic",
+            "note": "우산 내부의 방해 효과 보호.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティストの対策",
+            "support": "exception",
+            "note": "발사 순간의 피격 가능성.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "우산 내부에서 침식 강제 이동 회피"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/487",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M488",
+        "status": "반영",
+        "hunter": "악몽",
+        "survivor": "기계공",
+        "advantage": "기계공",
+        "situation": "운영",
+        "summary": "기계 인형에는 까마귀가 붙지 않아 본체와 나눠 출입문을 여는 운영에 활용할 수 있습니다.",
+        "condition": "기계 인형 자체의 까마귀 부착 판정에 한정합니다. 해독기의 흔들림이나 직접 발견으로 위치가 드러날 수 있고, 주변으로 이동한 악몽이 인형을 공격하는 것까지 막지는 않습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+            "support": "direct",
+            "note": "까마귀가 붙지 않는 인형을 활용한 출입문 운영.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/機械技師",
+            "support": "mechanic",
+            "note": "까마귀 부착 예외와 해독 흔들림으로 위치가 드러나는 한계.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "까마귀 부착을 피하는 기계 인형 운영"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/488",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M489",
+        "status": "반영",
+        "hunter": "은둔자",
+        "survivor": "기계공",
+        "advantage": "은둔자",
+        "situation": "운영",
+        "summary": "극성이 붙은 기계 인형도 피해를 나눠 받으므로, 동료를 공격하면서 인형의 원격 해독까지 끊을 수 있습니다.",
+        "condition": "기계 인형과 공격받는 생존자의 극성이 같아 피해를 분담하는 상황입니다. 인형에 극성이 없거나 서로 다른 극성이면 같은 효과가 없으며, 인형의 남은 내구 상태도 확인해야 합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+            "support": "direct",
+            "note": "기계 인형의 전하 부여와 피해 분담.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/機械技師",
+            "support": "mechanic",
+            "note": "은둔자의 극성이 인형에도 적용되며 분담 피해로 인형 운용이 끊길 수 있음.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "동일 극성의 기계 인형에 전달되는 피해"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/489",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M490",
+        "status": "반영",
+        "hunter": "시공의 그림자",
+        "survivor": "기계공",
+        "advantage": "시공의 그림자",
+        "situation": "운영",
+        "summary": "기계 인형에도 이스인으로 기생하고 침식의 조각을 만들 수 있어 원격 해독 위치를 압박할 수 있습니다.",
+        "condition": "이스인이 인형을 찾아 기생할 조건을 갖춰야 합니다. 인형이 맵 어디에 있든 자동으로 드러나는 것은 아니며, 기계공 본체와 인형의 위치를 따로 판단합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+            "support": "direct",
+            "note": "기계 인형에 대한 기생·조각·침식 적용.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/機械技師",
+            "support": "mechanic",
+            "note": "이스인의 기계 인형 기생과 침식의 조각 생성.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "기계 인형을 대상으로 한 기생과 조각"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/490",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M491",
+        "status": "반영",
+        "hunter": "나이아스",
+        "survivor": "기계공",
+        "advantage": "기계공",
+        "situation": "운영",
+        "summary": "기계 인형에는 습기가 쌓이지 않아 물웅덩이 안에서도 인형으로 해독을 이어 갈 수 있습니다.",
+        "condition": "기계공 본체에는 습기가 정상적으로 쌓입니다. 나이아스의 돌진으로 인형의 동작이 끊기거나 일반 공격으로 인형이 제거될 수 있으므로, 물웅덩이만으로 방해하는 상황과 구분합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8048720",
+            "support": "direct",
+            "note": "기계 인형의 습기 누적 예외.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/機械技師",
+            "support": "mechanic",
+            "note": "습기 면역과 돌진에 의한 동작 중단의 차이.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "기계 인형의 습기 누적 예외"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/491",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M492",
+        "status": "반영",
+        "hunter": "꿈의 마녀",
+        "survivor": "모험가",
+        "advantage": "꿈의 마녀",
+        "situation": "운영",
+        "summary": "모험가가 축소해 숨어 있어도 기생 대상이 될 수 있어, 신도 생성으로 은신 위치를 압박할 수 있습니다.",
+        "condition": "기생할 거리와 대상 조건을 갖춰야 하며 맵 전체를 자동 탐지하는 능력은 아닙니다. 모험가의 감지에는 꿈의 마녀 본체가 잡히지 않으므로 접근을 확인하기 어렵습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7939656",
+            "support": "direct",
+            "note": "축소 상태에서도 기생 대상이 될 수 있다는 본문·댓글 설명.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/冒険家",
+            "support": "mechanic",
+            "note": "축소 중 기생 대상 표시와 꿈의 마녀 본체의 감지 예외.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "축소 중에도 가능한 기생 대상 확인"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/492",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M493",
+        "status": "반영",
+        "hunter": "시공의 그림자",
+        "survivor": "모험가",
+        "advantage": "시공의 그림자",
+        "situation": "운영",
+        "summary": "이스인으로 기생하면 축소한 모험가의 위치도 확인할 수 있어 숨는 운영을 제한합니다.",
+        "condition": "먼저 기생할 거리와 대상 조건을 갖춰야 합니다. 이스인은 모험가의 감지에 잡히지 않지만, 기생 전부터 맵 전체의 축소한 모험가를 자동으로 찾는 것은 아닙니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7939656",
+            "support": "direct",
+            "note": "축소 상태에 대한 이스인 기생과 감지 예외.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/冒険家",
+            "support": "mechanic",
+            "note": "이스인 감지 불가와 기생 뒤 축소 상태의 윤곽 확인.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "이스인 기생 후 축소 위치 확인"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/493",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M494",
+        "status": "반영",
+        "hunter": "시공의 그림자",
+        "survivor": "소설가",
+        "advantage": "시공의 그림자",
+        "situation": "추격",
+        "summary": "소설가가 위치 교환 자원을 다시 모으려고 정면을 바라보는 동안 침식도를 쌓아 압박할 수 있습니다.",
+        "condition": "이미 가진 자원으로 바로 위치를 교환하는 대응까지 막지는 않습니다. 정면 관찰로 재충전하는 구간과, 시선을 돌리며 저장한 자원으로 벗어나는 구간을 구분합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7422034",
+            "support": "direct",
+            "note": "정면 관찰이 필요한 소설가와 시공의 그림자의 상호작용만 채택.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/小説家",
+            "support": "mechanic",
+            "note": "시공의 그림자 정면 관찰 시 침식 위험과 초기 자원 구분.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "정면 관찰로 위치 교환 재충전"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/494",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M495",
+        "status": "반영",
+        "hunter": "리퍼",
+        "survivor": "소설가",
+        "advantage": "리퍼",
+        "situation": "추격",
+        "summary": "이미 날아오는 안개 칼날이 위치 교환 완료 전에 소설가를 맞히면 교환을 끊을 수 있습니다.",
+        "condition": "안개 칼날이 실제로 명중하는 경로와 시점에 한정합니다. 위치 교환 중 새 공격을 할 수 있다는 뜻은 아니며, 소설가가 칼날을 먼저 피하거나 교환을 완료하면 같은 대응이 성립하지 않습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7422034",
+            "support": "direct",
+            "note": "미리 발사된 안개 칼날로 위치 교환을 중단하는 사례.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/小説家",
+            "support": "mechanic",
+            "note": "위치 교환 완료 전 피격 시 중단되는 조건.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/リッパー",
+            "support": "mechanic",
+            "note": "발사된 안개 칼날의 이동과 피해 판정.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "교환 완료 전에 명중한 안개 칼날"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/495",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M496",
+        "status": "반영",
+        "hunter": "서기관",
+        "survivor": "투우사",
+        "advantage": "투우사",
+        "situation": "추격",
+        "summary": "휩쓸기를 맞힌 뒤 이어지는 이동으로 기록된 판자·창틀 주변을 벗어나면 서기관의 압박을 늦출 수 있습니다.",
+        "condition": "물레타를 쓸 자원과 이동 공간이 있고 휩쓸기를 맞혀야 합니다. 투우사의 판자·창틀 동작도 기록되므로 기록 면역으로 보지 않으며, 공격을 늦춰 휩쓸기를 빼는 대응에는 실패할 수 있습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8202306",
+            "support": "direct",
+            "note": "서기관 사용자가 겪은 물레타 거리 확보의 어려움.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/書記官",
+            "support": "mechanic",
+            "note": "기록된 상호작용의 압박과 소지품 이동으로 벗어나는 조건.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/闘牛士",
+            "support": "mechanic",
+            "note": "휩쓸기 명중 후 이동과 자원 조건.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "휩쓸기 명중 뒤 기록 구역 이탈"
+      }
+    }
+  ],
+  "followups": [
+    {
+      "baseline": "f10c9d7bb5eb1982f8c1df690c646f235a51404b",
+      "scope": "실전 표현을 확장한 카페 검색 후 조건부 상성 추가·보완",
+      "evidence": "research/matchups/2026-11-15/naver-broad-search.json",
+      "editOffset": 19,
+      "editCount": 55,
+      "gameBalanceRevalidated": false
     }
   ]
 }
