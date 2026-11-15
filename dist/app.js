@@ -305,7 +305,7 @@ function survivorSynergyCard(group,c){
 }
 function survivorSynergies(c){
  const groups=synergyGroups(db.links,c.name,byId);
- return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><p class="muted">두 캐릭터의 스킬이 맞물리는 연계와 성립 조건을 소개합니다.</p><div class="three-col section-gap">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">구체적인 스킬 연계 근거를 확인한 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><p class="muted">두 캐릭터의 스킬이 맞물리는 연계와 성립 조건을 소개합니다.</p><div class="three-col section-gap">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">구체적인 스킬 연계 근거를 확인한 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-record-link" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
@@ -323,7 +323,7 @@ function characterMatchups(c){
  return `<div class="note has-icon">${icon('info')}<span>[${chaseActivity(c.side)}] ${c.side==='생존자'?'직접 쫓기는 상황':'생존자를 쫓는 상황'} · [구출] 의자 구출 · [커버] 동료 보호·풍선 구출 · [운영] 해독·회복·재정비. 표시된 상황과 조건에 따라 유불리가 달라집니다.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 상황별 분석이며 대진 승률 순위가 아닙니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
  const all=characterEvidence(db.matchups,c,kind),selected=new Set(c[kind].map(i=>i.evidence)),rest=all.filter(m=>!selected.has(m.id));
  return `<section><div class="heading-inline matchup-section-heading"><h2>${matchupLabel(c,kind)}</h2><span>상황별 ${all.length}건</span></div><div class="matchup-list">${c[kind].map(matchupItem).join('')}${!all.length?'<div class="note">확인된 상성이 없습니다. 통계 탭에서 대회 기록을 볼 수 있습니다.</div>':''}</div>${rest.length?`<details class="methodology section-gap"><summary>다른 상대·상황 ${rest.length}건 더 보기</summary><div class="matchup-list section-gap">${rest.map(m=>matchupItem(item(m))).join('')}</div></details>`:''}</section>`;
- }).join('')}</div><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">상대별 대회 기록 →</a>`;
+ }).join('')}</div><a class="text-link section-record-link" href="${route({v:'character',c:c.id,tab:'stats'})}">상대별 대회 기록 →</a>`;
 }
 function commonFilters(scope){
  const f=scope==='bans'?state.banFilters:state.stats;
