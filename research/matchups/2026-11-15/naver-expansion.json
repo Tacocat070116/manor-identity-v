@@ -1,0 +1,383 @@
+{
+  "date": "2026-11-15",
+  "baseline": "4d162c7baba696ec8d6b750272b33b0b01f1f286",
+  "scope": "로그인 후 카페 내부 검색을 확장한 새 조건부 상성 검토",
+  "gameBalanceRevalidated": false,
+  "method": [
+    "기존 검토 글 17건과 상성 471건을 먼저 대조해 중복 반영을 제외했습니다.",
+    "새 검색어·게시판·검색 방식 조합 24개 중 22개는 로그인 후 글+댓글 검색입니다. 글 16건을 열었으며 15건의 본문·댓글을 읽고, PDF 첨부 안내 1건은 파일 미열람으로 제외했습니다. 전체 카페·전체 검색 결과 수집은 아닙니다.",
+    "같은 카페의 글·댓글은 하나의 출처군이며 같은 작성자의 여러 글도 독립 실증으로 세지 않습니다. 위키의 상호작용 설명과 공식 변경을 대조하며 조회 수·추천 수·카페 등급으로 판단하지 않습니다.",
+    "대진별 특정 상황의 유불리를 요약합니다. 전체 승률·티어·모든 게임 패치를 실전 재측정한 검토가 아닙니다.",
+    "로그인 세션·계정 정보·회원 원문은 저장하지 않으며 안정된 게시글 주소와 최소한의 판단 근거만 기록합니다."
+  ],
+  "cafe": {
+    "url": "https://cafe.naver.com/identity5",
+    "searches": [
+      {
+        "query": "늑구",
+        "board": "전체",
+        "mode": "제목만"
+      },
+      {
+        "query": "늑구 카운터",
+        "board": "전체",
+        "mode": "제목만"
+      },
+      {
+        "query": "늑구 카운터",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "늑구 기사",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "늑구",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "서기관",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌",
+        "board": "감시자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "무희",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "마임",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "치어리더",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 골동품",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 골상",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "여왕벌 침 골상",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "서기관 부엉이",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "서기관 선지자",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "감사원 카운터",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "작곡가 상성",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "환등사 거미",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "은둔자 기자",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "기자 밀랍",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "기상학자 늑구",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "바퀴 마임",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "무희 마리",
+        "board": "전체",
+        "mode": "글 + 댓글"
+      },
+      {
+        "query": "무희 마리",
+        "board": "생존자 공략",
+        "mode": "글 + 댓글"
+      }
+    ],
+    "articles": [
+      {
+        "articleId": 8164248,
+        "publishedAt": "2026-09-02",
+        "topic": "마음의 짐승 대응 캐릭터",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8164248",
+        "decision": "partially-accepted",
+        "reason": "기사·기상학자의 특정 행동만 채택. 확정 구출·단순 캐릭터 나열은 제외.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7984035,
+        "publishedAt": "2026-05-01",
+        "topic": "무희–치과의사 체감 상성",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7984035",
+        "decision": "held-candidate",
+        "reason": "개별 경험과 오르골 범위 추정만으로 우열 미확정.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8138842,
+        "publishedAt": "2026-08-14",
+        "topic": "마음의 짐승 초기 공략",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8138842",
+        "decision": "screened-no-change",
+        "reason": "8월 27일 이후 장애물 판정과 충돌하는 초기 주장·수치는 제외. 기존 교수 대진 중복 추가 금지.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8032421,
+        "publishedAt": "2026-06-04",
+        "topic": "서기관 조작 팁",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8032421",
+        "decision": "screened-no-change",
+        "reason": "특정 상대에 관한 독립 근거가 없어 새 대진으로 확대하지 않음. 영상 미검증.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7849503,
+        "publishedAt": "2026-01-14",
+        "topic": "여왕벌 능력·대응 공략",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7849503",
+        "decision": "partially-accepted",
+        "reason": "공군 상호작용만 채택. 궁수 상처 면역은 작성자 철회, 벌침 구출 중단·에너지 수치는 후속 패치로 제외.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7118047,
+        "publishedAt": "2024-09-10",
+        "topic": "절름발이 판 상대법",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7118047",
+        "decision": "partially-accepted",
+        "reason": "공군의 감옥 안팎 신호총 차이만 현재 기전과 대조. 오래된 수치·다른 대진은 채택하지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8111090,
+        "publishedAt": "2026-07-26",
+        "topic": "무언극의 능력별 활용",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8111090",
+        "decision": "partially-accepted",
+        "reason": "바퀴 형태·물웅덩이 이탈 조건만 채택. 발사 무적·확정 구출로 확대하지 않으며 구버전 해독 수치 제외.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7679108,
+        "publishedAt": "2025-09-09",
+        "topic": "무희 입문 공략",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7679108",
+        "decision": "partially-accepted",
+        "reason": "거울 대응의 사전 설치·이동 조건만 대조. 작성자 등급·자기소개를 신뢰성 지표로 사용하지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8080501,
+        "publishedAt": "2026-07-05",
+        "topic": "서기관 PDF 공략 안내",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8080501",
+        "decision": "attachment-unread",
+        "reason": "게시글 안내만 확인. 첨부파일 다운로드가 완료되지 않아 PDF 본문은 미열람·근거 미사용.",
+        "bodyAndCommentsReviewed": false
+      },
+      {
+        "articleId": 8080746,
+        "publishedAt": "2026-07-05",
+        "topic": "여왕벌 상대 골동품 상인 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8080746",
+        "decision": "held-candidate",
+        "reason": "답변 없는 질문으로 상성 방향 미확정.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7871732,
+        "publishedAt": "2026-02-02",
+        "topic": "서기관–선지자 기록 공격 전언",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7871732",
+        "decision": "held-candidate",
+        "reason": "재현 자료 없는 전언. 별도 위키 설명만으로 복수 독립 실증으로 집계하지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8237423,
+        "publishedAt": "2026-10-24",
+        "topic": "서기관의 강제 해독 완료 대응",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8237423",
+        "decision": "screened-no-change",
+        "reason": "일반 운영 설명이며 특정 생존자 상성 우열로 확대하지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7670717,
+        "publishedAt": "2025-09-02",
+        "topic": "기자의 감시자별 대응",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7670717",
+        "decision": "partially-accepted",
+        "reason": "전하·안개 칼날·탕백·습기만 채택. 사도 우열 충돌, 고치 구출의 작성자 불확실 답변, 복수자 구버전 판정은 제외.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 7722966,
+        "publishedAt": "2025-10-12",
+        "topic": "환등사 상성 분류",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7722966",
+        "decision": "screened-no-change",
+        "reason": "나이아스·시공의 그림자 관련 댓글 정정을 확인. 공개되지 않은 실험 영상과 일대일 체감으로 기존 우열을 바꾸지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8124548,
+        "publishedAt": "2026-08-03",
+        "topic": "은둔자 상대별 체감",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8124548",
+        "decision": "screened-no-change",
+        "reason": "작곡가·파로 부인 등에 관한 주관적 평가를 새로운 확정 상성으로 올리지 않음.",
+        "bodyAndCommentsReviewed": true
+      },
+      {
+        "articleId": 8161788,
+        "publishedAt": "2026-08-31",
+        "topic": "마음의 짐승 상대 기상학자 대응 질문",
+        "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8161788",
+        "decision": "accepted-exception",
+        "reason": "본문·댓글의 강풍 준비 각도 제약을 반례로 기록. 영상 자체는 재생·검증하지 않음.",
+        "bodyAndCommentsReviewed": true
+      }
+    ]
+  },
+  "added": [
+    "M472",
+    "M473",
+    "M474",
+    "M475",
+    "M476",
+    "M477",
+    "M478",
+    "M479",
+    "M480",
+    "M481",
+    "M482"
+  ],
+  "matchupChanges": {},
+  "heldByThisReview": [],
+  "addedDisplaySlots": [
+    {
+      "characterId": "c06",
+      "kind": "easy",
+      "evidence": "M482"
+    },
+    {
+      "characterId": "c10",
+      "kind": "easy",
+      "evidence": "M480"
+    },
+    {
+      "characterId": "c11",
+      "kind": "hard",
+      "evidence": "M472"
+    },
+    {
+      "characterId": "c11",
+      "kind": "hard",
+      "evidence": "M473"
+    },
+    {
+      "characterId": "c24",
+      "kind": "easy",
+      "evidence": "M477"
+    },
+    {
+      "characterId": "c31",
+      "kind": "easy",
+      "evidence": "M478"
+    },
+    {
+      "characterId": "c45",
+      "kind": "easy",
+      "evidence": "M473"
+    },
+    {
+      "characterId": "c53",
+      "kind": "hard",
+      "evidence": "M475"
+    },
+    {
+      "characterId": "c54",
+      "kind": "easy",
+      "evidence": "M474"
+    }
+  ],
+  "removedDisplaySlots": [],
+  "representativeUpdates": [],
+  "beforeCounts": {
+    "total": 471,
+    "accepted": 420,
+    "held": 51,
+    "displayedSlots": 636,
+    "sourceUrls": 501
+  },
+  "afterCounts": {
+    "total": 482,
+    "accepted": 431,
+    "held": 51,
+    "displayedSlots": 645,
+    "sourceUrls": 509
+  },
+  "audit": {
+    "path": "research/editorial/2026-11-15/consistency-edits.json",
+    "editOffset": 0,
+    "editCount": 19
+  },
+  "rejectedOrHeldClaims": [
+    "마음의 짐승 상대 기사 확정 구출",
+    "여왕벌의 궁수 상처 면역·현재 벌침 구출 중단",
+    "무희–치과의사, 여왕벌–묘지기, 서기관–선지자의 대진 전체 우열",
+    "무언극의 발사 과정 전체 무적, 고정 이동 거리, 확정 구출",
+    "사도–기자와 거미 고치 구출의 상충·불확실 설명",
+    "은둔자–작곡가·파로 부인의 체감 우열과 무한 해독 주장"
+  ],
+  "limitations": [
+    "기사·기상학자 대응은 준비·거리·사용 시점에 따라 실패할 수 있습니다.",
+    "무언극은 우산 내부와 발사·착지 시점을 구분하며, 공군은 감시자의 형태와 벽 위치를 구분합니다.",
+    "첨부 PDF·재생하지 않은 영상·이미지 표의 내용은 확인한 것으로 세지 않습니다.",
+    "기존 51개 보류 근거는 유지합니다. 이번 조사에서 보류한 새 후보를 공개 확정 상성이나 추가 보류 레코드로 자동 등록하지 않습니다.",
+    "대표 목록은 유불리별 최대 5개를 유지하고 빈 슬롯에만 추가합니다. 모든 새 근거는 대진 상세에서 볼 수 있습니다.",
+    "캐릭터 전체 공략·상성 검토일, 통계, 공지 버전은 변경하지 않습니다."
+  ]
+}

@@ -1,0 +1,751 @@
+{
+  "date": "2026-11-15",
+  "baseline": "4d162c7baba696ec8d6b750272b33b0b01f1f286",
+  "scope": "카페 추가 검색으로 확인한 새 조건부 상성",
+  "gameBalanceRevalidated": false,
+  "decisions": [
+    "기존 471개 상성은 그대로 보존하고 확인한 새 대진만 추가합니다.",
+    "원문 정정·반례·현재 기전을 대조하며 전체 검토일과 공지 버전을 유지합니다."
+  ],
+  "evidence": "research/matchups/2026-11-15/naver-expansion.json",
+  "edits": [
+    {
+      "path": "dist/data.json/characters/5/easy",
+      "before": [
+        {
+          "name": "기계공",
+          "reason": "[사냥] 습기로 판자·창틀 사용이 방해받으면 원래 동작이 느린 기계공은 더 벗어나기 어렵습니다.\n조건: 물웅덩이가 완성되기 전에 벗어나거나, 기계 인형을 안전하게 운용해 해독을 빠르게 진행할 수는 있습니다.",
+          "evidence": "M206"
+        },
+        {
+          "name": "우는 광대",
+          "reason": "[사냥] 회유로 로켓이 벌린 거리를 따라붙어 다음 습기 구역을 준비할 수 있습니다.\n조건: 로켓 폭발로 멈추거나 장애물 너머로 이동하면 달라집니다.",
+          "evidence": "M323"
+        },
+        {
+          "name": "묘지기",
+          "reason": "[사냥] 잠행 중에도 습기가 쌓여 끝내 삽을 소모시키고 지상으로 나오게 할 수 있습니다.\n조건: 습기 밖에서 기다렸다가 접근하는 구출까지 같이 불리하다고 보지 않습니다.",
+          "evidence": "M035"
+        },
+        {
+          "name": "야만인",
+          "reason": "[사냥] 습기가 가득 차면 멧돼지 대신 야만인 본체가 피해를 받고 하차합니다.\n조건: 탑승 이동으로 구역을 일찍 벗어날 수 있어 긴 거리 어그로의 우열과는 다릅니다.",
+          "evidence": "M036"
+        }
+      ],
+      "after": [
+        {
+          "name": "기계공",
+          "reason": "[사냥] 습기로 판자·창틀 사용이 방해받으면 원래 동작이 느린 기계공은 더 벗어나기 어렵습니다.\n조건: 물웅덩이가 완성되기 전에 벗어나거나, 기계 인형을 안전하게 운용해 해독을 빠르게 진행할 수는 있습니다.",
+          "evidence": "M206"
+        },
+        {
+          "name": "우는 광대",
+          "reason": "[사냥] 회유로 로켓이 벌린 거리를 따라붙어 다음 습기 구역을 준비할 수 있습니다.\n조건: 로켓 폭발로 멈추거나 장애물 너머로 이동하면 달라집니다.",
+          "evidence": "M323"
+        },
+        {
+          "name": "묘지기",
+          "reason": "[사냥] 잠행 중에도 습기가 쌓여 끝내 삽을 소모시키고 지상으로 나오게 할 수 있습니다.\n조건: 습기 밖에서 기다렸다가 접근하는 구출까지 같이 불리하다고 보지 않습니다.",
+          "evidence": "M035"
+        },
+        {
+          "name": "야만인",
+          "reason": "[사냥] 습기가 가득 차면 멧돼지 대신 야만인 본체가 피해를 받고 하차합니다.\n조건: 탑승 이동으로 구역을 일찍 벗어날 수 있어 긴 거리 어그로의 우열과는 다릅니다.",
+          "evidence": "M036"
+        },
+        {
+          "name": "기자",
+          "reason": "[사냥] 환영에도 습기가 쌓이므로 물웅덩이 안에서는 환영을 방패로 세워도 안전하게 버티기 어렵습니다.\n조건: 물웅덩이 안에서 환영으로 공격을 대신 받으며 버티려는 상황입니다. 본체가 먼저 구역 밖으로 나가면 대응이 달라지며, 습기로 환영이 쓰러질 때 얻는 가속도 활용할 수 있습니다.",
+          "evidence": "M482"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/9/easy",
+      "before": [
+        {
+          "name": "교수",
+          "reason": "[사냥] 날아오는 안개 칼날은 비늘 경화의 일반 공격 방어를 우회합니다.\n조건: 차가운 안개의 근접 타격은 일반 공격 판정이므로 비늘로 막을 수 있습니다. 원거리 칼날과 직접 타격을 구분합니다.",
+          "evidence": "M239"
+        },
+        {
+          "name": "타자",
+          "reason": "[사냥·커버] 은신 중인 리퍼는 본체 위치를 파악하기 어려워 크리켓볼을 맞히기 까다롭습니다.\n조건: 안광·공격 동작으로 위치를 읽거나 은신이 풀린 틈에는 밀치기가 가능합니다. 첫 존재감 전 사냥과 구분합니다.",
+          "evidence": "M050"
+        },
+        {
+          "name": "우는 광대",
+          "reason": "[사냥] 로켓으로 직진하는 우는 광대는 안개 칼날의 사선을 피하기 까다롭습니다.\n조건: 출발 전 벽으로 사선을 끊거나 로켓을 일찍 내려 방향을 바꾸면 달라집니다. 개활지 로켓 이동에 한정합니다.",
+          "evidence": "M320"
+        },
+        {
+          "name": "궁수",
+          "reason": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+          "evidence": "M409"
+        }
+      ],
+      "after": [
+        {
+          "name": "교수",
+          "reason": "[사냥] 날아오는 안개 칼날은 비늘 경화의 일반 공격 방어를 우회합니다.\n조건: 차가운 안개의 근접 타격은 일반 공격 판정이므로 비늘로 막을 수 있습니다. 원거리 칼날과 직접 타격을 구분합니다.",
+          "evidence": "M239"
+        },
+        {
+          "name": "타자",
+          "reason": "[사냥·커버] 은신 중인 리퍼는 본체 위치를 파악하기 어려워 크리켓볼을 맞히기 까다롭습니다.\n조건: 안광·공격 동작으로 위치를 읽거나 은신이 풀린 틈에는 밀치기가 가능합니다. 첫 존재감 전 사냥과 구분합니다.",
+          "evidence": "M050"
+        },
+        {
+          "name": "우는 광대",
+          "reason": "[사냥] 로켓으로 직진하는 우는 광대는 안개 칼날의 사선을 피하기 까다롭습니다.\n조건: 출발 전 벽으로 사선을 끊거나 로켓을 일찍 내려 방향을 바꾸면 달라집니다. 개활지 로켓 이동에 한정합니다.",
+          "evidence": "M320"
+        },
+        {
+          "name": "궁수",
+          "reason": "[커버] 리퍼가 은신하면 위치를 파악하기 어려워 화살로 견제하기 어렵습니다.\n조건: 은신 전이나 공격 직후에는 조준할 수 있습니다. 칼날을 피하며 본체를 확인할 공간이 있으면 달라집니다.",
+          "evidence": "M409"
+        },
+        {
+          "name": "기자",
+          "reason": "[사냥] 환영과 본체가 안개 칼날의 같은 경로에 있으면 환영을 세워도 본체가 함께 맞을 수 있습니다.\n조건: 환영 뒤에 일직선으로 서는 배치를 피합니다. 일반 공격을 대신 맞게 하는 활용과 안개 칼날을 피하는 이동은 따로 판단해야 합니다.",
+          "evidence": "M480"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/10/hard",
+      "before": [
+        {
+          "name": "무언극 아티스트",
+          "reason": "[사냥] 높은 벽을 만들면 마음의 짐승의 직선 돌진과 도약 연계를 끊기 쉽습니다.\n조건: 낮은 장애물이나 벽 끝이 열린 배치는 우회될 수 있습니다. 우산 자원을 쓰기 전에 붙잡힌 상황은 제외합니다.",
+          "evidence": "M357"
+        },
+        {
+          "name": "교수",
+          "reason": "[사냥] 교수가 공격 동작을 늦추고 비늘로 막으면 마음의 짐승이 일반 공격을 섞어 연속으로 공격하기 어려워집니다.\n조건: 비늘이 돌진의 모든 표식과 피해를 지우지는 않습니다. 일반 공격을 읽어 방어할 수 있는 거리에서의 강점입니다.",
+          "evidence": "M358"
+        }
+      ],
+      "after": [
+        {
+          "name": "무언극 아티스트",
+          "reason": "[사냥] 높은 벽을 만들면 마음의 짐승의 직선 돌진과 도약 연계를 끊기 쉽습니다.\n조건: 낮은 장애물이나 벽 끝이 열린 배치는 우회될 수 있습니다. 우산 자원을 쓰기 전에 붙잡힌 상황은 제외합니다.",
+          "evidence": "M357"
+        },
+        {
+          "name": "교수",
+          "reason": "[사냥] 교수가 공격 동작을 늦추고 비늘로 막으면 마음의 짐승이 일반 공격을 섞어 연속으로 공격하기 어려워집니다.\n조건: 비늘이 돌진의 모든 표식과 피해를 지우지는 않습니다. 일반 공격을 읽어 방어할 수 있는 거리에서의 강점입니다.",
+          "evidence": "M358"
+        },
+        {
+          "name": "기사",
+          "reason": "[사냥] 일반 공격 예측을 맞히면 도약 공격을 끊어 표식과 후속 공격의 연계를 늦출 수 있습니다.\n조건: 공격을 시작하기 전에 예측 범위 안에 있어야 합니다. 스킬로 쓰는 돌진은 일반 공격과 구분하며, 돌진이 남아 있거나 이미 발동한 상황까지 막는 대응은 아닙니다.",
+          "evidence": "M472"
+        },
+        {
+          "name": "기상학자",
+          "reason": "[사냥] 접근하는 마음의 짐승을 강풍으로 밀어내면 연속 공격이 닿을 거리를 끊을 수 있습니다.\n조건: 그림과 자원을 준비하고 바람이 닿을 방향을 확보해야 합니다. 첫 공격을 맞은 뒤에는 준비할 틈 없이 연계될 수 있으며, 밀어낸 뒤 다시 접근할 경로도 확인합니다.",
+          "evidence": "M473"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/23/easy",
+      "before": [
+        {
+          "name": "심리학자",
+          "reason": "[사냥] 벌침과 일반 공격을 짧게 이어 맞히면 스트레스 회복이 끝나기 전에 쓰러뜨릴 수 있습니다.\n조건: 벌침을 피하거나 스트레스 발동 뒤 환자 허상으로 이동해 연속 공격을 끊을 수 있습니다.",
+          "evidence": "M123"
+        },
+        {
+          "name": "환등사",
+          "reason": "[사냥] 고정된 투영에 곤충 떼를 접촉시켜 에너지를 모을 수 있습니다.\n조건: 고정이 끝난 뒤의 어그로도 대비해야 합니다.",
+          "evidence": "M124"
+        },
+        {
+          "name": "기자",
+          "reason": "[구출] 곤충 떼로 구출용 환영을 제거해 의자로 향하는 경로를 방해할 수 있습니다.\n조건: 환영이 곤충 떼와 겹치는 경로에 한정합니다. 판자용 환영을 따로 활용하거나 다른 방향으로 접근할 수 있으며, 벌침 자체는 구출 동작을 중단시키지 않습니다.",
+          "evidence": "M464"
+        }
+      ],
+      "after": [
+        {
+          "name": "심리학자",
+          "reason": "[사냥] 벌침과 일반 공격을 짧게 이어 맞히면 스트레스 회복이 끝나기 전에 쓰러뜨릴 수 있습니다.\n조건: 벌침을 피하거나 스트레스 발동 뒤 환자 허상으로 이동해 연속 공격을 끊을 수 있습니다.",
+          "evidence": "M123"
+        },
+        {
+          "name": "환등사",
+          "reason": "[사냥] 고정된 투영에 곤충 떼를 접촉시켜 에너지를 모을 수 있습니다.\n조건: 고정이 끝난 뒤의 어그로도 대비해야 합니다.",
+          "evidence": "M124"
+        },
+        {
+          "name": "기자",
+          "reason": "[구출] 곤충 떼로 구출용 환영을 제거해 의자로 향하는 경로를 방해할 수 있습니다.\n조건: 환영이 곤충 떼와 겹치는 경로에 한정합니다. 판자용 환영을 따로 활용하거나 다른 방향으로 접근할 수 있으며, 벌침 자체는 구출 동작을 중단시키지 않습니다.",
+          "evidence": "M464"
+        },
+        {
+          "name": "공군",
+          "reason": "[사냥] 곤충 떼로 변한 동안에는 신호총 기절을 받지 않아 공군의 거리 확보를 제한합니다.\n조건: 풀존재 능력을 해금하고 에너지를 써서 변한 상태에 한정합니다. 평소 본체까지 기절 면역인 것은 아니므로, 공군은 변신이 끝나는 시점을 보고 발사합니다.",
+          "evidence": "M477"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/30/easy",
+      "before": [
+        {
+          "name": "치어리더",
+          "reason": "[사냥] 케이지 안에서는 달리기 가속만으로 경계를 빠져나가기 어렵습니다.\n조건: 케이지가 생기기 전에 거리를 벌리는 대응은 가능합니다.",
+          "evidence": "M219"
+        },
+        {
+          "name": "용병",
+          "reason": "[사냥] 케이지가 보호대의 직선 이탈을 제한합니다.\n조건: 보호대가 봉쇄된다는 뜻은 아니며 설치 전 이탈은 가능합니다.",
+          "evidence": "M220"
+        },
+        {
+          "name": "포워드",
+          "reason": "[커버] 케이지로 태클의 진입과 풍선 구출 경로를 제한할 수 있습니다.\n조건: 판도 자원을 쓰며 판자 기절을 받으면 케이지 관리가 어려워집니다.",
+          "evidence": "M221"
+        }
+      ],
+      "after": [
+        {
+          "name": "치어리더",
+          "reason": "[사냥] 케이지 안에서는 달리기 가속만으로 경계를 빠져나가기 어렵습니다.\n조건: 케이지가 생기기 전에 거리를 벌리는 대응은 가능합니다.",
+          "evidence": "M219"
+        },
+        {
+          "name": "용병",
+          "reason": "[사냥] 케이지가 보호대의 직선 이탈을 제한합니다.\n조건: 보호대가 봉쇄된다는 뜻은 아니며 설치 전 이탈은 가능합니다.",
+          "evidence": "M220"
+        },
+        {
+          "name": "포워드",
+          "reason": "[커버] 케이지로 태클의 진입과 풍선 구출 경로를 제한할 수 있습니다.\n조건: 판도 자원을 쓰며 판자 기절을 받으면 케이지 관리가 어려워집니다.",
+          "evidence": "M221"
+        },
+        {
+          "name": "공군",
+          "reason": "[사냥] 감옥의 외곽 벽으로 신호총을 막으면 공군이 기절로 거리를 벌리는 대응을 제한할 수 있습니다.\n조건: 감옥 벽을 사이에 둔 발사에 한정합니다. 같은 감옥 안에서 가까이 쏘거나 벽이 생기기 전에 맞히는 경우까지 막히지는 않습니다.",
+          "evidence": "M478"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/44/easy",
+      "before": [
+        {
+          "name": "광기의 눈",
+          "reason": "[어그로] 3단계 층운의 높이를 이용하면 격벽을 넘어 빠져나갈 수 있습니다.\n조건: 층운을 충분히 올릴 시간과 자원이 필요합니다. 낮은 층운이나 사용 직후를 같은 상태로 보지 않습니다.",
+          "evidence": "M339"
+        },
+        {
+          "name": "박사",
+          "reason": "[운영] 따뜻한 비는 쓰러진 팀원도 회복시켜 박사의 출혈 압박을 늦출 수 있습니다.\n조건: 박사가 곁에서 일어나는 순간을 기다리면 다시 쓰러져 탈락이 빨라질 수 있습니다. 안전한 회복 위치와 비의 대상을 먼저 확보합니다.",
+          "evidence": "M071"
+        }
+      ],
+      "after": [
+        {
+          "name": "광기의 눈",
+          "reason": "[어그로] 3단계 층운의 높이를 이용하면 격벽을 넘어 빠져나갈 수 있습니다.\n조건: 층운을 충분히 올릴 시간과 자원이 필요합니다. 낮은 층운이나 사용 직후를 같은 상태로 보지 않습니다.",
+          "evidence": "M339"
+        },
+        {
+          "name": "박사",
+          "reason": "[운영] 따뜻한 비는 쓰러진 팀원도 회복시켜 박사의 출혈 압박을 늦출 수 있습니다.\n조건: 박사가 곁에서 일어나는 순간을 기다리면 다시 쓰러져 탈락이 빨라질 수 있습니다. 안전한 회복 위치와 비의 대상을 먼저 확보합니다.",
+          "evidence": "M071"
+        },
+        {
+          "name": "마음의 짐승",
+          "reason": "[어그로] 접근하는 마음의 짐승을 강풍으로 밀어내면 연속 공격이 닿을 거리를 끊을 수 있습니다.\n조건: 그림과 자원을 준비하고 바람이 닿을 방향을 확보해야 합니다. 첫 공격을 맞은 뒤에는 준비할 틈 없이 연계될 수 있으며, 밀어낸 뒤 다시 접근할 경로도 확인합니다.",
+          "evidence": "M473"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/52/hard",
+      "before": [
+        {
+          "name": "광기의 눈",
+          "reason": "[어그로] 자신이 만든 벽이 퇴로를 좁혀 격벽 포위에 불리해질 수 있습니다.\n조건: 우산으로 격벽을 넘는다고 가정하지 않습니다. 벽 배치와 남은 출구에 따라 달라집니다.",
+          "evidence": "M018"
+        }
+      ],
+      "after": [
+        {
+          "name": "광기의 눈",
+          "reason": "[어그로] 자신이 만든 벽이 퇴로를 좁혀 격벽 포위에 불리해질 수 있습니다.\n조건: 우산으로 격벽을 넘는다고 가정하지 않습니다. 벽 배치와 남은 출구에 따라 달라집니다.",
+          "evidence": "M018"
+        },
+        {
+          "name": "파멸의 바퀴",
+          "reason": "[어그로] 바퀴 형태에서는 우산의 기절로 멈추지 않아 무언극 아티스트에게 계속 접근할 수 있습니다.\n조건: 바퀴 형태의 기절 면역에 한정합니다. 생성한 벽과 판자로 이동 경로를 바꿀 수 있고, 인간 형태에서는 같은 기절 면역을 기대할 수 없습니다.",
+          "evidence": "M475"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/characters/53/easy",
+      "before": [
+        {
+          "name": "광대",
+          "reason": "[어그로] 미리 설치한 느린 리듬 오르골 주변에서는 첫 돌진을 피하며 시간을 벌 수 있습니다.\n조건: 오르골을 설치하기 전 접근당하거나 구역을 벗어나면 같은 이점이 없습니다.",
+          "evidence": "M412"
+        }
+      ],
+      "after": [
+        {
+          "name": "광대",
+          "reason": "[어그로] 미리 설치한 느린 리듬 오르골 주변에서는 첫 돌진을 피하며 시간을 벌 수 있습니다.\n조건: 오르골을 설치하기 전 접근당하거나 구역을 벗어나면 같은 이점이 없습니다.",
+          "evidence": "M412"
+        },
+        {
+          "name": "블러디 퀸",
+          "reason": "[어그로] 미리 설치한 빠른 리듬 오르골과 슬라이드 스텝으로 거울상의 공격 경로에서 벗어날 수 있습니다.\n조건: 오르골 효과를 받으며 이동할 공간이 있어야 합니다. 오르골만으로 거울 공격이 막히지는 않으며, 거울이 이미 붙은 뒤 설치하거나 이동 끝에 다시 겹치면 피하기 어렵습니다.",
+          "evidence": "M474"
+        }
+      ]
+    },
+    {
+      "path": "dist/data.json/matchups/471",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M472",
+        "status": "반영",
+        "hunter": "마음의 짐승",
+        "survivor": "기사",
+        "advantage": "기사",
+        "situation": "추격",
+        "summary": "일반 공격 예측을 맞히면 도약 공격을 끊어 표식과 후속 공격의 연계를 늦출 수 있습니다.",
+        "condition": "공격을 시작하기 전에 예측 범위 안에 있어야 합니다. 스킬로 쓰는 돌진은 일반 공격과 구분하며, 돌진이 남아 있거나 이미 발동한 상황까지 막는 대응은 아닙니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8164248",
+            "support": "direct",
+            "note": "돌진 대기 중 일반 공격 예측을 활용한 대응.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/心の獣",
+            "support": "mechanic",
+            "note": "도약은 일반 공격이며 기사 예측의 영향을 받음.",
+            "sourceFamily": "identity5ch"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/騎士",
+            "support": "mechanic",
+            "note": "예측의 범위·발동 시점과 일반 공격·스킬 구분.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "돌진 대기 중 일반 공격 예측"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/472",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M473",
+        "status": "반영",
+        "hunter": "마음의 짐승",
+        "survivor": "기상학자",
+        "advantage": "기상학자",
+        "situation": "추격",
+        "summary": "접근하는 마음의 짐승을 강풍으로 밀어내면 연속 공격이 닿을 거리를 끊을 수 있습니다.",
+        "condition": "그림과 자원을 준비하고 바람이 닿을 방향을 확보해야 합니다. 첫 공격을 맞은 뒤에는 준비할 틈 없이 연계될 수 있으며, 밀어낸 뒤 다시 접근할 경로도 확인합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8164248",
+            "support": "direct",
+            "note": "강풍으로 돌진 접근을 밀어내는 대응.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8161788",
+            "support": "exception",
+            "note": "피격 뒤 강풍을 쓸 각도 확보가 어려운 반례.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313028.html",
+            "support": "mechanic",
+            "note": "8월 27일 공지: 일부 상황에서 강풍이 마음의 짐승을 밀지 못하던 오류 수정.",
+            "sourceFamily": "netease-official"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/気象学者",
+            "support": "mechanic",
+            "note": "강풍의 방향·준비·자원 제약.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5",
+          "netease-official"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "강풍을 준비한 접근 차단"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/473",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M474",
+        "status": "반영",
+        "hunter": "블러디 퀸",
+        "survivor": "무희",
+        "advantage": "무희",
+        "situation": "추격",
+        "summary": "미리 설치한 빠른 리듬 오르골과 슬라이드 스텝으로 거울상의 공격 경로에서 벗어날 수 있습니다.",
+        "condition": "오르골 효과를 받으며 이동할 공간이 있어야 합니다. 오르골만으로 거울 공격이 막히지는 않으며, 거울이 이미 붙은 뒤 설치하거나 이동 끝에 다시 겹치면 피하기 어렵습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7679108",
+            "support": "direct",
+            "note": "빠른 오르골과 슬라이드 스텝을 이용한 거울 회피 사례.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/踊り子",
+            "support": "mechanic",
+            "note": "블러디 퀸의 거울 대응과 이동 조건.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "오르골을 미리 설치한 거울 회피"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/474",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M475",
+        "status": "반영",
+        "hunter": "파멸의 바퀴",
+        "survivor": "무언극 아티스트",
+        "advantage": "파멸의 바퀴",
+        "situation": "추격",
+        "summary": "바퀴 형태에서는 우산의 기절로 멈추지 않아 무언극 아티스트에게 계속 접근할 수 있습니다.",
+        "condition": "바퀴 형태의 기절 면역에 한정합니다. 생성한 벽과 판자로 이동 경로를 바꿀 수 있고, 인간 형태에서는 같은 기절 면역을 기대할 수 없습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8111090",
+            "support": "direct",
+            "note": "바퀴 형태에는 우산 기절이 통하지 않는 대진.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/破輪",
+            "support": "mechanic",
+            "note": "바퀴 형태의 기절 면역과 인간 형태 구분.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "바퀴 형태의 우산 기절 면역"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/475",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M476",
+        "status": "반영",
+        "hunter": "나이아스",
+        "survivor": "무언극 아티스트",
+        "advantage": "무언극 아티스트",
+        "situation": "추격",
+        "summary": "우산을 미리 준비하면 물웅덩이에 둘러싸이기 전에 바깥으로 이동할 경로를 만들 수 있습니다.",
+        "condition": "우산 안에 들어간 동안의 무적과 발사 동작은 다릅니다. 출발할 때 공격받거나 물웅덩이 안에 착지할 수 있으므로 출발 시점과 착지 지점을 함께 확인합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/8111090",
+            "support": "direct",
+            "note": "물웅덩이가 완성되기 전에 우산으로 이탈하는 대응.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/マイムアーティストの対策",
+            "support": "mechanic",
+            "note": "우산 안의 무적과 발사 순간의 피격 가능성.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "미리 준비한 우산으로 물웅덩이 이탈"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/476",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M477",
+        "status": "반영",
+        "hunter": "여왕벌",
+        "survivor": "공군",
+        "advantage": "여왕벌",
+        "situation": "추격",
+        "summary": "곤충 떼로 변한 동안에는 신호총 기절을 받지 않아 공군의 거리 확보를 제한합니다.",
+        "condition": "풀존재 능력을 해금하고 에너지를 써서 변한 상태에 한정합니다. 평소 본체까지 기절 면역인 것은 아니므로, 공군은 변신이 끝나는 시점을 보고 발사합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7849503",
+            "support": "direct",
+            "note": "곤충 떼로 변한 상태의 신호총 기절 회피.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/女王蜂",
+            "support": "mechanic",
+            "note": "변신 중 판정과 에너지·존재감 조건.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "풀존재 변신 중 신호총 대응"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/477",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M478",
+        "status": "반영",
+        "hunter": "절름발이 판",
+        "survivor": "공군",
+        "advantage": "절름발이 판",
+        "situation": "추격",
+        "summary": "감옥의 외곽 벽으로 신호총을 막으면 공군이 기절로 거리를 벌리는 대응을 제한할 수 있습니다.",
+        "condition": "감옥 벽을 사이에 둔 발사에 한정합니다. 같은 감옥 안에서 가까이 쏘거나 벽이 생기기 전에 맞히는 경우까지 막히지는 않습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7118047",
+            "support": "direct",
+            "note": "감옥 밖의 신호총 차단과 내부 발사의 차이.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/空軍",
+            "support": "mechanic",
+            "note": "감옥 벽에 막히는 신호총과 근접 대응.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "감옥 외곽 벽을 사이에 둔 신호총"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/478",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M479",
+        "status": "반영",
+        "hunter": "은둔자",
+        "survivor": "기자",
+        "advantage": "은둔자",
+        "situation": "운영",
+        "summary": "전하가 붙은 환영을 공격해 같은 극성의 생존자에게 피해를 분담시키고 존재감을 쌓을 수 있습니다.",
+        "condition": "환영과 동료의 전하를 확인해야 합니다. 공격받기 쉬운 곳에 환영을 방치하지 말고 필요하면 해제합니다. 전하가 없는 환영까지 같은 부담을 주지는 않습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7670717",
+            "support": "direct",
+            "note": "환영에 붙은 전하와 피해 분담의 위험.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/記者",
+            "support": "mechanic",
+            "note": "환영에서 피해가 분담될 때 존재감 획득.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "전하를 지닌 환영을 통한 피해 분담"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/479",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M480",
+        "status": "반영",
+        "hunter": "리퍼",
+        "survivor": "기자",
+        "advantage": "리퍼",
+        "situation": "추격",
+        "summary": "환영과 본체가 안개 칼날의 같은 경로에 있으면 환영을 세워도 본체가 함께 맞을 수 있습니다.",
+        "condition": "환영 뒤에 일직선으로 서는 배치를 피합니다. 일반 공격을 대신 맞게 하는 활용과 안개 칼날을 피하는 이동은 따로 판단해야 합니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7670717",
+            "support": "direct",
+            "note": "안개 칼날 경로에 환영과 본체가 겹치는 위험.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/記者",
+            "support": "mechanic",
+            "note": "환영으로 안개 칼날을 완전히 차단하지 못하는 위치 조건.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "안개 칼날 경로에 겹친 환영과 본체"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/480",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M481",
+        "status": "반영",
+        "hunter": "우산의 영혼",
+        "survivor": "기자",
+        "advantage": "우산의 영혼",
+        "situation": "추격",
+        "summary": "흑무상의 탕백에 환영도 넘어지므로, 판자 앞 환영에만 기대면 사냥을 끊기 어렵습니다.",
+        "condition": "탕백이 환영에 맞은 상황에 한정합니다. 백무상 상태나 탕백을 빗맞힌 경우와 구분하고, 본체는 환영과 함께 맞지 않도록 경로를 나눕니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7670717",
+            "support": "direct",
+            "note": "흑무상의 종에 환영도 넘어지는 대응.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/記者",
+            "support": "mechanic",
+            "note": "탕백의 환영 넘어짐 판정.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "흑무상의 탕백이 닿은 환영"
+      }
+    },
+    {
+      "path": "dist/data.json/matchups/481",
+      "beforeMissing": true,
+      "before": null,
+      "after": {
+        "id": "M482",
+        "status": "반영",
+        "hunter": "나이아스",
+        "survivor": "기자",
+        "advantage": "나이아스",
+        "situation": "추격",
+        "summary": "환영에도 습기가 쌓이므로 물웅덩이 안에서는 환영을 방패로 세워도 안전하게 버티기 어렵습니다.",
+        "condition": "물웅덩이 안에서 환영으로 공격을 대신 받으며 버티려는 상황입니다. 본체가 먼저 구역 밖으로 나가면 대응이 달라지며, 습기로 환영이 쓰러질 때 얻는 가속도 활용할 수 있습니다.",
+        "reviewedAt": "2026-11-15",
+        "priority": 60,
+        "listEligible": true,
+        "sourceSupport": [
+          {
+            "url": "https://cafe.naver.com/f-e/cafes/29465158/articles/7670717",
+            "support": "direct",
+            "note": "물웅덩이 안에서는 환영에도 습기가 쌓임.",
+            "sourceFamily": "naver-cafe-identity5"
+          },
+          {
+            "url": "https://wikiwiki.jp/identity5ch/記者",
+            "support": "mechanic",
+            "note": "습기로 환영이 쓰러지는 판정과 본체 가속의 예외.",
+            "sourceFamily": "identity5ch"
+          }
+        ],
+        "sourceFamilies": [
+          "identity5ch",
+          "naver-cafe-identity5"
+        ],
+        "evidenceLevel": "복수 출처",
+        "situationDetail": "물웅덩이에 묶인 판자용 환영"
+      }
+    }
+  ]
+}

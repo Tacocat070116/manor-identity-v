@@ -65,5 +65,5 @@ test('generated startup catalogue preserves every identity and keeps full guide 
  assert.deepEqual(catalog.meta,data.meta);assert.deepEqual(catalog.maps,data.maps);
  assert.deepEqual(catalog.characters,data.characters.map(c=>Object.fromEntries(['id','name','originalName','side','portrait','difficulty'].filter(key=>Object.hasOwn(c,key)).map(key=>[key,c[key]]))));
  assert.ok(fs.statSync('dist/catalog.json').size<20000,'startup catalogue budget');
- assert.equal(data.characters.length,89);assert.equal(data.matchups.length,471);
+ assert.equal(data.characters.length,89);assert.equal(data.matchups.length,482);
 });
