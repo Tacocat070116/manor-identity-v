@@ -99,7 +99,7 @@ async function prepareStatistics(){
 function loadRanked(filters={...state.statistics}){
  return prepareStatistics().then(()=>rankedSource.load(filters));
 }
-const loadGuideData=cachedJSON('data.json?v=23d701639805','공략 자료를 불러오지 못했습니다.');
+const loadGuideData=cachedJSON('data.json?v=7f8d8d93b7b0','공략 자료를 불러오지 못했습니다.');
 async function ensureGuides(){
  if(db.matchups)return;
  const data=await loadGuideData();

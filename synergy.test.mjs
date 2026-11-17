@@ -38,7 +38,22 @@ test('published duos require specific interactions, evidence and conditions; gen
  assert.deepEqual(synergyGroups(db.links,'선지자',characters),[]);
  const edit=JSON.parse(fs.readFileSync('research/editorial/2026-11-15/consistency-edits.json','utf8')).edits.find(e=>e.path==='dist/data.json/links');
  const hunterNames=new Set(db.characters.filter(c=>c.side==='감시자').map(c=>c.name));
- assert.deepEqual(db.links.filter(l=>hunterNames.has(l.character)),edit.before.filter(l=>hunterNames.has(l.character)),'all 108 hunter auxiliary trait recommendations stay unchanged');
+ const hunters=links=>links.filter(l=>hunterNames.has(l.character));
+ assert.deepEqual(hunters(edit.after),hunters(edit.before),'the duo review preserved all 108 hunter auxiliary trait recommendations');
+ // Later, audited wording edits must not make the historical duo snapshot stale.
+ const expected={links:structuredClone(edit.after)};
+ const laterDates=fs.readdirSync('research/editorial').filter(date=>/^\d{4}-\d{2}-\d{2}$/.test(date)&&date>'2026-11-15'&&fs.existsSync(`research/editorial/${date}/consistency-edits.json`)).sort();
+ for(const date of laterDates){
+  const later=JSON.parse(fs.readFileSync(`research/editorial/${date}/consistency-edits.json`,'utf8'));
+  for(const change of later.edits.filter(e=>/^dist\/data\.json\/links(?:\/|$)/.test(e.path))){
+   const parts=change.path.split('/').slice(2);let parent=expected;for(const part of parts.slice(0,-1))parent=parent[part];
+   const key=parts.at(-1);
+   if(change.beforeMissing)assert.ok(!Object.hasOwn(parent,key),change.path);
+   else assert.deepEqual(parent[key],change.before,change.path);
+   parent[key]=structuredClone(change.after);
+  }
+ }
+ assert.deepEqual(hunters(db.links),hunters(expected.links),'current hunter recommendations match the preserved snapshot plus reviewed edits');
 });
 test('proposals require two distinct survivors, meaningful usage, cautions and bounded situations',()=>{
  const draft={characterIds:['c55','c58'],title:'함께 사용한 경험',body:'회복 시간을 확보할 수 있도록 부엉이 보호를 요청했습니다.',caution:'부엉이가 남아 있어야 합니다.',situations:['회복']};
