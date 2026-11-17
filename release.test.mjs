@@ -58,6 +58,41 @@ test('owner-requested copy edits apply only to the exact recorded text revision'
  }
 });
 
+test('owner-requested omissions require exact original items and preserve the remaining history',()=>{
+ const previous=structuredClone(log);
+ previous.releases[0].changes.unshift({type:'개선',text:'내부 검증 절차만 기록한 항목'});
+ const edited=structuredClone(previous);edited.releases[0].changes.shift();
+ const removal={releaseId:previous.releases[0].id,changeIndex:0,before:previous.releases[0].changes[0],reason:'이용자에게 불필요한 내부 작업 설명 제외 요청'};
+ const record=current=>({requestedBy:'owner',reason:'공지에서 내부 작업 설명 제외 요청',noAnnouncement:true,version:previous.version,beforeSha256:releaseDigest(previous),afterSha256:releaseDigest(current),removedChanges:[structuredClone(removal)]});
+ const valid=record(edited);
+ validateReleaseUpdate(edited,previous,{copyEdits:[valid]});
+ for(const mutate of [
+  entry=>delete entry.removedChanges,
+  entry=>entry.removedChanges[0].changeIndex++,
+  entry=>entry.removedChanges[0].changeIndex=-1,
+  entry=>entry.removedChanges[0].releaseId='unknown-release',
+  entry=>entry.removedChanges[0].before.text='다른 원문',
+  entry=>entry.removedChanges[0].reason='',
+  entry=>entry.removedChanges.push(structuredClone(removal)),
+ ]){
+  const invalid=structuredClone(valid);mutate(invalid);
+  assert.throws(()=>validateReleaseUpdate(edited,previous,{copyEdits:[invalid]}),/문구 교정/);
+ }
+ for(const mutate of [
+  current=>current.releases[0].changes.pop(),
+  current=>current.releases[0].changes[0].type='삭제',
+  current=>current.releases.pop(),
+  current=>current.releases.reverse(),
+  current=>current.releases[0].date='2026-10-01',
+  current=>current.releases[0].commits.push('a'.repeat(40)),
+ ]){
+  const invalid=structuredClone(edited);mutate(invalid);
+  assert.throws(()=>validateReleaseUpdate(invalid,previous,{copyEdits:[record(invalid)]}),/문구 교정/);
+ }
+ assert.throws(()=>validateReleaseUpdate(edited,previous,{copyEdits:[{...valid,requestedBy:'other'}]}),/공지 대기/);
+ assert.throws(()=>validateReleaseUpdate(edited,previous,{copyEdits:[{...valid,noAnnouncement:false}]}),/공지 대기/);
+});
+
 function consolidationFixture(){
  const opening={id:'opening',version:null,date:'2026-10-16',title:'베타 공개',changes:[{type:'추가',text:'도감을 공개했습니다.'}],commits:['a'.repeat(40)]};
  const feature={id:'original-feature',version:'1.9.0',date:'2026-10-17',title:'검색 추가',changes:[{type:'추가',text:'캐릭터 검색을 추가했습니다.'}],commits:['b'.repeat(40)]};

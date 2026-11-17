@@ -83,8 +83,19 @@ export function validateReleaseUpdate(current,previous,{copyEdits=[],consolidati
  if(current.version===previous.version){
   const edit=copyEdits.find(entry=>entry.requestedBy==='owner'&&entry.reason?.trim()&&entry.noAnnouncement===true&&entry.version===current.version&&entry.beforeSha256===releaseDigest(previous)&&entry.afterSha256===releaseDigest(current));
   if(edit){
+   const message='문구 교정의 항목 제외는 원래 위치·내용·사유를 정확히 기록해야 합니다.';
+   const omissions=new Map();
+   for(const removal of edit.removedChanges||[]){
+    const release=previous.releases.find(entry=>entry.id===removal.releaseId);
+    assert.ok(release&&Number.isInteger(removal.changeIndex)&&removal.changeIndex>=0&&removal.changeIndex<release.changes.length&&removal.reason?.trim(),message);
+    const key=removal.releaseId+':'+removal.changeIndex;
+    assert.ok(!omissions.has(key),message);
+    assert.deepEqual(removal.before,release.changes[removal.changeIndex],message);
+    omissions.set(key,true);
+   }
+   const retained={...previous,releases:previous.releases.map(release=>({...release,changes:release.changes.filter((change,index)=>!omissions.has(release.id+':'+index))}))};
    const metadata=({historyNote,...rest})=>({...rest,releases:rest.releases.map(({title,changes,...release})=>({...release,changes:changes.map(({text,...change})=>change)}))});
-   assert.deepEqual(metadata(current),metadata(previous),'문구 교정은 기존 기록·순서·버전·날짜·변경 유형을 보존해야 합니다.');
+   assert.deepEqual(metadata(current),metadata(retained),'문구 교정은 기존 기록·순서·버전·날짜·변경 유형을 보존해야 합니다.');
    return;
   }
   assert.deepEqual(current,previous,'공지 대기 중에는 공개 버전과 기존 패치 기록을 그대로 유지하세요.');

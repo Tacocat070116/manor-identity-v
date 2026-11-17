@@ -39,6 +39,110 @@
       "correctedChanges": 327,
       "beforeCharacters": 21534,
       "afterCharacters": 19257
+    },
+    {
+      "requestedBy": "owner",
+      "requestedAt": "2026-11-17",
+      "version": "1.12.2",
+      "noAnnouncement": true,
+      "reason": "사용자 요청으로 전체 패치노트에서 네이버 카페·README 등 출처·파일 경로, 자료 수집·검증 과정과 불필요한 내부 기술 설명을 덜어냄. 이용자가 체감하는 변경 내용·이용 방법·범위·제약은 보존하고 내부 작업만 적힌 항목은 공개 이력에서 제외. 새 버전·새 공지 없음.",
+      "beforeSha256": "8b7f70dbcf186690c6f296f0aa40a9d91dbbaa8363e451e153c3ed3b518e53a0",
+      "afterSha256": "ee7abdcfbd638296a4c3ac5e45096d81fa6204ace48e8f52361ada1b2a956afb",
+      "reviewedReleases": 17,
+      "reviewedChanges": 341,
+      "correctedReleases": 15,
+      "correctedChanges": 78,
+      "removedChanges": [
+        {
+          "releaseId": "beta-1-12-2",
+          "changeIndex": 13,
+          "before": {
+            "type": "삭제",
+            "text": "사용하지 않는 검색·조합 안내·아이콘 스타일 17종을 정리했습니다."
+          },
+          "reason": "미사용 스타일의 종류·개수는 내부 코드 정리 기록이며 별도 이용 변화가 없음."
+        },
+        {
+          "releaseId": "beta-1-12-1",
+          "changeIndex": 8,
+          "before": {
+            "type": "삭제",
+            "text": "사용하지 않는 검색 버튼 코드·반응형 스타일·아이콘 정의를 정리했습니다."
+          },
+          "reason": "미사용 코드·스타일·아이콘 정의 정리만 설명한 내부 작업."
+        },
+        {
+          "releaseId": "beta-1-8-1",
+          "changeIndex": 2,
+          "before": {
+            "type": "데이터",
+            "text": "공식 한국어 공지·영상으로 용어를 추가 확인하고, 원문 대조와 검색 결과 확인을 구분해 기록했습니다."
+          },
+          "reason": "한국어 자료를 확인한 경로와 검증 수준의 기록만 설명한 내부 작업."
+        },
+        {
+          "releaseId": "beta-1-7-0",
+          "changeIndex": 24,
+          "before": {
+            "type": "개선",
+            "text": "용어별 출처를 정리하고 표기 불일치·잘못된 명칭 치환 검사를 보완했습니다."
+          },
+          "reason": "용어 출처 정리와 자동 검사 보완만 설명한 내부 작업."
+        },
+        {
+          "releaseId": "beta-1-5-0",
+          "changeIndex": 14,
+          "before": {
+            "type": "삭제",
+            "text": "게임 패치노트의 코드·스타일·데이터·수집 도구·초기 로딩을 제거했습니다. MANOR 업데이트 이력은 유지했습니다."
+          },
+          "reason": "이미 앞 항목에서 안내한 게임 패치노트 제거의 코드·수집 도구 정리 세부 사항."
+        },
+        {
+          "releaseId": "beta-1-5-0",
+          "changeIndex": 21,
+          "before": {
+            "type": "삭제",
+            "text": "제거한 홈 패널의 코드·스타일을 정리하고 매치업 메뉴·상대법은 유지했습니다."
+          },
+          "reason": "이미 앞 항목에서 안내한 홈 패널 제거의 코드·스타일 정리 세부 사항."
+        },
+        {
+          "releaseId": "beta-1-3-0",
+          "changeIndex": 53,
+          "before": {
+            "type": "데이터",
+            "text": "기존 랭킹전 32,667개 항목을 재검토했습니다. 새 원자료는 미확보로 집계 시점을 유지했습니다."
+          },
+          "reason": "자료 추가 없이 기존 랭킹 통계를 재검토한 과정만 설명한 내부 작업."
+        },
+        {
+          "releaseId": "beta-1-2-0",
+          "changeIndex": 43,
+          "before": {
+            "type": "데이터",
+            "text": "미연결 참고 의견 62건·중복 출처 76개·중복 이미지 주소 89개·미사용 분류·시트 정보를 정리했습니다. 공략·경기·랭킹전·패치 기록의 출처는 보존했습니다."
+          },
+          "reason": "미연결·중복·미사용 원자료의 내부 정리 건수만 설명한 작업."
+        },
+        {
+          "releaseId": "beta-1-2-0",
+          "changeIndex": 44,
+          "before": {
+            "type": "개선",
+            "text": "이전 호스팅의 미사용 설정·스타일을 제거하고 운영 안내를 당시 구조에 맞췄습니다."
+          },
+          "reason": "이전 호스팅 설정과 운영 안내 정리만 설명한 내부 작업."
+        }
+      ],
+      "correctedTitles": 1
     }
-  ]
+  ],
+  "policy": {
+    "requestedBy": "owner",
+    "requestedAt": "2026-11-17",
+    "publicNotes": "이용자가 체감하는 변경 대상·결과와 필요한 이용 방법을 중심으로 작성합니다.",
+    "omit": "자료를 가져온 외부 경로, 내부 문서·파일 경로, 수집·검증 과정, 코드 구조와 불필요한 기술 수치는 공개 공지에서 제외합니다. 내부 작업만 있는 항목은 운영 기록에만 남깁니다.",
+    "preserve": "실제 기능 이름인 서비스명, 자료 적용 날짜·서버·집계 단위와 이용상 제약은 필요한 만큼 유지합니다. 과거 변경 사실을 과장하거나 현재 기능으로 바꾸지 않습니다."
+  }
 }

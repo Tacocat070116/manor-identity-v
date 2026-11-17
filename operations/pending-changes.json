@@ -740,9 +740,9 @@
       "announcedVersion": "1.12.2",
       "announcedAt": "2026-11-17",
       "releaseChangeIndexes": [
-        0,
-        13
-      ]
+        0
+      ],
+      "releaseCopyReview": "operations/release-copy-edits.json"
     }
   ]
 }
