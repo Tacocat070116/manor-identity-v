@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.12.1",
+  "lastAnnouncedVersion": "1.12.2",
   "entries": [
     {
       "date": "2026-10-31",
@@ -528,8 +528,15 @@
         "생존자 선밴 1,550건·전체 밴 277건 보완",
         "인지 점수 통계와 관련 공개 데이터·수집 항목 삭제"
       ],
-      "announcement": "pending",
-      "evidence": "operations/statistics-refresh-2026-11-13.json"
+      "announcement": "announced",
+      "evidence": "operations/statistics-refresh-2026-11-13.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        9,
+        10,
+        12
+      ]
     },
     {
       "date": "2026-11-13",
@@ -546,8 +553,16 @@
         "browser": "Chrome에서 곡예사 데스크톱 화면 및 곡예사·치과의사·신동의 320·375px 프레임 확인. 가로 넘침 없이 주의사항 전체 표시와 스킬명 강조 확인.",
         "limits": "실제 iPhone Safari 검사는 수행하지 않음. 캐릭터별 모든 수치·실전 상성·난이도·추천의 우열을 전면 재측정한 것은 아님."
       },
-      "announcement": "pending",
-      "evidence": "research/refresh/2026-11-13/guide-patch-review.json"
+      "announcement": "announced",
+      "evidence": "research/refresh/2026-11-13/guide-patch-review.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        4,
+        5,
+        8,
+        11
+      ]
     },
     {
       "date": "2026-11-13",
@@ -563,8 +578,14 @@
         "browser": "Chrome 데스크톱 궁수 화면의 손목 쇠뇌 강조와 모바일 320·375px 프레임 6개에서 가로 넘침 없음 확인. 바텐더·납관사·기상학자·인형사의 수정 문구와 줄바꿈 확인.",
         "limits": "실제 iPhone Safari는 미검증. 미리보기에서 연구실 연동 응답은 확보하지 못했으며 이번 변경은 공개 공략 데이터에 한정. 모든 게임 수치·상성 우열을 실전 재측정한 작업은 아님."
       },
-      "announcement": "pending",
-      "evidence": "research/refresh/2026-11-13/survivor-review.json"
+      "announcement": "announced",
+      "evidence": "research/refresh/2026-11-13/survivor-review.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        4,
+        6
+      ]
     },
     {
       "date": "2026-11-13",
@@ -580,8 +601,14 @@
         "browser": "Chrome 모바일 320·375px 프레임 6개에서 가로 넘침 없음. 훌라발루·수위 26호·사냥터지기·절름발이 판·밀랍인형사의 수정 문구와 순회 커튼콜 강조 확인.",
         "limits": "실제 iPhone Safari 미검증. 미리보기의 연구실 연동 응답은 확보하지 못함. 모든 게임 수치·상성 우열을 실전 재측정한 작업은 아님."
       },
-      "announcement": "pending",
-      "evidence": "research/refresh/2026-11-13/hunter-review.json"
+      "announcement": "announced",
+      "evidence": "research/refresh/2026-11-13/hunter-review.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        4,
+        7
+      ]
     },
     {
       "date": "2026-11-13",
@@ -593,13 +620,19 @@
         "시험 서버 표, 정정된 전극 방어 주장, 무상성·무한 보너스 등 근거 부족 주장 제외",
         "상성 조건에서 강조한 스킬명이 줄을 나누던 표시 수정"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "evidence": "research/matchups/2026-11-13/naver-review.json",
       "validation": {
         "automated": "224개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 새 근거 8건의 정방향·역방향 편집 재생, 보류 대진의 공개 제외, 기존 공지·통계 보존 검사.",
         "browser": "Chrome에서 기사–리퍼·잡화상–포워드·여왕벌–기자·화재조사관–잡화상 네 대진의 320·375px 프레임 확인. 가로 넘침 없음, 스킬 강조는 문장 안에 유지, 보류 대진은 미확인 안내 표시.",
         "limits": "실제 iPhone Safari와 실전 대진 재현은 수행하지 않음. 미리보기의 유저 상대법 서버 응답은 확보하지 못함."
-      }
+      },
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        4,
+        8
+      ]
     },
     {
       "date": "2026-11-15",
@@ -609,8 +642,13 @@
         "기사·기상학자·무희·무언극·공군·기자의 대진별 적용 시점과 예외 명시",
         "중복 글·철회된 주장·체감 순위·미열람 첨부 자료를 제외하고 판단 근거 기록"
       ],
-      "announcement": "pending",
-      "evidence": "research/matchups/2026-11-15/naver-expansion.json"
+      "announcement": "announced",
+      "evidence": "research/matchups/2026-11-15/naver-expansion.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        8
+      ]
     },
     {
       "date": "2026-11-15",
@@ -621,8 +659,13 @@
         "기계 인형·축소·우산 내부 보호의 적용 조건과 실패 구간 명시",
         "이전 검토 중복·철회된 구출법·근거 없는 단정·자기 인용 제외"
       ],
-      "announcement": "pending",
-      "evidence": "research/matchups/2026-11-15/naver-broad-search.json"
+      "announcement": "announced",
+      "evidence": "research/matchups/2026-11-15/naver-broad-search.json",
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        8
+      ]
     },
     {
       "date": "2026-11-15",
@@ -633,12 +676,17 @@
         "카페 검색 조합 50개와 본문·댓글 29건을 검토하고 과장·과거 판정·근거 부족 후보 제외",
         "근거가 부족한 캐릭터는 일반 구출·해독·보호 추천으로 채우지 않도록 수정"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "evidence": "research/synergies/2026-11-15/duo-review.json",
       "validation": {
         "automated": "225개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 기존 74개 편집 기록·캐릭터 본문·상성 496건·감시자 보조 특성 108행·통계 보존 확인. 용어 재생성과 이전 배포 기준 공지·내용 검사 통과.",
         "limits": "게임 내 직접 실험이나 듀오 승률 측정은 수행하지 않음. 실제 iPhone Safari는 미검증."
-      }
+      },
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        1
+      ]
     },
     {
       "date": "2026-11-15",
@@ -647,10 +695,15 @@
         "상대별 대회 기록과 함께 출전한 대회 기록 링크를 카드 아래 중앙에 정렬하고 위쪽 간격을 24px로 통일",
         "대회 기록 링크에 44px 클릭 영역을 적용하고 펼침 목록 아래의 중복 여백 정리"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "validation": {
         "automated": "225개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 데이터·공지 버전 보존 및 이전 배포 기준 내용 검사 통과."
-      }
+      },
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        2
+      ]
     },
     {
       "date": "2026-11-17",
@@ -660,11 +713,36 @@
         "올가미·갈퀴 사슬·촛농·손전등·거울상의 명중 위치와 경로·범위·장애물 차단 조건을 구체적으로 설명",
         "대표 상성과 상세 상성의 중복 문구를 함께 수정하고 기존 수치·판정·근거·보류 상태 유지"
       ],
-      "announcement": "pending",
+      "announcement": "announced",
       "evidence": "research/editorial/2026-11-17/consistency-edits.json",
       "validation": {
         "automated": "225개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 60개 필드의 변경 전후 감사 재생 및 변경된 6명 설명 묶음의 지문 검증. 공개 작성 문구의 사선 잔존 없음 확인."
-      }
+      },
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        3
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "scope": "scoped-runtime-cleanup",
+      "summary": [
+        "사용하지 않는 검색·조합 안내·아이콘 스타일 17종 정리",
+        "캐릭터·근거 ID·상황별 상성 조회 색인을 재사용해 반복 검색 축소",
+        "공략·상성 화면 675개와 조회 결과 1,494건의 변경 전후 일치 확인"
+      ],
+      "announcement": "announced",
+      "evidence": "operations/cleanup-2026-11-17.json",
+      "validation": {
+        "automated": "226개 검사와 356개 캐릭터 화면 템플릿 검사 통과. 캐릭터·상성·통계 데이터 변경 없음. 29개 실행 모듈과 이미지 111개의 참조 확인."
+      },
+      "announcedVersion": "1.12.2",
+      "announcedAt": "2026-11-17",
+      "releaseChangeIndexes": [
+        0,
+        13
+      ]
     }
   ]
 }

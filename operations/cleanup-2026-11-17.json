@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-17",
+  "baseline": "ed80911766b4eebd0c46a7fdd67086e8b1ccf8d5",
+  "scope": "Unused CSS cleanup and immutable guide snapshot lookup reuse; no feature, guide content, authentication or preference changes.",
+  "removed": {
+    "classes": [
+      "creator-channel-link",
+      "creator-edit-chips",
+      "creator-empty",
+      "creator-gold-cat",
+      "creator-search",
+      "creator-selected-tag",
+      "creator-style-options",
+      "global-search",
+      "synergy-guidance"
+    ],
+    "icons": [
+      "moon",
+      "heart",
+      "music",
+      "game",
+      "sprout",
+      "trophy",
+      "coach",
+      "gem"
+    ],
+    "fullFiles": []
+  },
+  "retained": {
+    "runtimeModules": 29,
+    "reason": "Every shipped JavaScript module is reachable from the main page or Google return page. Portrait, persona, trait and seasonal assets retain active references. Research and audit files remain required provenance.",
+    "imageAssets": 111
+  },
+  "measurement": {
+    "method": "Local Node median of seven samples, each containing 20 repetitions of the same 89-character lookup batch; excludes initial index construction, browser rendering and network. CSS gzip totals compress files independently.",
+    "lookupsPerBatch": 1494,
+    "beforeMs": 24.431,
+    "afterMs": 1.69,
+    "beforeCSS": {
+      "bytes": 17291,
+      "gzipBytes": 4759
+    },
+    "afterCSS": {
+      "bytes": 16359,
+      "gzipBytes": 4563
+    }
+  },
+  "validation": {
+    "identicalGuideScreens": 675,
+    "identicalLookupResults": 1494,
+    "sourceArraysMutated": false,
+    "automatedTests": 226,
+    "characterTemplateVariants": 356,
+    "canonicalDataUnchanged": true
+  },
+  "release": {
+    "version": "1.12.2",
+    "date": "2026-11-17",
+    "requestedBy": "owner",
+    "reason": "코드 정리·최적화 완료 후 버전 업데이트 요청",
+    "includedScopes": {
+      "statistics-refresh-and-score-removal": [
+        9,
+        10,
+        12
+      ],
+      "guide-and-internal-information-refresh": [
+        4,
+        5,
+        8,
+        11
+      ],
+      "survivor-guide-condition-review": [
+        4,
+        6
+      ],
+      "hunter-guide-condition-review": [
+        4,
+        7
+      ],
+      "naver-matchup-review": [
+        4,
+        8
+      ],
+      "naver-matchup-expansion": [
+        8
+      ],
+      "naver-broad-matchup-search": [
+        8
+      ],
+      "survivor-duo-synergy-review": [
+        1
+      ],
+      "character-tournament-link-spacing": [
+        2
+      ],
+      "ranged-skill-aim-wording": [
+        3
+      ],
+      "scoped-runtime-cleanup": [
+        0,
+        13
+      ]
+    },
+    "previousReleaseCount": 16,
+    "releaseCount": 17,
+    "existingHistoryPreserved": true,
+    "automaticPopupAdded": false
+  }
+}

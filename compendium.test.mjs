@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {execFileSync} from 'node:child_process';
 import {statsFor,pairEvidence} from './dist/model.js';
-import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence} from './dist/compendium-model.js';
+import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence} from './dist/compendium-model.js';
 
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const db=read('dist/data.json'),matches=read('dist/matches.json'),details=expandTournamentDetails(read('dist/tournament-details.json'));
@@ -180,6 +180,26 @@ test('conditional notes never leak from held records or another pair',()=>{
  const valid={id:'two',status:'반영',contextFor:'one',hunter:'A',survivor:'B'};
  assert.deepEqual(contextEvidence([primary,valid,{...valid,id:'held',status:'보류'},{...valid,id:'wrong',survivor:'C'}],'one'),[valid]);
  assert.deepEqual(contextEvidence([valid],'one'),[]);
+});
+
+test('indexed evidence keeps snapshots isolated and returned lists independently editable',()=>{
+ const own={name:'A'},item={name:'B',evidence:'one'};
+ const primary={id:'one',status:'반영',listEligible:true,hunter:'A',survivor:'B',advantage:'A',situation:'추격',summary:'first',condition:'condition'};
+ const context={...primary,id:'two',contextFor:'one',advantage:'B',situation:'구출',summary:'exception'};
+ const rows=[primary,context];
+ assert.equal(summaryEvidence(rows,own,item,'easy').primary,primary);
+ const list=characterEvidence(rows,own,'hard');assert.deepEqual(list,[context]);list.pop();
+ const contexts=contextEvidence(rows,'one');contexts.pop();
+ assert.deepEqual(characterEvidence(rows,own,'hard'),[context]);
+ assert.deepEqual(contextEvidence(rows,'one'),[context]);
+ const replaced=rows.map(row=>({...row,status:'보류'}));
+ assert.equal(summaryEvidence(replaced,own,item,'easy'),null);
+ assert.deepEqual(characterEvidence(replaced,own,'easy'),[]);
+ assert.deepEqual(contextEvidence(replaced,'one'),[]);
+ assert.equal(summaryEvidence(rows,own,item,'easy').primary,primary);
+ const appended={...context,id:'three',summary:'another exception'};rows.push(appended);
+ assert.deepEqual(contextEvidence(rows,'one'),[context,appended]);
+ assert.deepEqual(rows,[primary,context,appended]);
 });
 
 

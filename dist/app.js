@@ -1,6 +1,6 @@
 import {loadFeature} from './feature-loader.js?v=6dee3b0b66b5';
 import './typography.js?v=523bbfd675cd';
-import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=403a09ef583a';
+import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
 import {mountSeasonalEffects} from './seasonal-effects.js?v=24bf19695f6d';
@@ -586,7 +586,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 document.addEventListener('error',e=>{if(e.target.tagName==='IMG'&&!e.target.dataset.fallback){e.target.dataset.fallback='true';e.target.src='fallback.svg';}},true);
 async function boot(){try{
  seasonalEffects=mountSeasonalEffects({document,storage:themeStorage,media:matchMedia('(prefers-reduced-motion:reduce)')});
- const responses=await Promise.all([fetch('catalog.json?v=3b0433809082'),fetch('specialties.json?v=500dcc06d1f1'),fetch('introductions.json?v=41a16fbff6b9'),fetch('releases.json?v=99986ca5c098')]);
+ const responses=await Promise.all([fetch('catalog.json?v=3b0433809082'),fetch('specialties.json?v=500dcc06d1f1'),fetch('introductions.json?v=41a16fbff6b9'),fetch('releases.json?v=971ecb72374f')]);
  if(responses.some(r=>!r.ok))throw Error('사이트 자료를 불러오지 못했습니다.');
  const [data,specialties,introductions,releases]=await Promise.all(responses.map(r=>r.json()));
  if(releases.stage!=='BETA'||!releases.version||!releases.releases?.length)throw Error('사이트 버전 정보를 확인하지 못했습니다.');

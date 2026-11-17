@@ -1,9 +1,26 @@
 import {filterRows,cutoff} from './model.js?v=89308651af5f';
 
+// Guide arrays are read-only snapshots. Reuse their lookup tables across cards
+// and filters; a new snapshot gets its own index and old snapshots can be freed.
+const evidenceIndexes=new WeakMap();
+function evidenceIndex(records){
+ let index=evidenceIndexes.get(records);
+ if(index&&index.length===records.length)return index;
+ index={length:records.length,byId:new Map(),byCharacter:new Map(),byContext:new Map()};
+ const add=(map,key,row)=>{if(!map.has(key))map.set(key,[]);map.get(key).push(row);};
+ for(const row of records){
+  add(index.byId,row.id,row);
+  add(index.byCharacter,row.hunter,row);
+  if(row.survivor!==row.hunter)add(index.byCharacter,row.survivor,row);
+  add(index.byContext,row.contextFor,row);
+ }
+ evidenceIndexes.set(records,index);return index;
+}
+
 export function contextEvidence(records,id){
- const primary=records.find(m=>m.id===id&&m.status==='반영');
+ const index=evidenceIndex(records),primary=index.byId.get(id)?.find(m=>m.status==='반영');
  if(!primary)return [];
- return records.filter(m=>m.status==='반영'&&m.contextFor===id&&m.hunter===primary.hunter&&m.survivor===primary.survivor);
+ return (index.byContext.get(id)||[]).filter(m=>m.status==='반영'&&m.hunter===primary.hunter&&m.survivor===primary.survivor);
 }
 
 function countResult(target,result,hunter){
@@ -68,8 +85,8 @@ export function observedDetails(rows,character,filters={}){
 
 export function characterEvidence(records,character,kind){
  const seen=new Set();
- return records.filter(m=>{
-  if(m.status!=='반영'||!m.listEligible||![m.hunter,m.survivor].includes(character.name)||(m.advantage===character.name)!==(kind==='easy'))return false;
+ return (evidenceIndex(records).byCharacter.get(character.name)||[]).filter(m=>{
+  if(m.status!=='반영'||!m.listEligible||(m.advantage===character.name)!==(kind==='easy'))return false;
   const key=JSON.stringify([m.hunter,m.survivor,m.advantage,m.situation,m.situationDetail,m.summary,m.condition]);
   if(seen.has(key))return false;seen.add(key);return true;
  }).sort((a,b)=>(b.listPriority||3)-(a.listPriority||3)||a.id.localeCompare(b.id));
@@ -78,7 +95,7 @@ export function characterEvidence(records,character,kind){
 // Compact surfaces use the same approved evidence as the full matchup page.
 // Copied reasons or a name alone must never become a matchup conclusion.
 export function summaryEvidence(records,character,item,kind){
- const primary=records.find(m=>m.id===item.evidence&&m.status==='반영'&&m.listEligible&&
+ const primary=evidenceIndex(records).byId.get(item.evidence)?.find(m=>m.status==='반영'&&m.listEligible&&
   [m.hunter,m.survivor].includes(character.name)&&[m.hunter,m.survivor].includes(item.name)&&
   character.name!==item.name&&(m.advantage===character.name)===(kind==='easy'));
  return primary?{primary,contexts:contextEvidence(records,primary.id)}:null;
@@ -86,8 +103,8 @@ export function summaryEvidence(records,character,item,kind){
 
 // Retain legacy detail strings for old URL filters, but do not display an older,
 // broader activity label beside the current reviewed situation.
+const broadSituations=new Set(['추격','구출','커버','운영','견제','지원']);
 export function evidenceDetail(record){
  const detail=record.situationDetail||'';
- const broad=new Set(['추격','구출','커버','운영','견제','지원']);
- return detail===record.situation||detail.split('·').every(part=>broad.has(part))?'':detail;
+ return detail===record.situation||detail.split('·').every(part=>broadSituations.has(part))?'':detail;
 }
