@@ -16,80 +16,62 @@
  .category-icon-enter .icon-grid rect:nth-child(4){animation-delay:110ms}
  .category-icon-enter .icon-grid rect:nth-child(3){animation-delay:165ms}
 
- .category-icon-enter .sword-rear{--swing:16deg;--recoil:-4deg}
- .category-icon-enter .sword-front{--swing:-16deg;--recoil:4deg}
- .category-icon-enter :is(.sword-rear,.sword-front){
-  transform-origin:12px 12px;animation:nav-sword-clash 460ms ease-out;
+ /* The back blade has a gap cut for the front blade. Move the crossed
+    silhouette around their intersection so this gap stays registered. */
+ .category-icon-enter .icon-swords .icon-art{
+  transform-box:view-box;transform-origin:12px 12px;animation:nav-sword-settle 360ms ease-out;
  }
 
- .category-icon-enter .compare-left{--inset:4px}
- .category-icon-enter .compare-right{--inset:-4px}
- .category-icon-enter :is(.compare-left,.compare-right){animation:nav-bracket-open 420ms ease-out}
+ /* 4 units between centerlines minus two .875 stroke edges and 1 unit
+    of travel leaves 1.25 units clear at the closest position. */
+ .category-icon-enter .compare-left{--inset:1px}
+ .category-icon-enter .compare-right{--inset:-1px}
+ .category-icon-enter :is(.compare-left,.compare-right){animation:nav-bracket-open 330ms ease-out}
 
+ /* Reveal a length of the original stroke so both caps retain their shape. */
  .category-icon-enter .chart-bar{
-  transform-origin:0 16px;animation:nav-bar-rise 330ms ease-out backwards;
+  animation:nav-line-reveal 320ms ease-out backwards;
  }
  .category-icon-enter .chart-bar:nth-child(3){animation-delay:70ms}
  .category-icon-enter .chart-bar:nth-child(4){animation-delay:140ms}
 
- .category-icon-enter .icon-flask [data-stroke="soft"]{
-  transform-origin:12px 14px;animation:nav-liquid-sway 500ms ease-in-out;
- }
- .category-icon-enter .icon-flask circle{animation:nav-bubble-rise 365ms ease-out backwards}
- .category-icon-enter .icon-flask circle:last-child{animation-delay:105ms}
+ /* The meniscus meets both walls at y=14. Only the bubbles rise. */
+ .category-icon-enter .icon-flask circle{--rise:1.25px;animation:nav-bubble-rise 340ms ease-out backwards}
+ .category-icon-enter .icon-flask circle:last-child{--rise:.75px;animation-delay:85ms}
 
  .category-icon-enter .icon-message [data-stroke="soft"]{
-  transform-origin:8px 0;animation:nav-message-write 255ms ease-out backwards;
+  animation:nav-line-reveal 245ms ease-out backwards;
  }
  .category-icon-enter .icon-message path:last-child{animation-delay:145ms}
+ .category-icon-enter :is(.chart-bar,.icon-message [data-stroke="soft"]){stroke-dasharray:1 2}
 
  .category-icon-enter .lock-shackle{
-  transform-origin:16px 10px;animation:nav-shackle-click 490ms ease-in-out;
+  transform-box:view-box;transform-origin:16px 10px;animation:nav-shackle-close 380ms cubic-bezier(.35,0,.25,1);
  }
 }
 @keyframes nav-tile-in{
- from{opacity:.25;transform:translateY(2px) scale(.5)}
- 70%{transform:translateY(0) scale(1.07)}
+ from{opacity:.35;transform:scale(.78)}
  to{opacity:1;transform:none}
 }
-@keyframes nav-sword-clash{
- from{transform:rotate(var(--swing))}
- 42%{transform:rotate(0)}
- 64%{transform:rotate(var(--recoil))}
+@keyframes nav-sword-settle{
+ from{transform:rotate(-4deg)}
  to{transform:none}
 }
 @keyframes nav-bracket-open{
  from{transform:translateX(var(--inset))}
- 66%{transform:translateX(calc(var(--inset) * -.18))}
  to{transform:none}
 }
-@keyframes nav-bar-rise{
- from{transform:scaleY(.12)}
- 75%{transform:scaleY(1.08)}
- to{transform:none}
-}
-@keyframes nav-liquid-sway{
- from{transform:rotate(-12deg)}
- 38%{transform:rotate(10deg)}
- 72%{transform:rotate(-4deg)}
- to{transform:none}
+@keyframes nav-line-reveal{
+ from{stroke-dashoffset:.88;opacity:.4}
+ to{stroke-dashoffset:0;opacity:1}
 }
 @keyframes nav-bubble-rise{
- from{opacity:0;transform:translateY(1px)}
- 25%{opacity:1}
- 69%{opacity:.8;transform:translateY(-2.6px)}
- 80%{opacity:0;transform:translateY(-3.2px)}
- 81%{opacity:0;transform:none}
+ from{opacity:.12;transform:translateY(var(--rise))}
  to{opacity:1;transform:none}
 }
-@keyframes nav-message-write{
- from{opacity:.15;transform:scaleX(.08)}
- to{opacity:1;transform:none}
-}
-@keyframes nav-shackle-click{
- from,to{transform:none}
- 40%,54%{transform:rotate(20deg)}
- 78%{transform:translateY(.6px)}
+@keyframes nav-shackle-close{
+ from{transform:rotate(18deg)}
+ to{transform:none}
 }
 /* The right edge is the reveal boundary: text slides toward it on collapse
    and away from it on expansion. Keep the hint and chevron at a fixed inset. */
