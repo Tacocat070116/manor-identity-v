@@ -169,6 +169,7 @@ test('interrupted retraction and reveal keep their visible text and ignore stale
 test('reduced motion, unsupported animation and viewport changes retain natural layout',()=>{
  for(const options of [{reduced:true,animationSupport:true},{animationSupport:false}]){
   const h=harness(options);h.update('explore');h.update('patchnotes');
+  assert.equal(h.currentIcon.classes.has('category-icon-enter'),false);
   assert.equal(h.animations.length,0);assert.equal(h.toggle.getBoundingClientRect().width,248);h.controller.destroy();
  }
  const h=harness({animationSupport:true});h.update('explore');h.update('patchnotes');
@@ -180,6 +181,27 @@ test('reduced motion, unsupported animation and viewport changes retain natural 
  assert.equal(h.currentLabel.textContent,'MANOR 업데이트');
  h.update('statistics');h.toggle.activeAnimation.finish();
  h.win.emit('resize');assert.equal(h.toggle.activeAnimation,null);assert.equal(h.currentLabel.textContent,'통계');
+ h.controller.destroy();
+});
+
+test('icon motion starts at reveal and settles on a new selection or reduced motion',()=>{
+ const h=harness({animationSupport:true});
+ const entering=()=>h.currentIcon.classes.has('category-icon-enter');
+ h.update('explore');assert.equal(entering(),false);
+ h.update('character');assert.equal(h.animations.length,0);
+ h.update('statistics');assert.equal(entering(),false);
+ h.toggle.activeAnimation.finish();
+ assert.equal(h.currentIcon.innerHTML,'icon:chart');assert.equal(entering(),true);
+ const reveal=h.toggle.activeAnimation;
+ h.update('bans','dark');assert.equal(h.toggle.activeAnimation,reveal);
+ reveal.sampleWidth=160;
+ h.update('compare');assert.equal(entering(),false);
+ const interrupted=h.toggle.activeAnimation;
+ h.update('matchup');interrupted.finish();assert.equal(entering(),false);
+ h.toggle.activeAnimation.finish();
+ assert.equal(h.currentIcon.innerHTML,'icon:swords');assert.equal(entering(),true);
+ h.reducedMotion.matches=true;h.reducedMotion.emit('change');
+ assert.equal(entering(),false);assert.equal(h.currentIcon.innerHTML,'icon:swords');
  h.controller.destroy();
 });
 

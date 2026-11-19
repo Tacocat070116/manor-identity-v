@@ -743,6 +743,15 @@
         0
       ],
       "releaseCopyReview": "operations/release-copy-edits.json"
+    },
+    {
+      "date": "2026-11-19",
+      "scope": "category-icon-motion",
+      "summary": [
+        "카테고리를 바꾸면 새 이름이 펼쳐질 때 도감·매치업·비교·통계·연구실·피드백·로그인 아이콘마다 고유한 동작을 한 번 재생",
+        "동작 줄이기 설정에서는 선택한 아이콘을 즉시 표시"
+      ],
+      "announcement": "pending"
     }
   ]
 }

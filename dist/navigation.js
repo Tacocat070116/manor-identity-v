@@ -13,16 +13,18 @@ export function mountNavigation(root,{icon}){
  let expanded=false,selected='',routeView='',theme='',destroyed=false;
  let sizeAnimation,currentSelection;
 
- function showCurrent(){
+ function showCurrent(animateIcon=false){
   if(!currentSelection)return;
   currentLabel.textContent=currentSelection.label;
   currentIcon.innerHTML=icon(currentSelection.icon);
+  currentIcon.classList.toggle('category-icon-enter',animateIcon);
  }
  function stopMotion({settle=true}={}){
   const motion=sizeAnimation;
   sizeAnimation=null;
   motion?.cancel();
   if(settle)showCurrent();
+  else currentIcon.classList.toggle('category-icon-enter',false);
  }
  function changeCurrent(current){
   // Keep the outgoing text until it has retracted behind the right-hand edge.
@@ -34,7 +36,7 @@ export function mountNavigation(root,{icon}){
   currentSelection={label:current?.dataset.navLabel||'카테고리',icon:current?.dataset.navIcon||'grid'};
   if(!animate){showCurrent();return;}
   function reveal(){
-   showCurrent();
+   showCurrent(Boolean(current));
    const to=toggle.getBoundingClientRect().width;
    const motion=toggle.animate([
     {width:empty+'px',minWidth:'0px'},
