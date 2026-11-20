@@ -51,14 +51,14 @@ function worker() {
   };
 }
 
-test('installed MANOR opens its catalog, guides and wordmark offline at the Pages subpath', async () => {
+test('installed MANOR opens its catalog, guides and favicon offline at the Pages subpath', async () => {
   const w = worker();
   await w.lifecycle('install');
   const files = Array.from(w.self.MANOR_OFFLINE.files);
   for (const route of ['./','index.html','#v=explore']) {
     assert.match(await (await w.get(route, {mode:'navigate'})).text(), /MANOR · 제5인격 가이드/);
   }
-  for (const name of ['catalog.json','specialties.json','introductions.json','releases.json','data.json','assets/brand/manor.svg']) {
+  for (const name of ['catalog.json','specialties.json','introductions.json','releases.json','data.json','favicon.svg']) {
     const file = files.find(file => file.startsWith(name + '?v='));
     assert.ok(file, name);
     assert.deepEqual(Buffer.from(await (await w.get(file)).arrayBuffer()), read(name));
@@ -95,10 +95,10 @@ test('home screen launches in standalone mode and uses valid icons on iOS and An
   assert.equal(manifest.display, 'standalone');
   for (const field of ['id','scope','start_url']) assert.equal(asset(manifest[field]), scope);
   assert.ok(manifest.icons.some(icon => icon.purpose === 'maskable'));
-  for (const {src,sizes} of [...manifest.icons, {src:'assets/brand/manor-180.png',sizes:'180x180'}]) {
+  for (const {src,sizes} of [...manifest.icons, {src:'assets/brand/manor-v-180.png',sizes:'180x180'}]) {
     const png = read(src);
     assert.equal(png.subarray(1,4).toString(), 'PNG');
     assert.equal(png.readUInt32BE(16) + 'x' + png.readUInt32BE(20), sizes);
   }
-  assert.match(read('index.html').toString(), /rel="apple-touch-icon"[^>]+manor-180\.png/);
+  assert.match(read('index.html').toString(), /rel="apple-touch-icon"[^>]+manor-v-180\.png/);
 });

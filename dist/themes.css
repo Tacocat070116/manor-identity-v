@@ -320,6 +320,8 @@ html[data-theme="christmas"] .seasonal-snow>i{
  animation:christmas-snow var(--snow-duration) linear var(--snow-delay) infinite;
 }
 html[data-theme="christmas"] .seasonal-snow>i:nth-child(5n){border-radius:2px;background:#fff8e5}
+html[data-theme="christmas"] .brand-word{color:var(--accent)}
+html[data-theme="christmas"] .brand-mark{stroke:var(--ink)}
 html[data-theme="christmas"] .hero-art::before{
  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
  background:radial-gradient(ellipse at 50% 45%,rgba(229,190,101,.28),transparent 68%);

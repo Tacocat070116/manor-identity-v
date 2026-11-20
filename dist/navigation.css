@@ -1,4 +1,4 @@
-.nav-shell .header-actions{margin-left:0}
+.nav-shell .header-actions{margin-left:auto}
 /* The header already supplies the glass fill and reflection. Keep this second
    surface lightly tinted so the two layers do not become an opaque pill. */
 .category-nav{--category-surface:rgba(var(--surface-rgb),.16);--category-hover:rgba(var(--surface-rgb),.26);--category-sheen:none;position:absolute;top:30px;left:50%;transform:translateX(-50%);z-index:2;width:max-content}
