@@ -743,6 +743,16 @@
         0
       ],
       "releaseCopyReview": "operations/release-copy-edits.json"
+    },
+    {
+      "date": "2026-11-19",
+      "scope": "installable-app-and-wordmark",
+      "summary": [
+        "카테고리 메뉴에서 MANOR를 홈 화면에 추가하고 독립 창으로 실행",
+        "오프라인에서 캐릭터 도감과 기본 공략 열람",
+        "상단 오른쪽에 장원의 탑과 아치를 담은 MANOR 워드마크 적용, 홈 화면 아이콘과 파비콘 통일"
+      ],
+      "announcement": "pending"
     }
   ]
 }
