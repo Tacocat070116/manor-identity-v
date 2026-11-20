@@ -22,16 +22,10 @@ self.addEventListener('activate', event => {
   })());
 });
 
-async function openPage(request) {
-  try {
-    const response = await fetch(request);
-    if (response.status < 500) return response;
-    return await caches.match(entry, {cacheName}) || response;
-  } catch (error) {
-    const saved = await caches.match(entry, {cacheName});
-    if (saved) return saved;
-    throw error;
-  }
+// Pin the entry page and its assets to the active worker until the next build takes over.
+async function fromBuild(key, request) {
+  const saved = await caches.match(key, {cacheName}).catch(() => undefined);
+  return saved || fetch(request);
 }
 
 async function publicImage(request) {
@@ -57,11 +51,11 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url);
   url.hash = '';
   if (request.mode === 'navigate') {
-    if (url.href === scope || url.href === entry) event.respondWith(openPage(request));
+    if (url.href === scope || url.href === entry) event.respondWith(fromBuild(entry, request));
     return;
   }
   if (files.has(url.href)) {
-    event.respondWith(caches.match(url.href, {cacheName}).then(saved => saved || fetch(request)));
+    event.respondWith(fromBuild(url.href, request));
     return;
   }
   const file = url.href.slice(scope.length);

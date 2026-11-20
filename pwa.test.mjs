@@ -73,10 +73,34 @@ test('installed MANOR opens its catalog, guides and favicon offline at the Pages
     assert.equal(w.get(catalog, options), undefined);
   }
   assert.equal(w.get('https://example.org/community'), undefined);
-  w.context.fetch = async () => new Response('updated page');
-  assert.equal(await (await w.get('./', {mode:'navigate'})).text(), 'updated page');
-  w.context.fetch = async () => new Response('', {status:503});
-  assert.match(await (await w.get('./', {mode:'navigate'})).text(), /MANOR · 제5인격 가이드/);
+});
+
+test('a live release serves its own entry while another version is on the server', async () => {
+  const w = worker();
+  const nav = {mode:'navigate'};
+  w.context.fetch = async () => new Response('next release');
+  assert.equal(await (await w.get('./', nav)).text(), 'next release');
+  await w.lifecycle('install');
+  const html = read('index.html').toString();
+  assert.equal(await (await w.get('index.html', nav)).text(), html);
+  const app = html.match(/src="(app\.js\?v=[a-f0-9]+)"/)[1];
+  assert.equal(await (await w.get(app)).text(), read('app.js').toString());
+  w.caches.match = async () => { throw Error('storage unavailable'); };
+  assert.equal(await (await w.get('./', nav)).text(), 'next release');
+  assert.equal(await (await w.get(app)).text(), 'next release');
+});
+
+test('statistics payloads and real Google and account request paths bypass the worker', async () => {
+  const w = worker();
+  await w.lifecycle('install');
+  const files = Array.from(w.self.MANOR_OFFLINE.files);
+  const json = files.map(f => f.split('?')[0]).filter(f => f.endsWith('.json')).sort();
+  assert.deepEqual(json, ['catalog.json','data.json','introductions.json','releases.json','specialties.json']);
+  for (const path of ['ranked/index.json?v=abc','ranked/sample.json','matches.json','bans.json',
+    'bans-observed.json','tournament-details.json','google-return.js','google-return.html#state=sample',
+    'https://accounts.google.com/o/oauth2/v2/auth','https://manor-feedback.tacocat070116.chatgpt.site/api/auth/preferences']) {
+    for (const mode of ['cors','navigate']) assert.equal(w.get(path, {mode}), undefined, path);
+  }
 });
 
 test('updating the worker only expires MANOR caches for the installed scope', async () => {
@@ -101,4 +125,47 @@ test('home screen launches in standalone mode and uses valid icons on iOS and An
     assert.equal(png.readUInt32BE(16) + 'x' + png.readUInt32BE(20), sizes);
   }
   assert.match(read('index.html').toString(), /rel="apple-touch-icon"[^>]+manor-v-180\.png/);
+});
+
+test('install control provides the Safari guide, consumes the Android prompt once, and reflects offline state', async () => {
+  const events = new Map();
+  const note = {}, guide = {}, dialog = {
+    open:false, showModal(){ this.open = true; }, close(){ this.open = false; }
+  };
+  const attributes = new Set();
+  const mode = {matches:false, addEventListener() {}};
+  const navigator = {userAgent:'iPhone Safari', onLine:true};
+  const document = {
+    getElementById:id => ({'connection-note':note, 'install-guide':guide, 'install-dialog':dialog})[id],
+    documentElement:{
+      toggleAttribute:(key,on) => on ? attributes.add(key) : attributes.delete(key),
+      setAttribute:key => attributes.add(key)
+    },
+    querySelector:() => null,
+    addEventListener:(type,handler) => events.set(type,handler)
+  };
+  const window = {addEventListener:(type,handler) => events.set(type,handler)};
+  vm.runInNewContext(read('install.js').toString(), {window,document,navigator,matchMedia:() => mode});
+  const click = () => events.get('click')({target:{closest:() => true}});
+  await click();
+  assert.equal(dialog.open, true);
+  assert.match(guide.textContent, /Safari.*공유.*홈 화면에 추가/);
+  dialog.close();
+  navigator.userAgent = 'Android Chrome';
+  let prompts = 0;
+  events.get('beforeinstallprompt')({preventDefault(){}, async prompt(){ prompts++; }, userChoice:Promise.resolve({outcome:'dismissed'})});
+  await click();
+  assert.equal(prompts, 1);
+  assert.equal(dialog.open, false);
+  await click();
+  assert.match(guide.textContent, /브라우저 메뉴.*앱 설치/);
+  events.get('appinstalled')();
+  assert.equal(dialog.open, false);
+  assert.ok(attributes.has('data-installed'));
+  navigator.onLine = false;
+  events.get('offline')();
+  assert.equal(note.hidden, false);
+  navigator.onLine = true;
+  events.get('online')();
+  assert.equal(note.hidden, true);
 });
