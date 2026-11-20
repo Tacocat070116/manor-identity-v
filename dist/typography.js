@@ -1,4 +1,4 @@
-import {skillNamesFor,skillTextParts} from './skill-names.js?v=e04548b306f9';
+import {skillNamesFor,skillTextParts} from './skill-names.js?v=91248059d05a';
 // Presentation only: keep saved text, URLs, editable values and code unchanged.
 const excluded='script,style,textarea,input,select,code,pre,kbd,samp,math,svg,[contenteditable],.inline-copy';
 const separators=/[ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*[·•ㆍ∙‧][ \t\u00a0\u2000-\u200a\u202f\u205f\u3000]*/g;
@@ -25,7 +25,7 @@ export function formatTypography(root){
  }
  for(const node of nodes){
   const scope=node.parentElement?.closest('[data-skill-characters]');
-  const parts=inlineTextParts(node.data,node.parentElement?.closest('strong,b')?[]:skillNamesFor(scope?.dataset.skillCharacters));
+  const parts=inlineTextParts(node.data,node.parentElement?.closest('strong,b')?[]:skillNamesFor(scope?.dataset.skillCharacters,scope?.closest('[data-skill-terms]')?.dataset.skillTerms));
   if(!parts.some(part=>part.strong)){
    const text=parts.map(part=>part.text).join('');
    if(text!==node.data)node.data=text;

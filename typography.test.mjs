@@ -49,6 +49,14 @@ test('scoped skill matching preserves ordinary words, URLs and unmatched text',(
  assert.deepEqual(skillTextParts('그림자를 그립니다.',skillNamesFor('c86')).filter(p=>p.strong),[]);
 });
 
+test('inline definitions emphasize whole names only within the skill that defines them',()=>{
+ const text='빙결탄과 점토탄을 번갈아 씁니다.';
+ const terms=skillNamesFor('c37','위험한 곡예|빙결탄|점토탄');
+ assert.deepEqual(skillTextParts(text,terms).filter(part=>part.strong).map(part=>part.text),['빙결탄','점토탄']);
+ assert.ok(!skillNamesFor('c37').includes('점토탄'));
+ assert.ok(!skillTextParts('점토탄환',terms).some(part=>part.strong));
+});
+
 test('adopted research has no empty promotion block and retains conditions and source links',()=>{
  assert.equal(researchHighlights([],'c58',{}),'');
  const post={id:'sample',topic:'combination',characterIds:['c58','c41'],title:'<검토된 조합>',body:'활용법',caution:'같은 공격에 겹치지 않기',proposal:{reason:'조건 확인'}};

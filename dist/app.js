@@ -1,5 +1,5 @@
 import {loadFeature} from './feature-loader.js?v=6dee3b0b66b5';
-import './typography.js?v=523bbfd675cd';
+import './typography.js?v=1f2b416d86f0';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
 import {colorThemes,resolveTheme,readTheme,applyTheme,themeOptions} from './themes.js?v=65355b51cf70';
@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=9a8784eaf47b','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=4a2de232150c','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -285,18 +285,42 @@ function favoriteInsight(list){
  }).join('');
 }
 function listPanel(label,items,tone,ic,characterId){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${guide(t,characterId)}</span></li>`).join('')}</ul></div>`;}
+function skillTimes(skill){
+ const fields=[['쿨타임',skill.cooldown],['충전 시간',skill.charge],['지속 시간',skill.duration]].filter(([,value])=>value);
+ if(!fields.length)return '';
+ return `<dl class="skill-times">${fields.map(([label,value])=>`<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
+}
+function skillReferences(rows){
+ const references=new Map();
+ function add(url,label){
+  if(!references.has(url))references.set(url,[]);
+  references.get(url).push(label);
+ }
+ for(const row of rows){
+  add(row.source,row.name);
+  if(row.timingSource&&row.timingSource!==row.source)add(row.timingSource,row.name+' 수치');
+ }
+ const links=[...references].map(([url,labels])=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(labels.join(' · '))}</a>`);
+ return `<details class="skill-references"><summary>공식 자료</summary><div class="skill-sources">${links.join('')}</div></details>`;
+}
 function skillPanel(c,preview=false){
  if(!characterSkills)return '<div class="guide-sheet skill-loading" aria-live="polite">스킬 정보를 불러오는 중입니다.</div>';
- const skills=characterSkills[c.id];
- const rows=preview?skills.slice(0,1):skills;
- const sourceLink=(url,label)=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
+ const entries=characterSkills[c.id];
+ const byName=new Map(entries.map(entry=>[entry.name,entry]));
+ const subordinate=new Set(entries.flatMap(entry=>entry.details||[]));
+ const skills=entries.filter(entry=>!subordinate.has(entry.name));
+ const paragraphs=text=>text.split('\n').map(line=>`<p>${guide(line,c.id)}</p>`).join('');
  const card=skill=>{
-  const times=[['쿨타임',skill.cooldown],['충전 시간',skill.charge],['지속 시간',skill.duration]].filter(([,value])=>value);
-  return `<article class="skill-entry"><h3>${esc(skill.name)}</h3><p>${guide(skill.tooltip,c.id)}</p>
-   ${times.length?`<dl class="skill-times">${times.map(([label,value])=>`<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}
-   <div class="skill-sources">${sourceLink(skill.source,'공식 자료')}${skill.timingSource&&skill.timingSource!==skill.source?sourceLink(skill.timingSource,'수치 근거'):''}</div></article>`;
+  const definitions=(skill.details||[]).map(name=>byName.get(name));
+  const group=[skill,...definitions];
+  const terms=group.map(row=>row.name).join('|');
+  const notes=definitions.map(term=>`<div><dt>${esc(term.name)}</dt><dd>${paragraphs(term.tooltip)}${skillTimes(term)}</dd></div>`).join('');
+  return `<article class="skill-entry" data-skill-terms="${esc(terms)}"><h3>${esc(skill.name)}</h3>
+   ${paragraphs(skill.tooltip)}${skillTimes(skill)}
+   ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}${skillReferences(group)}</article>`;
  };
- return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2>${preview?`<a class="sheet-link" href="${route({v:'character',c:c.id,tab:'skills'})}">전체 ${skills.length}개 ${icon('arrow')}</a>`:''}</div>${preview?'':'<p class="skill-timing-note">시간은 공식 자료에서 확인한 값만 표시합니다.</p>'}<div class="skill-entries">${rows.map(card).join('')}</div></section>`;
+ const visible=preview?skills.slice(0,1):skills;
+ return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2>${preview?`<a class="sheet-link" href="${route({v:'character',c:c.id,tab:'skills'})}">전체 ${skills.length}개 ${icon('arrow')}</a>`:''}</div>${preview?'':'<p class="skill-timing-note">시간은 공식 자료에서 확인한 값만 표시합니다.</p>'}<div class="skill-entries">${visible.map(card).join('')}</div></section>`;
 }
 function characterPage(){
  const c=char(state.character);state.character=c.id;

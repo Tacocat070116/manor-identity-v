@@ -79,18 +79,22 @@
 .skill-entry h3 { color: var(--accent); font-size: 18px; font-weight: 750; line-height: 1.45; margin-bottom: 5px }
 .skill-entry p, .role-copy p { font-size: 1rem; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere }
 .role-copy p + p { margin-top: 8px }
-.skill-times { width: fit-content; max-width: 100%; display: flex; flex-wrap: wrap; gap: 5px 16px; margin: 12px 0 0; padding: 8px 12px; background: var(--surface-inset); border-radius: 8px; font-size: 13px }
-.skill-times div { display: flex; gap: 6px; align-items: baseline }
+.skill-entry p + p { margin-top: 6px }
+.skill-entry > p, .skill-definitions { max-width: 74ch }
+.skill-definitions { margin: 14px 0 0 }
+.skill-definitions > div + div { margin-top: 12px }
+.skill-definitions > div > dt { color: var(--accent); font-size: 1rem; font-weight: 700 }
+.skill-definitions > div > dd { margin: 1px 0 0 }
+.skill-times { display: flex; flex-wrap: wrap; gap: 3px 16px; margin: 6px 0 0; font-size: 13px }
+.skill-times div { display: flex; gap: 6px; align-items: baseline; min-width: 0 }
 .skill-times dt { color: var(--muted); white-space: nowrap }
-.skill-times dd { margin: 0; font-weight: 680 }
-.skill-sources { display: flex; flex-wrap: wrap; gap: 0 14px; margin-top: 4px }
-.skill-sources a { display: inline-flex; align-items: center; min-height: 30px; font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px }
+.skill-times dd { margin: 0; font-weight: 650; overflow-wrap: anywhere }
+.skill-references { margin: 4px 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none }
+.skill-references > summary { width: fit-content; min-height: 30px; padding-block: 4px; font-size: 12px; color: var(--muted) }
+.skill-references[open] > summary { margin: 0 }
+.skill-sources { display: flex; flex-wrap: wrap; gap: 0 14px }
+.skill-sources a { display: inline-flex; align-items: center; min-height: 30px; color: var(--muted); font-size: 13px; text-decoration: underline; text-underline-offset: 3px }
 .profile-reviewed { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px }
-@media (min-width: 801px) {
-  #character-content > .skill-sheet .skill-entry { display: grid; grid-template-columns: minmax(150px,22%) minmax(0,1fr); column-gap: 20px; align-items: start }
-  #character-content > .skill-sheet .skill-entry h3 { grid-column: 1; grid-row: 1 / span 3 }
-  #character-content > .skill-sheet .skill-entry > :not(h3) { grid-column: 2 }
-}
 @media (max-width: 800px) {
   .profile-banner { grid-template: "portrait identity" auto "portrait difficulty" auto "intro intro" auto "actions actions" auto / 84px minmax(0,1fr); gap: 6px 14px }
   .profile-difficulty, .profile-actions { justify-self: start }

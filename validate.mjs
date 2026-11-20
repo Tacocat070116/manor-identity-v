@@ -141,17 +141,43 @@ const skillData=JSON.parse(fs.readFileSync('dist/character-skills.json','utf8'))
 assert.deepEqual(Object.keys(skillData).sort(),db.characters.map(c=>c.id).sort(),'skills for every character');
 for(const [id,skills] of Object.entries(skillData)){
  assert.ok(skills.length>0,id+' skills');
- assert.equal(new Set(skills.map(s=>s.name)).size,skills.length,id+' unique skill names');
+ const byName=new Map(skills.map(s=>[s.name,s]));
+ assert.equal(byName.size,skills.length,id+' unique skill names');
  for(const skill of skills){
   assert.ok(skill.name?.trim()&&skill.tooltip?.trim()&&skill.source,id+' complete tooltip');
+  assert.ok(!skill.name.includes('|'),id+' name must fit the term list');
+  if(skill.details){
+   assert.ok(Array.isArray(skill.details)&&skill.details.length>0,id+' inline definitions');
+   assert.equal(new Set(skill.details).size,skill.details.length,id+' duplicate inline definitions');
+   for(const name of skill.details){
+    assert.ok(byName.has(name),id+' missing definition '+name);
+    assert.ok(!byName.get(name).details,id+' definitions must be a single level: '+name);
+   }
+  }
   for(const url of [skill.source,skill.timingSource].filter(Boolean))assert.equal(new URL(url).protocol,'https:',id+' skill reference');
   for(const key of ['cooldown','charge','duration'])if(Object.hasOwn(skill,key))assert.ok(typeof skill[key]==='string'&&/\d/.test(skill[key]),id+' '+key);
+ }
+}
+function checkSkillGuide(id,skills,html,escape){
+ const nested=new Set(skills.flatMap(s=>s.details||[]));
+ const roots=skills.filter(s=>!nested.has(s.name));
+ const cards=[...html.matchAll(/<article class="skill-entry"[^>]*>([\s\S]*?)<\/article>/g)].map(match=>match[1]);
+ assert.equal(cards.length,roots.length,id+' only independent entries receive a heading');
+ for(const [i,skill] of roots.entries()){
+  const card=cards[i];
+  assert.ok(card.includes('<h3>'+escape(skill.name)+'</h3>'),id+' root heading '+skill.name);
+  for(const row of [skill,...(skill.details||[]).map(name=>skills.find(s=>s.name===name))]){
+   if(row!==skill)assert.ok(card.includes('<dt>'+escape(row.name)+'</dt>'),id+' inline term '+row.name);
+   for(const value of [...row.tooltip.split('\n'),row.cooldown,row.charge,row.duration,row.source,row.timingSource].filter(Boolean)){
+    assert.ok(card.includes(escape(value)),id+' missing content in '+skill.name+': '+value);
+   }
+  }
  }
 }
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={chaseActivity,situationLabel,...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__skills:skillData,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={checkSkillGuide,chaseActivity,situationLabel,...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__skills:skillData,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
 db=__data;releaseLog=__releases;characterSkills=__skills;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
@@ -168,7 +194,7 @@ state.own=byName['묘지기'].id;state.opponent=byName['사도'].id;state.situat
 state.view='bans';state.banSource='legacy';state.bans=[byName['의사'].id,byName['샤먼'].id,''];audit.banRecords=banPage(__bans);
 audit.openingBanFilters=commonFilters('bans');state.banSource='observed';audit.observedBanFilters=commonFilters('bans');state.banSource='legacy';
 state.view='explore';
-for(const c of db.characters){state.character=c.id;for(const t of ['overview','skills','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='skills'){const skills=characterSkills[c.id];if(!skills?.length||!skills.every(s=>html.includes(esc(s.name))&&html.includes(esc(s.tooltip))&&html.includes(esc(s.source))))throw Error(c.name+' missing skill data');}if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
+for(const c of db.characters){state.character=c.id;for(const t of ['overview','skills','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='skills')checkSkillGuide(c.id,characterSkills[c.id],html,esc);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
 state.own=byName['사도'].id;state.opponent=byName['탐사원'].id;audit.templates.push(matchupPage());
 state.own=byName['블러디 퀸'].id;state.opponent=byName['기상학자'].id;audit.heldMatchup=matchupPage();audit.templates.push(audit.heldMatchup);
