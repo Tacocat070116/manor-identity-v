@@ -1,4 +1,4 @@
-.nav-shell .header-actions{margin-left:auto}
+.nav-shell .header-actions{margin-left:0}
 /* The header already supplies the glass fill and reflection. Keep this second
    surface lightly tinted so the two layers do not become an opaque pill. */
 .category-nav{--category-surface:rgba(var(--surface-rgb),.16);--category-hover:rgba(var(--surface-rgb),.26);--category-sheen:none;position:absolute;top:30px;left:50%;transform:translateX(-50%);z-index:2;width:max-content}
@@ -51,3 +51,12 @@
 /* Category labels must be ready before any optional screen is opened. */
 .nav-item-label{display:flex;align-items:center;gap:6px;min-width:0}
 @media(max-width:380px){.category-panel .nav-item{padding:10px;gap:6px;white-space:normal}.nav-item-label{overflow-wrap:anywhere}}
+
+.install-action{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:44px;margin-top:8px;border-top:1px solid var(--line);color:var(--accent);font-size:14px;font-weight:650}
+.install-action .icon{width:16px;height:16px}
+html[data-installed] .install-action{display:none}
+@media(display-mode:standalone){.install-action{display:none}}
+.install-dialog{width:min(360px,calc(100vw - 32px));padding:24px}
+.install-dialog h2{margin:0 0 12px;font-size:20px}
+.install-dialog p{margin-bottom:20px}
+.connection-note{margin:12px auto;text-align:center;padding:6px 16px;color:var(--ink);font-size:14px}

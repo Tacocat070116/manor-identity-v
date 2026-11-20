@@ -13,28 +13,38 @@ catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme:d
 <meta property="og:description" content="제5인격 캐릭터 공략, 상대별 상성과 대응 방법, 대회·랭킹전 통계를 제공합니다.">
 <meta property="og:url" content="https://tacocat070116.github.io/manor-identity-v/">
 <link rel="canonical" href="https://tacocat070116.github.io/manor-identity-v/">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=ed47df579faf">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=0a7a566ea3fe">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/manor-180.png">
+<meta name="apple-mobile-web-app-title" content="MANOR">
+<link rel="stylesheet" href="style.css?v=0509abba8610">
 <title>MANOR · 제5인격 가이드</title>
-<link rel="stylesheet" href="navigation.css?v=ef7c4d6fb741">
+<link rel="stylesheet" href="navigation.css?v=456377c136f3">
 <link data-lazy-style="participation" data-href="participation.css?v=ac7cb39f5fcc">
 <link data-lazy-style="feedback" data-href="feedback.css?v=68ea91f6f3c6">
 <link data-lazy-style="synergy" data-href="synergy.css?v=5476a9312293">
 <link data-lazy-style="matchup-tips" data-href="matchup-tips.css?v=e09f8696b29b">
 <link rel="stylesheet" href="releases.css?v=77abfb5df38d">
-<link rel="stylesheet" href="themes.css?v=438a78c3f378">
+<link rel="stylesheet" href="themes.css?v=2b5d489b0eec">
 <link rel="stylesheet" href="icons.css?v=08ad1507a087">
 </head>
 <body>
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
 <header id="header" class="site-header"></header>
+<p id="connection-note" class="connection-note" role="status" hidden>오프라인입니다. 로그인과 게시글, 최신 통계를 보려면 인터넷에 연결해 주세요.</p>
 <main id="main" tabindex="-1"><div class="loading-screen"><span class="loading-orbit" aria-hidden="true"></span><h1>MANOR</h1><p>사이트 자료를 불러오고 있습니다.</p></div></main>
 <footer id="footer"></footer>
 <dialog id="picker" class="picker-dialog" aria-label="캐릭터 선택"></dialog>
 <dialog id="share-dialog" class="share-dialog" aria-label="공유"></dialog>
 <dialog id="theme-picker" class="theme-dialog" aria-labelledby="theme-title"></dialog>
+<dialog id="install-dialog" class="install-dialog" aria-labelledby="install-title" aria-describedby="install-guide">
+  <h2 id="install-title">홈 화면에 추가</h2>
+  <p id="install-guide"></p>
+  <form method="dialog"><button class="btn primary" autofocus>닫기</button></form>
+</dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script type="module" src="app.js?v=b314135e50e5"></script>
+<script type="module" src="install.js?v=93a7dfea7fc9"></script>
+<script type="module" src="app.js?v=7c48bce5a240"></script>
 </body>
 </html>

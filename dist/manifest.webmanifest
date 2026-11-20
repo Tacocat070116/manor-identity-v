@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "MANOR · 제5인격 가이드",
+  "short_name": "MANOR",
+  "description": "제5인격 캐릭터 공략, 상성과 대회·랭킹전 통계",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#e9f1ed",
+  "theme_color": "#e9f1ed",
+  "icons": [
+    {"src": "assets/brand/manor-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "assets/brand/manor-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "assets/brand/manor-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
