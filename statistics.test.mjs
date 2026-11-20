@@ -260,7 +260,7 @@ test('navigation cancels a pending statistics search before another screen is re
 test('startup loads the compact catalogue and hydrates full guides once on demand',async()=>{
  const {context,app,fetches,nodes}=runtime();context.location.hash='#v=explore';await app.boot();
  assert.ok(fetches.some(url=>url.startsWith('catalog.json')));
- assert.ok(!fetches.some(url=>/^(data|matches|bans|tournament-details)\.json/.test(url)));
+ assert.ok(!fetches.some(url=>/^(data|character-skills|matches|bans|tournament-details)\.json/.test(url)));
  assert.match(nodes.get('#explorer-results').innerHTML,/89명의 캐릭터/);
  context.location.hash='#v=character&c=c58';app.readRoute();await app.render();
  assert.match(nodes.get('#page-body').innerHTML,/부엉이/);
@@ -268,6 +268,7 @@ test('startup loads the compact catalogue and hydrates full guides once on deman
  context.location.hash='#v=character&c=c16&tab=matchups';app.readRoute();await app.render();
  assert.match(nodes.get('#page-body').innerHTML,/상대하기 어려운 생존자/);
  assert.equal(fetches.filter(url=>url.startsWith('data.json')).length,1);
+ assert.equal(fetches.filter(url=>url.startsWith('character-skills.json')).length,1);
 });
 
 test('ranked-only views never download hidden tournament records and preserve overview totals',async()=>{

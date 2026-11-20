@@ -70,7 +70,7 @@ let favoriteBusy=false;
 let preferenceSync,seasonalEffects;
 let heroSession,disposeView=()=>{};
 let statisticsUI,rankedSource,rankedData,rankedError='',statisticsSearchTimer;
-let navigationController;
+let navigationController,characterSkills;
 let releaseLog;
 const releaseFilters={query:'',type:'전체'};
 // Static requests share retryable promises; ranked partitions retain only hydrated rows.
@@ -106,6 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
+const loadCharacterSkills=cachedJSON('character-skills.json?v=9a8784eaf47b','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -153,7 +154,7 @@ function readRoute(){
  state.view=['explore','character','matchup','compare','bans','statistics','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
- state.tab=['overview','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
+ state.tab=['overview','skills','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
  const legacySynergy=state.view==='character'&&state.tab==='synergy'&&byId[state.character]?.side==='생존자';
  if(state.tab==='synergy'){state.tab='overview';if(legacySynergy)state.view='laboratory';}
  state.researchCharacter=byId[p.get('c')]?p.get('c'):'';
@@ -187,7 +188,7 @@ function header(){
  const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','로그인','lock']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view==='bans'?'statistics':state.view))||['explore','도감','grid'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}</span></a>`).join('');
- $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div><button type="button" class="install-action" data-install-manor>${icon('plus')}홈 화면에 추가</button></nav></div>`;
+ $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div><button type="button" class="install-action" data-install-manor>${icon('plus')}<span>홈 화면에 추가</span></button></nav></div>`;
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
@@ -284,11 +285,43 @@ function favoriteInsight(list){
  }).join('');
 }
 function listPanel(label,items,tone,ic,characterId){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${guide(t,characterId)}</span></li>`).join('')}</ul></div>`;}
+function skillPanel(c,preview=false){
+ if(!characterSkills)return '<div class="guide-sheet skill-loading" aria-live="polite">스킬 정보를 불러오는 중입니다.</div>';
+ const skills=characterSkills[c.id];
+ const rows=preview?skills.slice(0,1):skills;
+ const sourceLink=(url,label)=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
+ const card=skill=>{
+  const times=[['쿨타임',skill.cooldown],['충전 시간',skill.charge],['지속 시간',skill.duration]].filter(([,value])=>value);
+  return `<article class="skill-entry"><h3>${esc(skill.name)}</h3><p>${guide(skill.tooltip,c.id)}</p>
+   ${times.length?`<dl class="skill-times">${times.map(([label,value])=>`<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:''}
+   <div class="skill-sources">${sourceLink(skill.source,'공식 자료')}${skill.timingSource&&skill.timingSource!==skill.source?sourceLink(skill.timingSource,'수치 근거'):''}</div></article>`;
+ };
+ return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2>${preview?`<a class="sheet-link" href="${route({v:'character',c:c.id,tab:'skills'})}">전체 ${skills.length}개 ${icon('arrow')}</a>`:''}</div>${preview?'':'<p class="skill-timing-note">시간은 공식 자료에서 확인한 값만 표시합니다.</p>'}<div class="skill-entries">${rows.map(card).join('')}</div></section>`;
+}
 function characterPage(){
  const c=char(state.character);state.character=c.id;
- return `<a class="back-link" href="#v=explore">${icon('back')} 캐릭터 도감</a><section class="character-hero"><div class="tag-row character-hero-tags" aria-label="캐릭터 정보">${chip(c.side,'green')}${specialtyTags(c)}${chip('난이도 '+c.difficulty+'/5')}</div><div class="large-portrait">${portrait(c,true)}</div><h1>${esc(c.name)}</h1><p class="hero-detail" aria-label="캐릭터 간편 소개">${guide(c.introduction,c.id)}</p><div class="character-hero-meta"><span class="date-pill">${icon('clock')}공략 검토 ${esc(c.reviewedAt)}</span>${c.gamePatchDate?`<span class="date-pill">${icon('check')}게임 반영 ${esc(c.gamePatchDate)}</span>`:''}</div><div class="char-actions"><button class="btn ${state.favorites.has(c.id)?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${state.favorites.has(c.id)}">${icon('star')}<span>${state.favorites.has(c.id)?'저장됨':'즐겨찾기'}</span></button><button class="btn quiet share-btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}"><span>상대 대응</span>${icon('arrow')}</button></div></section>
- <div class="tab-row character-tabs" role="group" aria-label="캐릭터 상세">${[['overview','한눈에 보기'],['matchups','상성'],['tips','유저 상대법'],['stats','통계']].map(([t,label])=>`<button data-action="character-tab" data-tab="${t}" class="${state.tab===t?'active':''}" aria-pressed="${state.tab===t}">${label}</button>`).join('')}</div>
- <div id="character-content">${state.tab==='overview'?characterOverview(c)+`<div id="research-highlights"></div>`:state.tab==='matchups'?characterMatchups(c):state.tab==='tips'?'<div id="matchup-tips"></div>':'<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>'}</div>`;
+ const saved=state.favorites.has(c.id);
+ const tabs=[['overview','요약'],['skills','스킬'],['matchups','상성'],['tips','유저 상대법'],['stats','통계']];
+ let content;
+ switch(state.tab){
+  case 'skills':content=skillPanel(c);break;
+  case 'matchups':content=characterMatchups(c);break;
+  case 'tips':content='<div id="matchup-tips"></div>';break;
+  case 'stats':content='<div class="skeleton">대회와 랭킹전 통계를 준비하고 있습니다.</div>';break;
+  default:content=characterOverview(c)+'<div id="research-highlights"></div>';
+ }
+ return `<article class="character-detail"><a class="back-link" href="#v=explore">${icon('back')}캐릭터 도감</a>
+ <header class="profile-banner">
+  <img class="profile-art" src="${esc(c.portrait)}" alt="" aria-hidden="true" decoding="async">
+  <div class="profile-portrait">${portrait(c,true)}</div>
+  <div class="profile-identity"><div class="profile-faction">${esc(c.side)}</div><h1>${esc(c.name)}</h1><div class="profile-roles">${specialtyTags(c)}</div></div>
+  <div class="profile-difficulty"><span>조작 난이도</span>${difficulty(c.difficulty)}</div>
+  <p class="profile-intro" aria-label="캐릭터 간편 소개">${guide(c.introduction,c.id)}</p>
+  <div class="profile-actions"><button class="btn ${saved?'favorite-on':''}" data-action="favorite" data-id="${c.id}" aria-pressed="${saved}">${icon('star')}<span>${saved?'저장됨':'즐겨찾기'}</span></button><button class="btn" data-action="share" aria-label="${esc(c.name)} 공략 공유">${icon('share')}<span>공유</span></button><button class="btn primary" data-action="own-matchup" data-id="${c.id}">상대 대응${icon('arrow')}</button></div>
+ </header>
+ <nav class="profile-tabs" aria-label="캐릭터 상세">${tabs.map(([tab,label])=>`<a href="${route({v:'character',c:c.id,tab})}" ${state.tab===tab?'aria-current="page"':''}>${label}</a>`).join('')}</nav>
+ <div id="character-content">${content}</div>
+ <div class="profile-reviewed"><span>공략 검토 <time>${esc(c.reviewedAt)}</time></span>${c.gamePatchDate?`<span>게임 반영 <time>${esc(c.gamePatchDate)}</time></span>`:''}</div></article>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function synergyDetails(l){
@@ -309,7 +342,10 @@ function survivorSynergies(c){
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
- return `<div class="specialty-summary"><span class="specialty-summary-icon">${primarySpecialtyIcon(c)}</span><div><h2>역할 태그</h2>${specialtyExplanation(c)}</div></div><div class="two-col">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}</div><div class="two-col section-gap"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div>${playGuide(c)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(auxiliaryTraitCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(auxiliaryTraitCard).join('')}</div></details>`:''}</section>`}`;
+ return `<div class="profile-overview">
+  <div class="profile-primary">${skillPanel(c,true)}${playGuide(c)}</div>
+  <aside class="profile-build"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div><section class="guide-sheet role-sheet"><div class="sheet-heading"><h2>${primarySpecialtyIcon(c)}역할 태그</h2></div><div class="role-copy">${specialtyExplanation(c)}</div></section></aside>
+ </div><div class="two-col section-gap">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(auxiliaryTraitCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(auxiliaryTraitCard).join('')}</div></details>`:''}</section>`}`;
 }
 function matchupItem(i){
  const c=byName[i.name];if(!c)return '';
@@ -427,7 +463,17 @@ async function render({scroll=false}={}){
  }
  const {mountFeedback,mountSynergy,mountRecoveryPage,mountResearchHighlights,mountMatchupTips}=featureModule||{};
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeView=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
- else if(state.view==='character'){body.innerHTML=characterPage();if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
+ else if(state.view==='character'){
+  const character=char(state.character),preview=state.tab==='overview';
+  body.innerHTML=characterPage();
+  if(!characterSkills&&(preview||state.tab==='skills')){
+   const placeholder=$('.skill-loading');
+   loadCharacterSkills().then(data=>{
+    characterSkills=data;
+    if(token===renderToken)placeholder.outerHTML=skillPanel(character,preview);
+   }).catch(error=>{if(token===renderToken)placeholder.innerHTML=loadError(error);});
+  }
+  if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){
   const [t,r,d]=await Promise.allSettled([state.statistics.scope==='ranked'?Promise.resolve([]):loadMatches(),state.statistics.scope==='tournament'?Promise.resolve(null):loadRanked(),state.statistics.scope==='ranked'?Promise.resolve(null):loadDetails()]);if(token!==renderToken)return;
   rankedData=r.status==='fulfilled'?r.value:null;rankedError=r.status==='rejected'?r.reason.message:'';
   $('#character-content').innerHTML=statisticsUI.character(char(state.character),{data:r.status==='fulfilled'?r.value:null,settings:state.statistics,tournamentHTML:state.statistics.scope==='ranked'?'':t.status==='fulfilled'?statsPanel(char(state.character),t.value,d.status==='fulfilled'?d.value:null,d.status==='rejected'?d.reason.message:''):loadError(t.reason),rankError:rankedError});
@@ -559,7 +605,6 @@ document.addEventListener('click',e=>{
  if(a==='favorites')toggleFavorites();
  if(a==='reset-explore'){state.side='전체';state.specialty='';state.favoriteOnly=false;state.search='';refreshExplorer();}
  if(a==='favorite')return setFavorite(b);
- if(a==='character-tab'){state.tab=b.dataset.tab;navigate({v:'character',c:state.character,tab:state.tab});}
  if(a==='own-matchup'){state.own=b.dataset.id;state.opponent='';state.situation='';navigate({v:'matchup',own:state.own});}
  if(a==='picker')openPicker(b.dataset.mode);
  if(a==='swap-selection')swapSelections(b.dataset.mode);

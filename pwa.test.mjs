@@ -58,7 +58,7 @@ test('installed MANOR opens its catalog, guides and favicon offline at the Pages
   for (const route of ['./','index.html','#v=explore']) {
     assert.match(await (await w.get(route, {mode:'navigate'})).text(), /MANOR · 제5인격 가이드/);
   }
-  for (const name of ['catalog.json','specialties.json','introductions.json','releases.json','data.json','favicon.svg']) {
+  for (const name of ['catalog.json','specialties.json','introductions.json','releases.json','data.json','character-skills.json','favicon.svg']) {
     const file = files.find(file => file.startsWith(name + '?v='));
     assert.ok(file, name);
     assert.deepEqual(Buffer.from(await (await w.get(file)).arrayBuffer()), read(name));
@@ -95,7 +95,7 @@ test('statistics payloads and real Google and account request paths bypass the w
   await w.lifecycle('install');
   const files = Array.from(w.self.MANOR_OFFLINE.files);
   const json = files.map(f => f.split('?')[0]).filter(f => f.endsWith('.json')).sort();
-  assert.deepEqual(json, ['catalog.json','data.json','introductions.json','releases.json','specialties.json']);
+  assert.deepEqual(json, ['catalog.json','character-skills.json','data.json','introductions.json','releases.json','specialties.json']);
   for (const path of ['ranked/index.json?v=abc','ranked/sample.json','matches.json','bans.json',
     'bans-observed.json','tournament-details.json','google-return.js','google-return.html#state=sample',
     'https://accounts.google.com/o/oauth2/v2/auth','https://manor-feedback.tacocat070116.chatgpt.site/api/auth/preferences']) {
@@ -135,27 +135,42 @@ test('install control provides the Safari guide, consumes the Android prompt onc
   const attributes = new Set();
   const mode = {matches:false, addEventListener() {}};
   const navigator = {userAgent:'iPhone Safari', onLine:true};
+  let expanded=true;
+  const toggle={
+    getAttribute:() => String(expanded), click(){ expanded=false; },
+    focus(){ document.activeElement=this; }, closest:() => true,
+    blur(){ document.activeElement=null; }
+  };
   const document = {
+    activeElement:toggle,
     getElementById:id => ({'connection-note':note, 'install-guide':guide, 'install-dialog':dialog})[id],
     documentElement:{
       toggleAttribute:(key,on) => on ? attributes.add(key) : attributes.delete(key),
       setAttribute:key => attributes.add(key)
     },
-    querySelector:() => null,
+    querySelector:() => toggle,
     addEventListener:(type,handler) => events.set(type,handler)
   };
   const window = {addEventListener:(type,handler) => events.set(type,handler)};
   vm.runInNewContext(read('install.js').toString(), {window,document,navigator,matchMedia:() => mode});
-  const click = () => events.get('click')({target:{closest:() => true}});
+  const click = (detail=1) => events.get('click')({detail,target:{closest:() => true}});
   await click();
+  assert.equal(expanded,false);
+  assert.equal(document.activeElement,null);
   assert.equal(dialog.open, true);
   assert.match(guide.textContent, /Safari.*공유.*홈 화면에 추가/);
+  dialog.close();
+  expanded=true;
+  await click(0);
+  assert.equal(expanded,false);
+  assert.equal(document.activeElement,toggle);
   dialog.close();
   navigator.userAgent = 'Android Chrome';
   let prompts = 0;
   events.get('beforeinstallprompt')({preventDefault(){}, async prompt(){ prompts++; }, userChoice:Promise.resolve({outcome:'dismissed'})});
   await click();
   assert.equal(prompts, 1);
+  assert.equal(document.activeElement,null);
   assert.equal(dialog.open, false);
   await click();
   assert.match(guide.textContent, /브라우저 메뉴.*앱 설치/);

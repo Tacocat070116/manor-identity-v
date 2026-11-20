@@ -752,6 +752,15 @@
         "오프라인에서 캐릭터 도감과 기본 공략 열람"
       ],
       "announcement": "pending"
+    },
+    {
+      "date": "2026-11-20",
+      "scope": "character-detail-and-install-menu",
+      "summary": [
+        "홈 화면 추가 구분선의 여백을 맞추고 설치 안내를 닫으면 입력 방식에 맞게 포커스를 복귀",
+        "캐릭터 상세 화면의 프로필·인격·운용 가이드를 재배치하고 공식 자료에 근거한 스킬 정보 제공"
+      ],
+      "announcement": "pending"
     }
   ]
 }

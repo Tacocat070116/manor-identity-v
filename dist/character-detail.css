@@ -1,0 +1,116 @@
+.character-detail {
+  --detail-radius: 18px;
+  --detail-pad: clamp(16px, 2.1vw, 28px);
+}
+.character-detail > .back-link { margin: 0 0 12px }
+.profile-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template: "portrait identity difficulty" auto "portrait intro actions" auto / 112px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 8px 24px;
+  padding: var(--detail-pad);
+  border: 1px solid var(--line);
+  border-radius: var(--detail-radius) var(--detail-radius) 0 0;
+  background: linear-gradient(110deg,var(--surface-solid),var(--accent-soft));
+}
+.profile-art {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 auto;
+  width: min(38%,390px);
+  opacity: .13;
+  pointer-events: none;
+  object-position: 50% 30%;
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000);
+  mask-image: linear-gradient(90deg,transparent,#000);
+}
+.profile-portrait {
+  grid-area: portrait;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--control-line);
+  border-radius: 14px;
+  background: var(--surface-inset);
+}
+.profile-identity { grid-area: identity; min-width: 0 }
+.profile-faction { font-weight: 680; color: var(--accent); font-size: 13px }
+.profile-identity h1 { font-size: clamp(26px,3vw,40px); line-height: 1.18; letter-spacing: -.055em; overflow-wrap: anywhere }
+.profile-roles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px }
+.profile-difficulty { grid-area: difficulty; display: flex; gap: 8px; align-items: center; justify-self: end; font-size: 12px; font-weight: 600; color: var(--muted) }
+.profile-difficulty .difficulty { margin: 0 }
+.profile-intro { grid-area: intro; max-width: 64ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere }
+.profile-actions { grid-area: actions; display: flex; justify-self: end; align-self: end; flex-wrap: wrap; gap: 6px }
+.profile-actions .btn { min-height: 44px; padding: 7px 12px; border-radius: 10px; font-size: 13px; white-space: nowrap }
+.profile-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 var(--detail-pad);
+  margin-bottom: 20px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 var(--detail-radius) var(--detail-radius);
+}
+.profile-tabs a { display: grid; place-items: center; min-height: 48px; padding: 0 16px; border-bottom: 3px solid transparent; color: var(--muted); font-size: 14px; font-weight: 650; white-space: nowrap }
+.profile-tabs a[aria-current] { border-bottom-color: var(--accent); color: var(--accent) }
+.profile-tabs a:focus-visible { outline-offset: -4px }
+.profile-overview { display: grid; gap: 16px; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: start }
+.profile-primary, .profile-build { display: grid; align-content: start; gap: 16px; min-width: 0 }
+.character-detail .panel, .guide-sheet {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--detail-radius);
+  box-shadow: none;
+}
+.guide-sheet { background: var(--surface-solid) }
+.skill-loading { padding: var(--detail-pad); color: var(--muted) }
+.sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding: 10px var(--detail-pad); min-height: 52px; border-bottom: 1px solid var(--line) }
+.sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; line-height: 1.45 }
+.sheet-heading h2 .icon { width: 18px; height: 18px; color: var(--accent) }
+.sheet-link { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; font-size: 13px; font-weight: 650; color: var(--accent) }
+.sheet-link .icon { width: 15px; height: 15px }
+.skill-entry, .role-copy { padding: 16px var(--detail-pad) }
+.skill-timing-note { padding: 8px var(--detail-pad); font-size: 13px; color: var(--muted); background: var(--surface-soft) }
+.skill-entry + .skill-entry { border-top: 1px solid var(--line) }
+.skill-entry h3 { color: var(--accent); font-size: 18px; font-weight: 750; line-height: 1.45; margin-bottom: 5px }
+.skill-entry p, .role-copy p { font-size: 1rem; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere }
+.role-copy p + p { margin-top: 8px }
+.skill-times { width: fit-content; max-width: 100%; display: flex; flex-wrap: wrap; gap: 5px 16px; margin: 12px 0 0; padding: 8px 12px; background: var(--surface-inset); border-radius: 8px; font-size: 13px }
+.skill-times div { display: flex; gap: 6px; align-items: baseline }
+.skill-times dt { color: var(--muted); white-space: nowrap }
+.skill-times dd { margin: 0; font-weight: 680 }
+.skill-sources { display: flex; flex-wrap: wrap; gap: 0 14px; margin-top: 4px }
+.skill-sources a { display: inline-flex; align-items: center; min-height: 30px; font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px }
+.profile-reviewed { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px }
+@media (min-width: 801px) {
+  #character-content > .skill-sheet .skill-entry { display: grid; grid-template-columns: minmax(150px,22%) minmax(0,1fr); column-gap: 20px; align-items: start }
+  #character-content > .skill-sheet .skill-entry h3 { grid-column: 1; grid-row: 1 / span 3 }
+  #character-content > .skill-sheet .skill-entry > :not(h3) { grid-column: 2 }
+}
+@media (max-width: 800px) {
+  .profile-banner { grid-template: "portrait identity" auto "portrait difficulty" auto "intro intro" auto "actions actions" auto / 84px minmax(0,1fr); gap: 6px 14px }
+  .profile-difficulty, .profile-actions { justify-self: start }
+  .profile-intro, .profile-actions { margin-top: 6px }
+  .profile-overview { grid-template-columns: minmax(0,1fr) }
+  .profile-primary, .profile-build { display: contents }
+  .profile-overview .skill-sheet, .profile-overview .skill-loading { order: 0 }
+  .profile-build > .panel { order: 1 }
+  .profile-primary > .play-guide { order: 2 }
+  .profile-build > .role-sheet { order: 3 }
+  .profile-tabs { padding: 0 6px; gap: 0 }
+  .profile-tabs a { flex: 1 1 auto; min-width: 0; padding: 0 5px; font-size: 13px }
+  .profile-art { width: 44%; height: 100%; opacity: .09 }
+}
+@media (max-width: 380px) {
+  .profile-banner { grid-template-columns: 72px minmax(0,1fr) }
+  .profile-actions .btn { padding-inline: 9px }
+}
+@media print {
+  .profile-tabs, .profile-actions, .profile-art, .character-detail > .back-link { display: none }
+  .profile-overview { display: block }
+  .skill-entry { break-inside: avoid }
+}

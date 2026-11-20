@@ -134,7 +134,7 @@ export function refreshPackage(root=process.cwd()){
  // and the separate OAuth return document stay on their normal network path.
  const worker=path.join(dist,'sw.js');
  if(fs.existsSync(worker)){
-  const coreData=new Set(['catalog.json','specialties.json','introductions.json','releases.json','data.json']);
+  const coreData=new Set(['catalog.json','specialties.json','introductions.json','releases.json','data.json','character-skills.json']);
   const offline=[];
   for(const [file,digest] of done){
    const relative=path.relative(dist,file).split(path.sep).join('/');

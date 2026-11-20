@@ -137,13 +137,24 @@ for(const [hunter,survivor] of [['리퍼','곤충학자'],['밀랍인형사','�
 const contextualPair=db.matchups.filter(m=>m.status==='반영'&&m.hunter==='사진사'&&m.survivor==='인형사');
 assert.ok(new Set(contextualPair.map(m=>m.advantage)).size>1,'opposite situational findings preserved');
 assert.equal(pairEvidence(db.matchups,c('사진사'),c('인형사')).length,contextualPair.length,'opposite situational findings remain readable');
+const skillData=JSON.parse(fs.readFileSync('dist/character-skills.json','utf8'));
+assert.deepEqual(Object.keys(skillData).sort(),db.characters.map(c=>c.id).sort(),'skills for every character');
+for(const [id,skills] of Object.entries(skillData)){
+ assert.ok(skills.length>0,id+' skills');
+ assert.equal(new Set(skills.map(s=>s.name)).size,skills.length,id+' unique skill names');
+ for(const skill of skills){
+  assert.ok(skill.name?.trim()&&skill.tooltip?.trim()&&skill.source,id+' complete tooltip');
+  for(const url of [skill.source,skill.timingSource].filter(Boolean))assert.equal(new URL(url).protocol,'https:',id+' skill reference');
+  for(const key of ['cooldown','charge','duration'])if(Object.hasOwn(skill,key))assert.ok(typeof skill[key]==='string'&&/\d/.test(skill[key]),id+' '+key);
+ }
+}
 const nodes=new Map();
 const handlers={};
 function node(){return {innerHTML:'',textContent:'',dataset:{},classList:{add(){},remove(){}},addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},focus(){},select(){}};}
-const context={chaseActivity,situationLabel,...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
+const context={chaseActivity,situationLabel,...synergyModel,...compendium,...themeUI,matchesCharacter,sortCharacters,characterSortOptions,...releaseUI,createStatisticsUI,createCarouselSession,carouselItems,mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},console,URL,URLSearchParams,Intl,Set,Map,Date,Math,Object,Number,String,JSON,Error,Array,setTimeout,clearTimeout,document:{querySelectorAll(){return [];},documentElement:{dataset:{}},querySelector(selector){if(!nodes.has(selector))nodes.set(selector,node());return nodes.get(selector);},addEventListener(type,handler){handlers[type]=handler;}},window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia(){return {matches:false};},statsFor,queryBanRecords,banRecordPage,pairEvidence,safeUrl,REFERENCE_DATE:'2026-10-27',__data:db,__skills:skillData,__matches:matches,__bans:bans,__releases:releases,__handlers:handlers};
 let source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
 source+=`
-db=__data;releaseLog=__releases;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
+db=__data;releaseLog=__releases;characterSkills=__skills;byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
 statisticsUI=createStatisticsUI({characters:db.characters,esc,num,portrait,icon,commonFilters});
 state.own=byName['블러디 퀸'].id;state.a=state.own;state.b=byName['붉은 나비'].id;
 globalThis.audit={templates:[],checked:0,roleCards:[],personaGuides:[]};
@@ -157,7 +168,7 @@ state.own=byName['묘지기'].id;state.opponent=byName['사도'].id;state.situat
 state.view='bans';state.banSource='legacy';state.bans=[byName['의사'].id,byName['샤먼'].id,''];audit.banRecords=banPage(__bans);
 audit.openingBanFilters=commonFilters('bans');state.banSource='observed';audit.observedBanFilters=commonFilters('bans');state.banSource='legacy';
 state.view='explore';
-for(const c of db.characters){state.character=c.id;for(const t of ['overview','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
+for(const c of db.characters){state.character=c.id;for(const t of ['overview','skills','matchups','tips','stats']){state.tab=t;const html=characterPage();if(html.includes('undefined')||html.includes('NaN'))throw Error(c.name+' '+t);if(t==='skills'){const skills=characterSkills[c.id];if(!skills?.length||!skills.every(s=>html.includes(esc(s.name))&&html.includes(esc(s.tooltip))&&html.includes(esc(s.source))))throw Error(c.name+' missing skill data');}if(t==='matchups'){const opponent=c.side==='생존자'?'감시자':'생존자';if(!html.includes('상대하기 어려운 '+opponent)||!html.includes('상대하기 쉬운 '+opponent))throw Error(c.name+' opposing faction headings');}audit.templates.push(html);audit.checked++;}}
 state.own=byName['신동'].id;state.opponent=byName['마음의 짐승'].id;audit.templates.push(matchupPage());
 state.own=byName['사도'].id;state.opponent=byName['탐사원'].id;audit.templates.push(matchupPage());
 state.own=byName['블러디 퀸'].id;state.opponent=byName['기상학자'].id;audit.heldMatchup=matchupPage();audit.templates.push(audit.heldMatchup);
@@ -188,7 +199,7 @@ location.hash='#v=character&c=c16&tab=patches';readRoute();audit.retiredGameTab=
 audit.shareFallback=share().then(()=>({open:$('#share-dialog').open,html:$('#share-dialog').innerHTML}));
 `;
 context.loadFeature=async()=>context;vm.runInNewContext(source,context,{timeout:15000});
-assert.equal(context.audit.checked,356);
+assert.equal(context.audit.checked,db.characters.length*5);
 for(const result of context.audit.personaGuides){
  const ch=db.characters.find(c=>c.id===result.id);
  const [direction,build]=ch.persona.split('|').map(s=>s.trim());
@@ -226,7 +237,16 @@ const shareFallback=await context.audit.shareFallback;
 assert.equal(shareFallback.open,true,'manual sharing still opens without native share or clipboard support');
 assert.match(shareFallback.html,/aria-label="공유 링크"/);
 assert.match(shareFallback.html,/data-dialog="share-dialog"/);
-for(const html of [...context.audit.templates,context.audit.footer])assert.doesNotMatch(html,/#v=gamepatches|data-tab="patches"|#v=sources|data-tab="sources"|data-action="evidence"|href="https?:|\bdownload(?:[ =>])|판단을 보류한 내용|계산 기준과 한계|집계 범위·최근 원문/,'public templates do not expose source browsing or internal review controls');
+// Only curated reference links inside a skill entry may point outside MANOR.
+const skillUrls=new Set(Object.values(skillData).flat().flatMap(s=>[s.source,s.timingSource].filter(Boolean)));
+for(const template of [...context.audit.templates,context.audit.footer]){
+ const html=template.replace(/<div class="skill-sources">[\s\S]*?<\/div>/g,links=>
+  links.replace(/href="(https:[^"]+)"/g,(_,href)=>{
+   assert.ok(skillUrls.has(href.replaceAll('&amp;','&')),'curated skill reference');return '';
+  })
+ );
+ assert.doesNotMatch(html,/#v=gamepatches|data-tab="patches"|#v=sources|data-tab="sources"|data-action="evidence"|href="https?:|\bdownload(?:[ =>])|판단을 보류한 내용|계산 기준과 한계|집계 범위·최근 원문/,'public templates do not expose source browsing or internal review controls');
+}
 assert.ok(!context.audit.heldMatchup.includes('판단을 보류한 내용'),'unresolved review records remain internal');
 for(const e of db.matchups.filter(e=>e.status==='보류'&&e.hunter==='블러디 퀸'&&e.survivor==='기상학자'))assert.ok(!context.audit.heldMatchup.includes(e.summary),'held matchup content is not rendered');
 assert.ok(context.audit.condition.includes('구버전 중국어'));
@@ -267,8 +287,8 @@ for(const result of context.audit.roleCards){
 }
 assert.deepEqual(Array.from(context.audit.resetExplore),['전체','','',false]);
 for(const html of context.audit.templates){assert.ok(html.length>100);assert.ok(!html.includes('undefined'));assert.ok(!html.includes('NaN'));}
-fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:356,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 707/707/302','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
-console.log('PASS: 89 portraits, 356 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, observed ban counts and pagination, exclusions, URL sanitization, and native-sheet golden cases.');
+fs.writeFileSync('qa-summary.json',JSON.stringify({status:'passed',characters:89,portraits:89,templateVariants:context.audit.checked,matchRecords:matches.length,banRecords:bans.length,goldenCases:['훌라발루 707/707/302','의사+샤먼 5판, 광기의 눈 12.2113946894%'],visualBrowserQA:'not available; not performed'},null,2));
+console.log('PASS: 89 portraits, 445 character template variants, data integrity, result direction, sample gates, date/map/tournament filtering, observed ban counts and pagination, exclusions, URL sanitization, and native-sheet golden cases.');
 
 for(const {c:cid,kind,item,html} of context.audit.summaries){
  const c=db.characters.find(c=>c.id===cid),resolved=compendium.summaryEvidence(db.matchups,c,item,kind);

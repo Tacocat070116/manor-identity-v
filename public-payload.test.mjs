@@ -24,11 +24,11 @@ function guideScreens(payload){
   window:{addEventListener(){},scrollTo(){},scrollY:0},navigator:{},
   location:{hash:'',origin:'https://example.test',pathname:'/'},localStorage:{getItem(){return null;},setItem(){}},matchMedia:()=>({matches:false}),
   mountNavigation:()=>({update(){}}),mountHeroCarousel:()=>()=>{},createCarouselSession:()=>({}),carouselItems:()=>[],
-  __data:db,__releases:read('dist/releases.json'),
+  __data:db,__skills:read('dist/character-skills.json'),__releases:read('dist/releases.json'),
  };
  const source=fs.readFileSync('dist/app.js','utf8').replace(/^import[^\n]*\n/gm,'').replace(/\nboot\(\);\s*$/,'');
  context.loadFeature=async()=>context;vm.runInNewContext(source+`
-  db=__data;releaseLog=__releases;
+  db=__data;releaseLog=__releases;characterSkills=__skills;
   byId=Object.fromEntries(db.characters.map(c=>[c.id,c]));byName=Object.fromEntries(db.characters.map(c=>[c.name,c]));
   globalThis.screens=[explore()];
   for(const c of db.characters){state.character=c.id;for(const tab of ['overview','matchups']){state.tab=tab;screens.push(characterPage());}}

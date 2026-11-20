@@ -37,8 +37,14 @@ function installGuide() {
 document.addEventListener('click', async event => {
   if (!event.target.closest('[data-install-manor]')) return;
   const toggle = document.querySelector('[data-nav-toggle]');
+  // The install item becomes inert when the menu closes. Restore a keyboard
+  // user's tab position, but let a tap return to the page without a focus ring.
+  if (event.detail > 0 || event.pointerType) {
+    if (document.activeElement?.closest('.category-nav')) document.activeElement.blur();
+  } else {
+    toggle?.focus({preventScroll:true});
+  }
   if (toggle?.getAttribute('aria-expanded') === 'true') toggle.click();
-  toggle?.focus({preventScroll:true});
   const prompt = installPrompt;
   if (prompt) {
     installPrompt = undefined;
