@@ -72,7 +72,6 @@
 .sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; line-height: 1.45 }
 .sheet-heading h2 .icon { width: 18px; height: 18px; color: var(--accent) }
 .skill-entry, .role-copy { padding: 16px var(--detail-pad) }
-.skill-entry { letter-spacing: .015em; word-spacing: .045em }
 .skill-entry + .skill-entry { border-top: 1px solid var(--line) }
 .skill-entry h3 { color: var(--accent); font-size: 1rem; font-weight: 750; line-height: 1.45; margin-bottom: 5px }
 .skill-entry p { font-size: var(--text-body) }

@@ -155,9 +155,10 @@ for(const [id,skills] of Object.entries(skillData)){
    }
   }
   for(const url of [skill.source,skill.timingSource].filter(Boolean))assert.equal(new URL(url).protocol,'https:',id+' skill reference');
-  if(skill.duration){
-   const described=new Set(skill.tooltip.match(/\d+(?:\.\d+)?초/g));
-   for(const time of skill.duration.match(/\d+(?:\.\d+)?초/g)||[])assert.ok(described.has(time),id+' missing '+time+' in '+skill.name);
+  if(skill.cooldown)assert.match(skill.cooldown,/^\d+(?:\.\d+)?초$/,id+' plain cooldown for '+skill.name);
+  const described=new Set(skill.tooltip.match(/\d+(?:\.\d+)?초/g));
+  for(const timing of [skill.charge,skill.duration].filter(Boolean)){
+   for(const time of timing.match(/\d+(?:\.\d+)?초/g)||[])assert.ok(described.has(time),id+' missing '+time+' in '+skill.name);
   }
   for(const key of ['cooldown','charge','duration'])if(Object.hasOwn(skill,key))assert.ok(typeof skill[key]==='string'&&/\d/.test(skill[key]),id+' '+key);
  }
@@ -177,10 +178,9 @@ function checkSkillGuide(id,skills,html,escape){
   for(const [index,row] of rows.entries()){
    const [,tag,html]=headings[index];
    assert.equal(tag,index===0?'h3':'dt');
-   const fields=[['쿨타임',row.cooldown],['충전 시간',row.charge]].filter(([,v])=>v);
-   const expected=escape(row.name)+fields.map(([label,value])=>' · '+label+' '+escape(value)).join('');
+   const expected=escape(row.name)+(row.cooldown?' · 쿨타임 '+escape(row.cooldown):'');
    assert.equal(html.replace(/<[^>]+>/g,'').replaceAll('&nbsp;',' '),expected,id+' timing header '+row.name);
-   for(const value of [...row.tooltip.split('\n'),row.cooldown,row.charge].filter(Boolean)){
+   for(const value of row.tooltip.split('\n')){
     assert.ok(card.includes(escape(value)),id+' missing content in '+skill.name+': '+value);
    }
   }

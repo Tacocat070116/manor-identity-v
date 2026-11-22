@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=c4831d8b392c','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=d33494a3f480','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -286,9 +286,9 @@ function favoriteInsight(list){
 }
 function listPanel(label,items,tone,ic,characterId){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${guide(t,characterId)}</span></li>`).join('')}</ul></div>`;}
 function skillHeading(skill){
- const fields=[['쿨타임',skill.cooldown],['충전 시간',skill.charge]].filter(([,value])=>value);
- const times=fields.map(([label,value])=>`<span class="skill-time"> · <span class="skill-time-label">${label}&nbsp;</span>${esc(value)}</span>`).join('');
- return esc(skill.name)+times;
+ const name=esc(skill.name);
+ if(!skill.cooldown)return name;
+ return name+`<span class="skill-time"> · <span class="skill-time-label">쿨타임&nbsp;</span>${esc(skill.cooldown)}</span>`;
 }
 function skillPanel(c){
  if(!characterSkills)return '<div class="guide-sheet skill-loading" aria-live="polite">스킬 정보를 불러오는 중입니다.</div>';
