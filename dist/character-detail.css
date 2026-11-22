@@ -1,6 +1,6 @@
 .character-detail {
   --detail-radius: 18px;
-  --detail-pad: clamp(16px, 2.1vw, 28px);
+  --detail-pad: var(--card-padding);
 }
 .character-detail > .back-link { margin: 0 0 12px }
 .profile-banner {
@@ -11,7 +11,7 @@
   grid-template: "portrait identity difficulty" auto "portrait intro actions" auto / 112px minmax(0,1fr) auto;
   align-items: center;
   gap: 8px 24px;
-  padding: var(--detail-pad);
+  padding:var(--card-padding);
   border: 1px solid var(--line);
   border-radius: var(--detail-radius) var(--detail-radius) 0 0;
   background: linear-gradient(110deg,var(--surface-solid),var(--accent-soft));
@@ -37,29 +37,29 @@
   background: var(--surface-inset);
 }
 .profile-identity { grid-area: identity; min-width: 0 }
-.profile-faction { font-weight: 680; color: var(--accent); font-size: 13px }
-.profile-identity h1 { font-size: clamp(26px,3vw,40px); line-height: 1.18; letter-spacing: -.055em; overflow-wrap: anywhere }
+.profile-faction { font-weight: 680; color: var(--accent); font-size:var(--text-body) }
+.profile-identity h1 { font-size:var(--text-title); line-height: 1.18; letter-spacing: -.055em; overflow-wrap: anywhere }
 .profile-roles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px }
-.profile-difficulty { grid-area: difficulty; display: flex; gap: 8px; align-items: center; justify-self: end; font-size: 12px; font-weight: 600; color: var(--muted) }
+.profile-difficulty { grid-area: difficulty; display: flex; gap: 8px; align-items: center; justify-self: end; font-size:var(--text-body); font-weight: 600; color: var(--muted) }
 .profile-difficulty .difficulty { margin: 0 }
-.profile-intro { grid-area: intro; max-width: 64ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere }
+.profile-intro { grid-area: intro; max-width: 64ch; margin: 0; color: var(--muted); font-size:var(--text-body); line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere }
 .profile-actions { grid-area: actions; display: flex; justify-self: end; align-self: end; flex-wrap: wrap; gap: 6px }
-.profile-actions .btn { min-height: 44px; padding: 7px 12px; border-radius: 10px; font-size: 13px; white-space: nowrap }
+.profile-actions .btn { min-height: 44px; padding: 7px 12px; border-radius: 10px; font-size:var(--text-body); white-space: nowrap }
 .profile-tabs {
   display: flex;
   gap: 4px;
   padding: 0 var(--detail-pad);
-  margin-bottom: 20px;
+  margin-bottom:var(--card-gap);
   background: var(--surface-solid);
   border: 1px solid var(--line);
   border-top: 0;
   border-radius: 0 0 var(--detail-radius) var(--detail-radius);
 }
-.profile-tabs a { display: grid; place-items: center; min-height: 48px; padding: 0 16px; border-bottom: 3px solid transparent; color: var(--muted); font-size: 14px; font-weight: 650; white-space: nowrap }
+.profile-tabs a { display: grid; place-items: center; min-height: 48px; padding: 0 16px; border-bottom: 3px solid transparent; color: var(--muted); font-size:var(--text-body); font-weight: 650; white-space: nowrap }
 .profile-tabs a[aria-current] { border-bottom-color: var(--accent); color: var(--accent) }
 .profile-tabs a:focus-visible { outline-offset: -4px }
-.profile-overview { display: grid; gap: 16px; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: start }
-.profile-primary, .profile-build { display: grid; align-content: start; gap: 16px; min-width: 0 }
+.profile-overview { display: grid; gap:var(--card-gap); grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: start }
+.profile-primary, .profile-build { display: grid; align-content: start; gap:var(--card-gap); min-width: 0 }
 .character-detail .panel, .guide-sheet {
   min-width: 0;
   border: 1px solid var(--line);
@@ -67,27 +67,27 @@
   box-shadow: none;
 }
 .guide-sheet { background: var(--surface-solid) }
-.skill-loading { padding: var(--detail-pad); color: var(--muted) }
-.sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding: 10px var(--detail-pad); min-height: 52px; border-bottom: 1px solid var(--line) }
-.sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; line-height: 1.45 }
+.skill-loading { padding:var(--card-padding); color: var(--muted) }
+.sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding:var(--card-padding); min-height: 52px; border-bottom: 1px solid var(--line) }
+.sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size:var(--text-heading); line-height: 1.45 }
 .sheet-heading h2 .icon { width: 18px; height: 18px; color: var(--accent) }
-.skill-entry, .role-copy { padding: 16px var(--detail-pad) }
+.skill-entry, .role-copy { padding:var(--card-padding) }
 .skill-entry + .skill-entry { border-top: 1px solid var(--line) }
-.skill-entry h3 { color: var(--accent); font-size: 1rem; font-weight: 750; line-height: 1.45; margin-bottom: 5px }
-.skill-entry p { font-size: var(--text-body) }
-.role-copy p { font-size: 1rem }
+.skill-entry h3 { color: var(--accent); font-size:var(--text-subheading); font-weight: 750; line-height: 1.45; margin-bottom: 5px }
+.skill-entry p { font-size:var(--text-body) }
+.role-copy p { font-size:var(--text-body) }
 .skill-entry p, .role-copy p { line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere }
 .role-copy p + p { margin-top: 8px }
 .skill-entry p + p { margin-top: 6px }
 .skill-entry > p, .skill-definitions { max-width: 74ch }
 .skill-definitions { margin: 14px 0 0 }
 .skill-definitions > div + div { margin-top: 12px }
-.skill-definitions > div > dt { color: var(--accent); font-size: var(--text-body); font-weight: 700 }
+.skill-definitions > div > dt { color: var(--accent); font-size:var(--text-subheading); font-weight: 700 }
 .skill-definitions > div > dd { margin: 1px 0 0 }
 .skill-entry h3, .skill-definitions dt { word-break: keep-all; overflow-wrap: anywhere }
-.skill-time { display: inline-block; padding-inline-start: .22em; max-width: 100%; font-size: var(--text-body); font-weight: 500; color: var(--muted); vertical-align: baseline }
+.skill-time { display: inline-block; padding-inline-start: .22em; max-width: 100%; font-size:var(--text-body); font-weight: 500; color: var(--muted); vertical-align: baseline }
 .skill-time-label { padding-inline-start: .22em; white-space: nowrap }
-.profile-reviewed { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px }
+.profile-reviewed { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size:var(--text-body) }
 @media (max-width: 800px) {
   .profile-banner { grid-template: "portrait identity" auto "portrait difficulty" auto "intro intro" auto "actions actions" auto / 84px minmax(0,1fr); gap: 6px 14px }
   .profile-difficulty, .profile-actions { justify-self: start }
@@ -97,8 +97,8 @@
   .profile-build > .panel { order: 1 }
   .profile-primary > .play-guide { order: 2 }
   .profile-build > .role-sheet { order: 3 }
-  .profile-tabs { padding: 0 6px; gap: 0 }
-  .profile-tabs a { flex: 1 1 auto; min-width: 0; padding: 0 5px; font-size: 13px }
+  .profile-tabs { padding: 0 6px; gap: 0; overflow-x: auto }
+  .profile-tabs a { flex: 1 0 auto; padding: 0 5px; font-size:var(--text-body) }
   .profile-art { width: 44%; height: 100%; opacity: .09 }
 }
 @media (max-width: 380px) {

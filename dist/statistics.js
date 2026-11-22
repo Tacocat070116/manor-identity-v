@@ -52,7 +52,7 @@ export function createStatisticsUI({characters,esc,num,portrait,icon,commonFilte
  }
  function character(c,{data,settings,tournamentHTML,rankError}){
   const filters=settings.scope==='tournament'?'':rankFilters(data,settings),d=selectRanked(data,settings).dataset,r=rankedCharacter(d,c.id);
-  return `${scopeSwitch(settings.scope)}${settings.scope!=='ranked'?`<section class="statistics-section"><div class="heading-inline"><h2>대회</h2><span>경기 기록 기준</span></div>${tournamentHTML}</section>`:''}${settings.scope!=='tournament'?`<section class="statistics-section"><div class="heading-inline"><h2>랭킹전</h2><span>공개 집계 기준</span></div>${filters}${rankError?noData(rankError):`${cohortNote(d)}${r?`<div class="panel">${metricCards(r)}${resultBar(r)}<p class="statistics-caption">픽률·밴율은 원문 기준 · 실제 경기 수 미공개</p></div>`:noData(`${c.name}의 통계가 이 자료에 없습니다. 다른 시즌·서버·랭크를 선택해 보세요.`)}`}</section>`:''}<a class="text-link" href="#v=statistics">모든 캐릭터 통계 보기 ↗</a>`;
+  return `${scopeSwitch(settings.scope)}${settings.scope!=='ranked'?`<section class="statistics-section"><div class="heading-inline"><h2>대회</h2><span>경기 기록 기준</span></div>${tournamentHTML}</section>`:''}${settings.scope!=='tournament'?`<section class="statistics-section"><div class="heading-inline"><h2>랭킹전</h2><span>공개 집계 기준</span></div>${filters}${rankError?noData(rankError):`${cohortNote(d)}${r?`<div class="panel">${metricCards(r)}${resultBar(r)}<p class="statistics-caption">픽률·밴율은 원문 기준 · 실제 경기 수 미공개</p></div>`:noData(`${c.name}의 통계가 이 자료에 없습니다. 다른 시즌·서버·랭크를 선택해 보세요.`)}`}</section>`:''}`;
  }
  function compareCharacter(c,{data,settings,tournament}){
   const d=selectRanked(data,settings).dataset,r=rankedCharacter(d,c.id),s=tournament;

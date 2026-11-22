@@ -33,10 +33,10 @@ export function createFeatureLoader(definitions,loadStyle){
 }
 
 export const loadFeature=createFeatureLoader({
- statistics:{load:()=>import('./statistics.js?v=1e88da2f87ba'),styles:[]},
+ statistics:{load:()=>import('./statistics.js?v=e6da15a317f4'),styles:[]},
  feedback:{load:()=>import('./feedback.js?v=1f4e90a9cd4b'),styles:['participation','feedback']},
- laboratory:{load:()=>import('./synergy.js?v=71959c85c217'),styles:['participation','synergy']},
+ laboratory:{load:()=>import('./synergy.js?v=249c12da5876'),styles:['participation','synergy']},
  tips:{load:()=>import('./matchup-tips.js?v=c1249200e175'),styles:['participation','matchup-tips']},
  recovery:{load:()=>import('./participation.js?v=8a4b3087a8ed'),styles:['participation']},
- highlights:{load:()=>import('./research-highlights.js?v=3b601c2fdf35'),styles:['synergy']}
+ highlights:{load:()=>import('./research-highlights.js?v=c95920abee23'),styles:['synergy']}
 },createStyleLoader());

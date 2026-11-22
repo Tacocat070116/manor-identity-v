@@ -145,6 +145,6 @@ test('laboratory validates persona sides and complete teams; proposal actions fo
  assert.doesNotMatch(researchProposal({...post,isMine:false}),/data-sy-form="proposal"/);
  assert.doesNotMatch(researchProposal({...post,proposal:{status:'pending'}}),/data-sy-form="proposal"/);
  assert.match(researchProposal({...post,proposal:{status:'pending'}},{admin:true}),/data-sy-form="proposal-review"/);
- assert.match(researchProposal({...post,proposal:{status:'approved',reason:'<script>test</script>'}}),/도감에서 보기/);
+ assert.doesNotMatch(researchProposal({...post,proposal:{status:'approved',reason:'<script>test</script>'}}),/도감에서 보기/);
  assert.doesNotMatch(researchProposal({...post,proposal:{status:'approved',reason:'<script>test</script>'}}),/<script>/);
 });

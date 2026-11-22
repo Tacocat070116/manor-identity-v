@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=6dee3b0b66b5';
+import {loadFeature} from './feature-loader.js?v=9b673d818286';
 import './typography.js?v=1f2b416d86f0';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -8,7 +8,7 @@ import {createPreferenceSync} from './preferences.js?v=5095557af69a';
 import {chaseActivity, situationLabel, statsFor, queryBanRecords, banRecordPage, pairEvidence, REFERENCE_DATE, matchesCharacter, sortCharacters, characterSortOptions} from './model.js?v=89308651af5f';
 import {createCarouselSession,carouselItems,mountHeroCarousel} from './carousel.js?v=98b4e768f28e';
 import {SYNERGY_SITUATIONS,RESEARCH_TOPICS,synergyGroups} from './synergy-model.js?v=0deba77bab30';
-import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=3e25de1d285d';
+import {releaseLabel,releaseNotesPage,releaseNotesList,releaseTypes,openLatestRelease} from './releases.js?v=7fa13d49cd71';
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const guide=(value,...ids)=>`<span data-skill-characters="${ids.flat().filter(Boolean).join(' ')}">${esc(value)}</span>`;
@@ -243,7 +243,7 @@ function heroCarousel(){
 }
 function explore(){
  return `<section class="hero"><div><div class="eyebrow">A CLEARER WAY TO PLAY</div><h1>캐릭터 공략과<br><span>대회·랭킹전 통계</span></h1><p>캐릭터별 스킬과 운영법, 상대별 상성과 대응 방법을 확인하세요.</p><div class="hero-actions"><a class="btn primary" href="#characters" data-action="scroll-characters">캐릭터 살펴보기 ${icon('arrow')}</a><a class="btn" href="#v=matchup">상대 대응 찾기 ${icon('swords')}</a></div></div>${heroCarousel()}</section>
- <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>36</strong>감시자</span><span><strong>53</strong>생존자</span><a class="text-link push-right" href="#v=statistics">대회 · 랭킹전 통계 ↗</a></div>
+ <div class="meta-strip"><span><strong>89</strong>캐릭터</span><span><strong>36</strong>감시자</span><span><strong>53</strong>생존자</span></div>
  <section id="characters" class="scroll-target"><div class="section-heading"><div><h2>캐릭터 도감</h2></div><span class="meta">36 감시자 · 53 생존자</span></div><div class="toolbar"><div class="segmented" aria-label="진영 필터">${['전체','감시자','생존자'].map(s=>`<button data-action="side" data-side="${s}" class="${state.side===s&&!state.favoriteOnly?'active':''}" aria-pressed="${state.side===s&&!state.favoriteOnly}">${s}</button>`).join('')}<button data-action="favorites" class="${state.favoriteOnly?'active':''}" aria-pressed="${state.favoriteOnly}">즐겨찾기</button></div><label class="search-box">${icon('search')}<input id="character-search" type="search" placeholder="캐릭터 검색" aria-label="캐릭터 이름 검색" maxlength="120" spellcheck="false" value="${esc(state.search)}" autocomplete="off"></label><select id="character-sort" class="filter-select push-right" aria-label="캐릭터 정렬">${characterSortOptions.map(([v,t])=>`<option value="${v}" ${state.sort===v?'selected':''}>${t}</option>`).join('')}</select></div><p class="search-help">본명·별명·초성·영문 자판 검색 <span class="search-help-secondary">글로벌 서버 출시순</span></p>${specialtyFilters()}<div id="explorer-results"></div></section>
  <div class="quick-links"><a class="quick-link" href="#v=matchup">${icon('swords')}<div><strong>상대별 상성과 대응법</strong><p>대진별 상성과 적용 조건</p></div></a><a class="quick-link" href="#v=bans">${icon('shield')}<div><strong>밴 조합별 대회 기록</strong><p>선택한 생존자 밴 조합의 감시자 출전 기록</p></div></a><a class="quick-link" href="#v=compare">${icon('compare')}<div><strong>캐릭터 비교</strong><p>장단점과 대회·랭킹전 기록 비교</p></div></a></div>`;
 }
@@ -272,7 +272,7 @@ function matchupSummary(c,item,kind,{label=''}={}){
  if(!resolved||!opponent)return '';
  const {primary:m,contexts}=resolved;
  const variant=e=>`<div class="matchup-summary-context"><div class="tag-row">${chip(situationLabel(e.situation,c.side))}${chip(e.advantage+'의 기회')}${evidenceDetail(e)?chip(situationLabel(evidenceDetail(e),c.side)):''}</div><p>${matchupCopy(e.summary,e)}</p><p class="matchup-condition"><strong>적용 조건</strong> ${matchupCopy(cleanCondition(e.condition),e)}</p></div>`;
- return `<article class="matchup-summary"><div class="matchup-summary-heading">${label?`<strong>${esc(label)}</strong>`:`<button class="mini-character" data-action="character" data-id="${opponent.id}" aria-label="${esc(opponent.name)} 공략 보기">${portrait(opponent)}<span>${esc(opponent.name)}</span></button>`}<span class="tag">${esc(situationLabel(m.situation,c.side))}</span></div><p class="matchup-summary-copy">${matchupCopy(m.summary,m)}</p><details class="matchup-summary-details"><summary>적용 조건${contexts.length?' · 다른 상황 '+contexts.length+'개':''}</summary><p class="matchup-condition">${matchupCopy(cleanCondition(m.condition),m)}</p>${evidenceDetail(m)?`<p class="muted">${esc(situationLabel(evidenceDetail(m),c.side))}</p>`:''}${contexts.map(variant).join('')}<a class="text-link" href="${route({v:'matchup',own:c.id,opp:opponent.id})}">이 대진 전체 보기 ↗</a></details></article>`;
+ return `<article class="matchup-summary"><div class="matchup-summary-heading">${label?`<strong>${esc(label)}</strong>`:`<button class="mini-character" data-action="character" data-id="${opponent.id}" aria-label="${esc(opponent.name)} 공략 보기">${portrait(opponent)}<span>${esc(opponent.name)}</span></button>`}<span class="tag">${esc(situationLabel(m.situation,c.side))}</span></div><p class="matchup-summary-copy">${matchupCopy(m.summary,m)}</p><details class="matchup-summary-details"><summary>적용 조건${contexts.length?' · 다른 상황 '+contexts.length+'개':''}</summary><p class="matchup-condition">${matchupCopy(cleanCondition(m.condition),m)}</p>${evidenceDetail(m)?`<p class="muted">${esc(situationLabel(evidenceDetail(m),c.side))}</p>`:''}${contexts.map(variant).join('')}</details></article>`;
 }
 function favoriteInsight(list){
  if(!state.favoriteOnly||!db.matchups)return '';
@@ -339,21 +339,21 @@ function synergyDetails(l){
 const auxiliaryTraits={'비정상':'abnormal','흥분':'excitement','순찰자':'patroller','텔레포트':'teleport','정탐자':'peeper','플래시':'blink','형상 이동':'warp'};
 function auxiliaryTraitCard(l){
  const art=auxiliaryTraits[l.target];
- return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p><dl class="auxiliary-trait-condition"><dt>활용 조건</dt><dd>${guide(l.when,byName[l.character]?.id)}</dd></dl></div>`;
+ return `<div class="panel relation-card auxiliary-trait-card"><h3 class="panel-title">${art?`<span class="auxiliary-trait-art"><img src="assets/traits/${art}-silhouette.png" alt="" width="48" height="48" loading="lazy"></span>`:''}<span>${esc(l.target)}</span></h3><p>${guide(l.reason,byName[l.character]?.id)}</p></div>`;
 }
-function survivorSynergyCard(group,c){
+function survivorSynergyCard(group){
  const entry=l=>`<p class="sy-context">${guide(l.interaction,byName[l.character]?.id,byName[l.target]?.id)}</p><p>${guide(l.reason,byName[l.character]?.id,byName[l.target]?.id)}</p>${synergyDetails(l)}`;
- return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(situationLabel(s,'생존자'))).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}<a class="text-link" href="${route({v:'laboratory',c:c.id,topic:'combination',partner:group.partner.id})}">이 조합 토론 →</a></article>`;
+ return `<article class="panel relation-card synergy-card">${characterHeading(group.partner)}<div class="sy-tags">${group.situations.map(s=>chip(situationLabel(s,'생존자'))).join('')}</div>${entry(group.entries[0])}${group.entries.slice(1).map(l=>`<details><summary>${esc(l.character)} 쪽 활용법도 보기</summary>${entry(l)}</details>`).join('')}</article>`;
 }
 function survivorSynergies(c){
  const groups=synergyGroups(db.links,c.name,byId);
- return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><p class="muted">두 캐릭터의 스킬이 맞물리는 연계와 성립 조건을 소개합니다.</p><div class="three-col section-gap">${groups.slice(0,3).map(g=>survivorSynergyCard(g,c)).join('')||'<p class="muted">구체적인 스킬 연계 근거를 확인한 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(g=>survivorSynergyCard(g,c)).join('')}</div></details>`:''}<a class="text-link section-record-link" href="${route({v:'character',c:c.id,tab:'stats'})}">함께 출전한 대회 기록 →</a></section>`;
+ return `<section class="section-gap" id="survivor-synergies"><div class="heading-inline"><h2>함께하면 좋은 생존자</h2></div><p class="muted">두 캐릭터의 스킬이 맞물리는 연계와 성립 조건을 소개합니다.</p><div class="three-col section-gap">${groups.slice(0,3).map(survivorSynergyCard).join('')||'<p class="muted">구체적인 스킬 연계 근거를 확인한 조합이 없습니다.</p>'}</div>${groups.length>3?`<details class="methodology section-gap"><summary>다른 조합 ${groups.length-3}개 더 보기</summary><div class="three-col section-gap">${groups.slice(3).map(survivorSynergyCard).join('')}</div></details>`:''}</section>`;
 }
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
  return `<div class="profile-overview">
   <div class="profile-primary">${playGuide(c)}</div>
-  <aside class="profile-build"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div><section class="guide-sheet role-sheet"><div class="sheet-heading"><h2>${primarySpecialtyIcon(c)}역할 태그</h2></div><div class="role-copy">${specialtyExplanation(c)}</div></section></aside>
+  <aside class="profile-build"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p></div><section class="guide-sheet role-sheet"><div class="sheet-heading"><h2>${primarySpecialtyIcon(c)}역할 태그</h2></div><div class="role-copy">${specialtyExplanation(c)}</div></section></aside>
  </div><div class="two-col section-gap">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(auxiliaryTraitCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(auxiliaryTraitCard).join('')}</div></details>`:''}</section>`}`;
 }
 function matchupItem(i){
@@ -368,7 +368,7 @@ function characterMatchups(c){
  return `<div class="note has-icon">${icon('info')}<span>[${chaseActivity(c.side)}] ${c.side==='생존자'?'직접 쫓기는 상황':'생존자를 쫓는 상황'} · [구출] 의자 구출 · [커버] 동료 보호·풍선 구출 · [운영] 해독·회복·재정비. 표시된 상황과 조건에 따라 유불리가 달라집니다.</span></div><p class="muted small section-gap">상성 검토 ${esc(c.matchupReviewedAt)} · 상황별 분석이며 대진 승률 순위가 아닙니다.</p><div class="two-col section-gap">${['hard','easy'].map(kind=>{
  const all=characterEvidence(db.matchups,c,kind),selected=new Set(c[kind].map(i=>i.evidence)),rest=all.filter(m=>!selected.has(m.id));
  return `<section><div class="heading-inline matchup-section-heading"><h2>${matchupLabel(c,kind)}</h2><span>상황별 ${all.length}건</span></div><div class="matchup-list">${c[kind].map(matchupItem).join('')}${!all.length?'<div class="note">확인된 상성이 없습니다. 통계 탭에서 대회 기록을 볼 수 있습니다.</div>':''}</div>${rest.length?`<details class="methodology section-gap"><summary>다른 상대·상황 ${rest.length}건 더 보기</summary><div class="matchup-list section-gap">${rest.map(m=>matchupItem(item(m))).join('')}</div></details>`:''}</section>`;
- }).join('')}</div><a class="text-link section-record-link" href="${route({v:'character',c:c.id,tab:'stats'})}">상대별 대회 기록 →</a>`;
+ }).join('')}</div>`;
 }
 function commonFilters(scope){
  const f=scope==='bans'?state.banFilters:state.stats;

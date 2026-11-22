@@ -774,6 +774,15 @@
         "홈 화면에서 MANOR를 열거나 다시 돌아오면 새 버전을 확인하고 작성 중인 글과 로그인 화면을 보호하며 자동 갱신"
       ],
       "announcement": "pending"
+    },
+    {
+      "date": "2026-11-22",
+      "scope": "interface-spacing-and-type",
+      "summary": [
+        "본문과 제목의 글자 크기 및 카드 여백 통일",
+        "감시자 보조 특성의 활용 조건과 중복 이동 안내 링크 제거"
+      ],
+      "announcement": "pending"
     }
   ]
 }

@@ -263,7 +263,7 @@ test('cache refresh fingerprints transitive module imports and propagates change
 
 test('the megaphone shows only the latest announced update and links to the complete history',()=>{
  const html=releaseUI.latestReleaseContent(log);
- assert.match(html,/이전 내역 살펴보기/);assert.match(html,/href="#v=patchnotes"/);
+ assert.doesNotMatch(html,/이전 내역 살펴보기/);assert.match(html,/href="#v=patchnotes"/);
  assert.equal((html.match(/class="release-kind"/g)||[]).length,log.releases[0].changes.length);
  assert.ok(html.includes(log.releases[0].changes[0].text));
  const probe={...log,releases:[{...log.releases[0],changes:[{type:'수정',text:'<script>bad()</script>'}]},{...log.releases[1],changes:[{type:'수정',text:'old-entry-must-stay-in-history'}]}]};

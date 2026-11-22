@@ -64,6 +64,7 @@ test('adopted research has no empty promotion block and retains conditions and s
  assert.match(html,/연구실에서 반영한 전략/);
  assert.match(html,/같은 공격에 겹치지 않기/);
  assert.match(html,/조건 확인/);
- assert.match(html,/원문·토론/);
+ assert.doesNotMatch(html,/원문·토론/);
+ assert.match(html,/<h3><a href="[^"]*post=sample[^"]*">/);
  assert.match(html,/&lt;검토된 조합&gt;/);
 });

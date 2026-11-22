@@ -355,8 +355,8 @@ html[data-theme="christmas"] #footer::after{
  animation:christmas-glow 4s ease-in-out infinite alternate;
 }
 html[data-theme="christmas"] .seasonal-motion-settings{display:block;margin:0 24px 20px;padding-top:16px;border-top:1px solid var(--line)}
-.seasonal-motion-label{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;cursor:pointer;font-size:13px;font-weight:650;color:var(--ink)}
-.seasonal-motion-label small{display:block;margin-top:3px;font-size:11px;font-weight:400;line-height:18px;color:var(--muted)}
+.seasonal-motion-label{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;cursor:pointer;font-size:var(--text-body);font-weight:650;color:var(--ink)}
+.seasonal-motion-label small{display:block;margin-top:3px;font-size:var(--text-body);font-weight:400;line-height:18px;color:var(--muted)}
 .seasonal-motion-label input{width:20px;height:20px;flex:0 0 20px;accent-color:var(--accent);cursor:pointer}
 .seasonal-motion-label input:disabled{cursor:default}
 .theme-option>input[value="christmas"]+.theme-option-card .theme-preview{
@@ -415,7 +415,7 @@ html[data-theme="christmas"] #footer::after{animation-play-state:var(--seasonal-
 .theme-dialog .dialog-title{margin-bottom:8px}
 .theme-dialog .dialog-title h2{display:flex;align-items:center;gap:10px;line-height:28px}
 .theme-dialog .dialog-title h2>.icon{width:20px;height:20px;color:var(--accent)}
-.theme-dialog .dialog-head>p{margin:0;font-size:13px;line-height:20px;color:var(--muted)}
+.theme-dialog .dialog-head>p{margin:0;font-size:var(--text-body);line-height:20px;color:var(--muted)}
 .theme-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:20px 24px 24px;margin:0}
 .theme-option{position:relative;min-width:0;cursor:pointer}
 .theme-option>input{scroll-margin-block:104px 24px}
@@ -433,12 +433,12 @@ html[data-theme="christmas"] #footer::after{animation-play-state:var(--seasonal-
 .theme-preview-lines>i:nth-child(2){width:70%;opacity:.25}
 .theme-preview-lines>i:last-child{width:60%;height:10px;background:var(--preview-action);opacity:1;margin-top:2px}
 .theme-preview-tile{height:34px;border-radius:8px;background:var(--preview-surface)}
-.theme-option-label{display:flex;align-items:center;justify-content:space-between;gap:4px;min-height:36px;padding:8px 5px 0;font-size:13px;line-height:20px;font-weight:650;color:var(--ink)}
+.theme-option-label{display:flex;align-items:center;justify-content:space-between;gap:4px;min-height:36px;padding:8px 5px 0;font-size:var(--text-body);line-height:20px;font-weight:650;color:var(--ink)}
 .theme-check{display:grid;place-items:center;width:20px;height:20px;flex:0 0 20px;border:1px solid var(--control-line);border-radius:50%}
 .theme-check>.icon{width:12px;height:12px;stroke-width:2.4;opacity:0}
 .theme-option>input:checked+.theme-option-card .theme-check{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
 .theme-option>input:checked+.theme-option-card .theme-check>.icon{opacity:1}
-.theme-status{margin:0;padding:0 24px 24px;font-size:12px;line-height:20px;color:var(--muted)}
+.theme-status{margin:0;padding:0 24px 24px;font-size:var(--text-body);line-height:20px;color:var(--muted)}
 .theme-dialog .icon-btn{flex-shrink:0}
 @media(max-width:640px){
  .theme-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:16px}

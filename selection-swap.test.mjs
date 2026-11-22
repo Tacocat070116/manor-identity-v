@@ -72,9 +72,10 @@ test('synergy links restore pair and post, dispose on exit, and do not create a 
  h.context.location.hash='#v=character&c=c58';h.readRoute();await h.render();assert.equal(h.synergyDisposed(),1);
  assert.ok(h.html().includes('구체적인 스킬 연계 근거를 확인한 조합이 없습니다.'));assert.ok(!h.html().includes('이 조합 토론'));
  h.context.location.hash='#v=character&c=c59';h.readRoute();await h.render();
- assert.ok(h.html().includes('활용법</dt>'));assert.ok(h.html().includes('이 조합 토론'));
- assert.match(h.html(),/href="#v=laboratory&c=c59&topic=combination&partner=c88"/);
+ assert.ok(h.html().includes('활용법</dt>'));assert.ok(!h.html().includes('이 조합 토론'));
+ assert.ok(h.html().includes('활용 조건</dt>'));
  h.context.location.hash='#v=character&c=c01&tab=synergy';h.readRoute();await h.render();assert.equal(h.state.tab,'overview');assert.ok(!h.html().includes('data-tab="synergy"'));
+ assert.ok(h.html().includes('auxiliary-trait-card'));assert.ok(!h.html().includes('활용 조건</dt>'));
 });
 
 test('comparison swap retains active statistics filters and changes both rendered columns',async()=>{
