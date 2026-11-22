@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=6272768fab0a','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=c4831d8b392c','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -129,7 +129,7 @@ function personaBuild(c){
  return `<div class="persona-build" role="group" aria-label="${esc(c.persona)}"><p class="persona-direction">${esc(direction)}</p><div class="persona-talents">${names.map(name=>`<div class="persona-talent"><span class="persona-talent-art"><img src="assets/persona/${personaTalents[name].id}.png" alt="" width="48" height="48" loading="lazy" decoding="async"></span><span class="persona-talent-name">${esc(name)}</span></div>`).join('')}</div></div>`;
 }
 function playGuide(c){
- return `<div class="panel play-guide"><h2 class="panel-title">${icon('clock')}실전 운용 가이드</h2><p class="guide-skill-summary">${guide(c.skill,c.id)}</p><section class="play-guide-section"><h3 class="small-heading">스킬을 사용해야 할 때</h3><p>${guide(c.use,c.id)}</p></section><section class="play-guide-section"><h3 class="small-heading">스킬을 아껴야 할 때</h3><p>${guide(c.hold,c.id)}</p></section><section class="play-guide-section play-guide-caution"><h3 class="small-heading">${icon('info')}주의할 점</h3><p>${guide(c.caution,c.id)}</p></section></div>`;
+ return `<div class="panel play-guide"><h2 class="panel-title">${icon('clock')}실전 운용 가이드</h2><section class="play-guide-section"><h3 class="small-heading">스킬을 사용해야 할 때</h3><p>${guide(c.use,c.id)}</p></section><section class="play-guide-section"><h3 class="small-heading">스킬을 아껴야 할 때</h3><p>${guide(c.hold,c.id)}</p></section><section class="play-guide-section play-guide-caution"><h3 class="small-heading">${icon('info')}주의할 점</h3><p>${guide(c.caution,c.id)}</p></section></div>`;
 }
 const difficulty=n=>`<span class="difficulty" role="img" aria-label="난이도 ${Number(n)}/5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
 const chip=(t,tone='')=>`<span class="tag ${tone}">${esc(t)}</span>`;
@@ -286,24 +286,11 @@ function favoriteInsight(list){
 }
 function listPanel(label,items,tone,ic,characterId){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${guide(t,characterId)}</span></li>`).join('')}</ul></div>`;}
 function skillHeading(skill){
- const fields=[['쿨타임',skill.cooldown],['충전 시간',skill.charge],['지속 시간',skill.duration]].filter(([,value])=>value);
- const times=fields.map(([label,value])=>`<span class="skill-time"><span class="skill-time-label"> · ${label}&nbsp;</span>${esc(value)}</span>`).join('');
+ const fields=[['쿨타임',skill.cooldown],['충전 시간',skill.charge]].filter(([,value])=>value);
+ const times=fields.map(([label,value])=>`<span class="skill-time"> · <span class="skill-time-label">${label}&nbsp;</span>${esc(value)}</span>`).join('');
  return esc(skill.name)+times;
 }
-function skillReferences(rows){
- const references=new Map();
- function add(url,label){
-  if(!references.has(url))references.set(url,[]);
-  references.get(url).push(label);
- }
- for(const row of rows){
-  add(row.source,row.name);
-  if(row.timingSource&&row.timingSource!==row.source)add(row.timingSource,row.name+' 수치');
- }
- const links=[...references].map(([url,labels])=>`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(labels.join(' · '))}</a>`);
- return `<details class="skill-references"><summary>공식 자료</summary><div class="skill-sources">${links.join('')}</div></details>`;
-}
-function skillPanel(c,preview=false){
+function skillPanel(c){
  if(!characterSkills)return '<div class="guide-sheet skill-loading" aria-live="polite">스킬 정보를 불러오는 중입니다.</div>';
  const entries=characterSkills[c.id];
  const byName=new Map(entries.map(entry=>[entry.name,entry]));
@@ -312,15 +299,13 @@ function skillPanel(c,preview=false){
  const paragraphs=text=>text.split('\n').map(line=>`<p>${guide(line,c.id)}</p>`).join('');
  const card=skill=>{
   const definitions=(skill.details||[]).map(name=>byName.get(name));
-  const group=[skill,...definitions];
-  const terms=group.map(row=>row.name).join('|');
+  const terms=[skill,...definitions].map(row=>row.name).join('|');
   const notes=definitions.map(term=>`<div><dt>${skillHeading(term)}</dt><dd>${paragraphs(term.tooltip)}</dd></div>`).join('');
   return `<article class="skill-entry" data-skill-terms="${esc(terms)}"><h3>${skillHeading(skill)}</h3>
    ${paragraphs(skill.tooltip)}
-   ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}${skillReferences(group)}</article>`;
+   ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}</article>`;
  };
- const visible=preview?skills.slice(0,1):skills;
- return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2>${preview?`<a class="sheet-link" href="${route({v:'character',c:c.id,tab:'skills'})}">전체 ${skills.length}개 ${icon('arrow')}</a>`:''}</div>${preview?'':'<p class="skill-timing-note">시간은 공식 자료에서 확인한 값만 표시합니다.</p>'}<div class="skill-entries">${visible.map(card).join('')}</div></section>`;
+ return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div></section>`;
 }
 function characterPage(){
  const c=char(state.character);state.character=c.id;
@@ -367,7 +352,7 @@ function survivorSynergies(c){
 function characterOverview(c){
  const links=db.links.filter(r=>r.character===c.name).sort((a,b)=>a.order-b.order);
  return `<div class="profile-overview">
-  <div class="profile-primary">${skillPanel(c,true)}${playGuide(c)}</div>
+  <div class="profile-primary">${playGuide(c)}</div>
   <aside class="profile-build"><div class="panel"><h2 class="panel-title">${icon('spark')}기본 인격</h2>${personaBuild(c)}<p class="muted section-gap">${guide(c.personaReason,c.id)}</p><div class="divider"></div><div class="small-heading">대안 인격</div><p>${guide(c.alternative,c.id)}</p><a class="text-link section-gap" href="${route({v:'character',c:c.id,tab:'stats'})}">대회 인격 기록 →</a></div><section class="guide-sheet role-sheet"><div class="sheet-heading"><h2>${primarySpecialtyIcon(c)}역할 태그</h2></div><div class="role-copy">${specialtyExplanation(c)}</div></section></aside>
  </div><div class="two-col section-gap">${listPanel('장점',c.strengths,'green','plus',c.id)}${listPanel('단점',c.weaknesses,'warm','info',c.id)}</div>${c.side==='생존자'?survivorSynergies(c):`<section class="section-gap"><div class="heading-inline"><h2>보조 특성 선택</h2></div><div class="three-col">${links.slice(0,3).map(auxiliaryTraitCard).join('')}</div>${links.length>3?`<details class="methodology section-gap"><summary>다른 선택 ${links.length-3}개 더 보기</summary><div class="three-col section-gap">${links.slice(3).map(auxiliaryTraitCard).join('')}</div></details>`:''}</section>`}`;
 }
@@ -488,13 +473,13 @@ async function render({scroll=false}={}){
  const {mountFeedback,mountSynergy,mountRecoveryPage,mountResearchHighlights,mountMatchupTips}=featureModule||{};
  if(state.view==='explore'){body.innerHTML=explore();updateExplorer();disposeView=mountHeroCarousel($('#hero-carousel'),heroSession,{onSelect:id=>navigate({v:'character',c:id}),icon});}
  else if(state.view==='character'){
-  const character=char(state.character),preview=state.tab==='overview';
+  const character=char(state.character);
   body.innerHTML=characterPage();
-  if(!characterSkills&&(preview||state.tab==='skills')){
+  if(!characterSkills&&state.tab==='skills'){
    const placeholder=$('.skill-loading');
    loadCharacterSkills().then(data=>{
     characterSkills=data;
-    if(token===renderToken)placeholder.outerHTML=skillPanel(character,preview);
+    if(token===renderToken)placeholder.outerHTML=skillPanel(character);
    }).catch(error=>{if(token===renderToken)placeholder.innerHTML=loadError(error);});
   }
   if(state.tab==='overview'){const highlights=$('#research-highlights');disposeView=mountResearchHighlights(highlights,{characterId:state.character,characters:byId});}if(state.tab==='tips')disposeView=mountMatchupTips($('#matchup-tips'),{characters:byId,ownId:state.character});if(state.tab==='stats'){

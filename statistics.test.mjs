@@ -268,6 +268,8 @@ test('startup loads the compact catalogue and hydrates full guides once on deman
  context.location.hash='#v=character&c=c16&tab=matchups';app.readRoute();await app.render();
  assert.match(nodes.get('#page-body').innerHTML,/상대하기 어려운 생존자/);
  assert.equal(fetches.filter(url=>url.startsWith('data.json')).length,1);
+ assert.equal(fetches.filter(url=>url.startsWith('character-skills.json')).length,0);
+ context.location.hash='#v=character&c=c16&tab=skills';app.readRoute();await app.render();
  assert.equal(fetches.filter(url=>url.startsWith('character-skills.json')).length,1);
 });
 

@@ -71,10 +71,8 @@
 .sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding: 10px var(--detail-pad); min-height: 52px; border-bottom: 1px solid var(--line) }
 .sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size: 17px; line-height: 1.45 }
 .sheet-heading h2 .icon { width: 18px; height: 18px; color: var(--accent) }
-.sheet-link { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; font-size: 13px; font-weight: 650; color: var(--accent) }
-.sheet-link .icon { width: 15px; height: 15px }
 .skill-entry, .role-copy { padding: 16px var(--detail-pad) }
-.skill-timing-note { padding: 8px var(--detail-pad); font-size: 13px; color: var(--muted); background: var(--surface-soft) }
+.skill-entry { letter-spacing: .015em; word-spacing: .045em }
 .skill-entry + .skill-entry { border-top: 1px solid var(--line) }
 .skill-entry h3 { color: var(--accent); font-size: 1rem; font-weight: 750; line-height: 1.45; margin-bottom: 5px }
 .skill-entry p { font-size: var(--text-body) }
@@ -88,13 +86,8 @@
 .skill-definitions > div > dt { color: var(--accent); font-size: var(--text-body); font-weight: 700 }
 .skill-definitions > div > dd { margin: 1px 0 0 }
 .skill-entry h3, .skill-definitions dt { word-break: keep-all; overflow-wrap: anywhere }
-.skill-time { display: inline-block; max-width: 100%; font-size: var(--text-body); font-weight: 500; color: var(--muted); vertical-align: baseline }
-.skill-time-label { white-space: nowrap }
-.skill-references { margin: 4px 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none }
-.skill-references > summary { width: fit-content; min-height: 30px; padding-block: 4px; font-size: 12px; color: var(--muted) }
-.skill-references[open] > summary { margin: 0 }
-.skill-sources { display: flex; flex-wrap: wrap; gap: 0 14px }
-.skill-sources a { display: inline-flex; align-items: center; min-height: 30px; color: var(--muted); font-size: 13px; text-decoration: underline; text-underline-offset: 3px }
+.skill-time { display: inline-block; padding-inline-start: .22em; max-width: 100%; font-size: var(--text-body); font-weight: 500; color: var(--muted); vertical-align: baseline }
+.skill-time-label { padding-inline-start: .22em; white-space: nowrap }
 .profile-reviewed { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px }
 @media (max-width: 800px) {
   .profile-banner { grid-template: "portrait identity" auto "portrait difficulty" auto "intro intro" auto "actions actions" auto / 84px minmax(0,1fr); gap: 6px 14px }
@@ -102,7 +95,6 @@
   .profile-intro, .profile-actions { margin-top: 6px }
   .profile-overview { grid-template-columns: minmax(0,1fr) }
   .profile-primary, .profile-build { display: contents }
-  .profile-overview .skill-sheet, .profile-overview .skill-loading { order: 0 }
   .profile-build > .panel { order: 1 }
   .profile-primary > .play-guide { order: 2 }
   .profile-build > .role-sheet { order: 3 }

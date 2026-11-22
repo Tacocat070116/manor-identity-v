@@ -236,7 +236,7 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-th
  .compare-column .persona-talents{grid-template-columns:minmax(0,1fr)}
  .compare-column .persona-talent{gap:8px;padding:12px 6px}
  .compare-column .persona-talent-name{font-size:12px}
- .play-guide-section+.play-guide-section{margin-top:20px;padding-top:20px}.play-guide-section>p,.guide-skill-summary{line-height:24px}
+ .play-guide-section+.play-guide-section{margin-top:20px;padding-top:20px}.play-guide-section>p{line-height:24px}
 }
 
 /* The same 44px swap control sits between both selections at every breakpoint. */
@@ -247,7 +247,6 @@ html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-th
 .selection-card .tag-row{margin-top:8px}
 @media(hover:hover){.selection-swap:not(:disabled):hover{background:var(--surface-hover);border-color:var(--accent)}}
 /* Compendium evidence and observed tournament records share theme geometry. */
-.guide-skill-summary{color:var(--muted);line-height:26px;margin:0 0 20px;word-break:keep-all;overflow-wrap:anywhere}
 .insight-table-wrap{max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin-top:16px;border-radius:12px}
 .insight-table{border-collapse:collapse;width:100%;min-width:380px;font-size:12px;font-variant-numeric:tabular-nums}
 .insight-table th,.insight-table td{padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:middle;text-align:right;white-space:nowrap}
