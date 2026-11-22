@@ -10,11 +10,11 @@
 .release-toolbar .filter-label{flex-shrink:0}
 .release-guide{font-size:0.75rem;line-height:22px;color:var(--muted);max-width:76ch;margin:0 0 24px;word-break:keep-all;overflow-wrap:anywhere}
 .release-count{font-size:0.75rem;color:var(--muted);margin:0 0 24px}
-.release-day{display:grid;grid-template-columns:140px minmax(0,1fr);gap:var(--card-gap);margin-bottom:40px}
+.release-day{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;margin-bottom:40px}
 .release-date h2{font-size:1.0625rem;line-height:26px;font-variant-numeric:tabular-nums;margin:0}
 .release-date>span{display:block;font-size:0.6875rem;color:var(--muted);margin-top:4px}
 .release-entries{list-style:none;border-left:1px solid var(--line);margin:0;padding:0 0 24px 24px;min-width:0}
-.release-entries>li{position:relative;margin:0 0 var(--card-gap)}
+.release-entries>li{position:relative;margin:0 0 16px}
 .release-entries>li:last-child{margin-bottom:0}
 .release-entries>li:before{content:"";position:absolute;left:-29px;top:28px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
 .release-card.release-latest{border-color:var(--accent-line)}
@@ -33,16 +33,16 @@
  .release-toolbar .search-box{flex-basis:100%;max-width:none}
  .release-toolbar .search-box input{font-size:var(--text-field);min-width:0}
  .release-toolbar .filter-label{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px}
- .release-day{grid-template-columns:minmax(0,1fr);gap:var(--card-gap);margin-bottom:32px}
+ .release-day{grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:32px}
  .release-date{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
  .release-date>span{margin:0;white-space:nowrap}
  .release-entries{padding-left:16px;padding-bottom:8px}
  .release-entries>li:before{left:-21px;top:26px}
- .release-card{padding:var(--card-padding)}
+ .release-card{padding:20px}
  .release-card .release-changes li{grid-template-columns:44px minmax(0,1fr);gap:10px}
 }
 @media(max-width:360px){
- .release-card{padding:var(--card-padding)}
+ .release-card{padding:16px}
 }
 @media print{
  .release-toolbar{display:none}

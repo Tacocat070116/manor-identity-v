@@ -1,6 +1,6 @@
 .character-detail {
   --detail-radius: 18px;
-  --detail-pad: var(--card-padding);
+  --detail-pad: clamp(16px, 2.1vw, 28px);
 }
 .character-detail > .back-link { margin: 0 0 12px }
 .profile-banner {
@@ -11,7 +11,7 @@
   grid-template: "portrait identity difficulty" auto "portrait intro actions" auto / 112px minmax(0,1fr) auto;
   align-items: center;
   gap: 8px 24px;
-  padding:var(--card-padding);
+  padding:var(--detail-pad);
   border: 1px solid var(--line);
   border-radius: var(--detail-radius) var(--detail-radius) 0 0;
   background: linear-gradient(110deg,var(--surface-solid),var(--accent-soft));
@@ -49,7 +49,7 @@
   display: flex;
   gap: 4px;
   padding: 0 var(--detail-pad);
-  margin-bottom:var(--card-gap);
+  margin-bottom:20px;
   background: var(--surface-solid);
   border: 1px solid var(--line);
   border-top: 0;
@@ -58,8 +58,8 @@
 .profile-tabs a { display: grid; place-items: center; min-height: 48px; padding: 0 16px; border-bottom: 3px solid transparent; color: var(--muted); font-size:0.875rem; font-weight: 650; white-space: nowrap }
 .profile-tabs a[aria-current] { border-bottom-color: var(--accent); color: var(--accent) }
 .profile-tabs a:focus-visible { outline-offset: -4px }
-.profile-overview { display: grid; gap:var(--card-gap); grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: start }
-.profile-primary, .profile-build { display: grid; align-content: start; gap:var(--card-gap); min-width: 0 }
+.profile-overview { display: grid; gap:16px; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); align-items: start }
+.profile-primary, .profile-build { display: grid; align-content: start; gap:16px; min-width: 0 }
 .character-detail .panel, .guide-sheet {
   min-width: 0;
   border: 1px solid var(--line);
@@ -67,11 +67,11 @@
   box-shadow: none;
 }
 .guide-sheet { background: var(--surface-solid) }
-.skill-loading { padding:var(--card-padding); color: var(--muted) }
-.sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding:var(--card-padding); min-height: 52px; border-bottom: 1px solid var(--line) }
+.skill-loading { padding:var(--detail-pad); color: var(--muted) }
+.sheet-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding:10px var(--detail-pad); min-height: 52px; border-bottom: 1px solid var(--line) }
 .sheet-heading h2 { display: flex; align-items: center; gap: 8px; font-size:var(--text-heading); line-height: 1.45 }
 .sheet-heading h2 .icon { width: 18px; height: 18px; color: var(--accent) }
-.skill-entry, .role-copy { padding:var(--card-padding) }
+.skill-entry, .role-copy { padding:16px var(--detail-pad) }
 .skill-entry + .skill-entry { border-top: 1px solid var(--line) }
 .skill-entry h3 { color: var(--accent); font-size:var(--text-subheading); font-weight: 750; line-height: 1.45; margin-bottom: 5px }
 .skill-entry p { font-size:var(--text-body) }
