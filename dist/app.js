@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=d33494a3f480','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=1432c7809e35','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -294,18 +294,18 @@ function skillPanel(c){
  if(!characterSkills)return '<div class="guide-sheet skill-loading" aria-live="polite">스킬 정보를 불러오는 중입니다.</div>';
  const entries=characterSkills[c.id];
  const byName=new Map(entries.map(entry=>[entry.name,entry]));
+ const terms=entries.flatMap(entry=>[...entry.name.split(/\s*·\s*/),...(entry.terms||[])]).join('|');
  const subordinate=new Set(entries.flatMap(entry=>entry.details||[]));
  const skills=entries.filter(entry=>!subordinate.has(entry.name));
  const paragraphs=text=>text.split('\n').map(line=>`<p>${guide(line,c.id)}</p>`).join('');
  const card=skill=>{
   const definitions=(skill.details||[]).map(name=>byName.get(name));
-  const terms=[skill,...definitions].map(row=>row.name).join('|');
   const notes=definitions.map(term=>`<div><dt>${skillHeading(term)}</dt><dd>${paragraphs(term.tooltip)}</dd></div>`).join('');
-  return `<article class="skill-entry" data-skill-terms="${esc(terms)}"><h3>${skillHeading(skill)}</h3>
+  return `<article class="skill-entry"><h3>${skillHeading(skill)}</h3>
    ${paragraphs(skill.tooltip)}
    ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}</article>`;
  };
- return `<section class="guide-sheet skill-sheet"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div></section>`;
+ return `<section class="guide-sheet skill-sheet" data-skill-terms="${esc(terms)}"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div></section>`;
 }
 function characterPage(){
  const c=char(state.character);state.character=c.id;

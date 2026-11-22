@@ -146,6 +146,12 @@ for(const [id,skills] of Object.entries(skillData)){
  for(const skill of skills){
   assert.ok(skill.name?.trim()&&skill.tooltip?.trim()&&skill.source,id+' complete tooltip');
   assert.ok(!skill.name.includes('|'),id+' name must fit the term list');
+  if(skill.terms){
+   assert.ok(Array.isArray(skill.terms)&&skill.terms.length>0,id+' tooltip terms');
+   for(const term of skill.terms){
+    assert.ok(typeof term==='string'&&term.length>0&&!term.includes('|')&&skill.tooltip.includes(term),id+' unused or invalid tooltip term '+term);
+   }
+  }
   if(skill.details){
    assert.ok(Array.isArray(skill.details)&&skill.details.length>0,id+' inline definitions');
    assert.equal(new Set(skill.details).size,skill.details.length,id+' duplicate inline definitions');
@@ -165,6 +171,10 @@ for(const [id,skills] of Object.entries(skillData)){
 }
 function checkSkillGuide(id,skills,html,escape){
  assert.doesNotMatch(html,/skill-timing-note|시간은 공식 자료에서/);
+ const terms=new Set((html.match(/<section class="guide-sheet skill-sheet" data-skill-terms="([^"]*)">/)?.[1]||'').split('|'));
+ for(const skill of skills){
+  for(const term of [...skill.name.split(/\s*·\s*/),...(skill.terms||[])])assert.ok(terms.has(escape(term)),id+' missing tooltip emphasis '+term);
+ }
  const nested=new Set(skills.flatMap(s=>s.details||[]));
  const roots=skills.filter(s=>!nested.has(s.name));
  const cards=[...html.matchAll(/<article class="skill-entry"[^>]*>([\s\S]*?)<\/article>/g)].map(match=>match[1]);
