@@ -7,7 +7,7 @@ const read = name => fs.readFileSync(new URL('./dist/' + name, import.meta.url))
 const scope = 'https://example.test/manor-identity-v/';
 const asset = path => new URL(path, scope).href;
 
-function worker() {
+function worker({failDownload = false, staleEntry = false} = {}) {
   const events = new Map();
   const stores = new Map();
   const key = request => typeof request === 'string' ? request : request.url;
@@ -19,10 +19,11 @@ function worker() {
       const store = stores.get(name);
       return {
         async addAll(requests) {
+          if (failDownload) throw Error('interrupted download');
           for (const request of requests) {
             const filename = new URL(request.url).pathname.slice(new URL(scope).pathname.length);
             assert.equal(request.credentials, 'omit');
-            store.set(request.url, new Response(read(filename)));
+            store.set(request.url, new Response(staleEntry && filename === 'index.html' ? '<html>old</html>' : read(filename)));
           }
         },
         match: async request => store.get(key(request))?.clone(),
@@ -31,12 +32,12 @@ function worker() {
     },
     match: async (url, {cacheName}) => (await caches.open(cacheName)).match(url)
   };
-  const self = {registration:{scope}, clients:{claim() {}}, addEventListener:(type, handler) => events.set(type, handler)};
+  const self = {registration:{scope}, skipped:false, skipWaiting(){ this.skipped=true; }, clients:{claim() {}}, addEventListener:(type, handler) => events.set(type, handler)};
   const context = vm.createContext({self, caches, URL, Request, fetch:async () => { throw Error('offline'); }});
-  context.importScripts = path => vm.runInContext(read(path).toString(), context);
+  context.importScripts = path => vm.runInContext(read(path.split('?')[0]).toString(), context);
   vm.runInContext(read('sw.js').toString(), context);
   return {
-    self, caches, context,
+    self, caches, context, events,
     lifecycle(type) {
       let work;
       events.get(type)({waitUntil:promise => { work = promise; }});
@@ -55,7 +56,7 @@ test('installed MANOR opens its catalog, guides and favicon offline at the Pages
   const w = worker();
   await w.lifecycle('install');
   const files = Array.from(w.self.MANOR_OFFLINE.files);
-  for (const route of ['./','index.html','#v=explore']) {
+  for (const route of ['./','index.html','#v=explore','index.html?v=d453dcc9f2b4#v=character']) {
     assert.match(await (await w.get(route, {mode:'navigate'})).text(), /MANOR · 제5인격 가이드/);
   }
   for (const name of ['catalog.json','specialties.json','introductions.json','releases.json','data.json','character-skills.json','favicon.svg']) {
@@ -107,11 +108,15 @@ test('updating the worker only expires MANOR caches for the installed scope', as
   const w = worker();
   const namespace = 'manor-offline:' + scope + ':';
   const other = 'manor-offline:https://example.test/other/:old';
-  await w.caches.open(namespace + 'old');
+  await w.caches.open(namespace + 'oldest');
+  const previous = await w.caches.open(namespace + 'old');
+  const oldModule = asset('app.js?v=123456abcdef');
+  await previous.put(oldModule, new Response('old module'));
   await w.caches.open(other);
   await w.lifecycle('install');
   await w.lifecycle('activate');
-  assert.deepEqual((await w.caches.keys()).sort(), [other, namespace + w.self.MANOR_OFFLINE.revision].sort());
+  assert.deepEqual((await w.caches.keys()).sort(), [other, namespace + 'old', namespace + w.self.MANOR_OFFLINE.revision].sort());
+  assert.equal(await (await w.get(oldModule)).text(), 'old module');
 });
 
 test('home screen launches in standalone mode and uses valid icons on iOS and Android', () => {
@@ -183,4 +188,75 @@ test('install control provides the Safari guide, consumes the Android prompt onc
   navigator.onLine = true;
   events.get('online')();
   assert.equal(note.hidden, true);
+});
+
+test('a complete matching build takes over immediately; a broken install keeps the last working cache', async () => {
+  const w = worker();
+  await w.lifecycle('install');
+  assert.equal(w.self.skipped, true);
+  const build = w.self.MANOR_OFFLINE.revision;
+  assert.ok(read('index.html').toString().includes('data-manor-build="' + build + '"'));
+  assert.ok(read('sw.js').toString().includes("offline-files.js?v=" + build + "'"));
+  let reply;
+  w.events.get('message')({data:{type:'MANOR_GET_BUILD'},source:{postMessage:value=>{ reply=value; }}});
+  assert.equal(reply.revision, build);
+  const broken = worker({failDownload:true});
+  const previous = 'manor-offline:' + scope + ':previous';
+  await broken.caches.open(previous);
+  await assert.rejects(broken.lifecycle('install'), /interrupted/);
+  assert.equal(broken.self.skipped, false);
+  assert.deepEqual(await broken.caches.keys(), [previous]);
+  const stale = worker({staleEntry:true});
+  await assert.rejects(stale.lifecycle('install'), /different MANOR build/);
+  assert.equal(stale.self.skipped, false);
+});
+
+test('the installed document checks on foreground and reconnect and waits for drafts or login before one reload', async () => {
+  const events = new Map(), storage = new Map();
+  const on = (type, fn) => events.set(type, fn);
+  let reloads=0, checks=0, asks=0, retry, interval, fields=[];
+  const location = {hash:'#v=character',search:'',reload(){reloads++;}};
+  const document = {visibilityState:'visible', documentElement:{dataset:{manorBuild:'first'},toggleAttribute(){}},
+    addEventListener:on,getElementById:()=>({}),querySelector:()=>null,querySelectorAll:()=>fields};
+  const controller = {postMessage(){ asks++; }};
+  const workers = {controller, addEventListener:on,register:async()=>({active:controller,update:async()=>{ checks++; }})};
+  const navigator = {serviceWorker:workers,onLine:true};
+  const context = {navigator,document,location,URLSearchParams,window:{isSecureContext:true,addEventListener:on},
+    matchMedia:()=>({addEventListener(){}}),setTimeout:fn=>{retry=fn;},clearTimeout(){},setInterval:fn=>{interval=fn;},
+    sessionStorage:{setItem:(k,v)=>storage.set(k,v),getItem:k=>storage.get(k)}};
+  const run = () => vm.runInNewContext(read('install.js').toString(),context);
+  const report = revision => events.get('message')({source:controller,data:{type:'MANOR_BUILD',revision}});
+  run();
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(checks,1);
+  report('first');
+  assert.equal(reloads,0);
+  events.get('controllerchange')();
+  document.visibilityState='hidden';
+  interval();
+  assert.equal(asks,2);
+  document.visibilityState='visible';
+  events.get('visibilitychange')();
+  events.get('pageshow')();
+  navigator.onLine=false;
+  await interval();
+  assert.equal(checks,1);
+  navigator.onLine=true;
+  await events.get('online')();
+  assert.equal(checks,2);
+  fields=[{value:'작성 중',defaultValue:''}];
+  report('next');
+  assert.equal(reloads,0);
+  fields=[];
+  location.hash='#v=recovery';
+  retry();
+  assert.equal(reloads,0);
+  location.hash='#v=character';
+  retry();
+  report('next');
+  assert.equal(reloads,1);
+  // A stale network fallback must not cause a reload loop in the same window.
+  vm.runInNewContext(read('install.js').toString(),{...context});
+  report('next');
+  assert.equal(reloads,1);
 });

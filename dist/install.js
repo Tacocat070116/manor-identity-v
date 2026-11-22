@@ -59,8 +59,63 @@ document.addEventListener('click', async event => {
 });
 
 if ('serviceWorker' in navigator && window.isSecureContext) {
-  const register = () => navigator.serviceWorker.register('./sw.js', {scope:'./', updateViaCache:'none'})
-    .catch(() => { /* Browsing also works when the browser disallows offline storage. */ });
-  if (document.readyState === 'complete') register();
-  else window.addEventListener('load', register, {once:true});
+  const workers = navigator.serviceWorker;
+  const pageBuild = document.documentElement.dataset.manorBuild;
+  let registration, checking = false, lastCheck = -Infinity;
+  let activeBuild, reloading = false, retryReload;
+
+  function applyUpdate() {
+    clearTimeout(retryReload);
+    if (!activeBuild || activeBuild === pageBuild || reloading || document.visibilityState !== 'visible') return;
+    // The OAuth return document has no install module. Also protect the login page,
+    // open editors, and replies while the user is composing or submitting them.
+    if (location.search && !/^\?v=[a-f0-9]{7,64}$/.test(location.search)) return;
+    const login = new URLSearchParams(location.hash.slice(1)).get('v') === 'recovery';
+    const editor = document.querySelector('dialog[open], [aria-busy="true"], .sy-editor, .tip-form, .fb-compose, .fb-response-form');
+    const draft = [...document.querySelectorAll('form textarea')].some(field => field.value !== field.defaultValue);
+    if (login || editor || draft) {
+      retryReload = setTimeout(applyUpdate, 3000);
+      return;
+    }
+    // If the OS evicted the cache mid-update, a network fallback may still serve
+    // this same document. Limit retries for this exact transition across reloads.
+    const key = 'manor-reload:' + pageBuild + ':' + activeBuild;
+    try {
+      const lastReload = Number(sessionStorage.getItem('manor-last-reload-time'));
+      if (sessionStorage.getItem('manor-last-reload') === key && Date.now() - lastReload < 60000) return;
+      sessionStorage.setItem('manor-last-reload', key);
+      sessionStorage.setItem('manor-last-reload-time', String(Date.now()));
+    } catch { /* The cached entry can still be opened when session storage is disabled. */ }
+    reloading = true;
+    location.reload();
+  }
+  function askBuild() {
+    workers.controller?.postMessage({type:'MANOR_GET_BUILD'});
+  }
+  workers.addEventListener('controllerchange', askBuild);
+  workers.addEventListener('message', event => {
+    if (event.source !== workers.controller || event.data?.type !== 'MANOR_BUILD') return;
+    activeBuild = event.data.revision;
+    applyUpdate();
+  });
+
+  async function checkUpdate(force = false) {
+    if (document.visibilityState !== 'visible') return;
+    askBuild(); // Also covers a document restored after another window activated the update.
+    if (checking || !navigator.onLine || (!force && Date.now() - lastCheck < 30000)) return;
+    checking = true;
+    lastCheck = Date.now();
+    try {
+      registration ??= await workers.register('./sw.js', {scope:'./', updateViaCache:'none'});
+      if (registration.active && !registration.installing) await registration.update();
+    } catch { /* Retry on the next foreground or reconnect; the saved build still works. */ }
+    finally { checking = false; }
+  }
+  window.addEventListener('online', () => checkUpdate(true));
+  window.addEventListener('pageshow', () => checkUpdate());
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkUpdate();
+  });
+  setInterval(checkUpdate, 5 * 60 * 1000);
+  checkUpdate();
 }

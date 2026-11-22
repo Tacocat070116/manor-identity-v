@@ -762,6 +762,14 @@
         "스킬의 표식·상태·파생 효과를 해당 스킬 설명 안에 묶고 본문에서 용어를 강조"
       ],
       "announcement": "pending"
+    },
+    {
+      "date": "2026-11-22",
+      "scope": "home-screen-updates",
+      "summary": [
+        "홈 화면에서 MANOR를 열거나 다시 돌아오면 새 버전을 확인하고 작성 중인 글과 로그인 화면을 보호하며 자동 갱신"
+      ],
+      "announcement": "pending"
     }
   ]
 }
