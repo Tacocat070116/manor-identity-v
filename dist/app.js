@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=4a2de232150c','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=6272768fab0a','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -285,10 +285,10 @@ function favoriteInsight(list){
  }).join('');
 }
 function listPanel(label,items,tone,ic,characterId){return `<div class="panel ${tone}"><h2 class="panel-title">${icon(ic)}${label}</h2><ul class="numbered-list">${items.map((t,i)=>`<li><span class="number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="numbered-copy">${guide(t,characterId)}</span></li>`).join('')}</ul></div>`;}
-function skillTimes(skill){
+function skillHeading(skill){
  const fields=[['쿨타임',skill.cooldown],['충전 시간',skill.charge],['지속 시간',skill.duration]].filter(([,value])=>value);
- if(!fields.length)return '';
- return `<dl class="skill-times">${fields.map(([label,value])=>`<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
+ const times=fields.map(([label,value])=>`<span class="skill-time"><span class="skill-time-label"> · ${label}&nbsp;</span>${esc(value)}</span>`).join('');
+ return esc(skill.name)+times;
 }
 function skillReferences(rows){
  const references=new Map();
@@ -314,9 +314,9 @@ function skillPanel(c,preview=false){
   const definitions=(skill.details||[]).map(name=>byName.get(name));
   const group=[skill,...definitions];
   const terms=group.map(row=>row.name).join('|');
-  const notes=definitions.map(term=>`<div><dt>${esc(term.name)}</dt><dd>${paragraphs(term.tooltip)}${skillTimes(term)}</dd></div>`).join('');
-  return `<article class="skill-entry" data-skill-terms="${esc(terms)}"><h3>${esc(skill.name)}</h3>
-   ${paragraphs(skill.tooltip)}${skillTimes(skill)}
+  const notes=definitions.map(term=>`<div><dt>${skillHeading(term)}</dt><dd>${paragraphs(term.tooltip)}</dd></div>`).join('');
+  return `<article class="skill-entry" data-skill-terms="${esc(terms)}"><h3>${skillHeading(skill)}</h3>
+   ${paragraphs(skill.tooltip)}
    ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}${skillReferences(group)}</article>`;
  };
  const visible=preview?skills.slice(0,1):skills;

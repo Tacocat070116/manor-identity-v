@@ -165,9 +165,15 @@ function checkSkillGuide(id,skills,html,escape){
  assert.equal(cards.length,roots.length,id+' only independent entries receive a heading');
  for(const [i,skill] of roots.entries()){
   const card=cards[i];
-  assert.ok(card.includes('<h3>'+escape(skill.name)+'</h3>'),id+' root heading '+skill.name);
-  for(const row of [skill,...(skill.details||[]).map(name=>skills.find(s=>s.name===name))]){
-   if(row!==skill)assert.ok(card.includes('<dt>'+escape(row.name)+'</dt>'),id+' inline term '+row.name);
+  const rows=[skill,...(skill.details||[]).map(name=>skills.find(s=>s.name===name))];
+  const headings=[...card.matchAll(/<(h3|dt)>([\s\S]*?)<\/\1>/g)];
+  assert.equal(headings.length,rows.length,id+' skill and term headings');
+  for(const [index,row] of rows.entries()){
+   const [,tag,html]=headings[index];
+   assert.equal(tag,index===0?'h3':'dt');
+   const fields=[['쿨타임',row.cooldown],['충전 시간',row.charge],['지속 시간',row.duration]].filter(([,v])=>v);
+   const expected=escape(row.name)+fields.map(([label,value])=>' · '+label+' '+escape(value)).join('');
+   assert.equal(html.replace(/<[^>]+>/g,'').replaceAll('&nbsp;',' '),expected,id+' timing header '+row.name);
    for(const value of [...row.tooltip.split('\n'),row.cooldown,row.charge,row.duration,row.source,row.timingSource].filter(Boolean)){
     assert.ok(card.includes(escape(value)),id+' missing content in '+skill.name+': '+value);
    }

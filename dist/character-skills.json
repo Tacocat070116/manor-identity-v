@@ -62,7 +62,8 @@
     {
       "name": "타오르는 불씨",
       "tooltip": "해독이 끝난 해독기 한 대마다 8초 동안 이동 속도가 8% 오릅니다. 효과는 중첩되며, 처음으로 생존자를 의자에 앉히면 이후에는 발동하지 않습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313030.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313030.html",
+      "duration": "8초"
     },
     {
       "name": "꼭두각시 다중 조종",
@@ -191,7 +192,8 @@
       "details": [
         "습기",
         "물놀이"
-      ]
+      ],
+      "duration": "물길·웅덩이 20초"
     },
     {
       "name": "격랑",
@@ -228,7 +230,8 @@
       "details": [
         "바람의 물건",
         "바람의 권속"
-      ]
+      ],
+      "duration": "최대 5초"
     },
     {
       "name": "바람불기",
@@ -236,7 +239,8 @@
       "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
       "details": [
         "바람의 물건"
-      ]
+      ],
+      "duration": "6초"
     },
     {
       "name": "바람의 물건",
@@ -296,7 +300,8 @@
     {
       "name": "악몽의 응시",
       "tooltip": "최대 존재감에서 생존자 한 명을 20초간 지정합니다. 대상이 촉수 곁을 지날 때마다 버튼을 눌러 연달아 공격할 수 있습니다.",
-      "source": "https://www.identityv.jp/news/gengxin/2019/08/28/29437_830186.html"
+      "source": "https://www.identityv.jp/news/gengxin/2019/08/28/29437_830186.html",
+      "duration": "20초"
     }
   ],
   "c09": [
@@ -305,7 +310,8 @@
       "tooltip": "경로를 따라 최대 11초간 공을 굴려 가까운 생존자를 붙잡습니다. 붙잡은 생존자를 당구 선수 주변의 다른 자리로 옮길 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "cooldown": "18초",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250904/35288_1257699.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250904/35288_1257699.html",
+      "duration": "최대 11초"
     },
     {
       "name": "타격 지점",
@@ -318,7 +324,8 @@
       "name": "환상 요괴",
       "tooltip": "공으로 변해 최대 30초간 경로를 빠르게 돕니다. 공으로 이동하는 동안에는 일반 공격을 쓸 수 없지만 장애물과 강한 제어 효과를 무시합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250828/35288_1256620.html",
-      "charge": "1회당 20초"
+      "charge": "1회당 20초",
+      "duration": "최대 30초"
     },
     {
       "name": "백 스핀",
@@ -391,18 +398,21 @@
       "name": "추적 표식",
       "tooltip": "표식은 28초간 남습니다. 표식이 있는 생존자를 덮치기나 습격으로 맞히면 일반 공격 절반의 추가 피해를 줍니다. 추가 피해는 두 번, 최대 존재감에서는 세 번까지 들어갑니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
+      "duration": "28초"
     },
     {
       "name": "깨어난 야성",
       "tooltip": "인간 모습일 때는 멀리 있는 생존자의 기척을 감지합니다. 공격하거나 스킬을 쓰거나 판자를 부수면 8초간 짐승으로 변합니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
+      "duration": "짐승 형태 8초"
     },
     {
       "name": "추적",
       "tooltip": "근처 생존자가 남긴 흔적을 찾아 밟습니다. 흔적 하나는 30초간 남으며, 밟으면 이동과 습격이 빨라지고 습격의 대기시간이 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
-      "cooldown": "45초"
+      "cooldown": "45초",
+      "duration": "흔적 한 개당 30초"
     }
   ],
   "c12": [
@@ -441,7 +451,8 @@
     {
       "name": "촛농",
       "tooltip": "생존자에게 촛농이 가득 쌓이면 3초간 움직일 수 없습니다. 판자·창틀·해독기·출구 스위치에 가득 쌓이면 생존자가 사용할 수 없습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20211021/35288_980627.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20211021/35288_980627.html",
+      "duration": "행동 불가 3초"
     }
   ],
   "c13": [
@@ -452,7 +463,8 @@
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "details": [
         "전율의 선율"
-      ]
+      ],
+      "duration": "현 13초"
     },
     {
       "name": "전율의 선율",
@@ -465,7 +477,8 @@
       "source": "https://www.identityv.jp/news/weihu/2020/05/13/29436_880476.html",
       "details": [
         "전율의 선율"
-      ]
+      ],
+      "duration": "9초"
     },
     {
       "name": "페르페투움 모빌레",
@@ -520,7 +533,8 @@
       "tooltip": "조준한 곳에 산제비나비를 날립니다. 설치한 나비는 40초간 남고, 생존자에게 붙으면 30초간 그 생존자를 돌진 대상으로 삼을 수 있습니다.",
       "source": "https://www.identityv.jp/news/gengxin/2020/11/18/29437_916763.html",
       "charge": "1회당 17초",
-      "timingSource": "https://www.identityvgame.com/jp/news/update/20210915/35356_972526.html"
+      "timingSource": "https://www.identityvgame.com/jp/news/update/20210915/35356_972526.html",
+      "duration": "설치 40초 · 생존자에게 붙은 뒤 30초"
     },
     {
       "name": "찰나의 생멸",
@@ -535,7 +549,8 @@
     {
       "name": "혼백이탈",
       "tooltip": "공중에 떠서 시야와 스킬 사거리를 넓힙니다. 이때 찰나의 생멸을 쓰면 재사용 대기시간이 4초입니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html",
+      "cooldown": "공중에서 찰나의 생멸 4초"
     },
     {
       "name": "3가지 형태",
@@ -553,7 +568,8 @@
       "details": [
         "물거울",
         "거울 진입"
-      ]
+      ],
+      "duration": "13초"
     },
     {
       "name": "기울어진 거울",
@@ -588,7 +604,8 @@
     {
       "name": "덫",
       "tooltip": "바닥에 덫을 놓아 밟은 생존자를 8초간 묶습니다. 풀려난 생존자는 5초간 위치가 드러납니다. 동료는 덫을 해체하거나 붙잡힌 생존자를 풀어 줄 수 있습니다.",
-      "source": "https://www.identityv.jp/news/weihu/2021/03/17/29436_937434.html"
+      "source": "https://www.identityv.jp/news/weihu/2021/03/17/29436_937434.html",
+      "duration": "속박 8초 · 탈출 후 위치 노출 5초"
     },
     {
       "name": "가시 갈퀴 사슬 · 분노의 갈퀴 사슬",
@@ -640,7 +657,8 @@
     {
       "name": "위협",
       "tooltip": "범위 안의 생존자는 10초간 해독과 치료, 소지품 사용을 할 수 없습니다.",
-      "source": "https://www.identityv.jp/news/weihu/2020/12/09/29436_920525.html"
+      "source": "https://www.identityv.jp/news/weihu/2020/12/09/29436_920525.html",
+      "duration": "10초"
     }
   ],
   "c19": [
@@ -1698,7 +1716,8 @@
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "details": [
         "중상"
-      ]
+      ],
+      "duration": "중상 기절 2.1초"
     },
     {
       "name": "손목 쇠뇌",
@@ -1708,7 +1727,8 @@
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "details": [
         "중상"
-      ]
+      ],
+      "duration": "중상 기절 2.1초"
     },
     {
       "name": "중상",
@@ -2001,7 +2021,8 @@
       "name": "정기 회복",
       "tooltip": "6초 동안 제자리에 머물면 다음에 달릴 때 4초 동안 이동 속도가 35% 증가합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240718/35288_1167979.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240718/35288_1167979.html",
+      "duration": "가속 4초"
     },
     {
       "name": "호기심",
@@ -2027,7 +2048,8 @@
     {
       "name": "안도감",
       "tooltip": "잠행 중에 피해를 받지 않고 스스로 지상에 나오면 5초 동안 동료 구출 속도가 50% 증가합니다.",
-      "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html"
+      "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html",
+      "duration": "5초"
     }
   ],
   "c53": [
@@ -2052,7 +2074,8 @@
       "name": "불안의 공연",
       "tooltip": "우산을 던져 15초 동안 무대를 엽니다. 생존자가 들어오면 우산이 나타나 근처의 감시자를 우선 기절시키고, 생존자만 있으면 선택한 방향으로 날려 보냅니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
-      "cooldown": "무대 우산 재등장 4초"
+      "cooldown": "무대 우산 재등장 4초",
+      "duration": "무대 15초"
     },
     {
       "name": "감정 축적",
@@ -2067,7 +2090,8 @@
     {
       "name": "깊은 유대",
       "tooltip": "동료가 피해를 받으면 20초 동안 해독 속도가 느려집니다. 그동안 동료가 다시 맞으면 남은 시간이 초기화됩니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
+      "duration": "20초"
     }
   ],
   "c54": [
@@ -2085,7 +2109,8 @@
     {
       "name": "곡예",
       "tooltip": "높은 곳에서 뛰어내려 착지하면 3초 동안 이동 속도가 30% 증가합니다.",
-      "source": "https://www.identityv.jp/news/gonggao/2018/10/18/29435_780310.html"
+      "source": "https://www.identityv.jp/news/gonggao/2018/10/18/29435_780310.html",
+      "duration": "가속 3초"
     }
   ],
   "c55": [
@@ -2101,7 +2126,8 @@
     {
       "name": "도블린 베이스",
       "tooltip": "바텐더가 마시면 2초 동안 이동 속도가 50% 증가합니다. 한 병만 들고 시작하며 동료에게 건네거나 새로 만들 수 없습니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955763.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955763.html",
+      "duration": "가속 2초"
     },
     {
       "name": "술 만들기",
@@ -2125,7 +2151,8 @@
       "name": "요점 기록",
       "tooltip": "해독할수록 해독 속도가, 이동할수록 이동 속도가 오릅니다. 처음 넘는 판자나 창틀을 넘으면 이후 더 빠르게 넘습니다. 경기 시작 후 30초 동안은 이동과 넘기 기록이 더 빨리 쌓입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230824/35288_1106171.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html",
+      "duration": "기록 추가 가속은 경기 시작 후 30초"
     },
     {
       "name": "차갑게 식은 마음",
@@ -2170,12 +2197,14 @@
     {
       "name": "예언",
       "tooltip": "감시자를 보면 시야에서 사라져도 5초 동안 위치가 보입니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html",
+      "duration": "5초"
     },
     {
       "name": "하늘의 눈",
       "tooltip": "경기를 시작하면 5초 동안 감시자의 위치가 보입니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html",
+      "duration": "5초"
     },
     {
       "name": "근심",
@@ -2196,7 +2225,8 @@
     {
       "name": "공감대",
       "tooltip": "감시자와 위치를 맞바꾼 뒤 2.5초 동안 소설가의 이동 속도가 50% 증가합니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20250220/35356_1213026.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20250220/35356_1213026.html",
+      "duration": "가속 2.5초"
     },
     {
       "name": "복선",
@@ -2256,7 +2286,8 @@
       "name": "야생 동료",
       "tooltip": "멧돼지에 올라타면 분노가 찰수록 빨라지고 멧돼지가 대신 피해를 받습니다. 한 번에 탈 수 있는 시간은 첫 탑승 50초, 두 번째는 40초, 그다음부터는 25초입니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20220915/35288_1042407.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20220915/35288_1042407.html",
+      "duration": "첫 탑승 50초 · 두 번째 40초 · 이후 25초"
     },
     {
       "name": "충돌",
@@ -2266,7 +2297,8 @@
     {
       "name": "포효",
       "tooltip": "멧돼지의 울음소리로 10초 동안 감시자의 이명과 경청을 무효화합니다. 멧돼지에서 내린 상태에서 사용합니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html",
+      "duration": "10초"
     }
   ],
   "c63": [
