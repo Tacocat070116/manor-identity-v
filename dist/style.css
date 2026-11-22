@@ -2,6 +2,11 @@
 :root{--danger:#914c37;--danger-soft:#f6e7df;--font:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;color-scheme:light;--danger-line:#e1c2b3;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--card-padding:var(--space-4);--card-gap:var(--space-4);--section-space:24px;--control-height:44px;--text-body:1rem;--text-subheading:1.125rem;--text-heading:1.375rem;--text-title:2rem;--status-reviewing-ink:#79521c;--status-reviewing-bg:#f6ecd8;--status-planned-ink:#315e7c;--status-planned-bg:#e3eef5;--status-hold-ink:#924a40;--status-hold-bg:#f6e7e1;--leading-body:24px;--leading-caption:20px;--radius:28px;--radius-control:14px;--radius-small:9px}
 html:is([data-theme="dark"],[data-theme="midnight"],[data-theme="plum"],[data-theme="black"]){--danger:#efb29b;--danger-soft:#3d2b25;color-scheme:dark;--danger-line:#745044;--status-reviewing-ink:#ebc481;--status-reviewing-bg:#453b29;--status-planned-ink:#a0cfe5;--status-planned-bg:#293d47;--status-hold-ink:#efb7a6;--status-hold-bg:#42312b}
 *,*::before,*::after{box-sizing:border-box}html{scrollbar-gutter:stable;scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:var(--text-body);line-height:1.75;letter-spacing:-.025em;overflow-x:hidden}button,input,select,textarea{font:inherit}input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}button,a,input,select{-webkit-tap-highlight-color:transparent}button{-webkit-appearance:none;appearance:none;cursor:pointer;padding:0;color:inherit;border:0;background:none}button,a{touch-action:manipulation}a{color:inherit;text-decoration:none}p,h1,h2,h3,h4{margin:0}
+@media screen and (max-width:640px){
+  :root{--text-body:.875rem;--text-subheading:1rem;--text-heading:1.25rem;--text-title:1.625rem}
+  /* Keep editable controls large enough to avoid focus zoom in mobile Safari. */
+  :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){--text-body:max(1rem,16px);font-size:var(--text-body)}
+}
 h1{font-size:var(--text-title)}
 h2{font-size:var(--text-heading)}
 h3,h4,h5,h6{font-size:var(--text-subheading)}

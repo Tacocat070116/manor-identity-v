@@ -780,6 +780,7 @@
       "scope": "interface-spacing-and-type",
       "summary": [
         "본문과 제목의 글자 크기 및 카드 여백 통일",
+        "모바일에서 본문과 제목의 글자 크기를 줄이고 검색·작성 입력란의 글자 크기는 유지",
         "감시자 보조 특성의 활용 조건과 중복 이동 안내 링크 제거"
       ],
       "announcement": "pending"
