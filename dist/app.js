@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=619f2a4841a5','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=9eedb2ca0482','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
