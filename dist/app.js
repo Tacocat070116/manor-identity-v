@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=1432c7809e35','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=4a18ae17cc75','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -305,7 +305,18 @@ function skillPanel(c){
    ${paragraphs(skill.tooltip)}
    ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}</article>`;
  };
- return `<section class="guide-sheet skill-sheet" data-skill-terms="${esc(terms)}"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div></section>`;
+ const statusLabels = [
+  ['unknown', '기본 쿨타임 미확인'],
+  ['durationUnknown', '대기시간은 있지만 정확한 시간은 미확인'],
+  ['triggerUnknown', '조건 충족 후 다시 발동하기까지의 시간 미확인']
+ ];
+ const statusRows = statusLabels.flatMap(([status, label]) => {
+  const names = entries.filter(skill => skill.cooldownStatus === status).map(skill => esc(skill.name));
+  return names.length ? [`<p><strong>${label}</strong> · ${names.join(', ')}</p>`] : [];
+ });
+ const cooldownNotes = statusRows.length
+  ? `<details class="skill-cooldown-details"><summary>쿨타임 확인이 필요한 스킬</summary>${statusRows.join('')}</details>` : '';
+ return `<section class="guide-sheet skill-sheet" data-skill-terms="${esc(terms)}"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div>${cooldownNotes}</section>`;
 }
 function characterPage(){
  const c=char(state.character);state.character=c.id;

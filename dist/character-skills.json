@@ -2,11 +2,12 @@
   "c01": [
     {
       "name": "그물 짜기",
-      "tooltip": "장애물 사이에 거미줄을 칩니다. 거미는 거미줄을 통과하면 이동 속도가 오르고 기절에서 더 빨리 회복합니다. 생존자가 거미줄에 걸리면 거미줄 속박이 쌓입니다.",
+      "tooltip": "장애물 사이에 거미줄을 칩니다. 생존자가 거미줄에 걸리면 거미줄 속박이 쌓입니다. 거미가 거미줄을 통과하면 이동 속도가 오릅니다. 가속이 1·2·3회 중첩되면 기절 회복 속도도 각각 5%·10%·20% 증가합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "details": [
         "거미줄 속박"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "실 뱉기",
@@ -21,18 +22,19 @@
     },
     {
       "name": "거미줄 속박",
-      "tooltip": "생존자에게 거미줄 속박이 쌓이면 위치가 드러나고 행동 속도가 느려집니다. 거미줄 속박이 중첩되면 이동 속도도 감소합니다.",
-      "source": "https://www.youtube.com/watch?v=t2hWckoharY"
+      "tooltip": "생존자에게 거미줄 속박이 쌓이면 위치가 드러나고 행동 속도가 느려집니다. 거미줄 속박이 두 겹 쌓인 생존자는 이동 속도가 8% 감소합니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
     },
     {
       "name": "고치형",
       "tooltip": "쓰러진 생존자를 그 자리에서 거미줄로 감싸 고치를 만듭니다. 고치에 갇힌 생존자는 광기의 의자에 묶였을 때처럼 탈락 게이지가 오르며, 동료가 거미줄을 풀어 구출할 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=t2hWckoharY"
+      "source": "https://www.youtube.com/watch?v=t2hWckoharY",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "그물 뱉기",
-      "tooltip": "실 뱉기가 그물 뱉기로 강화되면 실을 뱉는 속도가 빨라지고, 한 번 뱉을 때 소모하는 거미줄이 줄어듭니다. 소모한 거미줄도 더 빠르게 회복됩니다.",
-      "source": "https://www.youtube.com/watch?v=t2hWckoharY",
+      "tooltip": "존재감이 최대에 도달하면 실 뱉기가 그물 뱉기로 강화됩니다. 실을 더 빠르게 뱉고, 한 번 뱉을 때 소모하는 거미줄이 줄어듭니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html",
       "cooldown": "8초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
     }
@@ -47,26 +49,29 @@
       ],
       "terms": [
         "원한의 불꽃"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "꼭두각시 조종",
-      "tooltip": "꼭두각시를 놓거나 던져 그 주변에 있는 생존자를 찾습니다. 꼭두각시 조종을 다시 사용하면 꼭두각시와 자리를 바꾸지만, 생존자가 꼭두각시를 해체하는 동안에는 자리를 바꿀 수 없습니다.",
+      "tooltip": "꼭두각시를 놓거나 던져 그 주변에 있는 생존자를 찾습니다. 꼭두각시 조종을 다시 사용하면 꼭두각시와 자리를 바꾸지만, 생존자가 꼭두각시를 해체하는 동안에는 자리를 바꿀 수 없습니다. 꼭두각시와 자리를 바꾼 직후에는 잠시 이동 속도가 오릅니다.",
       "source": "https://www.identityv.jp/m/charactor/hunter.html",
       "details": [
         "꼭두각시 다중 조종"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "원한의 지옥불",
-      "tooltip": "원한을 가득 모으면 발화에 쓸 원한의 불꽃을 얻습니다. 생존자를 쫓는 동안에는 원한이 더 빠르게 쌓입니다.",
+      "tooltip": "원한을 가득 모으면 발화에 쓸 원한의 불꽃을 얻습니다. 경기 시작 시 원한이 90% 차 있습니다. 원한은 생존자를 쫓는 동안 초당 2.2%, 그 밖의 시간에는 초당 0.4%씩 쌓입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313030.html"
     },
     {
       "name": "타오르는 불씨",
-      "tooltip": "해독기 한 대의 해독이 끝날 때마다 8초간 이동 속도가 8% 증가합니다. 이 효과는 중첩되며, 생존자를 처음으로 의자에 앉힌 뒤에는 발동하지 않습니다.",
+      "tooltip": "해독기 한 대의 해독이 끝날 때마다 8초간 이동 속도가 8% 증가합니다. 이 효과는 중첩됩니다. 처음으로 생존자를 광기의 의자에 앉히면 쌓인 효과가 모두 사라지고 이후에는 발동하지 않습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313030.html",
-      "duration": "8초"
+      "duration": "8초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "꼭두각시 다중 조종",
@@ -81,12 +86,14 @@
       "source": "https://www.identityv.jp/news/gonggao/2018/11/29/29435_787622.html",
       "details": [
         "격벽"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "격벽",
-      "tooltip": "솟아오르는 격벽에 맞으면 일반 공격의 절반에 해당하는 피해를 받습니다. 이미 세워진 격벽을 넘으면 일반 공격 한 번에 해당하는 피해를 받습니다.",
-      "source": "https://www.identityv.jp/news/gonggao/2018/11/29/29435_787622.html"
+      "tooltip": "솟아오르는 격벽에 맞으면 일반 공격의 절반에 해당하는 피해를 받습니다. 이미 세워진 격벽을 넘으면 일반 공격 한 번에 해당하는 피해를 받습니다. 격벽은 연속해서 세울 때 대기시간이 있으며, 과부하를 사용하면 격벽 설치 대기시간과 에너지 소모가 줄어듭니다.",
+      "source": "https://www.identityv.jp/news/gonggao/2018/11/29/29435_787622.html",
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "단말",
@@ -94,7 +101,8 @@
       "source": "https://www.identityv.jp/news/gonggao/2018/11/29/29435_787622.html",
       "details": [
         "격벽"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "과부하",
@@ -102,17 +110,19 @@
       "source": "https://www.identityv.jp/news/gonggao/2018/11/29/29435_787622.html",
       "details": [
         "격벽"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     }
   ],
   "c04": [
     {
       "name": "로켓 돌진",
-      "tooltip": "로켓을 들고 돌진해 생존자를 공격하거나 내려진 판자를 부숩니다. 생존자가 로켓 돌진을 끊으면 소모한 부품을 돌려받으며, 다시 장착한 뒤 사용할 수 있습니다.",
+      "tooltip": "로켓을 들고 돌진해 생존자를 공격하거나 내려진 판자를 부숩니다. 생존자가 로켓 돌진을 끊으면 다음 돌진의 쿨타임이 6초 줄고 소모한 부품을 돌려받습니다. 돌려받은 부품은 다시 장착해 사용할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
       "details": [
         "광란의 돌진"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "로켓 개조",
@@ -122,7 +132,8 @@
         "바람 날개",
         "개조 드릴",
         "추진기"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "광란의 돌진",
@@ -156,25 +167,28 @@
       ],
       "terms": [
         "기생 신도"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "전도",
-      "tooltip": "조종 대상을 본체와 신도 사이에서 전환합니다. 신도가 공격하거나 스킬을 사용하는 동안에는 조종 대상을 바꿀 수 없습니다.",
+      "tooltip": "조종 대상을 본체와 신도 사이에서 전환합니다. 신도가 공격하거나 스킬을 사용하는 동안에는 조종 대상을 바꿀 수 없습니다. 조종 대상을 바꾼 뒤에는 잠시 기다려야 다시 전환할 수 있습니다.",
       "source": "https://www.identityv.jp/m/charactor/hunter.html",
       "details": [
         "꿈의 베일 · 신도"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "꿈의 베일 · 신도",
-      "tooltip": "꿈의 마녀는 생존자에게 본체가 보이지 않습니다. 본체로는 직접 공격할 수 없어, 처음부터 곁에 있는 신도나 생존자에게 붙은 기생 신도를 조종해 공격합니다.",
+      "tooltip": "생존자에게는 꿈의 마녀의 본체가 보이지 않습니다. 본체는 직접 공격할 수 없어 처음부터 곁에 있는 신도나 생존자에게 붙은 기생 신도를 조종해 공격합니다. 조종 중이 아닌 신도는 8m 안에 있는 생존자에게 윤곽이 보입니다.",
       "source": "https://www.identityv.jp/m/charactor/hunter.html"
     },
     {
       "name": "마녀 표식",
       "tooltip": "생존자는 신도가 생긴 자리에 남은 마녀 표식을 주울 수 있습니다. 마녀 표식을 사용하면 자신이나 동료에게 붙은 기생 신도를 쫓아냅니다.",
-      "source": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html"
+      "source": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "동화 · 신도 강화 제어",
@@ -189,7 +203,8 @@
       "source": "https://www.identityvgame.com/en/news/announcement/20210628/35288_956484.html",
       "details": [
         "회유"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "끝없는 심연",
@@ -203,17 +218,18 @@
     },
     {
       "name": "격랑",
-      "tooltip": "전방으로 돌진해 부딪힌 생존자에게 습기를 쌓습니다. 회유 상태가 아닐 때 격랑을 사용하면 즉시 회유 상태에 들어가며 물고기 사냥의 쿨타임이 초기화됩니다.",
+      "tooltip": "전방으로 돌진해 부딪힌 생존자에게 습기를 쌓습니다. 격랑은 15초마다 1회 충전됩니다. 회유 상태가 아닐 때 사용하면 곧바로 회유에 들어가고 물고기 사냥의 쿨타임이 초기화됩니다. 이때 격랑의 쿨타임은 40초입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html",
       "details": [
         "습기",
         "회유",
         "물놀이"
-      ]
+      ],
+      "charge": "1회당 15초"
     },
     {
       "name": "물놀이",
-      "tooltip": "존재감이 최대에 도달하면 격랑으로 생존자를 맞히거나 물길을 이어 생존자를 둘러쌀 때 습기가 더 많이 쌓입니다.",
+      "tooltip": "존재감이 최대에 도달하면 격랑으로 생존자를 맞히거나 물길을 이어 생존자를 둘러쌀 때 습기가 더 많이 쌓이고, 작살을 회수하는 시간도 짧아집니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20210628/35288_956484.html"
     },
     {
@@ -223,14 +239,15 @@
     },
     {
       "name": "습기",
-      "tooltip": "생존자에게 쌓인 습기가 100%에 도달하면 해당 생존자는 일반 공격 한 번에 해당하는 피해를 받습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20210628/35288_956484.html"
+      "tooltip": "생존자에게 쌓인 습기가 100%에 도달하면 해당 생존자는 일반 공격 한 번에 해당하는 피해를 받습니다. 물웅덩이에서 나온 뒤 10초가 지나면 습기가 초당 5%씩 줄어듭니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20210628/35288_956484.html",
+      "cooldownStatus": "triggerUnknown"
     }
   ],
   "c07": [
     {
       "name": "풍역",
-      "tooltip": "전방의 넓은 범위에 최대 5초간 바람을 일으켜 생존자를 자신 쪽으로 끌어당깁니다. 풍역을 충분히 오래 유지하면 바람의 힘을 얻습니다.",
+      "tooltip": "전방의 넓은 범위에 최대 5초간 바람을 일으켜 생존자를 자신 쪽으로 끌어당깁니다. 풍역을 2초 넘게 유지하면 바람의 힘을 1회분 얻습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230316/35288_1078159.html",
       "cooldown": "13초",
       "details": [
@@ -241,7 +258,7 @@
     },
     {
       "name": "바람불기",
-      "tooltip": "바람의 힘을 1회 소모하면 6초간 이동 속도가 오르고 내려진 판자와 창틀을 넘을 수 있습니다. 그동안 판자나 창틀을 넘을 때마다 다음에 넘는 속도가 빨라집니다.",
+      "tooltip": "바람의 힘을 1회 소모하면 6초간 이동 속도가 오르고 내려진 판자와 창틀을 넘을 수 있습니다. 그동안 판자나 창틀을 넘으면 다음에 넘는 속도가 25% 증가합니다. 이 효과는 두 번까지 중첩됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
       "details": [
         "바람의 물건"
@@ -250,7 +267,7 @@
     },
     {
       "name": "바람의 물건",
-      "tooltip": "풍역으로 모은 바람의 힘은 바람불기와 바람불기-습격에 사용합니다. 어느 쪽이든 한 번 사용할 때마다 바람의 힘을 1회 소모합니다.",
+      "tooltip": "풍역으로 모은 바람의 힘은 바람불기와 바람불기-습격에 사용합니다. 어느 쪽이든 한 번 사용할 때마다 바람의 힘을 1회 소모합니다. 바람의 힘은 기본적으로 3회분까지 모을 수 있으며, 최대 존재감에서는 4회분까지 모을 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230316/35288_1078159.html"
     },
     {
@@ -286,33 +303,36 @@
     },
     {
       "name": "악몽의 습격",
-      "tooltip": "촉수 하나를 지정하면 촉수가 자신과 가장 가까운 생존자를 내려칩니다. 공포의 형상으로 생긴 촉수도 지정할 수 있습니다.",
+      "tooltip": "촉수 하나를 지정하면 촉수가 자신과 가장 가까운 생존자를 내려칩니다. 공포의 형상으로 생긴 촉수도 지정할 수 있습니다. 버튼을 길게 눌러 촉수를 고르는 동안 이동 속도가 6% 감소합니다.",
       "source": "https://www.identityv.jp/news/gengxin/2019/08/28/29437_830186.html",
       "details": [
         "공포의 형상"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "공포의 형상",
       "tooltip": "생존자가 공격을 받거나 동료가 쓰러지면 촉수가 생깁니다. 이렇게 생긴 촉수도 심연의 촉수로 설치한 촉수처럼 악몽의 습격으로 공격할 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=hJEb26fq6Ow"
+      "source": "https://www.youtube.com/watch?v=hJEb26fq6Ow",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "공포의 응축",
-      "tooltip": "존재감 1단계에 도달하면 공포 반경 안에 생존자가 없어도 심연의 촉수 사용 횟수가 조금씩 충전됩니다.",
+      "tooltip": "존재감 1단계부터는 공포 반경 안에 생존자가 없어도 시간이 지나면 심연의 촉수가 충전됩니다. 최대 5회까지 모을 수 있습니다.",
       "source": "https://www.identityv.jp/news/gengxin/2019/08/28/29437_830186.html"
     },
     {
       "name": "악몽의 응시",
       "tooltip": "최대 존재감에서 생존자 한 명을 지정하면 20초간 응시 대상으로 삼습니다. 대상이 촉수 가까이 다가갈 때마다 악몽의 응시 버튼을 눌러 촉수로 연달아 공격할 수 있습니다.",
       "source": "https://www.identityv.jp/news/gengxin/2019/08/28/29437_830186.html",
-      "duration": "20초"
+      "duration": "20초",
+      "cooldownStatus": "unknown"
     }
   ],
   "c09": [
     {
       "name": "메인 볼",
-      "tooltip": "타격 지점을 이은 경로를 따라 최대 11초간 메인 볼을 굴립니다. 메인 볼이 근처의 생존자를 붙잡으면 당구 선수 주변에서 원하는 지점을 골라 생존자를 그쪽으로 옮길 수 있습니다.",
+      "tooltip": "타격 지점을 이은 경로를 따라 최대 11초간 메인 볼을 굴립니다. 메인 볼이 근처의 생존자를 붙잡으면 당구 선수 주변에서 원하는 지점을 골라 생존자를 그쪽으로 옮길 수 있습니다. 생존자가 묶인 광기의 의자 근처에서는 메인 볼에 붙잡힌 생존자를 옮기는 데 1.8초가 걸립니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "cooldown": "18초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20250904/35288_1257699.html",
@@ -345,7 +365,7 @@
     },
     {
       "name": "봉쇄 구역",
-      "tooltip": "타격 지점 3~4개를 이어 봉쇄 구역을 만듭니다. 엔트로피 제어가 주기적으로 구역 안의 생존자 위치를 드러내고, 구역 안에서 해독 진도가 가장 높은 해독기의 진도를 낮춥니다.",
+      "tooltip": "타격 지점 3~4개를 이어 봉쇄 구역을 만듭니다. 엔트로피 제어가 주기적으로 구역 안의 생존자 위치를 드러내고, 구역 안에서 해독 진도가 가장 높은 해독기의 진도를 낮춥니다. 생존자가 한 명이라도 탈락하면 한 번에 되돌리는 해독 진도는 9%입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250828/35288_1256620.html",
       "terms": [
         "엔트로피 제어"
@@ -353,8 +373,10 @@
     },
     {
       "name": "관성",
-      "tooltip": "타격 지점을 이은 경로에서 내려오면 이동 속도와 행동 속도가 오르고 주변 생존자의 위치가 보입니다. 부상당한 생존자가 많을수록 효과가 오래 유지됩니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250828/35288_1256620.html"
+      "tooltip": "타격 지점을 이은 경로에서 내려오면 이동 속도와 행동 속도가 오르고 주변 생존자의 위치가 보입니다. 부상당한 생존자가 한 명 늘어날 때마다 관성이 2.1초 더 지속됩니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20250828/35288_1256620.html",
+      "duration": "부상 생존자 1명당 2.1초 연장",
+      "cooldownStatus": "triggerUnknown"
     }
   ],
   "c10": [
@@ -373,27 +395,29 @@
     },
     {
       "name": "안개 구역",
-      "tooltip": "안개 칼날이 지나간 길과 대형 안개 칼날에 맞은 생존자가 지나가는 자리에는 안개 구역이 생깁니다. 리퍼는 안개 구역에서 이동 속도가 오르고 더 빨리 안개 은신 상태로 돌아갑니다.",
+      "tooltip": "안개 칼날이 지나간 길과 대형 안개 칼날에 맞은 생존자가 지나간 자리에 안개 구역이 생깁니다. 생존자를 쓰러뜨려 광기의 의자에 묶으면 그 자리에도 안개가 12초간 남습니다. 안개 구역 안에서 리퍼는 이동 속도가 오르고 안개 은신 상태에 더 빨리 들어갑니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
     },
     {
       "name": "차가운 안개",
       "tooltip": "일반 공격보다 빠르게 칼날을 휘둘러 일반 공격의 절반에 해당하는 피해를 줍니다. 안개가 1칸 이상 모였다면 소형 안개 칼날도 함께 날립니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "안개 은신 · 유령 은신",
-      "tooltip": "모습을 드러내는 행동을 멈추면 리퍼가 안개 은신 상태에 들어가 투명해집니다. 최대 존재감에서 유령 은신을 얻으면 안개 은신에 걸리는 시간이 짧아지며, 안개 구역 안에서는 안개 은신의 쿨타임이 더 빠르게 줄어듭니다.",
+      "tooltip": "모습을 드러내는 행동을 멈추면 안개 은신 상태에 들어가 투명해집니다. 안개 구역 안에서는 안개 은신의 쿨타임이 75% 줄어듭니다. 최대 존재감에서 유령 은신을 얻으면 더 빨리 투명해지고, 안개 구역 안에서의 쿨타임 감소량이 90%로 늘어납니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
       "details": [
         "안개 구역"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     }
   ],
   "c11": [
     {
       "name": "습격",
-      "tooltip": "조준한 방향으로 돌진해 맞힌 생존자에게 추적 표식을 남깁니다. 습격 버튼을 길게 누를수록 돌진 거리가 늘어나며, 첫 돌진에 이어 한 번 더 돌진할 수 있습니다.",
+      "tooltip": "조준한 방향으로 돌진해 맞힌 생존자에게 추적 표식을 남깁니다. 습격 버튼을 길게 누를수록 돌진 거리가 늘어나며, 첫 돌진에 이어 한 번 더 돌진할 수 있습니다. 습격은 구출 중인 생존자를 맞혀도 구출 동작을 끊지 못합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
       "cooldown": "16초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260903/35288_1313030.html",
@@ -414,7 +438,7 @@
     },
     {
       "name": "추적 표식",
-      "tooltip": "생존자에게 남긴 추적 표식은 28초간 유지됩니다. 추적 표식이 있는 생존자에게 덮치기나 습격을 적중시키면 일반 공격의 절반에 해당하는 추가 피해를 줍니다. 표식 하나로 줄 수 있는 추가 피해는 최대 2회이며, 최대 존재감에서는 3회로 늘어납니다.",
+      "tooltip": "생존자에게 남긴 추적 표식은 28초간 유지됩니다. 추적 표식이 있는 생존자에게 덮치기나 습격을 적중시키면 일반 공격의 절반에 해당하는 추가 피해를 줍니다. 표식 하나로 줄 수 있는 추가 피해는 최대 2회이며, 최대 존재감에서는 3회로 늘어납니다.\n플라이휠 효과로 공격을 피한 생존자나 두려움 상실로 버틴 루이에게는 추적 표식을 남길 수 없습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20261112/35288_1319404.html",
       "duration": "28초"
@@ -423,11 +447,12 @@
       "name": "깨어난 야성",
       "tooltip": "인간 형태에서는 멀리 있는 생존자의 기척을 감지합니다. 공격하거나 스킬을 사용하거나 판자를 부수면 8초간 짐승 형태로 변합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
-      "duration": "짐승 형태 8초"
+      "duration": "짐승 형태 8초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "추적",
-      "tooltip": "근처 생존자의 흔적을 찾아냅니다. 흔적은 하나당 30초간 남으며, 밟으면 이동 속도와 습격 속도가 오르고 습격의 쿨타임이 줄어듭니다.",
+      "tooltip": "근처 생존자의 흔적을 찾아냅니다. 흔적은 하나당 30초간 남으며, 밟으면 이동 속도와 습격 속도가 오르고 습격의 쿨타임이 줄어듭니다. 강화 효과가 남아 있을 때 흔적을 다시 밟으면 습격의 남은 쿨타임이 2초 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260813/35288_1310931.html",
       "cooldown": "45초",
       "duration": "흔적 한 개당 30초"
@@ -441,7 +466,8 @@
       "duration": "생존자 속박 3초",
       "details": [
         "촛농"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "응고",
@@ -452,11 +478,12 @@
       ],
       "terms": [
         "파라핀 블록"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "멜팅",
-      "tooltip": "고열 촛농을 뿌리는 상태로 전환합니다. 고열 촛농에 맞은 생존자의 작열 게이지가 가득 차면 일반 공격 한 번에 해당하는 피해를 줍니다.",
+      "tooltip": "고열 촛농을 뿌리는 상태로 전환합니다. 고열 촛농에 맞은 생존자의 작열 게이지가 가득 차면 일반 공격 한 번에 해당하는 피해를 줍니다. 멜팅은 직접 끝낼 수 있으며, 고열 촛농 사용이 끝나는 순간부터 쿨타임이 시작됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20211021/35288_980627.html",
       "cooldown": "25초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20220630/35288_1027376.html"
@@ -479,7 +506,7 @@
   "c13": [
     {
       "name": "소나타",
-      "tooltip": "첫 음표를 놓은 뒤 6초 안에 두 번째 음표를 놓으면 두 음표 사이에 전율의 현악이 생겨 13초간 유지됩니다. 전율의 현악이 생기는 순간 닿은 생존자는 피해를 받고, 이미 생긴 현에 닿으면 마력의 음색이 쌓입니다.",
+      "tooltip": "첫 음표를 놓은 뒤 6초 안에 두 번째 음표를 놓으면 두 음표 사이에 전율의 현악이 생겨 13초간 유지됩니다. 전율의 현악이 생기는 순간 닿은 생존자는 피해를 받고, 이미 생긴 현에 닿으면 마력의 음색이 쌓입니다.\n첫 음표를 놓은 뒤 연주를 직접 끝내면 소나타의 쿨타임이 6초 줄어듭니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/05/13/29436_880476.html",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "details": [
@@ -488,7 +515,8 @@
       "duration": "현 13초",
       "terms": [
         "전율의 현악"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "전율의 선율",
@@ -505,38 +533,42 @@
       "duration": "9초",
       "terms": [
         "전율의 음표"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "페르페투움 모빌레",
-      "tooltip": "최대 존재감에서 소나타로 만든 전율의 현악을 다시 연주하면 그 양옆으로 여러 줄의 현이 평행하게 퍼져 나가며, 현에 닿은 생존자에게 피해를 줍니다.",
-      "source": "https://www.identityv.jp/news/weihu/2020/05/13/29436_880476.html"
+      "tooltip": "최대 존재감에서 소나타로 만든 전율의 현악을 다시 연주하면 그 양옆으로 여러 줄의 현이 평행하게 퍼져 나가며, 현에 닿은 생존자에게 피해를 줍니다. 같은 생존자는 소나타나 페르페투움 모빌레의 현에 맞은 뒤 2초 동안 다시 현 피해를 받지 않습니다.",
+      "source": "https://www.identityv.jp/news/weihu/2020/05/13/29436_880476.html",
+      "cooldownStatus": "unknown"
     }
   ],
   "c14": [
     {
       "name": "운동에너지 충격",
-      "tooltip": "일직선으로 돌진해 생존자를 올려칩니다. 에너지 폭발 상태에서는 운동에너지 충격으로 돌진한 직후 뛰어올라 내려찍을 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=-fjcF9V76bI",
+      "tooltip": "일직선으로 돌진해 생존자를 올려칩니다. 에너지 폭발 상태에서는 운동에너지 충격으로 돌진한 직후 뛰어올라 내려찍을 수 있습니다. 운동에너지 충격을 쓰면 에너지 부하가 10 쌓입니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955700.html",
       "details": [
         "충전"
       ],
       "terms": [
         "에너지 폭발"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "차징 스트라이크",
-      "tooltip": "힘을 모아 바닥을 내리치면 범위 안의 생존자가 공중에 뜹니다. 힘을 충분히 모으면 피해도 주며, 에너지 폭발 상태에서는 차징 스트라이크로 한 번 더 내려칠 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=-fjcF9V76bI",
+      "tooltip": "힘을 모아 바닥을 내리치면 범위 안의 생존자가 공중에 뜹니다. 힘을 충분히 모으면 피해도 주며, 에너지 폭발 상태에서는 차징 스트라이크로 한 번 더 내려칠 수 있습니다. 차징 스트라이크를 쓰면 에너지 부하가 20 쌓입니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955700.html",
       "details": [
         "충전"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "충전",
-      "tooltip": "스킬을 사용할 때마다 에너지 부하가 쌓입니다. 일정량이 쌓이면 에너지 폭발 상태가 되어 공격이 강화되지만, 한계에 도달하면 과부하가 걸려 잠시 스킬을 사용할 수 없습니다.",
-      "source": "https://www.youtube.com/watch?v=-fjcF9V76bI"
+      "tooltip": "스킬을 쓸 때마다 에너지 부하가 쌓입니다. 50에 도달하면 에너지 폭발 상태에 들어가 공격이 강화됩니다. 100에 도달하면 과부하가 걸려 잠시 스킬을 쓸 수 없습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955700.html"
     },
     {
       "name": "배상",
@@ -545,16 +577,18 @@
     },
     {
       "name": "주파수 변환",
-      "tooltip": "지하 통로를 직접 조작해 위치를 다른 곳으로 옮깁니다. 이미 열린 통로를 옮기면 새 위치에서도 통로가 열린 상태로 유지됩니다.",
+      "tooltip": "한 경기에 한 번 지하 통로를 다른 곳으로 옮길 수 있습니다. 이미 열린 지하 통로는 옮긴 뒤에도 열린 상태로 남습니다. 사용을 시작하면 중단할 수 없으며, 그동안 생존자에게 박사의 위치가 드러납니다. 이동이 끝나면 새 지하 통로의 위치도 잠시 보입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20211209/35288_990855.html"
     },
     {
       "name": "에너지 전환",
-      "tooltip": "존재감이 최대에 도달하면 에너지 부하를 조절할 수 있습니다. 에너지 부하가 낮을 때 에너지 전환을 쓰면 에너지 부하를 50 얻고, 에너지 폭발 상태에서 쓰면 50을 소모합니다.",
-      "source": "https://www.youtube.com/watch?v=-fjcF9V76bI",
+      "tooltip": "최대 존재감에서 에너지 전환을 쓸 수 있습니다. 에너지 부하가 낮을 때 사용하면 에너지 폭발 상태에 들어가고, 에너지 폭발 상태에서 사용하면 부하를 50 소모합니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955700.html",
       "details": [
         "충전"
-      ]
+      ],
+      "cooldown": "35초",
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20230420/35288_1084054.html"
     }
   ],
   "c15": [
@@ -611,7 +645,8 @@
       "source": "https://www.youtube.com/watch?v=b2TaITScHM0",
       "details": [
         "물거울"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "거울 진입",
@@ -627,7 +662,7 @@
   "c17": [
     {
       "name": "갈퀴 사슬",
-      "tooltip": "생존자에게 갈퀴 사슬을 맞히면 그 생존자와 곁에 있는 동료를 함께 끌어옵니다. 장애물에 사슬을 걸면 사냥터지기가 그쪽으로 날아갑니다. 착지할 때 원한 중압의 충격파가 퍼지며, 이어서 갈퀴 사슬을 다시 던질 수 있습니다.",
+      "tooltip": "생존자에게 갈퀴 사슬을 맞히면 그 생존자와 곁에 있는 동료를 함께 끌어옵니다. 장애물에 사슬을 걸면 사냥터지기가 그쪽으로 날아갑니다. 착지할 때 원한 중압의 충격파가 퍼지며, 이어서 갈퀴 사슬을 다시 던질 수 있습니다.\n갈퀴 사슬이 빗나가면 쿨타임이 3초 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "cooldown": "13초",
       "details": [
@@ -639,7 +674,8 @@
       "name": "덫",
       "tooltip": "바닥에 놓은 덫을 생존자가 밟으면 8초간 발이 묶이고, 풀려난 뒤에도 5초간 위치가 드러납니다. 동료는 덫을 미리 해체하거나 덫에 걸린 생존자를 풀어 줄 수 있습니다.",
       "source": "https://www.identityv.jp/news/weihu/2021/03/17/29436_937434.html",
-      "duration": "속박 8초 · 탈출 후 위치 노출 5초"
+      "duration": "속박 8초 · 탈출 후 위치 노출 5초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "가시 갈퀴 사슬 · 분노의 갈퀴 사슬",
@@ -661,7 +697,8 @@
       "details": [
         "그림자 밟기",
         "위협"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "고양이 걸음",
@@ -676,12 +713,14 @@
     {
       "name": "그림자 밟기",
       "tooltip": "습격으로 갈라진 고양이 주변에 마비 구역이 생깁니다. 생존자가 다가오면 고양이가 달라붙고, 사도가 마비 구역에 들어오면 구역 안의 생존자가 기절합니다.",
-      "source": "https://www.identityv.jp/news/weihu/2020/01/19/29436_861375.html"
+      "source": "https://www.identityv.jp/news/weihu/2020/01/19/29436_861375.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "지시",
       "tooltip": "지정한 위치에 표식을 놓으면 습격으로 보낸 고양이들이 표식을 향해 달려갑니다. 이때 고양이의 남은 시간이 초기화됩니다.",
-      "source": "https://www.identityv.jp/news/weihu/2020/01/19/29436_861375.html"
+      "source": "https://www.identityv.jp/news/weihu/2020/01/19/29436_861375.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "초감각",
@@ -698,11 +737,12 @@
   "c19": [
     {
       "name": "사진 속 세계",
-      "tooltip": "카메라로 촬영하면 그 순간의 생존자와 해독기가 사진 속 세계에 복제됩니다. 사진 속 세계가 닫힐 때 사진상의 상태에 따라 현실의 생존자도 영향을 받습니다.",
+      "tooltip": "카메라로 촬영하면 그 순간의 생존자와 해독기가 사진 속 세계에 복제됩니다. 사진 속 세계가 닫힐 때 사진상의 상태에 따라 현실의 생존자도 영향을 받습니다. 사진 속 세계가 닫힌 뒤에는 잠시 기다려야 다시 촬영할 수 있습니다.",
       "source": "https://www.youtube.com/watch?v=q6_qoVhHD1k",
       "details": [
         "사진상"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "사진상",
@@ -717,31 +757,36 @@
     {
       "name": "순간 촬영",
       "tooltip": "사진 속 세계가 열려 있으면 카메라로 돌아가지 않고도 현재 위치에서 현실과 사진 속 세계를 오갈 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=q6_qoVhHD1k"
+      "source": "https://www.youtube.com/watch?v=q6_qoVhHD1k",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "시공의 잔상",
-      "tooltip": "시공의 잔상 버튼을 길게 눌렀다 놓으면 최근 15초간 지나온 경로를 되짚어 돌아갑니다. 버튼을 오래 누를수록 더 이전에 있던 위치로 돌아갑니다.",
-      "source": "https://www.youtube.com/watch?v=q6_qoVhHD1k",
+      "tooltip": "시공의 잔상 버튼을 길게 눌렀다 놓으면 최근 15초간 지나온 경로를 되짚어 돌아갑니다. 버튼을 오래 누를수록 더 이전에 있던 위치로 돌아갑니다. 되돌아온 직후의 동작 중에도 공격할 수 있습니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "duration": "이동 경로 기록 15초",
-      "timingSource": "https://www.weibo.com/6140485374/GAeiK1Ggh"
+      "timingSource": "https://www.weibo.com/6140485374/GAeiK1Ggh",
+      "cooldownStatus": "unknown"
     }
   ],
   "c20": [
     {
       "name": "공정한 판결",
-      "tooltip": "주변에 자유롭게 움직이는 생존자가 많을수록 판결이 빨리 쌓입니다. 판결이 가득 차면 최대 15초간 이동 속도와 공격 후 회복 속도가 오르며, 생존자에게 공격을 맞히면 효과가 끝납니다.",
+      "tooltip": "주변에 자유롭게 움직이는 생존자가 많을수록 판결이 빨리 쌓입니다. 판결이 가득 차면 최대 15초간 이동 속도가 6%, 공격 후 회복 속도가 8% 증가합니다. 생존자에게 공격을 맞히면 효과가 끝납니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
-      "duration": "최대 15초"
+      "duration": "최대 15초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "기록",
-      "tooltip": "기록 버튼을 길게 눌러 생존자가 판자를 내리거나 해독하는 장면을 기록합니다. 짧게 누르면 자신의 이동과 공격을 기록합니다.\n무효로 생존자가 이용한 곳을 봉쇄하거나, 채택으로 기록에서 이동 장면을 잘라낼 수 있습니다.",
+      "tooltip": "기록 버튼을 길게 눌러 생존자가 판자를 내리거나 해독하는 장면을 기록합니다. 짧게 누르면 자신의 이동과 공격을 기록합니다.\n무효로 생존자가 이용한 곳을 봉쇄하거나, 채택으로 기록에서 이동 장면을 잘라낼 수 있습니다.\n한 번에 최대 10초까지 기록할 수 있으며, 버튼을 다시 누르면 기록을 일찍 마칩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220407/35288_1011696.html",
       "details": [
         "무효",
         "채택"
-      ]
+      ],
+      "duration": "최대 10초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "낭독",
@@ -749,7 +794,8 @@
       "source": "https://www.identityvgame.com/en/news/announcement/20220407/35288_1011696.html",
       "details": [
         "낭독 방식"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "낭독 방식",
@@ -761,13 +807,14 @@
       "tooltip": "해독기나 생존자가 묶인 광기의 의자, 열 수 있는 대문을 선택해 6초간 위에서 내려다봅니다. 그동안 본체의 위치와 관계없이 선택한 곳에서 기록과 낭독을 사용할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220407/35288_1011696.html",
       "duration": "6초",
-      "timingSource": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20221124/35288_1054107.html",
+      "cooldown": "6초"
     },
     {
       "name": "무효",
-      "tooltip": "기록이 끝나면 그동안 생존자가 이용한 곳을 잠시 봉쇄합니다. 생존자가 탈락한 뒤에는 봉쇄 시간이 7초로 줄어듭니다.",
+      "tooltip": "기록이 끝나면 생존자가 이용한 곳을 9초간 봉쇄합니다. 생존자가 탈락한 뒤에는 7초로 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220407/35288_1011696.html",
-      "duration": "생존자 탈락 후 7초",
+      "duration": "기본 9초 · 생존자 탈락 후 7초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
     },
     {
@@ -794,7 +841,7 @@
     },
     {
       "name": "폭탄 전용석",
-      "tooltip": "생존자가 묶인 광기의 의자에 첫 시한폭탄을 설치하면 28초 뒤에 그 의자의 폭탄이 모두 터져 탈락 진도가 오릅니다. 구출하러 오는 생존자에게 피해를 주려면 폭탄을 바닥에 설치해야 합니다.",
+      "tooltip": "생존자가 묶인 광기의 의자에 첫 시한폭탄을 설치하면 28초 뒤에 그 의자의 폭탄이 한꺼번에 터집니다. 첫 설치 후 10초가 지나면 같은 의자에 폭탄을 더 놓을 수 있습니다. 한 의자에 최대 5개까지 설치할 수 있으며, 터진 폭탄 하나당 탈락 진도가 4초씩 오릅니다.\n폭발하기 전에 동료가 구출하면 의자에 설치한 폭탄은 모두 무효가 됩니다. 구출하러 오는 생존자에게 피해를 주려면 폭탄을 바닥에 설치해야 합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
       "duration": "첫 폭탄 설치 후 28초"
     },
@@ -827,7 +874,8 @@
     {
       "name": "침식도",
       "tooltip": "침식도가 가득 찬 생존자는 잠시 몸을 제어할 수 없습니다. 이때 아이비의 공포 범위 안에 있으면 아이비를 향해 걸어갑니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "환시 · 의식 전환",
@@ -835,7 +883,8 @@
       "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html",
       "details": [
         "이스인"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "이스인",
@@ -854,9 +903,8 @@
     },
     {
       "name": "정신 기생",
-      "tooltip": "이스인이 생존자에게 달라붙으면 그 생존자가 바라보는 방향을 알 수 있고, 기생한 자리에 침식의 조각이 남습니다.\n쿨타임은 생존자마다 따로 적용됩니다. 같은 생존자에게는 48초 뒤에 정신 기생을 다시 사용할 수 있으며, 존재감 1단계에서 기생의 갈망을 익히면 38초로 줄어듭니다.",
+      "tooltip": "이스인이 생존자에게 달라붙으면 그 생존자가 바라보는 방향을 알 수 있고, 기생한 자리에 침식의 조각이 남습니다. 같은 생존자에게 다시 기생하려면 48초를 기다려야 합니다. 이 시간은 생존자마다 따로 적용되며, 존재감 1단계에서 기생의 갈망을 익히면 38초로 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html",
-      "cooldown": "48초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20240410/35288_1148338.html",
       "details": [
         "침식의 조각",
@@ -870,18 +918,18 @@
     },
     {
       "name": "침식의 조각",
-      "tooltip": "침식의 조각 주변의 생존자는 침식도가 오릅니다. 아이비는 공간 전송으로 조각이 있는 곳에 순간이동할 수 있지만, 생존자가 조각을 파괴하면 그곳으로 이동할 수 없습니다.",
+      "tooltip": "침식의 조각 주변에 있는 생존자는 침식도가 오릅니다. 아이비는 공간 전송으로 조각이 있는 곳에 이동할 수 있지만, 생존자가 조각을 파괴하면 그곳으로 이동할 수 없습니다. 생존자가 탈락하거나 탈출구에 전력이 들어오면 조각은 최대 50초간 남으며, 처음 6초 동안은 파괴할 수 없습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html"
     },
     {
       "name": "공간 전송",
-      "tooltip": "맵에 남은 침식의 조각을 선택해 그 자리로 순간이동합니다. 같은 조각으로 다시 이동하려면 45초를 기다려야 합니다.\n존재감 2단계부터는 조각에 도착하는 순간 침식 전송이 발동합니다.",
+      "tooltip": "맵에 남은 침식의 조각을 선택해 그 자리로 순간이동합니다. 사용한 조각으로는 45초 뒤에 다시 이동할 수 있으며, 이 시간은 조각마다 따로 적용됩니다. 존재감 2단계부터는 도착하는 순간 침식 전송이 발동합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html",
-      "cooldown": "45초",
       "details": [
         "침식의 조각",
         "침식 전송"
-      ]
+      ],
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240321/35288_1144477.html"
     },
     {
       "name": "침식 전송",
@@ -905,7 +953,8 @@
         "스쳐 날기",
         "계시",
         "사냥"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "스쳐 날기",
@@ -919,8 +968,9 @@
     },
     {
       "name": "당까마귀",
-      "tooltip": "해독기나 생존자가 묶인 광기의 의자, 전원이 들어온 대문에 당까마귀를 보냅니다. 까마귀가 날아가는 도중 생존자를 만나면 그 머리 위를 맴돌며 위치를 드러냅니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html"
+      "tooltip": "해독기나 생존자가 묶인 광기의 의자, 전원이 들어온 대문에 당까마귀를 보냅니다. 까마귀가 날아가다 생존자를 만나면 머리 위를 맴돕니다. 그동안 생존자의 위치가 드러나고 이동 속도가 3% 감소합니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "흉조",
@@ -938,8 +988,9 @@
   "c24": [
     {
       "name": "곤충 떼",
-      "tooltip": "날아가는 곤충 떼가 생존자에게 닿으면 여왕벌이 에너지를 얻고 이동 속도가 빨라집니다. 곤충 떼를 회수해 함께 이동하는 동안에는 판자와 창틀을 더 빨리 넘습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html"
+      "tooltip": "날아가는 곤충 떼가 생존자에게 닿으면 여왕벌이 에너지 10을 얻고 이동 속도가 12% 증가합니다. 곤충 떼를 회수해 함께 이동하는 동안에는 판자와 창틀을 더 빨리 넘습니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "감지-이동",
@@ -947,12 +998,14 @@
       "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html",
       "details": [
         "곤충 떼"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "벌침",
-      "tooltip": "에너지를 소모해 정면으로 벌침을 쏩니다. 벌침에 맞은 생존자는 일반 공격의 절반만큼 피해를 받습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html"
+      "tooltip": "에너지를 소모해 정면으로 벌침을 쏩니다. 벌침에 맞은 생존자는 일반 공격의 절반만큼 피해를 받습니다. 벌침은 구출 중인 생존자에게 피해를 줘도 구출 동작을 끊지 못합니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "보답",
@@ -966,12 +1019,12 @@
     },
     {
       "name": "자극 벌침",
-      "tooltip": "보답으로 곤충 떼에 도착한 뒤 본체로 돌아오는 순간 에너지를 추가로 소모해 곧바로 벌침을 쏠 수 있습니다.",
+      "tooltip": "보답으로 곤충 떼에 도착한 뒤 본체로 돌아올 때 에너지 25를 소모하면 준비 동작 없이 벌침을 쏠 수 있습니다. 구출 중인 생존자를 맞혀도 구출 동작은 계속됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html"
     },
     {
       "name": "열살봉구",
-      "tooltip": "보답으로 곤충 떼에 도착하면 곤충 떼를 직접 조종해 더 멀리 이동할 수 있습니다. 에너지를 모두 쓰거나 본체로 돌아오면 조종이 끝납니다.",
+      "tooltip": "보답으로 곤충 떼에 도착하면 곤충 떼를 직접 조종해 더 멀리 이동할 수 있습니다. 에너지를 모두 쓰거나 본체로 돌아오면 조종이 끝납니다. 곤충 떼를 직접 조종하는 동안 에너지를 초당 7.5씩 소모합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251127/35288_1273450.html",
       "cooldown": "18초"
     }
@@ -1021,8 +1074,9 @@
     },
     {
       "name": "어둠의 도약-고급",
-      "tooltip": "어둠의 도약으로 한 번에 더 멀리 이동할 수 있고, 출발점에 남긴 잔영도 더 오래 유지됩니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20230629/35288_1095795.html"
+      "tooltip": "최대 존재감에서는 어둠의 도약으로 한 번에 더 멀리 이동할 수 있고, 출발점에 남긴 잔영은 10초간 유지됩니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20230629/35288_1095795.html",
+      "duration": "잔영 10초"
     }
   ],
   "c26": [
@@ -1033,7 +1087,8 @@
       "details": [
         "쌍혼",
         "제행무상-강화"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "쌍혼",
@@ -1042,9 +1097,10 @@
     },
     {
       "name": "무주열반",
-      "tooltip": "진혼산을 던져 5초간 펼쳐 둡니다. 그동안 진혼산 주변의 생존자는 위치가 드러나고 행동이 느려집니다. 진혼산이 있는 곳으로 이동해 형태를 바꾸거나 제자리에서 진혼산만 회수할 수 있습니다.",
+      "tooltip": "진혼산을 던져 5초간 펼쳐 둡니다. 주변 생존자는 위치가 드러나고 행동이 느려집니다. 약화 효과는 진혼산 범위에서 벗어난 뒤에도 8초간 유지됩니다. 진혼산이 있는 곳으로 이동해 형태를 바꾸거나, 제자리에서 진혼산만 회수해 쿨타임의 상당 부분을 돌려받을 수 있습니다.",
       "source": "https://www.identityv.jp/news/gengxin/2020/02/26/29437_866062.html",
-      "duration": "우산 배치 5초"
+      "duration": "우산 배치 5초 · 범위 이탈 후 약화 8초",
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "섭혼",
@@ -1052,7 +1108,8 @@
       "source": "https://www.youtube.com/watch?v=fMmlpxD9nho",
       "terms": [
         "실혼"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "탕백",
@@ -1101,7 +1158,8 @@
       ],
       "terms": [
         "안식의 소나무 나뭇가지"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "끝없는 번식",
@@ -1123,7 +1181,7 @@
   "c28": [
     {
       "name": "은혜",
-      "tooltip": "생존자가 자기장에 닿거나 감지로 연결한 해독기를 해독하면 극성을 얻습니다. 공격받았을 때는 이 극성에 따라 공유 효과가 적용됩니다.",
+      "tooltip": "생존자가 자기장에 닿거나 감지로 연결한 해독기를 해독하면 극성을 얻습니다. 공격받을 때는 이 극성에 따라 공유 효과가 적용됩니다. 연결된 해독기를 돌리거나 대문 비밀번호를 입력한 생존자는 자신의 극성을 바꿀 수 있습니다. 같은 생존자가 극성을 다시 바꾸려면 100초를 기다려야 합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html",
       "details": [
         "공유"
@@ -1131,7 +1189,7 @@
     },
     {
       "name": "공유",
-      "tooltip": "생존자가 공격받으면 그 생존자와 같은 극성을 지닌 생존자들이 피해를 나눠 받습니다.",
+      "tooltip": "생존자가 공격받으면 그 생존자와 같은 극성을 지닌 생존자들이 피해를 나눠 받습니다. 피해를 나눠 받으면 생존자들에게 부여된 극성이 사라집니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html"
     },
     {
@@ -1143,17 +1201,21 @@
         "자기장",
         "극성 전환",
         "기적-고급"
-      ]
+      ],
+      "cooldown": "12초",
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html"
     },
     {
       "name": "극성 전환",
       "tooltip": "다음에 쏠 전류의 극성을 반대로 바꿉니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "자기장",
       "tooltip": "극성이 없는 생존자가 자기장에 닿으면 극성을 얻습니다. 자기장과 반대 극성을 띤 생존자는 중심으로 끌려와 기절합니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "감지",
@@ -1169,7 +1231,9 @@
       "details": [
         "자기장",
         "집중-고급"
-      ]
+      ],
+      "cooldown": "40초",
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20220825/35288_1039064.html"
     },
     {
       "name": "기적-고급",
@@ -1204,26 +1268,29 @@
     },
     {
       "name": "물건 전환",
-      "tooltip": "흡수한 재료에 따라 사용할 능력이 달라집니다. 자연 요소로는 자연의 거래, 자갈 요소로는 자갈 매매, 금속 요소로는 고가 위탁을 얻습니다.",
+      "tooltip": "흡수한 재료에 따라 사용할 능력이 달라집니다. 자연 요소로는 자연의 거래, 자갈 요소로는 자갈 매매, 금속 요소로는 고가 위탁을 얻습니다. 재료로 얻은 능력은 종류별로 2회분, 모두 합쳐 5회분까지 보관할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
     },
     {
       "name": "지면",
-      "tooltip": "지면에서 자연 요소를 흡수하면 그 자리에 메마름 효과가 남습니다. 생존자가 메마름 지역을 밟으면 발이 묶입니다.",
+      "tooltip": "지면에서 자연 요소를 흡수하면 그 자리에 메마름 효과가 8초간 남습니다. 이 지면을 밟은 생존자는 2초간 발이 묶입니다. 12m 안에 생존자가 묶인 의자가 있으면 지면은 4초간 남고 속박은 1초간 지속됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
       "terms": [
         "메마름"
-      ]
+      ],
+      "duration": "지면 8초 · 속박 2초 · 의자 근처 지면 4초 · 속박 1초"
     },
     {
       "name": "장애물",
-      "tooltip": "자갈 요소를 흡수하면 장애물의 일부가 사라져 잠시 그 사이로 지나다닐 수 있습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      "tooltip": "장애물에서 자갈 요소를 흡수하면 일부가 사라져 14초간 그 사이로 지나다닐 수 있습니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+      "duration": "통로 14초"
     },
     {
       "name": "금속 회로",
-      "tooltip": "해독기 같은 금속 장치에서 금속 요소를 흡수하면 그 장치는 잠시 사용할 수 없습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      "tooltip": "해독기 같은 금속 장치에서 금속 요소를 흡수하면 그 장치는 12초간 사용할 수 없습니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+      "duration": "장치 사용 제한 12초"
     },
     {
       "name": "자연의 거래",
@@ -1263,7 +1330,7 @@
   "c30": [
     {
       "name": "사냥 점프",
-      "tooltip": "체력을 소모해 도약합니다. 공중에서 방향을 바꿔 착지 전에 한 번 더 도약할 수 있습니다.",
+      "tooltip": "첫 도약은 체력 15를 소모합니다. 공중에서 방향을 바꿔 착지 전에 한 번 더 도약할 수 있습니다. 도약 직후 장애물에 부딪히면 쿨타임이 시작되지 않습니다.",
       "source": "https://www.identityv.jp/news/weihu/2019/06/19/29436_818788.html",
       "cooldown": "10초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20240104/35288_1129849.html",
@@ -1284,11 +1351,12 @@
     },
     {
       "name": "치명 추격",
-      "tooltip": "착지할 곳을 내리찍어 가장 가까운 생존자에게 피해를 줍니다. 주변에 내려진 판자가 있으면 함께 부숩니다.",
+      "tooltip": "착지할 곳을 내리찍어 범위 안의 생존자에게 피해를 줍니다. 범위 안에 내려진 판자도 함께 부숩니다.",
       "source": "https://www.identityv.jp/news/weihu/2019/06/19/29436_818788.html",
       "details": [
         "바실리스크"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "바실리스크",
@@ -1304,8 +1372,8 @@
   "c31": [
     {
       "name": "상실의 감옥",
-      "tooltip": "감시자와 생존자는 케이지 경계에 닿으면 케이지 중심을 사이에 두고 정반대편으로 이동합니다.",
-      "source": "https://www.youtube.com/watch?v=KRYZNUFAcG8"
+      "tooltip": "감시자와 생존자는 케이지 경계에 닿으면 케이지 중심을 사이에 두고 정반대편으로 이동합니다. 생존자가 케이지 경계를 넘어 이동하면 1.6초 뒤에 다시 경계를 이용할 수 있습니다. 원한의 힘은 최대 100까지 모을 수 있습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20240821/35356_1176004.html"
     },
     {
       "name": "속박된 몸",
@@ -1325,7 +1393,8 @@
       ],
       "terms": [
         "원한의 힘"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "케이지 제어",
@@ -1334,8 +1403,8 @@
     },
     {
       "name": "케이지 점프",
-      "tooltip": "뒤로 도약합니다. 도약 중 케이지 경계를 넘으면 반대편에서도 도약이 이어지며, 공중에서도 케이지 포위로 새 케이지를 세울 수 있습니다.\n케이지 점프는 24초마다 1회씩 충전되며 최대 2회까지 모을 수 있습니다.",
-      "source": "https://www.youtube.com/watch?v=KRYZNUFAcG8",
+      "tooltip": "뒤로 도약합니다. 도약 중에는 대기시간 없이 케이지 경계를 다시 넘을 수 있으며, 경계를 넘으면 반대편에서도 도약이 이어집니다. 공중에서도 케이지 포위로 새 케이지를 세울 수 있습니다. 케이지 점프는 24초마다 1회씩 충전되며 최대 2회까지 모을 수 있습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20240821/35356_1176004.html",
       "charge": "24초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
     },
@@ -1353,7 +1422,7 @@
     },
     {
       "name": "지혜의 형상",
-      "tooltip": "지정한 위치의 왼쪽과 오른쪽에 조각상을 세워 생존자를 양옆에서 밀어냅니다. 생존자가 끼면 위기 형상으로 피해를 줍니다.\n존재감 2단계부터 지혜의 형상과 예민의 형상이 부딪히면 숭고의 형상으로 합쳐집니다.",
+      "tooltip": "지정한 위치의 왼쪽과 오른쪽에 조각상을 세워 생존자를 양옆에서 밀어냅니다. 생존자가 끼면 위기 형상으로 피해를 줍니다.\n존재감 2단계부터 지혜의 형상과 예민의 형상이 부딪히면 숭고의 형상으로 합쳐집니다.\n버튼을 길게 눌러 조각상을 조준하는 동안 조각가의 이동 속도가 3% 감소합니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/08/12/29436_898641.html",
       "details": [
         "위기 형상",
@@ -1362,7 +1431,7 @@
     },
     {
       "name": "예민의 형상",
-      "tooltip": "지정한 위치의 앞뒤에 조각상을 세워 생존자를 밀어냅니다. 앞뒤에서 밀기 때문에 지혜의 형상과 다른 각도에서 생존자를 끼워 위기 형상으로 피해를 줄 수 있습니다.",
+      "tooltip": "지정한 위치의 앞뒤에 조각상을 세워 생존자를 밀어냅니다. 앞뒤에서 밀기 때문에 지혜의 형상과 다른 각도에서 생존자를 끼워 위기 형상으로 피해를 줄 수 있습니다. 버튼을 길게 눌러 조각상을 조준하는 동안 조각가의 이동 속도가 3% 감소합니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/08/12/29436_898641.html",
       "details": [
         "위기 형상",
@@ -1386,7 +1455,7 @@
   "c33": [
     {
       "name": "균군 공생",
-      "tooltip": "자외선 복사로 렌즈를 켜고 공격하면 광선 치료 구역의 균류도 함께 공격합니다. 치과의사의 공격을 피하더라도 균류에 맞으면 일반 공격의 절반에 해당하는 피해를 받습니다.",
+      "tooltip": "자외선 복사로 렌즈를 켜고 공격하면 광선 치료 구역의 균류도 함께 공격합니다. 치과의사의 공격을 피하더라도 균류에 맞으면 일반 공격의 절반에 해당하는 피해를 받습니다. 생존자가 광선 치료 구역 안에 있으면 균류의 공격은 장애물을 관통할 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
     },
     {
@@ -1422,8 +1491,11 @@
     },
     {
       "name": "늪 출현-고급",
-      "tooltip": "존재감 1단계부터 늪 출현으로 이동한 직후 같은 스킬을 한 번 더 사용할 수 있습니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
+      "tooltip": "존재감 1단계부터는 늪 출현으로 이동한 뒤 5초 안에 한 번 더 이동할 수 있습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html",
+      "cooldown": "20초",
+      "activationWindow": "첫 이동 후 5초",
+      "timingSource": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
     },
     {
       "name": "광막 요법",
@@ -1440,8 +1512,11 @@
     },
     {
       "name": "광막 요법-고급",
-      "tooltip": "존재감 2단계부터 광막 요법으로 설치한 자외선 광막이 더 오래 유지됩니다. 광막 근처의 생존자는 해독과 상호작용 속도도 떨어집니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
+      "tooltip": "최대 존재감에서는 광막이 10초간 유지됩니다. 광막에 닿은 생존자는 이동 속도가 25% 감소하고, 광막 근처의 생존자는 해독과 상호작용 속도가 20% 감소합니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html",
+      "cooldown": "20초",
+      "duration": "광막 10초",
+      "timingSource": "https://www.identityvgame.com/jp/news/update/20260422/35356_1297344.html"
     }
   ],
   "c34": [
@@ -1459,7 +1534,8 @@
     {
       "name": "상처",
       "tooltip": "인간 형태에서 생존자를 공격하면 그 생존자에게 꽂힌 가시가 터집니다. 가시가 많이 꽂혀 있을수록 추가 피해가 커집니다.",
-      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html"
+      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "과묵",
@@ -1488,12 +1564,14 @@
     {
       "name": "비관",
       "tooltip": "인간 형태에서 사용하면 주변 생존자에게 꽂아 둔 가시가 즉시 터집니다.",
-      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html"
+      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "상처의 바퀴",
       "tooltip": "바퀴 형태에서 양옆으로 가시를 펼칩니다. 가시가 닿는 범위가 넓어져 옆으로 지나가는 생존자에게도 가시를 꽂을 수 있습니다.",
-      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html"
+      "source": "https://www.identityv.jp/news/weihu/2021/03/24/29436_938580.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "농담",
@@ -1601,7 +1679,7 @@
       "tooltip": "지정한 위치에 분신을 소환합니다. 본체가 공격하면 분신도 자신과 가장 가까운 생존자를 공격합니다. 소환한 뒤에는 분신의 위치를 한 번 바꿀 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20241113/35356_1193446.html",
       "cooldown": "16초",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20260123/35288_1283378.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html"
     },
     {
       "name": "공중그네 타기",
@@ -1643,7 +1721,7 @@
     },
     {
       "name": "즉흥 공연",
-      "tooltip": "동료를 구출하면 점토탄을, 해독 진도를 채우면 빙결탄을 얻습니다. 감시자에게 일정 시간 쫓기면 소이탄을 얻으며, 이렇게 추가로 만들 수 있는 폭탄은 종류별로 하나씩입니다.",
+      "tooltip": "동료를 구출하면 점토탄을, 해독 진도를 합계 150% 채우면 빙결탄을, 감시자에게 60초간 쫓기면 소이탄을 하나 얻습니다. 종류별로 한 번씩만 만들 수 있습니다.",
       "source": "https://www.identityv.jp/m/charactor/survivor.html"
     },
     {
@@ -1655,7 +1733,7 @@
   "c38": [
     {
       "name": "곤충 연구",
-      "tooltip": "곤충 채집망으로 곤충 떼를 조종해 길목을 막거나 감시자를 밀어냅니다. 곤충학자와 동료는 곤충 떼를 타고 이동할 수도 있습니다. 곤충 떼를 흩어 보내면 15초 뒤에 다시 부를 수 있습니다.",
+      "tooltip": "곤충 채집망으로 곤충 떼를 조종해 길목을 막거나 감시자를 밀어냅니다. 곤충학자와 동료는 곤충 떼를 타고 이동할 수도 있습니다. 곤충 떼를 흩어 보내면 15초 뒤에 다시 부를 수 있습니다. 곤충 떼와 본체 사이에서 조종을 전환할 때는 2.5초의 대기시간이 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955724.html",
       "cooldown": "15초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
@@ -1699,7 +1777,8 @@
     {
       "name": "회전",
       "tooltip": "퉁소를 돌리면 더 빠르게 이동합니다. 돌리는 동안에는 퉁소의 내구도가 계속 줄어듭니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20220804/35288_1035118.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20220804/35288_1035118.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "운문",
@@ -1710,7 +1789,8 @@
     {
       "name": "멸마",
       "tooltip": "가까운 곳에서 감시자가 일반 공격을 하면 다음 판자를 평소보다 빠르게 내릴 수 있습니다. 그 판자에 맞은 감시자는 더 오래 기절합니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20220804/35288_1035118.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20220804/35288_1035118.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "깃털 같은 발걸음",
@@ -1727,7 +1807,8 @@
     {
       "name": "정밀 타격",
       "tooltip": "신호총을 맞혀 감시자를 기절시킵니다. 같은 신호총이라도 공군이 맞히면 다른 생존자가 맞혔을 때보다 기절이 오래갑니다.",
-      "source": "https://www.identityv.jp/m/charactor/survivor.html"
+      "source": "https://www.identityv.jp/m/charactor/survivor.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "오랜 훈련",
@@ -1758,16 +1839,18 @@
     },
     {
       "name": "탈피",
-      "tooltip": "비늘을 벗어 바닥에 남깁니다. 비늘을 주운 동료는 비늘 경화를 한 번 사용할 수 있습니다.",
+      "tooltip": "비늘을 벗어 바닥에 남깁니다. 경기 시작 시 맵에 놓인 비늘도 두 개 있습니다. 비늘을 주운 동료는 비늘 경화를 한 번 사용할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220428/35288_1015042.html",
       "details": [
         "독성의 한계"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "비늘 표피",
       "tooltip": "일반 공격의 절반 이하에 해당하는 피해를 한 번 자동으로 막습니다. 사진사의 사진 속 세계에서 받은 피해가 정산될 때와 파멸의 바퀴가 꽂은 가시가 터질 때는 발동하지 않습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20220428/35288_1015042.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20220428/35288_1015042.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "사악한 비늘",
@@ -1811,7 +1894,7 @@
     {
       "name": "중상",
       "tooltip": "감시자가 빠르게 움직일수록 중상 수치인 파열도가 더 빨리 쌓이고, 제자리에 멈추면 수치가 줄어듭니다. 이때 감시자 반경 18m 안에 궁수 외의 생존자가 있으면 파열도가 15% 더 빨리 줄어듭니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250703/35288_1244746.html",
+      "source": "https://www.identityvgame.com/jp/news/update/20250702/35356_1244652.html",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
     },
     {
@@ -1829,7 +1912,8 @@
       "source": "https://www.identityv.jp/m/charactor/survivor.html",
       "terms": [
         "리모컨"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "위축",
@@ -1855,16 +1939,18 @@
       "duration": "첫 예측 8초 · 다른 생존자 추격 중 5초",
       "details": [
         "대치"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "명예의 공명",
-      "tooltip": "의자에 직접 다가가지 않고도 가까운 거리에서 동료를 구출할 수 있습니다. 명예의 공명으로 처음 구출하면 기사와 구출된 동료에게 명예 감지가 적용되어, 각자 8초 안에 처음 받는 피해가 절반으로 줄어듭니다.",
+      "tooltip": "의자에 직접 다가가지 않고도 가까운 거리에서 동료를 구출할 수 있습니다. 명예의 공명으로 처음 구출하면 기사와 구출된 동료에게 명예 감지가 적용되어, 각자 8초 안에 처음 받는 피해가 절반으로 줄어듭니다. 동료를 구출할 때마다 기사의 해독 속도가 10%씩, 최대 20%까지 증가합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20241017/35288_1187429.html",
       "duration": "첫 구출 보호 8초",
       "terms": [
         "명예 감지"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "기계치",
@@ -1873,8 +1959,9 @@
     },
     {
       "name": "대치",
-      "tooltip": "두 번째 전술 예측에서 감시자가 일반 공격도 스킬도 사용하지 않을 것이라고 예측합니다. 예측이 맞으면 기사가 다음에 받는 피해가 절반으로 줄어듭니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20241017/35288_1187429.html"
+      "tooltip": "두 번째 전술 예측에서 감시자가 일반 공격도 스킬도 사용하지 않을 것이라고 예측합니다. 대치 예측에 성공하면 4초 안에 처음 받는 피해가 절반으로 줄어듭니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20241017/35288_1187429.html",
+      "duration": "피해 감소 기회 4초"
     }
   ],
   "c45": [
@@ -1975,14 +2062,15 @@
   "c47": [
     {
       "name": "납관",
-      "tooltip": "메이크업 케이스로 관을 설치하면 납관사가 화장 부활 효과를 얻습니다. 납관사가 쓰러지거나 광기의 의자에 묶였을 때 관에서 부활할 수 있습니다. 동료가 의자에 묶인 납관사를 직접 구출하면 관을 하나 더 얻습니다.",
+      "tooltip": "메이크업 케이스로 관을 설치하면 납관사가 화장 부활 효과를 얻습니다. 납관사가 쓰러지거나 광기의 의자에 묶였을 때 관에서 부활할 수 있습니다. 동료가 의자에 묶인 납관사를 직접 구출하면 관을 하나 더 얻습니다.\n버튼을 길게 눌러 관을 놓을 위치를 정할 수 있습니다. 위치를 정하는 동안에도 이동할 수 있습니다.",
       "source": "https://www.identityv.jp/m/charactor/survivor.html",
       "details": [
         "화장 부활"
       ],
       "terms": [
         "메이크업 케이스"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "화장술",
@@ -2021,16 +2109,18 @@
   "c48": [
     {
       "name": "손전등",
-      "tooltip": "손전등으로 어느 방향에서든 감시자를 1초간 비추면 스킬 사용을 막습니다. 처음에는 3초간 봉쇄하며, 짧은 간격으로 다시 봉쇄하면 효과가 더 빨리 풀립니다. 감시자의 정면을 계속 비추면 기절시킬 수 있습니다.",
+      "tooltip": "손전등으로 어느 방향에서든 감시자를 1초간 비추면 스킬 사용을 막습니다. 처음에는 3초간 봉쇄하며, 짧은 간격으로 다시 봉쇄하면 효과가 더 빨리 풀립니다. 감시자의 정면을 계속 비추면 기절시킬 수 있습니다.\n손전등을 사용하는 동안에는 레이더에 주변 지형이 표시됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220915/35288_1042407.html",
-      "duration": "첫 스킬 봉쇄 3초"
+      "duration": "첫 스킬 봉쇄 3초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "강력한 손전등",
       "tooltip": "강력한 손전등을 설치하면 그 자리에서 최대 40초간 전방을 비춥니다. 감시자가 빛을 마주 보는 동안 기절 게이지가 차오릅니다. 이때 감시자는 스킬을 계속 사용할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20220915/35288_1042407.html",
       "duration": "설치 후 최대 40초",
-      "timingSource": "https://www.identityv.jp/news/weihu/2021/07/21/29436_961396.html"
+      "timingSource": "https://www.identityv.jp/news/weihu/2021/07/21/29436_961396.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "민첩한 몸놀림",
@@ -2052,13 +2142,15 @@
     {
       "name": "마술 연기",
       "tooltip": "마술봉을 쓰면 그 자리에 환영을 남긴 채 은신합니다. 몸을 숨긴 동안에는 이동 속도가 오르며 판자와 창틀도 넘을 수 있습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20250424/35288_1229931.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "식별 불가",
       "tooltip": "마술사가 의자에서 처음 구출되면 그 자리에 환영을 남기고 은신합니다. 마술사가 직접 동료를 구출하는 경우에는 첫 구출에 한해 두 사람 모두 2초간 은신합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
-      "duration": "첫 동료 구출 후 은신 2초"
+      "duration": "첫 동료 구출 후 은신 2초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "교묘한 손놀림",
@@ -2108,11 +2200,12 @@
   "c51": [
     {
       "name": "탐험 환상",
-      "tooltip": "걸리버 여행기를 펼치면 몸이 작아져 감시자의 레이더에서 사라집니다. 이 상태에서는 가까운 감시자와 보물의 위치가 보이며, 보물을 파내 암호 페이지를 얻을 수 있습니다.",
+      "tooltip": "걸리버 여행기를 펼치면 몸이 작아져 감시자의 레이더에서 사라집니다. 이 상태에서는 가까운 감시자와 보물의 위치가 보이며, 보물을 파내 암호 페이지를 얻을 수 있습니다. 작아진 상태에서도 판자나 창틀을 넘거나, 지하 통로로 탈출하거나, 의자에 묶인 동료를 구출할 수 있습니다. 이때는 원래 크기로 돌아옵니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
       "details": [
         "암호 페이지"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "암호 페이지",
@@ -2121,15 +2214,16 @@
     },
     {
       "name": "탐험",
-      "tooltip": "발자국이 평소보다 2초 빨리 사라집니다. 판자나 창틀을 넘어도 감시자에게 알림이 가지 않습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20260618/35288_1304831.html"
+      "tooltip": "발자국이 2초 일찍 사라집니다. 부상 상태에서도 추가 부상 흔적을 남기지 않으며, 판자나 창틀을 넘어도 감시자에게 알림이 가지 않습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20260701/35356_1306358.html"
     },
     {
       "name": "정기 회복",
       "tooltip": "제자리에 6초간 머문 뒤 달리기 시작하면 4초간 이동 속도가 35% 증가합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20240718/35288_1167979.html",
-      "duration": "가속 4초"
+      "duration": "가속 4초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "호기심",
@@ -2140,23 +2234,36 @@
   "c52": [
     {
       "name": "굴착 탈출",
-      "tooltip": "삽으로 땅을 파 땅속 잠행 상태에 들어갑니다. 땅속에서는 내려진 판자 아래를 지나거나 아래층으로 구멍을 팔 수 있고, 일반 공격 한 번에 해당하는 피해를 막을 수 있습니다. 지상에 나올 때는 수전증이나 안도감을 활용할 수 있습니다.",
+      "tooltip": "삽으로 땅을 파 땅속 잠행 상태에 들어갑니다. 땅속에서는 내려진 판자 아래를 지나거나 아래층으로 구멍을 팔 수 있고, 일반 공격 한 번에 해당하는 피해를 막을 수 있습니다. 지상에 나올 때는 수전증이나 안도감을 활용할 수 있습니다. 땅속에 들어가기 전에 동작이 끊기면 삽의 쿨타임이 10초 줄어듭니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html",
       "details": [
         "수전증",
         "안도감"
-      ]
+      ],
+      "cooldown": "13초",
+      "timingSource": "https://www.identityvgame.com/jp/news/update/20241204/35356_1198088.html"
     },
     {
       "name": "수전증",
       "tooltip": "지정한 지점으로 빠르게 이동한 뒤 땅 위로 솟아오르며 근처 감시자를 밀어냅니다. 수전증을 사용하면 삽의 남은 땅속 잠행 시간이 15초 줄어듭니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20241204/35356_1198088.html"
+      "source": "https://www.identityvgame.com/jp/news/update/20241204/35356_1198088.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "안도감",
       "tooltip": "땅속 잠행 중 피해를 받지 않고 스스로 지상에 나오면 5초간 동료를 구출하는 속도가 50% 증가합니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html",
       "duration": "5초"
+    },
+    {
+      "name": "폐쇄공포증",
+      "tooltip": "땅속 잠행 중에는 이동 속도가 10% 증가합니다.",
+      "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html"
+    },
+    {
+      "name": "기계치",
+      "tooltip": "해독 속도가 15% 감소합니다.",
+      "source": "https://www.identityv.jp/news/weihu/2020/03/04/29436_867380.html"
     }
   ],
   "c53": [
@@ -2178,7 +2285,7 @@
     },
     {
       "name": "환희의 공연",
-      "tooltip": "소품 우산을 펴고 앞으로 돌진하면서 지나온 자리에 환영 벽을 세웁니다. 멈춘 지점 근처에 장애물이 있고 공간이 충분하면 내릴 수 있는 환영 나무 판자도 만듭니다.\n환영 벽은 환영 나무 판자가 부서진 뒤 10초가 지나면 사라집니다. 환영 나무 판자를 만들지 못하면 환영 벽을 세운 순간부터 10초간 유지됩니다.",
+      "tooltip": "소품 우산을 펴고 앞으로 돌진하면서 지나온 자리에 환영 벽을 세웁니다. 멈춘 지점 근처에 장애물이 있고 공간이 충분하면 환영 나무 판자도 만듭니다. 돌진 직후 상호작용하면 환영 나무 판자를 곧바로 만들어 내릴 수 있습니다.\n환영 벽은 환영 나무 판자가 부서진 뒤 10초가 지나면 사라집니다. 판자를 만들지 못하면 벽을 세운 순간부터 10초간 유지됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
       "duration": "벽은 판자 파괴 후 10초, 판자 미생성 시 10초",
       "terms": [
@@ -2187,13 +2294,13 @@
     },
     {
       "name": "불안의 공연",
-      "tooltip": "소품 우산을 던져 그 자리에 15초간 환영 무대를 엽니다. 생존자가 환영 무대에 들어오면 소품 우산이 나타나 근처 감시자를 우선 기절시킵니다. 주변에 생존자만 있다면 생존자를 선택한 방향으로 날려 보냅니다.\n소품 우산이 한 번 발동하면 4초가 지나야 다시 나타날 수 있습니다.",
+      "tooltip": "소품 우산을 던져 그 자리에 15초간 환영 무대를 엽니다. 생존자가 환영 무대에 들어오면 소품 우산이 나타나 근처 감시자를 우선 기절시킵니다. 주변에 생존자만 있다면 생존자를 선택한 방향으로 날려 보냅니다.\n소품 우산이 한 번 발동하면 4초가 지나야 다시 나타날 수 있습니다.\n한 번의 불안의 공연에서 소품 우산으로 감시자를 기절시킬 때마다 다음 기절 시간이 0.3초씩 늘어납니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
       "duration": "무대 15초"
     },
     {
       "name": "감정 축적",
-      "tooltip": "이동하거나 판자를 다루면 환희가 쌓이고, 판자로 감시자를 맞히면 환희가 한 번에 가득 찹니다. 해독 중이거나 부상 상태라면 불안이 쌓이며, 자신이 피해를 받는 순간 불안이 가득 찹니다.",
+      "tooltip": "이동하거나 판자를 다루면 환희가 쌓이고, 판자로 감시자를 맞히면 환희가 가득 찹니다. 감시자가 10.1m 안에 있거나 자신 또는 가까운 동료가 다친 상태라면 불안이 쌓입니다. 해독하거나 대문 비밀번호를 입력할 때도 불안이 쌓이며, 자신이 피해를 받으면 불안이 가득 찹니다.\n공연을 바꾸면 해당 감정의 조각을 20% 더 얻습니다. 이 효과는 30초마다 한 번 발동합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html"
     },
     {
@@ -2203,20 +2310,22 @@
     },
     {
       "name": "깊은 유대",
-      "tooltip": "동료가 피해를 받으면 20초간 자신의 해독 속도가 느려집니다. 효과가 끝나기 전에 동료가 다시 맞으면 그때부터 20초를 다시 셉니다.",
+      "tooltip": "동료가 피해를 받아 부상 상태가 되거나 쓰러지면 20초간 해독 속도가 8% 감소합니다. 그동안 같은 조건이 다시 충족되면 남은 시간이 20초로 갱신됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260603/35288_1302705.html",
-      "duration": "20초"
+      "duration": "20초",
+      "cooldownStatus": "triggerUnknown"
     }
   ],
   "c54": [
     {
       "name": "이중주",
-      "tooltip": "빠른 리듬의 오르골을 설치하면 범위 안의 생존자는 이동과 행동이 빨라집니다. 느린 리듬의 오르골은 범위 안에 있는 감시자의 이동과 행동을 늦춥니다. 설치한 오르골에 다가가면 다시 회수할 수 있습니다.",
+      "tooltip": "빠른 리듬의 오르골을 설치하면 범위 안의 생존자는 이동과 행동이 빨라집니다. 느린 리듬의 오르골은 범위 안에 있는 감시자의 이동과 행동을 늦춥니다. 오르골 설치에는 쿨타임이 없으며, 설치한 오르골에 다가가면 다시 회수할 수 있습니다.",
       "source": "https://www.identityv.jp/news/weihu/2021/07/21/29436_961396.html",
       "terms": [
         "빠른 리듬의 오르골",
         "느린 리듬의 오르골"
-      ]
+      ],
+      "timingSource": "https://www.identityv.jp/news/gengxin/2020/08/12/29437_898642.html"
     },
     {
       "name": "슬라이드 스텝",
@@ -2226,9 +2335,10 @@
     },
     {
       "name": "곡예",
-      "tooltip": "높은 곳에서 뛰어내리면 착지한 순간부터 3초간 이동 속도가 30% 증가합니다.",
+      "tooltip": "높은 곳에서 뛰어내리면 착지한 순간부터 3초간 이동 속도가 30% 증가합니다. 이 가속은 40초마다 한 번 발동합니다.",
       "source": "https://www.identityv.jp/news/gonggao/2018/10/18/29435_780310.html",
-      "duration": "가속 3초"
+      "duration": "가속 3초",
+      "timingSource": "https://www.identityv.jp/m/charactor/survivor.html"
     }
   ],
   "c55": [
@@ -2239,7 +2349,8 @@
       "duration": "취기 25초",
       "details": [
         "숙취"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "도블린 베이스",
@@ -2251,7 +2362,8 @@
       "name": "술 만들기",
       "tooltip": "처음 가지고 있던 독한 도블린을 사용하면 한 병을 더 만들 수 있습니다. 바텐더가 부상을 입은 상태에서는 한 병을 만드는 데 10초가 걸립니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210915/35356_972526.html",
-      "timingSource": "https://www.identityv.jp/news/gengxin/2020/12/02/29437_919303.html"
+      "timingSource": "https://www.identityv.jp/news/gengxin/2020/12/02/29437_919303.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "숙취",
@@ -2263,7 +2375,8 @@
     {
       "name": "주도면밀",
       "tooltip": "지도를 펼치면 해독기와 탈출구의 위치뿐 아니라 동료와 감시자의 위치도 확인할 수 있습니다. 의자에 묶인 동료를 구출할 때도 지도를 접을 필요가 없습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "요점 기록",
@@ -2281,10 +2394,10 @@
   "c57": [
     {
       "name": "직선 통로",
-      "tooltip": "열쇠로 벽이나 바닥에 직선 통로를 만들어 생존자가 반대편으로 건너갈 수 있게 합니다. 통로는 최대 90초간 유지되며, 감시자가 통과하면 통로가 부서지고 감시자는 기절합니다.\n통로를 여는 열쇠는 70초마다 1개씩 충전되며 최대 3개까지 보관할 수 있습니다.",
+      "tooltip": "열쇠로 벽이나 바닥에 직선 통로를 만들면 생존자가 반대편으로 건너갈 수 있습니다. 통로는 최대 90초간 유지됩니다. 감시자가 지나면 통로가 부서지고, 통로 길이에 따라 감시자가 1.7~3.1초간 기절합니다. 열쇠는 70초마다 1개씩 충전되며 최대 3개까지 보관할 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955752.html",
       "charge": "열쇠 1개당 70초",
-      "duration": "최대 90초",
+      "duration": "통로 최대 90초 · 기절 1.7~3.1초",
       "timingSource": "https://www.identityv.jp/news/gengxin/2020/08/05/29437_897030.html",
       "terms": [
         "열쇠"
@@ -2292,11 +2405,12 @@
     },
     {
       "name": "긴 통로",
-      "tooltip": "동료가 샤먼의 호출에 응답하면 두 사람의 위치를 잇는 긴 통로가 열립니다. 통로를 만든 샤먼 외의 생존자가 통과하면 입구에 잔상이 남습니다.",
+      "tooltip": "동료가 샤먼의 호출에 응답하면 두 사람의 위치를 잇는 긴 통로가 열립니다. 통로를 만든 샤먼 외의 생존자가 통과하면 입구에 잔상이 남습니다. 긴 통로는 전용 쿨타임이 끝나야 다시 열 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955752.html",
       "details": [
         "잔상"
-      ]
+      ],
+      "cooldownStatus": "durationUnknown"
     },
     {
       "name": "잔상",
@@ -2319,13 +2433,15 @@
       "name": "예언",
       "tooltip": "한 번 본 감시자가 시야에서 사라져도 5초간 그 위치를 확인할 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html",
-      "duration": "5초"
+      "duration": "5초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "하늘의 눈",
       "tooltip": "경기 시작 후 5초간 감시자의 위치가 보입니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955808.html",
-      "duration": "5초"
+      "duration": "5초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "근심",
@@ -2336,7 +2452,7 @@
   "c59": [
     {
       "name": "은유",
-      "tooltip": "감시자를 정면에서 관찰해 창작노트에 행동을 기록합니다. 정보가 충분히 쌓이면 은유로 감시자와 위치를 맞바꾸고 공감대를 발동합니다. 감시자 근처에 다른 생존자가 있으면 은유의 사용 거리가 짧아집니다.",
+      "tooltip": "감시자를 정면에서 관찰해 창작노트에 행동을 기록합니다. 정보가 충분히 쌓이면 은유로 감시자와 위치를 맞바꾸고 공감대를 발동합니다. 감시자 근처에 다른 생존자가 있으면 은유의 사용 거리가 짧아집니다.\n같은 경기에 소설가가 한 명 더 있을 때마다 감시자를 관찰해 정보를 모으는 시간이 4초씩 늘어납니다. 최대 12초까지 늘어납니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20231102/35288_1118012.html",
       "cooldown": "8초",
       "details": [
@@ -2369,29 +2485,32 @@
       ],
       "terms": [
         "하모니카"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "운동 감각 시연",
-      "tooltip": "흙공이 충분히 커지면 그 위에 올라타 판자나 창틀을 넘을 수 있습니다. 넘을 때마다 흙공은 조금씩 작아집니다. 흙공 위에서는 감시자의 일반 공격과 일부 스킬을 흙공이 먼저 맞습니다.",
+      "tooltip": "흙공이 충분히 커지면 그 위에 올라타 판자나 창틀을 넘을 수 있습니다. 넘을 때마다 흙공은 조금씩 작아집니다. 흙공 위에서는 감시자의 일반 공격과 일부 스킬을 흙공이 먼저 맞습니다. 커다란 흙공이 거미줄에 닿으면 터집니다. 박사의 차징 스트라이크는 끝까지 힘을 모으지 않아도 커다란 흙공을 터뜨릴 수 있습니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20260929/35356_1315506.html"
     },
     {
       "name": "파열 구역",
-      "tooltip": "쏘아 보낸 흙공이 장애물이나 캐릭터에 부딪혀 터지면 그 자리에 파열 구역이 생깁니다. 구역에 들어간 감시자는 이동 속도가 느려지고, 먼지가 가득 쌓이면 잠시 움직일 수 없습니다.",
-      "source": "https://www.identityvgame.com/jp/news/update/20260929/35356_1315506.html"
+      "tooltip": "쏘아 보낸 흙공이 장애물이나 캐릭터에 부딪혀 터지면 파열 구역이 생깁니다. 구역에 들어간 감시자는 이동 속도가 느려지고 먼지가 쌓입니다. 먼지가 100 쌓이면 잠시 행동할 수 없게 되며, 그 뒤 10초 동안은 먼지가 다시 쌓이지 않습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20260929/35356_1315506.html",
+      "duration": "행동 불가 후 먼지 축적 제한 10초"
     }
   ],
   "c61": [
     {
       "name": "감정이입",
-      "tooltip": "호루라기를 불어 부상당한 동료에게 신호를 보냅니다. 동료가 응답하면 감정이입이 시작되고, 동료가 입은 피해가 심리학자에게 옮겨갑니다. 심리학자는 치료가 끝날 때까지 움직일 수 없습니다.\n감정이입에 걸리는 시간은 경기에 참여한 심리학자 수에 따라 달라집니다. 1명이면 7초, 2명이면 12초, 3명이면 22초, 4명이면 32초가 걸립니다.",
+      "tooltip": "호루라기를 불어 부상당한 동료에게 신호를 보냅니다. 동료가 응답하면 감정이입이 시작되어 동료가 입은 피해가 심리학자에게 옮겨갑니다. 심리학자는 치료를 마칠 때까지 움직일 수 없습니다.\n치료에 걸리는 시간은 경기에 참여한 심리학자가 1명이면 7초, 2명이면 12초, 3명이면 22초, 4명이면 32초입니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
-      "duration": "심리학자 1명 7초 · 2명 12초 · 3명 22초 · 4명 32초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20211209/35288_990855.html",
       "terms": [
         "호루라기"
-      ]
+      ],
+      "castTime": "심리학자 1명 7초 · 2명 12초 · 3명 22초 · 4명 32초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "스트레스",
@@ -2403,7 +2522,8 @@
     {
       "name": "유대 관계",
       "tooltip": "가까운 환자를 향해 유대 관계를 사용하면 환자에게 빠르게 달려갑니다. 환자도 같은 방법으로 심리학자에게 달려갈 수 있습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "주관적 앵커",
@@ -2414,7 +2534,7 @@
   "c62": [
     {
       "name": "야생 동료",
-      "tooltip": "멧돼지에 올라타면 멧돼지가 야만인 대신 피해를 받습니다. 탄 상태에서는 분노가 쌓일수록 이동 속도가 오릅니다.\n첫 번째 탑승은 최대 50초, 두 번째는 최대 40초까지 유지됩니다. 세 번째부터는 한 번에 최대 25초까지 탈 수 있습니다.",
+      "tooltip": "멧돼지에 올라타면 멧돼지가 야만인 대신 피해를 받습니다. 탄 상태에서는 분노가 쌓일수록 이동 속도가 오릅니다. 첫 탑승은 최대 50초, 두 번째는 최대 40초, 세 번째부터는 최대 25초까지 유지됩니다.\n멧돼지의 체력이 남은 채 내리면 30초 뒤에 다시 탈 수 있습니다. 체력이 다 떨어져 내려오면 60초를 기다려야 합니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20220915/35288_1042407.html",
       "duration": "첫 탑승 50초 · 두 번째 40초 · 이후 25초"
@@ -2432,20 +2552,31 @@
       "terms": [
         "이명",
         "경청"
-      ]
+      ],
+      "cooldownStatus": "unknown"
+    },
+    {
+      "name": "야생의 직감",
+      "tooltip": "멧돼지에 타면 지형을 넘는 속도가 10% 증가하고 일부 낮은 장애물도 뛰어넘을 수 있습니다. 낮은 장애물을 한 번 뛰어넘으면 3초 뒤에 다시 넘을 수 있습니다. 멧돼지가 남기는 발자국 때문에 야만인의 발자국은 2초 더 오래 남습니다.",
+      "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955783.html"
+    },
+    {
+      "name": "기계치",
+      "tooltip": "야만인은 해독기를 돌리는 속도가 느립니다.",
+      "source": "https://www.identityv.jp/news/gengxin/2020/12/02/29437_919303.html"
     }
   ],
   "c63": [
     {
       "name": "추억 조각",
-      "tooltip": "추억 조각을 바닥에 떨어뜨리면 충격파가 원형으로 퍼집니다. 여자아이와 주변 캐릭터는 조각이 떨어진 지점에서 바깥쪽으로 밀려납니다.\n추억 조각은 60초마다 1개씩 충전되며, 최대 3개까지 모을 수 있습니다.",
+      "tooltip": "추억 조각을 바닥에 떨어뜨리면 충격파가 원형으로 퍼져 여자아이와 주변 캐릭터를 바깥쪽으로 밀어냅니다. 경기 시작 시 조각 하나를 바로 쓸 수 있고 다음 조각은 60% 충전돼 있습니다. 이후 60초마다 조각 1개가 충전되며 최대 3개까지 모을 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
       "charge": "조각 1개당 60초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20211209/35288_990855.html"
     },
     {
       "name": "기억 동기화",
-      "tooltip": "가까운 동료와 동기화해 함께 움직입니다. 동기화한 동료는 해독과 구출이 빨라지며, 판자를 내리거나 판자와 창틀을 넘는 속도도 오릅니다. 여자아이는 기억 동기화 중에도 추억 조각을 사용할 수 있습니다.",
+      "tooltip": "가까운 동료와 동기화해 함께 움직입니다. 동기화한 동료는 해독과 구출이 빨라지며, 판자를 내리거나 판자와 창틀을 넘는 속도도 오릅니다. 여자아이는 기억 동기화 중에도 추억 조각을 사용할 수 있습니다.\n여자아이가 광기의 의자에서 구출된 뒤에는 20초간 기억 동기화를 사용할 수 없습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
       "cooldown": "30초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20211209/35288_990855.html"
@@ -2453,7 +2584,8 @@
     {
       "name": "연민",
       "tooltip": "감시자의 공포 범위 밖에서 연민을 사용하면 자유롭게 움직일 수 있는 동료 곁으로 순간 이동합니다. 이동 직전에는 여자아이가 떠나는 위치가 감시자에게 드러납니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20211111/35288_984970.html",
+      "cooldownStatus": "unknown"
     }
   ],
   "c64": [
@@ -2461,13 +2593,15 @@
       "name": "강철의 돌진",
       "tooltip": "강철 팔꿈치 보호대를 켜고 벽에 닿으면 강철의 돌진이 발동해 벽을 박차고 빠르게 이동합니다. 경기 시작 시 지닌 보호대로 세 번까지 사용할 수 있습니다.",
       "source": "https://www.identityv.jp/m/charactor/survivor.html",
-      "timingSource": "https://www.identityv.jp/news/weihu/2021/05/12/29436_947381.html"
+      "timingSource": "https://www.identityv.jp/news/weihu/2021/05/12/29436_947381.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "굳은 의지",
       "tooltip": "공격을 받으면 피해가 8초 뒤에 적용됩니다. 그동안 이동하거나 동료를 구출할 수 있지만, 다시 공격받으면 8초가 지나기 전에도 쓰러질 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20231102/35288_1118012.html",
-      "duration": "피해 적용 지연 8초"
+      "damageDelay": "피해 적용 지연 8초",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "오랜 훈련",
@@ -2507,7 +2641,7 @@
   "c66": [
     {
       "name": "우편",
-      "tooltip": "세 종류의 편지 중 하나를 골라 동료에게 보냅니다. 동료는 편지의 종류에 따라 이동, 구출, 해독을 돕는 효과를 얻습니다. 배달에 실패하면 우편을 즉시 다시 사용할 수 있습니다.",
+      "tooltip": "세 종류의 편지 중 하나를 골라 동료에게 보냅니다. 동료는 편지의 종류에 따라 이동, 구출, 해독을 돕는 효과를 얻습니다. 배달에 실패하면 우편을 즉시 다시 사용할 수 있습니다. 생존자는 편지 효과를 한 번에 한 종류만 받을 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240718/35288_1167979.html",
       "cooldown": "60초",
       "timingSource": "https://www.identityv.jp/news/gengxin/2020/07/15/29437_892942.html",
@@ -2542,18 +2676,18 @@
     },
     {
       "name": "용감한 편지",
-      "tooltip": "용감한 편지를 받으면 180초간 구출 속도가 오릅니다. 이 효과가 있는 동안에는 생존자가 묶인 의자 근처에서 이동 속도도 오릅니다.",
+      "tooltip": "용감한 편지를 받으면 180초간 구출 속도가 30% 증가하며, 동료가 묶인 의자 근처에서는 이동 속도도 10% 증가합니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955752.html",
       "duration": "180초"
     },
     {
       "name": "격려의 편지",
-      "tooltip": "격려의 편지를 받으면 판자와 창틀을 넘는 속도가 오릅니다.",
+      "tooltip": "격려의 편지를 받으면 판자와 창틀을 넘는 속도가 10% 증가합니다. 효과는 시간 제한 없이 유지되며, 다른 편지 효과를 받으면 교체됩니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955752.html"
     },
     {
       "name": "희망의 편지",
-      "tooltip": "희망의 편지를 받으면 120초간 지하 통로의 위치를 확인할 수 있으며, 그동안 대문을 여는 속도도 오릅니다.",
+      "tooltip": "희망의 편지를 받으면 120초간 지하 통로의 위치가 보이고 대문을 여는 속도가 15% 증가합니다.",
       "source": "https://www.identityvgame.com/kr/news/announcement/20220630/35362_1027380.html",
       "duration": "120초"
     },
@@ -2581,29 +2715,32 @@
       "name": "의학 정통",
       "tooltip": "진정제로 자신을 치료할 수 있으며, 작은 부상도 회복할 수 있습니다. 치료 도중 공격받아도 이미 채운 치료 진도는 유지됩니다.",
       "source": "https://www.identityv.jp/m/charactor/survivor.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240516/35288_1155570.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240516/35288_1155570.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "약물 증강제",
       "tooltip": "약물 증강제를 사용하면 즉시 자가 치료 진도가 35% 찹니다. 한 경기에 두 번까지 사용할 수 있습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "뛰어난 의술",
-      "tooltip": "동료를 치료하거나 진정제로 자신을 치료할 때 치료 속도가 오릅니다. 진정제로 치료를 마칠 때마다 자신을 치료할 때 받는 속도 보너스는 줄어듭니다.",
+      "tooltip": "동료를 치료할 때 치료 속도가 오릅니다. 진정제로 자신을 치료할 때는 치료 속도가 20% 증가합니다. 자가 치료를 마칠 때마다 이 보너스가 5%p씩 줄어들며, 최소 10%는 유지됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
     }
   ],
   "c68": [
     {
       "name": "루이",
-      "tooltip": "공포치를 25% 높이는 대신 최대 9초간 목각 인형 루이로 변신합니다. 변신 중에는 루이가 피해를 대신 받으며 두려움 상실을 사용할 수 있습니다. 동료가 묶인 의자 근처에 있으면 루이 변신이 더 빨리 풀립니다.",
+      "tooltip": "공포치를 25% 높이는 대신 최대 9초간 목각 인형 루이로 변신합니다. 변신 중에는 루이가 피해를 대신 받으며 두려움 상실을 사용할 수 있습니다. 생존자가 묶인 광기의 의자에서 20m 안에 있으면 루이의 남은 시간이 평소보다 160% 빠르게 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240201/35288_1135707.html",
       "duration": "최대 9초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20251120/35288_1272061.html",
       "details": [
         "두려움 상실"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "두려움 상실",
@@ -2628,7 +2765,7 @@
   "c69": [
     {
       "name": "조율",
-      "tooltip": "소리굽쇠를 두드린 뒤 박자에 맞춰 음률 교정에 성공하면 이동 속도를 높여 주는 조율 영역이 생깁니다. 잡음 교정에 성공하면 조율 영역이 더 넓어지고 이동 속도도 더 크게 오릅니다.\n조율은 최대 20초간 이어지며, 교정에 5회 성공하면 일찍 끝납니다. 교정에 성공하면 조율의 쿨타임을 최대 6초까지 줄일 수 있습니다.",
+      "tooltip": "소리굽쇠를 두드린 뒤 음률 교정에 성공하면 이동 속도를 높여 주는 조율 영역이 생깁니다. 잡음 교정에 성공하면 1초간 더 넓은 영역이 생기며, 그 안에서 이동 속도가 85% 증가합니다.\n조율은 최대 20초간 이어지며, 교정에 5회 성공하면 일찍 끝납니다. 교정에 성공하면 조율의 쿨타임을 최대 6초까지 줄일 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
       "cooldown": "47초",
       "duration": "최대 20초 · 교정 5회 성공 시 종료",
@@ -2665,12 +2802,14 @@
       "tooltip": "발사기를 설치하면 장난감 상인과 동료가 발사기를 타고 장애물을 넘어갈 수 있습니다. 장난감 상인은 착지 후 2초간 이동 속도가 오릅니다.",
       "source": "https://www.identityvgame.com/tw/news/announcement/20210623/35358_955638.html",
       "duration": "착지 후 가속 2초",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20241031/35288_1190437.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20241031/35288_1190437.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "목제 행글라이더",
       "tooltip": "공중에서 목제 행글라이더를 펼쳐 활공합니다. 같은 버튼을 다시 누르면 목제 행글라이더를 접고 내려옵니다.",
-      "source": "https://www.identityvgame.com/tw/news/announcement/20210623/35358_955638.html"
+      "source": "https://www.identityvgame.com/tw/news/announcement/20210623/35358_955638.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "애착물",
@@ -2802,11 +2941,11 @@
       "name": "조각상의 수호",
       "tooltip": "경기 시작 시 조각상의 수호 한 겹을 얻습니다. 감시자 가까이에 머물거나 감시자에게 공격받으면 조각상의 수호가 더 쌓입니다.",
       "source": "https://www.identityv.jp/news/weihu/2019/04/03/29436_807412.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250619/35288_1241796.html"
+      "timingSource": "https://www.identityvgame.com/jp/news/update/20250702/35356_1244652.html"
     },
     {
       "name": "저주의 가호",
-      "tooltip": "주술사가 치료한 동료와 주술사를 치료한 동료에게 저주의 가호를 부여합니다. 그 동료가 공격받으면 주술사에게 조각상의 수호가 쌓입니다.",
+      "tooltip": "주술사가 치료한 동료와 주술사를 치료한 동료에게 저주의 가호를 부여합니다. 그 동료가 공격받으면 주술사에게 조각상의 수호가 쌓입니다. 일반 대전에서는 동료 한 명당 최대 세 겹의 수호를 얻을 수 있습니다.",
       "source": "https://www.identityv.jp/news/weihu/2019/04/03/29436_807412.html",
       "details": [
         "조각상의 수호"
@@ -2821,20 +2960,21 @@
   "c75": [
     {
       "name": "응원",
-      "tooltip": "응원수술을 흔들면 4초간 이동 속도가 70% 증가합니다. 가속이 끝난 직후에는 이동 속도가 잠시 감소합니다.\n응원은 60초마다 1회씩 충전되며, 최대 2회까지 모아 둘 수 있습니다.",
+      "tooltip": "응원수술을 흔들면 4초간 이동 속도가 70% 증가합니다. 가속이 끝나면 3.5초간 이동 속도가 30% 감소합니다. 응원은 60초마다 1회씩 충전되며 최대 2회까지 모을 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html",
-      "duration": "가속 4초",
+      "duration": "가속 4초 · 감속 3.5초",
       "charge": "60초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20240516/35288_1155570.html"
     },
     {
       "name": "격려",
-      "tooltip": "동료 한 명을 지정하고 박자에 맞춰 응원수술을 흔들면 그 동료에게 격려가 쌓입니다. 동료는 격려를 소모해 깡충깡충으로 질주하거나, 쓰러진 직후 흥분을 사용해 스스로 일어날 수 있습니다.",
+      "tooltip": "동료 한 명을 지정하고 박자에 맞춰 응원수술을 흔들면 그 동료에게 격려가 쌓입니다. 동료는 격려를 소모해 깡충깡충으로 질주하거나, 쓰러진 직후 흥분을 사용해 스스로 일어날 수 있습니다. 격려가 이어지는 동안 치어리더와 지정한 동료의 이동 속도가 4% 증가합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html",
       "details": [
         "깡충깡충",
         "흥분"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "깡충깡충",
@@ -2848,14 +2988,15 @@
       "name": "흥분",
       "tooltip": "동료가 쓰러진 뒤 3초 안에 격려 25중첩을 소모하면 스스로 일어날 수 있습니다. 같은 동료가 흥분을 다시 사용하려면 두 번째에는 35중첩, 세 번째부터는 40중첩이 필요합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html",
-      "duration": "쓰러진 뒤 3초 안에 사용",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html",
+      "activationWindow": "쓰러진 뒤 3초 안에 사용"
     },
     {
       "name": "사기 진작",
-      "tooltip": "동료에게 10초간 사기 진작을 부여합니다. 이때 동료의 주력 소지품이 쿨타임 중이면 남은 시간이 20초 줄어듭니다. 자신에게 사용하면 30초 줄어듭니다.",
+      "tooltip": "동료에게 10초간 사기 진작을 부여합니다. 이때 동료의 주력 소지품이 쿨타임 중이면 남은 시간이 20초 줄어듭니다. 자신에게 사용하면 30초 줄어듭니다. 같은 생존자에게는 한 경기에서 사기 진작을 두 번까지 사용할 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230831/35288_1107533.html",
-      "duration": "적용 가능 시간 10초"
+      "duration": "적용 가능 시간 10초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "기계치",
@@ -2866,8 +3007,9 @@
   "c76": [
     {
       "name": "올가미 기예",
-      "tooltip": "올가미로 동료를 끌어와 등에 업습니다. 풍선이나 의자에 묶인 동료를 맞히면 그대로 구출하고, 감시자를 맞히면 감시자 너머로 넘어갑니다.",
-      "source": "https://www.identityv.jp/m/charactor/survivor.html"
+      "tooltip": "올가미로 동료를 끌어와 등에 업거나, 의자에 묶인 동료를 구출할 수 있습니다. 감시자에게 맞히면 감시자 너머로 넘어갑니다. 풍선에 묶인 동료에게 끝까지 조준해 맞히면 동료를 끌어와 구출합니다. 충분히 조준하지 않고 맞히면 몸부림 진도가 15% 오릅니다.",
+      "source": "https://www.identityv.jp/m/charactor/survivor.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "보호본능",
@@ -2889,12 +3031,13 @@
   "c77": [
     {
       "name": "크리켓 배트",
-      "tooltip": "크리켓 배트로 타격을 사용해 크리켓볼을 치면 감시자를 밀어냅니다. 폭발 상태에서는 밀려난 감시자가 벽에 부딪히면 기절합니다.",
+      "tooltip": "크리켓 배트로 타격을 사용해 크리켓볼을 치면 감시자를 밀어냅니다. 폭발 상태에서는 밀려난 감시자가 벽에 부딪히면 기절합니다. 크리켓볼을 모두 쓰면 배트를 다른 소지품으로 바꿀 수 있습니다.",
       "source": "https://www.identityv.jp/news/weihu/2020/12/30/29436_924709.html",
       "details": [
         "타격",
         "폭발"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "타격",
@@ -2946,19 +3089,22 @@
     },
     {
       "name": "연기 구역",
-      "tooltip": "탈출 마스터가 연기 구역의 경계를 넘어가면 이동 속도가 잠시 증가합니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html"
+      "tooltip": "연기 구역에 들어가거나 구역을 벗어나면 1초간 이동 속도가 35% 증가합니다. 이 효과는 3.5초마다 한 번 발동합니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html",
+      "duration": "가속 1초"
     },
     {
       "name": "탈출 마술",
-      "tooltip": "연기 화로를 놓아둔 의자에 동료가 묶이면 5초 안에 그 동료를 다른 의자로 옮길 수 있습니다. 지하실 의자에 묶인 동료는 옮길 수 없으며, 탈출 마술로 옮긴 동료는 잠시 구출할 수 없습니다.\n연기 화로를 다시 쓰려면 20초가 걸립니다.",
+      "tooltip": "연기 화로를 놓아둔 의자에 동료가 묶이면 5초 안에 47m 이내의 다른 의자로 옮길 수 있습니다. 이동 중에는 탈락 진도가 멈추고, 옮긴 뒤 7초간은 구출할 수 없습니다. 지하실 의자에 묶인 동료는 옮길 수 없으며 연기 화로는 20초 뒤에 다시 쓸 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20250522/35288_1236038.html",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250910/35288_1258597.html",
+      "duration": "구출 제한 7초"
     },
     {
       "name": "이중 교란",
       "tooltip": "일반 공격 한 번에 해당하는 피해나 그보다 큰 피해를 처음 받을 때, 연기 화로에서 나온 연기가 피해를 막아 줍니다. 동시에 탈출 마스터가 앞으로 짧게 이동합니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20250522/35288_1236038.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20250522/35288_1236038.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "상황 예측",
@@ -2969,7 +3115,7 @@
   "c79": [
     {
       "name": "자석",
-      "tooltip": "감시자에게 운석 자석을 던져 붙인 뒤 극성을 바꾸면 감시자를 밀어내거나 끌어당길 수 있습니다. 감시자는 그 힘에 밀리거나 끌려가다 벽에 부딪히면 기절합니다. 운석 자석이 붙은 대상의 극성은 최대 20초간 유지됩니다.\n운석 자석은 70초마다 1개씩 충전되며, 최대 3개까지 모아 둘 수 있습니다.",
+      "tooltip": "감시자에게 운석 자석을 던져 붙인 뒤 극성을 바꾸면 감시자를 밀어내거나 끌어당길 수 있습니다. 감시자는 그 힘에 밀리거나 끌려가다 벽에 부딪히면 기절합니다. 운석 자석이 붙은 대상의 극성은 최대 20초간 유지됩니다.\n운석 자석은 70초마다 1개씩 충전되며, 최대 3개까지 모아 둘 수 있습니다.\n감시자 반경 18m 안에 탐사원 외의 생존자가 있으면 자석으로 감시자를 끌어당겨 기절시키는 시간이 38% 줄어듭니다.",
       "source": "https://www.identityvgame.com/jp/news/update/20210723/35356_955792.html",
       "charge": "70초",
       "duration": "극성 최대 20초",
@@ -3007,7 +3153,7 @@
   "c80": [
     {
       "name": "물레타 기술",
-      "tooltip": "앞으로 돌진해 물레타로 휩쓸기를 사용합니다. 휩쓸기가 이어지는 0.5초 동안 대부분의 피해와 방해 효과를 막습니다. 휩쓸기가 감시자에게 적중하면 감시자를 밀어내며 한 번 더 돌진합니다. 이후에는 발놀림 교란으로 동료도 보호할 수 있습니다.\n물레타 기술은 70초마다 1회씩 충전되며, 최대 2회까지 모아 둘 수 있습니다.",
+      "tooltip": "앞으로 돌진해 물레타로 휩쓸기를 사용합니다. 휩쓸기가 이어지는 0.5초 동안 대부분의 피해와 방해 효과를 막습니다. 감시자를 맞히면 밀어내고 이동 속도를 40% 낮춘 뒤 한 번 더 돌진합니다. 이후에는 발놀림 교란으로 동료도 보호할 수 있습니다. 물레타 기술은 70초마다 1회씩 충전되며 최대 2회까지 모을 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260205/35288_1285646.html",
       "charge": "70초",
       "duration": "휩쓸기 0.5초",
@@ -3023,17 +3169,18 @@
     },
     {
       "name": "망토 유인",
-      "tooltip": "투지가 가득 차면 다음 판자나 창틀을 빠르게 넘으면서 그 자리에 6초간 물레타를 남깁니다. 물레타를 본 감시자는 그쪽으로 끌려가 같은 판자나 창틀을 넘습니다.",
+      "tooltip": "감시자에게 쫓기는 동안 물레타 기술을 쓰면 투지를 얻습니다. 투지를 100 모으면 망토 유인을 한 번 쓸 수 있으며, 한 경기에 두 번까지 얻을 수 있습니다. 망토 유인을 사용하면 다음 판자나 창틀을 빠르게 넘으면서 그 자리에 6초간 물레타를 남깁니다. 물레타를 본 감시자는 그쪽으로 끌려가 같은 판자나 창틀을 넘습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260205/35288_1285646.html",
       "duration": "남겨 둔 천 6초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260416/35288_1296458.html"
     },
     {
       "name": "생사의 순간",
-      "tooltip": "판자와 창틀을 빠르게 넘습니다. 다만 가까운 거리에서 감시자가 공격하면 투우사의 이동 속도가 1.5초간 감소합니다.",
+      "tooltip": "판자와 창틀을 빠르게 넘습니다. 가까이 있는 감시자가 공격하면 투우사의 이동 속도가 1.5초간 15% 감소합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20260205/35288_1285646.html",
       "duration": "감속 1.5초",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20260702/35288_1306387.html",
+      "cooldownStatus": "triggerUnknown"
     }
   ],
   "c81": [
@@ -3049,19 +3196,22 @@
     {
       "name": "폭로 진행도",
       "tooltip": "감시자 곁에 머무르면 폭로 진행도가 차고 멀어지면 줄어듭니다. 진행도가 가득 차거나 은신 중 큰 동작을 하면 흔적 감추기의 은신이 풀립니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html",
+      "cooldownStatus": "triggerUnknown"
     },
     {
       "name": "아로마 스틱",
-      "tooltip": "아로마 스틱을 휘두른 방향에 가짜 향 흔적이 3초간 남습니다. 흔적 감추기를 다시 쓸 수 없는 동안 아로마 스틱을 휘두르면 흔적 감추기의 남은 쿨타임이 7초 줄어듭니다.",
+      "tooltip": "아로마 스틱을 휘두른 방향에 가짜 향 흔적이 3초간 남습니다. 흔적 감추기의 쿨타임 중에 아로마 스틱을 사용하면 남은 쿨타임이 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html",
       "duration": "향 흔적 3초",
-      "timingSource": "https://www.identityvgame.com/en/news/announcement/20250619/35288_1241796.html"
+      "timingSource": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "묘수",
       "tooltip": "해독 진도가 10% 미만인 해독기에서 해독을 시작하면 즉시 진도가 10%까지 오릅니다. 다른 생존자가 해독하고 있지 않은 해독기를 지정하면, 그곳에 쌓인 진도를 소모해 자신이 해독 중인 해독기의 속도를 높입니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20240620/35288_1162170.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "난국",
@@ -3116,7 +3266,7 @@
     },
     {
       "name": "수전증",
-      "tooltip": "혼자 있을 때는 판자를 내리는 속도가 느립니다. 동료가 가까이 있으면 평소 속도로 판자를 내릴 수 있고, 판자에 맞은 감시자는 더 오래 기절합니다.",
+      "tooltip": "12.7m 안에 동료가 없으면 판자를 내리는 속도가 20% 감소합니다. 동료가 있으면 평소 속도로 판자를 내리며, 판자에 맞은 감시자는 20% 더 오래 기절합니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20230727/35288_1101150.html"
     }
   ],
@@ -3130,7 +3280,8 @@
         "최면 강화",
         "실낙원",
         "최면 해제"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "최면 강화",
@@ -3175,7 +3326,7 @@
     },
     {
       "name": "행운아",
-      "tooltip": "소지품 두 개를 함께 들고 다니며 가까운 상자의 위치를 확인할 수 있습니다. 행운보따리뿐 아니라 상자를 열 때도 소원을 빌 수 있습니다.",
+      "tooltip": "소지품 두 개를 함께 들고 다니며 가까운 상자의 위치를 확인할 수 있습니다. 행운보따리뿐 아니라 상자를 열 때도 소원을 빌 수 있습니다. 상자를 열 때마다 다음 상자를 여는 데 걸리는 시간이 2.5초씩 늘어납니다. 최대 7.5초까지 늘어납니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20210916/35288_972613.html",
       "details": [
         "소원"
@@ -3203,7 +3354,8 @@
       ],
       "terms": [
         "붓과 캔버스"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "그리기",
@@ -3235,12 +3387,13 @@
   "c87": [
     {
       "name": "에어백",
-      "tooltip": "에어백을 설치해 길을 막습니다. 생존자는 부푼 에어백에서 발사를 사용해 튕겨 나갈 수 있습니다. 방출로 에어백의 공기를 빼면 막혔던 길이 다시 열립니다.",
+      "tooltip": "에어백을 설치해 길을 막습니다. 생존자는 부푼 에어백에서 발사를 사용해 튕겨 나갈 수 있습니다. 방출로 에어백의 공기를 빼면 막혔던 길이 다시 열립니다. 에어백을 부풀리는 동안에는 생존자가 밀려나지 않습니다. 남은 에어백이 없으면 다른 소지품으로 바꿀 수 있습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20240430/35288_1152811.html",
       "details": [
         "발사",
         "방출"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "발사",
@@ -3268,7 +3421,7 @@
   "c88": [
     {
       "name": "인물 투영",
-      "tooltip": "환등기로 자신을 고정하면 상황 투영과 위치 투영이 함께 발동하고, 동료를 고정하면 상황 투영만 적용됩니다. 기본 고정 시간은 자신에게 쓰면 9초, 동료에게 쓰면 8초입니다. 고정된 생존자가 일반 공격에 맞으면 즉시 고정이 풀립니다.",
+      "tooltip": "환등기로 자신을 고정하면 상황 투영과 위치 투영이 함께 발동하고, 동료를 고정하면 상황 투영만 적용됩니다. 기본 고정 시간은 자신에게 쓰면 9초, 동료에게 쓰면 8초입니다. 고정된 생존자가 일반 공격에 맞으면 즉시 고정이 풀립니다.\n같은 동료에게 인물 투영을 두 번까지 쓸 수 있습니다. 생존자가 묶인 의자에서 20m 안에 있으면 고정 시간이 75% 줄어듭니다. 대문에 전력이 들어오거나 지하 통로가 열리면 고정 시간이 절반으로 줄어듭니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251011/35288_1264165.html",
       "duration": "기본 본인 9초 · 동료 8초",
       "timingSource": "https://www.identityvgame.com/en/news/announcement/20260129/35288_1284409.html",
@@ -3278,11 +3431,12 @@
       ],
       "terms": [
         "환등기"
-      ]
+      ],
+      "cooldownStatus": "unknown"
     },
     {
       "name": "상황 투영",
-      "tooltip": "인물 투영으로 고정된 동안 받은 일부 스킬 피해와 강한 방해 효과는 고정이 풀리는 순간 적용됩니다.",
+      "tooltip": "인물 투영으로 고정된 동안 받은 일부 스킬 피해와 강한 방해 효과는 고정이 풀리는 순간 적용됩니다. 사진사의 사진 속 세계가 닫힐 때 받는 피해와 파멸의 바퀴의 가시 피해는 상황 투영으로 미룰 수 없습니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251011/35288_1264165.html"
     },
     {
@@ -3294,7 +3448,8 @@
       "name": "정물 투영",
       "tooltip": "환등기로 해독기나 탈출구 스위치의 진도를 20초간, 의자의 진도를 5초간 고정합니다. 고정된 동안에도 해독·개방·탈락 진도는 계속 쌓이며, 고정이 풀리면 그만큼 한꺼번에 반영됩니다.",
       "source": "https://www.identityvgame.com/en/news/announcement/20251011/35288_1264165.html",
-      "duration": "해독기·탈출구 20초 · 의자 5초"
+      "duration": "해독기·탈출구 20초 · 의자 5초",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "광학 착시",
@@ -3312,13 +3467,15 @@
   "c89": [
     {
       "name": "탈출용 갈고리",
-      "tooltip": "탈출용 갈고리를 장애물에 걸면 몸이 그쪽으로 끌려갑니다. 얇은 장애물의 꼭대기에 걸면 그대로 넘어가고, 다른 면에 걸면 장애물을 발로 차고 바라보는 방향으로 뛰어오릅니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html"
+      "tooltip": "탈출용 갈고리를 장애물에 걸면 몸이 그쪽으로 끌려갑니다. 얇은 장애물의 꼭대기에 걸면 그대로 넘어가고, 다른 면에 걸면 장애물을 발로 차고 바라보는 방향으로 뛰어오릅니다. 갈고리를 쏘기 전에 동작이 끊기면 사용 횟수를 돌려받습니다. 갈고리 사용 중에 공격을 받으면 피해는 입지만 이동은 이어집니다.",
+      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "유대",
       "tooltip": "심리학자가 가까이 있으면 그쪽으로 빠르게 달려갈 수 있습니다. 심리학자도 유대로 환자에게 달려올 수 있습니다.",
-      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html"
+      "source": "https://www.identityvgame.com/en/news/announcement/20210812/35288_965839.html",
+      "cooldownStatus": "unknown"
     },
     {
       "name": "애착",

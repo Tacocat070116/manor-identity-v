@@ -348,3 +348,7 @@ small{font-size:var(--text-body)}button:disabled{cursor:default;opacity:.45}butt
 @media (max-width:380px){
  .compare-column .statistics-metrics.compact{grid-template-columns:minmax(0,1fr)}
 }
+
+.skill-cooldown-details{margin-top:1rem}
+.skill-cooldown-details summary{cursor:pointer;font-weight:700}
+.skill-cooldown-details p{margin:.5rem 0 0}

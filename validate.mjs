@@ -163,10 +163,18 @@ for(const [id,skills] of Object.entries(skillData)){
   for(const url of [skill.source,skill.timingSource].filter(Boolean))assert.equal(new URL(url).protocol,'https:',id+' skill reference');
   if(skill.cooldown)assert.match(skill.cooldown,/^\d+(?:\.\d+)?초$/,id+' plain cooldown for '+skill.name);
   const described=new Set(skill.tooltip.match(/\d+(?:\.\d+)?초/g));
-  for(const timing of [skill.charge,skill.duration].filter(Boolean)){
+  // A delay, an input window and a lasting effect are different timings in the tooltip.
+  for(const key of ['charge','duration','castTime','damageDelay','activationWindow']){
+   if(!Object.hasOwn(skill,key))continue;
+   const timing=skill[key];
+   assert.ok(typeof timing==='string'&&/\d/.test(timing),id+' '+key);
    for(const time of timing.match(/\d+(?:\.\d+)?초/g)||[])assert.ok(described.has(time),id+' missing '+time+' in '+skill.name);
   }
-  for(const key of ['cooldown','charge','duration'])if(Object.hasOwn(skill,key))assert.ok(typeof skill[key]==='string'&&/\d/.test(skill[key]),id+' '+key);
+  if(Object.hasOwn(skill,'cooldown'))assert.ok(skill.cooldown,id+' empty cooldown');
+  if(Object.hasOwn(skill,'cooldownStatus')){
+   assert.ok(!skill.cooldown,id+' unverified cooldown has a numeric badge');
+   assert.ok(['unknown','durationUnknown','triggerUnknown'].includes(skill.cooldownStatus),id+' invalid cooldown status');
+  }
  }
 }
 function checkSkillGuide(id,skills,html,escape){
@@ -175,6 +183,10 @@ function checkSkillGuide(id,skills,html,escape){
  for(const skill of skills){
   for(const term of [...skill.name.split(/\s*·\s*/),...(skill.terms||[])])assert.ok(terms.has(escape(term)),id+' missing tooltip emphasis '+term);
  }
+ const expectedNotes=skills.filter(skill=>skill.cooldownStatus);
+ const notes=html.match(/<details class="skill-cooldown-details">([\s\S]*?)<\/details>/)?.[1]||'';
+ assert.equal(Boolean(notes),expectedNotes.length>0,id+' cooldown disclosure visibility');
+ for(const skill of expectedNotes)assert.ok(notes.includes(escape(skill.name)),id+' missing cooldown status for '+skill.name);
  const nested=new Set(skills.flatMap(s=>s.details||[]));
  const roots=skills.filter(s=>!nested.has(s.name));
  const cards=[...html.matchAll(/<article class="skill-entry"[^>]*>([\s\S]*?)<\/article>/g)].map(match=>match[1]);
