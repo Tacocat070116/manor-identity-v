@@ -106,7 +106,7 @@ async function ensureGuides(){
  for(const c of data.characters)for(const [key,value] of Object.entries(c))if(!Object.hasOwn(byId[c.id],key))byId[c.id][key]=value;
  db.matchups=data.matchups;db.links=data.links;
 }
-const loadCharacterSkills=cachedJSON('character-skills.json?v=4a18ae17cc75','캐릭터 스킬을 불러오지 못했습니다.');
+const loadCharacterSkills=cachedJSON('character-skills.json?v=619f2a4841a5','캐릭터 스킬을 불러오지 못했습니다.');
 const loadMatches=cachedJSON('matches.json?v=d7d33990fe4f','경기 자료를 불러오지 못했습니다.');
 const loadBans=cachedJSON('bans.json?v=f1ed94886731','밴 자료를 불러오지 못했습니다.');
 const loadDetails=cachedJSON('tournament-details.json?v=e06de6ad145b','세부 대회 기록을 불러오지 못했습니다.',value=>expandTournamentDetails(value));
@@ -192,7 +192,7 @@ function header(){
  navigationController=mountNavigation($('#header'),{icon});
  navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});
 }
-function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>공략 검토 ${db.meta.reviewedAt} · 상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">로그인</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
+function footer(){$('#footer').innerHTML=`<div class="site-footer"><div><div class="footer-brand">MANOR</div><p>제5인격 비공식 팬 가이드 · <a href="#v=patchnotes">${esc(releaseLabel(releaseLog))}</a><br>캐릭터 이미지 및 게임 저작권 © NetEase. 공식 서비스가 아닙니다.</p></div><div><p>상성 검토 ${db.meta.matchupReviewedAt||db.meta.reviewedAt}<br>게임 반영 ${esc(db.meta.gamePatchDate)} · 경기 자료 ${db.meta.recordLatest}<br>게임 공지는 확인 후 수동으로 반영합니다.</p></div><div class="footer-links"><a href="#v=recovery">로그인</a><a href="#v=patchnotes">MANOR 업데이트</a></div></div>`;}
 function updateReleaseNotes(){const root=$('#release-results');if(root)root.innerHTML=releaseNotesList(releaseLog,releaseFilters);}
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
 function refreshFavoriteDisplay(){
@@ -305,18 +305,7 @@ function skillPanel(c){
    ${paragraphs(skill.tooltip)}
    ${notes?`<dl class="skill-definitions">${notes}</dl>`:''}</article>`;
  };
- const statusLabels = [
-  ['unknown', '기본 쿨타임 미확인'],
-  ['durationUnknown', '대기시간은 있지만 정확한 시간은 미확인'],
-  ['triggerUnknown', '조건 충족 후 다시 발동하기까지의 시간 미확인']
- ];
- const statusRows = statusLabels.flatMap(([status, label]) => {
-  const names = entries.filter(skill => skill.cooldownStatus === status).map(skill => esc(skill.name));
-  return names.length ? [`<p><strong>${label}</strong> · ${names.join(', ')}</p>`] : [];
- });
- const cooldownNotes = statusRows.length
-  ? `<details class="skill-cooldown-details"><summary>쿨타임 확인이 필요한 스킬</summary>${statusRows.join('')}</details>` : '';
- return `<section class="guide-sheet skill-sheet" data-skill-terms="${esc(terms)}"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div>${cooldownNotes}</section>`;
+ return `<section class="guide-sheet skill-sheet" data-skill-terms="${esc(terms)}"><div class="sheet-heading"><h2>${icon('book')}스킬 정보</h2></div><div class="skill-entries">${skills.map(card).join('')}</div></section>`;
 }
 function characterPage(){
  const c=char(state.character);state.character=c.id;
@@ -341,7 +330,7 @@ function characterPage(){
  </header>
  <nav class="profile-tabs" aria-label="캐릭터 상세">${tabs.map(([tab,label])=>`<a href="${route({v:'character',c:c.id,tab})}" ${state.tab===tab?'aria-current="page"':''}>${label}</a>`).join('')}</nav>
  <div id="character-content">${content}</div>
- <div class="profile-reviewed"><span>공략 검토 <time>${esc(c.reviewedAt)}</time></span>${c.gamePatchDate?`<span>게임 반영 <time>${esc(c.gamePatchDate)}</time></span>`:''}</div></article>`;
+ ${c.gamePatchDate?`<div class="profile-reviewed"><span>게임 반영 <time>${esc(c.gamePatchDate)}</time></span></div>`:''}</article>`;
 }
 function characterHeading(c){return `<div class="character-heading"><button class="character-portrait" data-action="character" data-id="${c.id}" aria-label="${esc(c.name)} 공략 보기">${portrait(c)}</button><div class="character-identity"><h3 class="character-name"><a href="${route({v:'character',c:c.id})}">${esc(c.name)}</a></h3><div class="tag-row">${specialtyTags(c)}</div></div></div>`;}
 function synergyDetails(l){
