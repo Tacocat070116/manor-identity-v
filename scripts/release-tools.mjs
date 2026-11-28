@@ -141,7 +141,7 @@ export function refreshPackage(root=process.cwd()){
    if(relative.startsWith('google-return.'))continue;
    if(coreData.has(relative)||/\.(?:js|css|svg)$/.test(relative))offline.push(relative+'?v='+digest.slice(0,12));
   }
-  const arcadeAssets=['manor-night.png','cast-motion.png','skill-motion.png','pixel.woff'].map(name=>'assets/arcade/'+name);
+  const arcadeAssets=['manor-night.png','cast-motion.png','skill-motion.png','gardener-portrait.png','pixel.woff'].map(name=>'assets/arcade/'+name);
   const fixed=['fallback.svg','manifest.webmanifest',...arcadeAssets,...['180','192','512'].map(size=>'assets/brand/manor-v-'+size+'.png')];
   const files=[...offline,'index.html',...fixed].sort();
   const index=path.join(dist,'index.html');

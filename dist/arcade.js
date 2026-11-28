@@ -50,7 +50,7 @@ export function mountArcade(root) {
     <div class="px-meter" hidden aria-hidden="true"><div class="px-track"><i class="px-zone"></i><i class="px-marker"></i></div><span class="px-meter-label"></span></div>
    </div>
    <div class="px-console">
-    <div class="px-portrait" aria-hidden="true"><i class="cast-cell"></i></div>
+    <div class="px-portrait" aria-hidden="true"></div>
     <div class="px-dialogue" role="status" aria-live="polite" aria-atomic="true"><strong></strong><span></span></div>
     <div class="px-inputs"><button type="button" class="px-button px-primary"></button><div class="px-lanes" hidden><button type="button" class="px-button" data-side="left">◀ 왼쪽</button><button type="button" class="px-button" data-side="right">오른쪽 ▶</button></div></div>
    </div>
