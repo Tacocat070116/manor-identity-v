@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {encounters, shuffleEncounters} from './dist/arcade-events.js';
+import {encounters, shuffleEncounters, dealStages} from './dist/arcade-events.js';
 import {mountArcade, encounterTiming} from './dist/arcade.js';
 
 class Element {
@@ -58,7 +58,7 @@ function setup() {
 
 test('each deck deals every encounter exactly once and changes between games',()=>{
  const names=encounters.map(e=>e.hunter+'/'+e.name);
- assert.equal(new Set(names).size,24);
+ assert.equal(new Set(names).size,38);
  assert.equal(new Set(encounters.map(e=>e.kind)).size,5);
  const first=shuffleEncounters(()=>0), last=shuffleEncounters(()=>.999);
  assert.deepEqual(new Set(first),new Set(encounters));
@@ -67,26 +67,29 @@ test('each deck deals every encounter exactly once and changes between games',()
  assert.notEqual(shuffleEncounters(()=>0,first[0].kind)[0].kind,first[0].kind);
 });
 
-test('a single run plays all 24 events, including fusion, hold, reverse and double inputs',()=>{
- const x=setup(), seen=new Set();
+test('a full deck plays 30 solo encounters and every stage of eight branching routes',()=>{
+ const x=setup(), seen=new Set();let total=0,stagesPlayed=0;
  x.touch();
- for(let round=1;round<=24;round++){
+ while(Number(x.el('[data-round]').textContent)<=encounters.length){
+  assert.ok(++stagesPlayed<=48);
   assert.equal(x.phase(),'warning');
   const board=x.el('.px-cabinet'), {kind,variant}=board.dataset;
   if(variant==='fusion')assert.equal(x.el('[data-name]').textContent,'조각상');
   x.advance(2500);
   assert.equal(x.phase(),'active');
   const title=x.el('[data-name]').textContent;
-  seen.add(title);
+  const label=x.el('[data-hunter]').textContent;
+  seen.add(label.includes(' · ')?label.split(' · ')[0]:title);
   if(variant==='fusion')assert.equal(title,'숭고의 형상');
   const encounter=encounters.find(e=>e.name===title);
-  const timing=encounterTiming(encounter,round);
+  const window=encounterTiming(encounter,Number(x.el('[data-round]').textContent)).window;
   assert.equal(board.dataset.effect,encounter.effect);
   assert.equal(board.dataset.performance,'strike');
+  total+=['beat','gauge'].includes(kind)?2:1;
   if(kind==='lane')x.touch(board.dataset.side);
   else if(kind==='hold')x.touch(null,700);
   else if(kind==='dodge'){
-   x.advance(timing.hitAt+10);assert.equal(board.dataset.ready,'yes');x.touch();
+   x.advance(parseFloat(board.style['--travel'])-window+10);assert.equal(board.dataset.ready,'yes');x.touch();
   }
   else {
    const stages=variant==='double'?2:1;
@@ -102,9 +105,9 @@ test('a single run plays all 24 events, including fusion, hold, reverse and doub
   assert.equal(board.dataset.hit,'yes',title);
   x.advance(1200);
  }
- assert.equal(seen.size,24);assert.equal(x.el('[data-round]').textContent,'25');
+ assert.equal(stagesPlayed,48);assert.equal(seen.size,38);assert.equal(x.el('[data-round]').textContent,'39');
  assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 3개');
- assert.equal(x.el('[data-score]').textContent,'30');
+ assert.equal(Number(x.el('[data-score]').textContent),total);
  x.dispose();
  assert.equal(x.timers.size+x.frames.size,0);
  assert.equal(x.doc.documentElement.dataset.arcade,undefined);
@@ -129,7 +132,7 @@ test('background suspends the same encounter and each early touchscreen input co
 
 test('dodge opens at impact and closes at the deadline, including between animation frames',t=>{
  t.mock.method(Math,'random',()=>.999);
- const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1);
+ const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1,.86+.999*.30);
  for(const [delay,hit] of [[0,false],[timing.hitAt-1,false],[timing.hitAt,true],[timing.duration-1,true],[timing.duration,false]]){
   const x=setup();x.touch();x.advance(2500);
   assert.equal(x.el('.px-cabinet').dataset.effect,'statue');
@@ -140,7 +143,7 @@ test('dodge opens at impact and closes at the deadline, including between animat
 });
 
 test('the higher speed has a playable floor and previous records are shown separately',t=>{
- for(const e of encounters){
+ for(const e of encounters.filter(e=>!e.stages)){
   const first=encounterTiming(e,1), last=encounterTiming(e,21);
   assert.ok(last.duration<first.duration);
   assert.deepEqual(encounterTiming(e,90),last);
@@ -154,4 +157,48 @@ test('the higher speed has a playable floor and previous records are shown separ
  const x=setup();
  assert.equal(x.el('[data-best]').textContent,'7');assert.match(x.el('[data-legacy]').textContent,/81점/);
  x.dispose();
+});
+
+
+test('every route has achievable alternatives with different second or opening actions',()=>{
+ const routes=encounters.filter(card=>card.stages);
+ assert.equal(routes.length,8);
+ for(const card of routes){
+  const first=dealStages(card,()=>0),last=dealStages(card,()=>.999);
+  assert.ok(first.length>=2&&first.length<=3);
+  assert.ok(first.every(m=>m&&encounters.includes(m)&&!m.stages));
+  assert.notDeepEqual(first,last);
+  assert.ok(new Set(first.map(m=>m.kind)).size>=2);
+ }
+});
+
+test('resuming an interrupted warning retains its cues and orientation',()=>{
+ const x=setup();x.touch();
+ const board=x.el('.px-cabinet');
+ const state=()=>[board.dataset.facing, board.dataset.side,board.style['--tell'],x.el('[data-name]').textContent];
+ const before=state();
+ x.doc.hidden=true;x.doc.emit('visibilitychange');x.doc.hidden=false;
+ x.touch();assert.equal(x.phase(),'warning');assert.deepEqual(state(),before);
+ x.dispose();
+});
+
+test('a pending attack survives pause and failing it ends the route with one lost heart',t=>{
+ const route=encounters.find(card=>card.name==='판자 뒤의 매복');
+ function generator(seed){
+  return ()=>((seed=(Math.imul(1664525,seed)+1013904223)>>>0)/4294967296);
+ }
+ let seed=1;
+ while(seed<10000 && shuffleEncounters(generator(seed))[0]!==route)seed++;
+ assert.ok(seed<10000);
+ t.mock.method(Math,'random',generator(seed));
+ const x=setup();x.touch();x.advance(2200);
+ const board=x.el('.px-cabinet');x.touch(board.dataset.side);
+ assert.equal(x.phase(),'result');assert.equal(x.el('[data-score]').textContent,'1');
+ x.doc.hidden=true;x.doc.emit('visibilitychange');x.advance(5000);
+ x.doc.hidden=false;x.touch();assert.equal(x.phase(),'warning');
+ assert.match(x.el('[data-hunter]').textContent,/판자 뒤의 매복 · 2\/2/);
+ x.touch();x.advance(1200);
+ assert.equal(x.el('[data-round]').textContent,'2');
+ assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 2개');
+ assert.equal(x.el('[data-score]').textContent,'1');x.dispose();
 });

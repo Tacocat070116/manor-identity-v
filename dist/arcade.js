@@ -1,8 +1,9 @@
-import {encounters, shuffleEncounters} from './arcade-events.js?v=84efb89a5679';
+import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=a8645d857f6f';
 
 // Row order matches the six-frame effect atlas. Michiko and the tentacle also have full-size cast animations.
 const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
  'water','fence','cat','trap','wax-drop','cipher','puppet','bell','note','butterfly'];
+const extraRows=['camera','umbrella','soul','wheel','pallet','gate'];
 const storageKey = 'manor-arcade-surprise-nightmare-v1';
 const oldStorageKey = 'manor-arcade-surprise-best-v1';
 const actions = {dodge:'데하',hold:'바라보기',lane:'방향 선택',gauge:'교정',beat:'박자 맞히기'};
@@ -16,14 +17,14 @@ function savedBest(key=storageKey) {
  } catch { return 0; }
 }
 
-export function encounterTiming(encounter, round) {
+export function encounterTiming(encounter, round, pace=1) {
  const level=Math.min(20,Math.max(0,round-1));
- const sweep=1660-level*23;
+ const sweep=Math.round((1660-level*23)*pace);
  const width=(encounter.kind==='beat'?.056:.061)-level*.00095;
  const impact={statue:.59,fog:.55,chain:.56,web:.48,tentacle:.60,lizard:.63,mirror:.58};
  const window=245-level*4;
- const hitAt=Math.round((360-level*4)*(impact[encounter.effect]||.55)/.55);
- const duration={dodge:hitAt+window,hold:560-level*8,lane:855-level*16,gauge:sweep,beat:sweep-80}[encounter.kind];
+ const hitAt=Math.round(pace*(360-level*4)*(impact[encounter.effect]||.55)/.55);
+ const duration={dodge:hitAt+window,hold:560-level*8,lane:Math.round((855-level*16)*pace),gauge:sweep,beat:sweep-80}[encounter.kind];
  return {duration,hitAt,window,width,hold:encounter.variant==='long'?630:480,
   tell:Math.max(430,760-level*14)+(encounter.variant==='fusion'?215:0)};
 }
@@ -42,9 +43,9 @@ export function mountArcade(root) {
     <div class="px-signpost" hidden><span data-hunter></span><strong data-name></strong></div>
     <div class="px-fog" aria-hidden="true"></div>
     <div class="px-hazard" aria-hidden="true"></div>
-    <div class="px-hero" role="img" aria-label="공구함을 든 정원사"><i class="cast-cell"></i></div>
+    <div class="px-actors"><div class="px-hero" role="img" aria-label="공구함을 든 정원사"><i class="cast-cell"></i></div>
     <div class="px-foe" aria-hidden="true"><i class="effect-cell"></i></div>
-    <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div>
+    <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div></div>
     <span class="px-dodge-signal" aria-hidden="true">데하!</span>
     <div class="px-direction" hidden aria-hidden="true"></div>
     <div class="px-meter" hidden aria-hidden="true"><div class="px-track"><i class="px-zone"></i><i class="px-marker"></i></div><span class="px-meter-label"></span></div>
@@ -55,7 +56,7 @@ export function mountArcade(root) {
     <div class="px-inputs"><button type="button" class="px-button px-primary"></button><div class="px-lanes" hidden><button type="button" class="px-button" data-side="left">◀ 왼쪽</button><button type="button" class="px-button" data-side="right">오른쪽 ▶</button></div></div>
    </div>
   </section>
-  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 나비 떼 속에서 미치코가 모습을 드러내면 버튼을 길게 눌러 시선을 유지하세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다.</p><p data-legacy hidden></p></details>
+  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 나비 떼 속에서 미치코가 모습을 드러내면 버튼을 길게 눌러 시선을 유지하세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>연속 사건에서는 첫 상황을 넘기면 다음 공격이 이어집니다. 하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다.</p><p data-legacy hidden></p></details>
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
@@ -66,6 +67,7 @@ export function mountArcade(root) {
  const oldBest=savedBest(oldStorageKey);
  if(oldBest){const old=q('[data-legacy]');old.textContent='이전 난이도 최고 기록 · '+oldBest+'점';old.hidden=false;}
  let phase='idle', encounter=null, deck=[], score=0, lives=3, round=0, best=savedBest();
+ let card=null, stages=[], stageIndex=0, followUp=false;
  let timer=0, frame=0, releaseAt=0, span=0, center=.65, half=.06, beatsLeft=1, timing;
  let safeSide='', held='', heldAt=0, pausedFrom='', disposed=false, allPerfect=true;
  function setPhase(value) { phase=value; board.dataset.phase=value; }
@@ -83,10 +85,10 @@ export function mountArcade(root) {
   laneButtons.hidden=!lanes; primary.hidden=lanes; primary.textContent=label;
   if(switchFocus && !focus.getClientRects().length) (lanes?laneButtons.firstElementChild:primary).focus({preventScroll:true});
  }
- function action() { return encounter.hunter==='밀랍인형사' && encounter.kind==='hold'?'엄폐하기':actions[encounter.kind]; }
+ function action() { return encounter.kind==='hold' && encounter.effect!=='butterfly'?'엄폐하기':actions[encounter.kind]; }
  function gauge() { return encounter.kind==='gauge'||encounter.kind==='beat'; }
  function resetVisuals() {
-  delete board.dataset.hit; delete board.dataset.held; delete board.dataset.side;
+  delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.held; delete board.dataset.side;
   delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true; held='';
  }
  function setGauge() {
@@ -133,20 +135,36 @@ export function mountArcade(root) {
  function warn() {
   timingOff();resetVisuals();setPhase('warning');
   board.dataset.kind=encounter.kind;board.dataset.variant=encounter.variant;board.dataset.effect=encounter.effect;
-  board.dataset.performance='tell';timing=encounterTiming(encounter,round);
+  const stage=stages[stageIndex];
+  board.dataset.performance='tell';board.dataset.facing=stage.facing;
+  timing=encounterTiming(encounter,round,stage.pace);
   beatsLeft=encounter.variant==='double'?2:1;allPerfect=true;
-  safeSide=Math.random()<.5?'left':'right';
-  const row=effectRows.indexOf(encounter.effect);
-  if(row>=0)board.style.setProperty('--effect-row',row*100/(effectRows.length-1)+'%');
-  signpost.hidden=false;q('[data-hunter]').textContent=encounter.hunter;q('[data-name]').textContent=encounter.variant==='fusion'?'조각상':encounter.name;
+  safeSide=stage.safeSide;
+  if(encounter.kind==='lane')board.dataset.side=safeSide;
+  const extra=extraRows.includes(encounter.effect);
+  board.dataset.atlas=extra?'encounter':'skill';
+  const rows=extra?extraRows:effectRows, row=rows.indexOf(encounter.effect);
+  board.style.setProperty('--effect-row',(Math.max(0,row)*100/(rows.length-1))+'%');
+  signpost.hidden=false;
+  q('[data-hunter]').textContent=stages.length>1?card.name+' · '+(stageIndex+1)+'/'+stages.length+' · '+encounter.hunter:encounter.hunter;
+  q('[data-name]').textContent=encounter.variant==='fusion'?'조각상':encounter.name;
   buttons(action(),encounter.kind==='lane');pauseButton.hidden=false;
-  message(encounter.warning,hints[encounter.kind]);showScore();
-  const delay=timing.tell+Math.random()*480;
+  message(encounter.warning,action()==='엄폐하기'?'공격이 시작되면 길게 눌러 숨으세요.':hints[encounter.kind]);showScore();
+  const delay=Math.round(timing.tell*stage.pace)+stage.wait;
   board.style.setProperty('--tell',delay+'ms');later(trigger,delay);
  }
  function next() {
-  if(!deck.length)deck=shuffleEncounters(Math.random,encounter?.kind);
-  encounter=deck.shift();round++;warn();
+  if(!deck.length)deck=shuffleEncounters(Math.random,encounter?.kind,card);
+  card=deck.shift();round++;stageIndex=0;
+  stages=dealStages(card).map(move=>({
+   move, pace:.86+Math.random()*.30, wait:Math.floor(Math.random()*530),
+   safeSide:Math.random()<.5?'left':'right', facing:Math.random()<.5?'reverse':'normal'
+  }));
+  encounter=stages[0].move;followUp=false;warn();
+ }
+ function continueRun(){
+  if(!followUp){next();return;}
+  followUp=false;encounter=stages[++stageIndex].move;warn();
  }
  function begin() {
   lives=3;score=0;round=0;deck=[];next();
@@ -159,14 +177,17 @@ export function mountArcade(root) {
  }
  function finish(hit,label,points=1) {
   if(phase!=='active'&&phase!=='warning')return;
-  if(phase==='warning')delete board.dataset.performance;
+  if(phase==='warning')board.dataset.interrupted='yes';
   timingOff();held='';delete board.dataset.held;delete board.dataset.ready;direction.hidden=true;meter.hidden=true;
   if(hit){score+=points;saveRecord();} else lives--;
+  followUp=hit && stageIndex+1<stages.length;
+  const rest=followUp?760:Math.max(740,990-round*12);
+  board.style.setProperty('--rest',rest+'ms');
   board.dataset.hit=hit?'yes':'no';showScore();setPhase(lives?'result':'over');
-  buttons(lives?'다음 사건 대기':'다시 도전');pauseButton.hidden=!lives;
+  buttons(lives?(followUp?'다음 공격 대기':'다음 사건 대기'):'다시 도전');pauseButton.hidden=!lives;
   if(!lives){message('돌발전 종료 · '+score+'점',round+'번째 사건에서 '+label);return;}
-  message(label,hit?'+'+points+'점 · 다음 사건이 다가와요.':'하트가 하나 줄었어요.');
-  later(next,Math.max(740,990-round*12));
+  message(label,hit?'+'+points+(followUp?'점 · 다음 공격이 이어져요.':'점 · 다음 사건이 다가와요.'):'하트가 하나 줄었어요.');
+  later(continueRun,rest);
  }
  function respond(choice,source) {
   if(phase==='idle'||phase==='over'){begin();return;}
@@ -208,11 +229,11 @@ export function mountArcade(root) {
  function pause() {
   if(!stopScenes.has(phase))return;
   pausedFrom=phase;pointer=null;timingOff();resetVisuals();setPhase('paused');pauseButton.hidden=true;
-  buttons('이어서 하기');message('잠시 멈췄어요.',pausedFrom==='result'?'다음 사건부터 이어갑니다.':'이 사건부터 다시 시작합니다.');
+  buttons('이어서 하기');message('잠시 멈췄어요.',pausedFrom==='result'?(followUp?'다음 공격부터 이어갑니다.':'다음 사건부터 이어갑니다.'):'이 사건부터 다시 시작합니다.');
  }
  function resume() {
   if(doc.hidden||panelOpen())return;
-  if(pausedFrom==='result')next();else warn();
+  if(pausedFrom==='result')continueRun();else warn();
  }
  function panelOpen() {return !!doc.querySelector('dialog[open],.category-nav[data-expanded="true"]');}
  let pointer=null, swallowClick=false, pointerEnded=0;

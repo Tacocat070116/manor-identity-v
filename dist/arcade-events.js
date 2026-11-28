@@ -23,24 +23,55 @@ const entries = [
  ['우산의 영혼', '탕백', 'bell', 'gauge', '범무구가 탕혼령을 들어 올렸어요.', '종이 울렸어요! 교정하세요.', 'reverse'],
  ['해독기', '연속 교정', 'cipher', 'gauge', '해독기 바늘이 연달아 튀어요.', '교정을 두 번 연속으로 맞히세요.', 'double'],
  ['작곡가', '조율', 'note', 'beat', '작곡가가 첫 박자를 짚었어요.', '음표가 박자선에 닿으면 누르세요.'],
- ['작곡가', '두 박자 조율', 'note', 'beat', '악보에 음표 두 개가 이어져 있어요.', '두 음표를 차례대로 맞히세요.', 'double']
+ ['작곡가', '두 박자 조율', 'note', 'beat', '악보에 음표 두 개가 이어져 있어요.', '두 음표를 차례대로 맞히세요.', 'double'],
+ ['사진사', '사진관의 섬광', 'camera', 'hold', '사진사가 덮개를 걷었어요. 가림막 곁에서 기다리세요.', '플래시가 터져요! 빛이 사라질 때까지 숨으세요.'],
+ ['우산의 영혼', '날아드는 검은 우산', 'umbrella', 'dodge', '검은 우산이 허공에서 한 바퀴 돌아요.', '우산이 정원사 쪽으로 떨어져요!'],
+ ['울보', '원혼의 급습', 'soul', 'dodge', '나무 사이에 푸른 원혼이 떠올랐어요.', '원혼이 방향을 틀어 날아와요!'],
+ ['파멸의 바퀴', '가시 바퀴 돌진', 'wheel', 'lane', '철문 너머에서 바퀴 구르는 소리가 들려요.', '가시 바퀴가 길목을 덮쳐요!'],
+ ['정원사', '판자 사이로', 'pallet', 'lane', '앞서 달리던 생존자가 판자에 손을 얹었어요.', '판자가 넘어져요! 빈틈으로 달리세요.'],
+ ['탈출구', '마지막 비밀번호', 'gate', 'gauge', '철문 옆 번호판에 불이 들어왔어요.', '표시가 겹칠 때 마지막 숫자를 누르세요.']
 ];
-export const encounters = entries.map(([hunter, name, effect, kind, warning, cue, variant='']) =>
- ({hunter, name, effect, kind, warning, cue, variant}));
+const singles = entries.map(([hunter,name,effect,kind,warning,cue,variant='']) =>
+ ({hunter,name,effect,kind,warning,cue,variant}));
+const byName = new Map(singles.map(move=>[move.name,move]));
 
-export function shuffleEncounters(random=Math.random, previous='') {
- const pool = encounters.slice();
- for (let i=pool.length-1; i>0; i--) {
-  const j = Math.floor(random()*(i+1));
-  [pool[i],pool[j]] = [pool[j],pool[i]];
+// Each list is one stage. Choose its move once, so pausing never rerolls an ambush.
+const routes = [
+ ['판자 뒤의 매복', ['판자 사이로'], ['갈퀴 사슬','안개 칼날']],
+ ['암실에서 탈출', ['사진관의 섬광'], ['마지막 비밀번호','해독기 교정']],
+ ['안개 속 신호', ['해독기 교정','인형의 해독기 교정'], ['안개 칼날','원혼의 급습']],
+ ['조각상 사이의 길', ['숭고의 형상'], ['격벽','덫']],
+ ['종소리 뒤의 추격', ['탕백'], ['날아드는 검은 우산','찰나의 생멸']],
+ ['끊어진 물길', ['물고기 사냥'], ['악몽의 습격','치명 추격']],
+ ['철문 앞 추격전', ['가시 바퀴 돌진','로켓 돌진'], ['갈퀴 사슬','거울 그림자'], ['마지막 비밀번호']],
+ ['장원의 마지막 연주', ['두 박자 조율','조율'], ['소나타'], ['원혼의 급습','실 뱉기']]
+];
+const sequences=routes.map(([name,...stages])=>({
+ name, stages:stages.map(options=>options.map(key=>byName.get(key))),
+ kind:byName.get(stages[0][0]).kind, hunter:byName.get(stages[0][0]).hunter
+}));
+export const encounters=[...singles,...sequences];
+
+export function dealStages(card,random=Math.random) {
+ return card.stages ? card.stages.map(options=>options[Math.floor(random()*options.length)]) : [card];
+}
+
+export function shuffleEncounters(random=Math.random, previous='', previousCard=null) {
+ const pool=encounters.slice();
+ for(let i=pool.length-1;i>0;i--){
+  const j=Math.floor(random()*(i+1));
+  [pool[i],pool[j]]=[pool[j],pool[i]];
  }
- const deck = [];
- // Keep different controls in rotation while dealing every encounter once.
- while (pool.length) {
-  const lastKind = deck.at(-1)?.kind || previous;
-  let index = pool.findIndex(e => e.kind !== lastKind);
-  if (index < 0) index = 0;
-  deck.push(pool.splice(index,1)[0]);
+ const deck=[];
+ while(pool.length){
+  const last=deck.at(-1);
+  const wantNewKind=last ? deck.at(-2)?.kind===last.kind : !!previous;
+  const lastKind=last?.kind||previous;
+  const needSequence=deck.length>=6 && deck.slice(-6).every(card=>!card.stages);
+  const different=card=>(deck.length>0||card!==previousCard)&&(!needSequence||card.stages)&&(!last||card.hunter!==last.hunter)&&(!wantNewKind||card.kind!==lastKind);
+  let i=pool.findIndex(different);
+  if(i<0)i=pool.findIndex(card=>card.kind!==lastKind);
+  deck.push(pool.splice(Math.max(0,i),1)[0]);
  }
  return deck;
 }

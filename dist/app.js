@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=a2c6b34f4f93';
+import {loadFeature} from './feature-loader.js?v=ff73f6192ba6';
 import './typography.js?v=1f2b416d86f0';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';

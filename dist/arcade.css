@@ -48,63 +48,105 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet:not([data-phase=idle]) .px-sign {display:none}
 .px-signpost {top:13px;left:15px;padding:5px 11px 7px;background:linear-gradient(90deg,#0b141df2,#0c151cbb);border-left:2px solid #af7170;font:650 1.08rem/1.4 var(--arc-display);color:#f0ebdc}
 .px-signpost span {color:#cbccbd;font:.82rem/1.5 var(--arc-pixel)}
+/* Keep scaled poses inside the playfield, with the HUD in screen coordinates. */
+.px-actors {position:absolute;inset:5px clamp(5px,1.2cqw,12px);pointer-events:none}
+.px-cabinet[data-facing=reverse]:not([data-kind=lane]) .px-actors {transform:scaleX(-1)}
+.px-cabinet[data-phase=warning] .px-actors {animation:round-arrive 110ms ease-out both}
+.px-cabinet[data-phase=result] .px-actors {animation:round-leave var(--rest,740ms) linear both}
+@keyframes round-arrive {from{opacity:0}to{opacity:1}}
+@keyframes round-leave {0%,78%{opacity:1}100%{opacity:0}}
 .px-hero,.px-foe,.px-cast,.px-hazard,.px-dodge-signal {position:absolute;pointer-events:none}
 .px-hero {left:20%;bottom:9%;width:clamp(78px,12.4%,136px);aspect-ratio:1;z-index:2}
-.cast-cell,.effect-cell {display:block;width:100%;height:100%;background-repeat:no-repeat;image-rendering:pixelated;background-position:0 var(--row,0%);--from:0%;--to:100%}
+.cast-cell,.effect-cell {display:block;width:100%;height:100%;background-repeat:no-repeat;image-rendering:pixelated;background-position:0 var(--row,0%)}
 .cast-cell {background-image:url('assets/arcade/cast-motion.png');background-size:600% 900%}
 .effect-cell {--row:var(--effect-row,0%);background-image:url('assets/arcade/skill-motion.png');background-size:600% 2000%}
-@keyframes cells {from{background-position-x:var(--from)}to{background-position-x:var(--to)}}
-.px-hero .cast-cell {animation:cells 1s steps(6,jump-none) infinite}
+.px-cabinet[data-atlas=encounter] .effect-cell {background-image:url('assets/arcade/encounter-motion.png');background-size:600% 600%}
+/* At each stop the atlas is aligned to a whole cell, even on a partial run. */
+@keyframes cells {
+ 0%{background-position-x:0%}16.6667%{background-position-x:20%}33.3333%{background-position-x:40%}
+ 50%{background-position-x:60%}66.6667%{background-position-x:80%}83.3333%,100%{background-position-x:100%}
+}
+@keyframes effect-tell {
+ 0%{background-position-x:0%}33.3333%{background-position-x:20%}66.6667%,100%{background-position-x:40%}
+}
+@keyframes effect-strike {
+ 0%{background-position-x:40%}25%{background-position-x:60%}50%{background-position-x:80%}75%,100%{background-position-x:100%}
+}
+.px-hero .cast-cell {animation:cells 1s step-end infinite}
 .px-hero::before {content:'';position:absolute;left:22%;right:15%;bottom:2%;height:8%;border-radius:50%;background:#04080ab5;z-index:-1}
-.px-foe,.px-cast {bottom:8%;width:clamp(95px,17%,190px);aspect-ratio:1;left:63%;display:none;transform-origin:50% 85%}
+.px-foe,.px-cast {bottom:8%;--size:min(31cqw,clamp(95px,17cqw,190px));--right-edge:calc(97% - var(--size));width:var(--size);aspect-ratio:1;left:min(63%,var(--right-edge));display:none;transform-origin:50% 85%}
 .px-cast {z-index:1}
 .px-cabinet:is([data-performance=tell],[data-performance=strike]) .px-foe {display:block}
-.px-cabinet[data-performance=tell] .effect-cell {--from:0%;--to:40%;animation:cells var(--tell) steps(3,jump-none) both}
-.px-cabinet[data-performance=strike] .effect-cell {--from:20%;--to:100%;animation:cast-strike var(--travel) steps(5,jump-none) both}
-.px-cabinet:is([data-kind=gauge],[data-kind=beat])[data-performance=strike] .effect-cell {--from:0%;animation:cells .65s steps(6,jump-none) infinite}
+.px-cabinet[data-performance=tell] .effect-cell {animation:effect-tell var(--tell) step-end both}
+.px-cabinet[data-performance=strike] .effect-cell {animation:effect-strike var(--travel) step-end both}
+.px-cabinet:is([data-kind=gauge],[data-kind=beat])[data-performance=strike] .effect-cell {animation:cells .65s step-end infinite}
 .px-cabinet[data-phase=active]:is([data-kind=gauge],[data-kind=beat]) .px-hero .cast-cell {--row:100%;animation-duration:.78s}
 .px-cabinet[data-held=yes] .px-hero .cast-cell {--row:25%;animation-duration:.54s}
-.px-cabinet[data-hit=yes]:is([data-kind=dodge],[data-kind=lane]) .px-hero .cast-cell {--row:12.5%;animation:cast-strike .46s steps(6,jump-none) both}
-.px-cabinet[data-hit=no] .px-hero .cast-cell {--row:87.5%;animation:cast-strike .57s steps(6,jump-none) both}
+.px-cabinet[data-hit=yes]:is([data-kind=dodge],[data-kind=lane]) .px-hero .cast-cell {--row:12.5%;animation:cast-strike .46s step-end both}
+.px-cabinet[data-hit=no] .px-hero .cast-cell {--row:87.5%;animation:cast-strike .57s step-end both}
 .px-cabinet[data-hit=yes][data-kind=dodge] .px-hero,.px-cabinet[data-hit=yes][data-side=left] .px-hero {animation:gardener-left .49s steps(9,end) both}
 .px-cabinet[data-hit=yes][data-side=right] .px-hero {animation:gardener-right .49s steps(9,end) both}
-@keyframes gardener-left {45%{translate:-18% -6%}80%,100%{translate:-30% 0}}
-@keyframes gardener-right {45%{translate:18% -6%}80%,100%{translate:30% 0}}
+@keyframes gardener-left {45%{translate:-30% -6%}70%{translate:-30% 0}100%{translate:0 0}}
+@keyframes gardener-right {45%{translate:30% -6%}70%{translate:30% 0}100%{translate:0 0}}
 .px-cabinet[data-performance=strike]:is([data-effect=statue],[data-effect=fog],[data-effect=chain],[data-effect=web]) .px-foe {animation:incoming var(--travel) steps(16,end) both}
-@keyframes incoming {0%{left:66%;scale:.87}32%{left:59%}70%{left:33%;scale:1.08}to{left:18%}}
-.px-cabinet[data-effect=chain] .px-foe {width:clamp(110px,23%,245px)}
+@keyframes incoming {0%{left:min(63%,var(--right-edge));scale:1}32%{left:min(54%,var(--right-edge))}70%{left:33%;scale:1.08}to{left:18%}}
+.px-cabinet[data-effect=chain] .px-foe {--size:min(35cqw,clamp(110px,23cqw,245px))}
 .px-cabinet[data-effect=lizard] .px-foe {left:23%}
+.px-cabinet:is([data-effect=lizard],[data-effect=wax-drop])[data-performance=tell] .px-foe {bottom:min(50%,calc(97% - var(--size)));scale:.78}
 .px-cabinet[data-effect=lizard][data-performance=strike] .px-foe,.px-cabinet[data-effect=wax-drop][data-performance=strike] .px-foe {animation:plunge var(--travel) steps(12,end) both}
-@keyframes plunge {from{bottom:54%;scale:.7}40%{bottom:45%}75%,to{bottom:7%;scale:1}}
+@keyframes plunge {from{bottom:min(50%,calc(97% - var(--size)));scale:.78}40%{bottom:min(39%,calc(97% - var(--size)))}75%,to{bottom:7%;scale:1}}
 .px-cabinet[data-effect=mirror][data-performance=strike] .px-foe {animation:mirrored-slash var(--travel) steps(10,end) both}
+.px-cabinet[data-effect=mirror][data-performance=tell] .px-foe {left:57%;opacity:.58}
 @keyframes mirrored-slash {from{left:57%;opacity:.58}44%{left:52%;opacity:1}70%,to{left:25%;scale:1.1}}
 .px-cabinet[data-effect=tentacle] .px-foe {display:none}
-.px-cabinet[data-effect=tentacle]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;left:24%;width:clamp(150px,31%,312px);bottom:5%}
-.px-cabinet[data-effect=tentacle][data-performance=tell] .px-cast i {--row:62.5%;animation:cells var(--tell) steps(6,jump-none) both}
-.px-cabinet[data-effect=tentacle][data-performance=strike] .px-cast i {--row:75%;animation:cast-strike var(--travel) steps(6,jump-none) both}
-@keyframes cast-strike {from{background-position-x:var(--from)}to{background-position-x:var(--to)}}
-.px-cabinet[data-effect=butterfly] .px-foe {left:42%;bottom:21%;width:clamp(65px,12%,138px)}
-.px-cabinet[data-effect=butterfly][data-performance=tell] .px-foe i {--to:100%;animation:cells .52s steps(6,jump-none) infinite}
+.px-cabinet[data-effect=tentacle]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;left:24%;--size:min(51cqw,clamp(150px,31cqw,312px));bottom:5%}
+.px-cabinet[data-effect=tentacle][data-performance=tell] .px-cast i {--row:62.5%;animation:cells var(--tell) step-end both}
+.px-cabinet[data-effect=tentacle][data-performance=strike] .px-cast i {--row:75%;animation:cast-strike var(--travel) step-end both}
+@keyframes cast-strike {
+ 0%{background-position-x:0%}16.6667%{background-position-x:20%}33.3333%{background-position-x:40%}
+ 50%{background-position-x:60%}66.6667%{background-position-x:80%}83.3333%,100%{background-position-x:100%}
+}
+.px-cabinet[data-effect=butterfly] .px-foe {left:42%;bottom:21%;--size:clamp(54px,12cqw,138px)}
+.px-cabinet[data-effect=butterfly][data-performance=tell] .px-foe i {animation:cells .52s step-end infinite}
 .px-cabinet[data-effect=butterfly][data-performance=strike] .px-foe {animation:scatter .34s steps(6,end) both}
 @keyframes scatter {to{translate:28% -18%;scale:1.38;opacity:0}}
-.px-cabinet[data-effect=butterfly]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;left:57%;width:clamp(110px,20%,212px);bottom:8%}
+.px-cabinet[data-effect=butterfly]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;left:57%;--size:min(35cqw,clamp(110px,20cqw,212px));bottom:8%}
 .px-cabinet[data-effect=butterfly][data-performance=tell] .px-cast {animation:apparition var(--tell) steps(6,end) both}
-.px-cabinet[data-effect=butterfly][data-performance=tell] .px-cast i {--row:37.5%;animation:cells var(--tell) steps(6,jump-none) both}
+.px-cabinet[data-effect=butterfly][data-performance=tell] .px-cast i {--row:37.5%;animation:cells var(--tell) step-end both}
 @keyframes apparition {0%,54%{opacity:0}72%{opacity:.16}to{opacity:.58}}
 .px-cabinet[data-effect=butterfly][data-performance=strike] .px-cast {animation:geisha-lunge var(--travel) steps(12,end) both}
-.px-cabinet[data-effect=butterfly][data-performance=strike] .px-cast i {--row:50%;animation:cast-strike var(--travel) steps(6,jump-none) both}
-@keyframes geisha-lunge {0%{left:58%;opacity:.55;scale:.78}20%{opacity:1;left:53%;scale:1}66%,to{left:31%;scale:1.12}}
-.px-cabinet[data-effect=wax] .px-foe {width:clamp(110px,24%,250px);left:40%}
-.px-cabinet[data-effect=wax][data-performance=strike] .px-foe i {animation:cells .43s steps(6,jump-none) infinite}
-.px-cabinet[data-kind=lane][data-performance=strike] .px-foe {left:var(--danger-at,64%);bottom:8%}
-.px-cabinet[data-side=left] {--danger-at:64%}.px-cabinet[data-side=right] {--danger-at:14%}
-.px-cabinet[data-effect=rocket][data-performance=strike] .px-foe {animation:rocket-charge var(--travel) steps(12,end) both}
-@keyframes rocket-charge {from{left:79%;scale:.75}to{left:var(--danger-at);scale:1.1}}
-.px-cabinet:is([data-effect=violin],[data-effect=water],[data-effect=fence]) .px-foe {width:clamp(106px,21%,220px)}
+.px-cabinet[data-effect=butterfly][data-performance=strike] .px-cast i {--row:50%;animation:cast-strike var(--travel) step-end both}
+@keyframes geisha-lunge {0%{left:57%;opacity:.58;scale:1}20%{opacity:1;left:53%;scale:1}66%,to{left:31%;scale:1.12}}
+.px-cabinet[data-effect=wax] .px-foe {--size:min(37cqw,clamp(110px,24cqw,250px));left:40%}
+.px-cabinet[data-effect=wax][data-performance=strike] .px-foe i {animation:cells .43s step-end infinite}
+.px-cabinet[data-kind=lane] .px-foe {left:min(var(--danger-at,63%),var(--right-edge))}
+.px-cabinet[data-side=left] {--danger-at:64%}.px-cabinet[data-side=right] {--danger-at:14%;--lane-start:3%}
+.px-cabinet:is([data-effect=wheel],[data-effect=rocket])[data-performance=strike] .px-foe {animation:rocket-charge var(--travel) steps(12,end) both}
+.px-cabinet:is([data-effect=wheel],[data-effect=rocket])[data-performance=tell] .px-foe {left:var(--lane-start,var(--right-edge))}
+.px-cabinet:is([data-effect=wheel],[data-effect=rocket])[data-side=right] .effect-cell {transform:scaleX(-1)}
+@keyframes rocket-charge {from{left:var(--lane-start,var(--right-edge));scale:1}to{left:min(var(--danger-at,63%),var(--right-edge));scale:1.08}}
+.px-cabinet:is([data-effect=violin],[data-effect=water],[data-effect=fence]) .px-foe {--size:min(35cqw,clamp(106px,21cqw,220px))}
+.px-cabinet[data-effect=umbrella] .px-foe {bottom:28%}
+.px-cabinet[data-effect=umbrella][data-performance=strike] .px-foe {animation:umbrella-flight var(--travel) ease-in-out both}
+@keyframes umbrella-flight {
+ from{left:min(63%,var(--right-edge));bottom:28%}45%{left:44%;bottom:32%}to{left:20%;bottom:8%}
+}
+.px-cabinet[data-effect=soul] .px-foe {bottom:14%}
+.px-cabinet[data-effect=soul][data-performance=strike] .px-foe {animation:soul-flight var(--travel) ease-in-out both}
+@keyframes soul-flight {
+ from{left:min(63%,var(--right-edge));bottom:14%}35%{left:49%;bottom:22%}70%{left:32%;bottom:15%}to{left:20%;bottom:11%}
+}
+.px-cabinet[data-effect=pallet][data-performance=tell] .px-foe {bottom:16%;transform:rotate(8deg)}
+.px-cabinet[data-effect=pallet][data-performance=strike] .px-foe {animation:pallet-fall var(--travel) ease-in both}
+@keyframes pallet-fall {from{bottom:16%;transform:rotate(8deg)}55%{bottom:7%;transform:rotate(-3deg)}to{bottom:8%;transform:rotate(0deg)}}
+.px-cabinet[data-effect=camera][data-performance=strike] .px-foe {animation:camera-click .44s ease-out both}
+@keyframes camera-click {0%,100%{scale:1}38%{scale:1.07}}
+.px-cabinet[data-effect=gate] .px-foe {--size:min(32cqw,clamp(104px,20cqw,206px));bottom:5%}
 .px-hazard {display:none;bottom:3%;height:12%;width:39%;background:repeating-linear-gradient(135deg,#843f483d 0 5px,#171a2233 5px 14px);border-block:1px dashed #d59a85}
 .px-cabinet[data-kind=lane][data-phase=active] .px-hazard {display:block}
 .px-cabinet[data-side=left] .px-hazard {right:4%}.px-cabinet[data-side=right] .px-hazard {left:4%}
 .px-dodge-signal {display:none;z-index:4;left:23%;bottom:45%;padding:2px 8px;color:#fff1d5;background:#6c2933;border:1px solid #e0a18e;font:normal 1rem/1.45 var(--arc-pixel)}
+.px-cabinet[data-facing=reverse] .px-dodge-signal {left:auto;right:23%}
 .px-cabinet[data-ready=yes] .px-dodge-signal {display:block}
 .px-direction,.px-meter {position:absolute;z-index:4;left:50%;top:29%;transform:translate(-50%,-50%);color:#e8e5d5;background:#111a20f5;border:1px solid #ab9c7f;box-shadow:0 3px 10px #060b10a8;text-align:center;font:normal 1rem/1.35 var(--arc-pixel)}
 .px-direction {padding:5px 13px;white-space:nowrap}
@@ -152,4 +194,5 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
  .px-cabinet[data-performance=strike][data-kind=dodge] .px-foe {left:34%}
 }
 
+.px-cabinet[data-interrupted=yes] :is(.px-foe,.px-cast,.effect-cell,.px-cast .cast-cell),
 .px-cabinet[data-phase=paused] * {animation-play-state:paused}
