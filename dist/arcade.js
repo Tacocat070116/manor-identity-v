@@ -4,6 +4,9 @@ import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=58
 const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
  'water','fence','cat','trap','wax-drop','cipher','puppet','bell','note','butterfly'];
 const extraRows=['camera','umbrella','soul','wheel','pallet','gate'];
+// Each row contains two preparation poses and four release / follow-through poses.
+const performerRows=['statue','fog','chain','web','tentacle','mirror','wax','bomb','violin','water','fence','cat',
+ 'bell','camera','soul','wheel','puppet','note','umbrella','trap','wax-drop','rocket','lizard'];
 const storageKey = 'manor-arcade-surprise-nightmare-v1';
 const oldStorageKey = 'manor-arcade-surprise-best-v1';
 const appearanceMs=700;
@@ -31,7 +34,7 @@ export function encounterTiming(encounter, round, pace=1) {
 }
 export function preloadArcadeSprites() {
  // Decode the shared sheets before the first timed cue, including on a cold mobile cache.
- return Promise.all(['cast-motion','skill-motion','encounter-motion','gardener-portrait'].map(name=>{
+ return Promise.all(['cast-motion','cast-skills','skill-motion','encounter-motion','gardener-portrait'].map(name=>{
   const sprite=new Image();
   sprite.src=new URL('./assets/arcade/'+name+'.png',import.meta.url).href;
   return sprite.decode();
@@ -55,6 +58,7 @@ export function mountArcade(root) {
     <div class="px-fog" aria-hidden="true"></div>
     <div class="px-hazard" aria-hidden="true"></div>
     <div class="px-actors"><div class="px-hero" role="img" aria-label="공구함을 든 정원사"><i class="cast-cell"></i></div>
+    <div class="px-performer" hidden aria-hidden="true"><i class="performer-cell"></i></div>
     <div class="px-foe" aria-hidden="true"><i class="effect-cell"></i></div>
     <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div></div>
     <span class="px-dodge-signal" aria-hidden="true">데하!</span>
@@ -72,6 +76,8 @@ export function mountArcade(root) {
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
+ const performer=q('.px-performer');
+ performer.style.setProperty('--sheet-height',performerRows.length*100+'%');
  const hudRound=q('[data-round]'), hudScore=q('[data-score]'), hudBest=q('[data-best]'), hearts=q('.px-hearts');
  const runActions=q('.px-run-actions'), pauseMenu=q('.px-pause-menu'), resumeButton=q('.px-resume');
  const reaction=q('.px-reaction'), average=q('[data-average]');
@@ -124,11 +130,11 @@ export function mountArcade(root) {
  function action() { return encounter.kind==='tap' && encounter.effect!=='butterfly'?'엄폐하기':actions[encounter.kind]; }
  function gauge() { return encounter.kind==='gauge'||encounter.kind==='beat'; }
  function resetVisuals() {
-  delete board.dataset.dodged;delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.side;
+  delete board.dataset.downbeat;delete board.dataset.dodged;delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.side;
   delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true;
  }
  function setGauge() {
-  signalAt=null;
+  delete board.dataset.downbeat;signalAt=null;
   half=timing.width;
   center=encounter.kind==='beat'?.67+Math.random()*.14:.32+Math.random()*.44;
   meter.style.setProperty('--start',(center-half)*100+'%'); meter.style.setProperty('--width',half*200+'%');
@@ -148,7 +154,10 @@ export function mountArcade(root) {
   }
   if(gauge()){
    progress(gaugePosition(elapsed));
-   if(signalAt===null&&Math.abs(needlePosition-center)<=half)signalAt=now;
+   if(signalAt===null&&Math.abs(needlePosition-center)<=half){
+    signalAt=now;
+    if(encounter.effect==='note')board.dataset.downbeat='yes';
+   }
   }
   frame=win.requestAnimationFrame(tick);
  }
@@ -183,6 +192,9 @@ export function mountArcade(root) {
   beatsLeft=encounter.variant==='double'?2:1;allPerfect=true;
   safeSide=stage.safeSide;
   if(encounter.kind==='lane'&&encounter.effect!=='fence')board.dataset.side=safeSide;
+  const poseRow=performerRows.indexOf(encounter.effect);
+  performer.hidden=poseRow<0;
+  if(poseRow>=0)performer.style.setProperty('--row',poseRow*100/(performerRows.length-1)+'%');
   const extra=extraRows.includes(encounter.effect);
   board.dataset.atlas=extra?'encounter':'skill';
   const rows=extra?extraRows:effectRows, row=rows.indexOf(encounter.effect);

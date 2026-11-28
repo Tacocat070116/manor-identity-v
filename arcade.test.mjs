@@ -84,6 +84,9 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   assert.ok(++stagesPlayed<=48);
   assert.equal(x.phase(),'warning');
   const board=x.el('.px-cabinet'), {kind,variant}=board.dataset;
+  const performer=x.el('.px-performer');
+  assert.equal(performer.hidden,['butterfly','pallet','gate','cipher'].includes(board.dataset.effect));
+  const warningRow=performer.style['--row'];
   if(variant==='fusion')assert.equal(x.el('[data-name]').textContent,'조각상');
   x.advance(3700);
   assert.equal(x.phase(),'active');
@@ -94,6 +97,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   const encounter=encounters.find(e=>e.name===title);
   const window=encounterTiming(encounter,Number(x.el('[data-round]').textContent)).window;
   assert.equal(board.dataset.effect,encounter.effect);
+  assert.equal(performer.style['--row'],warningRow);
   assert.doesNotMatch(label,/\d+\/\d+/);
   assert.equal(board.dataset.performance,'strike');
   total+=['beat','gauge'].includes(kind)?2:1;
@@ -334,13 +338,47 @@ test('stop cancels the game from any live phase and cannot lose a heart or start
  }
 });
 
-test('the original arcade art has one correctly sized cell per pose',()=>{
+test('each arcade sheet has one correctly sized cell per pose',()=>{
  for(const [file,cols,rows,size] of [
-  ['cast-motion',6,9,64],['skill-motion',6,20,48],['encounter-motion',6,6,48],['gardener-portrait',1,1,64]
+  ['cast-motion',6,9,64],['skill-motion',6,20,48],['encounter-motion',6,6,48],['gardener-portrait',1,1,64],['cast-skills',6,23,64]
  ]){
   const png=readFileSync(new URL('./dist/assets/arcade/'+file+'.png',import.meta.url));
   assert.equal(png.toString('ascii',12,16),'IHDR',file);
   assert.equal(png.readUInt32BE(16),cols*size,file);
   assert.equal(png.readUInt32BE(20),rows*size,file);
  }
+});
+
+test('each solo skill selects the matching row of performer poses',t=>{
+ const effects=new Map();
+ const selfRendered=new Set(['butterfly','pallet','gate','cipher']);
+ for(const card of encounters.filter(card=>!card.stages)){
+  startWith(t,card);
+  const x=setup();x.touch();
+  const performer=x.el('.px-performer');
+  assert.equal(performer.hidden,selfRendered.has(card.effect),card.name);
+  if(!performer.hidden){
+   const row=parseFloat(performer.style['--row'])*22/100;
+   assert.ok(Math.abs(row-Math.round(row))<1e-8 && row>=0 && row<=22,card.name);
+   if(effects.has(card.effect))assert.equal(row,effects.get(card.effect));
+   effects.set(card.effect,row);
+  }
+  x.dispose();
+ }
+ assert.equal(new Set(effects.values()).size,23);
+});
+
+test('the conductor repeats the downbeat at each playable note',t=>{
+ startWith(t,encounters.find(card=>card.name==='두 박자 조율'));
+ const x=setup();x.touch();x.advance(3700);
+ const board=x.el('.px-cabinet'),meter=x.el('.px-meter').style;
+ for(let note=0;note<2;note++){
+  assert.equal(board.dataset.downbeat,undefined);
+  const middle=(parseFloat(meter['--start'])+parseFloat(meter['--width'])/2)/100;
+  x.advance(middle*parseFloat(board.style['--travel']));
+  assert.equal(board.dataset.downbeat,'yes');
+  x.touch();
+ }
+ assert.equal(x.phase(),'result');
+ x.dispose();
 });
