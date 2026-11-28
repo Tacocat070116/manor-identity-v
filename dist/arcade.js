@@ -1,4 +1,4 @@
-import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=589d863a5ba0';
+import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=e9b39f0c9ac3';
 
 // Row order matches the six-frame effect atlas. Michiko and the tentacle also have full-size cast animations.
 const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
@@ -11,7 +11,7 @@ const storageKey = 'manor-arcade-surprise-nightmare-v1';
 const oldStorageKey = 'manor-arcade-surprise-best-v1';
 const appearanceMs=700;
 const actions = {dodge:'데하',tap:'바라보기',lane:'방향 선택',gauge:'교정',beat:'박자 맞히기'};
-const hints = {dodge:'공격이 닿기 직전, 데하',tap:'미치코가 나타나면 한 번 누르세요.',lane:'열린 길이 보이면 방향 선택',
+const hints = {dodge:'공격이 닿기 직전, 데하',tap:'미치코가 나타나면 한 번 누르세요.',lane:'붉은 구역이 나타나면 반대쪽으로 피하세요.',
  gauge:'바늘을 밝은 칸에 맞추세요',beat:'음표가 박자선과 겹치면 입력'};
 const stopScenes = new Set(['warning','active','result']);
 function savedBest(key=storageKey) {
@@ -21,16 +21,28 @@ function savedBest(key=storageKey) {
  } catch { return 0; }
 }
 
+// Entry to body contact, in milliseconds. Even the fastest rocket stays slower than the wheel.
+const rushTravel={rocket:[660,555,745],lizard:[720,600,810],wheel:[465,395,515]};
+const clamp01=value=>Math.max(0,Math.min(1,value));
 export function encounterTiming(encounter, round, pace=1) {
  const level=Math.min(20,Math.max(0,round-1));
  const sweep=Math.round((1660-level*23)*pace);
  const width=(encounter.kind==='beat'?.056:.061)-level*.00095;
- const impact={statue:.59,fog:.55,chain:.56,web:.48,tentacle:.60,lizard:.63,mirror:.58};
- const window=245-level*4;
- const incoming=encounter.effect==='rocket'||encounter.effect==='lizard';
- const hitAt=incoming?0:Math.round(pace*(360-level*4)*(impact[encounter.effect]||.55)/.55);
+ let window=245-level*4, hitAt=0, contactAt=0;
+ if(encounter.kind==='dodge'){
+  const rush=rushTravel[encounter.effect];
+  if(rush){
+   const [base,min,max]=rush;
+   contactAt=Math.max(min,Math.min(max,Math.round(base*(1-level*.007)*pace)));
+   window=contactAt+80;
+  }else{
+   const impact={statue:.59,fog:.55,chain:.56,web:.48,tentacle:.60,mirror:.58};
+   hitAt=Math.round(pace*(360-level*4)*(impact[encounter.effect]||.55)/.55);
+   contactAt=hitAt+Math.round(window*.58);
+  }
+ }
  const duration={dodge:hitAt+window,tap:560-level*8,lane:Math.round((855-level*16)*pace),gauge:sweep,beat:sweep-80}[encounter.kind];
- return {duration,hitAt,window,width};
+ return {duration,hitAt,contactAt,window,width};
 }
 export function preloadArcadeSprites() {
  // Decode the shared sheets before the first timed cue, including on a cold mobile cache.
@@ -62,7 +74,6 @@ export function mountArcade(root) {
     <div class="px-foe" aria-hidden="true"><i class="effect-cell"></i></div>
     <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div></div>
     <span class="px-dodge-signal" aria-hidden="true">데하!</span>
-    <div class="px-direction" hidden aria-hidden="true"></div>
     <div class="px-meter" hidden aria-hidden="true"><div class="px-track"><i class="px-zone"></i><i class="px-marker"></i></div><span class="px-meter-label"></span></div>
     <div class="px-pause-menu" role="group" aria-label="게임 일시 정지" hidden><strong>일시 정지</strong><div><button type="button" class="px-button px-resume">재개</button><button type="button" class="px-button px-restart">다시하기</button></div></div>
    </div>
@@ -72,7 +83,7 @@ export function mountArcade(root) {
     <div class="px-inputs"><button type="button" class="px-button px-primary"></button><div class="px-lanes" hidden><button type="button" class="px-button" data-side="left">◀ 왼쪽</button><button type="button" class="px-button" data-side="right">오른쪽 ▶</button></div></div>
    </div>
   </section>
-  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 미치코가 나타나면 바라보기를, 밀랍이나 섬광이 보이면 엄폐하기를 한 번 누르세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>연속 사건에서는 첫 상황을 넘기면 다음 공격이 이어집니다. 하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다. 상단 시계는 이번 도전에서 신호를 보고 누르기까지 걸린 평균 시간입니다. 교정과 조율은 바늘이나 음표가 판정 구간에 들어온 순간부터 잽니다.</p><p data-legacy hidden></p></details>
+  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 바닥에 붉은 구역이 나타나면 화면 버튼이나 ← → 키로 반대쪽을 선택하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 미치코가 나타나면 바라보기를, 밀랍이나 섬광이 보이면 엄폐하기를 한 번 누르세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>연속 사건에서는 첫 상황을 넘기면 다음 공격이 이어집니다. 하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다. 상단 시계는 이번 도전에서 신호를 보고 누르기까지 걸린 평균 시간입니다. 교정과 조율은 바늘이나 음표가 판정 구간에 들어온 순간부터 잽니다.</p><p data-legacy hidden></p></details>
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
@@ -81,7 +92,7 @@ export function mountArcade(root) {
  const hudRound=q('[data-round]'), hudScore=q('[data-score]'), hudBest=q('[data-best]'), hearts=q('.px-hearts');
  const runActions=q('.px-run-actions'), pauseMenu=q('.px-pause-menu'), resumeButton=q('.px-resume');
  const reaction=q('.px-reaction'), average=q('[data-average]');
- const floorCue=q('.px-floor-cue'), pauseButton=q('.px-pause'), signpost=q('.px-signpost'), meter=q('.px-meter'), direction=q('.px-direction');
+ const floorCue=q('.px-floor-cue'), pauseButton=q('.px-pause'), signpost=q('.px-signpost'), meter=q('.px-meter');
  const dialogue=q('.px-dialogue strong'), caption=q('.px-dialogue span'), wipe=q('.px-wipe');
  doc.body.append(wipe);
  const oldBest=savedBest(oldStorageKey);
@@ -92,6 +103,7 @@ export function mountArcade(root) {
  let scheduled=null, dueAt=0, remaining=0, pausedAt=0;
  let signalAt=null, reactionTotal=0, reactionCount=0, needlePosition=0;
  let safeSide='', pausedFrom='', disposed=false, allPerfect=true;
+ let movingSprite=null;
  function setPhase(value) {
   phase=value;board.dataset.phase=value;
   if(value!=='paused')board.dataset.scene=value;
@@ -131,7 +143,8 @@ export function mountArcade(root) {
  function gauge() { return encounter.kind==='gauge'||encounter.kind==='beat'; }
  function resetVisuals() {
   delete board.dataset.downbeat;delete board.dataset.dodged;delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.side;
-  delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true;
+  delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true;
+  if(movingSprite){delete movingSprite.dataset.flight;movingSprite=null;}
  }
  function setGauge() {
   delete board.dataset.downbeat;signalAt=null;
@@ -145,12 +158,31 @@ export function mountArcade(root) {
   const pos=Math.max(0,Math.min(1,elapsed/span));
   return encounter.variant==='reverse'?1-pos:pos;
  }
+ // Positions and sprite poses use the same elapsed time as the input window.
+ // Before a regular cue the attack closes on a point just outside the gardener.
+ // From that point the remaining distance is measured in gardener widths on every screen.
+ function drawDodge(elapsed){
+  const {hitAt,contactAt}=timing;
+  const progress=clamp01(elapsed/(hitAt||contactAt));
+  const late=clamp01((elapsed-contactAt)/(span-contactAt));
+  let gap=-.24*late;
+  if(hitAt && elapsed<contactAt)gap=.32*progress*(1-clamp01((elapsed-hitAt)/(contactAt-hitAt)));
+  let pose;
+  if(encounter.effect==='tentacle')pose=elapsed>=contactAt?4:elapsed>=hitAt?3:Math.min(2,Math.floor(progress*3));
+  else if(!hitAt)pose=Math.min(4,Math.floor(progress*5));
+  else pose=progress<.17?2:progress<.69?3:4;
+  movingSprite.style.setProperty('--flight',progress);
+  movingSprite.style.setProperty('--clearance',gap);
+  movingSprite.style.setProperty('--lift',4*progress*(1-progress));
+  movingSprite.style.setProperty('--attack-pose',pose*20+'%');
+ }
  function tick(now) {
   if(phase!=='active') return;
   const elapsed=now-releaseAt;
+  if(movingSprite)drawDodge(elapsed);
   if(elapsed>=span) { finish(false,gauge()?'타이밍을 놓쳤어요.':'한발 늦었어요.');return; }
   if(encounter.kind==='dodge' && elapsed>=timing.hitAt && !board.dataset.ready) {
-   board.dataset.ready='yes';signalAt=now;caption.textContent='지금 데하!';
+   board.dataset.ready='yes';signalAt=releaseAt+timing.hitAt;caption.textContent='지금 데하!';
   }
   if(gauge()){
    progress(gaugePosition(elapsed));
@@ -168,17 +200,13 @@ export function mountArcade(root) {
    span=timing.duration;
    board.style.setProperty('--travel',span+'ms');
    let hint=encounter.cue;
-   if(encounter.kind==='lane') {
+   if(encounter.kind==='lane'){
     board.dataset.side=safeSide;
-    if(encounter.effect==='fence')hint+=' 반대쪽으로 피하세요.';
-    else{
-     direction.hidden=false;direction.textContent=safeSide==='left'?'◀ 왼쪽 길':'오른쪽 길 ▶';
-     hint+=' '+(safeSide==='left'?'왼쪽':'오른쪽')+'으로 피하세요.';
-    }
+    hint+=' 붉은 구역의 반대쪽으로 피하세요.';
    }
    if(gauge())setGauge();
    message(hint,encounter.kind==='dodge'?'공격이 닿을 때 누르세요.':gauge()&&beatsLeft===2?'첫 번째 입력':action());
-   if(encounter.effect==='fence')floorCue.textContent=safeSide==='left'?'오른쪽 바닥에 붉은 선':'왼쪽 바닥에 붉은 선';
+   if(encounter.kind==='lane')floorCue.textContent=safeSide==='left'?'오른쪽 바닥이 위험해요.':'왼쪽 바닥이 위험해요.';
    if(encounter.kind==='tap'||encounter.kind==='lane')signalAt=now;
    tick(now);
   });
@@ -191,7 +219,11 @@ export function mountArcade(root) {
   timing=encounterTiming(encounter,round,stage.pace);
   beatsLeft=encounter.variant==='double'?2:1;allPerfect=true;
   safeSide=stage.safeSide;
-  if(encounter.kind==='lane'&&encounter.effect!=='fence')board.dataset.side=safeSide;
+  if(encounter.kind==='dodge'){
+   const effect=encounter.effect;
+   movingSprite=effect==='tentacle'?q('.px-cast'):effect==='rocket'||effect==='lizard'?performer:q('.px-foe');
+   movingSprite.dataset.flight=effect;
+  }
   const poseRow=performerRows.indexOf(encounter.effect);
   performer.hidden=poseRow<0;
   if(poseRow>=0)performer.style.setProperty('--row',poseRow*100/(performerRows.length-1)+'%');
@@ -233,7 +265,7 @@ export function mountArcade(root) {
  function finish(hit,label,points=1) {
   if(phase!=='active'&&phase!=='warning')return;
   if(phase==='warning')board.dataset.interrupted='yes';
-  timingOff();delete board.dataset.ready;direction.hidden=true;meter.hidden=true;
+  timingOff();delete board.dataset.ready;meter.hidden=true;
   if(hit){score+=points;saveRecord();} else lives--;
   followUp=hit && stageIndex+1<stages.length;
   const rest=followUp?760:Math.max(740,990-round*12);
@@ -251,8 +283,13 @@ export function mountArcade(root) {
   if(phase==='warning'){finish(false,'너무 일찍 움직였어요.');return;}
   if(phase!=='active')return;
   const now=win.performance.now(), elapsed=now-releaseAt;
+  if(movingSprite)drawDodge(elapsed);
   if(elapsed>=span){finish(false,'한발 늦었어요.');return;}
   if(encounter.kind==='lane'&&!choice)return;
+  if(encounter.kind==='dodge'){
+   if(elapsed<timing.hitAt){finish(false,'데하가 너무 빨랐어요.');return;}
+   signalAt=releaseAt+timing.hitAt;
+  }
   recordResponse(now);
   if(encounter.kind==='tap') {
    const result=encounter.effect==='butterfly'?'생멸을 막았어요!':'엄폐 성공!';
@@ -272,7 +309,6 @@ export function mountArcade(root) {
    }
    finish(true,allPerfect?'완벽해요!':encounter.kind==='beat'?'조율 성공!':'교정 성공!',allPerfect?2:1);return;
   }
-  if(!board.dataset.ready){finish(false,'데하가 너무 빨랐어요.');return;}
   finish(true,'데하로 피했어요!');
  }
  function pause() {

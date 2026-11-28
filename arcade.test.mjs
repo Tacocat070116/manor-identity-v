@@ -31,6 +31,7 @@ function setup() {
  root.querySelector=el;root.querySelectorAll=doc.querySelectorAll=()=>[];
  doc.querySelector=()=>null;
  el('.px-hearts').children=[new Element(),new Element(),new Element()];
+ el('.px-lanes').firstElementChild=new Element();
  Object.assign(win,{
   performance:{now:()=>now},
   MutationObserver:class{observe(){} disconnect(){}},
@@ -53,7 +54,7 @@ function setup() {
   controls.emit('pointerup',e);
   controls.emit('click',{target,detail:0});
  }
- return {el,doc,win,advance,touch,dispose,timers,frames,phase:()=>el('.px-cabinet').dataset.phase};
+ return {el,doc,win,advance,elapse:ms=>{now+=ms;},touch,dispose,timers,frames,phase:()=>el('.px-cabinet').dataset.phase};
 }
 
 function startWith(t,card){
@@ -104,7 +105,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   if(kind==='lane')x.touch(board.dataset.side);
   else if(kind==='tap')x.touch();
   else if(kind==='dodge'){
-   x.advance(parseFloat(board.style['--travel'])-window+10);assert.equal(board.dataset.ready,'yes');x.touch();
+   x.advance(board.dataset.ready?10:parseFloat(board.style['--travel'])-window+10);assert.equal(board.dataset.ready,'yes');x.touch();
   }
   else {
    const stages=variant==='double'?2:1;
@@ -151,7 +152,7 @@ test('dodge opens at impact and closes at the deadline, including between animat
  for(const [delay,hit] of [[0,false],[timing.hitAt-1,false],[timing.hitAt,true],[timing.duration-1,true],[timing.duration,false]]){
   const x=setup();x.touch();x.advance(3700);
   assert.equal(x.el('.px-cabinet').dataset.effect,'statue');
-  x.advance(delay);
+  x.elapse(delay);
   x.touch();assert.equal(x.el('.px-cabinet').dataset.hit,hit?'yes':'no');
   x.dispose();
  }
@@ -208,8 +209,12 @@ test('the higher speed has a playable floor and previous records are shown separ
   const first=encounterTiming(e,1), last=encounterTiming(e,21);
   assert.ok(last.duration<first.duration);
   assert.deepEqual(encounterTiming(e,90),last);
-  assert.equal(first.window,245); assert.equal(last.window,165);
-  if(e.kind==='dodge')assert.equal(last.duration-last.hitAt,165);
+  if(['rocket','lizard','wheel'].includes(e.effect)){
+   assert.equal(first.hitAt,0);assert.equal(last.duration,last.contactAt+80);
+  }else{
+   assert.equal(first.window,245);assert.equal(last.window,165);
+   if(e.kind==='dodge')assert.equal(last.duration-last.hitAt,165);
+  }
  }
  const store=new Map([['manor-arcade-surprise-best-v1','81'],['manor-arcade-surprise-nightmare-v1','7']]);
  const old=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
@@ -269,8 +274,8 @@ test('the 700 ms appearance is followed by an independent 800–3000 ms wait',t=
  }
 });
 
-test('rocket and falling Luchino accept Dead Hard on entry and show it even on an early press',t=>{
- for(const name of ['로켓 돌진','치명 추격']){
+test('rocket, falling Luchino and wheel accept Dead Hard on entry and show an early press',t=>{
+ for(const name of ['로켓 돌진','치명 추격','가시 바퀴 돌진']){
   const card=encounters.find(e=>e.name===name);
   assert.equal(card.kind,'dodge');assert.equal(encounterTiming(card,1).hitAt,0);
   for(const early of [false,true]){
@@ -284,13 +289,57 @@ test('rocket and falling Luchino accept Dead Hard on entry and show it even on a
  }
 });
 
-test('the wall reveals its danger side only at the red floor cue',t=>{
- startWith(t,encounters.find(e=>e.name==='격벽'));
- const x=setup(),board=x.el('.px-cabinet');x.touch();
- assert.equal(board.dataset.side,undefined);assert.equal(x.el('.px-direction').hidden,true);
- x.advance(3700);assert.ok(['left','right'].includes(board.dataset.side));
- assert.match(x.el('.px-dialogue strong').textContent,/붉은 선/);
- x.advance(120);x.touch(board.dataset.side);assert.equal(board.dataset.hit,'yes');x.dispose();
+test('every lane keeps the danger side hidden until the common floor cue',t=>{
+ for(const card of encounters.filter(e=>!e.stages&&e.kind==='lane')){
+  for(const correct of [true,false]){
+   startWith(t,card);const x=setup(), board=x.el('.px-cabinet');x.touch();
+   const cue=x.el('.px-floor-cue');
+   assert.equal(board.dataset.side,undefined);assert.equal(cue.textContent,'');
+   x.el('.px-pause').emit('click');x.advance(500);x.el('.px-resume').emit('click');
+   assert.equal(board.dataset.side,undefined);
+   x.advance(3700);const safe=board.dataset.side;
+   assert.ok(['left','right'].includes(safe));
+   assert.equal(cue.textContent,safe==='left'?'오른쪽 바닥이 위험해요.':'왼쪽 바닥이 위험해요.');
+   assert.match(x.el('.px-dialogue strong').textContent,/붉은 구역의 반대쪽/);
+   assert.doesNotMatch(x.el('.px-dialogue strong').textContent,/왼쪽|오른쪽/);
+   x.advance(120);x.touch(correct?safe:(safe==='left'?'right':'left'));
+   assert.equal(board.dataset.hit,correct?'yes':'no');x.dispose();
+  }
+ }
+});
+
+test('rush contact gives a visible approach and the wheel always arrives before the rocket',()=>{
+ const move=effect=>encounters.find(e=>e.effect===effect);
+ for(const level of [1,10,21,90]){
+  for(const pace of [.86,1,1.16]){
+   const [wheel,rocket,lizard]=['wheel','rocket','lizard'].map(k=>encounterTiming(move(k),level,pace));
+   assert.ok(wheel.contactAt>=395&&wheel.contactAt<=515);
+   assert.ok(rocket.contactAt>=555&&lizard.contactAt>=600);
+   for(const t of [wheel,rocket,lizard]){
+    assert.equal(t.hitAt,0);assert.equal(t.duration,t.contactAt+80);
+   }
+  }
+ }
+});
+
+test('all dodge attacks reach the contact pose on the same clock used by input',t=>{
+ for(const card of encounters.filter(e=>!e.stages&&e.kind==='dodge')){
+  startWith(t,card);const x=setup();x.touch();x.advance(3700);
+  const b=x.el('.px-cabinet'),part=['.px-performer','.px-cast','.px-foe'].map(x.el).find(el=>el.dataset.flight===card.effect);
+  const duration=Number.parseFloat(b.style['--travel']);
+  const rush=encounterTiming(card,1).hitAt===0;
+  const window=rush?duration:245, cueAt=duration-window;
+  const contactAt=rush?duration-80:cueAt+Math.round(window*.58);
+  if(cueAt){
+   x.advance(cueAt-1);assert.equal(b.dataset.ready,undefined);
+   x.advance(1);assert.equal(b.dataset.ready,'yes');assert.equal(part.style['--clearance'],.32);
+  }
+  x.advance(contactAt-cueAt);
+  assert.equal(Number(part.style['--flight']),1);assert.ok(Number(part.style['--clearance'])===0);
+  assert.equal(part.style['--attack-pose'],'80%');
+  x.el('.px-pause').emit('click');x.advance(900);x.el('.px-resume').emit('click');
+  x.touch();assert.equal(b.dataset.hit,'yes');x.dispose();
+ }
 });
 
 test('pausing preserves a pending cue and excludes paused time from a measured reaction',t=>{

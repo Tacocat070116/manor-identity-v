@@ -66,7 +66,10 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-signpost span {color:#cbccbd;font:.82rem/1.5 var(--arc-pixel)}
 /* Keep scaled poses inside the playfield, with the HUD in screen coordinates. */
 .px-actors {
- position:absolute;inset:5px clamp(5px,1.2cqw,12px);pointer-events:none;
+ --inset:clamp(5px,1.2cqw,12px);
+ position:absolute;inset:5px var(--inset);pointer-events:none;
+ --hero-size:clamp(78px,calc((100cqw - 2*var(--inset))*.124),136px);
+ --body-x:calc(20% + var(--hero-size)*.633);
  --performer-size:min(31cqw,clamp(98px,18cqw,177px));--performer-right:2%;
  --performer-left:calc(100% - var(--performer-right) - var(--performer-size));
  --release-x:calc(var(--performer-left) + var(--performer-size)*.22)
@@ -77,7 +80,7 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet[data-scene=result] .px-actors {animation:round-leave var(--rest,740ms) linear both}
 @keyframes round-leave {0%,78%{opacity:1}100%{opacity:0}}
 .px-hero,.px-foe,.px-cast,.px-performer,.px-hazard,.px-dodge-signal {position:absolute;pointer-events:none}
-.px-hero {left:20%;bottom:9%;width:clamp(78px,12.4%,136px);aspect-ratio:1;z-index:2}
+.px-hero {left:20%;bottom:9%;width:var(--hero-size);aspect-ratio:1;z-index:2}
 .cast-cell,.effect-cell,.performer-cell {display:block;width:100%;height:100%;background-repeat:no-repeat;image-rendering:pixelated;background-position:0 var(--row,0%)}
 .cast-cell {background-image:url('assets/arcade/cast-motion.png');background-size:600% 900%}
 .effect-cell {--row:var(--effect-row,0%);background-image:url('assets/arcade/skill-motion.png');background-size:600% 2000%}
@@ -90,8 +93,8 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet[data-effect=note][data-performance=strike] .performer-cell {animation:none;background-position-x:40%}
 .px-cabinet[data-effect=note][data-performance=strike][data-downbeat=yes] .performer-cell {animation:conductor-beat .34s step-end both}
 @keyframes conductor-beat {from{background-position-x:60%}38%{background-position-x:80%}74%,to{background-position-x:100%}}
-.px-cabinet[data-kind=lane][data-side=left]:not([data-effect=fence],[data-effect=wheel]) .px-actors {--performer-right:36%}
-.px-cabinet[data-kind=lane][data-side=left]:not([data-effect=fence],[data-effect=wheel]) .performer-cell {transform:scaleX(-1)}
+.px-cabinet[data-kind=lane][data-performance] .px-hero {left:calc(50% - var(--hero-size)*.5)}
+.px-cabinet[data-kind=lane][data-performance=tell] .performer-cell {animation:none;background-position-x:0%}
 .px-cabinet[data-atlas=encounter] .effect-cell {background-image:url('assets/arcade/encounter-motion.png');background-size:600% 600%}
 /* At each stop the atlas is aligned to a whole cell, even on a partial run. */
 @keyframes cells {
@@ -127,12 +130,10 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 @keyframes flywheel-flare {from{opacity:1;scale:.58}35%{opacity:1;scale:.98}to{opacity:0;scale:1.38}}
 @keyframes gardener-left {45%{translate:-30% -6%}70%{translate:-30% 0}100%{translate:0 0}}
 @keyframes gardener-right {45%{translate:30% -6%}70%{translate:30% 0}100%{translate:0 0}}
-.px-cabinet[data-performance=strike][data-effect=statue] .px-foe {animation:incoming var(--travel) steps(16,end) both}
-@keyframes incoming {0%{left:min(63%,var(--right-edge));scale:1}32%{left:min(54%,var(--right-edge))}70%{left:33%;scale:1.08}to{left:18%}}
 .px-cabinet[data-effect=chain] .px-foe {--size:min(35cqw,clamp(110px,23cqw,245px))}
 /* A shot starts at the performer's hand in the same frame as their release pose. */
 .px-cabinet[data-performance=tell]:is([data-effect=fog],[data-effect=chain],[data-effect=web],[data-effect=wax],[data-effect=wax-drop],[data-effect=umbrella],[data-effect=bell],[data-effect=fence]) .px-foe {display:none}
-.px-cabinet[data-performance=strike]:is([data-effect=fog],[data-effect=chain],[data-effect=web],[data-effect=wax]) .px-foe {
+.px-cabinet[data-performance=strike][data-effect=wax] .px-foe {
  bottom:calc(8% + var(--performer-size)*.46 - var(--size)*.50);transform-origin:85% 50%;
  animation:released-shot var(--travel) linear both
 }
@@ -145,27 +146,19 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet:is([data-effect=puppet],[data-effect=bell],[data-effect=note],[data-effect=camera]) .px-foe {left:calc(var(--performer-left) - var(--size)*.63)}
 .px-cabinet:is([data-effect=rocket],[data-effect=lizard]) .px-foe,
 .px-cabinet[data-performance=tell]:is([data-effect=rocket],[data-effect=lizard]) .px-performer {display:none}
-.px-cabinet[data-performance=tell]:is([data-effect=lizard],[data-effect=rocket]) .px-actors::before {
+.px-cabinet[data-performance=tell]:is([data-effect=lizard],[data-effect=rocket],[data-effect=wheel]) .px-actors::before {
  content:'';position:absolute;animation:entity-arrive var(--tell) ease-out both;pointer-events:none
 }
-.px-cabinet[data-effect=lizard] .px-actors::before {left:19%;bottom:8%;width:23%;height:6%;border-radius:50%;background:radial-gradient(ellipse,#0a0c11 15%,#131420ad 53%,transparent 73%)}
-.px-cabinet[data-effect=rocket] .px-actors::before {right:0;bottom:16%;width:7%;height:12%;opacity:.7;background:repeating-linear-gradient(160deg,transparent 0 6px,#bfae9880 7px 10px,transparent 11px 16px);clip-path:polygon(100% 0,100% 81%,0 100%,65% 49%,34% 53%)}
-.px-cabinet:is([data-effect=lizard],[data-effect=rocket]) .px-performer {width:min(36cqw,clamp(106px,20cqw,202px))}
-.px-cabinet:is([data-effect=lizard],[data-effect=rocket])[data-performance=strike] .performer-cell {animation:cells var(--travel) step-end both}
-.px-cabinet[data-effect=lizard] .px-performer {left:21%}
-.px-cabinet[data-effect=rocket][data-performance=strike] .px-performer {animation:rocket-entry var(--travel) cubic-bezier(.15,.55,.66,1) both}
-@keyframes rocket-entry {from{left:calc(100% + 16px)}to{left:18%}}
-.px-cabinet[data-effect=lizard][data-performance=strike] .px-performer {animation:lizard-entry var(--travel) cubic-bezier(.25,.16,.52,1) both}
-@keyframes lizard-entry {from{bottom:calc(100% + 12px)}to{bottom:7%}}
+.px-cabinet[data-effect=lizard] .px-actors::before {left:calc(var(--body-x) - var(--hero-size)*.6);bottom:8%;width:var(--hero-size);height:6%;border-radius:50%;background:radial-gradient(ellipse,#0a0c11 15%,#131420ad 53%,transparent 73%)}
+.px-cabinet:is([data-effect=rocket],[data-effect=wheel]) .px-actors::before {right:0;bottom:16%;width:7%;height:12%;opacity:.7;background:repeating-linear-gradient(160deg,transparent 0 6px,#bfae9880 7px 10px,transparent 11px 16px);clip-path:polygon(100% 0,100% 81%,0 100%,65% 49%,34% 53%)}
+.px-cabinet:is([data-effect=lizard],[data-effect=rocket]) .px-performer {--size:min(36cqw,clamp(106px,20cqw,202px));width:var(--size)}
 .px-cabinet[data-effect=wax-drop][data-performance=strike] .px-foe {animation:plunge var(--travel) steps(12,end) both}
 @keyframes plunge {from{bottom:min(50%,calc(97% - var(--size)));scale:.78}40%{bottom:min(39%,calc(97% - var(--size)))}75%,to{bottom:7%;scale:1}}
-.px-cabinet[data-effect=mirror][data-performance=strike] .px-foe {animation:mirrored-slash var(--travel) steps(10,end) both}
 .px-cabinet[data-effect=mirror][data-performance=tell] .px-foe {left:57%;opacity:.58}
-@keyframes mirrored-slash {from{left:57%;opacity:.58}44%{left:52%;opacity:1}70%,to{left:25%;scale:1.1}}
 .px-cabinet[data-effect=tentacle] .px-foe {display:none}
-.px-cabinet[data-effect=tentacle]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;left:24%;--size:min(51cqw,clamp(150px,31cqw,312px));bottom:5%}
+.px-cabinet[data-effect=tentacle]:is([data-performance=tell],[data-performance=strike]) .px-cast {display:block;--size:min(51cqw,clamp(150px,31cqw,312px));left:var(--contact-x);bottom:var(--contact-y)}
 .px-cabinet[data-effect=tentacle][data-performance=tell] .px-cast i {--row:62.5%;animation:cells var(--tell) step-end both}
-.px-cabinet[data-effect=tentacle][data-performance=strike] .px-cast i {--row:75%;animation:cast-strike var(--travel) step-end both}
+.px-cabinet[data-effect=tentacle][data-performance=strike] .px-cast i {--row:75%}
 @keyframes cast-strike {
  0%{background-position-x:0%}16.6667%{background-position-x:20%}33.3333%{background-position-x:40%}
  50%{background-position-x:60%}66.6667%{background-position-x:80%}83.3333%,100%{background-position-x:100%}
@@ -183,49 +176,73 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 @keyframes geisha-lunge {0%{left:57%;opacity:.58;scale:1}20%{opacity:1;left:53%;scale:1}66%,to{left:31%;scale:1.12}}
 .px-cabinet[data-effect=wax] .px-foe {--size:min(37cqw,clamp(110px,24cqw,250px));left:40%}
 .px-cabinet[data-effect=wax][data-performance=strike] .px-foe i {animation:cells .43s step-end infinite}
-.px-cabinet[data-kind=lane] .px-foe {left:min(var(--danger-at,63%),var(--right-edge))}
-.px-cabinet[data-side=left] {--danger-at:64%}.px-cabinet[data-side=right] {--danger-at:14%;--lane-start:3%}
-.px-cabinet[data-effect=wheel][data-performance=strike] .px-foe {animation:rocket-charge var(--travel) steps(12,end) both}
-.px-cabinet[data-effect=wheel][data-performance=tell] :is(.px-performer,.px-foe) {
- --size:min(31cqw,clamp(95px,17cqw,190px));width:var(--size);left:var(--lane-start,calc(97% - var(--size)));bottom:8%
-}
-.px-cabinet[data-effect=wheel][data-performance=tell] .px-performer {animation:wheel-fold var(--tell) ease-in both}
-.px-cabinet[data-effect=wheel][data-performance=tell] .performer-cell {animation:cells var(--tell) step-end both}
-.px-cabinet[data-effect=wheel][data-performance=tell] .px-foe {animation:wheel-form var(--tell) ease-out both}
-.px-cabinet[data-effect=wheel][data-performance=strike] .px-performer {display:none}
-@keyframes wheel-fold {0%{opacity:0}20%,49%{opacity:1;scale:1}85%,100%{opacity:0;scale:.74}}
-@keyframes wheel-form {0%,55%{opacity:0;scale:.74}to{opacity:1;scale:1}}
-.px-cabinet[data-effect=wheel][data-side=right] :is(.performer-cell,.effect-cell) {transform:scaleX(-1)}
-@keyframes rocket-charge {from{left:var(--lane-start,var(--right-edge));scale:1}to{left:min(var(--danger-at,63%),var(--right-edge));scale:1.08}}
+.px-cabinet[data-kind=lane] .px-foe {left:clamp(0px,calc(var(--danger-center,50%) - var(--size)*.5),calc(100% - var(--size)))}
+.px-cabinet[data-side=left] {--danger-center:75%}.px-cabinet[data-side=right] {--danger-center:25%}
+.px-cabinet[data-effect=wheel] .px-performer,
+.px-cabinet[data-effect=wheel][data-performance=tell] .px-foe {display:none}
 .px-cabinet:is([data-effect=violin],[data-effect=water],[data-effect=fence]) .px-foe {--size:min(35cqw,clamp(106px,21cqw,220px))}
 .px-cabinet[data-effect=umbrella] .px-foe {bottom:28%}
-.px-cabinet[data-effect=umbrella][data-performance=strike] .px-foe {animation:umbrella-flight var(--travel) ease-in-out both}
-@keyframes umbrella-flight {
- from{left:calc(var(--release-x) - var(--size)*.5);bottom:18%}45%{left:44%;bottom:32%}to{left:20%;bottom:8%}
-}
 .px-cabinet[data-effect=soul] .px-foe {bottom:14%}
-.px-cabinet[data-effect=soul][data-performance=strike] .px-foe {animation:soul-flight var(--travel) ease-in-out both}
-@keyframes soul-flight {
- from{left:min(63%,var(--right-edge));bottom:14%}35%{left:49%;bottom:22%}70%{left:32%;bottom:15%}to{left:20%;bottom:11%}
+/* Each point is the visible leading edge on the contact pose (column 4).
+   X is measured from the left, Y from the top, before the stage is mirrored. */
+.px-actors [data-flight] {
+ --body-y:calc(9% + var(--hero-size)*.492);
+ --contact-x:calc(var(--body-x) - var(--size)*var(--tip-x));
+ --contact-y:calc(var(--body-y) - var(--size)*(1 - var(--tip-y)));
+ --from-x:min(63%,var(--right-edge));--from-y:8%;--arc-height:0px;
+ --gap-x:1;--gap-y:0;--flight:0;--clearance:0;--lift:0
 }
+[data-flight=statue] {--tip-x:.344;--tip-y:.53}
+[data-flight=fog] {--tip-x:.135;--tip-y:.55}
+[data-flight=chain] {--tip-x:.115;--tip-y:.469}
+[data-flight=web] {--tip-x:.177;--tip-y:.552}
+.px-actors :is([data-flight=fog],[data-flight=chain],[data-flight=web]) {
+ --from-x:calc(var(--release-x) - var(--size)*var(--tip-x));
+ --from-y:calc(8% + var(--performer-size)*.46 - var(--size)*.50)
+}
+.px-cabinet[data-performance=strike] :is([data-flight=fog],[data-flight=chain],[data-flight=web])>.effect-cell {
+ transform-origin:calc(100%*var(--tip-x)) center;scale:calc(.30 + .70*var(--flight)) 1
+}
+.px-actors [data-flight=mirror] {--tip-x:.073;--tip-y:.552;--from-x:57%}
+.px-actors [data-flight=tentacle] {
+ --tip-x:.070;--tip-y:.883;--body-y:calc(9% + var(--hero-size)*.28);
+ --from-x:var(--contact-x);--from-y:var(--contact-y);--gap-x:0
+}
+.px-actors [data-flight=umbrella] {--tip-x:.135;--tip-y:.57;--from-x:calc(var(--release-x) - var(--size)*.5);--from-y:18%;--arc-height:var(--hero-size)}
+.px-actors [data-flight=soul] {--tip-x:.177;--tip-y:.51;--from-y:14%;--arc-height:calc(var(--hero-size)*.38)}
+.px-actors [data-flight=rocket] {--tip-x:.070;--tip-y:.648;--from-x:calc(100% - var(--size)*.13);--from-y:var(--contact-y)}
+.px-actors [data-flight=wheel] {--tip-x:.135;--tip-y:.615;--from-x:calc(100% - var(--size)*.19);--from-y:var(--contact-y)}
+.px-actors [data-flight=lizard] {
+ --tip-x:.180;--tip-y:.758;--body-y:calc(9% + var(--hero-size)*.69);
+ --from-x:var(--contact-x);--from-y:calc(100% - var(--size)*.24);--gap-x:0;--gap-y:1
+}
+.px-cabinet[data-performance=strike] .px-actors [data-flight] {
+ left:calc(var(--from-x) + (var(--contact-x) - var(--from-x))*var(--flight) + var(--hero-size)*var(--clearance)*var(--gap-x));
+ bottom:calc(var(--from-y) + (var(--contact-y) - var(--from-y))*var(--flight) + var(--arc-height)*var(--lift) + var(--hero-size)*var(--clearance)*var(--gap-y))
+}
+.px-cabinet[data-performance=strike] .px-actors [data-flight]>i {animation:none;background-position-x:var(--attack-pose)}
+.px-cabinet[data-performance=strike]:is([data-scene=result],[data-scene=over]) .px-actors [data-flight]>i {animation:attack-settles .24s step-end both}
+@keyframes attack-settles {from{background-position-x:var(--attack-pose)}to{background-position-x:100%}}
 .px-cabinet[data-effect=pallet][data-performance=tell] .px-foe {bottom:16%;transform:rotate(8deg)}
 .px-cabinet[data-effect=pallet][data-performance=strike] .px-foe {animation:pallet-fall var(--travel) ease-in both}
 @keyframes pallet-fall {from{bottom:16%;transform:rotate(8deg)}55%{bottom:7%;transform:rotate(-3deg)}to{bottom:8%;transform:rotate(0deg)}}
 .px-cabinet[data-effect=camera][data-performance=strike] .px-foe {animation:camera-click .44s ease-out both}
 @keyframes camera-click {0%,100%{scale:1}38%{scale:1.07}}
 .px-cabinet[data-effect=gate] .px-foe {--size:min(32cqw,clamp(104px,20cqw,206px));bottom:5%}
-.px-hazard {display:none;bottom:3%;height:12%;width:39%;background:repeating-linear-gradient(135deg,#843f483d 0 5px,#171a2233 5px 14px);border-block:1px dashed #d59a85}
+.px-hazard {
+ display:none;bottom:8%;height:clamp(9px,2.7cqw,17px);width:43%;transform:skewX(-18deg);
+ border-block:2px solid #ff8579;background:repeating-linear-gradient(120deg,#e04742 0 8px,#822a32 8px 14px);
+ box-shadow:0 0 7px #e84741
+}
 .px-cabinet[data-kind=lane][data-scene=active] .px-hazard {display:block}
-.px-cabinet[data-side=left] .px-hazard {right:4%}.px-cabinet[data-side=right] .px-hazard {left:4%}
-.px-cabinet[data-effect=fence][data-scene=active] .px-foe {display:none}
-.px-cabinet[data-effect=fence] .px-hazard {height:5%;bottom:9%;border:0;border-block:2px solid #ff6965;transform:skewX(-25deg);background:repeating-linear-gradient(120deg,#ec403d 0 8px,#8c252c 8px 14px);box-shadow:0 0 9px #ff3f39}
+.px-cabinet[data-side=left] .px-hazard {right:3.5%}.px-cabinet[data-side=right] .px-hazard {left:3.5%}
+.px-cabinet[data-kind=lane]:is([data-performance=tell],[data-scene=active]) .px-foe {display:none}
 .px-cabinet[data-effect=fence][data-performance=strike]:is([data-scene=result],[data-scene=over]) .px-foe {animation:wall-rise .2s ease-out both}
 @keyframes wall-rise {from{transform:scaleY(.12)}to{transform:scaleY(1)}}
 .px-dodge-signal {display:none;z-index:4;left:23%;bottom:45%;padding:2px 8px;color:#fff1d5;background:#6c2933;border:1px solid #e0a18e;font:normal 1rem/1.45 var(--arc-pixel)}
 .px-cabinet[data-facing=reverse] .px-dodge-signal {left:auto;right:23%}
 .px-cabinet[data-ready=yes] .px-dodge-signal {display:block}
-.px-direction,.px-meter {position:absolute;z-index:4;left:50%;top:29%;transform:translate(-50%,-50%);color:#e8e5d5;background:#111a20f5;border:1px solid #ab9c7f;box-shadow:0 3px 10px #060b10a8;text-align:center;font:normal 1rem/1.35 var(--arc-pixel)}
-.px-direction {padding:5px 13px;white-space:nowrap}
+.px-meter {position:absolute;z-index:4;left:50%;top:29%;transform:translate(-50%,-50%);color:#e8e5d5;background:#111a20f5;border:1px solid #ab9c7f;box-shadow:0 3px 10px #060b10a8;text-align:center;font:normal 1rem/1.35 var(--arc-pixel)}
 .px-meter {width:min(82%,510px);padding:12px 14px 6px;font-size:.88rem}
 .px-track {height:25px;position:relative;background:repeating-linear-gradient(90deg,#15212a 0 12px,#374248 12px 13px);border:1px solid #919b95}
 .px-zone,.px-marker {display:block;position:absolute;top:0;bottom:0}
@@ -267,7 +284,7 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-pause-menu .px-button {min-width:92px}
 .px-pause-menu .px-restart {background:#293237;border-color:#89918c;box-shadow:inset 0 0 0 3px #20272a}
 .px-scene {height:clamp(220px,53vw,285px)}.px-sign {top:11%;left:5%}.px-signpost {left:8px;top:8px;font-size:.94rem}.px-signpost span {font-size:.76rem}
- .px-meter {top:43%;width:88%;padding:10px 9px 4px}.px-direction {top:40%}.px-dodge-signal {bottom:44%;font-size:.86rem}
+ .px-meter {top:43%;width:88%;padding:10px 9px 4px}.px-dodge-signal {bottom:44%;font-size:.86rem}
  .px-console {display:grid;grid-template-columns:42px minmax(0,1fr);gap:7px 10px;padding:11px 12px 13px;min-height:0}
  .px-portrait {width:42px;height:48px}.px-dialogue {min-height:70px;align-content:center}.px-dialogue span {font-size:.86rem}
  .px-inputs {grid-column:1/-1}.px-primary,.px-lanes {width:100%}.px-lanes .px-button {flex:1;min-width:0}
@@ -282,10 +299,12 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
  .px-cabinet[data-performance=tell] :is(.cast-cell,.effect-cell,.performer-cell){background-position-x:20%}
  .px-cabinet[data-performance=strike] :is(.cast-cell,.effect-cell,.performer-cell){background-position-x:80%}
  .px-cabinet[data-effect=note][data-performance=strike][data-downbeat=yes] .performer-cell {background-position-x:80%}
- .px-cabinet[data-effect=wheel][data-performance=tell] .px-performer {display:none}
- .px-cabinet:is([data-effect=rocket],[data-effect=lizard])[data-performance=strike] .px-performer {left:32%}
  .px-cabinet[data-effect=butterfly][data-performance=tell] .px-cast {opacity:.22}
- .px-cabinet[data-performance=strike][data-kind=dodge] .px-foe {left:34%}
+ .px-cabinet[data-performance=strike] .px-actors [data-flight] {left:var(--from-x);bottom:var(--from-y)}
+ .px-cabinet[data-performance=strike][data-ready=yes] .px-actors [data-flight] {left:var(--contact-x);bottom:var(--contact-y)}
+ .px-cabinet[data-performance=strike] .px-actors [data-flight]>i {background-position-x:40%;scale:1}
+ .px-cabinet[data-performance=strike][data-ready=yes] .px-actors [data-flight]>i {background-position-x:80%}
+
 }
 
 .px-cabinet[data-interrupted=yes] :is(.px-foe,.px-cast,.px-performer,.performer-cell,.effect-cell,.px-cast .cast-cell),
