@@ -4,9 +4,6 @@ import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=58
 const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
  'water','fence','cat','trap','wax-drop','cipher','puppet','bell','note','butterfly'];
 const extraRows=['camera','umbrella','soul','wheel','pallet','gate'];
-// Sheet order follows the model-rendered cast. Michiko, Luchino and Smiley Face use their own attack poses.
-const hunterRows=['조각가','리퍼','사냥터지기','거미','노란 옷의 왕','블러디 퀸','밀랍인형사','수위 26호','바이올리니스트',
- '나이아스','광기의 눈','사도','우산의 영혼','사진사','울보','파멸의 바퀴','기계공','작곡가','백무상'];
 const storageKey = 'manor-arcade-surprise-nightmare-v1';
 const oldStorageKey = 'manor-arcade-surprise-best-v1';
 const appearanceMs=700;
@@ -34,7 +31,7 @@ export function encounterTiming(encounter, round, pace=1) {
 }
 export function preloadArcadeSprites() {
  // Decode the shared sheets before the first timed cue, including on a cold mobile cache.
- return Promise.all(['cast-motion','hunter-motion','skill-motion','encounter-motion','gardener-portrait'].map(name=>{
+ return Promise.all(['cast-motion','skill-motion','encounter-motion','gardener-portrait'].map(name=>{
   const sprite=new Image();
   sprite.src=new URL('./assets/arcade/'+name+'.png',import.meta.url).href;
   return sprite.decode();
@@ -58,7 +55,6 @@ export function mountArcade(root) {
     <div class="px-fog" aria-hidden="true"></div>
     <div class="px-hazard" aria-hidden="true"></div>
     <div class="px-actors"><div class="px-hero" role="img" aria-label="공구함을 든 정원사"><i class="cast-cell"></i></div>
-    <div class="px-hunter" aria-hidden="true" hidden><i class="hunter-cell"></i></div>
     <div class="px-foe" aria-hidden="true"><i class="effect-cell"></i></div>
     <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div></div>
     <span class="px-dodge-signal" aria-hidden="true">데하!</span>
@@ -76,8 +72,6 @@ export function mountArcade(root) {
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
- const hunterSprite=q('.px-hunter');
- hunterSprite.style.setProperty('--sheet-height',hunterRows.length*100+'%');
  const hudRound=q('[data-round]'), hudScore=q('[data-score]'), hudBest=q('[data-best]'), hearts=q('.px-hearts');
  const runActions=q('.px-run-actions'), pauseMenu=q('.px-pause-menu'), resumeButton=q('.px-resume');
  const reaction=q('.px-reaction'), average=q('[data-average]');
@@ -189,9 +183,6 @@ export function mountArcade(root) {
   beatsLeft=encounter.variant==='double'?2:1;allPerfect=true;
   safeSide=stage.safeSide;
   if(encounter.kind==='lane'&&encounter.effect!=='fence')board.dataset.side=safeSide;
-  const hunterRow=hunterRows.indexOf(encounter.effect==='umbrella'?'백무상':encounter.hunter);
-  hunterSprite.hidden=hunterRow<0;
-  if(hunterRow>=0)hunterSprite.style.setProperty('--row',hunterRow*100/(hunterRows.length-1)+'%');
   const extra=extraRows.includes(encounter.effect);
   board.dataset.atlas=extra?'encounter':'skill';
   const rows=extra?extraRows:effectRows, row=rows.indexOf(encounter.effect);

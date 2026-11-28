@@ -34,7 +34,7 @@ export function createFeatureLoader(definitions,loadStyle){
 
 export const loadFeature=createFeatureLoader({
  arcade:{load:async()=>{
-  const arcade=await import('./arcade.js?v=4753d4898291');
+  const arcade=await import('./arcade.js?v=e1b36ee223bf');
   await arcade.preloadArcadeSprites();return arcade;
  },styles:['arcade']},
  statistics:{load:()=>import('./statistics.js?v=e6da15a317f4'),styles:[]},
