@@ -84,7 +84,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   assert.equal(x.phase(),'warning');
   const board=x.el('.px-cabinet'), {kind,variant}=board.dataset;
   if(variant==='fusion')assert.equal(x.el('[data-name]').textContent,'조각상');
-  x.advance(2500);
+  x.advance(3700);
   assert.equal(x.phase(),'active');
   const title=x.el('[data-name]').textContent;
   const label=x.el('[data-hunter]').textContent;
@@ -93,6 +93,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   const encounter=encounters.find(e=>e.name===title);
   const window=encounterTiming(encounter,Number(x.el('[data-round]').textContent)).window;
   assert.equal(board.dataset.effect,encounter.effect);
+  assert.doesNotMatch(label,/\d+\/\d+/);
   assert.equal(board.dataset.performance,'strike');
   total+=['beat','gauge'].includes(kind)?2:1;
   if(kind==='lane')x.touch(board.dataset.side);
@@ -143,7 +144,7 @@ test('dodge opens at impact and closes at the deadline, including between animat
  t.mock.method(Math,'random',()=>.999);
  const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1,.86+.999*.30);
  for(const [delay,hit] of [[0,false],[timing.hitAt-1,false],[timing.hitAt,true],[timing.duration-1,true],[timing.duration,false]]){
-  const x=setup();x.touch();x.advance(2500);
+  const x=setup();x.touch();x.advance(3700);
   assert.equal(x.el('.px-cabinet').dataset.effect,'statue');
   x.advance(delay);
   x.touch();assert.equal(x.el('.px-cabinet').dataset.hit,hit?'yes':'no');
@@ -155,7 +156,7 @@ for(const name of ['찰나의 생멸','연이은 생멸','밀랍 사격','사진
  test(name+' scores on first contact and ignores a release in the next round',t=>{
   const card=encounters.find(e=>e.name===name);
   assert.equal(card.kind,'tap');startWith(t,card);
-  const x=setup();x.touch();x.advance(2200);x.advance(137);
+  const x=setup();x.touch();x.advance(3700);x.advance(137);
   const target=x.el('.px-primary'), controls=x.el('.px-inputs');
   const pointer={target,button:0,pointerId:7,isPrimary:true};
   assert.equal(x.el('.px-meter').hidden,true);
@@ -178,7 +179,7 @@ test('one keypress or assistive click blocks a chain attack, within the reaction
   assert.equal(x.el('.px-cabinet').dataset.kind,'tap');
   if(input==='early')x.touch();
   else{
-   x.advance(2200);
+   x.advance(3700);
    const duration=parseFloat(x.el('.px-cabinet').style['--travel']);
    x.advance(input==='timeout'?duration:duration-1);
    if(input==='click')x.el('.px-inputs').emit('click',{target,detail:0});
@@ -191,7 +192,7 @@ test('one keypress or assistive click blocks a chain attack, within the reaction
   assert.equal(x.phase(),'result');assert.equal(x.el('[data-score]').textContent,success?'1':'0');
   assert.equal(x.el('.px-hearts').attributes['aria-label'],success?'남은 하트 3개':'남은 하트 2개');
   x.advance(1200);
-  if(success)assert.match(x.el('[data-hunter]').textContent,/암실에서 탈출 · 2\/2/);
+  if(success){assert.match(x.el('[data-hunter]').textContent,/암실에서 탈출 · 해독기/);assert.equal(x.el('.px-cabinet').dataset.kind,'gauge');}
   else assert.equal(x.el('[data-round]').textContent,'2');
   x.dispose();
  }
@@ -240,14 +241,94 @@ test('resuming an interrupted warning retains its cues and orientation',()=>{
 test('a pending attack survives pause and failing it ends the route with one lost heart',t=>{
  const route=encounters.find(card=>card.name==='판자 뒤의 매복');
  startWith(t,route);
- const x=setup();x.touch();x.advance(2200);
+ const x=setup();x.touch();x.advance(3700);
  const board=x.el('.px-cabinet');x.touch(board.dataset.side);
  assert.equal(x.phase(),'result');assert.equal(x.el('[data-score]').textContent,'1');
  x.doc.hidden=true;x.doc.emit('visibilitychange');x.advance(5000);
- x.doc.hidden=false;x.touch();assert.equal(x.phase(),'warning');
- assert.match(x.el('[data-hunter]').textContent,/판자 뒤의 매복 · 2\/2/);
+ x.doc.hidden=false;x.touch();assert.equal(x.phase(),'result');x.advance(760);
+ assert.equal(x.phase(),'warning');assert.match(x.el('[data-hunter]').textContent,/판자 뒤의 매복 · (사냥터지기|리퍼)/);
  x.touch();x.advance(1200);
  assert.equal(x.el('[data-round]').textContent,'2');
  assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 2개');
  assert.equal(x.el('[data-score]').textContent,'1');x.dispose();
+});
+
+test('the 700 ms appearance is followed by an independent 800–3000 ms wait',t=>{
+ for(const [random,wait] of [[0,800],[.5,1900],[.9999999,3000]]){
+  t.mock.method(Math,'random',()=>random);
+  const x=setup();x.touch();
+  assert.equal(x.el('.px-cabinet').style['--tell'],'700ms');
+  x.advance(700);assert.equal(x.phase(),'warning');
+  x.advance(wait-1);assert.equal(x.phase(),'warning');
+  x.advance(1);assert.equal(x.phase(),'active');x.dispose();
+ }
+});
+
+test('rocket and falling Luchino accept Dead Hard on entry and show it even on an early press',t=>{
+ for(const name of ['로켓 돌진','치명 추격']){
+  const card=encounters.find(e=>e.name===name);
+  assert.equal(card.kind,'dodge');assert.equal(encounterTiming(card,1).hitAt,0);
+  for(const early of [false,true]){
+   startWith(t,card);
+   const x=setup(), board=x.el('.px-cabinet');x.touch();assert.equal(x.el('.px-primary').textContent,'데하');
+   if(!early){x.advance(3700);assert.equal(board.dataset.ready,'yes');x.advance(76);}
+   x.touch();assert.equal(board.dataset.dodged,'yes');assert.equal(board.dataset.hit,early?'no':'yes');
+   assert.equal(x.el('[data-average]').textContent,early?'—':'76');
+   x.advance(1200);assert.equal(board.dataset.dodged,undefined);x.dispose();
+  }
+ }
+});
+
+test('the wall reveals its danger side only at the red floor cue',t=>{
+ startWith(t,encounters.find(e=>e.name==='격벽'));
+ const x=setup(),board=x.el('.px-cabinet');x.touch();
+ assert.equal(board.dataset.side,undefined);assert.equal(x.el('.px-direction').hidden,true);
+ x.advance(3700);assert.ok(['left','right'].includes(board.dataset.side));
+ assert.match(x.el('.px-dialogue strong').textContent,/붉은 선/);
+ x.advance(120);x.touch(board.dataset.side);assert.equal(board.dataset.hit,'yes');x.dispose();
+});
+
+test('pausing preserves a pending cue and excludes paused time from a measured reaction',t=>{
+ startWith(t,encounters.find(e=>e.name==='찰나의 생멸'));
+ const x=setup(), board=x.el('.px-cabinet');x.touch();x.advance(1000);
+ const due=[...x.timers.values()][0].at;
+ x.el('.px-pause').emit('click');assert.equal(x.phase(),'paused');assert.equal(x.el('.px-pause-menu').hidden,false);
+ x.advance(6000);x.el('.px-resume').emit('click');assert.equal(x.phase(),'warning');
+ x.advance(due-1001);assert.equal(x.phase(),'warning');x.advance(1);assert.equal(x.phase(),'active');
+ x.advance(102);x.el('.px-pause').emit('click');x.advance(5000);x.el('.px-resume').emit('click');x.advance(31);
+ x.touch();assert.equal(board.dataset.hit,'yes');assert.equal(x.el('[data-average]').textContent,'133');
+ x.dispose();
+});
+
+test('each displayed calibration crossing gets one reaction sample, including double inputs',t=>{
+ startWith(t,encounters.find(e=>e.name==='연속 교정'));
+ const x=setup();x.touch();x.advance(3700);
+ const board=x.el('.px-cabinet'), meter=x.el('.px-meter').style;
+ for(const [n,afterFirstFrame] of [10,30].entries()){
+  const span=parseFloat(board.style['--travel']), start=parseFloat(meter['--start'])/100;
+  x.advance(span*start+1);x.advance(afterFirstFrame);x.touch();
+  assert.equal(x.el('[data-average]').textContent,n?'20':'10');
+ }
+ assert.equal(board.dataset.hit,'yes');
+ x.el('.px-pause').emit('click');x.el('.px-restart').emit('click');
+ assert.equal(x.phase(),'warning');assert.equal(x.el('[data-average]').textContent,'—');
+ assert.equal(x.el('[data-score]').textContent,'0');assert.equal(x.el('[data-round]').textContent,'1');
+ x.dispose();
+});
+
+test('stop cancels the game from any live phase and cannot lose a heart or start another round',t=>{
+ for(const when of ['warning','active','paused','result']){
+  startWith(t,encounters.find(e=>e.name==='밀랍 사격'));
+  const x=setup();x.touch();
+  if(when!=='warning')x.advance(3700);
+  if(when==='paused')x.el('.px-pause').emit('click');
+  if(when==='result'){x.advance(87);x.touch();}
+  x.el('.px-stop').emit('click');assert.equal(x.phase(),'over');
+  x.advance(10000);assert.equal(x.phase(),'over');
+  assert.equal(x.el('[data-score]').textContent,when==='result'?'1':'0');
+  assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 3개');
+  assert.equal(x.timers.size+x.frames.size,0);
+  x.touch();assert.equal(x.phase(),'warning');assert.equal(x.el('[data-average]').textContent,'—');
+  x.dispose();
+ }
 });
