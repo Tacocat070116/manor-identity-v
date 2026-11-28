@@ -1,10 +1,10 @@
 # 아케이드 도트의 원본 대조 기록
 
-2026년 11월 28일 기준. 아케이드 24개 상황에 쓰이는 기본 외형을 검토했다. 표의 링크는 실제로 열어 본 NetEase의 공식 배포본이다. 캐릭터 파일에는 무기나 부속품이 포함되지만, 같은 캐릭터가 생성하는 투사체와 지형 효과는 별도 오브젝트일 수 있다.
+처음 24개 상황을 제작할 때 대조한 기본 외형과 이후 추가로 확인한 원본을 기록했다. 표의 링크는 NetEase가 공개한 배포본이다. 캐릭터 파일에는 무기나 부속품이 포함되지만, 같은 캐릭터가 생성하는 투사체와 지형 효과는 별도 오브젝트일 수 있다.
 
 | 대상 | 3D 대조 자료 | 확인 범위 |
 | --- | --- | --- |
-| 정원사 | [PMX](https://www.identityvgame.com/data/moxingzip/yuanding-pmx.zip) | 정점 5,290개, 삼각형 6,796개. 밀짚모자의 어두운 띠, 접어 올린 흰 소매, 덧댄 녹색 앞치마, 허리 도구, 청색 바지와 녹색 공구함을 대조했다. 단추눈의 교차 실과 주근깨는 얼굴 자료와 함께 확인했다. 대화창은 이 특징이 작은 크기에서도 보이도록 별도의 64픽셀 초상화로 그렸다. |
+| 정원사 | [PMX](https://www.identityvgame.com/data/moxingzip/yuanding-pmx.zip) | 정점 5,290개, 삼각형 6,796개. 밀짚모자의 어두운 띠, 접어 올린 흰 소매, 덧댄 녹색 앞치마, 허리 도구, 청색 바지와 녹색 공구함을 대조했다. 단추눈의 교차 실과 주근깨는 얼굴 자료와 함께 확인했다. 현재 대화창의 초상화는 얼굴을 따로 렌더링한 96×96픽셀 이미지다. |
 | 붉은 나비 | [glTF](https://www.identityvgame.com/data/role/hongdie/h55_butcher_banshee.gltf) · [PMX](https://www.identityvgame.com/data/moxingzip/hongdie-pmx.zip) | PMX와 기본형 glTF의 의상이 달라 나타날 때의 붉은 기모노·머리·흰 부채는 glTF의 네 메시를 기준으로 삼았다. 돌진할 때는 가면, 녹색·자주색 옷자락과 어두운 부채로 바뀐다. |
 | 노란 옷의 왕 | [PMX](https://www.identityvgame.com/data/moxingzip/huangyizhizhu-pmx.zip) | 부속 무기 파일 wuqi.pmx에서 정점 1,047개, 삼각형 1,142개, 뼈 7개와 512×512 텍스처를 확인했다. 소환 촉수의 밑동과 휘두르는 모습은 게임 화면을 대조했다. |
 | 재앙의 도마뱀 | [glTF](https://www.identityvgame.com/data/role/niexi/h55_lizard_idle.gltf) | 머리·몸·무기 메시에서 납작한 얼굴, 구릿빛 땋은 머리, 해진 코트와 휘어진 칼날, 구부린 뒷발과 꼬리를 확인했다. |
@@ -23,8 +23,11 @@
 | 우산의 영혼 | [glTF](https://www.identityvgame.com/data/susan-gai/wuchang.gltf) | 캐릭터와 손에 든 부속품을 대조했다. 종의 울림은 도트로 표현했다. |
 | 기계공 | [glTF](https://www.identityvgame.com/data/role/jixieshi/jixieshi.gltf) · [PMX](https://www.identityvgame.com/data/moxingzip/jixieshi-pmx.zip) | 캐릭터와 조종기(remote)를 확인했다. 조종기는 조종 대상인 인형과 구분했다. |
 | 작곡가 | [glTF](https://www.identityvgame.com/data/role/yinyuejia/yinyuejia.gltf) · [PMX](https://www.identityvgame.com/data/moxingzip/zuoqujia-pmx.zip) | 본체와 손에 드는 소품 메시를 확인했다. 조율의 음표와 박자선은 2D 표시다. |
+| 사진사 | [glTF](https://www.identityvgame.com/data/role/shexiangshi/h55_Joseph_idle.gltf) | 인물의 머리와 제복, 손에 쥔 무기와 함께 제공되는 삼각대 카메라. 인물과 카메라를 분리해 배치한다. |
+| 울보 | [glTF](https://www.identityvgame.com/data/role/aikugui/h55_boy_idle.gltf) | 가면과 머리 모양, 몸통과 손에 든 무기. 날아가는 원혼은 별도 효과다. |
+| 파멸의 바퀴 | [glTF](https://www.identityvgame.com/data/role/polun/polun_.gltf) | 인간 형태와 장비의 재질 및 비례를 대조했다. |
 
-정원사의 얼굴 모델은 2026년 1월 개선 공지가 있어, 공개 배포본이 현재 클라이언트와 동일한 빌드라고 단정할 수 없다. 그림은 게임에 표시되는 크기에 맞춰 다시 그렸다. [공식 캐릭터 모델](https://www.identityvgame.com/jp/character/index.html) · [공식 개선 공지](https://www.identityvgame.com/jp/news/update/20260114/35356_1281822.html) · [개선 후 외형 참고](https://id5.fandom.com/wiki/Gardener/Gallery)
+정원사의 얼굴 모델은 2026년 1월 개선 공지가 있어, 공개 배포본이 현재 클라이언트와 동일한 빌드라고 단정할 수 없다. 아케이드에서는 공개 모델을 게임 화면에 맞는 도트 크기로 렌더링했다. [공식 캐릭터 모델](https://www.identityvgame.com/jp/character/index.html) · [공식 개선 공지](https://www.identityvgame.com/jp/news/update/20260114/35356_1281822.html) · [개선 후 외형 참고](https://id5.fandom.com/wiki/Gardener/Gallery)
 
 ### 게임 장면으로 확인한 엔티티
 
@@ -38,3 +41,19 @@
 | 산제비나비 | 기본 외형의 날개 색과 비행 실루엣 | [스킬 자료](https://id5.fandom.com/wiki/Dancing_in_Misery) |
 
 실과 안개 칼날, 물길, 밀랍, 음표처럼 움직일 때 보이는 효과는 아케이드의 예고·공격 프레임에 맞춰 그렸다. 이 기록에서 확인한 파일은 공식 사이트가 공개한 배포본이다. 설치판 전용 메시와 이펙트의 일치 여부는 미확인이다.
+
+### 38개 돌발 상황에 적용한 모델 렌더링
+
+단독 상황 30개와 그 상황들을 조합하는 연속 사건 8개에 등장하는 감시자 19명과 생존자 3명의 모델, 텍스처, 애니메이션을 공식 캐릭터 뷰어에서 확인했다. 생존자는 정원사·기계공·작곡가다. [NetEase 공식 캐릭터 뷰어](https://www.identityvgame.com/en/character/?type=hunters)
+
+리퍼의 모델은 삼각형 6,338개, 사냥터지기의 모델은 7,872개다. 두 캐릭터 모두 전신과 무기를 함께 렌더링해 예고 장면에 사용했다. 갈퀴 사슬과 안개 칼날은 공격이 시작될 때 별도 레이어에서 출발한다. 우산의 영혼은 공개 모델의 두 머리·몸체 재질을 분리해 **탕백**에는 흑무상, **날아드는 검은 우산**에는 백무상을 배치했다. [리퍼](https://www.identityvgame.com/data/role/jk/jieke.gltf) · [사냥터지기](https://www.identityvgame.com/data/role/lutou/lutou.gltf) · [우산의 영혼](https://www.identityvgame.com/data/susan-gai/wuchang.gltf)
+
+공식 MAX 배포본에서 발크의 격벽, 사진사의 삼각대 카메라, 파멸의 바퀴의 바퀴 형태를 분리했고, 사냥터지기의 갈퀴와 연결되는 사슬의 고리 구조도 확인했다. 사진사의 카메라와 사도의 고양이처럼 본체와 독립적으로 움직이는 물체는 인물 도트에서 분리했다. [광기의 눈](https://www.identityvgame.com/data/moxingzip/fengyan-max.zip) · [사진사](https://www.identityvgame.com/data/moxingzip/sheyingshi-max.zip) · [파멸의 바퀴](https://www.identityvgame.com/data/moxingzip/polun-max.zip) · [사냥터지기](https://www.identityvgame.com/data/moxingzip/lutou-max.zip)
+
+노란 옷의 왕의 소환 촉수, 사냥터지기의 덫, 조각가의 소환 조각상은 확인한 배포본에서 해당 독립 모델을 식별하지 못했다. 이 세 가지는 게임에 등장하는 윤곽과 동작을 기준으로 재구성했다.
+
+정원사의 전신 동작과 초상화에는 챙 넓은 모자와 공구함이 들어 있는 PMX를 사용했다. 미치코의 평상 모습은 캐릭터 뷰어의 모델에서 렌더링하고, 반야 모습은 별도 PMX에 들어 있는 가면과 복식 재질을 적용했다. 촉수의 표면은 노란 옷의 왕의 공식 무기 재질을 참고했다. [정원사](https://www.identityvgame.com/data/moxingzip/yuanding-pmx.zip) · [붉은 나비](https://www.identityvgame.com/data/moxingzip/hongdie-pmx.zip) · [노란 옷의 왕](https://www.identityvgame.com/data/moxingzip/huangyizhizhu-pmx.zip)
+
+스킬 도트에는 사도의 고양이, 수위 26호의 폭탄, 나이아스의 작살, 우산의 영혼의 종과 우산, 작곡가의 음차를 모델에서 분리해 사용했다. 블러디 퀸의 거울상은 본체의 형상을 렌더링한 뒤 투영색과 베기 궤적을 더했다. 안개 칼날·거미줄·물길·원혼의 궤적과 산제비나비는 2D로 재구성했고, 해독기·기계공의 인형·판자·출구 번호판은 게임에 보이는 형태를 참고했다. 조각상의 표면에는 공식 배포본에 들어 있는 조각 소품의 텍스처를 사용했다.
+
+스킬별 시트 26행 중 14행에는 모델을 직접 렌더링한 프레임이 들어 있다. 나머지 12행은 조각상, 안개 칼날, 거미줄, 밀랍 분사, 덫, 떨어지는 밀랍, 해독기, 기계공의 인형, 산제비나비, 원혼, 판자, 출구 번호판이다. 조각가의 세 형상과 울보의 원혼은 게임 내 스킬 아이콘도 함께 대조했다. 별도의 캐릭터 시트에는 정원사, 미치코와 소환 촉수의 동작이 들어 있다. [조각 소품 텍스처](https://www.identityvgame.com/data/moxingzip/diaokejia-max.zip) · [조각가 스킬 아이콘](https://wikiwiki.jp/story5/彫刻師) · [울보 스킬 아이콘](https://wikiwiki.jp/story5/泣き虫)

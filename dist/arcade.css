@@ -67,15 +67,27 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 /* Keep scaled poses inside the playfield, with the HUD in screen coordinates. */
 .px-actors {position:absolute;inset:5px clamp(5px,1.2cqw,12px);pointer-events:none}
 .px-cabinet[data-facing=reverse]:not([data-kind=lane]) .px-actors {transform:scaleX(-1)}
-.px-cabinet[data-performance=tell] :is(.px-foe,.px-cast) {animation:entity-arrive var(--tell) ease-out both}
+.px-cabinet[data-performance=tell] :is(.px-hunter,.px-foe,.px-cast) {animation:entity-arrive var(--tell) ease-out both}
 @keyframes entity-arrive {from{opacity:0;translate:0 9%}35%{opacity:1}to{translate:0 0}}
 .px-cabinet[data-scene=result] .px-actors {animation:round-leave var(--rest,740ms) linear both}
 @keyframes round-leave {0%,78%{opacity:1}100%{opacity:0}}
-.px-hero,.px-foe,.px-cast,.px-hazard,.px-dodge-signal {position:absolute;pointer-events:none}
+.px-hero,.px-hunter,.px-foe,.px-cast,.px-hazard,.px-dodge-signal {position:absolute;pointer-events:none}
 .px-hero {left:20%;bottom:9%;width:clamp(78px,12.4%,136px);aspect-ratio:1;z-index:2}
-.cast-cell,.effect-cell {display:block;width:100%;height:100%;background-repeat:no-repeat;image-rendering:pixelated;background-position:0 var(--row,0%)}
+.cast-cell,.effect-cell,.hunter-cell {display:block;width:100%;height:100%;background-repeat:no-repeat;image-rendering:pixelated;background-position:0 var(--row,0%)}
 .cast-cell {background-image:url('assets/arcade/cast-motion.png');background-size:600% 900%}
 .effect-cell {--row:var(--effect-row,0%);background-image:url('assets/arcade/skill-motion.png');background-size:600% 2000%}
+.px-hunter {display:none;right:2%;bottom:10%;width:min(34cqw,clamp(108px,21cqw,205px));aspect-ratio:1;transform-origin:50% 95%}
+.px-cabinet:is([data-performance=tell],[data-performance=strike]) .px-hunter {display:block}
+.hunter-cell {background-image:url('assets/arcade/hunter-motion.png');background-size:600% var(--sheet-height);animation:cells 1.35s step-end infinite}
+.px-cabinet[data-kind=lane][data-side=left]:not([data-effect=fence],[data-effect=wheel]) .px-hunter {right:29%;bottom:16%}
+.px-cabinet:is([data-effect=camera],[data-effect=puppet],[data-effect=bell],[data-effect=note]) .px-foe {left:47%}
+.px-cabinet[data-effect=statue] .px-hunter {bottom:19%}
+.px-hunter::before {content:'';position:absolute;left:28%;right:25%;bottom:3%;height:5%;border-radius:50%;background:#050b107a}
+/* Save the fully extended claw and hook for the projectile's launch. */
+.px-cabinet[data-performance=tell]:is([data-effect=fog],[data-effect=chain]) .hunter-cell {animation:effect-tell var(--tell) step-end both}
+.px-cabinet[data-performance=strike]:is([data-effect=fog],[data-effect=chain]) .hunter-cell {animation:effect-strike var(--travel) step-end both}
+.px-cabinet[data-performance=strike]:is([data-effect=fog],[data-effect=web],[data-effect=chain],[data-effect=wax],[data-effect=wax-drop]) .px-hunter {animation:caster-release var(--travel) ease-out both}
+@keyframes caster-release {0%{transform:rotate(0)}18%{transform:translateX(-3%) rotate(-4deg)}48%{transform:translateX(1%) rotate(2deg)}100%{transform:none}}
 .px-cabinet[data-atlas=encounter] .effect-cell {background-image:url('assets/arcade/encounter-motion.png');background-size:600% 600%}
 /* At each stop the atlas is aligned to a whole cell, even on a partial run. */
 @keyframes cells {
@@ -114,22 +126,15 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet[data-performance=strike]:is([data-effect=statue],[data-effect=fog],[data-effect=chain],[data-effect=web]) .px-foe {animation:incoming var(--travel) steps(16,end) both}
 @keyframes incoming {0%{left:min(63%,var(--right-edge));scale:1}32%{left:min(54%,var(--right-edge))}70%{left:33%;scale:1.08}to{left:18%}}
 .px-cabinet[data-effect=chain] .px-foe {--size:min(35cqw,clamp(110px,23cqw,245px))}
-/* Projectiles are fired on the strike. Their caster is the visible source during the warning. */
-.px-cabinet[data-effect=fog] {--caster:url('assets/c10.png')}
-.px-cabinet[data-effect=chain] {--caster:url('assets/c17.png')}
-.px-cabinet[data-effect=web] {--caster:url('assets/c01.png')}
-.px-cabinet:is([data-effect=wax],[data-effect=wax-drop]) {--caster:url('assets/c12.png')}
-.px-cabinet[data-performance=tell]:is([data-effect=fog],[data-effect=chain],[data-effect=web],[data-effect=wax],[data-effect=wax-drop]) .px-foe {
- left:min(64%,var(--right-edge));bottom:11%;width:clamp(58px,11cqw,100px);scale:1;
- background:var(--caster) center/cover;border:2px solid #7d786a;box-shadow:0 0 0 3px #10181c,inset 0 0 9px #0b141c;image-rendering:pixelated
-}
-.px-cabinet[data-performance=tell]:is([data-effect=fog],[data-effect=chain],[data-effect=web],[data-effect=wax],[data-effect=wax-drop]) .effect-cell {visibility:hidden}
+/* The cast is visible before a projectile is released. Keep surprise attacks beyond the scene edge. */
+.px-cabinet[data-performance=tell]:is([data-effect=fog],[data-effect=chain],[data-effect=web],[data-effect=wax],[data-effect=wax-drop]) .px-foe {display:none}
 .px-cabinet[data-performance=tell]:is([data-effect=lizard],[data-effect=rocket],[data-effect=fence]) .px-foe {display:none}
 .px-cabinet[data-performance=tell]:is([data-effect=lizard],[data-effect=rocket]) .px-actors::before {
  content:'';position:absolute;animation:entity-arrive var(--tell) ease-out both;pointer-events:none
 }
 .px-cabinet[data-effect=lizard] .px-actors::before {left:19%;bottom:8%;width:23%;height:6%;border-radius:50%;background:radial-gradient(ellipse,#0a0c11 15%,#131420ad 53%,transparent 73%)}
 .px-cabinet[data-effect=rocket] .px-actors::before {right:0;bottom:16%;width:7%;height:12%;opacity:.7;background:repeating-linear-gradient(160deg,transparent 0 6px,#bfae9880 7px 10px,transparent 11px 16px);clip-path:polygon(100% 0,100% 81%,0 100%,65% 49%,34% 53%)}
+.px-cabinet:is([data-effect=lizard],[data-effect=rocket]) .px-foe {--size:min(36cqw,clamp(108px,21cqw,215px))}
 .px-cabinet[data-effect=lizard] .px-foe {left:21%}
 .px-cabinet[data-effect=rocket][data-performance=strike] .px-foe {animation:rocket-entry var(--travel) cubic-bezier(.15,.55,.66,1) both}
 @keyframes rocket-entry {from{left:calc(100% + 16px)}to{left:18%}}
@@ -164,7 +169,12 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet[data-kind=lane] .px-foe {left:min(var(--danger-at,63%),var(--right-edge))}
 .px-cabinet[data-side=left] {--danger-at:64%}.px-cabinet[data-side=right] {--danger-at:14%;--lane-start:3%}
 .px-cabinet[data-effect=wheel][data-performance=strike] .px-foe {animation:rocket-charge var(--travel) steps(12,end) both}
-.px-cabinet[data-effect=wheel][data-performance=tell] .px-foe {left:var(--lane-start,var(--right-edge))}
+.px-cabinet[data-effect=wheel][data-performance=tell] :is(.px-hunter,.px-foe) {--size:min(31cqw,clamp(95px,17cqw,190px));width:var(--size);left:var(--lane-start,calc(97% - var(--size)));bottom:8%}
+.px-cabinet[data-effect=wheel][data-performance=tell] .px-hunter {animation:wheel-fold var(--tell) ease-in both}
+.px-cabinet[data-effect=wheel][data-performance=tell] .px-foe {animation:wheel-form var(--tell) ease-out both}
+.px-cabinet[data-effect=wheel][data-performance=strike] .px-hunter {display:none}
+@keyframes wheel-fold {0%{opacity:0}20%,48%{opacity:1;scale:1}86%,100%{opacity:0;scale:.76}}
+@keyframes wheel-form {0%,56%{opacity:0;scale:.76}to{opacity:1;scale:1}}
 .px-cabinet[data-effect=wheel][data-side=right] .effect-cell {transform:scaleX(-1)}
 @keyframes rocket-charge {from{left:var(--lane-start,var(--right-edge));scale:1}to{left:min(var(--danger-at,63%),var(--right-edge));scale:1.08}}
 .px-cabinet:is([data-effect=violin],[data-effect=water],[data-effect=fence]) .px-foe {--size:min(35cqw,clamp(106px,21cqw,220px))}
@@ -249,11 +259,12 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 }
 @media(prefers-reduced-motion:reduce){
  .px-wipe {display:none}.px-arcade *, .px-arcade *::before,.px-arcade *::after {animation:none!important;transition:none!important}
- .px-cabinet[data-performance=tell] :is(.cast-cell,.effect-cell){background-position-x:20%}
- .px-cabinet[data-performance=strike] :is(.cast-cell,.effect-cell){background-position-x:80%}
+ .px-cabinet[data-performance=tell] :is(.cast-cell,.effect-cell,.hunter-cell){background-position-x:20%}
+ .px-cabinet[data-performance=strike] :is(.cast-cell,.effect-cell,.hunter-cell){background-position-x:80%}
+ .px-cabinet[data-effect=wheel][data-performance=tell] .px-hunter {display:none}
  .px-cabinet[data-effect=butterfly][data-performance=tell] .px-cast {opacity:.22}
  .px-cabinet[data-performance=strike][data-kind=dodge] .px-foe {left:34%}
 }
 
-.px-cabinet[data-interrupted=yes] :is(.px-foe,.px-cast,.effect-cell,.px-cast .cast-cell),
+.px-cabinet[data-interrupted=yes] :is(.px-hunter,.hunter-cell,.px-foe,.px-cast,.effect-cell,.px-cast .cast-cell),
 .px-cabinet[data-phase=paused] *, .px-cabinet[data-phase=paused] *::before, .px-cabinet[data-phase=paused] *::after {animation-play-state:paused}

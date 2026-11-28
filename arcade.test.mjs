@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {encounters, shuffleEncounters, dealStages} from './dist/arcade-events.js';
 import {mountArcade, encounterTiming} from './dist/arcade.js';
 
@@ -330,5 +331,32 @@ test('stop cancels the game from any live phase and cannot lose a heart or start
   assert.equal(x.timers.size+x.frames.size,0);
   x.touch();assert.equal(x.phase(),'warning');assert.equal(x.el('[data-average]').textContent,'—');
   x.dispose();
+ }
+});
+
+test('character and effect sheets match the rows selected by every solo encounter',t=>{
+ const singles=encounters.filter(card=>!card.stages);
+ const castRows=new Map();
+ for(const card of singles){
+  startWith(t,card);
+  const x=setup();x.touch();
+  const caster=x.el('.px-hunter');
+  const otherSprite=['butterfly','lizard','rocket','cipher','gate','pallet'].includes(card.effect);
+  assert.equal(caster.hidden,otherSprite,card.name);
+  if(!caster.hidden){
+   const key=card.effect==='umbrella'?'백무상':card.hunter;
+   const row=caster.style['--row'];
+   if(castRows.has(key))assert.equal(castRows.get(key),row,key);
+   castRows.set(key,row);
+   assert.equal(caster.style['--sheet-height'],'1900%');
+  }
+  x.dispose();
+ }
+ assert.equal(castRows.size,19);assert.equal(new Set(castRows.values()).size,19);
+ for(const [file,rows] of [['hunter-motion',castRows.size],['cast-motion',9],['skill-motion',20],['encounter-motion',6]]){
+  const png=readFileSync(new URL('./dist/assets/arcade/'+file+'.png',import.meta.url));
+  assert.equal(png.toString('ascii',12,16),'IHDR',file);
+  const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+  assert.equal(width%6,0,file);assert.equal(width/6,height/rows,file);
  }
 });
