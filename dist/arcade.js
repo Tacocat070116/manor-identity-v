@@ -1,51 +1,61 @@
-import {encounters, shuffleEncounters} from './arcade-events.js?v=54cffa188160';
+import {encounters, shuffleEncounters} from './arcade-events.js?v=84efb89a5679';
 
-const sprites = ['statue','mirror','fog','butterfly','web','survivor','cipher','bomb','hook','tentacle',
- 'note','cat','violin','puppet','shadow','ice','bee','bell','rocket','magnet'];
-const storageKey = 'manor-arcade-surprise-best-v1';
+// Row order matches the six-frame effect atlas. Michiko and the tentacle also have full-size cast animations.
+const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
+ 'water','fence','cat','trap','wax-drop','cipher','puppet','bell','note','butterfly'];
+const storageKey = 'manor-arcade-surprise-nightmare-v1';
+const oldStorageKey = 'manor-arcade-surprise-best-v1';
 const actions = {dodge:'데하',hold:'바라보기',lane:'방향 선택',gauge:'교정',beat:'박자 맞히기'};
-const hints = {dodge:'공격이 보이면 데하',hold:'신호가 오면 길게 누르기',lane:'열린 길이 보이면 방향 선택',
- gauge:'바늘이 밝은 칸에 들어오면 교정',beat:'음표와 박자선이 겹치면 입력'};
+const hints = {dodge:'공격이 닿기 직전, 데하',hold:'모습을 드러내면 길게 누르기',lane:'열린 길이 보이면 방향 선택',
+ gauge:'바늘을 밝은 칸에 맞추세요',beat:'음표가 박자선과 겹치면 입력'};
 const stopScenes = new Set(['warning','active','result']);
-function paintSprite(element, sprite) {
- const i = sprites.indexOf(sprite);
- element.style.setProperty('--sx',(i%5)*25+'%');
- element.style.setProperty('--sy',Math.floor(i/5)*100/3+'%');
-}
-function savedBest() {
+function savedBest(key=storageKey) {
  try {
-  const n = Number(localStorage.getItem(storageKey));
+  const n = Number(localStorage.getItem(key));
   return Number.isSafeInteger(n) && n > 0 ? n : 0;
  } catch { return 0; }
 }
 
+export function encounterTiming(encounter, round) {
+ const level=Math.min(20,Math.max(0,round-1));
+ const sweep=1660-level*23;
+ const width=(encounter.kind==='beat'?.056:.061)-level*.00095;
+ const impact={statue:.59,fog:.55,chain:.56,web:.48,tentacle:.60,lizard:.63,mirror:.58};
+ const window=245-level*4;
+ const hitAt=Math.round((360-level*4)*(impact[encounter.effect]||.55)/.55);
+ const duration={dodge:hitAt+window,hold:560-level*8,lane:855-level*16,gauge:sweep,beat:sweep-80}[encounter.kind];
+ return {duration,hitAt,window,width,hold:encounter.variant==='long'?630:480,
+  tell:Math.max(430,760-level*14)+(encounter.variant==='fusion'?215:0)};
+}
 export function mountArcade(root) {
  const doc = root.ownerDocument, win = doc.defaultView;
  doc.documentElement.dataset.arcade = 'on';
  root.innerHTML = `<section class="px-arcade">
   <div class="px-wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-  <header class="px-heading"><h1><span class="px-pad" aria-hidden="true">✚</span>아케이드</h1><div class="px-best"><span aria-hidden="true">★</span> 내 최고 <b data-best>0</b>점</div></header>
+  <header class="px-heading"><h1><span class="px-pad" aria-hidden="true"></span>아케이드</h1><div class="px-best">악몽 최고 <b data-best>0</b>점</div></header>
   <section class="px-cabinet" aria-label="장원의 돌발전" data-phase="idle">
    <div class="px-hud"><span class="px-hearts" role="img" aria-label="남은 하트 3개"><i></i><i></i><i></i></span><span class="px-round">라운드 <b data-round>0</b></span><span class="px-points">점수 <b data-score>0</b></span><button class="px-pause" type="button" aria-label="일시 정지" hidden>Ⅱ</button></div>
    <div class="px-scene">
     <div class="px-land" aria-hidden="true"></div>
-    <div class="px-sign"><h2>장원의<br>돌발전</h2></div>
+    <div class="px-veil" aria-hidden="true"></div>
+    <div class="px-sign"><span>악몽 난이도</span><h2>장원의 돌발전</h2></div>
     <div class="px-signpost" hidden><span data-hunter></span><strong data-name></strong></div>
-    <div class="px-sparks" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="px-fog" aria-hidden="true"></div>
     <div class="px-hazard" aria-hidden="true"></div>
-    <div class="px-hero sprite" aria-hidden="true"></div>
-    <div class="px-pair" aria-hidden="true"><i class="sprite"></i><i class="sprite"></i></div>
-    <div class="px-threat sprite" aria-hidden="true"></div>
+    <div class="px-hero" role="img" aria-label="공구함을 든 정원사"><i class="cast-cell"></i></div>
+    <div class="px-foe" aria-hidden="true"><i class="effect-cell"></i></div>
+    <div class="px-cast" aria-hidden="true"><i class="cast-cell"></i></div>
+    <span class="px-dodge-signal" aria-hidden="true">데하!</span>
     <div class="px-direction" hidden aria-hidden="true"></div>
     <div class="px-meter" hidden aria-hidden="true"><div class="px-track"><i class="px-zone"></i><i class="px-marker"></i></div><span class="px-meter-label"></span></div>
    </div>
    <div class="px-console">
-    <div class="px-portrait" aria-hidden="true"><i class="sprite"></i></div>
+    <div class="px-portrait" aria-hidden="true"><i class="cast-cell"></i></div>
     <div class="px-dialogue" role="status" aria-live="polite" aria-atomic="true"><strong></strong><span></span></div>
     <div class="px-inputs"><button type="button" class="px-button px-primary"></button><div class="px-lanes" hidden><button type="button" class="px-button" data-side="left">◀ 왼쪽</button><button type="button" class="px-button" data-side="right">오른쪽 ▶</button></div></div>
    </div>
   </section>
-  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 생멸은 버튼을 길게 눌러 막고, 교정과 조율은 표시된 구간에 맞춰 누르세요.</p><p>하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다.</p></details>
+  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 나비 떼 속에서 미치코가 모습을 드러내면 버튼을 길게 눌러 시선을 유지하세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다.</p><p data-legacy hidden></p></details>
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
@@ -53,9 +63,10 @@ export function mountArcade(root) {
  const pauseButton=q('.px-pause'), signpost=q('.px-signpost'), meter=q('.px-meter'), direction=q('.px-direction');
  const dialogue=q('.px-dialogue strong'), caption=q('.px-dialogue span'), wipe=q('.px-wipe');
  doc.body.append(wipe);
- const portrait=q('.px-portrait i'), threat=q('.px-threat'), hero=q('.px-hero');
+ const oldBest=savedBest(oldStorageKey);
+ if(oldBest){const old=q('[data-legacy]');old.textContent='이전 난이도 최고 기록 · '+oldBest+'점';old.hidden=false;}
  let phase='idle', encounter=null, deck=[], score=0, lives=3, round=0, best=savedBest();
- let timer=0, frame=0, releaseAt=0, span=0, visibleProgress=0, center=.65, half=.09, beatsLeft=1;
+ let timer=0, frame=0, releaseAt=0, span=0, center=.65, half=.06, beatsLeft=1, timing;
  let safeSide='', held='', heldAt=0, pausedFrom='', disposed=false, allPerfect=true;
  function setPhase(value) { phase=value; board.dataset.phase=value; }
  function message(title, hint) { dialogue.textContent=title; caption.textContent=hint; }
@@ -76,36 +87,38 @@ export function mountArcade(root) {
  function gauge() { return encounter.kind==='gauge'||encounter.kind==='beat'; }
  function resetVisuals() {
   delete board.dataset.hit; delete board.dataset.held; delete board.dataset.side;
-  meter.hidden=true; direction.hidden=true; held=''; visibleProgress=0;
+  delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true; held='';
  }
  function setGauge() {
-  half=encounter.kind==='beat'?.085:Math.max(.06,.11-round*.0016);
-  center=encounter.kind==='beat'?.76:.31+Math.random()*.44;
+  half=timing.width;
+  center=encounter.kind==='beat'?.67+Math.random()*.14:.32+Math.random()*.44;
   meter.style.setProperty('--start',(center-half)*100+'%'); meter.style.setProperty('--width',half*200+'%');
   progress(encounter.variant==='reverse'?1:0);meter.hidden=false;
   q('.px-meter-label').textContent=encounter.kind==='beat'?'♪  박자선':encounter.variant==='reverse'?'◀  역방향 교정':'교정 구간';
+ }
+ function gaugePosition(elapsed) {
+  const pos=Math.max(0,Math.min(1,elapsed/span));
+  return encounter.variant==='reverse'?1-pos:pos;
  }
  function tick(now) {
   if(phase!=='active') return;
   const elapsed=now-releaseAt;
   if(held) {
-   const value=(now-heldAt)/(encounter.variant==='long'?680:480);
+   const value=(now-heldAt)/timing.hold;
    progress(Math.min(1,value));
    if(value>=1) { finish(true,action()==='엄폐하기'?'엄폐 성공!':'생멸을 막았어요!');return; }
   } else if(elapsed>=span) { finish(false,gauge()?'타이밍을 놓쳤어요.':'한발 늦었어요.');return; }
-  if(gauge()) {
-   const pos=Math.min(1,elapsed/span);
-   visibleProgress=encounter.variant==='reverse'?1-pos:pos;
-   progress(visibleProgress);
+  if(encounter.kind==='dodge' && elapsed>=timing.hitAt && !board.dataset.ready) {
+   board.dataset.ready='yes'; caption.textContent='지금 데하!';
   }
+  if(gauge())progress(gaugePosition(elapsed));
   frame=win.requestAnimationFrame(tick);
  }
  function trigger() {
   frame=win.requestAnimationFrame(now=>{
    if(disposed||phase!=='warning')return;
-   setPhase('active'); releaseAt=now; q('[data-name]').textContent=encounter.name;
-   span=gauge()?Math.max(1320,2280-round*23):Math.max(790,(encounter.kind==='lane'?1650:1320)-round*19);
-   if(encounter.variant==='fusion') span=Math.max(span,1100);
+   setPhase('active');board.dataset.performance='strike';releaseAt=now; q('[data-name]').textContent=encounter.name;
+   span=timing.duration;
    board.style.setProperty('--travel',span+'ms');
    let hint=encounter.cue;
    if(encounter.kind==='lane') {
@@ -113,21 +126,23 @@ export function mountArcade(root) {
     board.dataset.side=safeSide;hint+=' '+(safeSide==='left'?'왼쪽':'오른쪽')+'으로 피하세요.';
    }
    if(gauge())setGauge();
-   message(hint,encounter.kind==='hold'?'공격이 멈출 때까지 누르고 계세요.':gauge()&&beatsLeft===2?'첫 번째 입력':action());
+   message(hint,encounter.kind==='hold'?'공격이 멈출 때까지 누르고 계세요.':encounter.kind==='dodge'?'공격이 닿을 때 누르세요.':gauge()&&beatsLeft===2?'첫 번째 입력':action());
    frame=win.requestAnimationFrame(tick);
   });
  }
  function warn() {
   timingOff();resetVisuals();setPhase('warning');
-  board.dataset.kind=encounter.kind;board.dataset.variant=encounter.variant;board.dataset.sprite=encounter.sprite;
+  board.dataset.kind=encounter.kind;board.dataset.variant=encounter.variant;board.dataset.effect=encounter.effect;
+  board.dataset.performance='tell';timing=encounterTiming(encounter,round);
   beatsLeft=encounter.variant==='double'?2:1;allPerfect=true;
   safeSide=Math.random()<.5?'left':'right';
-  paintSprite(portrait,encounter.sprite);paintSprite(threat,encounter.sprite);
+  const row=effectRows.indexOf(encounter.effect);
+  if(row>=0)board.style.setProperty('--effect-row',row*100/(effectRows.length-1)+'%');
   signpost.hidden=false;q('[data-hunter]').textContent=encounter.hunter;q('[data-name]').textContent=encounter.variant==='fusion'?'조각상':encounter.name;
   buttons(action(),encounter.kind==='lane');pauseButton.hidden=false;
   message(encounter.warning,hints[encounter.kind]);showScore();
-  const delay=encounter.variant==='fusion'?1450:900;
-  later(trigger,delay+Math.random()*880);
+  const delay=timing.tell+Math.random()*480;
+  board.style.setProperty('--tell',delay+'ms');later(trigger,delay);
  }
  function next() {
   if(!deck.length)deck=shuffleEncounters(Math.random,encounter?.kind);
@@ -144,13 +159,14 @@ export function mountArcade(root) {
  }
  function finish(hit,label,points=1) {
   if(phase!=='active'&&phase!=='warning')return;
-  timingOff();held='';delete board.dataset.held;direction.hidden=true;meter.hidden=true;
+  if(phase==='warning')delete board.dataset.performance;
+  timingOff();held='';delete board.dataset.held;delete board.dataset.ready;direction.hidden=true;meter.hidden=true;
   if(hit){score+=points;saveRecord();} else lives--;
   board.dataset.hit=hit?'yes':'no';showScore();setPhase(lives?'result':'over');
   buttons(lives?'다음 사건 대기':'다시 도전');pauseButton.hidden=!lives;
   if(!lives){message('돌발전 종료 · '+score+'점',round+'번째 사건에서 '+label);return;}
   message(label,hit?'+'+points+'점 · 다음 사건이 다가와요.':'하트가 하나 줄었어요.');
-  later(next,1130);
+  later(next,Math.max(740,990-round*12));
  }
  function respond(choice,source) {
   if(phase==='idle'||phase==='over'){begin();return;}
@@ -169,21 +185,23 @@ export function mountArcade(root) {
    const ok=choice===safeSide;finish(ok,ok?'열린 길로 피했어요!':'위험한 쪽으로 움직였어요.');return;
   }
   if(gauge()) {
-   const distance=Math.abs(visibleProgress-center);
+   const distance=Math.abs(gaugePosition(elapsed)-center);
    if(distance>half){finish(false,'타이밍이 어긋났어요.');return;}
    allPerfect=allPerfect&&distance<=half*.34;
    if(--beatsLeft>0){
-    setGauge();releaseAt=win.performance.now();visibleProgress=0;
+    span=Math.round(span*.87);board.style.setProperty('--travel',span+'ms');
+    setGauge();releaseAt=win.performance.now();
     message('한 번 더!',encounter.kind==='beat'?'다음 음표를 맞히세요.':'다음 교정 구간을 맞히세요.');return;
    }
    finish(true,allPerfect?'완벽해요!':encounter.kind==='beat'?'조율 성공!':'교정 성공!',allPerfect?2:1);return;
   }
+  if(elapsed<timing.hitAt){finish(false,'데하가 너무 빨랐어요.');return;}
   finish(true,'데하로 피했어요!');
  }
  function release(source) {
   if(phase==='active'&&source===held) {
    const duration=win.performance.now()-heldAt;
-   if(duration>=(encounter.variant==='long'?680:480)) finish(true,action()==='엄폐하기'?'엄폐 성공!':'생멸을 막았어요!');
+   if(duration>=timing.hold) finish(true,action()==='엄폐하기'?'엄폐 성공!':'생멸을 막았어요!');
    else finish(false,'조금 더 오래 눌러주세요.');
   }
  }
@@ -234,9 +252,7 @@ export function mountArcade(root) {
   [controls,'lostpointercapture',up],[controls,'click',click],[pauseButton,'click',onPause],[doc,'keydown',keyDown],
   [doc,'keyup',keyUp],[doc,'visibilitychange',visibility],[win,'blur',pause],[win,'pagehide',pause]];
  for(const [el,event,fn] of listeners)el.addEventListener(event,fn);
- paintSprite(hero,'survivor');paintSprite(portrait,'survivor');
- for(const el of root.querySelectorAll('.px-pair .sprite'))paintSprite(el,'statue');
- buttons('돌발전 시작');message('해가 지면 장원의 추격이 시작됩니다.',encounters.length+'가지 돌발 상황 · 하트 3개');showScore();
+ buttons('돌발전 시작');message('정원사로 장원의 추격에서 살아남으세요.',encounters.length+'가지 돌발 상황 · 하트 3개');showScore();
  const wipeTimer=win.setTimeout(()=>wipe.remove(),530);
  return ()=>{
   disposed=true;timingOff();overlayGuard.disconnect();win.clearTimeout(wipeTimer);wipe.remove();delete doc.documentElement.dataset.arcade;

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {encounters, shuffleEncounters} from './dist/arcade-events.js';
-import {mountArcade} from './dist/arcade.js';
+import {mountArcade, encounterTiming} from './dist/arcade.js';
 
 class Element {
  handlers=new Map();
@@ -79,9 +79,15 @@ test('a single run plays all 24 events, including fusion, hold, reverse and doub
   const title=x.el('[data-name]').textContent;
   seen.add(title);
   if(variant==='fusion')assert.equal(title,'숭고의 형상');
+  const encounter=encounters.find(e=>e.name===title);
+  const timing=encounterTiming(encounter,round);
+  assert.equal(board.dataset.effect,encounter.effect);
+  assert.equal(board.dataset.performance,'strike');
   if(kind==='lane')x.touch(board.dataset.side);
   else if(kind==='hold')x.touch(null,700);
-  else if(kind==='dodge')x.touch();
+  else if(kind==='dodge'){
+   x.advance(timing.hitAt+10);assert.equal(board.dataset.ready,'yes');x.touch();
+  }
   else {
    const stages=variant==='double'?2:1;
    for(let i=0;i<stages;i++){
@@ -118,5 +124,34 @@ test('background suspends the same encounter and each early touchscreen input co
  assert.equal(x.phase(),'over');x.touch();
  assert.equal(x.el('[data-round]').textContent,'1');
  assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 3개');
+ x.dispose();
+});
+
+test('dodge opens at impact and closes at the deadline, including between animation frames',t=>{
+ t.mock.method(Math,'random',()=>.999);
+ const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1);
+ for(const [delay,hit] of [[0,false],[timing.hitAt-1,false],[timing.hitAt,true],[timing.duration-1,true],[timing.duration,false]]){
+  const x=setup();x.touch();x.advance(2500);
+  assert.equal(x.el('.px-cabinet').dataset.effect,'statue');
+  x.advance(delay);
+  x.touch();assert.equal(x.el('.px-cabinet').dataset.hit,hit?'yes':'no');
+  x.dispose();
+ }
+});
+
+test('the higher speed has a playable floor and previous records are shown separately',t=>{
+ for(const e of encounters){
+  const first=encounterTiming(e,1), last=encounterTiming(e,21);
+  assert.ok(last.duration<first.duration);
+  assert.deepEqual(encounterTiming(e,90),last);
+  assert.equal(first.window,245); assert.equal(last.window,165);
+  if(e.kind==='dodge')assert.equal(last.duration-last.hitAt,165);
+ }
+ const store=new Map([['manor-arcade-surprise-best-v1','81'],['manor-arcade-surprise-nightmare-v1','7']]);
+ const old=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
+ Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:key=>store.get(key)}});
+ t.after(()=>{if(old)Object.defineProperty(globalThis,'localStorage',old);else delete globalThis.localStorage;});
+ const x=setup();
+ assert.equal(x.el('[data-best]').textContent,'7');assert.match(x.el('[data-legacy]').textContent,/81점/);
  x.dispose();
 });
