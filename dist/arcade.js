@@ -1,4 +1,4 @@
-import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=a8645d857f6f';
+import {encounters, shuffleEncounters, dealStages} from './arcade-events.js?v=ab67867ee7a0';
 
 // Row order matches the six-frame effect atlas. Michiko and the tentacle also have full-size cast animations.
 const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb','rocket','violin',
@@ -6,8 +6,8 @@ const effectRows = ['statue','fog','chain','web','lizard','mirror','wax','bomb',
 const extraRows=['camera','umbrella','soul','wheel','pallet','gate'];
 const storageKey = 'manor-arcade-surprise-nightmare-v1';
 const oldStorageKey = 'manor-arcade-surprise-best-v1';
-const actions = {dodge:'데하',hold:'바라보기',lane:'방향 선택',gauge:'교정',beat:'박자 맞히기'};
-const hints = {dodge:'공격이 닿기 직전, 데하',hold:'모습을 드러내면 길게 누르기',lane:'열린 길이 보이면 방향 선택',
+const actions = {dodge:'데하',tap:'바라보기',lane:'방향 선택',gauge:'교정',beat:'박자 맞히기'};
+const hints = {dodge:'공격이 닿기 직전, 데하',tap:'미치코가 나타나면 한 번 누르세요.',lane:'열린 길이 보이면 방향 선택',
  gauge:'바늘을 밝은 칸에 맞추세요',beat:'음표가 박자선과 겹치면 입력'};
 const stopScenes = new Set(['warning','active','result']);
 function savedBest(key=storageKey) {
@@ -24,8 +24,8 @@ export function encounterTiming(encounter, round, pace=1) {
  const impact={statue:.59,fog:.55,chain:.56,web:.48,tentacle:.60,lizard:.63,mirror:.58};
  const window=245-level*4;
  const hitAt=Math.round(pace*(360-level*4)*(impact[encounter.effect]||.55)/.55);
- const duration={dodge:hitAt+window,hold:560-level*8,lane:Math.round((855-level*16)*pace),gauge:sweep,beat:sweep-80}[encounter.kind];
- return {duration,hitAt,window,width,hold:encounter.variant==='long'?630:480,
+ const duration={dodge:hitAt+window,tap:560-level*8,lane:Math.round((855-level*16)*pace),gauge:sweep,beat:sweep-80}[encounter.kind];
+ return {duration,hitAt,window,width,
   tell:Math.max(430,760-level*14)+(encounter.variant==='fusion'?215:0)};
 }
 export function mountArcade(root) {
@@ -56,7 +56,7 @@ export function mountArcade(root) {
     <div class="px-inputs"><button type="button" class="px-button px-primary"></button><div class="px-lanes" hidden><button type="button" class="px-button" data-side="left">◀ 왼쪽</button><button type="button" class="px-button" data-side="right">오른쪽 ▶</button></div></div>
    </div>
   </section>
-  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 나비 떼 속에서 미치코가 모습을 드러내면 버튼을 길게 눌러 시선을 유지하세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>연속 사건에서는 첫 상황을 넘기면 다음 공격이 이어집니다. 하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다.</p><p data-legacy hidden></p></details>
+  <details class="px-help"><summary>조작법</summary><p>터치하거나 스페이스바를 누르세요. 방향을 고를 때는 화면 버튼이나 ← → 키를 사용하세요. 회피는 정원사 곁에 ‘데하!’가 뜨는 순간 누르세요. 미치코가 나타나면 바라보기를, 밀랍이나 섬광이 보이면 엄폐하기를 한 번 누르세요. 교정과 조율은 바늘이나 음표가 밝은 구간을 지날 때 누르세요.</p><p>연속 사건에서는 첫 상황을 넘기면 다음 공격이 이어집니다. 하트 3개로 시작합니다. 성공하면 1점, 완벽한 교정이나 조율은 2점입니다. 라운드가 올라갈수록 입력할 수 있는 시간이 짧아집니다.</p><p data-legacy hidden></p></details>
  </section>`;
  const q = selector=>root.querySelector(selector);
  const board=q('.px-cabinet'), primary=q('.px-primary'), laneButtons=q('.px-lanes'), controls=q('.px-inputs');
@@ -69,7 +69,7 @@ export function mountArcade(root) {
  let phase='idle', encounter=null, deck=[], score=0, lives=3, round=0, best=savedBest();
  let card=null, stages=[], stageIndex=0, followUp=false;
  let timer=0, frame=0, releaseAt=0, span=0, center=.65, half=.06, beatsLeft=1, timing;
- let safeSide='', held='', heldAt=0, pausedFrom='', disposed=false, allPerfect=true;
+ let safeSide='', pausedFrom='', disposed=false, allPerfect=true;
  function setPhase(value) { phase=value; board.dataset.phase=value; }
  function message(title, hint) { dialogue.textContent=title; caption.textContent=hint; }
  function timingOff() { win.clearTimeout(timer);win.cancelAnimationFrame(frame); }
@@ -85,11 +85,11 @@ export function mountArcade(root) {
   laneButtons.hidden=!lanes; primary.hidden=lanes; primary.textContent=label;
   if(switchFocus && !focus.getClientRects().length) (lanes?laneButtons.firstElementChild:primary).focus({preventScroll:true});
  }
- function action() { return encounter.kind==='hold' && encounter.effect!=='butterfly'?'엄폐하기':actions[encounter.kind]; }
+ function action() { return encounter.kind==='tap' && encounter.effect!=='butterfly'?'엄폐하기':actions[encounter.kind]; }
  function gauge() { return encounter.kind==='gauge'||encounter.kind==='beat'; }
  function resetVisuals() {
-  delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.held; delete board.dataset.side;
-  delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true; held='';
+  delete board.dataset.interrupted;delete board.dataset.hit; delete board.dataset.side;
+  delete board.dataset.ready; delete board.dataset.performance; meter.hidden=true; direction.hidden=true;
  }
  function setGauge() {
   half=timing.width;
@@ -105,11 +105,7 @@ export function mountArcade(root) {
  function tick(now) {
   if(phase!=='active') return;
   const elapsed=now-releaseAt;
-  if(held) {
-   const value=(now-heldAt)/timing.hold;
-   progress(Math.min(1,value));
-   if(value>=1) { finish(true,action()==='엄폐하기'?'엄폐 성공!':'생멸을 막았어요!');return; }
-  } else if(elapsed>=span) { finish(false,gauge()?'타이밍을 놓쳤어요.':'한발 늦었어요.');return; }
+  if(elapsed>=span) { finish(false,gauge()?'타이밍을 놓쳤어요.':'한발 늦었어요.');return; }
   if(encounter.kind==='dodge' && elapsed>=timing.hitAt && !board.dataset.ready) {
    board.dataset.ready='yes'; caption.textContent='지금 데하!';
   }
@@ -128,7 +124,7 @@ export function mountArcade(root) {
     board.dataset.side=safeSide;hint+=' '+(safeSide==='left'?'왼쪽':'오른쪽')+'으로 피하세요.';
    }
    if(gauge())setGauge();
-   message(hint,encounter.kind==='hold'?'공격이 멈출 때까지 누르고 계세요.':encounter.kind==='dodge'?'공격이 닿을 때 누르세요.':gauge()&&beatsLeft===2?'첫 번째 입력':action());
+   message(hint,encounter.kind==='dodge'?'공격이 닿을 때 누르세요.':gauge()&&beatsLeft===2?'첫 번째 입력':action());
    frame=win.requestAnimationFrame(tick);
   });
  }
@@ -149,7 +145,7 @@ export function mountArcade(root) {
   q('[data-hunter]').textContent=stages.length>1?card.name+' · '+(stageIndex+1)+'/'+stages.length+' · '+encounter.hunter:encounter.hunter;
   q('[data-name]').textContent=encounter.variant==='fusion'?'조각상':encounter.name;
   buttons(action(),encounter.kind==='lane');pauseButton.hidden=false;
-  message(encounter.warning,action()==='엄폐하기'?'공격이 시작되면 길게 눌러 숨으세요.':hints[encounter.kind]);showScore();
+  message(encounter.warning,action()==='엄폐하기'?'공격이 시작되면 한 번 누르세요.':hints[encounter.kind]);showScore();
   const delay=Math.round(timing.tell*stage.pace)+stage.wait;
   board.style.setProperty('--tell',delay+'ms');later(trigger,delay);
  }
@@ -178,7 +174,7 @@ export function mountArcade(root) {
  function finish(hit,label,points=1) {
   if(phase!=='active'&&phase!=='warning')return;
   if(phase==='warning')board.dataset.interrupted='yes';
-  timingOff();held='';delete board.dataset.held;delete board.dataset.ready;direction.hidden=true;meter.hidden=true;
+  timingOff();delete board.dataset.ready;direction.hidden=true;meter.hidden=true;
   if(hit){score+=points;saveRecord();} else lives--;
   followUp=hit && stageIndex+1<stages.length;
   const rest=followUp?760:Math.max(740,990-round*12);
@@ -189,17 +185,16 @@ export function mountArcade(root) {
   message(label,hit?'+'+points+(followUp?'점 · 다음 공격이 이어져요.':'점 · 다음 사건이 다가와요.'):'하트가 하나 줄었어요.');
   later(continueRun,rest);
  }
- function respond(choice,source) {
+ function respond(choice) {
   if(phase==='idle'||phase==='over'){begin();return;}
   if(phase==='paused'){resume();return;}
   if(phase==='warning'){finish(false,'너무 일찍 움직였어요.');return;}
-  if(phase!=='active'||held)return;
+  if(phase!=='active')return;
   const elapsed=win.performance.now()-releaseAt;
   if(elapsed>=span){finish(false,'한발 늦었어요.');return;}
-  if(encounter.kind==='hold') {
-   if(!source)return;
-   held=source;heldAt=win.performance.now();board.dataset.held='yes';meter.hidden=false;progress(0);
-   q('.px-meter-label').textContent='유지 중';message(action()==='엄폐하기'?'몸을 숨겼어요.':'바라보고 있어요.','표시가 찰 때까지 누르고 계세요.');return;
+  if(encounter.kind==='tap') {
+   const result=encounter.effect==='butterfly'?'생멸을 막았어요!':'엄폐 성공!';
+   finish(true,result+' · '+Math.round(elapsed)+'ms');return;
   }
   if(encounter.kind==='lane') {
    if(!choice)return;
@@ -219,13 +214,6 @@ export function mountArcade(root) {
   if(elapsed<timing.hitAt){finish(false,'데하가 너무 빨랐어요.');return;}
   finish(true,'데하로 피했어요!');
  }
- function release(source) {
-  if(phase==='active'&&source===held) {
-   const duration=win.performance.now()-heldAt;
-   if(duration>=timing.hold) finish(true,action()==='엄폐하기'?'엄폐 성공!':'생멸을 막았어요!');
-   else finish(false,'조금 더 오래 눌러주세요.');
-  }
- }
  function pause() {
   if(!stopScenes.has(phase))return;
   pausedFrom=phase;pointer=null;timingOff();resetVisuals();setPhase('paused');pauseButton.hidden=true;
@@ -240,20 +228,17 @@ export function mountArcade(root) {
  function down(e) {
   const b=e.target.closest('button');if(!b||e.button!==0||!e.isPrimary||pointer!==null)return;
   pointer=e.pointerId;swallowClick=true;
-  b.setPointerCapture?.(pointer);respond(b.dataset.side,'p'+pointer);
+  b.setPointerCapture?.(pointer);respond(b.dataset.side);
  }
  function up(e) {
   if(pointer!==e.pointerId)return;
-  const id=pointer;pointer=null;pointerEnded=win.performance.now();release('p'+id);
+  pointer=null;pointerEnded=win.performance.now();
  }
  function click(e) {
   const b=e.target.closest('button');if(!b)return;
   if(swallowClick&&(pointer!==null||e.detail>0||win.performance.now()-pointerEnded<500)){swallowClick=false;return;}
   swallowClick=false;
-  if(phase==='active'&&encounter.kind==='hold'&&!held) {
-   // Assistive technology activation can deliver just a click, without press/release.
-   respond(null,'assist');
-  } else respond(b.dataset.side,'');
+  respond(b.dataset.side);
  }
  const keys={Space:'',Enter:'',ArrowLeft:'left',ArrowRight:'right'};
  function keyDown(e) {
@@ -262,16 +247,15 @@ export function mountArcade(root) {
   const side=keys[e.code]||e.target.closest?.('[data-side]')?.dataset.side;
   if(e.code.startsWith('Arrow')&&(encounter?.kind!=='lane'||!['active','warning'].includes(phase)))return;
   if(encounter?.kind==='lane'&&!side&&['active','warning'].includes(phase))return;
-  e.preventDefault();swallowClick=false;if(!e.repeat)respond(side,'k'+e.code);
+  e.preventDefault();swallowClick=false;if(!e.repeat)respond(side);
  }
- function keyUp(e){release('k'+e.code);}
  function visibility(){if(doc.hidden)pause();}
  function onPause(){pause();if(phase==='paused')primary.focus({preventScroll:true});}
  const overlayGuard=new win.MutationObserver(()=>{if(stopScenes.has(phase)&&panelOpen())pause();});
  for(const el of doc.querySelectorAll('.category-nav,dialog'))overlayGuard.observe(el,{attributes:true,attributeFilter:['open','data-expanded']});
  const listeners=[[controls,'pointerdown',down],[controls,'pointerup',up],[controls,'pointercancel',up],
   [controls,'lostpointercapture',up],[controls,'click',click],[pauseButton,'click',onPause],[doc,'keydown',keyDown],
-  [doc,'keyup',keyUp],[doc,'visibilitychange',visibility],[win,'blur',pause],[win,'pagehide',pause]];
+  [doc,'visibilitychange',visibility],[win,'blur',pause],[win,'pagehide',pause]];
  for(const [el,event,fn] of listeners)el.addEventListener(event,fn);
  buttons('돌발전 시작');message('정원사로 장원의 추격에서 살아남으세요.',encounters.length+'가지 돌발 상황 · 하트 3개');showScore();
  const wipeTimer=win.setTimeout(()=>wipe.remove(),530);

@@ -45,15 +45,24 @@ function setup() {
   for(const [id,fn] of [...frames]){frames.delete(id);fn(now);}
  }
  const target=el('.px-primary'), controls=el('.px-inputs');
- function touch(side,hold=0){
+ function touch(side){
   target.dataset.side=side;
   const e={target,button:0,pointerId:1,isPrimary:true};
   controls.emit('pointerdown',e);
-  if(hold)advance(hold);
   controls.emit('pointerup',e);
   controls.emit('click',{target,detail:0});
  }
  return {el,doc,win,advance,touch,dispose,timers,frames,phase:()=>el('.px-cabinet').dataset.phase};
+}
+
+function startWith(t,card){
+ function generator(seed){
+  return ()=>((seed=(Math.imul(1664525,seed)+1013904223)>>>0)/4294967296);
+ }
+ let seed=1;
+ while(seed<10000 && shuffleEncounters(generator(seed))[0]!==card)seed++;
+ assert.ok(seed<10000);
+ t.mock.method(Math,'random',generator(seed));
 }
 
 test('each deck deals every encounter exactly once and changes between games',()=>{
@@ -87,7 +96,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   assert.equal(board.dataset.performance,'strike');
   total+=['beat','gauge'].includes(kind)?2:1;
   if(kind==='lane')x.touch(board.dataset.side);
-  else if(kind==='hold')x.touch(null,700);
+  else if(kind==='tap')x.touch();
   else if(kind==='dodge'){
    x.advance(parseFloat(board.style['--travel'])-window+10);assert.equal(board.dataset.ready,'yes');x.touch();
   }
@@ -142,6 +151,52 @@ test('dodge opens at impact and closes at the deadline, including between animat
  }
 });
 
+for(const name of ['찰나의 생멸','연이은 생멸','밀랍 사격','사진관의 섬광']){
+ test(name+' scores on first contact and ignores a release in the next round',t=>{
+  const card=encounters.find(e=>e.name===name);
+  assert.equal(card.kind,'tap');startWith(t,card);
+  const x=setup();x.touch();x.advance(2200);x.advance(137);
+  const target=x.el('.px-primary'), controls=x.el('.px-inputs');
+  const pointer={target,button:0,pointerId:7,isPrimary:true};
+  assert.equal(x.el('.px-meter').hidden,true);
+  controls.emit('pointerdown',pointer);
+  assert.equal(x.phase(),'result');assert.match(x.el('.px-dialogue strong').textContent,/137ms$/);
+  assert.equal(x.el('[data-score]').textContent,'1');
+  x.advance(1200);assert.equal(x.phase(),'warning');
+  controls.emit('pointerup',pointer);controls.emit('click',{target,detail:1});
+  assert.equal(x.phase(),'warning');assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 3개');
+  x.dispose();
+ });
+}
+
+test('one keypress or assistive click blocks a chain attack, within the reaction window',t=>{
+ const card=encounters.find(e=>e.name==='암실에서 탈출');
+ for(const input of ['Space','Enter','click','early','timeout']){
+  startWith(t,card);
+  const x=setup();x.touch();
+  const target=x.el('.px-primary');
+  assert.equal(x.el('.px-cabinet').dataset.kind,'tap');
+  if(input==='early')x.touch();
+  else{
+   x.advance(2200);
+   const duration=parseFloat(x.el('.px-cabinet').style['--travel']);
+   x.advance(input==='timeout'?duration:duration-1);
+   if(input==='click')x.el('.px-inputs').emit('click',{target,detail:0});
+   else if(input!=='timeout'){
+    x.doc.emit('keydown',{target,code:input,repeat:true});assert.equal(x.phase(),'active');
+    x.doc.emit('keydown',{target,code:input,repeat:false});
+   }
+  }
+  const success=input!=='early'&&input!=='timeout';
+  assert.equal(x.phase(),'result');assert.equal(x.el('[data-score]').textContent,success?'1':'0');
+  assert.equal(x.el('.px-hearts').attributes['aria-label'],success?'남은 하트 3개':'남은 하트 2개');
+  x.advance(1200);
+  if(success)assert.match(x.el('[data-hunter]').textContent,/암실에서 탈출 · 2\/2/);
+  else assert.equal(x.el('[data-round]').textContent,'2');
+  x.dispose();
+ }
+});
+
 test('the higher speed has a playable floor and previous records are shown separately',t=>{
  for(const e of encounters.filter(e=>!e.stages)){
   const first=encounterTiming(e,1), last=encounterTiming(e,21);
@@ -184,13 +239,7 @@ test('resuming an interrupted warning retains its cues and orientation',()=>{
 
 test('a pending attack survives pause and failing it ends the route with one lost heart',t=>{
  const route=encounters.find(card=>card.name==='판자 뒤의 매복');
- function generator(seed){
-  return ()=>((seed=(Math.imul(1664525,seed)+1013904223)>>>0)/4294967296);
- }
- let seed=1;
- while(seed<10000 && shuffleEncounters(generator(seed))[0]!==route)seed++;
- assert.ok(seed<10000);
- t.mock.method(Math,'random',generator(seed));
+ startWith(t,route);
  const x=setup();x.touch();x.advance(2200);
  const board=x.el('.px-cabinet');x.touch(board.dataset.side);
  assert.equal(x.phase(),'result');assert.equal(x.el('[data-score]').textContent,'1');

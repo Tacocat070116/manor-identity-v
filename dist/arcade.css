@@ -81,7 +81,7 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-cabinet[data-performance=strike] .effect-cell {animation:effect-strike var(--travel) step-end both}
 .px-cabinet:is([data-kind=gauge],[data-kind=beat])[data-performance=strike] .effect-cell {animation:cells .65s step-end infinite}
 .px-cabinet[data-phase=active]:is([data-kind=gauge],[data-kind=beat]) .px-hero .cast-cell {--row:100%;animation-duration:.78s}
-.px-cabinet[data-held=yes] .px-hero .cast-cell {--row:25%;animation-duration:.54s}
+.px-cabinet[data-hit=yes][data-kind=tap] .px-hero .cast-cell {--row:25%;animation:cast-strike .46s step-end both}
 .px-cabinet[data-hit=yes]:is([data-kind=dodge],[data-kind=lane]) .px-hero .cast-cell {--row:12.5%;animation:cast-strike .46s step-end both}
 .px-cabinet[data-hit=no] .px-hero .cast-cell {--row:87.5%;animation:cast-strike .57s step-end both}
 .px-cabinet[data-hit=yes][data-kind=dodge] .px-hero,.px-cabinet[data-hit=yes][data-side=left] .px-hero {animation:gardener-left .49s steps(9,end) both}
@@ -157,15 +157,13 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
 .px-marker {left:clamp(0%,var(--progress,0%),100%);top:-4px;bottom:-4px;width:3px;background:#fafbf0;box-shadow:0 0 0 1px #362331;transform:translateX(-50%)}
 .px-cabinet[data-kind=beat] .px-marker {width:17px;height:20px;top:-2px;bottom:auto;background:none;box-shadow:none}
 .px-cabinet[data-kind=beat] .px-marker::after {content:'♪';color:#fff0c7;font:bold 21px/1 monospace;text-shadow:1px 1px #2b2632}
-.px-cabinet[data-kind=hold] .px-zone {display:none}
-.px-cabinet[data-kind=hold] .px-marker {left:0;top:0;bottom:0;width:var(--progress);transform:none;background:#c3a27a;box-shadow:none}
 .px-console {position:relative;gap:15px;min-height:98px;padding:13px clamp(13px,2.5vw,26px);background:linear-gradient(105deg,#293234,#192226 75%);border-top:1px solid #818478;box-shadow:inset 0 3px #151d20,inset 0 -3px #141c1f}
 .px-portrait {width:60px;height:60px;border:1px solid #73776a;position:relative;overflow:hidden;flex:0 0 auto;background:url('assets/arcade/gardener-portrait.png') center bottom/contain no-repeat,radial-gradient(ellipse at 50% 5%,#485755,#1d292b);image-rendering:pixelated;box-shadow:inset 0 0 0 3px #182325}
 .px-dialogue {min-width:0;flex:1}.px-dialogue strong,.px-dialogue span {display:block}
 .px-dialogue strong {font:650 clamp(1.08rem,2vw,1.44rem)/1.44 var(--arc-display);color:#f1ecdc;overflow-wrap:anywhere}
 .px-dialogue span {font-size:.93rem;color:#bfc6bd;margin-top:3px}
 .px-button {min-width:124px;min-height:48px;padding:9px 15px;color:#fff0db;background:linear-gradient(165deg,#783e45,#522a33);border:1px solid #ad7c72;border-radius:1px;box-shadow:inset 0 0 0 3px #502c34,0 2px 3px #0a1015;font:650 1.04rem/1.3 var(--arc-display);white-space:nowrap;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer}
-.px-button:active,.px-cabinet[data-held=yes] .px-primary {background:#42272e;box-shadow:inset 0 0 0 2px #9a706a}
+.px-button:active {background:#42272e;box-shadow:inset 0 0 0 2px #9a706a}
 .px-lanes {gap:7px}.px-lanes .px-button {min-width:78px}
 .px-cabinet[data-phase=result] .px-primary {opacity:.65;cursor:default}
 .px-help {margin:15px 0 0;border:0;border-radius:0;background:none;box-shadow:none;color:#c4ccc7}
