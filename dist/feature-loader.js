@@ -33,7 +33,7 @@ export function createFeatureLoader(definitions,loadStyle){
 }
 
 export const loadFeature=createFeatureLoader({
- arcade:{load:()=>import('./arcade.js?v=5ccbced7cfdb'),styles:['arcade']},
+ arcade:{load:()=>import('./arcade.js?v=480b39e52d79'),styles:['arcade']},
  statistics:{load:()=>import('./statistics.js?v=e6da15a317f4'),styles:[]},
  feedback:{load:()=>import('./feedback.js?v=1f4e90a9cd4b'),styles:['participation','feedback']},
  laboratory:{load:()=>import('./synergy.js?v=249c12da5876'),styles:['participation','synergy']},

@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=82a396057ca4';
+import {loadFeature} from './feature-loader.js?v=a564c74b074d';
 import './typography.js?v=1f2b416d86f0';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -153,7 +153,6 @@ function navigate(p){const next=route(p);if(location.hash===next){readRoute();re
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
  state.view=['explore','character','matchup','compare','bans','statistics','feedback','recovery','patchnotes','laboratory','arcade'].includes(p.get('v'))?p.get('v'):'explore';
- state.arcadeGame=p.get('game')==='cipher'?'cipher':'flywheel';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','skills','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
@@ -506,7 +505,7 @@ async function render({scroll=false}={}){
   }
  }
  else if(state.view==='arcade'){
-  disposeView=featureModule.mountArcade(body,{game:state.arcadeGame,icon});
+  disposeView=featureModule.mountArcade(body);
  }
  else if(state.view==='laboratory'){
   body.innerHTML=title('MANOR LABORATORY','연구실','생존자 조합과 인격, 게임 속 전략을 함께 연구하는 공간입니다.')+'<div id="synergy-board"></div>';
@@ -547,7 +546,7 @@ function selectCharacter(id){
  if(m.startsWith('ban-')){state.bans[Number(m.split('-')[1])]=id;state.banPage=1;state.banRecordHunter='';navigate(currentViewParams());}
 }
 function currentViewParams(){
- const p={v:state.view};if(state.view==='arcade')p.game=state.arcadeGame;if(state.view==='character'){p.c=state.character;p.tab=state.tab;}if(state.view==='matchup'){p.own=state.own;if(state.opponent)p.opp=state.opponent;}if(state.view==='compare'){p.a=state.a;p.b=state.b;}if(state.view==='bans'){p.bans=state.bans.join(',');if(state.banPage>1)p.page=state.banPage;if(state.banRecordHunter)p.recordHunter=state.banRecordHunter;}
+ const p={v:state.view};if(state.view==='character'){p.c=state.character;p.tab=state.tab;}if(state.view==='matchup'){p.own=state.own;if(state.opponent)p.opp=state.opponent;}if(state.view==='compare'){p.a=state.a;p.b=state.b;}if(state.view==='bans'){p.bans=state.bans.join(',');if(state.banPage>1)p.page=state.banPage;if(state.banRecordHunter)p.recordHunter=state.banRecordHunter;}
  if(['bans','compare'].includes(state.view)||(state.view==='character'&&state.tab==='stats')){const f=state.view==='bans'?state.banFilters:state.stats;p.days=f.days;p.map=f.map;p.tour=f.tournament;if(state.view==='bans'){p.ex=f.excluded.filter(Boolean).join(',');p.banSource=state.banSource;}}
  if(state.view==='statistics'){p.days=state.stats.days;p.map=state.stats.map;p.tour=state.stats.tournament;}
  if(['statistics','compare'].includes(state.view)||(state.view==='character'&&state.tab==='stats'))Object.assign(p,statisticsParams());
