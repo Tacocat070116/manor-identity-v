@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {encounters, shuffleEncounters, dealStages} from './dist/arcade-events.js';
-import {mountArcade, encounterTiming} from './dist/arcade.js';
+import {encounters, shuffleEncounters, dealStages, roundStages} from './dist/arcade-events.js';
+import {mountSurprise, encounterTiming} from './dist/arcade.js';
+import {mountArcade} from './dist/arcade-lobby.js';
 
 class Element {
  handlers=new Map();
@@ -19,7 +20,7 @@ class Element {
  focus(){}
 }
 
-function setup() {
+function setup(difficulty='nightmare') {
  const root=new Element(), doc=new Element(), win=new Element();
  const nodes=new Map(),timers=new Map(),frames=new Map();
  let now=0,serial=0;
@@ -29,7 +30,7 @@ function setup() {
  };
  root.ownerDocument=doc;doc.defaultView=win;doc.documentElement=new Element();doc.body=new Element();
  root.querySelector=el;root.querySelectorAll=doc.querySelectorAll=()=>[];
- doc.querySelector=()=>null;
+ doc.querySelector=()=>null;doc.createElement=()=>new Element();
  el('.px-hearts').children=[new Element(),new Element(),new Element()];
  el('.px-lanes').firstElementChild=new Element();
  Object.assign(win,{
@@ -40,7 +41,8 @@ function setup() {
   requestAnimationFrame(fn){frames.set(++serial,fn);return serial;},
   cancelAnimationFrame(id){frames.delete(id);}
  });
- const dispose=mountArcade(root);
+ let cleanup;
+ const dispose=()=>cleanup?.();
  function advance(ms){
   now+=ms;
   for(const [id,timer] of [...timers])if(timer.at<=now){timers.delete(id);timer.fn();}
@@ -48,14 +50,36 @@ function setup() {
  }
  const target=el('.px-primary'), controls=el('.px-inputs');
  function touch(side){
+  if(!cleanup){cleanup=mountSurprise(root,difficulty,()=>{});return;}
   target.dataset.side=side;
   const e={target,button:0,pointerId:1,isPrimary:true};
   controls.emit('pointerdown',e);
   controls.emit('pointerup',e);
   controls.emit('click',{target,detail:0});
  }
- return {el,doc,win,advance,elapse:ms=>{now+=ms;},touch,dispose,timers,frames,phase:()=>el('.px-cabinet').dataset.phase};
+ return {root,el,doc,win,advance,elapse:ms=>{now+=ms;},touch,dispose,timers,frames,phase:()=>el('.px-cabinet').dataset.phase};
 }
+
+test('game selection opens its guide before difficulty and supports returning after play',()=>{
+ const x=setup(), leave=mountArcade(x.root);
+ const choose=dataset=>{
+  const button=new Element();Object.assign(button.dataset,dataset);
+  x.root.emit('click',{target:button});
+ };
+ assert.match(x.root.innerHTML,/data-game="surprise"/);
+ assert.doesNotMatch(x.root.innerHTML,/data-mode=/);
+ choose({game:'surprise'});assert.match(x.root.innerHTML,/교정과 조율/);
+ choose({lobby:'start'});assert.match(x.root.innerHTML,/난이도 선택/);
+ for(const mode of ['normal','hard','nightmare'])assert.ok(x.root.innerHTML.includes('data-mode="'+mode+'"'));
+ choose({lobby:'back'});assert.match(x.root.innerHTML,/게임 안내/);
+ choose({lobby:'start'});choose({mode:'hard'});
+ assert.equal(x.phase(),'warning');assert.match(x.root.innerHTML,/어려움 최고/);
+ x.el('.px-stop').emit('click');assert.equal(x.phase(),'over');
+ x.el('.px-select-game').emit('click');assert.match(x.root.innerHTML,/data-game="surprise"/);
+ choose({game:'surprise'});choose({lobby:'start'});choose({mode:'nightmare'});
+ assert.equal(x.phase(),'warning');assert.match(x.root.innerHTML,/악몽 최고/);
+ leave();assert.equal(x.timers.size+x.frames.size,0);assert.equal(x.doc.documentElement.dataset.arcade,undefined);
+});
 
 function startWith(t,card){
  function generator(seed){
@@ -82,7 +106,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
  const x=setup(), seen=new Set();let total=0,stagesPlayed=0;
  x.touch();
  while(Number(x.el('[data-round]').textContent)<=encounters.length){
-  assert.ok(++stagesPlayed<=48);
+  assert.ok(++stagesPlayed<=90);
   assert.equal(x.phase(),'warning');
   const board=x.el('.px-cabinet'), {kind,variant}=board.dataset;
   const performer=x.el('.px-performer');
@@ -96,7 +120,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   seen.add(label.includes(' · ')?label.split(' · ')[0]:title);
   if(variant==='fusion')assert.equal(title,'숭고의 형상');
   const encounter=encounters.find(e=>e.name===title);
-  const window=encounterTiming(encounter,Number(x.el('[data-round]').textContent)).window;
+  const window=encounterTiming(encounter,Number(x.el('[data-round]').textContent),1,'nightmare').window;
   assert.equal(board.dataset.effect,encounter.effect);
   assert.equal(performer.style['--row'],warningRow);
   assert.doesNotMatch(label,/\d+\/\d+/);
@@ -121,7 +145,7 @@ test('a full deck plays 30 solo encounters and every stage of eight branching ro
   assert.equal(board.dataset.hit,'yes',title);
   x.advance(1200);
  }
- assert.equal(stagesPlayed,48);assert.equal(seen.size,38);assert.equal(x.el('[data-round]').textContent,'39');
+ assert.ok(stagesPlayed>=78);assert.equal(seen.size,38);assert.equal(x.el('[data-round]').textContent,'39');
  assert.equal(x.el('.px-hearts').attributes['aria-label'],'남은 하트 3개');
  assert.equal(Number(x.el('[data-score]').textContent),total);
  x.dispose();
@@ -148,7 +172,7 @@ test('background suspends the same encounter and each early touchscreen input co
 
 test('dodge opens at impact and closes at the deadline, including between animation frames',t=>{
  t.mock.method(Math,'random',()=>.999);
- const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1,.86+.999*.30);
+ const move=encounters.find(e=>e.effect==='statue'), timing=encounterTiming(move,1,.86+.999*.30,'nightmare');
  for(const [delay,hit] of [[0,false],[timing.hitAt-1,false],[timing.hitAt,true],[timing.duration-1,true],[timing.duration,false]]){
   const x=setup();x.touch();x.advance(3700);
   assert.equal(x.el('.px-cabinet').dataset.effect,'statue');
@@ -212,16 +236,16 @@ test('the higher speed has a playable floor and previous records are shown separ
   if(['rocket','lizard','wheel'].includes(e.effect)){
    assert.equal(first.hitAt,0);assert.equal(last.duration,last.contactAt+80);
   }else{
-   assert.equal(first.window,245);assert.equal(last.window,165);
-   if(e.kind==='dodge')assert.equal(last.duration-last.hitAt,165);
+   assert.equal(first.window,400);assert.equal(last.window,360);
+   if(e.kind==='dodge')assert.equal(last.duration-last.hitAt,360);
   }
  }
  const store=new Map([['manor-arcade-surprise-best-v1','81'],['manor-arcade-surprise-nightmare-v1','7']]);
  const old=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
  Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:key=>store.get(key)}});
  t.after(()=>{if(old)Object.defineProperty(globalThis,'localStorage',old);else delete globalThis.localStorage;});
- const x=setup();
- assert.equal(x.el('[data-best]').textContent,'7');assert.match(x.el('[data-legacy]').textContent,/81점/);
+ const x=setup();x.touch();
+ assert.equal(x.el('[data-best]').textContent,'0');assert.match(x.el('[data-legacy]').textContent,/이전 악몽 최고 기록 · 7점/);assert.match(x.el('[data-legacy]').textContent,/81점/);
  x.dispose();
 });
 
@@ -312,7 +336,7 @@ test('rush contact gives a visible approach and the wheel always arrives before 
  const move=effect=>encounters.find(e=>e.effect===effect);
  for(const level of [1,10,21,90]){
   for(const pace of [.86,1,1.16]){
-   const [wheel,rocket,lizard]=['wheel','rocket','lizard'].map(k=>encounterTiming(move(k),level,pace));
+   const [wheel,rocket,lizard]=['wheel','rocket','lizard'].map(k=>encounterTiming(move(k),level,pace,'hard'));
    assert.ok(wheel.contactAt>=395&&wheel.contactAt<=515);
    assert.ok(rocket.contactAt>=555&&lizard.contactAt>=600);
    for(const t of [wheel,rocket,lizard]){
@@ -328,7 +352,7 @@ test('all dodge attacks reach the contact pose on the same clock used by input',
   const b=x.el('.px-cabinet'),part=['.px-performer','.px-cast','.px-foe'].map(x.el).find(el=>el.dataset.flight===card.effect);
   const duration=Number.parseFloat(b.style['--travel']);
   const rush=encounterTiming(card,1).hitAt===0;
-  const window=rush?duration:245, cueAt=duration-window;
+  const window=rush?duration:encounterTiming(card,1,1,'nightmare').window, cueAt=duration-window;
   const contactAt=rush?duration-80:cueAt+Math.round(window*.58);
   if(cueAt){
    x.advance(cueAt-1);assert.equal(b.dataset.ready,undefined);
@@ -430,4 +454,30 @@ test('the conductor repeats the downbeat at each playable note',t=>{
  }
  assert.equal(x.phase(),'result');
  x.dispose();
+});
+
+test('nightmare matches every hard timing and normal has a slightly wider response window',()=>{
+ for(const card of encounters.filter(c=>!c.stages)){
+  for(const round of [1,10,21])for(const pace of [.86,1,1.16]){
+   const normal=encounterTiming(card,round,pace,'normal'),hard=encounterTiming(card,round,pace,'hard');
+   assert.deepEqual(encounterTiming(card,round,pace,'nightmare'),hard);
+   assert.ok(normal.duration>hard.duration);
+   if(card.kind==='dodge'&&hard.hitAt)assert.equal(normal.window-hard.window,35);
+  }
+  for(const mode of ['normal','hard'])assert.equal(roundStages(card,mode).length,1);
+  assert.ok(roundStages(card,'nightmare').length>=2);
+ }
+ for(const mode of ['normal','hard'])assert.equal(shuffleEncounters(Math.random,'',null,mode).length,30);
+});
+test('wheel and rocket come back from the other side, while alternating walls hide each new hazard',t=>{
+ for(const effect of ['rocket','wheel','fence']){
+  const card=encounters.find(c=>c.effect===effect);startWith(t,card);
+  const x=setup();x.touch();const board=x.el('.px-cabinet'),facing=board.dataset.facing;
+  x.advance(3700);const side=board.dataset.side;
+  x.touch(side);assert.equal(board.dataset.turn,effect);x.advance(440);
+  assert.notEqual(board.dataset.facing,facing);assert.equal(board.dataset.effect,effect);
+  assert.equal(board.dataset.side,undefined);x.advance(1000);
+  if(side)assert.notEqual(board.dataset.side,side);
+  x.touch(board.dataset.side);assert.equal(x.el('[data-score]').textContent,'2');x.dispose();
+ }
 });

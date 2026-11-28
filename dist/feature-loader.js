@@ -34,9 +34,9 @@ export function createFeatureLoader(definitions,loadStyle){
 
 export const loadFeature=createFeatureLoader({
  arcade:{load:async()=>{
-  const arcade=await import('./arcade.js?v=c912ddfeb5d2');
+  const arcade=await import('./arcade-lobby.js?v=c353f5ab8cdb');
   await arcade.preloadArcadeSprites();return arcade;
- },styles:['arcade']},
+ },styles:['arcade','arcade-lobby']},
  statistics:{load:()=>import('./statistics.js?v=e6da15a317f4'),styles:[]},
  feedback:{load:()=>import('./feedback.js?v=1f4e90a9cd4b'),styles:['participation','feedback']},
  laboratory:{load:()=>import('./synergy.js?v=249c12da5876'),styles:['participation','synergy']},

@@ -294,6 +294,224 @@ html[data-arcade] #main .page {animation:none;padding-top:clamp(18px,3vw,36px);p
  .px-hud {column-gap:6px}.px-reaction {gap:4px}.px-run-actions {gap:2px}
  .px-run-actions button {min-width:36px}.px-hearts i {width:12px}
 }
+/* The outer sprite owns the cast/flight coordinates. Breathing only moves the
+   painted idle pose, never the attack's collision point or the floor warning. */
+.px-cabinet[data-performance=tell] .performer-cell {
+ animation:effect-tell var(--tell) step-end both, manor-breathe 1.35s steps(2,end) infinite alternate
+}
+.px-cabinet[data-performance=tell][data-kind=lane] .performer-cell {
+ animation:manor-breathe 1.35s steps(2,end) infinite alternate
+}
+.px-cabinet[data-performance=tell][data-effect=mirror] .effect-cell {
+ animation:effect-tell var(--tell) step-end both, manor-breathe 1.5s steps(2,end) infinite alternate
+}
+.px-cabinet[data-performance=tell][data-effect=butterfly] .px-cast i {
+ animation:cells var(--tell) step-end both, manor-breathe 1.55s steps(2,end) infinite alternate
+}
+@keyframes manor-breathe {from{translate:0 0}to{translate:0 -2px}}
+
+/* Draw the trails in the particle's local space. They follow both facing and
+   flight, stay behind the leading edge, and stop as soon as the game pauses. */
+.px-cabinet[data-performance=strike] :is(.px-foe,.px-cast,.px-performer)::before,
+.px-cabinet[data-performance=strike] :is(.px-foe,.px-cast,.px-performer)::after {
+ position:absolute;pointer-events:none;background-repeat:no-repeat
+}
+.px-cabinet[data-performance=strike] :is(.px-foe,.px-cast,.px-performer)::before {
+ content:var(--trace,none);left:var(--trace-x,42%);top:var(--trace-y,47%);
+ width:var(--trace-w,66%);height:var(--trace-h,17%);
+ background:var(--trace-paint);clip-path:var(--trace-shape,none);
+ transform-origin:var(--trace-origin,left center);opacity:var(--trace-opacity,.84);
+ animation:var(--trace-motion,manor-afterimage .25s steps(3,end) infinite alternate)
+}
+.px-cabinet[data-performance=strike] :is(.px-foe,.px-cast,.px-performer)::after {
+ content:var(--chips,none);font-size:clamp(2px,.38cqw,4px);width:1em;height:1em;
+ left:var(--chip-x,55%);top:var(--chip-y,56%);color:var(--chip-color,#dad6c6);background:currentColor;
+ box-shadow:3em -2em 0 currentColor,6em .5em 0 var(--chip-shadow,currentColor),9em -1em 0 currentColor;
+ animation:var(--chip-motion,manor-chips .48s steps(5,end) infinite)
+}
+@keyframes manor-afterimage {from{scale:.84 .8}to{scale:1 1}}
+@keyframes manor-chips {from{opacity:.82;translate:0 0}to{opacity:0;translate:2.8em -2.4em}}
+@keyframes manor-ground-ring {from{transform:scale(.48,.7);opacity:.95}to{transform:scale(1.12,1);opacity:0}}
+@keyframes manor-splash {from{scale:.5 .1}55%{scale:1 1}to{scale:1.08 .35;opacity:.15}}
+@keyframes manor-shutter {from{opacity:.92;scale:.4}35%{opacity:1;scale:1}to{opacity:0;scale:1.15}}
+@keyframes manor-falling {from{opacity:.85;translate:0 -2em}to{opacity:0;translate:-1em 3em}}
+
+/* Pixel silhouettes: vapour shears, silk strands and dust kicked back by a hit. */
+.px-actors {
+ --torn-edge:polygon(0 42%,18% 24%,39% 28%,49% 7%,69% 12%,100% 0,82% 34%,100% 36%,66% 52%,90% 61%,49% 72%,61% 87%,22% 83%,0 100%);
+ --impact-teeth:polygon(0 87%,18% 76%,7% 44%,29% 64%,22% 12%,42% 47%,50% 0,56% 47%,74% 18%,70% 61%,98% 30%,84% 67%,100% 82%,76% 94%,23% 100%);
+}
+.px-actors :is(.px-foe,.px-cast,.px-performer) {
+ --slick:radial-gradient(ellipse at center,transparent 47%,var(--rim) 49% 54%,transparent 58% 69%,var(--rim) 71% 75%,transparent 79%)
+}
+.px-actors [data-flight=statue] {
+ --chips:"";--chip-x:36%;--chip-color:#f0e3c9;--chip-shadow:#73756f;
+ --trace:"";--trace-y:79%;--trace-h:10%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(90deg,#b4b5a7,#7778728c 55%,transparent)
+}
+.px-actors [data-flight=fog] {
+ --trace:"";--trace-x:25%;--trace-y:35%;--trace-w:95%;--trace-h:27%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(165deg,transparent 18%,#c7e4e293 29%,#67797cbd 43%,#f1f1db 47%,#80969bb8 54%,transparent 82%);
+ --chips:"";--chip-color:#b0c8c4;--chip-y:44%
+}
+.px-actors [data-flight=chain] {
+ /* Grow the cable back to Bane's hand as the leading hook crosses the field. */
+ --arena-width:calc(100cqw - 2*var(--inset));
+ --hand-distance:calc(var(--arena-width)*.78 - var(--performer-size)*.78 - var(--hero-size)*.633);
+ --painted-chain:calc(var(--size)*.66*(.3 + .7*var(--flight)));
+ --trace:"";--trace-x:calc(11.5% + var(--painted-chain));--trace-y:46%;
+ --trace-w:max(0px,calc(var(--hand-distance)*var(--flight) - var(--clearance)*var(--hero-size) - var(--painted-chain)));
+ --trace-h:4%;--trace-motion:none;
+ --trace-paint:radial-gradient(ellipse at center,transparent 0 23%,#b3a99d 27% 48%,#4f4a46 53% 69%,transparent 74%) left center/8px 95% repeat-x;
+ --chips:"";--chip-color:#e1bf7e;--chip-shadow:#8f7361;--chip-x:45%;--chip-y:47%
+}
+.px-actors [data-flight=web] {
+ --trace:"";--trace-x:40%;--trace-y:43%;--trace-w:70%;--trace-h:21%;
+ --trace-paint:linear-gradient(8deg,transparent 49%,#d5ddd3 50% 53%,transparent 55%),linear-gradient(-8deg,transparent 59%,#a7bfc0 61% 64%,transparent 66%),linear-gradient(-19deg,transparent 48%,#f6eee1 49% 52%,transparent 54%);
+ --trace-shape:polygon(0 29%,56% 6%,100% 0,81% 34%,100% 75%,69% 67%,34% 98%,0 70%)
+}
+.px-actors [data-flight=tentacle] {
+ --trace:"";--trace-x:9%;--trace-y:79%;--trace-w:69%;--trace-h:18%;--rim:#9e8990;
+ --trace-paint:var(--slick);--trace-origin:50% 60%;--trace-motion:manor-ground-ring .34s steps(5,end) both;
+ --chips:"";--chip-color:#a9aaa1;--chip-shadow:#5f6862;--chip-x:23%;--chip-y:89%
+}
+/* A planted tentacle's impact dust appears on contact, after the raised pose. */
+.px-cabinet[data-performance=strike] [data-flight=tentacle]::before,
+.px-cabinet[data-performance=strike] [data-flight=tentacle]::after,
+.px-cabinet[data-performance=strike] [data-flight=lizard]::before {
+ content:none
+}
+.px-cabinet[data-performance=strike][data-contact=yes] :is([data-flight=tentacle],[data-flight=lizard])::before,
+.px-cabinet[data-performance=strike][data-contact=yes] [data-flight=tentacle]::after {content:""}
+.px-actors [data-flight=lizard] {
+ --trace-x:12%;--trace-y:60%;--trace-w:84%;--trace-h:24%;--trace-origin:center bottom;--trace-shape:var(--impact-teeth);
+ --trace-paint:linear-gradient(0deg,#6e6a62,#b2a795 52%,#c3b99e);--trace-motion:manor-splash .32s steps(5,end) both;
+ --chips:"";--chip-x:46%;--chip-y:17%;--chip-color:#a4ad8a;--chip-shadow:#546452
+}
+.px-actors [data-flight=mirror] {
+ --trace:"";--trace-x:25%;--trace-y:19%;--trace-w:70%;--trace-h:62%;
+ --trace-paint:linear-gradient(130deg,transparent 1%,#9bbfc773 16%,#e6f7ef 19% 21%,#93b9d2a8 22% 31%,transparent 40%,#bfdcf48c 61%,transparent 68%);
+ --trace-shape:polygon(0 70%,16% 31%,30% 40%,42% 0,52% 43%,72% 22%,66% 60%,98% 50%,73% 83%,38% 95%,0 100%)
+}
+.px-actors [data-flight=umbrella] {
+ --trace:"";--trace-x:39%;--trace-y:44%;--trace-h:23%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(13deg,transparent 10%,#161722df 25% 49%,#dedbd6a8 53% 64%,transparent 86%);
+ --chips:"";--chip-color:#d5caa5;--chip-shadow:#454554
+}
+.px-actors [data-flight=soul] {
+ --trace:"";--trace-x:32%;--trace-y:32%;--trace-h:28%;--trace-w:78%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(165deg,#92d7ea 6%,#358fc7bb 41%,#5369b380 66%,transparent);
+ --chips:"";--chip-color:#7ac4f0;--chip-shadow:#9e86d6;--chip-y:40%
+}
+.px-actors [data-flight=rocket] {
+ --trace:"";--trace-x:48%;--trace-y:58%;--trace-w:61%;--trace-h:13%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(90deg,#ffedb2 3%,#ee9f5c 22%,#a75149 49%,#837978a8 76%,transparent);
+ --chips:"";--chip-x:64%;--chip-y:66%;--chip-color:#eda061;--chip-shadow:#7a6155
+}
+.px-actors [data-flight=wheel] {
+ --trace:"";--trace-x:45%;--trace-y:74%;--trace-w:72%;--trace-h:12%;--trace-shape:var(--torn-edge);
+ --trace-paint:linear-gradient(0deg,#39352e,#90816d 56%,transparent);
+ --chips:"";--chip-x:51%;--chip-y:84%;--chip-color:#c9ad7c;--chip-shadow:#746e63
+}
+
+/* Lane effects resolve on the already-revealed half after the input.
+   They ride the prop, leaving the common red warning untouched. */
+.px-cabinet[data-effect=bomb] .px-foe {
+ --trace:"";--trace-x:2%;--trace-y:32%;--trace-w:96%;--trace-h:38%;
+ --trace-paint:linear-gradient(0deg,#ed6651 12%,#fff1b2 45%,#d86548 79%);--trace-shape:var(--impact-teeth);
+ --trace-origin:center;--trace-motion:manor-shutter .42s steps(5,end) both;--chips:"";--chip-color:#ffbf72
+}
+.px-cabinet[data-effect=violin] .px-foe {
+ --trace:"";--trace-x:-5%;--trace-y:47%;--trace-w:110%;--trace-h:17%;
+ --trace-paint:linear-gradient(-8deg,transparent 39%,#7f597b 40% 47%,#ffcfcd 49% 55%,#b572a3 57% 63%,transparent 65%);
+ --chips:"";--chip-x:10%;--chip-color:#f6c5dc;--chip-shadow:#9d73b2
+}
+.px-cabinet[data-effect=water] .px-foe {
+ --trace:"";--trace-x:2%;--trace-y:48%;--trace-w:99%;--trace-h:25%;--rim:#8de1db;
+ --trace-paint:var(--slick);--trace-origin:center;--trace-motion:manor-ground-ring .62s steps(6,end) both;
+ --chips:"";--chip-x:25%;--chip-y:48%;--chip-color:#a3e2db;--chip-shadow:#6ba2b4
+}
+.px-cabinet[data-effect=fence] .px-foe {
+ --chips:"";--chip-x:28%;--chip-y:67%;--chip-color:#c8b396;--chip-shadow:#7e746a;
+ --trace:"";--trace-x:5%;--trace-y:65%;--trace-w:91%;--trace-h:18%;--trace-origin:center bottom;--trace-shape:var(--impact-teeth);
+ --trace-paint:linear-gradient(0deg,#867769,#c4ae97 60%,transparent);--trace-motion:manor-splash .36s steps(4,end) both
+}
+.px-cabinet[data-effect=cat] .px-foe {
+ --trace:"";--trace-x:9%;--trace-y:56%;--trace-w:83%;--trace-h:23%;
+ --trace-paint:radial-gradient(ellipse at 20% 60%,#bea4d095 10%,transparent 40%),radial-gradient(ellipse at 80% 60%,#a98cc695 10%,transparent 40%);
+ --chips:"";--chip-color:#aa95c4;--chip-shadow:#77618f;--chip-x:21%;--chip-y:60%
+}
+.px-cabinet[data-effect=trap] .px-foe {
+ --trace:"";--trace-x:18%;--trace-y:42%;--trace-w:66%;--trace-h:19%;--trace-shape:var(--impact-teeth);
+ --trace-paint:linear-gradient(0deg,transparent,#9c9e94 54%,#fff2c5 76%);--trace-origin:center bottom;--trace-motion:manor-shutter .34s steps(4,end) both
+}
+.px-cabinet:is([data-effect=wax],[data-effect=wax-drop]) .px-foe {
+ --chips:"";--chip-color:#f6dfae;--chip-shadow:#af8e67;--chip-motion:manor-falling .47s steps(6,end) infinite;
+ --trace:"";--trace-paint:linear-gradient(0deg,#b99b70,#e3cf9d 45%,#fbe8bc 80%);--trace-shape:var(--torn-edge)
+}
+.px-cabinet[data-effect=wax-drop] .px-foe {
+ --trace-x:12%;--trace-y:53%;--trace-w:84%;--trace-h:22%;--trace-shape:var(--impact-teeth);--trace-origin:center bottom;--trace-motion:manor-splash .45s steps(5,end) both
+}
+.px-cabinet[data-effect=pallet] .px-foe {
+ --chips:"";--chip-x:28%;--chip-y:69%;--chip-color:#d6ae73;--chip-shadow:#7b6750;
+ --trace:"";--trace-x:17%;--trace-y:67%;--trace-w:76%;--trace-h:12%;--trace-shape:var(--torn-edge);--trace-paint:linear-gradient(0deg,#8b7969,#ae977c,transparent);
+ --trace-motion:manor-shutter .44s steps(4,end) both
+}
+
+/* The butterfly, camera and instruments emit from the cast/prop itself.
+   All flashes stay local to the source instead of tinting the whole playfield. */
+.px-cabinet[data-effect=butterfly] .px-cast {
+ --trace:"";--trace-x:45%;--trace-y:14%;--trace-w:47%;--trace-h:54%;
+ --trace-shape:polygon(0 67%,14% 32%,36% 42%,52% 0,71% 4%,62% 36%,100% 34%,91% 60%,61% 64%,55% 99%,34% 78%,10% 88%);
+ --trace-paint:linear-gradient(115deg,#3f2941 10%,#b84d65a8 36%,#e6a2b5bc 51%,#6f4a6acc 72%,transparent);
+ --trace-motion:manor-shutter .44s steps(5,end) both;
+ --chips:"";--chip-color:#f1b6cd;--chip-shadow:#a76483;--chip-y:45%
+}
+.px-cabinet[data-effect=camera] .px-foe {
+ --trace:"";--trace-x:0%;--trace-y:13%;--trace-w:70%;--trace-h:54%;--trace-origin:48% 54%;
+ --trace-paint:radial-gradient(ellipse,#fff6d6 5%,#ffe6a5c9 32%,#b8c7d66b 61%,transparent 80%);
+ --trace-shape:polygon(0 50%,29% 45%,15% 17%,39% 35%,48% 0,54% 35%,85% 14%,66% 40%,100% 48%,65% 56%,87% 88%,57% 66%,49% 100%,41% 68%,12% 87%,31% 59%);
+ --trace-motion:manor-shutter .48s steps(6,end) both
+}
+.px-cabinet:is([data-effect=cipher],[data-effect=puppet],[data-effect=gate]) .px-foe {
+ --chips:"";--chip-x:29%;--chip-y:36%;--chip-color:#e4c98b;--chip-shadow:#88aaa4;
+ --trace:"";--trace-x:30%;--trace-y:31%;--trace-w:37%;--trace-h:21%;--trace-origin:center;
+ --trace-paint:linear-gradient(120deg,#82b7b2,#f5e3b4 50%,#b49c6e);
+ --trace-shape:polygon(0 79%,25% 28%,36% 55%,55% 0,52% 53%,80% 20%,71% 64%,100% 40%,70% 90%,73% 63%,43% 91%,47% 56%,32% 79%,27% 57%);
+ --trace-motion:manor-afterimage .64s steps(3,end) infinite alternate
+}
+.px-cabinet[data-effect=puppet] .px-foe {--trace-x:38%;--trace-y:56%;--trace-w:27%;--trace-h:15%;--chip-y:61%}
+.px-cabinet[data-effect=gate] .px-foe {
+ --trace-x:35%;--trace-y:34%;--trace-w:29%;--trace-h:34%;--trace-shape:none;
+ --trace-paint:repeating-linear-gradient(0deg,transparent 0 19%,#b8d7a07a 22% 27%,transparent 30% 37%);
+ --chip-x:58%;--chip-y:45%
+}
+.px-cabinet[data-effect=bell] .px-foe {
+ --trace:"";--trace-x:-3%;--trace-y:25%;--trace-w:106%;--trace-h:54%;--rim:#d7c49b;
+ --trace-origin:center;--trace-paint:var(--slick);--trace-motion:manor-ground-ring .85s steps(7,end) infinite
+}
+.px-cabinet[data-effect=note][data-downbeat=yes] .px-foe {
+ --chips:"";--chip-x:31%;--chip-y:38%;--chip-color:#ecd5a3;--chip-shadow:#bfabcc;
+ --trace:"";--trace-x:8%;--trace-y:38%;--trace-w:88%;--trace-h:21%;--trace-paint:repeating-linear-gradient(0deg,transparent 0 20%,#c9b6b7 21% 24%);
+ --trace-motion:manor-shutter .48s steps(5,end) both
+}
+
+/* Keep the player still in the middle while a charge doubles back. */
+.px-cabinet[data-chain-rush=yes] .px-actors {--body-x:calc(50% + var(--hero-size)*.133)}
+.px-cabinet[data-chain-rush=yes] .px-hero {left:calc(50% - var(--hero-size)*.5)}
+.px-cabinet[data-turn=rocket][data-scene=result] .px-performer,
+.px-cabinet[data-turn=wheel][data-scene=result] .px-foe {animation:manor-coast-through var(--rest) cubic-bezier(.18,.63,.46,1) both}
+.px-cabinet[data-turn=rocket][data-scene=result][data-performance=strike] .px-actors [data-flight]>i {animation:manor-bank-turn var(--rest) steps(5,end) both}
+.px-cabinet[data-turn=wheel][data-scene=result][data-performance=strike] .px-actors [data-flight]>i {animation:manor-wheel-turn var(--rest) linear both}
+@keyframes manor-coast-through {
+ 0%{left:calc(var(--from-x) + (var(--contact-x) - var(--from-x))*var(--flight) + var(--hero-size)*var(--clearance))}
+ 80%,100%{left:calc(0% - var(--size))}
+}
+@keyframes manor-bank-turn {0%{transform:rotate(0)}45%{transform:rotate(-14deg)}80%,100%{transform:scaleX(-1) rotate(8deg)}}
+@keyframes manor-wheel-turn {to{transform:rotate(-300deg)}}
+.px-cabinet[data-turn=fence][data-effect=fence][data-performance=strike][data-scene=result] .px-foe {animation:manor-wall-cycle var(--rest) steps(7,end) both}
+@keyframes manor-wall-cycle {from{scale:1 .12}26%,63%{scale:1 1}to{scale:1 .03}}
+
 @media(prefers-reduced-motion:reduce){
  .px-wipe {display:none}.px-arcade *, .px-arcade *::before,.px-arcade *::after {animation:none!important;transition:none!important}
  .px-cabinet[data-performance=tell] :is(.cast-cell,.effect-cell,.performer-cell){background-position-x:20%}

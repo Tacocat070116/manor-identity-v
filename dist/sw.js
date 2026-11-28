@@ -1,5 +1,5 @@
 // Generated alongside the versioned app resources by the existing release script.
-importScripts('./offline-files.js?v=98ce0dc0878ca752');
+importScripts('./offline-files.js?v=a154e3907582c99e');
 
 const scope = self.registration.scope;
 const namespace = 'manor-offline:' + scope + ':';

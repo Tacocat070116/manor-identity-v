@@ -56,8 +56,8 @@ export function dealStages(card,random=Math.random) {
  return card.stages ? card.stages.map(options=>options[Math.floor(random()*options.length)]) : [card];
 }
 
-export function shuffleEncounters(random=Math.random, previous='', previousCard=null) {
- const pool=encounters.slice();
+export function shuffleEncounters(random=Math.random, previous='', previousCard=null,difficulty='nightmare') {
+ const pool=(difficulty==='nightmare'?encounters:singles).slice();
  for(let i=pool.length-1;i>0;i--){
   const j=Math.floor(random()*(i+1));
   [pool[i],pool[j]]=[pool[j],pool[i]];
@@ -67,11 +67,43 @@ export function shuffleEncounters(random=Math.random, previous='', previousCard=
   const last=deck.at(-1);
   const wantNewKind=last ? deck.at(-2)?.kind===last.kind : !!previous;
   const lastKind=last?.kind||previous;
-  const needSequence=deck.length>=6 && deck.slice(-6).every(card=>!card.stages);
+  const needSequence=difficulty==='nightmare'&&deck.length>=6 && deck.slice(-6).every(card=>!card.stages);
   const different=card=>(deck.length>0||card!==previousCard)&&(!needSequence||card.stages)&&(!last||card.hunter!==last.hunter)&&(!wantNewKind||card.kind!==lastKind);
   let i=pool.findIndex(different);
   if(i<0)i=pool.findIndex(card=>card.kind!==lastKind);
   deck.push(pool.splice(Math.max(0,i),1)[0]);
  }
  return deck;
+}
+
+// The second beat is chosen at deal time so pausing cannot reroll the attack.
+const replies = {
+ rocket:['로켓 돌진'], wheel:['가시 바퀴 돌진'], fence:['격벽'],
+ statue:['숭고의 형상'], tentacle:['악몽의 습격'], lizard:['치명 추격'],
+ bomb:['폭탄 연쇄'], butterfly:['연이은 생멸'], violin:['소나타'],
+ trap:['갈퀴 사슬'], chain:['덫','갈퀴 사슬'], wax:['응고'], 'wax-drop':['밀랍 사격'],
+ bell:['날아드는 검은 우산'], umbrella:['탕백'], water:['물고기 사냥'],
+ cipher:['연속 교정'], puppet:['인형의 해독기 교정'], note:['두 박자 조율']
+};
+export function roundStages(card, difficulty, random=Math.random){
+ const moves=dealStages(card,random);
+ if(difficulty==='nightmare'&&!card.stages){
+  const choices=replies[card.effect]||[card.name];
+  moves.push(byName.get(choices[Math.floor(random()*choices.length)]));
+  if(['bomb','statue','tentacle','butterfly','wheel'].includes(card.effect)&&random()<.28)moves.push(moves[1]);
+ }
+ const stages=[];
+ for(const move of moves){
+  const previous=stages.at(-1);
+  const repeat=previous?.move.effect===move.effect;
+  const pace=.86+random()*.30;
+  const wait=800+Math.floor(random()*2201);
+  let safeSide=random()<.5?'left':'right', facing=random()<.5?'reverse':'normal';
+  if(repeat){
+   facing=previous.facing==='reverse'?'normal':'reverse';
+   if(move.kind==='lane')safeSide=previous.safeSide==='left'?'right':'left';
+  }
+  stages.push({move,repeat,pace,wait,safeSide,facing});
+ }
+ return stages;
 }

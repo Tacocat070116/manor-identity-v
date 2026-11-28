@@ -1,0 +1,44 @@
+.px-lobby {max-width:900px}
+.px-game-card,.px-mode,.px-back {font:inherit;color:var(--ivory);text-align:left;cursor:pointer}
+.px-back {background:transparent;border:0;padding:10px 2px;color:#dfcfaf}
+.px-game-card,.px-guide-panel,.px-mode-panel {border:1px solid #777569;background:#192326;box-shadow:0 0 0 3px #0d1417,0 12px 30px #070a0c75}
+.px-game-card {display:block;width:100%;padding:0;overflow:hidden}
+.px-game-card:focus-visible,.px-mode:focus-visible,.px-back:focus-visible {outline:3px solid #f1d69d;outline-offset:3px}
+.px-cover {display:block;position:relative;overflow:hidden;height:clamp(187px,32vw,318px);isolation:isolate;background:#263238 url('assets/arcade/manor-night.png') center 67%/cover no-repeat;image-rendering:pixelated}
+.px-cover::before {content:'';position:absolute;inset:0;background:linear-gradient(0deg,#11191dd9,transparent 30%),linear-gradient(90deg,#0d171c55,transparent 65%)}
+.px-cover-gardener,.px-cover-hunter {position:absolute;display:block;bottom:7%;aspect-ratio:1;image-rendering:pixelated}
+.px-cover-gardener {width:clamp(70px,15vw,129px);left:24%;background:url('assets/arcade/cast-motion.png') 0 0/600% 900%}
+.px-cover-hunter {width:clamp(88px,20vw,172px);right:17%;background:url('assets/arcade/cast-skills.png') 0 4.54545%/600% 2300%}
+.px-card-line {border-top:1px solid #595c56;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(16px,3vw,30px);background:linear-gradient(112deg,#273335,#171d21)}
+.px-card-line small,.px-guide-banner small,.px-mode-panel>p {color:#d4bd94;font:normal .87rem/1.6 var(--arc-pixel)}
+.px-card-line strong,.px-guide-banner h2,.px-mode-panel h2 {display:block;margin:3px 0 5px;font:700 clamp(1.55rem,3.3vw,2.5rem)/1.25 var(--arc-display);color:var(--ivory)}
+.px-blurb,.px-mode span {display:block;color:#c3ccc7;line-height:1.55}
+.px-card-action {flex:none;padding:7px 12px;border:1px solid #9b886c;color:#ecd9b5;font-size:.93rem}
+.px-game-card:hover .px-card-action,.px-mode:hover {background:#393b32}
+.px-guide-banner {position:relative;isolation:isolate;border-bottom:1px solid #65675e}
+.px-guide-banner .px-cover {height:clamp(115px,18vw,190px)}
+.px-guide-banner .px-cover-gardener {display:none}
+.px-guide-banner .px-cover::before {background:linear-gradient(90deg,#0d161df2,#0c151ba1 48%,transparent)}
+.px-guide-banner>div {position:absolute;left:clamp(16px,4vw,40px);bottom:19%}
+.px-guide-copy,.px-mode-panel {padding:clamp(18px,4vw,38px)}
+.px-guide-copy>p {margin:0 0 16px}
+.px-guide-copy dl {margin:0 0 22px}
+.px-guide-copy dl>div {border-top:1px solid #404d4d;padding:11px 0}
+.px-guide-copy dt,.px-mode strong {color:#eedfbd;font-weight:700}
+.px-guide-copy dd {color:#c1ccc7;margin:3px 0 0}
+.px-menu-start {width:min(100%,245px)}
+.px-mode-panel>p {margin:0 0 18px}
+.px-modes {display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.px-mode {padding:16px;border:1px solid #626b62;background:#202b2e}
+.px-mode i {display:block;color:#a7c8b7;font:normal .72rem/1.5 var(--arc-pixel);letter-spacing:.2em}
+.px-mode[data-mode=hard] i {color:#d5b47c}.px-mode[data-mode=nightmare] i {color:#e89790}
+.px-mode strong {display:block;margin:7px 0;font:700 1.35rem/1.3 var(--arc-display)}
+.px-select-game {margin-top:16px}
+@media(max-width:620px){.px-modes {grid-template-columns:1fr}.px-mode {display:grid;grid-template-columns:5rem 1fr;align-items:center;column-gap:13px;padding:11px 14px}.px-mode i,.px-mode strong {grid-column:1}.px-mode strong {margin:2px 0}.px-mode span {grid-column:2;grid-row:1/3;font-size:.92rem}}
+@media(max-width:420px){.px-card-line {gap:8px}.px-card-action {padding:6px;font-size:.8rem}.px-blurb {font-size:.9rem}}
+
+@media(prefers-reduced-motion:no-preference){
+ .px-cover-hunter,.px-cover-gardener {animation:px-cover-breathe 1.55s steps(2,end) infinite alternate}
+ .px-cover-hunter {animation-delay:-.65s}
+}
+@keyframes px-cover-breathe {to{translate:0 -2px}}
