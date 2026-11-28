@@ -1,7 +1,7 @@
 {
   "policy": "manual-batch",
   "instructionDate": "2026-10-31",
-  "lastAnnouncedVersion": "1.12.2",
+  "lastAnnouncedVersion": "1.13.0",
   "entries": [
     {
       "date": "2026-10-31",
@@ -751,7 +751,13 @@
         "카테고리 메뉴에서 MANOR를 홈 화면에 추가하고 독립 창으로 실행",
         "오프라인에서 캐릭터 도감과 기본 공략 열람"
       ],
-      "announcement": "pending"
+      "announcement": "announced",
+      "announcedVersion": "1.13.0",
+      "announcedAt": "2026-11-28",
+      "releaseChangeIndexes": [
+        4,
+        5
+      ]
     },
     {
       "date": "2026-11-20",
@@ -765,7 +771,16 @@
         "스킬명 옆에는 기본 쿨타임만 표시하고 발동 조건·지속시간·충전 횟수는 효과와 함께 읽을 수 있도록 스킬 설명 전체 정리",
         "스킬 설명에서 중단·재사용되는 기술과 사용되는 소지품을 이름으로 표시"
       ],
-      "announcement": "pending"
+      "announcement": "announced",
+      "announcedVersion": "1.13.0",
+      "announcedAt": "2026-11-28",
+      "releaseChangeIndexes": [
+        3,
+        6,
+        7,
+        14,
+        15
+      ]
     },
     {
       "date": "2026-11-22",
@@ -773,7 +788,12 @@
       "summary": [
         "홈 화면에서 MANOR를 열거나 다시 돌아오면 새 버전을 확인하고 작성 중인 글과 로그인 화면을 보호하며 자동 갱신"
       ],
-      "announcement": "pending"
+      "announcement": "announced",
+      "announcedVersion": "1.13.0",
+      "announcedAt": "2026-11-28",
+      "releaseChangeIndexes": [
+        16
+      ]
     },
     {
       "date": "2026-11-22",
@@ -782,7 +802,14 @@
         "실전 운용 가이드의 기존 글자 크기를 기준으로 본문·제목·메뉴·통계 수치의 크기를 조정",
         "감시자 보조 특성의 활용 조건과 중복 이동 안내 링크 제거"
       ],
-      "announcement": "pending"
+      "announcement": "announced",
+      "announcedVersion": "1.13.0",
+      "announcedAt": "2026-11-28",
+      "releaseChangeIndexes": [
+        12,
+        13,
+        14
+      ]
     }
   ]
 }
