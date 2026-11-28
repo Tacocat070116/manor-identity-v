@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-28",
+  "scope": "arcade-and-skill-timing",
+  "summary": [
+    "스킬 6개의 기본 쿨타임을 제목 옆에 표시하고, 특성·스킬의 충전과 재사용 조건 보완",
+    "아케이드에 데하 반응 속도와 해독기 교정 미니게임 추가"
+  ],
+  "announcement": "pending"
+}

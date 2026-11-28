@@ -1,4 +1,4 @@
-import {loadFeature} from './feature-loader.js?v=9b673d818286';
+import {loadFeature} from './feature-loader.js?v=82a396057ca4';
 import './typography.js?v=1f2b416d86f0';
 import {tournamentRelations,observedDetails,expandTournamentDetails,characterEvidence,contextEvidence,summaryEvidence,evidenceDetail} from './compendium-model.js?v=9e3ed7876027';
 import {mountNavigation} from './navigation.js?v=d2f36fe32cec';
@@ -17,6 +17,7 @@ const numberFormat=new Intl.NumberFormat('ko-KR');
 const num=n=>numberFormat.format(n);
 const pct=n=>`${(n*100).toFixed(1)}%`;
 const paths={
+gamepad:'<path d="M7.5 6.5h9a3.8 3.8 0 0 1 3.8 3.2l1 6a2.5 2.5 0 0 1-4.2 2.3l-2.7-2.5H9.6L7 18a2.5 2.5 0 0 1-4.2-2.3l1-6a3.8 3.8 0 0 1 3.7-3.2Z"/><path d="M6 11h4m-2-2v4"/><circle cx="15" cy="11.8" r=".9" fill="currentColor" stroke="none"/><circle cx="17.5" cy="9.5" r=".9" fill="currentColor" stroke="none"/>',
 flask:'<path d="M9 3h6M10 3v6L4 19a1.3 1.3 0 0 0 1.1 2h13.8a1.3 1.3 0 0 0 1.1-2L14 9V3"/><path data-stroke="soft" d="M7 14c2-1 3 1 5 0s3-1 5 0"/><circle cx="10" cy="17.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14" cy="18" r=".7" fill="currentColor" stroke="none"/>',
 megaphone:'<path d="M8 9 18.4 4.8a.6.6 0 0 1 .8.6v13.2a.6.6 0 0 1-.8.6L8 15H4.8a1.3 1.3 0 0 1-1.3-1.3v-3.4A1.3 1.3 0 0 1 4.8 9H8Zm0 0v6m.7.3 1.1 4.2a1.2 1.2 0 0 0 1.2.9h1.8M22 10v4"/>',
 palette:'<path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.3 1.3 0 0 1 .9-2.2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-8.9Z"/><circle cx="7" cy="11" r=".9"/><circle cx="10" cy="7" r=".9"/><circle cx="15" cy="7.5" r=".9"/>',
@@ -151,7 +152,8 @@ const route=p=>'#'+new URLSearchParams(p).toString();
 function navigate(p){const next=route(p);if(location.hash===next){readRoute();render();}else location.hash=next;}
 function readRoute(){
  const p=new URLSearchParams(location.hash.slice(1));
- state.view=['explore','character','matchup','compare','bans','statistics','feedback','recovery','patchnotes','laboratory'].includes(p.get('v'))?p.get('v'):'explore';
+ state.view=['explore','character','matchup','compare','bans','statistics','feedback','recovery','patchnotes','laboratory','arcade'].includes(p.get('v'))?p.get('v'):'explore';
+ state.arcadeGame=p.get('game')==='cipher'?'cipher':'flywheel';
  for(const [key,field]of[['c','character'],['own','own'],['opp','opponent'],['a','a'],['b','b']])if(byId[p.get(key)])state[field]=p.get(key);
  if(state.view==='matchup'&&p.has('own')&&!p.has('opp'))state.opponent='';
  state.tab=['overview','skills','matchups','tips','synergy','stats'].includes(p.get('tab'))?p.get('tab'):'overview';
@@ -185,7 +187,7 @@ function readRoute(){
 }
 function header(){
  if(navigationController){navigationController.update({view:state.view,theme:state.theme,themeLabel:resolveTheme(state.theme).name});return;}
- const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['laboratory','연구실','flask'],['feedback','피드백','message'],['recovery','로그인','lock']];
+ const nav=[['explore','도감','grid'],['matchup','매치업','swords'],['compare','비교','compare'],['statistics','통계','chart'],['laboratory','연구실','flask'],['arcade','아케이드','gamepad'],['feedback','피드백','message'],['recovery','로그인','lock']];
  const current=nav.find(([v])=>v===(state.view==='character'?'explore':state.view==='bans'?'statistics':state.view))||['explore','도감','grid'];
  const links=nav.map(([v,label,i])=>`<a class="nav-item ${current[0]===v?'active':''}" ${current[0]===v?'aria-current="page"':''} data-view="${v}" data-nav-label="${label}" data-nav-icon="${i}" href="${route({v})}" tabindex="-1">${icon(i)}<span class="nav-item-label">${label}</span></a>`).join('');
  $('#header').innerHTML=`<div class="nav-shell"><a class="brand" href="#v=explore" aria-label="MANOR 홈"><svg class="brand-mark" viewBox="0 0 32 36" aria-hidden="true"><path d="m3 5 13 26L29 5M10 5l6 12 6-12"/></svg><div><div class="brand-word">MANOR</div><small class="brand-version">${esc(releaseLabel(releaseLog))}</small></div></a><div class="header-actions"><button class="icon-btn" data-action="latest-update" aria-label="최신 MANOR 업데이트 보기" aria-haspopup="dialog" title="최신 업데이트">${icon('megaphone')}</button><button class="icon-btn" data-action="theme" aria-label="컬러 테마 선택 · 현재 ${resolveTheme(state.theme).name}" aria-haspopup="dialog" aria-controls="theme-picker" title="컬러 테마 선택">${icon('palette')}</button></div></div><div class="category-nav" data-expanded="false"><button type="button" class="category-toggle" data-nav-toggle aria-expanded="false" aria-controls="category-panel" aria-label="카테고리 메뉴 열기 · 현재 ${current[1]}"><span class="category-current-icon" data-nav-current-icon aria-hidden="true">${icon(current[2])}</span><span class="category-current-label" data-nav-current-label>${current[1]}</span><span class="category-toggle-hint" aria-hidden="true">메뉴</span><span class="category-chevron" aria-hidden="true">${icon('down')}</span></button><nav class="category-panel" id="category-panel" aria-label="주 메뉴" aria-hidden="true" inert><p class="category-panel-label">카테고리</p><div class="category-links">${links}</div><button type="button" class="install-action" data-install-manor>${icon('plus')}<span>홈 화면에 추가</span></button></nav></div>`;
@@ -458,9 +460,9 @@ async function render({scroll=false}={}){
  clearTimeout(statisticsSearchTimer);
  disposeView();disposeView=()=>{};
  const token=++renderToken;header();if(scroll)window.scrollTo({top:0,behavior:'instant'});
- document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',feedback:'피드백',recovery:'로그인',patchnotes:'MANOR 업데이트',laboratory:'연구실'}[state.view])} · MANOR`;
+ document.title=`${state.view==='character'?char(state.character).name:({explore:'캐릭터 도감',matchup:'매치업',compare:'캐릭터 비교',bans:'밴 조합 기록',statistics:'통계',feedback:'피드백',recovery:'로그인',patchnotes:'MANOR 업데이트',laboratory:'연구실',arcade:'아케이드'}[state.view])} · MANOR`;
  $('#main').innerHTML='<div class="shell"><div class="page" id="page-body"></div></div>';const body=$('#page-body');
- const feature=({feedback:'feedback',laboratory:'laboratory',recovery:'recovery'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
+ const feature=({feedback:'feedback',laboratory:'laboratory',recovery:'recovery',arcade:'arcade'}[state.view])||(state.view==='character'?(state.tab==='tips'?'tips':state.tab==='overview'?'highlights':''):state.view==='matchup'&&state.opponent?'tips':'');
  const needsGuides=['character','matchup','compare'].includes(state.view)||(state.view==='explore'&&state.favoriteOnly);
  const needsStatistics=state.view==='statistics'||state.view==='compare'||state.view==='character'&&state.tab==='stats';
  let featureModule;
@@ -503,6 +505,9 @@ async function render({scroll=false}={}){
    }catch(e){if(token===renderToken)$('#pair-observations').innerHTML=loadError(e);}
   }
  }
+ else if(state.view==='arcade'){
+  disposeView=featureModule.mountArcade(body,{game:state.arcadeGame,icon});
+ }
  else if(state.view==='laboratory'){
   body.innerHTML=title('MANOR LABORATORY','연구실','생존자 조합과 인격, 게임 속 전략을 함께 연구하는 공간입니다.')+'<div id="synergy-board"></div>';
   disposeView=mountSynergy($('#synergy-board'),{characters:byId,ownId:state.researchCharacter,partnerId:state.synergyPartner,postId:state.feedbackPost,initialMine:state.synergyMine,initialTopic:state.researchTopic,initialSituation:state.researchSituation,initialQuery:state.researchQuery,initialSort:state.researchSort,navigate:(post,filters)=>navigate({v:'laboratory',...(filters.character?{c:filters.character}:{}),...(filters.partner?{partner:filters.partner}:{}),...(filters.topic?{topic:filters.topic}:{}),...(post?{post}:{}),...(filters.mine?{mine:'1'}:{}),...(filters.situation?{situation:filters.situation}:{}),...(filters.q?{q:filters.q}:{}),...(filters.sort==='discussed'?{sort:filters.sort}:{})})});
@@ -542,7 +547,7 @@ function selectCharacter(id){
  if(m.startsWith('ban-')){state.bans[Number(m.split('-')[1])]=id;state.banPage=1;state.banRecordHunter='';navigate(currentViewParams());}
 }
 function currentViewParams(){
- const p={v:state.view};if(state.view==='character'){p.c=state.character;p.tab=state.tab;}if(state.view==='matchup'){p.own=state.own;if(state.opponent)p.opp=state.opponent;}if(state.view==='compare'){p.a=state.a;p.b=state.b;}if(state.view==='bans'){p.bans=state.bans.join(',');if(state.banPage>1)p.page=state.banPage;if(state.banRecordHunter)p.recordHunter=state.banRecordHunter;}
+ const p={v:state.view};if(state.view==='arcade')p.game=state.arcadeGame;if(state.view==='character'){p.c=state.character;p.tab=state.tab;}if(state.view==='matchup'){p.own=state.own;if(state.opponent)p.opp=state.opponent;}if(state.view==='compare'){p.a=state.a;p.b=state.b;}if(state.view==='bans'){p.bans=state.bans.join(',');if(state.banPage>1)p.page=state.banPage;if(state.banRecordHunter)p.recordHunter=state.banRecordHunter;}
  if(['bans','compare'].includes(state.view)||(state.view==='character'&&state.tab==='stats')){const f=state.view==='bans'?state.banFilters:state.stats;p.days=f.days;p.map=f.map;p.tour=f.tournament;if(state.view==='bans'){p.ex=f.excluded.filter(Boolean).join(',');p.banSource=state.banSource;}}
  if(state.view==='statistics'){p.days=state.stats.days;p.map=state.stats.map;p.tour=state.stats.tournament;}
  if(['statistics','compare'].includes(state.view)||(state.view==='character'&&state.tab==='stats'))Object.assign(p,statisticsParams());
